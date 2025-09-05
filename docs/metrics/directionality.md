@@ -5,7 +5,7 @@ slug: /metrics/directionality
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-03-04
+  date: 2025-07-23
 ---
 
 # Setting Metric Directionality

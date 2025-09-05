@@ -7,7 +7,7 @@ slug: /product-analytics/drilldown
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-19
+  date: 2025-07-23
 ---
 
 # Metric Drilldown
@@ -28,12 +28,13 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, horizontal bar charts, and stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric’s underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
 - **Detailed Data Control**: Adjust the granularity of your data analysis, from high-level overviews to detailed breakdowns. Use features like rolling averages to smooth data for more accurate trend analysis and decision-making.
+- **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
 
 # Using the Metric Drilldown Chart
 
 ## Selecting Metrics and Events
 
-In Metrics Explorer you can choose events, custom-metrics, or auto-generated metrics to explore. You can add several metrics and events to plot on a single chart. 
+In Metrics Explorer you can choose events, custom-metrics, auto-generated metrics, or experiment exposures to explore. You can add several metrics and events or exposures to plot on a single chart.
 
 ### Events
 
@@ -62,7 +63,13 @@ When selecting an event, the total number of times the event occurred (Count) on
     
     ![image](https://github.com/user-attachments/assets/112d74ec-7a52-4621-8969-af79e8599714)
 
-    
+- **Unique Values**: Plot the count of distinct values for any property across events or users within the given time range per data point. This aggregation helps answer questions like "How many different referrers drove traffic last week?" or "How many SKUs were added to carts today?" by counting unique property values rather than event occurrences.
+
+- **Count per User**: Plot the frequency distribution of how often users perform a specific event, showing statistics like average, median, or percentile values per user within the given time range per data point. This aggregation helps analyze user engagement patterns by measuring how many times each user performed an event, then applying summary statistics across those users.
+
+### Exposures
+
+Selecting an experiment exposure plots the experiment's first exposures over your selected date-range.
 
 ### Metrics
 
@@ -72,7 +79,7 @@ Selecting a custom Metric or auto-generated  Metric plots the value of that metr
 
 You can easily view the definition of the metric directly below the metric name.  You can also modify your metric plot on the fly by making ad-hoc edits to the event based definition shown. This allows you to plot new metrics on the fly, based on metrics you have already defined.  
 
-### Comparing Multiple Metrics or Events
+### Comparing Multiple Metrics, Events, or Exposures
 
 You can compare multiple metrics or events by plotting them on the same chart. To add multiple metrics click the “+” icon and select “Metric”. Then select the metric of interest. 
 
@@ -155,6 +162,10 @@ Note that when viewing data on uniques (e.g. unique users) at daily granularity,
 
 The default date range of a chart is 14 days. To select the date range of a chart click on the “Last 14 days” dropdown and select one of the quick date ranges, or select a custom range you prefer. 
 
+### Changing your unit type
+
+The default formatting / unit type is numbers. To see your data as a percentage, time value, or measurement of space (bytes, bits, etc.), click on the settings cog in the top right corner of your chart, and then select format unit type. 
+
 ### Smoothing out the data with rollups
 
 Metrics like daily usage often have seasonality effects which can make longer-term trends harder to see at a glance. To help with this, techniques such as modifying each data point on a daily chart to represent a 7 day rolling average is useful. 
@@ -169,10 +180,16 @@ We support the following rollups to smooth out data, each of which can be rolled
 
 Metrics Drilldown offers many ways to visualize your data, including: 
 
-- **Line:** Useful when plotting one or or metrics.
+- **Line:** Useful when plotting one or more metrics over time.
 - **Stacked Line:** Useful when comparing groups to understand the relative proportion a certain group has of a metric or event.
 - **Bar:** Useful when comparing the total value of two metrics over the entire date range.
-- **Donut:** Useful for visualizing the proportional breakdown of a whole into distinct categories at a single point in time.
+- **Horizontal Bar:** Ideal for grouped data comparisons, especially when you have longer label names. Makes it easy to identify top and bottom performers across any business dimension like user types, locations, or platforms.
+- **Donut:** Useful for visualizing the proportional breakdown of a whole into distinct categories at a single point in time. Perfect for showing how different segments (like countries, user types, or feature groups) contribute to your total metric value. Apply a Group-By to any metric to see the breakdown as a donut chart.
+- **World Map:** Visualize your metrics geographically by country when using a country-based Group-By. This view makes it easy to spot geographic trends and understand how your product performs across different regions.
+- **Single Value:** Display key metrics at a glance for quick summaries. Perfect when you need to highlight a single important number or KPI without the complexity of a full chart.
+- **Data Table:** Compare multiple metrics across groups in a structured table format. Ideal for detailed analysis when you need to examine exact values and perform side-by-side comparisons of different segments.
+
+Both donut charts and world maps work with any metric when you apply a Group-By. Simply select your metric, add a Group-By for the property you want to analyze (such as country for geographic analysis), and choose your preferred visualization from the chart type selector.
 
 ### Zooming in
 

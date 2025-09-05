@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-09-25
+  date: 2025-07-23
 ---
 
 Statsig's **User Flows** enable you to visualize customer journeys through your application. 

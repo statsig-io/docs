@@ -1,0 +1,24 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var initResponse = statsig.GetClientInitializeResponse(user);
+
+var options = new ClientInitResponseOptions
+{
+    HashAlgorithm = "sha256",
+    ClientSDKKey = "client-sdk-key",
+    IncludeLocalOverrides = false
+};
+
+var customInitResponse = statsig.GetClientInitializeResponse(user, options);
+```
+
+The `GetClientInitializeResponse` method returns a JSON string containing the initialization data needed by client-side SDKs. This enables server-side rendering and reduces client initialization time.
+
+## ClientInitResponseOptions
+
+- **HashAlgorithm**: Hash algorithm for response integrity (default: "djb2")
+- **ClientSDKKey**: Client SDK key to include in response
+- **IncludeLocalOverrides**: Whether to include local overrides in the response (default: false)

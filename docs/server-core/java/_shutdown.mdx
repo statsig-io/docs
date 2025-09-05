@@ -1,3 +1,15 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
 ```java
 // Method signature
 public CompletableFuture<Void> shutdown()
@@ -10,4 +22,23 @@ try {
     System.err.println(e.getMessage());
 }
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Method signature
+fun shutdown(): CompletableFuture<Void>
+
+// example usage
+try {
+    statsig.shutdown().get()
+    println("Statsig instance has been successfully shutdown.")
+} catch (e: Exception) {
+    System.err.println(e.message)
+}
+```
+
+  </TabItem>
+</Tabs>
 

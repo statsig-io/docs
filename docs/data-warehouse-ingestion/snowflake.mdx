@@ -3,7 +3,7 @@ title: Snowflake
 keywords:
   - owner:tim
 last_update:
-  date: 2024-12-10
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -72,7 +72,8 @@ BEGIN;
   -- make sure to configure user_name and user_password with your own values
   SET user_name = '<USER>'; -- REPLACE WITH YOUR OWN VALUE
   SET user_password = '<PASSWORD>'; -- REPLACE WITH YOUR OWN VALUE
-  SET role_name = 'STATSIG_ROLE';
+  SET role_name = 'STATSIG_ROLE'; -- CAN BE ANYTHING, BUT THE USER NEEDS TO 
+    -- HAVE THIS ROLE AND THE ROLE NEEDS ACCESS TO THE TABLES PER THE GRANTS BELOW
 
   -- change role to sysadmin for warehouse / database steps
   USE ROLE sysadmin;

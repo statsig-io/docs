@@ -5,7 +5,7 @@ slug: /statsig-warehouse-native/guides/scaling
 keywords:
   - owner:vm
 last_update:
-  date: 2024-11-15
+  date: 2025-07-23
 ---
 
 

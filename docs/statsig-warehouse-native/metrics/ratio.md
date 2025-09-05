@@ -4,7 +4,7 @@ sidebar_label: Ratio
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-27
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -23,18 +23,29 @@ At the unit level, ratio metrics will calculate both component metric's unit lev
 
 At the group level, the mean is calculated as the total group calculation of the first metric, divided by the total group value of the second metric.
 
-Note that the denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
+:::note
+The denominator is **not** the number of units in the experiment; the normalization is by the denominator metric.
+:::
 
 This would look like the SQL below:
 
 ```
 -- Denominator (Checkouts)
 SELECT
-  unit_id,
-  group_id,
+  source_data.unit_id,
+  exposure_data.group_id,
   COUNT(1) as denominator
 FROM source_data
-GROUP BY unit_id, group_id;
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Numerator (Revenue)
 SELECT
@@ -63,12 +74,12 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
 
 ## Options
 
-- Cohort Windows (Numerator and Denominator)
+- [Cohort Windows](../features/cohort-metrics.md) (Numerator and Denominator)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Winsorization
   - Specify a lower and/or upper percentile bound to winsorize at. Winsorization and its thresholds can be specified for both the numerator and denominator of the ratio metric independently. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - Include units which do not have a denominator
   - Control whether you want to include numerators from units which don't have a denominator value
-- Baked Metrics
-  - Baked metrics allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
+- [Baked Metrics](../features/cohort-metrics.md)
+  - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.

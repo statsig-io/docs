@@ -1,12 +1,10 @@
 ---
-title: Warehouse Native - Getting Started
+title: About Warehouse Native
 slug: /statsig-warehouse-native/introduction
-sidebar_label: Getting Started
-description: Set up your first Statsig Warehouse Native project
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-15
+  date: 2025-07-28
 ---
 
 import Button from "@mui/material/Button";
@@ -53,11 +51,13 @@ Warehouse Native shares core features with Statsig Cloud but focuses on specific
 - Modern statistical engine for running analyses on existing experiments from third-party or internal systems.
   - Statsig offers a full suite of experiment measurement tools, including CUPED, Stratified Sampling, Switchback Tests, and more.
 
-If you’re unsure whether Statsig Warehouse Native or Statsig Cloud is a better fit for your experimentation needs, [reach out to our support team](mailto:support@statsig.com), and we'll help you decide.
+If you’re unsure whether Statsig Warehouse Native or Statsig Cloud is a better fit for your experimentation needs, reach out to our [support team](mailto:support@statsig.com), your sales contact, or in our [Slack community](https://statsig.com/slack), and we'll help you decide.
 
 ## How Warehouse Native Works
 
 Statsig Warehouse Native runs experimentation compute jobs directly in your data warehouse, using your existing datasets to calculate metrics and enrich experiment analysis based on your data.
+
+![Image](/img/whn/data_flow_whn.png)
 
 ### SDK Integration
 
@@ -74,7 +74,7 @@ The resulting assignment and (optional) event logging data ends up in your wareh
 
 Running experiments on Warehouse Native involves several key steps:
 
-1. **Connect Statsig to Your Warehouse**: Integrate Statsig with your data warehouse to access relevant datasets.
+1. **[Connect Statsig to Your Warehouse](https://docs.statsig.com/statsig-warehouse-native/guides/quick-start#step-1-connect-your-warehouse)**: Integrate Statsig with your data warehouse to access relevant datasets.
 2. **Create Metrics**: Define the input data and configure experiment metrics.
 3. **Log Exposures**: Log experiment exposures with Statsig or point to existing assignments in your warehouse.
 4. **State Your Hypothesis**: Formulate a hypothesis and choose scorecard metrics to evaluate the experiment.
@@ -86,11 +86,12 @@ Statsig’s [data analysis tools](/pulse/read-pulse) run directly in your data w
 
 - **Pulse Analysis**: Pulse helps you test your hypotheses and measure the impact of changes on your scorecard metrics.
 - **Metrics Explorer**: Visualize experiment metrics for your entire population and drill down into user behavior. Metrics Explorer is part of a broader suite of product observability tools, including Session Replay, advanced filtering, and custom dashboards.
+- **Exposure Analysis**: Analyze your experiment's first exposures to debug and gain insights on your experiments in Metrics Explorer. Drill down into certain properties or understand how your experiments interact with one another.
 
 ## Next Steps
 
 :::info
-Don't get blocked! We love helping people use Statsig. Reach out to support or chat with us in Slack!
+We love helping people use Statsig. Don't hesitate to reach out to our [support team](mailto:support@statsig.com), your sales contact, or in our [Slack community](https://statsig.com/slack).
 :::
 
 Check our getting started guides to start running or analyzing an experiment in minutes:

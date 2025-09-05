@@ -1,10 +1,8 @@
-import AsyncDisclaimer from "./_AsyncDisclaimer.mdx";
-
 ## Working with the SDK
 
 ### Checking a Feature Flag/Gate
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
@@ -22,11 +20,55 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 
 <div>{props.getExperiment}</div>
 
-<>{props.hideAsyncDisclaimer !== true && <AsyncDisclaimer />}</>
+### Getting a Prompt
+
+{props.getPrompt ? (
+
+<>
+<p>
+  Statsig can act as the control plane for your LLM prompts - allowing you to version and change them without deploying code. Learn more [here](/ai-evals). This API returns the full Prompt object, including all
+  customized parameters such as model, temperature, topP, max tokens, and more.
+  For example:
+</p>
+
+<div>{props.getPrompt}</div>
+</>
+) : <p>
+  <em>
+    Prompts are not yet available for this sdk. Need it now? Let us
+    know in <a href="https://statsig.com/slack">Slack</a>.
+  </em>
+</p>
+}
+
+### Parameter Stores
+
+{props.paramStores ? (
+
+<>
+  <p>
+    Sometimes you don't know whether you want a value to be a Feature Gate,
+    Experiment, or Dynamic Config yet. If you want on-the-fly control of that
+    outside of your deployment cycle, you can use{" "}
+    <a href="/client/concepts/parameter-stores/">Parameter Stores</a> to define
+    a parameter that can be changed into at any point in the Statsig console.
+    Parameter Stores are optional, but parameterizing your application can prove
+    very useful for future flexibility and can even allow non-technical Statsig
+    users to turn parameters into experiments.
+  </p>
+  <div>{props.paramStores}</div>
+</>
+) : (<p>
+  <em>
+    Parameter stores are not yet available for this sdk. Need it now? Let us
+    know in <a href="https://statsig.com/slack">Slack</a>.
+  </em>
+</p>
+)}
 
 ### Logging an Event
 
-Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig—simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 <div>{props.logEvent}</div>
 
@@ -37,3 +79,9 @@ Learn more about identifying users, group analytics, and best practices for logg
 In certain scenarios, you may need more information about a gate evaluation than just a boolean value. For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
 
 <div>{props.getFeatureGate}</div>
+
+### Using Shared Instance
+
+In some applications, you may want to create a single Statsig instance that can be accessed globally throughout your codebase. The shared instance functionality provides a singleton pattern for this purpose:
+
+<div>{props.sharedInstance}</div>

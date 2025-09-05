@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-27
+  date: 2025-07-23
 ---
 
 import Tabs from "@theme/Tabs";
@@ -119,7 +119,10 @@ prefetchData: (user: StatsigUser) => Promise<void>;
 ```typescript
 setData: (data: string) => Promise<void>;
 ```
-Note: You can use <code>setDataLegacy</code> if your Server SDK is outdated.
+
+:::note
+You can use <code>setDataLegacy</code> if your Server SDK is outdated.
+:::
 <details>
   <summary>setData is supported by the following Statsig Server SDKs</summary>
    <ul>

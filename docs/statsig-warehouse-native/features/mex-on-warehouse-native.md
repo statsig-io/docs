@@ -1,11 +1,11 @@
 ---
 title: MEX on Warehouse Native [Beta]
 slug: /statsig-warehouse-native/features/mex-on-warehouse-native
-sidebar_label: MEX on Warehouse Native
+sidebar_label: Metrics Explorer on WHN
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-03
+  date: 2025-07-23
 ---
 
 [Metrics Explorer](/product-analytics/overview) (or MEX) is Statsig's Analytics solution. With Warehouse Native, this integrates directly on top of your tables to provide easy analysis on the same datasets you're using for experimentation.

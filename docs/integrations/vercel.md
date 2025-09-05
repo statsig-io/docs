@@ -3,7 +3,7 @@ title: Vercel
 keywords:
   - owner:brock
 last_update:
-  date: 2025-02-26
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -31,6 +31,10 @@ Note that the marketplace app sets all required environment variables for the Fl
 ## Using the Statsig SDK
 
 If you aren't using NextJS, or prefer to use Statsig SDK's directly, you can follow the following steps to use Statsig SDK in your Vercel project.
+
+:::note 
+Only Statsig node-lite and node is supported at this time. Statsig node-core is not yet supported; please reach out to our [support team](mailto:support@statsig.com) or via the [Statsig Slack channel](https://statsig.com/slack) if you require node-core support.
+:::
 
 First up, you'll need to install the statsig sdk and the vercel edge config data adapter.
 

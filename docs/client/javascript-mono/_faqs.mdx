@@ -24,7 +24,9 @@ import { StatsigClient } from '@statsig/js-client';
 StatsigClient.instance().logEvent("test_event");
 ```
 
-Note: in multi-instance setups, you can specify the SDK key to get a specific instance. eg `Statsig.instance('client-YOUR_CLIENT_KEY')`
+:::note
+In multi-instance setups, you can specify the SDK key to get a specific instance. eg `Statsig.instance('client-YOUR_CLIENT_KEY')`
+:::
 
 #### How do I handle GDPR compliance and Consent Management? 
 

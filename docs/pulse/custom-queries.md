@@ -5,9 +5,9 @@ slug: /pulse/custom-queries
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-28
+  date: 2025-07-23
 ---
-[balanced gates methodology](/feature-flags/view-exposures#gate-exposures)
+
 ## Custom "Explore" Queries
 
 Custom queries are a way to run additional custom experiment analyses on your existing data beyond what is in your main Results tab. You may run them to gain deeper insights from your experiments and feature roll-outs, debug interesting results, or scope down your results to interesting sub-groups. Custom queries allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
@@ -16,6 +16,19 @@ Custom queries are experimental analyses just like in the main Results tab, and 
 
 :::important
 Be careful when drawing your inferences of Custom Queries, especially when grouping by a dimension with lots of options. This can increase your chance of seeing a false-positive statistically significant result.
+:::
+
+### Dimension Loading Timing for Precomputed User Dimensions
+
+When viewing results for precomputed user dimensions (which are configured and run on a schedule), be aware that these dimensions are loaded through separate asynchronous explore queries. This means:
+
+- The main experiment results will appear first
+- Precomputed dimensions will continue loading in the background and become available within a few minutes
+- This timing gap is most noticeable immediately after the first reload of the day
+- If you see "No dimensions available for this time range" for precomputed dimensions, wait a few minutes and refresh to see if dimensions have completed loading
+
+:::note
+This timing behavior only affects precomputed user dimensions that run on a schedule. User-triggered custom queries do not experience this asynchronous loading delay.
 :::
 
 ### Running a Custom Query
@@ -44,23 +57,19 @@ Custom Query fields:
 User groups in experiment results are based off of first-touch attribution. The filters and grouping applied will be based on the user attributes collected at the time of first exposure in the gate/experiment/layer check.
 :::
 
-![Screen Shot 2023-12-01 at 5 46 04 PM](https://github.com/statsig-io/docs/assets/101903926/6f65f611-44ba-4d97-ad19-f73ba3c3b8d8)
-
-![Screen Shot 2023-12-01 at 5 48 17 PM](https://github.com/statsig-io/docs/assets/101903926/2b1a7528-8361-41b0-8163-43af950b1055)
-
+<img width="1378" alt="Screenshot 2025-06-08 at 10 33 05 PM" src="https://github.com/user-attachments/assets/85264260-2f65-4bfd-b4e1-477bd043b87d" />
 
 ### Viewing a Custom Query in Explore
 
 These queries take a few minutes to run (don't worry, we'll send you an email once your results are ready in case you want to hop to another task), but once complete the results will be visible in the **Query History** section of the **Explore** interface. All historical queries (across your team) will be stored here. You can also give your query a display name inline for easier future identification. 
 
-<img width="1345" alt="Screenshot 2025-02-06 at 6 52 42 PM" src="https://github.com/user-attachments/assets/76d8f99a-668f-4218-95b4-91c0814f254b" />
-
+<img width="1374" alt="Screenshot 2025-06-08 at 10 34 38 PM" src="https://github.com/user-attachments/assets/46574581-604e-4d29-b231-fa51876c813d" />
 
 ### Scheduling a Custom Query
 
 If you want a daily refresh of a given Custom Query, you can schedule your Custom Query directly from the **Explore** tab. To do this, author the Custom Query you wish to schedule, then tap the "..." menu, then **Schedule**. This Custom Query will now run daily and live in the **Scheduled** tab of your Metric Lifts. 
 
-<img width="1347" alt="Screenshot 2025-02-06 at 6 53 16 PM" src="https://github.com/user-attachments/assets/9ecb39c0-0cd0-478f-8ef6-ff9150cbb11b" />
+<img width="1378" alt="Screenshot 2025-06-08 at 10 35 21 PM" src="https://github.com/user-attachments/assets/56d11b46-f2de-4569-89f7-b0a439910964" />
 
 <img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
 

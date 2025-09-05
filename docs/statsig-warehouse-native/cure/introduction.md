@@ -5,7 +5,7 @@ slug: /experiments-plus/cure
 keywords:
   - owner:craig
 last_update:
-  date: 2025-03-21
+  date: 2025-07-23
 ---
 
 # CURE
@@ -39,12 +39,12 @@ This technique is similar to standard regression estimate used across other expe
 
 The original version of CUPED specified by Microsoft [(Deng, et. al.)](https://www.exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf) is equivalent to running an OLS regression with one independent variables. However, this adjustment does not need to be a single-variable regression (or a regression at all). A regression has the benefit of guaranteeing identical or lowered variance, but so long as an adjustment is unbiased, any adjustment is mathematically valid.
 
-This by calculating the covariance matrix between covariates and experiment outcomes in SQL, you can cheaply generate the required inputs to generate multi-variate regressions and use these to adjust post-exposure values in an unbiased manner -- so long as this estimator is unbiased (critically, meaning the regression is demeaned and only uses pre-experiment data). Similarly to the original paper's proof, this yields an estimator that has variance less than or equal to the existing estimator. That means that:
+Thus by calculating the covariance matrix between covariates and experiment outcomes in SQL, you can cheaply generate the required inputs to generate multi-variate regressions and use these to adjust post-exposure values in an unbiased manner -- so long as this estimator is unbiased (critically, meaning the regression is demeaned and only uses pre-experiment data). Similarly to the original paper's proof, this yields an estimator that has variance less than or equal to the existing estimator. That means that:
 
 - if covariates do not exist, nothing happens and the adjusted estimator is identical to the unadjusted
 - in the worst case where covariates are uncorrelated, the adjusted estimator is identical to the unadjusted
 - if no additional covariates are applied, CURE is mathematically equivalent to CUPED
-- if additional covariates are applied that increase the R2 or portion of explained variance, CURE reduces variance more than CUPED
+- if additional covariates are applied that increase the $R^2$ (i.e. portion of explained variance), CURE reduces variance more than CUPED
 
 # Data Sources
 

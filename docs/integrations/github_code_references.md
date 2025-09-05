@@ -3,12 +3,12 @@ title: Github Code References
 keywords:
   - owner:brock
 last_update:
-  date: 2024-03-27
+  date: 2025-07-23
 ---
 
 ## Overview
 
-The Statsig Github Integration allows you to find [Feature flag](/feature-flags/working-with) and [dynamic config](/dynamic-config) references within your codebase on the Statsig Console. The integration leverages the Github API to access only references to the Feature Gate or Dynamic Config without storing any sensitive information.
+The Statsig Github Integration allows you to find [Feature Gate](/feature-flags/overview) and [Dynamic Config](/dynamic-config) references within your codebase on the Statsig Console. The integration leverages the Github API to access only references to the Feature Gate or Dynamic Config without storing any sensitive information.
 
 ## Configuration
 

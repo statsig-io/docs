@@ -3,7 +3,7 @@ title: OpenAI
 keywords:
   - owner:brock
 last_update:
-  date: 2025-01-11
+  date: 2025-07-23
 ---
 
 ## Context
@@ -110,7 +110,9 @@ if __name__ == "__main__":
 2. Log Useful Data: Consider logging other interesting user interactions or feedback.
 3. Analyze and Iterate: After collecting enough data, analyze the results on the Statsig dashboard.
 4. User Identification: Consider integrating a mechanism to uniquely identify each user/session.
-Note: Always ensure you're in compliance with user privacy regulations and that you have user consent where necessary.
+:::note
+Always ensure you're in compliance with user privacy regulations and that you have user consent where necessary.
+:::
 
 ### Useful Links 
 - [OpenAI Documentation](https://platform.openai.com/docs/api-reference/chat/create)

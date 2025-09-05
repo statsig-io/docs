@@ -5,7 +5,7 @@ sidebar_label: Overview
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-27
+  date: 2025-07-23
 ---
 
 ## Metrics
@@ -24,7 +24,8 @@ Metrics can support multiple units of analysis - for example a revenue metric ca
 
 Filters are also a core component of metrics. Statsig offers a rich set of filtering options, including SQL-based filters, so you can reuse the same metric source for many use cases.
 
-![Screenshot 2024-06-12 at 11 35 00 AM](https://github.com/statsig-io/docs/assets/102695539/b57ae00f-d993-4e0f-b073-b8dea91d7f90)
+![Screen Shot 2025-05-22 at 2 51 48 PM](https://github.com/user-attachments/assets/fb7526f9-3ffa-4192-8184-1388e3e80db9)
+
 
 ## Using Metrics
 
@@ -34,13 +35,19 @@ Statsig's recommendation is to use tags heavily - a combination of team-level an
 
 To view details about a metric, you can navigate to the Metrics page where you can the definition, related experiments, and a timeseries of the metric value.
 
-![Screenshot 2024-06-12 at 11 33 11 AM](https://github.com/statsig-io/docs/assets/102695539/88b163e0-608e-4349-bc4f-28ac30528506)
+![Screen Shot 2025-05-22 at 2 52 05 PM](https://github.com/user-attachments/assets/f7023ab8-9d3d-4013-8595-b51325b7c954)
 
 In the [insights tab](/aggregated-impact/) and in [meta-analysis](/experiments/meta-analysis.md), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
 
-![Screenshot 2024-06-12 at 11 33 20 AM](https://github.com/statsig-io/docs/assets/102695539/97fce3be-56c2-47da-af7d-4ed5e06566fb)
+![Screen Shot 2025-05-22 at 2 52 13 PM](https://github.com/user-attachments/assets/94d40316-53bf-484e-8a73-57cc42e22ca6)
+
 
 ## Loading Metrics
+
+If you click the Reload Metric Data button, Statsig will automatically sync your latest data and show on this page. Note that the default loading window is 90 days but you can configure it to longer period of time if needed.
+
+![Screen Shot 2025-05-22 at 2 54 10 PM](https://github.com/user-attachments/assets/cc73bf53-13ec-44f3-aa2c-606db4a8d4da)
+
 
 To use metrics to measure topline impact, or for ongoing tracking in the metrics page, you'll want to schedule loads of the metric values. This can be done ad-hoc by clicking load on the metric page, or scheduled from there (3 dot menu -> edit scheduled reload). You can also set this as a project level setting in your settings under Data Connection.
 
@@ -166,11 +173,11 @@ Most aggregation-type metrics (sum, count, count distinct, unit count, means, ra
 
 Cohort settings allow you to specify a window for data collection after a unit's exposure. For example, a 4-6 day cohort window would only count actions from days 4, 5, and 6 after a unit was exposed to an experiment.
 
-Only include units with a completed window can be selected to remove units out of pulse analysis for this metric until the cohort window has completed. On experiment settings, you can choose to enable post-experiment data collection to allow these cohorts to mature in the case that you believe the intervention effect will still apply even if the user gets the control/shipped experiment (e.g. NUX experiments).
+Please refer to the full documentation on cohorts [here](../features/cohort-metrics.md).
 
 ### Baking
 
-Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric.
+Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric. See additional information in the [cohort documentation](../features/cohort-metrics.md).
 
 Statsig will:
 

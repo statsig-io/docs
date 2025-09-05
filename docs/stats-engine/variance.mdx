@@ -5,12 +5,13 @@ slug: /stats-engine/variance
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-24
+  date: 2025-07-23
 ---
 
 The standard error (sometimes denoted "SE" or "std err") of the mean of each group is required for computing the confidence interval and p-value of a metric delta between those groups. The standard error of the mean can be obtained by dividing the sample standard deviation of $X$ by the square root of the number of users in the group.
 
-$$\Large
+$$
+\LARGE
 \sigma_{\overline X} = \frac{\sigma_{X}}{\sqrt{N}} = \sqrt{\frac{var(X)}{N}} = \sqrt{var(\overline{X})}
 $$
 
@@ -22,7 +23,8 @@ Pulse displays the standard error of the mean of each group alongside the units 
 
 The variance of the absolute metric delta is simply the sum of the variances of the test and control means:
 
-$$\Large
+$$
+\LARGE
 var(\Delta \overline X) =var(\overline X_t - \overline X_c) = var(\overline X_t) + var(\overline X_c)
 $$
 
@@ -32,7 +34,8 @@ In other words, it comes down to correctly calculating the variance of the means
 
 For count and sum metrics, the variance of the sample mean for a given group is obtained directly from the sample variance:
 
-$$\Large
+$$
+\LARGE
 var(\overline{X}) = \frac{var(X)}{N} = \frac{\frac{1}{N-1}\sum_{i=0}^{N}(X_i-\overline{X})^2}{N}
 $$
 
@@ -50,13 +53,15 @@ For example, consider a _clicks per session_ metric. The number of clicks and th
 
 To properly account for any correlation, the variance of the mean of a ratio metric $R$ is obtained using the delta method:
 
-$$\Large
-var(\overline R) = var\left(\frac{\overline X}{\overline Y}\right) 
+$$
+\LARGE
+var(\overline R) = var\left(\frac{\overline X}{\overline Y}\right)
 = \left(\frac{\overline X}{\overline Y}\right)^2 \cdot \left(\frac{var(\overline X)}{\overline X^2} + \frac{var(\overline Y)}{\overline Y^2} - 2 \cdot \frac{covar(\overline X, \overline Y)}{\overline X\cdot \overline Y} \right)
 $$
 
 where the variance of the numerator and denominator means are computed in the same way as detailed above for count metrics, and the covariance is
 
-$$\Large
+$$
+\LARGE
 covar(\overline X, \overline Y) = \frac{covar(X, Y)}{N} = \frac{\frac{1}{N-1}\sum_{i=0}^{N}(X_i-\overline X)\cdot (Y_i-\overline Y)}{N}
 $$

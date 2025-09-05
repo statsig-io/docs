@@ -1,0 +1,25 @@
+```csharp
+await statsig.FlushEvents();
+
+await statsig.Shutdown();
+
+statsig.Dispose();
+```
+
+For shared instances:
+
+```csharp
+var statsig = Statsig.Shared();
+await statsig.FlushEvents();
+await statsig.Shutdown();
+
+Statsig.RemoveSharedInstance();
+```
+
+## Methods
+
+- **FlushEvents()**: Immediately flush any pending events to Statsig servers
+- **Shutdown()**: Gracefully shutdown the SDK, flushing events and cleaning up resources
+- **Dispose()**: Release native resources (implements IDisposable)
+
+It's recommended to call `FlushEvents()` before `Shutdown()` to ensure all events are sent, and always call `Dispose()` or use `using` statements to properly clean up resources.

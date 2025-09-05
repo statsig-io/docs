@@ -5,7 +5,7 @@ slug: /statsigcli
 keywords:
   - owner:vijaye
 last_update:
-  date: 2024-10-04
+  date: 2025-07-23
 ---
 
 ## Overview

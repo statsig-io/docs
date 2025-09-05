@@ -5,7 +5,7 @@ slug: /metrics/raw-events
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-05
+  date: 2025-07-23
 ---
 
 # Raw Events
@@ -34,7 +34,9 @@ There are three ways to send raw events into Statsig.
 2. Set up Statsig as a destination in a data connector such as [Segment](/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](/integrations/data-connectors/mparticle#configuring-incoming-events), [RudderStack](/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](/integrations/data-connectors/census#configuring-incoming-events)
 3. Import from your data warehouse such as [Snowflake](/integrations/data-imports/snowflake#direct-ingestion-from-snowflake), [BigQuery](/integrations/data-imports/bigquery), and [Redshift](/integrations/data-imports/redshift#direct-ingestion).
 
-Note that when processing events, event names that contain this regex/character set are dropped `"\\[\]{}<>#=;&$%|\u0000\n\r`
+:::note
+When processing events, event names that contain this regex/character set are dropped `"\\[\]{}<>#=;&$%|\u0000\n\r`
+:::
 
 ## Raw Events in Console
 As you ingest custom events, you'll see these listed in the **Metrics** section under the **Events** tab in the Statsig console. 

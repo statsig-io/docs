@@ -1,0 +1,49 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const Snippets = {
+  // Gates
+  gateSnippet: (
+    <CodeBlock language="ruby">
+      {`result = Statsig.check_gate(user, 'a_gate_name', CheckGateOptions.new(disable_log_exposure: true))`}
+    </CodeBlock>
+  ),
+  gateExposureSnippet: (
+    <CodeBlock language="ruby">
+      {`Statsig.manually_log_gate_exposure(user, 'a_gate_name')`}
+    </CodeBlock>
+  ),
+  // Configs
+  configSnippet: (
+    <CodeBlock language="ruby">
+      {`config = Statsig.get_config(user, 'a_dynamic_config_name', GetConfigOptions.new(disable_log_exposure: true))`}
+    </CodeBlock>
+  ),
+  configExposureSnippet: (
+    <CodeBlock language="ruby">
+      {`Statsig.manually_log_config_exposure(user, 'a_dynamic_config_name')`}
+    </CodeBlock>
+  ),
+  // Experiment
+  experimentSnippet: (
+    <CodeBlock language="ruby">
+      {`experiment = Statsig.get_experiment(user, 'an_experiment_name', GetExperimentOptions.new(disable_log_exposure: true))`}
+    </CodeBlock>
+  ),
+  experimentExposureSnippet: (
+    <CodeBlock language="ruby">
+      {`Statsig.manually_log_experiment_exposure(user, 'an_experiment_name')`}
+    </CodeBlock>
+  ),
+  // Layer
+  layerSnippet: (
+    <CodeBlock language="ruby">
+      {`layer = Statsig.get_layer(user, 'a_layer_name', GetLayerOptions.new(disable_log_exposure: true))
+paramValue = layer.get('a_param_name', 'fallback_value')`}
+    </CodeBlock>
+  ),
+  layerExposureSnippet: (
+    <CodeBlock language="ruby">
+      {`Statsig.manually_log_layer_parameter_exposure(user, 'a_layer_name', 'a_param_name')`}
+    </CodeBlock>
+  ),
+};

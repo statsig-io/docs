@@ -4,21 +4,21 @@ slug: /custom_proxy
 keywords:
   - owner:eric
 last_update:
-  date: 2024-11-21
+  date: 2025-07-23
 ---
 
 ## Overview
 
-Instead of sending API requests directly to Statsig, you can set up your own environment that proxies requests from your custom domain name to Statsig.  This makes it less likely for tracking blockers to intercept your APIs, and allows you to capture more data.
+Instead of sending API requests directly to Statsig, you can set up your own environment that proxies requests from your custom domain name to Statsig. This makes it less likely for tracking blockers to intercept your APIs, and allows you to capture more data.
+
+:::info
+If you just want Statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/managed-proxy) instead.
+:::
 
 There are many ways to set up custom proxies. We are showing instructions for a few common service providers here.
 
 :::warning
-Regardless of implementation, we strongly advise your proxy simply does passthrough and does not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDk -> Proxy -> Client SDK, as well as, improve efficiency of the proxy.
-:::
-
-:::info
-If you just want statsig to manage your proxy, you can use our [Managed API Proxy](/infrastructure/managed-proxy)
+Regardless of implementation, your proxy should just passthrough and not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDK -> Proxy -> Client SDK, as well as, improve efficiency of the proxy. For example, client SDKs may change encoding to compress payloads, which would break if your proxy does not accept the new format (e.g. gzip)
 :::
 
 ## Approaches
@@ -99,19 +99,21 @@ Once you are logged into Cloudflare. You can follow these steps:
 
 1.  Navigate to "Workers & Pages > Overview" in the left rail to create a new worker.
 
-    ![1-cloudflare-create](https://github.com/statsig-io/ios-sdk/assets/95646168/39bcd1ad-ddcc-4be9-9d71-905ed6a90b8b)
+    ![1-cloudflare-create](https://github.com/statsig-io/statsig-kit/assets/95646168/39bcd1ad-ddcc-4be9-9d71-905ed6a90b8b)
 
-    **Note: You may see a different experience if you already have workers on your account.**
+    :::note
+    You may see a different experience if you already have workers on your account.
+    :::
 
-2.  Name you new worker whatever you would like and then click "Deploy".
+3.  Name you new worker whatever you would like and then click "Deploy".
 
-    ![2-cloudflare-deploy](https://github.com/statsig-io/ios-sdk/assets/95646168/9d728e12-675e-4648-b6ee-ce84c72b305c)
+    ![2-cloudflare-deploy](https://github.com/statsig-io/statsig-kit/assets/95646168/9d728e12-675e-4648-b6ee-ce84c72b305c)
 
-3.  Once deployed, click "Edit Code".
+4.  Once deployed, click "Edit Code".
 
-    ![3-cloudflare-edit-code](https://github.com/statsig-io/ios-sdk/assets/95646168/8c971a58-5bb7-4faa-a7ba-4574ab29f0ce)
+    ![3-cloudflare-edit-code](https://github.com/statsig-io/statsig-kit/assets/95646168/8c971a58-5bb7-4faa-a7ba-4574ab29f0ce)
 
-4.  Copy and paste the following snippet into the `worker.js` file, then hit "Deploy".
+5.  Copy and paste the following snippet into the `worker.js` file, then hit "Deploy".
 
     ```javascript
     export default {
@@ -128,18 +130,22 @@ Once you are logged into Cloudflare. You can follow these steps:
     };
     ```
 
-    ![4-cloudflare-paste-snippet](https://github.com/statsig-io/ios-sdk/assets/95646168/558498dd-159f-409e-acef-a31e0dff86c2)
+    ![4-cloudflare-paste-snippet](https://github.com/statsig-io/statsig-kit/assets/95646168/558498dd-159f-409e-acef-a31e0dff86c2)
 
-5.  Your worker should now be deployed and ready to use. See [Using Your Proxy](#using-your-proxy) for instructions on how to configure your Statsig SDK.
+6.  Your worker should now be deployed and ready to use. See [Using Your Proxy](#using-your-proxy) for instructions on how to configure your Statsig SDK.
 
 ## Using Your Proxy
 
-Once you have a proxy setup, you will need to take its URL and apply it to the SDK. To do this, you can use `StatsigOptions.api`. You can visit [Statsig Options](/client/javascript-sdk#statsig-options) to read about the Javascript specific StatsigOptions, but all SDKs have the ability to override the api via `StatsigOptions.api`.
+Once you have a proxy setup, you will need to take its URL and apply it to the SDK. To do this, you can use `StatsigOptions.networkConfig.api`. You can visit [Statsig Options](/client/javascript-sdk#statsig-options) to read about the Javascript specific StatsigOptions, but all SDKs have the ability to override the api via `StatsigOptions.networkConfig.api`.
 
 The following is pseudo code of what initializing with a proxy looks like:
 
 ```typescript
-Statsig.initialize(mySdkKey, myUser, { api: "https://my-statsig-proxy.com/v1" });
+Statsig.initialize(mySdkKey, myUser, {
+  networkConfig: {
+    api: "https://my-statsig-proxy.com/v1",
+  },
+});
 ```
 
 :::note

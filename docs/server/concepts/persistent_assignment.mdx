@@ -5,7 +5,7 @@ slug: /server/concepts/persistent_assignment
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-08
+  date: 2025-07-28
 ---
 
 import Tabs from "@theme/Tabs";
@@ -19,7 +19,7 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 :::info
-Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`
+Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node Core`, `Kotlin`, `.Net`, `Python Core`
 :::
 
 ### Persistent Storage Logic
@@ -27,9 +27,13 @@ Currently only supported in `Go`, `Ruby`, `Node`, `Kotlin`, `.Net`
 - Providing a storage adapter on Statsig initialization will give the SDK access to read & write on your custom storage
 - Providing user persisted values to `get_experiment` will inform the SDK to
   - **save** the evaluation of the current user **on first evaluation**
+    - Will only save when experiment / layer **is active**
   - **load** the previously saved evaluation of a persisted user **on subsequent evaluations**
+ - **CAVEAT** Persisted Value will be deleted when: 
+   - When you provided call `getExperiment` with `user_persisted_values=None` 
+   - or When experiment is not active
 
-### Persistent Assignment Options
+### Persistent Assignment Options (Limited SDK Support)
 
 - **Enforce Targeting**: `boolean`, default: `false`
   - Whether or not to enforce targeting rules before assigning persisted values
@@ -70,6 +74,8 @@ const options: GetExperimentOptions = {
   groupId="server-sdk-lang-choice"
   defaultValue="ruby"
   values={[
+    {label: 'Python (Python Core)', value: 'python-core'},
+    {label: 'Node Core', value: 'node-core'},
     {label: 'Node JS', value: 'node'},
     {label: 'Kotlin', value: 'kotlin'},
     {label: 'Ruby', value: 'ruby'},
@@ -104,6 +110,45 @@ puts exp.group_name # 'Control'
 ````
 
   </TabItem>
+  <TabItem value="python-core">
+```python
+from statsig_python_core import Statsig, StatsigUser, StatsigOptions, ExperimentEvaluationOptions, PersistentStorage
+
+options = StatsigOptions(persistent_storage = MyPersistentStorage())
+statsig = Statsig.initialize(options).wait
+user = StatsigUser("a-user")
+exp = statsig.get_experiment(StatsigUser("a-user"), ExperimentEvaluationOptions(user_persisted_values= PersistentStorage.get_user_persisted_value(user, "user_id")))
+print(f"{exp.group_name}") # control
+````
+  </TabItem>
+  <TabItem value="node-core">
+```typescript
+import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+
+class MyPersistentStorage implements PersistentStorage {
+  private storage = new Map<string, UserPersistedValues>();
+
+  load(key: string): UserPersistedValues | null {
+    return this.storage.get(key) || null;
+  }
+
+  save(key: string, config_name: string, data: StickyValues): void {
+    const existing = this.storage.get(key) || {};
+    existing[config_name] = data;
+    this.storage.set(key, existing);
+  }
+
+  delete(key: string, config_name: string): void {
+    const existing = this.storage.get(key);
+    if (existing) {
+      delete existing[config_name];
+      this.storage.set(key, existing);
+    }
+  }
+}
+```
+  </TabItem>
+  
   <TabItem value="kotlin">
 ```kotlin
 runBlocking {

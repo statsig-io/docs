@@ -1,0 +1,54 @@
+### Fields Needed Methods (Enterprise Only)
+
+:::info
+This is available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
+
+```rust
+// Get fields needed for a gate
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_gate("gate_name");
+
+// Get fields needed for a dynamic config
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_dynamic_config("config_name");
+
+// Get fields needed for an experiment
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_experiment("experiment_name");
+
+// Get fields needed for a layer
+let fields_needed: Vec<String> = statsig.get_fields_needed_for_layer("layer_name");
+```
+
+These methods return a vector of strings representing the user fields that are referenced in the targeting rules or conditions of the specified feature. This can be useful for understanding which user properties influence a particular feature's behavior.
+
+#### Field Mapping
+
+The fields returned by these methods correspond to the following user properties:
+
+```rust
+// Field mapping between user properties and internal field names
+let field_mapping = std::collections::HashMap::from([
+    ("userID", "u"),
+    ("email", "e"),
+    ("ip", "i"),
+    ("userAgent", "ua"),
+    ("country", "c"),
+    ("locale", "l"),
+    ("appVersion", "a"),
+    ("time", "t"),
+    ("stableID", "s"),
+    ("environment", "en"),
+    ("targetApp", "ta"),
+]);
+
+// Custom fields are prefixed with "cf:"
+// Example: fields.add("cf:" + field_name);
+```
+
+#### Example
+
+```rust
+// Get fields needed for the "new_homepage" gate
+let fields_needed = statsig.get_fields_needed_for_gate("new_homepage");
+println!("{:?}", fields_needed);
+// Example output: ["country", "email", "custom.subscription_tier"]
+```

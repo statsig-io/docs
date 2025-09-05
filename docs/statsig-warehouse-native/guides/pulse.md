@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-07-23
 ---
 
 Pulse is Statsig's visualization of how an experiment impacted target metrics. This page walks through the tool and how to use it to evaluate your experiment.

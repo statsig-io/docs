@@ -5,7 +5,7 @@ sidebar_label: Practical Use Cases
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-28
+  date: 2025-07-23
 ---
 
 ## How can I define and filter results to 'new users' only?
@@ -26,7 +26,7 @@ from user -- you can add filters here to include only targeted population only
 union all
 select distinct
   user_id,
-  'old' as new_user,
+  'existing' as new_user,
   timestamp as timestamp
 from logging
 ```
@@ -35,7 +35,7 @@ Click Run Query and will return a table like this. Click Save Results, then you 
 |    user_id    |    new_user    |         timestamp         |
 | ------------- | -------------- | ------------------------- |
 |       A       |       new      | 1900-01-01T00:00:00+00:00 |
-|       A       |       old      | 2024-01-01T10:10:18+00:00 |
+|       A       |    existing    | 2024-01-01T10:10:18+00:00 |
 |       B       |       new      | 1900-01-01T00:00:00+00:00 |  
 
 

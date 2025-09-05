@@ -16,6 +16,4 @@ res = Supervisor.start_link(children, opts)
 {:ok,_} = Statsig.start_link(sdk_key, statsig_options)
 Statsig.initialize()
 
-# Don't forget to shutdown when done
-Statsig.shutdown()
 ```

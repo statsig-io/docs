@@ -7,7 +7,7 @@ slug: /product-analytics/retention
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-11
+  date: 2025-07-23
 ---
 
 # Retention Chart

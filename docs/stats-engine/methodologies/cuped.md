@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/cuped
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-07
+  date: 2025-07-23
 ---
 
 ## CUPED - Controlled-experiment Using Pre-Existing Data
@@ -70,6 +70,8 @@ Using the optimal $\theta$, we are hoping to reduce group-level variance by plug
 
 Statsig will use CUPED variance when all of the following are met:
 
-- CUPED reduces the total variance of all groups of a metric
+- Core assumptions of the CUPED model are satisfied; this can be violated due to rounding error or other data artifacts
+  - E(X_hat) = E(X)
+  - The pooled variance of the adjusted population across groups is < the variance of the unadjusted population
 - Enough units have pre-experiment values (> 100)
 - Enough percentage of units have pre-experiment values (> 5%)

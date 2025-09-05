@@ -1,0 +1,12 @@
+```php
+// Method signature
+public function flushEvents(): void
+
+// example usage
+try {
+    $statsig->flushEvents();
+    echo "All events have been successfully flushed.\n";
+} catch (Exception $e) {
+    echo "Failed to flush events: " . $e->getMessage() . "\n";
+}
+```

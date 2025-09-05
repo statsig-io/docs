@@ -5,10 +5,10 @@ slug: /autotune
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-19
+  date: 2025-07-23
 ---
 
-Autotune and Autotune AI are Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
+Autotune and Autotune AI are Statsig's Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.
 
 Autotune, the Multi-Armed Bandit solution, allocates traffic towards high-performing variants and can eventually identify a winning variant.
 
@@ -55,4 +55,4 @@ Autotune should be avoided in the following scenarios:
 1. When you have a complex ecosystem and want to understand secondary effects, tradeoffs between variants, and user behavior.
 2. When you are optimizing for complex metrics or delayed effects.
 
-For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotune within an experiment with a small (1-10%) holdout group to measure the impact of the Autotune.
+For these cases, we recommend A/B testing with [Experiments\*](/experiments-plus). In general, it is also a best practice to run Autotune within an experiment with a small group of users that doesn't get the Autotune to measure the impact of the Autotune.

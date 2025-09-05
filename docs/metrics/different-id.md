@@ -5,7 +5,7 @@ slug: /metrics/different-id
 keywords:
   - owner:vm
 last_update:
-  date: 2024-12-26
+  date: 2025-07-23
 ---
 
 # Analysis When the Unit of Assignment and the Unit of Analysis Are Different

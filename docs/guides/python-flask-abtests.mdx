@@ -4,7 +4,7 @@ title: Run an A/B Test with Python Flask
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-02
+  date: 2025-07-23
 ---
 
 Python Flask, a popular lightweight framework, is not only user-friendly but also robust enough for consumer-facing applications. One of the exciting capabilities it offers is the ability to conduct A/B tests efficiently. In this guide, we'll demonstrate how you can A/B test with Python Flask using Statsig's free tier, an essential tool for dynamic web application development.
@@ -117,7 +117,9 @@ Now, you are able to set a userID in your URL parameters like such: [127.0.0.1:5
 
 ![img](/img/blue_exposure.png)
 
-Note: You won't see a different one every time due to how our randomization works, but over time, the distribution should be even. If not, you may have a [Sample Ratio Mismatch]((https://www.statsig.com/blog/sample-ratio-mismatch).
+:::note
+You won't see a different one every time due to how our randomization works, but over time, the distribution should be even. If not, you may have a [Sample Ratio Mismatch]((https://www.statsig.com/blog/sample-ratio-mismatch).
+:::
 
 Thanks for reading this tutorial! If you have trouble or any other questions, please join our [Slack Group](https://statsig.com/slack).
 

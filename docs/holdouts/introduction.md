@@ -5,7 +5,7 @@ slug: /holdouts
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-19
+  date: 2025-07-23
 ---
 
 Holdouts measure the aggregate impact of multiple features. It involves a "holdout" group of users that are held back from a set of features for measurement. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares the "holdout" group (Control) against users who have been exposed to multiple features and experiments. 
@@ -45,7 +45,12 @@ In the example below, the 1% Holdout is comparing the metric values of the 1% Ho
 3. **Back testing** - Occasionally you may want to turn off a set of features that you have already released to measure the effectiveness of those features. Statsig doesn’t recommend this as it turns off features that users are already using and relying on. However, when a "back measurement" is critical, you can use Holdouts to turn off a set of features and automatically compute the impact of this set of features.
 
 ## Unit ID Types
-By default, holdouts are based on User ID.  To use a different ID type, select it from the drop down menu during the holdout creation.  Note that holdouts can only be applied to Experiments and Feature Gates that use the same randomization unit.  If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
+By default, holdouts are based on User ID.  To use a different ID type, select it from the drop down menu during the holdout creation.  
+
+:::note
+Holdouts can only be applied to Experiments and Feature Gates that use the same randomization unit. 
+If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
+:::
 
 ![image](https://github.com/user-attachments/assets/cb2125f0-7fe2-4fbe-b6a3-3405dc300715)
 
@@ -57,5 +62,9 @@ By default, holdouts are based on User ID.  To use a different ID type, select i
 
 ### Experiments
 * For users in holdout, if the experiment _is not in a Layer_, calls to get experiment parameters will always return the "default value" passed in code.
-* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console. Note that when you ship an experiment in a layer - this would normally update the layer defaults, however, users in the holdout will *not* see those defaults, with the layer instead having a new set of default parameters just for held-out users:
+* For users in holdout, if the experiment _is in a Layer_, calls to get experiment parameters will return the values defined in the Layer defaults in the Statsig console. 
+
+:::note
+When you ship an experiment in a layer - this would normally update the layer defaults, however, users in the holdout will *not* see those defaults, with the layer instead having a new set of default parameters just for held-out users:
+:::
 ![Layer Holdout Params](/img/layer_holout_params.png)

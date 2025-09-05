@@ -5,7 +5,7 @@ slug: /server/concepts/data_store
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-07-23
 ---
 
 One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a Statsig API outage, can my integration continue to function?
@@ -27,10 +27,11 @@ DataAdapters allow you to plug in your own storage solution as a cache that the 
 - If the SDK client is initialized with `localMode=true`, this will disable fallback to fetching the config across the network from Statsig.
 - The cache key is `statsig.cache` for config specs, `statsig.id_lists` for lookup of id lists, and `statsig.id_lists::{list_name}` for for actual id lists.
 
-:::info
-NOTE: Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
+:::note
+Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
 
-At the time of this writing, only `Node.js`, `Ruby`, `Go`, `Java` and `.NET` support polling for updates. If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out and let us know which language this would be useful for!
+At the time of this writing, only `Node.js`, `Ruby`, `Go`, `Java` and `.NET` support polling for updates. 
+If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out to [support team](mailto:support@statsig.com) or in our [Slack community](https://statsig.com/slack) and let us know which language this would be useful for!
 :::
 
 For information on your specific SDK language, see the language specific docs in the left hand column.

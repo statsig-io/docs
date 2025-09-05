@@ -6,14 +6,14 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-14
+  date: 2025-07-23
 ---
 
-This page gives you a quick overview of what migrating from Statsig Cloud to Statsig Warehouse Native looks like. If you are an enterprise customer on Statsig Cloud and want to use Statsig Warehouse Native please work with your Statsig contact to evaluate feasibility. If all (or most) of your metrics 
+This page gives you a quick overview of what migrating from Statsig Cloud to Statsig Warehouse Native looks like. If you are an enterprise customer on Statsig Cloud and want to use Statsig Warehouse Native please work with your Statsig contact to evaluate feasibility. If all (or most) of your metrics come from your data warehouse already, migration can be straight forward. Migration only changes where metrics are computed - they are sourced in your warehouse with WHN. 
 
 ## Migration Overview
-1. Statsig will create for you a WHN project on the side.
-2. Kick the tires in this project, without changing anything in your app. Re-analyze some experiments you've already run on Statsig Cloud.
+1. Statsig will create for you a WHN project on the side of your current project.
+2. Kick the tires in this project, without changing anything in your app. Re-analyze some experiments you've already run on Statsig Cloud, using exposures from production and metrics from your warehouse.
 3. To move forward, re-create in the WHN project all the metrics you need - on top of data in your warehouse.
 4. Pick a migration date. Plan for a 24hr change freeze on Statsig. (Admins can continue to make changes in case you need to respond to an incident.)
 5. During the migration window

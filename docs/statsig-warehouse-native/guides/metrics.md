@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2024-12-27
+  date: 2025-07-23
 ---
 
 # Deprecation Notice

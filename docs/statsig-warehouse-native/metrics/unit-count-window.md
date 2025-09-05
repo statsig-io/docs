@@ -5,12 +5,12 @@ sidebar_label: Unit Count (Window)
 keywords:
   - owner:vm
 last_update:
-  date: 2024-06-12
+  date: 2025-07-28
 ---
 
 ## Summary
 
-Unit count metrics with the windowed event rollup type measure if a unit performed an action in a specific period of time after being exposed to the experiment.
+Unit count metrics with the windowed event rollup type measure if a unit performed an action in a specific period of time after first being exposed to the experiment.
 
 ### Use Cases
 
@@ -18,7 +18,7 @@ This is an extremely common metric type, used to measure participation rates ear
 
 ## Calculation
 
-At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window.
+At the unit level, unit count metrics create a 1/0 flag for if they participated during the time window. The time window is defined relative to the unit's first exposure. Subsequent exposures are not considered.
 
 At the group level, the mean is calculated as the SUM of the unit-level flags, divided by the count of UNIQUE UNITS exposed to the experiment.
 
@@ -27,10 +27,21 @@ This would look like the SQL below:
 ```
 -- Unit Level
 SELECT distinct
-  unit_id,
-  group_id,
-  MAX(if(in_time_window, 1, 0)) as value
-FROM source_data;
+  source_data.unit_id,
+  exposure_data.group_id,
+  MAX(if(source_data.in_time_window, 1, 0)) as value
+FROM source_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
+;
 
 -- Experiment
 SELECT

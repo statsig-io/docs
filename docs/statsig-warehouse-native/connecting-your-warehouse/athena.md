@@ -1,16 +1,12 @@
 ---
-title: Athena (β)
+title: Athena
 slug: /statsig-warehouse-native/connecting-your-warehouse/athena
-sidebar_label: Athena (β)
+sidebar_label: Athena
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-15
+  date: 2025-07-23
 ---
-
-:::info
-Statsig Warehouse Native on Athena is in Beta. Some features available elsewhere (Metrics Explorer) are not available for this warehouse just yet but are coming soon.  
-:::
 
 ## Athena Warehouse Native Overview
 
@@ -83,8 +79,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "glue:GetPartitions"
             ],
             "Resource": [
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
             ]
          },
          // Allow Statsig to read/write/use data and tables in an isolated staging S3 subfolder
@@ -97,6 +93,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
                "athena:StartQueryExecution",
                "athena:GetQueryResults",
                "athena:GetQueryExecution",
+               "athena:StopQueryExecution",
                "glue:GetTable",
                "glue:CreateTable",
                "glue:UpdateTable",
@@ -114,10 +111,10 @@ You need to grant some permissions for Statsig from your AWS console in order fo
             "Resource": [
                "arn:aws:s3:::__S3_BUCKET__/__PATH_TO_S3_QUERY_RESULTS_FOLDER__/*",
                "arn:aws:s3:::__S3_BUCKET__/__STATSIG_S3_FOLDER__/*",
-               "arn:aws:athena:__REGION__:__ACCOUNT_ID__:workgroup/*",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:catalog",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__GLUE_STAGING_DATABASE__",
-               "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__GLUE_STAGING_DATABASE__/*"
+               "arn:aws:athena:__REGION__:__YOUR_AWS_ACCOUNT_ID__:workgroup/__WORKGROUP_NAME__",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:catalog",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__GLUE_STAGING_DATABASE__",
+               "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__GLUE_STAGING_DATABASE__/*"
             ]
          }
       ]
@@ -186,8 +183,8 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          "glue:GetPartitions"
       ],
       "Resource": [
-         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
-         "arn:aws:glue:__REGION__:__ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
+         "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:database/__YOUR_READONLY_DATABASE__",
+         "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
       ]
    }
    ```

@@ -5,7 +5,7 @@ slug: /metrics/ingest
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-05
+  date: 2025-07-23
 ---
 ## Ingesting Precomputed [Metrics](/metrics)
 

@@ -5,7 +5,7 @@ slug: /dynamic-config
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-03-12
+  date: 2025-07-23
 ---
 
 ## What is a Dynamic Config?
@@ -20,6 +20,10 @@ Many technology companies use tools such as dynamic config to make their server-
 - **Feature Toggles**: Dynamically enable or disable features without code changes.
 - **Gradual Rollouts**: Vary configurations across user segments to rollout more safely.
 - **Real-Time Updates**: Instantly adjust app properties like UI elements or service thresholds.
+
+### Limitations
+
+- There's a 100kb limit on the JSON payload within a dynamic config.
 
 ## Next Steps
 

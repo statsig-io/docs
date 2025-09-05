@@ -5,7 +5,7 @@ slug: /stats-engine/confidence-intervals
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-06
+  date: 2025-07-23
 ---
 
 Confidence intervals are an intuitive way to quantify the uncertainty in the observed metric deltas. A 95% confidence interval should contain the true effect 95% of the time. This means that if we ran an experiment 100 times, the true value of the metric delta should be inside the confidence intervals 95 times.
@@ -24,8 +24,9 @@ Once we've established the variance of the delta, it's straightforward to comput
 
 For the **absolute metric delta**, the confidence interval is given by:
 
-$$\Large
-CI(\Delta \overline{X}) = \Delta \overline{X} \pm Z_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}  
+$$
+\LARGE
+CI(\Delta \overline{X}) = \Delta \overline{X} \pm Z_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}
 $$
 
 where:
@@ -33,27 +34,43 @@ where:
 - $Z_{\alpha/2}$ is the z-critical value for the desired significance level (1.96 for the standard $\alpha=0.05$ and 95% confidence interval) and we run a two-sided test
 - $var(\Delta \overline{X})$ is the variance of the absolute delta (details [here](/stats-engine/variance))
 
-Similarly, the confidence interval for the **relative metric delta** is:
+The confidence interval for the **relative metric delta** can use one of two methods, [Fieller Intervals](/stats-engine/methodologies/fieller-intervals) and the [Delta Method](/stats-engine/methodologies/delta-method). While customers can opt for either method to be used in their Statsig console, Statsig recommends and automatically opts-in all new customers to use Fieller Intervals by default.
 
-$$\Large
-CI(\Delta \overline X\%)
-= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}
-= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot\sqrt{(\frac{\overline X_t}{\overline X_c})^{2} \cdot (\frac{var(X_c)}{n_c \cdot \overline X_c^2} + \frac{var(X_t)}{n_t \cdot \overline X_t^2})} \cdot 100\% 
+When using Fieller Intervals, the relative metric delta CI can be computed using:
+
+$$
+\Large
+CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})
 $$
 
-If the control mean is not significantly away from zero, then
+When using the Delta Method, the confidence interval is:
 
-$$\Large
+$$
+\Large
+\begin{split}
 CI(\Delta \overline X\%)
-= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}
-= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot \frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot 100\% 
+&= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}\\
+&= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot\sqrt{(\frac{\overline X_t}{\overline X_c})^{2} \cdot (\frac{var(X_c)}{n_c \cdot \overline X_c^2} + \frac{var(X_t)}{n_t \cdot \overline X_t^2})} \cdot 100\%
+\end{split}
+$$
+
+If using the Delta Method and the the control mean is not significantly away from zero, then it's simplified to:
+
+$$
+\Large
+\begin{split}
+CI(\Delta \overline X\%)
+&= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}} \\
+&= \frac{\Delta \overline X}{\overline X_c} \pm Z_{\alpha/2} \cdot \frac{\sqrt{{var\left(\Delta \overline X\right)}}}{\overline X_c} \cdot 100\%
+\end{split}
 $$
 
 ### One-Sided Tests
 
 When running one-sided tests, the form of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
 
-$$\Large
+$$
+\Large
 CI(\Delta \overline{X}) = \begin{cases}
 \left[\Delta \overline{X} - Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}, \quad +\infty  \right) & \text{if right-hand test}\\
 \\
@@ -73,23 +90,26 @@ For small sample sizes, we use Welch's t-test instead of a standard z-test. This
 
 For a two-sided test, the confidence interval is therefore:
 
-$$\Large
-CI(\Delta \overline{X}) = \Delta \overline{X} \pm t_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}  
+$$
+\Large
+CI(\Delta \overline{X}) = \Delta \overline{X} \pm t_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}
 $$
 
-$$\Large
+$$
+\Large
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 = \frac{var(\Delta\overline{X})^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 $$
 
 Where $N_t$ and $N_c$ are the number of users in the test and control groups, respectively. Note that for large number of degrees of freedom, the t-statistic converges with the z-statistic. Therefore, Welch's t-test is used only when $\nu < 100$.
 
-## Compare Experiment Data to a Fixed Baseline: One-sample T-test
+## Comparing Experiment Data to a Fixed Baseline: One-sample T-test
 
 Sometimes we want to answer questions like "Does my test variant lead to a click through rate higher than 0.5?". You can define a fixed-baseline comparison when adding metrics to the experiment.
 
 The confidence interval is calculated by
 
-$$\Large
+$$
+\Large
 CI(\Delta \overline X) = (\overline X_{group} - fixed \ value) \pm Z \cdot\sqrt{{var( \overline X_{group})}}
 $$
