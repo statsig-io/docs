@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+import { useColorMode } from '@docusaurus/theme-common/internal';
+
 import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import { useColorMode } from "@docusaurus/theme-common";
-import { useEffect } from "react";
+
 
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
@@ -23,7 +24,237 @@ const entityToTagMap = {
   ingestions: "Ingestions",
   tags: "Tags",
   keys: "Keys",
+  "param-store": "Param Store",
+  "warehouse-connections": "Warehouse Connections",
+  "change-validation": "Change Validation",
 };
+
+export const apiVersions = [
+  '20240601',
+];
+
+export function getSpecUrlForApiVersion(version) {
+  return `https://api.statsig.com/openapi/${version}.json`;
+}
+
+const SELECTED_API_VERSION_STORAGE_KEY = 'statsig_api_version';
+
+export default function Rapidoc(props) {
+  const { id, entity } = props;
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
+  const [apiVersion, setApiVersion] = useState(null);
+  const specUrl = apiVersion ? getSpecUrlForApiVersion(apiVersion) : null;
+
+  const setApiVersionToStorage = (version) => {
+    localStorage.setItem(SELECTED_API_VERSION_STORAGE_KEY, version);
+    setApiVersion(version);
+  }
+
+  useEffect(() => {
+    if (!apiVersion) {
+      // Can't have this in the useState init because it prevents this from being server renderable.
+      setApiVersion(localStorage.getItem(SELECTED_API_VERSION_STORAGE_KEY) ?? apiVersions[0]);
+    }
+  }, [apiVersion]);
+
+  useEffect(() => {
+    const rapidoc = document.getElementById(id);
+    if (rapidoc) {
+      rapidoc.setAttribute('theme', isDarkTheme ? 'dark' : 'light');
+      rapidoc.setAttribute('primary-color', isDarkTheme ? '#2196f3' : '#194b7d');
+      rapidoc.setAttribute('bg-color', isDarkTheme ? '#1b1b1d' : '#ffffff');
+    }
+  }, [id, isDarkTheme]);
+
+  useEffect(() => {
+    if (!specUrl) {
+      return;
+    }
+
+    const rapidoc = document.getElementById(id);
+
+    if (entity === "all-endpoints-generated") {
+      fetch(specUrl)
+        .then((response) => response.json())
+        .then(removeNonFeatureTags)
+        .then((data) => {
+          rapidoc.loadSpec(data);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl
+            });
+          } catch (error) {
+            // noop
+          }
+        })
+        .catch((error) => {
+          console.log('Rapidoc: Fetch failed for all-endpoints-generated:', error.message);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl,
+              error: error.message
+            });
+            console.log('Rapidoc: Failure event logged successfully');
+          } catch (logError) {
+            console.error('Rapidoc: Failed to log failure event:', logError);
+          }
+        });
+      return;
+    }
+
+    // Get the corresponding OpenAPI tag for the entity
+    const tag = entityToTagMap[entity];
+
+    // Fetch and filter the spec by tag
+    fetch(specUrl)
+      .then((response) => response.json())
+      .then(removeNonFeatureTags)
+      .then((data) => {
+        if (tag) {
+          // Filter paths by tag
+          const filteredData = filterPathsByTag(
+            data,
+            Array.isArray(tag) ? tag : [tag]
+          );
+          rapidoc.loadSpec(filteredData);
+        } else {
+          // If tag is not found, load the full spec
+          rapidoc.loadSpec(data);
+        }
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag
+          });
+        } catch (error) {
+          // noop
+        }
+      })
+      .catch((error) => {
+        console.log('Rapidoc: Fetch failed for entity:', entity, 'error:', error.message);
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag,
+            error: error.message
+          });
+          console.log('Rapidoc: Failure event logged successfully for entity:', entity);
+        } catch (logError) {
+          console.error('Rapidoc: Failed to log failure event for entity:', entity, logError);
+        }
+      });
+  }, [specUrl, entity]);
+
+  return (
+    <rapi-doc
+      id={id}
+      theme={isDarkTheme ? "dark" : "light"}
+      primary-color={isDarkTheme ? "#2196f3" : "#194b7d"}
+      bg-color={isDarkTheme ? "#1b1b1d" : "#ffffff"}
+      style={{ height: "100%" }}
+      allow-search={false}
+      render-style="view"
+      layout="column"
+      sort-tags={true}
+      sort-schemas={true}
+      allow-try={true}
+      allow-server-selection={false}
+      show-info={false}
+      server-url="https://statsigapi.net/console/v1"
+      show-header={false}
+      allow-authentication={true}
+      api-key-name="STATSIG-API-VERSION"
+      api-key-location="header"
+      api-key-value={apiVersion}
+      regular-font={[
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Ubuntu",
+        "sans-serif",
+      ]}
+    >
+      <div>
+        <div>
+          {getDescription(entity)}
+        </div>
+
+        <p>
+          API Version:{' '}
+          <select value={apiVersion} onChange={(e) => setApiVersionToStorage(e.target.value)}>
+            {apiVersions.map((version, idx) => (
+              <option value={version}>{version}{idx === 0 ? ' (latest)' : ''}</option>
+            ))}
+          </select>
+          {' '}
+          <a href={specUrl} download={specUrl} class="download-button"><button>Download OpenAPI Specification</button></a>
+        </p>
+
+        <h2>Authorization</h2>
+        <p>
+          All requests must include the <code>STATSIG-API-KEY</code> field in the
+          header.<br />
+          The value should be a Console API Key which can be created in{" "}
+          <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+          You can{" "}
+          <a href="https://console.statsig.com/api_keys" target="_blank" rel="noopener noreferrer">
+            create or manage your keys here
+          </a>.
+          To use the 'try it' section on this page, enter your Console API into
+          the box below.
+        </p>
+        <h2>API Version</h2>
+        <p>
+          The Console API is versioned. Each version is guaranteed to not break
+          existing usage; each new version introduces breaking changes. There is
+          currently only one version: <code>20240601</code>.
+          <br />
+          Pass the version in the <code>STATSIG-API-VERSION</code> field in the
+          header. For now, this is optional; in the future, this will be
+          required.
+        </p>
+        <hr />
+      </div>
+      <Alert severity="warning" slot="auth">
+        You will be directly modifying the project connected to the api-key
+        provided. We suggest creating a temporary project when testing our API
+        below.
+      </Alert>
+    </rapi-doc>
+  );
+}
+
+const NON_FEATURE_TAGS = ['MCP'];
+
+function removeNonFeatureTags(spec) {
+  const paths = {};
+  Object.keys(spec.paths).forEach((pathKey) => {
+    const pathItem = spec.paths[pathKey];
+    const methods = Object.keys(pathItem);
+
+    methods.forEach((method) => {
+      if (!paths[pathKey]) {
+        paths[pathKey] = {};
+      }
+      paths[pathKey][method] = {
+        ...pathItem[method],
+        tags: pathItem[method].tags.filter((tag) => !NON_FEATURE_TAGS.includes(tag)),
+      };
+    });
+  });
+
+  return {
+    ...spec,
+    paths,
+  };
+}
 
 function filterPathsByTag(spec, tags) {
   const filteredPaths = {};
@@ -45,115 +276,6 @@ function filterPathsByTag(spec, tags) {
     ...spec,
     paths: filteredPaths,
   };
-}
-
-export default function Rapidoc(props) {
-  const { id, entity } = props;
-  const isDarkTheme = useColorMode().colorMode === "dark";
-
-  useEffect(() => {
-    const rapidoc = document.getElementById(id);
-
-    if (entity === "all-endpoints-generated") {
-      rapidoc.loadSpec("https://api.statsig.com/openapi");
-      return;
-    }
-
-    // Get the corresponding OpenAPI tag for the entity
-    const tag = entityToTagMap[entity];
-
-    // Fetch and filter the spec by tag
-    fetch("https://api.statsig.com/openapi")
-      .then((response) => response.json())
-      .then((data) => {
-        if (tag) {
-          // Filter paths by tag
-          const filteredData = filterPathsByTag(
-            data,
-            Array.isArray(tag) ? tag : [tag]
-          );
-          rapidoc.loadSpec(filteredData);
-        } else {
-          // If tag is not found, load the full spec
-          rapidoc.loadSpec(data);
-        }
-      });
-  }, [entity]);
-
-  let description = (
-    <div>
-      <h2>Description</h2>
-      {getDescription(entity)}
-      <h2>Authorization</h2>
-      <p>
-        All requests must include the <code>STATSIG-API-KEY</code> field in the
-        header. The value should be a Console API Key which can be created in{" "}
-        <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
-        To use the 'try it' section on this page, enter your Console API into
-        the box below.
-      </p>
-      <hr />
-    </div>
-  );
-
-  if (entity === "all-endpoints-generated") {
-    description = (
-      <div>
-        <h2>Authorization</h2>
-        <p>
-          All requests must include the <code>STATSIG-API-KEY</code> field in
-          the header. The value should be a Console API Key which can be created
-          in <code>Project Settings {">"} API Keys tab</code>. <br />
-          To use the 'Try' function on this page, enter your Console API into
-          the box below.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <rapi-doc
-      id={id}
-      theme={isDarkTheme ? "dark" : "light"}
-      primary-color={isDarkTheme ? "#2196f3" : "#194b7d"}
-      bg-color={isDarkTheme ? "#1b1b1d" : "#ffffff"}
-      style={{ height: "100%" }}
-      allow-search={false}
-      render-style="view"
-      layout="column"
-      sort-tags={true}
-      sort-schemas={true}
-      allow-try={true}
-      allow-server-selection={false}
-      show-info={false}
-      server-url="https://statsigapi.net/console/v1"
-      show-header={false}
-      allow-authentication={true}
-      regular-font={[
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Segoe UI",
-        "Roboto",
-        "Helvetica Neue",
-        "Ubuntu",
-        "sans-serif",
-      ]}
-    >
-      {description}
-      <Alert severity="warning" slot="auth">
-        You will be directly modifying the project connected to the api-key
-        provided. We suggest creating a temporary project when testing our API
-        below.
-      </Alert>
-      <Alert severity="info" className="warning" slot="auth">
-        <AlertTitle>
-          Pagination parameters required from August 1st, 2024
-        </AlertTitle>
-        List requests without page and limit parameters will default to{" "}
-        <code>page=1&limit=100</code>.
-      </Alert>
-    </rapi-doc>
-  );
 }
 
 function getDescription(entity) {
@@ -180,7 +302,7 @@ function getDescription(entity) {
       return (
         <>
           <p>
-            A <a href="../feature-flags/working-with">feature gate</a> is a
+            A <a href="../feature-flags/overview">Feature Gate</a> is a
             mechanism for teams to configure what system behavior is visible to
             users without changing application code. This page describes how
             gates can be created and modified through the Console API.
@@ -325,14 +447,6 @@ function getDescription(entity) {
         </>
       );
 
-    case "all-endpoints":
-      return (
-        <>
-          <p>
-            This page lists out all Console API endpoints currently available.
-          </p>
-        </>
-      );
     case "keys":
     case "tags":
     default:

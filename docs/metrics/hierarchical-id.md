@@ -1,7 +1,12 @@
 ---
-title: Analysis with hierarchical ID
-sidebar_label: Hierarchical ID
+title: Cohort Metrics
 slug: /metrics/hierarchical-id
+sidebar_label: Hierarchical ID
+displayed_sidebar: cloud
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 # Analysis with hierarchical ID

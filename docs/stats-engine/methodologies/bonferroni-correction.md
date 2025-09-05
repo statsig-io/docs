@@ -2,6 +2,10 @@
 title: Bonferroni Correction
 sidebar_label: Bonferroni Correction
 slug: /stats-engine/methodologies/bonferroni-correction
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## What is Bonferroni Correction?

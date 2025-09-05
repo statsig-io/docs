@@ -2,18 +2,38 @@
 title: Migrating to @statsig/js-client
 sidebar_label: Migrating to @statsig/js-client
 slug: /client/javascript-sdk/migrating-from-statsig-js
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
+:::warning DEPRECATED
+
+Migrate soon! Official support for statsig-js ends Jan 31, 2025.
+
+:::
+
 The architecture and majority of the APIs in the updated SDK have been retained; however,
- modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic.
+ modifications have been made to address common pitfalls, resolve existing issues, and streamline the SDK logic, resulting in some breaking changes.
 
-Below is a list of identified breaking changes that will require manual refactoring:
+## Breaking Changes
+* The SDK now offers both a synchronous and asynchronous [initialization](/client/javascript-sdk/migrating-from-statsig-js#initialization) and [updateUser](/client/javascript-sdk/migrating-from-statsig-js#updating-the-user) methods.
+* The "getConfig" method has [changed to "getDynamicConfig"](/client/javascript-sdk/migrating-from-statsig-js#getconfig-is-now-getdynamicconfig)
+* When Bootstrapping, you'll now have to [pass the hash parameter as 'djb2'](/client/javascript-sdk/migrating-from-statsig-js#bootstrapping)
+* The top-level static instance has moved to a static method, [StatsigClient.instance()](/client/javascript-sdk/migrating-from-statsig-js#static-instance)
+* Overrides have moved into their own package: [js-local-overrides](/client/javascript-sdk/migrating-from-statsig-js#overrides)
+* Parameters for GDPR compliance have [changed and been centralized](/client/javascript-sdk/migrating-from-statsig-js#gdpr)
+* The method to retrieve a stableID [has changed](/client/javascript-sdk/migrating-from-statsig-js#stableid-and-getstableid)
+* The structure of [cached values has changed](/client/javascript-sdk/migrating-from-statsig-js#cached-values), with implications on first-run experience
+* Several StatsigOptions [have changed](/client/javascript-sdk/migrating-from-statsig-js#legacy-statsigoptions)
+* Manual exposure logging methods have been deprecated (`getExperimentWithExposureLoggingDisabled`, `checkGateWithExposureLoggingDisabled`). The checkGate and getExperiment methods now support a second argument to suppress exposure logging [as shown here](https://docs.statsig.com/client/javascript-sdk/#manual-exposures-).
 
-### Initialization
+### Initialization 
 
 Previously, the SDK employed a single method for initialization. However, we have recognized that waiting for a method call during app startup can be impractical. Consequently, we have introduced two distinct initialization approaches: one synchronous and one asynchronous.
 
@@ -244,8 +264,23 @@ StatsigLocalStorage.disabled = false;
 </Tabs>
 
 
-## getStableID
-`statsig.getStableID()` no longer exists. You can get the stableID like this: `myStatsigClient.getAsyncContext().then((x) => x.stableID)`
+
+
+## stableID and getStableID
+`statsig.getStableID()` no longer exists. You can get the stableID like this: `myStatsigClient.getContext().stableID`
+
+The key for the stableID in local storage has changed. It is now a function of the SDK key used to initialize the sdk, which enables multiple instances of the SDK to coexist on a single page and not overlap with cached data.  If you wish to keep the existing stableID, you should access it in local storage from the old key `STATSIG_LOCAL_STORAGE_STABLE_ID`, and set it in `customIDs` to override the stableID.
+
+
+
+
+
+## Cached Values
+The structure of cached values has changed significantly, and there is no supported way to migrate from the old cached values to the new format.  If you wish to pre-populate cached values, we recommend running the new SDK without issuing checks against it for some time before swapping to use it for all checks.
+
+
+
+
 
 ## Legacy StatsigOptions
 The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
@@ -305,6 +340,12 @@ SDKs and helps avoid mis-configuration between client and server
 #### initCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
 
+```js
+statsigClient.on('values_updated', function(evt) {
+  if(evt.status && evt.status === 'Ready') { /* client has initialized */ } 
+});    
+```
+
 #### updateUserCompletionCallback
 > Replaced by the usage of [StatsigClientEventEmitter](/client/javascript-sdk#client-event-emitter)
 
@@ -321,7 +362,7 @@ SDKs and helps avoid mis-configuration between client and server
 > No longer applicable
 
 #### disableHashing
-> Not yet supported
+> This is now referred to as StatsigOptions.networkConfig.initializeHashAlgorithm
 
 #### logLevel
 > This has not been changed, but the enum values are no longer `UPPERCASED`.

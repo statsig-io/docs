@@ -3,6 +3,10 @@ title: Power Analysis
 slug: /statsig-warehouse-native/features/power-analysis
 sidebar_label: Power Analysis
 description: Determine your experiment duration with confidence
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 In general it is a good practice to establish a run-time for an experiment
@@ -35,10 +39,12 @@ The power analysis readout will show you a week by week view of the experiment S
 
 In the settings section, you can specify
 
-- The number of groups and group allocations you plan to have in your experiment
-- The relative % of the target population you expect to allocate to this experiment
-- Whether you want to analyze
-  - The MDE per week given a fixed allocation
-  - The allocation required to hit a target MDE
+- **Number of Experiment Groups**: The total number of groups in the experiment, including control.
+- **Control Group %**: What percent of users will be in the control group, e.g. 50% if half of all users will be control.
+- **Fixed Allocation or Fixed MDE Analysis**: Different types of analyses you want to run. See [here](https://docs.statsig.com/experiments-plus/power-analysis/#analysis-types) for more details.
+- **One-sided or Two-sided test**: Toggle this setting to select the type of z-test to use for the analysis.
+- **Significant Level (α)**
+- **Power (1-β)**
+- **Bonferroni Correction Per Variant**: Whether to include α correction for multiple tests in power analysis
 
-These will update your results based on the analysis that already ran
+These will update your results based on the analysis that already ran.

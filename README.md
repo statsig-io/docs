@@ -5,3 +5,12 @@
 This repository is hosted at https://docs.statsig.com. Head on over there to navigate the docs in a snazzy interface.
 
 If this is your jam, check out: [Getting Started](docs/getting-started.mdx) to start.
+
+## Local Development
+
+<mark> Please make sure to use **npm** instead of **pnpm** to start and build docs </mark>
+
+```bash
+npm install
+npm run dev
+```

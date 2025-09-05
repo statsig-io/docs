@@ -1,0 +1,27 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigUser user = new StatsigUser.Builder().setUserID("user-123").build();
+FeatureGate gate = statsig.getFeatureGate(user, "example_gate");
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser.Builder().setUserID("user-123").build()
+val gate = statsig.getFeatureGate(user, "example_gate")
+```
+
+  </TabItem>
+</Tabs>

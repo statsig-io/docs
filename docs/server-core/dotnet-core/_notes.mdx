@@ -1,0 +1,35 @@
+## Performance Benefits
+
+The .NET Core SDK leverages Statsig's high-performance Rust evaluation engine through FFI bindings, details:
+
+- Native Rust evaluation engine handles all rule processing
+- .NET wrapper provides familiar C# APIs and type safety
+- Automatic memory management between .NET and Rust boundaries
+- Thread-safe operations across the FFI boundary
+
+## Async/Await Support
+
+All network operations are fully async:
+
+```csharp
+await statsig.Initialize();
+await statsig.FlushEvents();
+await statsig.Shutdown();
+```
+
+Evaluation methods are synchronous for optimal performance:
+
+```csharp
+var result = statsig.CheckGate(user, "gate_name");
+```
+
+## Thread Safety
+
+The Statsig instance is thread-safe and can be used concurrently across multiple threads. Consider using the shared instance(singleton) pattern for application-wide usage:
+
+```csharp
+var sharedStatsig = Statsig.NewShared("server-secret-key");
+await sharedStatsig.Initialize();
+
+var statsig = Statsig.Shared();
+```

@@ -1,0 +1,137 @@
+## StatsigOptions Struct in Rust
+
+The Statsig::new() method takes an optional parameter options to customize the Statsig client. Here's the accurate structure of the StatsigOptions struct based on the source code:
+
+### Parameters
+
+- **`data_store`**: Option\<Arc\<dyn DataStoreTrait\>\>
+External data store for Statsig values.
+
+- **`disable_all_logging`**: Option\<bool\>
+  When true, disables all event logging.
+
+- **`disable_network`**: Option\<bool\>
+  When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+
+- **`enable_id_lists`**: Option\<bool\>
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+
+- **`disable_user_agent_parsing`** `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+
+- **`wait_for_user_agent_init`** `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
+- **`disable_user_country_lookup`**  `Optional[bool]`
+  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+
+- **`wait_for_country_lookup_init`**  `Optional[bool]`
+  Default: false
+
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
+
+- **`environment`**: Option\<String\>
+  Environment parameter for evaluation.
+
+- **`event_logging_adapter`**: Option\<Arc\<dyn EventLoggingAdapter\>\>
+  Custom adapter for event logging.
+
+- **`event_logging_flush_interval_ms`**: Option\<u32\>
+  How often events are flushed to Statsig servers (in milliseconds).
+
+- **`event_logging_max_queue_size`**: Option\<u32\>
+  Maximum number of events to queue before forcing a flush.
+
+- **`event_logging_max_pending_batch_queue_size`**: Option\<u32\>
+  Maximum number of batches of events to hold in buffer to retry.
+
+- **`fallback_to_statsig_api`**: Option\<bool\>
+  Whether to fallback to the Statsig API if custom endpoints fail.
+
+- **`id_lists_adapter`**: Option\<Arc\<dyn IdListsAdapter\>\>
+  Custom adapter for ID lists.
+
+- **`id_lists_sync_interval_ms`**: Option\<u32\>
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+
+- **`id_lists_url`**: Option\<String\>
+  Custom URL for fetching ID lists.
+
+- **`init_timeout_ms`**: Option\<u64\>
+  Sets the maximum timeout for initialization requests (in milliseconds).
+
+- **`log_event_url`**: Option\<String\>
+  Custom URL for logging events.
+
+- **`observability_client`**: Option\<Weak\<dyn ObservabilityClient\>\>
+  Client for collecting observability data.
+
+- **`output_log_level`**: Option\<LogLevel\>
+  Controls the verbosity of SDK logs.
+
+- **`override_adapter`**: Option\<Arc\<dyn OverrideAdapter\>\>
+  Custom adapter for overrides.
+
+- **`spec_adapters_config`**: Option\<Vec\<SpecAdapterConfig\>\>
+  Configuration for specification adapters.
+
+- **`specs_adapter`**: Option\<Arc\<dyn SpecsAdapter\>\>
+  Custom adapter for specifications.
+
+- **`specs_sync_interval_ms`**: Option\<u32\>
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+
+- **`specs_url`**: Option\<String\>
+  Custom URL for fetching feature specifications.
+
+- **`global_custom_fields`**: Option\<HashMap\<String, DynamicValue\>\>
+  Global custom fields to include with all evaluations.
+
+- **`proxy_config`**: Option\<ProxyConfig\>
+  Configuration for connecting through a proxy server. The `ProxyConfig` struct has the following properties:
+  - `proxy_host`: Option\<String\> - Specifies the proxy server host
+  - `proxy_port`: Option\<u16\> - Specifies the proxy server port
+  - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
+  - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
+
+
+### Example Usage
+
+```rust
+use statsig_rust::{Statsig, StatsigOptions};
+use std::sync::Arc;
+
+// Initialize StatsigOptions with custom parameters
+let mut options = StatsigOptions::default();
+options.environment = Some("development".to_string());
+options.init_timeout_ms = Some(3000);
+options.disable_all_logging = Some(false);
+options.enable_id_lists = Some(true);
+options.output_log_level = Some(LogLevel::Info); // LogLevel enum, not a string
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+
+// Or, use the builder pattern for a more fluent interface
+let options = StatsigOptions::builder()
+    .environment(Some("development".to_string()))
+    .init_timeout_ms(Some(3000))
+    .disable_all_logging(Some(false))
+    .enable_id_lists(Some(true))
+    .specs_sync_interval_ms(Some(30000))
+    // Configure proxy settings
+    .proxy_config(Some(ProxyConfig {
+        proxy_host: Some("proxy.example.com".to_string()),
+        proxy_port: Some(8080),
+        proxy_protocol: Some("https".to_string()),
+        proxy_auth: None, // Use Some("username:password".to_string()) if authentication is required
+    }))
+    .build();
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+```

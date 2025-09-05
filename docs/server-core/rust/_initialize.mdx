@@ -1,0 +1,18 @@
+```rust
+use statsig_rust::{Statsig, StatsigOptions};
+use std::sync::Arc;
+
+// Simple initialization
+let statsig = Statsig::new("server-secret-key", None);
+statsig.initialize().await?;
+
+// Or with StatsigOptions
+let mut options = StatsigOptions::default();
+options.environment = Some("development".to_string());
+
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+
+// Don't forget to shutdown when done
+statsig.shutdown().await?;
+```

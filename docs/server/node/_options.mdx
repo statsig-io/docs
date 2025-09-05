@@ -7,7 +7,7 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 - **environment**: StatsigEnvironment, default null
 
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments.
+  - The most common usage is to set the environment tier ('production', 'staging' or 'development'), e.g. `{ tier: 'staging' }`, and have feature gates pass/fail for specific environments. Since v6.0.0 default environment tier is production
 
 - **bootstrapValues**: string, default null
   - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
@@ -49,3 +49,14 @@ import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 - **postLogsRetryBackoff**: number | (retry: number) => number, default 1,000
   - A fixed number or callback on the retry attempt number to configure the time in ms to wait between each `/log_event` retry.
   - If using a fixed number, a 10x multiplier will be applied on each subsequent retry
+- **evaluationCallbacks**: EvaluationCallbacks, default `{}`
+  - Provides callback functions for handling custom logic during evaluations of gates, dynamic configs, experiments, or layers. You can provide specific callbacks for each evaluation type to perform tasks such as custom logging (if you prefer not to use Statsig's default logging), or side effects.
+  **Note:** if you'd like to turn off Statsig's default logging, set `disableExposureLogging: true` when making checks.
+  - Available callbacks:
+    ```
+    gateCallback?: (gate: FeatureGate, user: StatsigUser, event: LogEvent) => void;
+    dynamicConfigCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;
+    experimentCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;
+    layerCallback?: (layer: Layer, user: StatsigUser) => void;
+    layerParamCallback?: (layer: Layer, paramName: string, user: StatsigUser, event: LogEvent) => void;
+    ```

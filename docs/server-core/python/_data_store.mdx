@@ -1,0 +1,49 @@
+```python
+class DataStore(DataStoreBase):
+    def initialize(self):
+        """
+        Initialize the data store. Called when the Statsig client initializes.
+        """
+        pass
+
+    def shutdown(self):
+        """
+        Clean up resources when the Statsig client shuts down.
+        """
+        pass
+
+    def get(self, key: str) -> Optional[DataStoreResponse]:
+        """
+        Retrieve value from the data store.
+        
+        Args:
+            key: The key to retrieve the value for
+            
+        Returns:
+            DataStoreResponse containing the result and time
+        """
+        pass
+
+    def set(self, key: str, value: str, time: Optional[int] = None):
+        """
+        Store a value in the data store.
+        
+        Args:
+            key: The key to store the value under
+            value: The value to store
+            time: Optional timestamp
+        """
+        pass
+
+    def support_polling_updates_for(self, key: str) -> bool:
+        """
+        Whether the data store supports polling for updates for the given key.
+        
+        Args:
+            key: The key to check
+            
+        Returns:
+            True if polling is supported, False otherwise
+        """
+        return False
+```

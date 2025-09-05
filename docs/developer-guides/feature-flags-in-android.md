@@ -3,6 +3,10 @@ title: How to set up Feature Flags in Android (Kotlin)
 sidebar_label: Feature Flags in Android (Kotlin)
 slug: /developer-guides/feature-flags-in-android
 displayed_sidebar: cloud
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 To implement feature flags in an Android app using the Statsig SDK, follow these steps, including creating a basic "Hello World" Android app, integrating Statsig, and managing feature flags in the Statsig console.

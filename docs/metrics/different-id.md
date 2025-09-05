@@ -2,6 +2,10 @@
 title: Cluster Experiments - Running Analysis Across Unit Types
 sidebar_label: Cluster Experiments
 slug: /metrics/different-id
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 # Analysis When the Unit of Assignment and the Unit of Analysis Are Different
@@ -10,7 +14,7 @@ There are two common scenarios where the experiment assignment unit differs from
 
 1. Measuring session-level metrics for a user-level experiment. Ratio metrics are commonly used to solve this (this doc).
 2. Measuring logged-in metrics (eg. revenue) on a logged-out experiment. There are two solutions:
-   a. Running the experiment at the [device-level](/experiments-plus/experimentation/choosing-randomization-unit#other-stable-identifiers), with device-level metrics collected even after the user is logged-in.
+   a. Running the experiment at the [device-level](/guides/first-device-level-experiment), with device-level metrics collected even after the user is logged-in.
    b. Using [ID resolution](/statsig-warehouse-native/features/id-resolution).
 
 We will explain how to set up the first scenario with Warehouse Native in this doc.

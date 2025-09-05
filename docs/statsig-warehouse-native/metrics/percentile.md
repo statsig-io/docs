@@ -1,11 +1,15 @@
 ---
 title: Percentile Metrics
 sidebar_label: Percentile
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
 
-Percentile metrics calculate a customizable Nth percentile of a column from a metric source.
+Percentile metrics calculate a customizable Nth percentile of a column from a metric source across experiment groups.
 
 ### Use Cases
 
@@ -22,10 +26,17 @@ This would look like the SQL below:
 ```
 -- Group Level
 SELECT
-  group_id,
-  PERCENTILE(value, percentile_level) as value,
-  COUNT(distinct user_id) as population
+  exposures_data.group_id,
+  PERCENTILE(user_data.value, percentile_level) as value,
+  COUNT(distinct user_data.user_id) as population
 FROM user_data
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
 WHERE value IS NOT NULL
 GROUP BY group_id;
 ```
@@ -33,6 +44,8 @@ GROUP BY group_id;
 ### Methodology Notes
 
 Percentile metrics use the outer CI method to estimate a confidence interval and significance. Deng Et. Al. have a good description of the methodology in section 4 of [this paper](https://arxiv.org/pdf/1803.06336).
+
+Note that some metrics are not well formed for this approach; there's an assumption that the underlying distribution is continuous. For example, if your data has 1/3 of its rows with a value of 0, 1/3 with a value of 5, and 1/3 with a value of 10, we will not calculate results for significance for a median or p99 metric since there's no local variability.
 
 ## Options
 

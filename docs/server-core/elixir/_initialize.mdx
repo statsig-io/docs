@@ -1,0 +1,19 @@
+Statsig.ex is using GenServer to manage the actual implementation of statsig instance (which is written in Rust). Which requires you add Statsig into your Supervision Tree. 
+```python
+# Initializing, with StatsigOptions
+sdk_key = "secret-key******" # your secret key
+statsig_options = %StatsigOptions{enable_id_lists: true}
+
+# Add to your supervision tree 
+statsig_spec = %{id: Statsig, start: {Statsig, :start_link, [sdk_key, statsig_options]}}
+children = [
+    // Other Apps
+    statsig_spec
+]
+res = Supervisor.start_link(children, opts)
+
+# Or directly initialize the GenServer
+{:ok,_} = Statsig.start_link(sdk_key, statsig_options)
+Statsig.initialize()
+
+```

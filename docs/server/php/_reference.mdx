@@ -34,11 +34,16 @@ class StatsigUser
 ```java
 class StatsigOptions
 {
-    function __construct(IConfigAdapter $config_adapter, ?ILoggingAdapter $logging_adapter = null)
+    function __construct(IDataAdapter $data_adapter, ?ILoggingAdapter $logging_adapter = null, ?IOutputLogger $output_logger = null)
 
     function getConfigAdapter(): IConfigAdapter
 
     function getLoggingAdapter(): ?ILoggingAdapter
+
+    /**
+     * Configure an output logger for additional debugging information
+     */
+    function getOutputLogger(): ?IOutputLogger
 
     function setEnvironmentTier(?string $tier)
     /**

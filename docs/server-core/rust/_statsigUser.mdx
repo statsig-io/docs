@@ -1,0 +1,25 @@
+```rust
+use statsig_rust::StatsigUserBuilder;
+use std::collections::HashMap;
+
+// Create a user with just a user ID
+let user = StatsigUserBuilder::new_with_user_id("user-123".to_string())
+    .build();
+
+// Or create a user with custom IDs
+let mut custom_ids = HashMap::new();
+custom_ids.insert("employee_id".to_string(), "emp-456".to_string());
+let user_with_custom_ids = StatsigUserBuilder::new_with_custom_ids(custom_ids)
+    .build();
+
+// Create a user with several properties
+let user = StatsigUserBuilder::new_with_user_id("user-123".to_string())
+    .email(Some("user@example.com".to_string()))
+    .ip(Some("192.168.1.1".to_string()))
+    .user_agent(Some("Mozilla/5.0...".to_string()))
+    .country(Some("US".to_string()))
+    .locale(Some("en-US".to_string()))
+    .app_version(Some("1.0.0".to_string()))
+    .build();
+
+```

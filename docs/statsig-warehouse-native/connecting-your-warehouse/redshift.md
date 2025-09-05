@@ -2,6 +2,10 @@
 title: Redshift Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/redshift
 sidebar_label: Redshift
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -12,6 +16,10 @@ To set up connection with Redshift, Statsig needs the following information
 - A service user Username
 - A service user Password
 - A staging schema that Statsig can write results to
+
+:::note
+SHA256 passwords are not currently supported, please utilize MD5 to avoid issues.
+::: 
 
 You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image). The service user should be able to read necessary experiment data, and be able to write to the Statsig staging schema you specify.
 

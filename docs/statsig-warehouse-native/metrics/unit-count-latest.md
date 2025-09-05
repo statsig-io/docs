@@ -1,6 +1,10 @@
 ---
 title: Unit Count (Latest Value) Metrics
 sidebar_label: Unit Count (Latest Value)
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
@@ -24,14 +28,25 @@ This would look like the SQL below:
 SELECT
   unit_id,
   group_id,
-  MAX(is_latest_date, 1, 0) as value
+  if(passes_filter, 1, 0) as value
 FROM (
     SELECT
-        *,
-        date = MAX(date) over (partition by unit_id, group_id) as is_latest_date
+        source_data.*,
+        exposures_data.group_id,
+        source_data.date = MAX(source_data.date) over (partition by source_data.unit_id) as is_latest_date
     FROM source_data
+    JOIN exposure_data
+    ON
+      -- Only include users who saw the experiment
+      source_data.unit_id = exposure_data.unit_id
+      -- Only include data from after the user saw the experiment
+      -- In this case exposure_data is already deduped to the "first exposure"
+      AND source_data.timestamp >= exposure_data.timestamp
 )
-GROUP BY unit_id, group_id;
+WHERE is_latest_date = 1
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Experiment
 SELECT

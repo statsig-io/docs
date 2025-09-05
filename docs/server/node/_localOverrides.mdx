@@ -35,3 +35,97 @@ Statsig.overrideLayer("a_layer_name", { key: "value" }, "a_user_id");
 </Tabs>
 
 These can be used to set an override for a specific user, or for all users (by not providing a specific user ID). Experiments/Autotune are overridden with the `overrideConfig` API.
+
+## Overriding in getClientInitializeResponse
+
+You can also override feature gates, dynamic configs, experiments, and layers when calling `getClientInitializeResponse`. This is useful when you need to provide specific values to the client SDK.
+
+<Tabs
+  groupId="js-sdk-lang-choice"
+  defaultValue="ts"
+  values={[
+    { label: "TypeScript", value: "ts" },
+    { label: "JavaScript", value: "js" },
+  ]}
+>
+  <TabItem value="ts">
+    <CodeBlock language="typescript">{`// Get client initialize response with overrides
+const response = Statsig.getClientInitializeResponse(user, clientSDKKey, {
+  overrides: {
+    // Override feature gates
+    featureGates: {
+      'my_gate': true,  // Override gate value to true
+    },
+    
+    // Override dynamic configs and experiments
+    dynamicConfigs: {
+      // Override config value directly
+      'price_config': {
+        value: { price: 9.99 }
+      },
+      
+      // Override experiment by setting the group assignment
+      'color_experiment': {
+        groupName: 'Control'  // Uses the value for the Control group
+      },
+      
+      // Override both value and group assignment
+      'spacing_experiment': {
+        value: { spacing: 64 },
+        groupName: 'Variant_B'
+      }
+    },
+    
+    // Override layers
+    layers: {
+      'my_layer': {
+        value: { param: 123 }
+      }
+    }
+  }
+});`}</CodeBlock>
+  </TabItem>
+  <TabItem value="js">
+    <CodeBlock language="javascript">{`// Get client initialize response with overrides
+const response = Statsig.getClientInitializeResponse(user, clientSDKKey, {
+  overrides: {
+    // Override feature gates
+    featureGates: {
+      'my_gate': true,  // Override gate value to true
+    },
+    
+    // Override dynamic configs and experiments
+    dynamicConfigs: {
+      // Override config value directly
+      'price_config': {
+        value: { price: 9.99 }
+      },
+      
+      // Override experiment by setting the group assignment
+      'color_experiment': {
+        groupName: 'Control'  // Uses the value for the Control group
+      },
+      
+      // Override both value and group assignment
+      'spacing_experiment': {
+        value: { spacing: 64 },
+        groupName: 'Variant_B'
+      }
+    },
+    
+    // Override layers
+    layers: {
+      'my_layer': {
+        value: { param: 123 }
+      }
+    }
+  }
+});`}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+For experiments, you can override them in two ways:
+1. By setting a `value` override on their dynamic config to directly specify the parameter values
+2. By setting the `groupName` assignment to use the value for that group name (e.g., "Control" or "Test")
+
+You can also combine both approaches to override both the group assignment and the parameter values.

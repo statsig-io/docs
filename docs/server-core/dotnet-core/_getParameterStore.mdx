@@ -1,0 +1,26 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var store = statsig.GetParameterStore(user, "global_settings");
+
+var apiTimeout = store.GetLong("api_timeout_ms", 5000);
+var maxRetries = store.GetLong("max_retries", 3);
+var enableLogging = store.GetBool("enable_logging", true);
+var serverUrl = store.GetString("server_url", "https://api.example.com");
+var rateLimits = store.GetDictionary("rate_limits", new Dictionary<string, object>());
+var allowedCountries = store.GetList("allowed_countries", new List<object>());
+
+Console.WriteLine($"Store Name: {store.Name}");
+Console.WriteLine($"API Timeout: {apiTimeout}ms");
+Console.WriteLine($"Max Retries: {maxRetries}");
+```
+
+Parameter Store provides type-safe getters for common data types:
+- `GetString(key, defaultValue)`
+- `GetLong(key, defaultValue)`
+- `GetDouble(key, defaultValue)`
+- `GetBool(key, defaultValue)`
+- `GetDictionary(key, defaultValue)`
+- `GetList(key, defaultValue)`

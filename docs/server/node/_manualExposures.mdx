@@ -6,7 +6,7 @@ export const Snippets = {
   // Gates
   gateSnippet: (
     <CodeBlock language="jsx">
-      {`const result = Statsig.checkGateWithExposureLoggingDisabledSync(aUser, 'a_gate_name');`}
+      {`const result = Statsig.checkGate(aUser, 'a_gate_name', {disableExposureLogging: true});`}
     </CodeBlock>
   ),
   gateExposureSnippet: (

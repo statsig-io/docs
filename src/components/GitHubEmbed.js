@@ -114,8 +114,6 @@ export default function GitHubEmbed({ url, language }) {
   return (
     <div
       style={{
-        maxHeight: content ? "1000px" : "200px",
-        transition: "max-height 1s ease-out",
         overflow: "hidden",
       }}
     >

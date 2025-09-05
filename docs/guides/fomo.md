@@ -2,6 +2,10 @@
 sidebar_label: Commonly Used Features
 title: Commonly Used Features on Statsig for Enterprise Customers
 displayed_sidebar: cloud
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 # Commonly Used Features on Statsig for Enterprise Customers

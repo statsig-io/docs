@@ -1,10 +1,9 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Integrating with Next.js
+## Manual Installation
 
-Statsig supports both the [Page Router](https://nextjs.org/docs/pages) and [App Router](https://nextjs.org/docs/app) in Next.js. 
-There are some differences in how you integrate Statsig into each.
+Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router](https://nextjs.org/docs/app), with some differences in integration patterns.
 
 <Tabs
   defaultValue="app-router"
@@ -21,58 +20,76 @@ There are some differences in how you integrate Statsig into each.
 
 
   <TabItem value="app-router">
+First, add the keys to your .env.local file:
+```bash
+# .env.local
 
-To integrate Statsig into your App Router app you need to use the 
-[`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) 
-to render the `StatsigProvider` on the client side.
-
-```tsx
-// app/my-statsig.tsx
-
-"use client";
-
-import React, { useEffect } from "react";
-import {
-  LogLevel,
-  StatsigProvider,
-  useClientAsyncInit,
-} from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
-
-export default function MyStatsig({ children }: { children: React.ReactNode }) {
-  const { client } = useClientAsyncInit(
-    process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
-  );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
-
-  return <StatsigProvider client={client}>{children}</StatsigProvider>;
-}
+# the NEXT_PUBLIC_ prefix is required for this to be available on the client side
+NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
+STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY>
 ```
 
-Then, use this component in your Root `layout.tsx` file.
+For App Router, install the @statsig/next package:
+
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+<TabItem value="npm">
+```bash
+npm i @statsig/next
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
+yarn add @statsig/next
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
+pnpm add @statsig/next
+```
+</TabItem>
+
+</Tabs>
+
+The \<StatsigBootstrapProvider\> creates both a Statsig Client and Server instance under the hood, and ["bootstraps"](/client/concepts/initialize#2-bootstrap-initialization) the client so it can render each page without a blocking network request. this will keep your app speedy and is recommended for most users. If you need more control over your setup, our [Bootstrapping](#client-bootstrapping-recommended) and [React](/client/javascript-sdk/react) docs can provide more guidance.
+
+Add this component around the content in your root `layout.tsx` file:
 
 ```tsx
 // app/layout.tsx
 
-import MyStatsig from "./my-statsig";
+import { StatsigBootstrapProvider } from "@statsig/next"
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const user = {
+    userID: "user-123", // add additional parameters as needed
+  };
   return (
     <html lang="en">
-      <MyStatsig>
-        <body>
+      <body>
+        <StatsigBootstrapProvider
+          user={user}
+          clientKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY}
+          serverKey={process.env.STATSIG_SERVER_KEY}
+        >
           {children}
-        </body>
-      </MyStatsig>
+        </StatsigBootstrapProvider>
+      </body>
     </html>
   );
 }
@@ -86,39 +103,73 @@ export default function RootLayout({
 
 
 
-
-
-
 {/* Page Router */}
 
     <TabItem value="page-router">
-To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file.
+
+First, add the keys to your .env.local file:
+```bash
+# .env.local
+
+# the NEXT_PUBLIC_ prefix is required for this to be available on the client side
+NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
+```
+
+Next, for Page Router, install the @statsig/react-bindings package:
+
+<Tabs
+  defaultValue="npm"
+  groupId="package-manager-choice"
+  values={[
+    {label: 'NPM', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+    {label: 'PNPM', value: 'pnpm'},
+  ]}>
+
+
+<TabItem value="npm">
+```bash
+npm i @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+<TabItem value="yarn">
+```bash
+yarn add @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+<TabItem value="pnpm">
+```bash
+pnpm add @statsig/react-bindings @statsig/web-analytics
+```
+</TabItem>
+
+</Tabs>
+
+To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file. 
+
+There is a [full example](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js-pages-router-sample) in the samples directory of the javascript sdk.
+
 ```tsx
 // pages/_app.tsx
 
-import { useEffect } from "react";
 import type { AppProps } from "next/app";
 
 import {
   LogLevel,
   StatsigProvider,
-  useClientAsyncInit,
 } from "@statsig/react-bindings";
-import { runStatsigAutoCapture } from "@statsig/web-analytics";
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { client } = useClientAsyncInit(
-    process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
-    { userID: "a-user" },
-    { logLevel: LogLevel.Debug } // Optional - Prints debug logs to the console
-  );
-
-  useEffect(() => {
-    runStatsigAutoCapture(client);
-  }, [client]);
-
   return (
-    <StatsigProvider client={client}>
+    <StatsigProvider 
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      user={{ userID: "a-user" }}
+      options={{
+        plugins: [ new StatsigAutoCapturePlugin() ],
+      }}>
       <Component {...pageProps} />
     </StatsigProvider>
   );
@@ -133,7 +184,4 @@ export default function App({ Component, pageProps }: AppProps) {
 
 {/* Rest */}
 
-
-Now if you load your app, you should see events being sent to Statsig and if you have LogLevel set to Debug, you should see debug logs in the browsers console.
-
-Note: You should remove the `logLevel` option before deploying your app to production.
+See the [User (StatsigUser)](/concepts/user) doc for more info on the user property. From here, you're ready to start checking gates & experiments and sending events in any sub-file of layout.tsx!

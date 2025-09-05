@@ -1,0 +1,22 @@
+```Python
+# Values via get_layer
+user = %StatsigUser{
+    user_id: "test_user_123"
+}
+
+{:ok, layer} = Statsig.get_layer("user_promo_experiments", user)
+{:ok, title_string_value} = Layer.get(layer, "title", "Welcome to Statsig!")
+{:ok, discount_float_value} = Layer.get(layer, "discount", 0.1)
+
+# Via get_experiment
+{:ok, experiment} = Statsig.get_experiment("user_promo_experiment", user)
+title_exp = Experiment.get_param_value(experiment, "new_user_promo_title")
+
+# Disable exposure
+options = %Statsig.ExperimentEvaluationOptions{
+    disable_exposure_logging = true
+}
+{:ok, experiment} = Statsig.get_experiment("user_promo_experiment", user, options)
+
+```
+Note if you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numbers, for more complex type, SDK will return json serialized values. 

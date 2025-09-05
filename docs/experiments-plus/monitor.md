@@ -2,6 +2,10 @@
 title: Monitor an experiment
 sidebar_label: Monitor
 slug: /experiments-plus/monitor
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.
@@ -27,13 +31,18 @@ To monitor the status of your experiment,
 
     Read [more](/stats-engine/methodologies/srm-checks) on our SRM methodology and Statsig's debugging tool.
 
-  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These units are considered invalid for pulse metric calculation since their responses cannot be reliably attributed to a single group. We include them in the group-level statistics as they don't introduce bias generally, assuming the behavior of crossing over happens across the board. This check is ephemeral, only appearing when the alert is triggered.
+  - **Crossover units detected** checks for a high percentage (over 0.1%) of units that were exposed to more than one variant. These users cannot be reliably attributed to a single variant in an experiment or gate.
+    - **Statsig Cloud behavior**: Statsig monitors these occurrences, but keeps the user data in both groups since crossover rates with Statsig's SDK are typically minimal. If crossover users are detected, a health check warning will appear in your scorecard results.
+    - **Warehouse Native behavior**: For comparison, [Warehouse Native drops these users](/statsig-warehouse-native/features/monitor-an-experiment) since it often uses exposures from other assignment services with higher crossover rates.
+    - **Impact on results**: The inclusion of these users has minimal impact on experiment validity but may cause slight result dilution.
+    - **When to contact support**: If you observe crossover rates exceeding 1%, please contact Statsig support as this may indicate an implementation issue.
 
-    Potential reasons that caused crossover units:
+    Potential causes of crossover units:
 
     1. if any exposure in the log stream shows up with reason `BootstrapStableIDMismatch`, that means you have generated the values for a different stable id.
+    2. network delays on server/client SDKs if exposing the same user on both and updating a gate or experiment
 
-  If you cannot root cause it, you can reach out to us on slack.
+  If you observe a high rate of crossover users and cannot root cause it, you can reach out to us on slack.
 
   - **Default value type mismatch** detects if an experiment's fallback default value type has differed from the set parameter type.
   - **Group assignment healthy** verifies that your SDKs are configured correctly and surfaces if there are a high percentage of checks with assignment reasons like "Uninitialized" or "InvalidBootstrap" which might indicate experiment assignment is not configured correctly. You can view an hourly breakdown of assignment reason via the **View Assignment Reasons** CTA. To better understand what each assignment reason means, see our breakdown [here](/sdk/debugging).

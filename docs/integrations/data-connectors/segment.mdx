@@ -1,14 +1,18 @@
 ---
 title: Segment
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
 
-# Overview
+# Segment Overview
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
 
-When Statsig receives events from Segment, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse) results for A/B tests with Statsig's feature gates as well as all your [Experiment](/experiments-plus/monitor) results.
+When Statsig receives events from Segment, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse/read-pulse) results for A/B tests with Statsig's feature gates as well as all your [Experiment](/experiments-plus/monitor) results.
 
 ### Supported Segment Event Types
 - [Track](https://segment.com/docs/connections/spec/track/)
@@ -93,7 +97,7 @@ If you are unable to connect to Segment via OAuth, you can still manually connec
     ![](https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png)
 
 ## Working with Users
-Statsig will join incoming user identifiers to whichever [unit of randomization](/experiments-plus/experimentation/choosing-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
+Statsig will join incoming user identifiers to whichever [unit of randomization](/experiments-plus#choosing-the-right-randomization-unit) you choose. This allows you to be flexible with your experimentation and enables testing on known (userID) and unknown (anonymousID) traffic as well as any custom identifiers your team may have (deviceID, companyID, vehicleID, etc).
 
 ### User IDs and Custom IDs
 
@@ -157,14 +161,14 @@ Refer to the following diagram to help orient you to mapping `anonymousIds` in S
 
 ![](https://user-images.githubusercontent.com/125311112/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png)
 
-1. Initialize the Statsig SDK with your [Statsig User](/client/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
+1. Initialize the Statsig SDK with your [Statsig User](/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
 2. As you orchestrate features/experiments, Statsig will associate this user to a variant using the unit of randomization chosen. For anonymous users, we'll use `segmentAnonymousId`.
 3. Your existing Segment implementation tracks user traffic and associates anonymous users to the top-level field `anonymousId`. 
 4. This `anonymousId` is mapped in Statsig (to `segmentAnonymousId`), properly associating the identifier used in experiment exposures to the same identifier used to track user actions.
 
 ### Syncing Statsig Segment ID Lists with Segment Engage Audiences
 
-By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Flags](/feature-flags/working-with). To configure this:
+By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Gates](/feature-flags/overview). To configure this:
 
 1. Create a [Statsig ID List Segment](/segments/create-new) on the Statsig Console.
 2. Follow the [Segment guide for Audiences](https://segment.com/docs/engage/audiences/) to create a new Audience and choose `Statsig` as a Destination. The `audience_key` must match the ID of the `Statsig ID List Segment` created.
@@ -172,7 +176,7 @@ By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) 
 Once these steps have been completed, your Segment Audience will be synced, and you will be able to target those users for features you develop or experiments you run.
 
 ### Custom Properties
-Passing [custom properties to a Statsig User](/client/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
+Passing [custom properties to a Statsig User](/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
 Providing custom user properties also allows you to drill down your results to specific populations (ex: android/iOS, isVIP, etc) when [reading pulse results](/pulse/custom-queries#running-a-custom-query).
 
 If you're using custom fields to [target users](/feature-flags/conditions#custom) in your feature gates, you can provide these properties through Segment using the key `statsigCustom` as part of the Segment `properties` 

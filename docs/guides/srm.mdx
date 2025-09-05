@@ -1,0 +1,68 @@
+---
+sidebar_label: Managing SRM
+title: Managing SRM
+keywords:
+  - owner:craig
+last_update:
+  date: 2025-07-23
+---
+
+## What is SRM?
+
+SRM, or sample ratio mismatch, is a problem with experiments characterized by there being too many units in some groups, and too few in others.
+
+The example below is an exposure crosstab of an experiment that has SRM. Even though the group percentages may look similar, if an assignment system is actually splitting traffic evenly, an imbalance this extreme (or more) would have less than a 0.01% chance to occur randomly.
+
+![srm_example](/img/srm.png)
+
+Statsig, and most experiment platforms, normalize metrics per-user; a count metric will be measured as total count divided by unique users in the experiment. This means that, in a vacuum, it's fine to have more users in one group. So, why is SRM problematic?
+
+## Why SRM Is An Issue
+
+SRM is an issue because it is usually _non-random_; the extra or missing traffic is _not identical_ to the original traffic. How can SRM occur?
+
+- A bug causes a users' client or browser to crash before a log for the exposure can be sent. The users who don't come back are not re-exposed and included, but those that do come back are. This leads to bias in measurement
+- A conditional dependency causes "who is exposed" to be filtered by some characteristic for one or many groups, meaning the groups are not identical to other groups, biasing measurement
+- A script is bulk-exposing users going through 1 group at a time, and logs are truncated after a certain count - meaning the last group's exposures are truncated.
+
+Those are common examples. SRM checks are critical because they can detect these kinds of effects occurring - and even at low rates they can lead to serious inaccuracy in experiment readouts.
+
+## How SRM is detected
+
+Detecting SRM is generally done by using a [chi-squared test](https://en.wikipedia.org/wiki/Chi-squared_test), which is a common and accepted way to analyze categorical data to understand if observed frequencies match expected frequencies. For example, in the experiment above we expect an even distribution of 167.85k units per group, and observe [166.08k, 171.18k, 166.30k].
+
+If the p-value of the test is low, we reject the null hypothesis that the groups are identical and conclude that there is a difference between the groups' observed and intended/expected assignment rates.
+
+## What to do if an experiment has SRM
+
+On Statsig, SRM will create a warning or failure state on an experiment's health check when detected - depending on how extreme the SRM is.
+
+![srm_failure](/img/srm_failure.png)
+
+This often causes concern; people don't want to reset their experiment and lose the data they've collected, and additionally the concern is that if there _is_ an underlying issue it will just reproduce if the experiment is reset and restarted.
+
+Generally, it's recommended to follow the following steps:
+
+**1.) Check the time series data**
+
+Statsig generates a chart of SRM p-value over time. If this is noisy and bounces around, it's more likely that this was a false positive alert. If it consistently trends down to 0,
+it's a strong signal that there is truly an assignment issue.
+
+Below is an example of a p-value chart that indicates a real issue.
+
+![srm_bad_timeseries](/img/bad_pvalue.png)
+
+**2.) Understand if there's a clear root cause for SRM**
+
+Use Statsig's SRM debugger, or do a data analysis using exported exposures to understand if a certain segment is driving SRM. Often, it's the case that a bug will only exist on a platform like android,
+or be restricted to users with low internet speeds. If you can find a bug, and fix it, you can restart the experiment safely
+
+If it's very clearly isolated, it's also reasonable to filter out that segment from analysis if the experiment was expensive or required a long period of data collection.
+
+At this point, you should have a rough idea of how likely it is that there's an issue; now you need to make a call on next steps.
+
+**3.) Assess options**
+
+It's unfortunate, but in many cases the best bet is to investigate, fix, and restart. In some cases, the SRM may be mild enough, and the experiment low-risk enough, that it's acceptable to make a decision with the tainted data.
+
+In general, though, Statsig strongly recommends against this and considers it a best practice to restart the experiment, ideally after investigating any potential SRM vector.

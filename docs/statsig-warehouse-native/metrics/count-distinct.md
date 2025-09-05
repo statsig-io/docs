@@ -1,13 +1,23 @@
 ---
 title: Count Distinct Metrics
 sidebar_label: Count Distinct
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-28
 ---
 
 ## Summary
 
 Count distinct metrics calculate the unique values observed in a column of a metric source. This is calculated per-unit, so the total is the number of unique unit-value pairs.
 
-Note: for retention metrics, or other metrics where you want to count distinct occurrences of the experiment's unit of assignment (e.g. the user_id in a user_id experiment), you should use unit_count metrics instead. These achieve the same result, but more efficiently calculate and store the metric data.
+:::warning
+Count-distinct metrics are more expensive to compute than [count](./count) or [unique unit count](./unit-count-once) metrics, especially for very long experiments.
+
+If you want to count distinct occurrences of the experiment's unit of assignment (e.g. the user_id in a user_id experiment), you should use a unit_count metrics instead. This achieves the same result, but more efficiently calculates and stores the metric data.
+
+In many cases a count metric serves as a close proxy to count-distinct; you can also set up a data source to track unique instances of a key to avoid re-running the distinct operation across experiment analyses.
+:::
 
 ### Use Cases
 
@@ -27,11 +37,20 @@ This would look like the SQL below:
 ```
 -- Unit Level
 SELECT
-  unit_id,
-  group_id,
-  COUNT(distinct value_column) as value
+  source_data.unit_id,
+  exposure_data.group_id,
+  COUNT(distinct source_data.value_column) as value
 FROM source_data
-GROUP BY unit_id, group_id;
+JOIN exposure_data
+ON
+  -- Only include users who saw the experiment
+  source_data.unit_id = exposure_data.unit_id
+  -- Only include data from after the user saw the experiment
+  -- In this case exposure_data is already deduped to the "first exposure"
+  AND source_data.timestamp >= exposure_data.timestamp
+GROUP BY
+  source_data.unit_id,
+  exposure_data.group_id;
 
 -- Experiment
 SELECT
@@ -52,7 +71,7 @@ GROUP BY group_id;
 
 ### Methodology Notes
 
-After enough data size, the methodology switches to using APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small.
+In the metrics page view, we use APPROX_COUNT_DISTINCT (or equivalent) to avoid massive compute jobs on analytical count distinct, and because the approximate error becomes acceptably small for the topline estimate. For experiment result loads, the calculation is analytical and exact to avoid jitter or bias from approximation error.
 
 ## Options
 
@@ -62,6 +81,12 @@ After enough data size, the methodology switches to using APPROX_COUNT_DISTINCT 
   - Specify a lower and/or upper percentile bound to winsorize at. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
 - CUPED
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
-- Cohort Windows
+- Thresholding
+  - Turn this metric into a 1/0 unit count metric counting if the unit's total count equals to or surpasses (>=) a given threshold
+- [Cohort Windows](../features/cohort-metrics.md)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
+
+## Limits
+
+Count distinct metrics are available in most experiments, except for Switchbacks.

@@ -1,6 +1,10 @@
 ---
 sidebar_label: SSO with Okta
 title: Single Sign-On With Okta
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 
 ## Requirements

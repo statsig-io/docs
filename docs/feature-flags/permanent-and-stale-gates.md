@@ -1,14 +1,12 @@
 ---
 title: Permanent and Stale Gates
-sidebar_label: Permanent and Stale Gates
+sidebar_label: Permanent and stale gates
 slug: /feature-flags/permanent-and-stale-gates
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-07-29
 ---
-
-:::note
-
-Usually referred to online as _feature flags_, the Statsig UI and SDKs call them _feature gates_.
-
-:::
 
 It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.
 
@@ -44,9 +42,14 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
   - **Stale Reasons** are the reason why a gate has been set as stale. This information can be queried on the [Console API](/console-api/gates).
     - **None** No Stale Gates should have their reason set as None, this is exclusively for **Temporary** or **Permanent** gates.
     - **STALE_PROBABLY_DEAD_CHECK** There have been no checks in the last 30 days.
-    - **STALE_PROBABLY_LAUNCHED** The Gate is disabled and has likely launched.
-    - **STALE_PROBABLY_UNLAUNCHED** The Gate is disabled and has no default value.
+    - **STALE_PROBABLY_LAUNCHED** The Gate is marked as launched or has an everyone rule passing 100% (rollout rate of 100%).
+    - **STALE_PROBABLY_UNLAUNCHED** The Gate is marked as disabled or has an everyone rule passing 0% (rollout rate of 0%).
+    - **STALE_PROBABLY_FORGOTTEN** This gate appears to have been only partially launched for some time. You might want to launch/disable it, or make it permanent if you need to keep it around.
     - **STALE_NO_RULES** The Gate has no set rules.
+    - **STALE_ALL_TRUE** The Gate has been returning true every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed.
+    - **STALE_ALL_FALSE** The Gate has been returning false every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed.
+    - **STALE_EMPTY_CHECKS** The Gate has been returning empty (probably indicating an error) every time it has been checked for the last 30 days (or number of days configured in project settings). It could probably be removed or might need to be investigated.
+
 
 ## Nudges to clean up Stale gates
 

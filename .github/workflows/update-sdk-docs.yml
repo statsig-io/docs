@@ -1,0 +1,34 @@
+name: Update Java SDK Docs with Codex
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-java-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v3
+
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+
+      - name: Clone Java SDK repo into workspace (ignored)
+        run: |
+          git clone https://github.com/statsig-io/java-server-sdk sdk-repo
+          echo "sdk-repo/" >> .git/info/exclude
+
+      - name: Run Codex to update docs
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
+        run: |
+          codex --approval-mode auto-edit --quiet "$(cat tasks/auto_doc.md)"
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "auto: update sdk documentation"
+          git push

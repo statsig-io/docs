@@ -14,7 +14,7 @@ StatsigProvider is a [react context provider](https://reactjs.org/docs/context.h
 
 - `children: React.ReactNode | React.ReactNode[];` - One or more child components
 - `sdkKey: string;` - A client SDK key from the Statsig Console
-- `user: StatsigUser;` - A [Statsig User](/client/concepts/user) object. Changing this will update the user and Gate values, causing a re-initialization
+- `user: StatsigUser;` - A [Statsig User](/concepts/user) object. Changing this will update the user and Gate values, causing a re-initialization
 - `options?: StatsigOptions;` - See [StatsigOptions](/client/deprecated/reactNativeSDK#statsig-options). An optional bag of initialization properties (shared with the statsig-js sdk) for advanced configuration.
 - `waitForInitialization?: boolean;` - Waits for the SDK to initialize with updated values before rendering child components
 - `initializingComponent?: React.ReactNode | React.ReactNode[];` - A loading component to render iff waitForInitialization is set to true and the SDK is initializing

@@ -1,0 +1,10 @@
+```rust
+pub trait OutputLogProvider: Send + Sync {
+    fn initialize(&self);
+    fn debug(&self, tag: &str, msg: String);
+    fn info(&self, tag: &str, msg: String);
+    fn warn(&self, tag: &str, msg: String);
+    fn error(&self, tag: &str, msg: String);
+    fn shutdown(&self);
+}
+```

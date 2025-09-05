@@ -1,0 +1,121 @@
+## Client Initialize Response
+
+The Node Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
+
+```typescript
+// Get client initialize response for a user
+const values = statsig.getClientInitializeResponse(user, options);
+
+// Pass values to a client SDK to initialize without a network request
+```
+
+### Options
+
+The `getClientInitializeResponse` method accepts an optional `options` parameter with the following properties:
+
+```typescript
+export interface ClientInitializeResponseOptions {
+  hashAlgorithm?: string;        // Algorithm used for hashing gate/experiment names (default: 'djb2')
+  clientSdkKey?: string;         // Client SDK key to use for initialization
+  includeLocalOverrides?: boolean; // Whether to include local overrides in the response
+  featureGateFilter?: Set<string>; // Filter to only include specific feature gates
+  experimentFilter?: Set<string>;  // Filter to only include specific experiments
+  dynamicConfigFilter?: Set<string>; // Filter to only include specific dynamic configs
+  layerFilter?: Set<string>;     // Filter to only include specific layers
+  paramStoreFilter?: Set<string>; // Filter to only include specific parameter stores
+}
+```
+
+#### Hash Algorithm
+
+The `hashAlgorithm` option specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'djb2'` for better performance and smaller payload size.
+
+```typescript
+// Use djb2 hashing algorithm for better performance
+const values = statsig.getClientInitializeResponse(user, {
+  hashAlgorithm: 'djb2',
+});
+```
+
+#### Client SDK Key
+
+The `clientSdkKey` option lets you filter the response to only the specific feature gates, experiments, dynamic configs, layers, or parameter stores that a particular client key has access to - effectively letting you apply [target apps](/sdk-keys/target-apps/).
+
+```typescript
+// Specify a client SDK key
+const values = statsig.getClientInitializeResponse(user, {
+  clientSdkKey: 'client-key',
+});
+```
+
+#### Filtering
+
+The filter options allow you to reduce the payload size by only including specific feature gates, experiments, dynamic configs, layers, or parameter stores in the response.
+
+```typescript
+// Only include specific feature gates and experiments
+const values = statsig.getClientInitializeResponse(user, {
+  featureGateFilter: new Set(['my_gate_1', 'my_gate_2']),
+  experimentFilter: new Set(['my_experiment']),
+});
+```
+
+#### Local Overrides
+
+The `includeLocalOverrides` option determines whether to consider [local overrides](#local-overrides) you've set when evaluating each config in the response.
+
+```typescript
+// Include local overrides in the response
+const values = statsig.getClientInitializeResponse(user, {
+  includeLocalOverrides: true,
+});
+```
+
+### Example: Bootstrapping a Client SDK
+
+Below is a complete example of using the client initialize response to bootstrap a client SDK. Note that you may choose to parallelize or inline the initialize response data with other requests to your server, to eliminate additional requests and latency.
+
+```typescript
+// Server-side code
+import { Statsig, StatsigUser } from '@statsig/node-core';
+
+// Initialize the server SDK
+await Statsig.initialize('server-secret-key');
+
+// In your API endpoint handler
+app.get('/statsig-bootstrap', (req, res) => {
+  // Create a user object from the request
+  const user = new StatsigUser({
+    userID: req.query.userID || '',
+    email: req.query.email,
+    ip: req.ip,
+    userAgent: req.headers['user-agent'],
+  });
+
+  // Generate the client initialize response with filters
+  const values = Statsig.getClientInitializeResponse(user, {
+    hashAlgorithm: 'djb2',
+    featureGateFilter: new Set(['onboarding_v2', 'new_checkout']),
+    experimentFilter: new Set(['pricing_experiment']),
+    layerFilter: new Set(['ui_layer']),
+  });
+
+  // Return the values to the client
+  res.json({ statsigValues: values });
+});
+```
+
+```typescript
+// Client-side code using @statsig/js-client
+import { Statsig } from '@statsig/js-client';
+
+// Fetch bootstrap values from your API
+const response = await fetch('/statsig-bootstrap');
+const { statsigValues } = await response.json();
+
+// Initialize the client SDK with the bootstrap values
+await Statsig.initialize({
+  sdkKey: 'client-sdk-key',
+  initializeValues: statsigValues,
+});
+```

@@ -3,6 +3,10 @@ title: How to run an AB Test in Javascript
 sidebar_label: First AB Test in Javascript
 slug: /developer-guides/abtest-in-javascript
 displayed_sidebar: cloud
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 To run a simple A/B test on a webpage using JavaScript and the Statsig SDK, focusing on showing text with a blue or red background based on the variant assigned, follow these steps. This guide includes creating a basic "Hello World" web application, integrating Statsig for A/B testing, and using the `get` method to determine the variant.
@@ -42,7 +46,7 @@ In your `app.js`, write the following JavaScript code:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function () {
-    const client = new window.__STATSIG__.StatsigClient(
+    const client = new window.Statsig.StatsigClient(
         "your-client-sdk-key",
         {
             userID: 'user_unique_id',

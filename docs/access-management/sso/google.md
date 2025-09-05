@@ -1,6 +1,10 @@
 ---
 sidebar_label: SSO with Google 
 title: SSO with Google as your IdP
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-07-23
 ---
 ## Requirements
 

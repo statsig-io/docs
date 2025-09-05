@@ -1,0 +1,43 @@
+```csharp
+statsig.OverrideGate("test_gate", true);
+
+statsig.OverrideDynamicConfig("test_config", new Dictionary<string, object>
+{
+    ["color"] = "red",
+    ["size"] = 42,
+    ["enabled"] = true
+});
+
+statsig.OverrideExperiment("test_experiment", new Dictionary<string, object>
+{
+    ["variant"] = "treatment",
+    ["multiplier"] = 1.5
+});
+
+statsig.OverrideExperimentByGroupName("test_experiment", "treatment_group");
+
+statsig.OverrideLayer("test_layer", new Dictionary<string, object>
+{
+    ["theme"] = "dark",
+    ["font_size"] = 16
+});
+```
+
+You can also specify a user ID for targeted overrides:
+
+```csharp
+statsig.OverrideGate("test_gate", true, "user_123");
+
+statsig.OverrideDynamicConfig("test_config", new Dictionary<string, object>
+{
+    ["special_feature"] = true
+}, "user_123");
+```
+
+Local overrides are useful for:
+- Testing specific configurations during development
+- QA testing with known values
+- Debugging feature flag behavior
+- Integration testing with predictable results
+
+Note: Overrides persist for the lifetime of the Statsig instance and affect all evaluations unless a specific user ID is provided.

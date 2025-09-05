@@ -1,6 +1,10 @@
 ---
 sidebar_label: Android
 title: Android On Device Evaluation
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import {
@@ -31,6 +35,8 @@ import MoreFAQs from "./AndroidOnDeviceEvaluation/_faqs.mdx";
 import Options from "./AndroidOnDeviceEvaluation/_options.mdx";
 import ShutdownSnippet from "./AndroidOnDeviceEvaluation/_shutdown.mdx";
 import * as UsingPersistentValues from "./AndroidOnDeviceEvaluation/_usingPersistentValues.mdx";
+import * as GlobalUser from "./AndroidOnDeviceEvaluation/_globalUser.mdx";
+import * as PostInitSyncing from "./AndroidOnDeviceEvaluation/_postInitSyncing.mdx";
 
 import * as _LocalOverrides from "./AndroidOnDeviceEvaluation/_localOverrides.mdx";
 export const LocalOverrides = _LocalOverrides;
@@ -69,15 +75,16 @@ export const Builder = SDKDocsBuilder({
         logEvent: <LogEvent />,
       },
     ],
+    [GlobalUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [PostInitSyncing, {}],
     [UsingPersistentValues, {}],
     [LocalOverrides, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

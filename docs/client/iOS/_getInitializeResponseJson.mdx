@@ -1,0 +1,44 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="ios-sdk-lang-choice"
+  defaultValue="swift"
+  values={[
+    {label: 'Swift', value: 'swift'},
+    {label: 'Objective-C', value: 'objectivec'},
+  ]}>
+  <TabItem value="swift">
+
+```swift
+// Get the raw values that the SDK is using internally to provide gate/config/layer results
+let response = Statsig.getInitializeResponseJson()
+
+// Access the values string (JSON representation)
+if let values = response.values {
+    print(values)
+}
+
+// Access the evaluation details
+let details = response.evaluationDetails
+```
+
+  </TabItem>
+  <TabItem value="objectivec">
+
+```objectivec
+// Get the raw values that the SDK is using internally to provide gate/config/layer results
+ExternalInitializeResponse *response = [Statsig getInitializeResponseJson];
+
+// Access the values string (JSON representation)
+NSString *values = response.values;
+if (values) {
+    NSLog(@"%@", values);
+}
+
+// Access the evaluation details
+EvaluationDetails *details = response.evaluationDetails;
+```
+
+  </TabItem>
+</Tabs>

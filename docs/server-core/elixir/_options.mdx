@@ -1,0 +1,68 @@
+## StatsigOptions Class
+
+### Parameters
+
+  - **`environment:`**: 
+    The environment you're operating in (e.g., Production)
+
+  - **`output_log_level:`**: 
+    The type of logs you'd like exposed. (e.g., Debug)
+
+  - **`init_timeout_ms:`**: 
+    How long it should take for initialization to time out.
+
+  - **`event_logging_flush_interval_ms:`**: 
+    How often events should flush to the Statsig servers.
+
+  - **`event_logging_max_queue_size:`**: 
+    How many events should be buffered before flushing to the Statsig servers.
+
+  - **`log_event_url:`**: 
+    The URL events should be logged to
+
+  - **`specs_sync_interval_ms:`**: 
+    How often specs should sync from the Statsig servers
+
+  - **`specs_url:`**: 
+    The URL Statsig should download specs from
+
+  - **`enable_id_lists:`**: 
+    Enable ID list download. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+
+  - **`id_lists_url:`**: 
+    The URL ID lists should be downloaded from
+
+  - **`id_lists_sync_interval_ms:`**: 
+    How often ID lists should be synced.
+
+  - **`wait_for_country_lookup_init:`**: 
+    Block initialization call until country lookup is initialized  
+
+  - **`wait_for_user_agent_init:`**: 
+    To user_agent initialization until user_agent is initialized 
+
+  - **`disable_all_logging:`**: 
+    When `true`, disables all event logging. Default false
+
+  - **`disable_country_lookup:`**: 
+    To improve memory usage, disable using country lookup. Default off
+
+  - **`disable_network:`**: 
+    Turn off all network requests including get_dcs and log_events
+
+  - **`disable_user_agent_parsing:`**: 
+    To improve memory usage, disable using country lookup. Default off
+---
+
+### Example Usage
+
+```elixir
+# Initialize StatsigOptions with custom parameters
+statsig_options = %StatsigOptions{
+  enable_id_lists: true
+}
+
+# Pass the options object into statsig.initialize()
+{:ok, _} = Statsig.start_link(sdk_key, statsig_options)
+Statsig.initialize()
+```

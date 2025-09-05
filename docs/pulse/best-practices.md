@@ -2,6 +2,10 @@
 title: Best Practices and Avoiding False Positives
 sidebar_label: Best Practices
 slug: /pulse/best-practices
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 We have some suggestions on how to interpret Pulse in a scientifically-sound way:

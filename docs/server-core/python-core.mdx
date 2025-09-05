@@ -1,0 +1,124 @@
+---
+sidebar_label: Python
+title: Python Server SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-29
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  ServerCore,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient,
+  MigrationGuide,
+  ClientInitResponse,
+} from "./Templates/index.mdx";
+
+import Preamble from "./_preamble.mdx";
+import Install from "./python/_install.mdx";
+import Initialize from "./python/_initialize.mdx";
+import CheckGate from "./python/_checkGate.mdx";
+import GetConfig from "./python/_getConfig.mdx";
+import GetPrompt from "./python/_getPrompt.mdx";
+import GetExperiment from "./python/_getExperiment.mdx";
+import GetFeatureGate from "./python/_getFeatureGate.mdx";
+import ParamStores from "./python/_paramStores.mdx";
+import LogEvent from "./python/_logEvent.mdx";
+import UserSnippet from "./python/_statsigUser.mdx";
+import MoreFAQs from "./python/_faqs.mdx";
+import Options from "./python/_options.mdx";
+import ShutdownSnippet from "./python/_shutdown.mdx";
+import OverridesSnippet from "./python/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./python/_manualExposures.mdx";
+import SharedInstanceSnippet from "./python/_sharedInstance.mdx";
+import PersistentStorageContent from "./python/_persistent_storage.mdx";
+import DataStoreContent from "./python/_data_store.mdx";
+import OutputLoggerContent from "./python/_output_logger.mdx";
+import ObservabilityClientContent from "./python/_observability_client.mdx";
+import ClientInitResponseContent from "./python/_clientInitResponse.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3",
+      },
+    ],
+    [
+      MigrationGuide,
+      {
+        link: "/server-core/python/migration-guide",
+        sdkType: "Python",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "python",
+        install: <Install />,
+        preamble: <Preamble />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        getPrompt: <GetPrompt />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+        getFeatureGate: <GetFeatureGate />,
+        paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
+      },
+    ],
+    [ManualExposures, { ...ManualExposureSnippets }],
+    [StatsigUser, { statsigUser: <UserSnippet /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [
+      LocalOverrides,
+      {
+        snippet: <OverridesSnippet />,
+      },
+    ],
+    [
+      ClientInitResponse,
+      {
+        sdkName: "Python Core",
+        snippet: <ClientInitResponseContent />,
+        signature: () => <code>get_client_initialize_response</code>,
+      },
+    ],
+    [ServerCore, { snippet: <Preamble /> }],
+    [PersistentStorage, { content: <PersistentStorageContent /> }],
+    [DataStore, { content: <DataStoreContent /> }],
+    [OutputLogger, { content: <OutputLoggerContent /> }],
+    [ObservabilityClient, { content: <ObservabilityClientContent /> }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+});
+
+export const toc = Builder.toc;
+
+<>{Builder.result}</>

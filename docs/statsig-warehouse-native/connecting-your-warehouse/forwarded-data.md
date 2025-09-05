@@ -13,7 +13,14 @@ By default, when setting up a data connection to your warehouse, we'll automatic
 If you want to change the name of the table that are used for forwarded data, in the data connection page under the 'advanced' tab and you'll find the option to change the name of said tables.
 ![image](/img/forwarded_data_tables.png)
 
-Note: If you've already had data exported and change the table name, future data will be written to the new table. 
+:::note
+If you've already had data exported and change the table name, future data will be written to the new table.
+::: 
+
+:::info Note
+Non-production exposures or log events are not forwarded to external warehouses
+:::
+
 
 ## Exposures
 
@@ -21,11 +28,15 @@ Logging exposures with Statsig means you'll get real-time diagnostics on the Sta
 
 When you run Pulse analysis, raw exposures for the experiment you're loading will be fast-forwarded to catch up with the real-time stream. This means you'll get all of the users in your experiment and see Pulse results as fresh as ~15m (assuming events and metrics come in at the same speed).
 
-Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
+Under the covers, we perform a just-in-time update of exposures in your warehouse when Pulse is loaded, for the first 1 million exposures that are logged to the experiment. After that, the exposures are batched, deduplicated and written to your warehouse once a day.
 
-These fast-forwarded exposures are not deduplicated, and will have some fields (group_name in particular) missing. These fields will be provided in the subsequent daily load.
+These fast-forwarded exposures are not deduplicated, and will have some fields (`user_dimensions` in particular) missing. These fields will be provided in the subsequent daily load.
 
 Each day, a deduplicated digest will be exported to your warehouse to ensure consistency. This will be deduplicated with the above as part of the standard Pulse Pipeline.
+
+:::info Note
+For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel.
+:::
 
 ## Events
 

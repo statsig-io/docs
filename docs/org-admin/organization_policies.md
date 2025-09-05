@@ -1,5 +1,9 @@
 ---
 title:  Organization Policies
+keywords:
+  - owner:mseger
+last_update:
+  date: 2025-07-23
 ---
 
 :::info

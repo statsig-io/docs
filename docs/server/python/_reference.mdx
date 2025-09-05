@@ -4,7 +4,7 @@
 @dataclass
 class StatsigUser:
     """An object of properties relating to the current user
-    user_id or at least a custom ID is required: learn more https://docs.statsig.com/messages/serverRequiredUserID
+    user_id or at least a custom ID is required: learn more https://docs.statsig.com/concepts/user#why-is-an-id-always-required-for-server-sdks
     Provide as many as possible to take advantage of advanced conditions in the statsig console
     A dictionary of additional fields can be provided under the custom field
     Set private_attributes for any user property you need for gate evaluation but prefer stripped from logs/metrics

@@ -1,9 +1,15 @@
 ---
 title: Redshift (Deprecated)
 slug: redshift
+keywords:
+  - owner:tim
+last_update:
+  date: 2025-07-23
 ---
 
-**Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**
+:::note
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+:::
 
 ## Overview
 
@@ -57,7 +63,7 @@ Please make sure your data conforms to the following schemas.
 | timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
 ```
 
-Please refer to docs for the [Statsig User Object](/client/concepts/user#user-attributes) for available fields. An example would look like:
+Please refer to docs for the [Statsig User Object](/concepts/user#user-attributes) for available fields. An example would look like:
 
 ```
 {

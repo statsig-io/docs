@@ -2,6 +2,10 @@
 title: Reliability FAQs
 slug: /reliability-faqs
 sidebar_label: Reliability FAQs
+keywords:
+  - owner:eric
+last_update:
+  date: 2025-07-23
 ---
 
 Integrating your product with Statsig means depending on Statsig, and we take reliability seriously. Here are some questions many people have when trying to evaluate the risks, please feel free to reach out on Slack if you have questions that are not listed here.
@@ -18,9 +22,6 @@ Integrating your product with Statsig means depending on Statsig, and we take re
 ## Does Statsig use any caching to help with latency?
 - We use a combination of caching solutions, depending on the problem we are solving. For serving our console and API requests, most caching is done at the region or host level.
 
-## What does your architecture look like?
-- We have explanations and architecture diagrams here - https://statsig.com/how
-
 ## What else does Statsig do to make sure the service is resilient?
 - Our SDKs are designed to be resilient in case there is an issue in the API requests, to make sure a seamless experience on your side.
 - Client SDKs:
@@ -30,7 +31,7 @@ Integrating your product with Statsig means depending on Statsig, and we take re
     - The SDKs will automatically retry failed event requests if for some reason Statsig event servers are unreachable. The Client SDKs will even persist failed log requests to local storage and retry in subsequent sessions.
 - Server SDKs:
     - They store rules for gates and experiments in memory, so it will be able to continue evaluating them even if Statsig is down.
-    - There is also an option to “bootstrap” your server SDKs with rule values from a previous session if Statsig is down when your server is starting up.
+    - There is also an option to “bootstrap” your server SDKs with rule values from a previous session if Statsig is down when your server is starting up. This can be done with a [Server Data Store](/server/concepts/data_store/), which lets you plug a storage provider into the Statsig SDK, to store your rule values.
     - The SDKs will automatically retry failed event requests if for some reason Statsig event servers are unreachable.
 
 ## What kind of automated testing does Statsig do?

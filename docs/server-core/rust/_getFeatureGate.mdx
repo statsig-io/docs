@@ -1,0 +1,13 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder};
+
+// Create a user
+let user = StatsigUserBuilder::new_with_user_id("user_id".to_string()).build();
+
+// Get a feature gate
+let gate = statsig.get_feature_gate(&user, "example_gate");
+
+// Access gate properties
+println!("{}", gate.rule_id);
+println!("{}", gate.value);  // Boolean value of the gate
+```

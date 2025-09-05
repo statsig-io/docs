@@ -2,6 +2,10 @@
 title: Snowflake Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/snowflake
 sidebar_label: Snowflake
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -12,7 +16,11 @@ To set up Warehouse Native connection with Snowflake, Statsig needs the followin
 - Database Name
 - Schema Name
 - Service User Name
-- Service User Password
+- If authenticating via login credentials:
+  - Service User Password
+- If authenticating via key-pair authentication:
+  - Private Key
+  - Private Key Passphrase (Optional)
 
 The service user needs the following permissions:
 
@@ -47,6 +55,13 @@ For the Account Name field, you can also enter your Snowflake [account identifie
 Provide the Schema and corresponding Database where Statsig will be able to materialize results
 
 ![Frame 7](https://user-images.githubusercontent.com/108023879/187517225-017b4626-eaea-443b-a042-59fd474ae657.png)
+
+### Key-Pair Authentication
+
+To set up key-pair authentication, first follow the [snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) to generate the private and public keys, and then set the public key on the service user.
+
+The private key can then be provided here
+![image](https://github.com/user-attachments/assets/1fa7bda1-5d9c-414b-8e2f-7e36b900acfb)
 
 ### Boilerplate Setup SQL
 
@@ -93,7 +108,7 @@ BEGIN;
   GRANT CREATE SCHEMA, MONITOR, USAGE ON DATABASE STATSIG_STAGING TO ROLE identifier($role_name);
 
   -- ONLY GIVE THIS LEVEL OF ACCESS in the staging schema.
-  GRANT CREATE TABLE ON SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
+  GRANT CREATE TABLE, CREATE FUNCTION ON SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
   GRANT SELECT, UPDATE, INSERT, DELETE ON ALL TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
   GRANT SELECT, UPDATE, INSERT, DELETE ON FUTURE TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);
   GRANT OWNERSHIP ON FUTURE TABLES IN SCHEMA STATSIG_STAGING.STATSIG_TABLES TO ROLE identifier($role_name);

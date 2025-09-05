@@ -41,7 +41,7 @@ Example:
 from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
 
 options = StatsigOptions(None, StatsigEnvironmentTier.development)
-statsig.initialize("secret-key", options)
+statsig.initialize("secret-key", options).wait()
 ```
 
 You can also use the `set_environment_parameter` function, but that takes in string values only:
@@ -51,5 +51,5 @@ from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
 
 options = StatsigOptions()
 options.set_environment_parameter("tier", StatsigEnvironmentTier.development.value)
-statsig.initialize("secret-key", options)
+statsig.initialize("secret-key", options).wait()
 ```

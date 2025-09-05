@@ -1,7 +1,11 @@
 ---
-title: Introduction to Layers
+title: Layers
 sidebar_label: Layers
 slug: /layers
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## What are Layers?

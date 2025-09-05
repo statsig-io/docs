@@ -1,0 +1,24 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder, DynamicConfigEvaluationOptions};
+use std::sync::Arc;
+
+// Get a dynamic config for a specific user
+let user = StatsigUserBuilder::new_with_user_id("my_user".to_string()).build();
+let config = statsig.get_dynamic_config(&user, "a_config");
+
+// Access config values with type-safe getters and fallback values
+let product_name = config.get_string("product_name", "Awesome Product v1"); // returns String
+let price = config.get_double("price", 10.0); // returns f64
+let should_discount = config.get_bool("discount", false); // returns bool
+let quantity = config.get_int("quantity", 1); // returns i64
+
+// Advanced Usage:
+// You can disable exposure logging for this specific check
+let mut options = DynamicConfigEvaluationOptions::default();
+options.disable_exposure_logging = Some(true);
+let config = statsig.get_dynamic_config_with_options(&user, "a_config", &options);
+
+// The config object also provides metadata about the evaluation
+println!("{}", config.rule_id); // The ID of the rule that served this config
+println!("{}", config.id_type); // The type of the evaluation (experiment, config, etc)
+```

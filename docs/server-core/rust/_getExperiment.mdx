@@ -1,0 +1,16 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder};
+
+// Values via get_layer
+let user = StatsigUserBuilder::new_with_user_id("my_user".to_string()).build();
+let layer = statsig.get_layer(&user, "user_promo_experiments");
+let title = layer.get_string("title", "Welcome to Statsig!");
+let discount = layer.get_double("discount", 0.1);
+
+// Via get_experiment
+let title_exp = statsig.get_experiment(&user, "new_user_promo_title");
+let price_exp = statsig.get_experiment(&user, "new_user_promo_price");
+
+let title = title_exp.get_string("title", "Welcome to Statsig!");
+let discount = price_exp.get_double("discount", 0.1);
+```

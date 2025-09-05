@@ -1,5 +1,9 @@
 ---
 title: Cloudflare KV
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 ## Overview
@@ -12,14 +16,14 @@ Navigate to [Project Settings -> Integrations](https://console.statsig.com/integ
 
 You will need to input the following:
 - **Cloudflare Account ID**: Can be found in Cloudflare portal under **Account Home** -> **Workers**, on the right hand side
-- **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration.  Then, you can find the namespace ID under **Account Home** -> **Workers** -> **KV**, and copy it from the table view.
+- **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration. You can create a new namespace, and get the ID from **Account Home** -> **Storage and Databases** -> **KV**, and copy it from the table view.
 - **Cloudflare API Key**: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. We need a token with Account.Workers KV Storage Edit Permissions.
 
 There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows.  For now, you can leave this unchecked.
 
 After filling this out, click **Enable**.
 
-Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`.  The next part of that is your project ID.  You'll need this later.
+Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`.  The next part of that is your project ID.  Copy that to the clipboard - you'll need it later.
 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your worker.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
@@ -53,19 +57,25 @@ The adapter takes two arguments:
 
 
 ### 2. SDK Initialization
-SDK initialization takes two arguments:
-- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
-- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK.
-
 ```
 const res = await statsig.initialize(
     env.STATSIG_SECRET_KEY,
-    { dataAdapter: dataAdapter },
+    { 
+      dataAdapter: dataAdapter,
+      postLogsRetryLimit: 0,
+      initStrategyForIDLists: 'none',
+      initStrategyForIP3Country: 'none',
+      disableIdListsSync: true,
+      disableRulesetsSync: true,
+    },
 );
 ```
+SDK initialization takes two arguments:
+- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable (set this in the cloudflare dashboard under Worker > Settings > Variables and Secrets)
+- An options object.  We are using the `dataAdapter` property to hook up the Cloudflare KV store to the SDK. We're also disabling the ID list sync to speed up initialization
+
 
 ### 3. Checking a Gate
-
 ```
 const result = statsig.checkGateSync(
   {
@@ -80,10 +90,10 @@ This is a gate check in code.  The first parameter is the `StatsigUser` object y
 ### 4. Flushing Events
 
 ```
-ctx.waitUntil(statsig.flush());
+ctx.waitUntil(statsig.flush(1000));
 ```
 
-This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
+This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged. We also set a 1s timeout to ensure the flush wont block the response.
 
 ### Putting it all together
 
@@ -96,7 +106,14 @@ export default {
     const dataAdapter = new CloudflareKVDataAdapter(env.STATSIG_KV, 'statsig-YOUR_COMPANY_ID');
     const res = await statsig.initialize(
       env.STATSIG_SECRET_KEY,
-      { dataAdapter: dataAdapter },
+      { 
+        dataAdapter: dataAdapter,
+        postLogsRetryLimit: 0,
+        initStrategyForIDLists: 'none',
+        initStrategyForIP3Country: 'none',
+        disableIdListsSync: true,
+        disableRulesetsSync: true,
+    },
     );
 
     const result = statsig.checkGateSync(
@@ -105,7 +122,7 @@ export default {
       },
       "test_cloudflare_sync",
     );
-    ctx.waitUntil(statsig.flush());
+    ctx.waitUntil(statsig.flush(1000));
     return new Response('Hello World! + ' + JSON.stringify(result));
   },
 };
@@ -123,7 +140,7 @@ And there you have it - a working Cloudflare KV integration for Statsig.
 
 ## Other Considerations
 
-### Polling for updates v5.13.0+
+### Polling for updates
 The SDK cannot poll for updates across requests since [Cloudflare does not allow for timers**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading).
 To solve for this, a manual sync API is available for independently updating the SDK internal store.
 
@@ -131,15 +148,15 @@ For example, you could persist the last time you synced, and define an interval 
 ```
 if (env.lastSyncTime < Date.now() - env.syncInterval) {
   env.lastSyncTime = Date.now();
-  context.waitUntil(Statsig.syncConfigSpecs());
+  context.waitUntil(statsig.syncConfigSpecs());
 }
 ```
 
-### Flushing events v4.16.0+
+### Flushing events
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.
 
 ```
-context.waitUntil(Statsig.flush());
+context.waitUntil(statsig.flush());
 ```
 
 ### Size Limits

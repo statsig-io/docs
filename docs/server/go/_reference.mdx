@@ -3,7 +3,7 @@
 ```go
 // User specific attributes for evaluating Feature Gates, Experiments, and DynamicConfigs
 //
-// NOTE: UserID or a customID is **required** - see /messages/serverRequiredUserID
+// NOTE: UserID or a customID is **required** - see /concepts/user#why-is-an-id-always-required-for-server-sdks
 // PrivateAttributes are only used for user targeting/grouping in feature gates, dynamic configs,
 // experiments and etc; they are omitted in logs.
 type User struct {
@@ -121,6 +121,7 @@ type FeatureGate struct {
 	Name              string             `json:"name"`
 	Value             bool               `json:"value"`
 	RuleID            string             `json:"rule_id"`
+	IDType            string             `json:"id_type"`
 	GroupName         string             `json:"group_name"`
 	EvaluationDetails *EvaluationDetails `json:"evaluation_details"`
 }
@@ -133,6 +134,7 @@ type DynamicConfig struct {
 	Name              string                 `json:"name"`
 	Value             map[string]interface{} `json:"value"`
 	RuleID            string                 `json:"rule_id"`
+	IDType            string             	 `json:"id_type"`
 	GroupName         string                 `json:"group_name"`
 	EvaluationDetails *EvaluationDetails     `json:"evaluation_details"`
   AllocatedExperimentName string           `json:"allocated_experiment_name"`
@@ -151,6 +153,7 @@ type Layer struct {
 	Name              string                 `json:"name"`
 	Value             map[string]interface{} `json:"value"`
 	RuleID            string                 `json:"rule_id"`
+	IDType            string		 `json:"id_type"`
 	GroupName         string                 `json:"group_name"`
 	EvaluationDetails *EvaluationDetails     `json:"evaluation_details"`
   AllocatedExperimentName string           `json:"allocated_experiment_name"`

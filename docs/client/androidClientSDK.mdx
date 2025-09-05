@@ -1,6 +1,10 @@
 ---
 sidebar_label: Android
 title: Android Client SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import {
@@ -24,6 +28,7 @@ import {
   StableID,
   ParameterStore,
   Instances,
+  InitializeResponse,
 } from "./Templates/index.mdx";
 
 import Install from "./Android/_install.mdx";
@@ -37,11 +42,13 @@ import MoreFAQs from "./Android/_faqs.mdx";
 import Options from "./Android/_options.mdx";
 import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
 import ShutdownSnippet from "./Android/_shutdown.mdx";
+import * as UsingPersistentValues from "./Android/_usingPersistentValues.mdx";
 import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
 import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
 import GetParameterStore from "./Android/_getParameterStore.mdx";
 import GetParameter from "./Android/_getParameter.mdx";
 import MultiInstance from "./Android/_multiInstance.mdx";
+import GetInitializeResponseJson from "./Android/_getInitializeResponseJson.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -75,6 +82,7 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { updateUser: <UpdateUser /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [UsingPersistentValues, {}],
     [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
     [ManualExposures, { addedInVersion: "4.9.0", ...ManualExposureSnippets }],
     [
@@ -84,6 +92,10 @@ export const Builder = SDKDocsBuilder({
     [
       Instances,
       { example: <MultiInstance /> }
+    ],
+    [
+      InitializeResponse,
+      { getInitializeResponseJson: <GetInitializeResponseJson /> }
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
   ]

@@ -24,7 +24,9 @@ import { StatsigClient } from '@statsig/js-client';
 StatsigClient.instance().logEvent("test_event");
 ```
 
-Note: in multi-instance setups, you can specify the SDK key to get a specific instance. eg `Statsig.instance('client-YOUR_CLIENT_KEY')`
+:::note
+In multi-instance setups, you can specify the SDK key to get a specific instance. eg `Statsig.instance('client-YOUR_CLIENT_KEY')`
+:::
 
 #### How do I handle GDPR compliance and Consent Management? 
 
@@ -32,3 +34,5 @@ In certain use cases, it is necessary to suspend cache and network usage until t
 permissions. You can now start the SDK without storage or logging and enable this only after the user grants permission. 
 
 <GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />
+
+The SDK will queue up to 500 events in memory and will retry sending them when logging is enabled.

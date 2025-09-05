@@ -1,0 +1,11 @@
+### Setting a Global User
+
+To avoid needing to pass the user object to every single evaluation call, you can set a global user. 
+This user will be used for all evaluations unless otherwise specified.
+
+```swift
+Statsig.shared.setGlobalUser(myGlobalUser)
+
+Statsig.shared.checkGate("my_gate") // <- Will use myGlobalUser
+Statsig.shared.checkGate("my_gate", StatsigUser(userID: "user-123")) // <- Will NOT use myGlobalUser
+```

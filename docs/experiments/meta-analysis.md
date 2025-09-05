@@ -2,13 +2,17 @@
 title: Meta-Analysis
 sidebar_label: Meta-Analysis
 slug: /experimentation/meta-analysis
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-07-23
 ---
 
 ## The Concept
 As teams run a number of experiments, it is possible to glean learning across these experiments. This is meta-analysis. Examples of learning people seek to derive include
 - How hard is a metric to move
 - Are there more sensitive proxies for the metric we care about?
-- How are teams doing relative to each other)?
+- How are teams doing relative to each other?
 
 We've worked with multiple companies to get them to thousands of trustworthy experiments a year. Our inspiration here was looking at what they were trying to learn across these tests. We've built this to be useful whether you're running 50 experiments a year or 5000. Feel free to reach out to help influence our roadmap in [Slack](https://statsig.com/slack).
 
@@ -47,9 +51,9 @@ In this hypothetical example - "Checkouts" is the metric you want to move, but i
 
 
 ## Metric Insights
-This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](/insights).
+This view lets you pick a metric and see all experiments and feature rollouts that impact this metric. [Learn more](/aggregated-impact).
 
-![image](https://github.com/statsig-io/docs/assets/31516123/6f7daa5e-adf3-4e3c-a9dd-53f7cb8e5498)
+<img width="1003" alt="417923655-430563dc-4794-4d69-a314-36c76a6fcf74" src="https://github.com/user-attachments/assets/8d61ada1-bf1f-41cf-b52b-f01d24052568" />
 
 ## Knowledge Bank
 The KB acts as a searchable repository of experiment learning across teams. It helps you find shipped, healthy experiments and gain context on past effort and generate ideas on new things to try. 

@@ -1,0 +1,14 @@
+import Link from '@docusaurus/Link';
+
+## Major Version Upgrade Guide
+export const MajorUpgradeList = ({ items }) => (
+  <ul>
+    {items.map((item, index) => (
+      <Link href={item.link}>
+      <li key={index}>{item.title}</li>
+      </Link>
+    ))}
+  </ul>
+);
+
+<MajorUpgradeList items={props.items}/>

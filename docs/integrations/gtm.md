@@ -1,8 +1,12 @@
 ---
 title: Google Tag Manager (GTM) 
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
-## Overview
+## Inbound Integration (Events flow from GTM dataLayer to Statsig)
 
 This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig. This saves customers from having to retag their web properties with calls specific to Statsig's SDK. This integration uses a global listener to consume all GTM triggers and dispatch a corresponding event back to Statsig.
 
@@ -14,6 +18,19 @@ _(statsig log stream showing GTM events flowing in)_
 ### Step 1: Broadcast Statsig client readiness to GTM
 The tracking code within GTM will need to know when the Statsig client is ready to use for tracking. To do so, you'll need to broadcast a window-level event and pass the statsig instance for the GTM tag code to use. In your initialize call, implement the `initCompletionCallback` callback as follows:
 
+#### Using @statsig/js-client
+```js
+window.statsig = new Statsig.StatsigClient('<CLIENT-SDK-KEY>', {/* USER */}, {/* OPTIONS */});
+statsig.on('values_updated', function(evt) { // bind before init is called
+  if(evt.status && evt.status === 'Ready') {
+    window.dispatchEvent(new CustomEvent("statsig:ready", {
+      detail: { statsig: statsig }
+    }));        
+  }
+});
+await statsig.initializeAsync();
+```
+#### Using statsig-js
 ```js
 await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
   initCompletionCallback: function (duration, success, message) {
@@ -47,7 +64,9 @@ After saving the tag, and publishing your updated GTM tag, tracking will be done
 To debug the integration, you can set a local storage entry `debug_ss_gtm` with any value on your webpage. Now, you'll console log statements for each tracking call being dispatched to Statsig. You can also inspect your browser's network traffic to see events being tracked.
 
 ### GTM Code
-
+:::info
+The code below assumes that the statsig client lives at `window.statsig`
+:::
 ```html
 <script type="text/javascript">
 /* dataLayer helper */
@@ -72,9 +91,9 @@ window.StatsigLogger = (function () {
     if (typeof message === 'object' && typeof message.event === 'string') {
       var metadata = {};
       for (var prop in message) {
-        if (prop.includes('gtm.') && !!message[prop] && (typeof message[prop] === 'number' || typeof message[prop] === 'boolean' || typeof message[prop] === 'string')) {
-          metadata[prop] = message[prop];
-        }
+          if(!(message[prop] instanceof HTMLElement) && typeof(message[prop]) !== 'object') {
+            metadata[prop] = message[prop];
+          }
       }
       log('++ handleGTMMessage', message.event, message.conversionValue || null, metadata);
       statsigInstance.logEvent(message.event, message.conversionValue || null, metadata);
@@ -95,11 +114,13 @@ window.StatsigLogger = (function () {
 
   var clientReady = false;
   try {
-    clientReady = statsig.getClientX().ready;
+    // The code below assumes that the statsig client lives at `window.statsig`
+    clientReady = (statsig && statsig.getClientX && statsig.getClientX().ready) || statsig.loadingStatus === 'Ready';
   } catch(err) { }
   
   if(clientReady) {
     // if client is already initialized, proceed
+    statsigInstance = statsig;
     init('pre-GTM');
   }
   else {
@@ -113,3 +134,26 @@ window.StatsigLogger = (function () {
 })();  
 </script>
 ```
+
+## Outbound Integration (GTM Data is enriched with Statsig test assignments)
+
+This pattern will allow you to enrich your GTM `dataLayer` with experiment assignment information. 
+
+![gtm datalayer outbound](/img/gtm-outbound.png)
+
+Prior to your Statsig `initialize` call, you should bind an EventEmitter listener that captures the assigned experiment name and test group, and push it into the `dataLayer` as follows. Note that the argument passed to the callback contains rich context about the assignment. Please modify the GTM `dataLayer` properties to your liking. 
+
+```js
+// use event emitter to listen for experiment assignments
+statsigClient.on("experiment_evaluation", function(evt) {
+  window.dataLayer.push({
+    'event': 'experiment_viewed',
+    'experiment_name': evt.experiment.name, 
+    'variant_name': evt.experiment.groupName
+  })
+});
+
+await statsigClient.initializeAsync(); 
+```
+
+

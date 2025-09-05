@@ -1,12 +1,16 @@
 ---
 title: Census
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 ## Overview
 
 Enabling the [Census](https://getcensus.com/) integration for Statsig allows Statsig to receive events from Census. This enables you to ingest data into Statsig from any sources that Census supports.
 
-You can find all events that Statsig receives from Census in the [Metrics](/metrics) tab in the Statsig console. Statsig will automatically include these events in [Pulse](/pulse) and [Experiment](/experiments-plus/monitor) results for your feature gates and experiments respectively.
+You can find all events that Statsig receives from Census in the [Metrics](/metrics) tab in the Statsig console. Statsig will automatically include these events in [Pulse](/pulse/read-pulse) and [Experiment](/experiments-plus/monitor) results for your feature gates and experiments respectively.
 
 ## Configuring Incoming Events
 
@@ -38,6 +42,8 @@ All other fields will be included in the `metadata` section of the mapped Statsi
 
 The Census integration allows the mapping of arbitrary fields to Statsig Custom IDs. To do this, visit the Census panel on the Statsig [Integrations](https://console.statsig.com/integrations) page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a Custom ID.
 
-Note: The input Event Field must match the exact spelling as in the original Census event.
+:::note
+The input Event Field must match the exact spelling as in the original Census event.
+:::
 
 ![](https://user-images.githubusercontent.com/95646168/213269548-e6457527-c938-44fd-9360-1f3fd7af2fac.png)

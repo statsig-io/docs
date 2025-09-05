@@ -1,0 +1,49 @@
+### Usage in Java Core
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigUser user = new StatsigUser.Builder()
+    .setUserID("user_id")
+    .setCustomIDs(Map.of("external_id", "abc123"))
+    .setEmail("user@example.com")
+    .setIp("192.168.0.1")
+    .setLocale("en-US")
+    .setAppVersion("1.0.0")
+    .setUserAgent("Mozilla/5.0")
+    .setCountry("USA")
+    .setPrivateAttributes(Map.of("is_beta_user", "true"))
+    .setCustom(Map.of("subscription", "premium"))
+    .build();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val user = StatsigUser.Builder()
+    .setUserID("user_id")
+    .setCustomIDs(mapOf("external_id" to "abc123"))
+    .setEmail("user@example.com")
+    .setIp("192.168.0.1")
+    .setLocale("en-US")
+    .setAppVersion("1.0.0")
+    .setUserAgent("Mozilla/5.0")
+    .setCountry("USA")
+    .setPrivateAttributes(mapOf("is_beta_user" to "true"))
+    .setCustom(mapOf("subscription" to "premium"))
+    .build()
+```
+
+  </TabItem>
+</Tabs>

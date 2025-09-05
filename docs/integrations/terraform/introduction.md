@@ -1,5 +1,9 @@
 ---
 title: Statsig Terraform Provider
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 The Statsig Terraform Provider allows you to configure your gates and experiments with Terraform. The provider synchronizes with Statsig via the Console API. If there is something you need to perform that isn't supported by the Terraform Provider, checkout the [Console API](/console-api/introduction).
@@ -18,4 +22,4 @@ Coming Soon:
 - Dynamic Configs
 - Segments
 
-If you need more from our Terraform Provider, please feel free to ask in [Slack support](https://statsigcommunity.slack.com/archives/C01RAKM10TD). This will help us prioritize what to work on.
+If you need more from our Terraform Provider, please feel free to ask in the [Statsig Slack channel](https://statsig.com/slack).

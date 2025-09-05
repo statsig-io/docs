@@ -1,6 +1,10 @@
 ---
 sidebar_label: Go
 title: Go Server SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 import {
@@ -42,6 +46,7 @@ import PersistentStorageInterface from "./go/_persistentStorageInterface.mdx";
 import PersistentStorageExample from "./go/_persistentStorageExample.mdx";
 import * as ReferenceSnippets from "./go/_reference.mdx";
 import MultiInstanceExample from "./go/_multiInstanceExample.mdx";
+import ClientInitResponseSnippet from "./go/_clientInitResponse.mdx";
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -82,6 +87,15 @@ export const Builder = SDKDocsBuilder({
     [
       DataStore,
       { interface: <DataStoreInterface />, example: <DataStoreExample /> },
+    ],
+    [
+      ClientInitResponse,
+      {
+        sdkName: "GO",
+        addedInVersion: "1.12.0",
+        snippet: <ClientInitResponseSnippet />,
+        signature: () => <code>getClientInitializeResponse</code>,
+      },
     ],
     [
       UserPersistentStorage,

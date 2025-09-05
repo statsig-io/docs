@@ -1,6 +1,10 @@
 ---
 sidebar_label: Environments
 title: Using Environments for Conditional Evaluation outside of Production
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
 ---
 
 Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and experiments differently in non-production environments like development or staging. All you need to do is configure the appropriate environment in your code and adjust feature rules in the Statsig Console.
@@ -30,13 +34,13 @@ All SDKs accept an `SDK Key` and an optional `StatsigOptions` dictionary. The `S
 
 Here’s an example of setting the environment tier in your code for the **development** environment:
 
-#### Example (Client SDK):
+#### Example (JS Client SDK):
 
 ```javascript
-await statsig.initialize(<SDK_KEY>, user, { environment: { tier: 'development' } });
+const client = new StatsigClient(<SDK_KEY>, user, { environment: { tier: 'development' } });
 ```
 
-#### Example (Server SDK):
+#### Example (Node Server SDK):
 
 ```javascript
 await statsig.initialize(<SDK_KEY>, { environment: { tier: 'development' } });
