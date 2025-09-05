@@ -37,3 +37,5 @@ Configure a grader that compares the LLM completion text with the reference outp
 <img width="1489" height="796" alt="image" src="https://github.com/user-attachments/assets/ce3f0951-2313-47a4-ba77-65c7fb877fc4" />
 
 **3. Eval Step 3: Run evaluation**
+Run an evaluation on a version of the prompt. You should see results in a few minutes that look like this. You can click into any row of the dataset to understand more about the evaluation for that row.
+<img width="1881" height="1129" alt="image" src="https://github.com/user-attachments/assets/58a3c2e5-5058-4127-a63d-02e53c132386" />
