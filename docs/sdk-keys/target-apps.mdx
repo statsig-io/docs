@@ -31,13 +31,13 @@ If you have an existing Statsig project with multiple SDK integrations, Statsig 
 
 ### Project Setup
 
-Start by going to **Manage Account** > **Keys and Environments**.  There you will find a **Target Apps** section.
+Start by going to **Settings** > **Target Applications**.
 
-![Screen Shot 2023-07-26 at 4 18 46 PM](https://github.com/statsig-io/js-client/assets/74584483/6a2d9fa5-b3f9-4fd3-91e5-3487ebd02618)
+<img width="1485" height="654" alt="Screenshot 2025-09-04 at 11 48 55 PM" src="https://github.com/user-attachments/assets/c359c25c-dead-44c4-8c1f-dd8cefb24929" />
 
 Create a target app, or use one that is suggested based on your current SDK exposure logs.
 
-![Screen Shot 2023-07-26 at 5 17 53 PM](https://github.com/statsig-io/docs/assets/74584483/719a399d-66f2-48a5-bf42-20f383758c7f)
+<img width="607" height="352" alt="Screenshot 2025-09-04 at 11 53 27 PM" src="https://github.com/user-attachments/assets/c606bdba-335c-4c4c-a781-815468aa3ce0" />
 
 ### Associating a Feature Gate with a Target App
 
@@ -45,25 +45,25 @@ If you wish to verify the suggestions you added in the initial setup, or add add
 
 For example, navigate to the **Feature Gates** tab, and then select a specific gate.
 
-In the header for that gate, you can view and edit the target app(s) applied to that gate.
+In the right rail for that gate, you can view and edit the target app(s) applied to that gate.
 
-![Screen Shot 2023-07-26 at 4 19 21 PM](https://github.com/statsig-io/docs/assets/74584483/9ef90688-7aff-41b6-b495-f64e692774be)
+<img width="275" height="392" alt="Screenshot 2025-09-04 at 11 55 02 PM" src="https://github.com/user-attachments/assets/57bdd557-adb0-4b4b-8b85-4c5ad877a09d" />
 
 Repeat this flow for the Dynamic Configs and Experiments that are used by this Target App.
 
 ### Associating an SDK Key with a Target App
 
-Finally, return to your Product Configuration > Target Application page. You're ready to restrict a certain key to a certain target app.
+Navigate to the Settings > Keys & Environments page. You're ready to restrict a certain key to a certain target app.
 
 Select the SDK Key you wish to restrict to the set of Target App entities.
 
 Under **Actions**, trigger the dropdown menu
 
-![Screen Shot 2023-07-26 at 5 23 17 PM](https://github.com/statsig-io/docs/assets/74584483/9e44aa27-4034-45c9-a5fb-94d613c7d2ab)
+<img width="1100" height="351" alt="Screenshot 2025-09-04 at 11 56 16 PM" src="https://github.com/user-attachments/assets/44802bda-8a07-4db7-abe3-c1438b555e0e" />
 
 Then select the target app(s) to apply to that key.
 
-![Screen Shot 2023-07-26 at 5 23 21 PM](https://github.com/statsig-io/docs/assets/74584483/e9559312-71af-4d70-85b4-a618e76c0008)
+<img width="526" height="345" alt="Screenshot 2025-09-04 at 11 57 12 PM" src="https://github.com/user-attachments/assets/76c69f2c-86d2-438f-84a1-457f7121a056" />
 
 :::note
 When [bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) a Client SDK from a Server SDK, you'll need the server SDK to have access to all of the gates/experiments/configs needed both for server and client. If you have separate target apps for client and server SDKs, you should apply both target apps to the server key you're using. 
