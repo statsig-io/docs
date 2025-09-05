@@ -15,7 +15,7 @@ last_update:
 
 **1. Create a Prompt within Statsig**
 
-This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig Node or Python Server Core SDKs to retrieve this prompt within your app and use it. 
+This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app and use it. 
 
 <img alt="image" src="https://github.com/user-attachments/assets/a17b3c4d-2126-4dfe-8d4b-d40b1838f878" />
 
@@ -39,6 +39,10 @@ Configure a grader that compares the LLM completion text with the reference outp
 Run an evaluation on a version of the prompt. You should see results in a few minutes that look like this. You can click into any row of the dataset to understand more about the evaluation for that row.
 
 <img alt="image" src="https://github.com/user-attachments/assets/c450f277-b2ba-4657-b747-440b43859f20" />
+
+You can categorize your dataset, and break scores out by category.
+
+<img alt="image" src="https://github.com/user-attachments/assets/3c0de7c4-6721-4a45-9a61-04a63db68913" />
 
 If you have scores for multiple versions, you can compare them to see what changed between versions.
 
