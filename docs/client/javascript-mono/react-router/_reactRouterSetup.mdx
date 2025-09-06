@@ -1,0 +1,105 @@
+## Setup
+
+### Basic React Router Integration
+
+In your main application file, set up React Router with Statsig by wrapping your router with `StatsigProvider`. Replace the `sdkKey` with your Client API key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
+
+```tsx
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useParams
+} from "react-router-dom";
+import { StatsigProvider, useFeatureGate } from '@statsig/react-bindings';
+
+export default function App() {
+  return (
+    <StatsigProvider 
+      sdkKey="client-key" 
+      user={{ userID: "1234", email: "example@statsig.com" }}>
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+        </ul>
+
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/topics" element={<Topics />}>
+            <Route index element={<h3>Please select a topic.</h3>} />
+            <Route path=":topicId" element={<Topic />} />
+          </Route>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
+    </StatsigProvider>
+  );
+}
+
+function Home() {
+  const showNewFeature = useFeatureGate('always_on_gate');
+  return showNewFeature? <h2>New Home</h2> : <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Topics() {
+  return (
+    <div>
+      <h2>Topics</h2>
+
+      <ul>
+        <li>
+          <Link to="components">Components</Link>
+        </li>
+        <li>
+          <Link to="props-v-state">
+            Props v. State
+          </Link>
+        </li>
+      </ul>
+
+      <Outlet />
+    </div>
+  );
+}
+
+function Topic() {
+  let { topicId } = useParams();
+  return <h3>Requested topic ID: {topicId}</h3>;
+}
+```
+
+### Adding User Properties
+
+The `user` prop contains properties for targeting in feature gates and experiments. See the [User (StatsigUser)](/concepts/user) doc for more information.
+
+```tsx
+const user = {
+  userID: "1234",
+  email: "example@statsig.com",
+  customIDs: { organizationID: "org-123" },
+  custom: { plan: "premium", region: "us-west" }
+};
+
+<StatsigProvider sdkKey="client-key" user={user}>
+  <Router>
+    {/* Your routes here */}
+  </Router>
+</StatsigProvider>
+```
