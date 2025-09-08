@@ -11,6 +11,7 @@ last_update:
 # Get Started with Geotests
 
 This guide walks you through creating a Geotest experiment using Statsig. The steps include:
+
 1. Define your Geo Types
 2. Configure your Metric Source
 3. Create and Configure
@@ -21,15 +22,13 @@ This guide walks you through creating a Geotest experiment using Statsig. The st
 
 First decide on one more geo types relevant to your business. Some of the most common are Postal Codes and DMAs (Designated Market Areas), but Statsig allows you to define any arbitrary geo type you'd like.
 
-<img width="1081" height="518" alt="Screenshot 2025-07-31 at 11 44 48 AM" src="https://github.com/user-attachments/assets/c2e199ba-a8be-45f4-aa36-60156bb8b0a1" />
-
+![Image](/img/geotests/geo_types_settings.png)
 
 ## Configure your Metric Source
 
 Assuming you've already added a [metric source](/statsig-warehouse-native/configuration/metric-sources/) to Statsig, you can next indicate which column(s) represent the geo type(s) you've created.
 
-<img width="857" height="162" alt="Screenshot 2025-07-31 at 11 45 08 AM" src="https://github.com/user-attachments/assets/fee92492-fffa-4e63-a181-e59e4fd69c8d" />
-
+![Image](/img/geotests/geo_column_mapping.png)
 
 ## Create and Configure
 
@@ -67,6 +66,7 @@ When you're happy with your initial settings, click "Use Experiment Designer" to
 ![Image](/img/geotests/StartDesigner.png)
 
 Here you can control:
+
 - Allowed Geo IDS: Apply a global filter for any geos allowed for control or treatment. Leave blank to use all geos found in your data source.
 - (Test) Inclusion List: Force some geos to be in your treatment cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
 - (Test) Exclusion List: Block some geos from being in your control cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
@@ -82,6 +82,7 @@ Once a Design Option Set has been created (usually takes a few minutes), it will
 ![Image](/img/geotests/DesignerOptions.png)
 
 Click into a completed design set (e.g. “Design Set 3”).
+
 - Compare Power, Cost, and Control/Test Allocation
 - Click View Cell Details to expand and see geo assignments
 - Select your desired design using the radio button, and clicking **Save Design to Experiment**.
