@@ -47,12 +47,11 @@ The Statsig SDK already handles this refresh logic out of the box, so separating
   - `statsig|{path}|{format}|{hashedSDKKey}` where `path` is `/v1/download_config_specs` or `/v1/get_id_lists`, format is `plain_text`, and the `djb2` has of the sdk key is the last bit
   - the SDK will handle this for you, reach out if you are trying to recreate this path yourself to double check
 
-
 :::note
 Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
 
 At the time of this writing, only `Node.js`, `Ruby`, `Go`, `Java` and `.NET` support polling for updates.  
-If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out to the [support team](mailto:support@statsig.com) or in our [Slack community](https://statsig.com/slack) and let us know which language this would be useful for!
+If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out in our [Slack community](https://statsig.com/slack) and let us know which language this would be useful for!
 :::
 
 For information on your specific SDK language, see the language-specific docs in the left-hand column.
