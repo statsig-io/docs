@@ -61,6 +61,9 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`observabilityClient`**: `Optional<ObservabilityClient>`  
   Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
 
+- **`persistentStorage`**: `Optional<PersistentStorage>`  
+  Interface for you to user persistent storage within sdk. To view more [details](https://docs.statsig.com/server/concepts/persistent_assignment/)
+
 - **`proxyConfig`**: `Optional<ProxyConfig>`  
   Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
   - `proxyHost`: Optional string specifying the proxy server host
