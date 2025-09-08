@@ -7,7 +7,7 @@ slug: /ai-evals/prompts
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-25
+  date: 2025-08-09
 ---
 
 
