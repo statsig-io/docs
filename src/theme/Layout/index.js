@@ -1,11 +1,17 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, BrowserRouter } from 'react-router-dom';
 import Layout from '@theme-original/Layout';
 import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
-import { useDoc } from '@docusaurus/theme-common/internal';
-
 
 export default function CustomLayout(props) {
+  return (
+    <BrowserRouter>
+      <CustomLayoutComponent {...props} />
+    </BrowserRouter>
+  )
+}
+
+function CustomLayoutComponent(props) {
   const location = useLocation();
   const [pageViews, setPageViews] = useState(null);
   const [pageOwner, setPageOwner] = useState('');
