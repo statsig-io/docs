@@ -15,6 +15,7 @@ You're viewing the Cloud docs for this page. Metrics and experiments behave diff
 This doc walks through the steps of creating a new experiment in the Statsig console. If you're looking for an end-to-end guide that includes integrating the Statsig SDK, see [Run your first experiment](/guides/abn-tests).
 
 ### User-level Experiments
+
 To create a user-level experiment, follow these steps:
 
 1. Log into the Statsig console at [https://console.statsig.com/](https://console.statsig.com/)
@@ -44,11 +45,13 @@ For best practices on configuring your Scorecard, read more [here](/pulse/read-p
 This is where most of your experiment configuration happens.
 
 #### Allocation
+
 For **Allocation**, enter the percentage of users you want to assign to this experiment. You can allocate up to 100% of eligible users, but it’s good practice to start with a smaller percentage, verify the experiment’s stability, and then ramp up the allocation.
 
 ![image](https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png)
 
 #### Targeting
+
 To configure **Targeting** criteria, click to edit the **Targeting** section. You can either set new targeting criteria or use an existing **Feature Gate**. This will limit the experiment to only the users who meet the defined conditions.
 
 ![image](https://github.com/user-attachments/assets/6f20dfbc-725f-4384-bd06-1fe23c15fcf6)
@@ -107,7 +110,7 @@ Now, complete the rest of the experiment setup as described above.
 
 By default, Experiment Results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Experiment Results.
 
-- **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (*α*) is divided by the number of test variants.
+- **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (_α_) is divided by the number of test variants.
 - **Default Confidence Interval:** Choose a lower confidence interval (e.g., 80%) if you prefer faster results with higher tolerance for false positives, or stick with 95% for greater certainty.
 
 ![image](https://github.com/user-attachments/assets/a6019d56-5c7f-43de-9679-dbf3579483e1)
@@ -115,6 +118,8 @@ By default, Experiment Results display with 95% confidence intervals and without
 ### Target Duration
 
 Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
+
+![Image](/img/target_duration_setting.png)
 
 💡 **Target durations longer than 90 days:** By default, Statsig computes Experiment Results results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
@@ -125,9 +130,9 @@ Once set, you can track progress against the target duration/exposures in the ex
 ---
 
 ### Hypothesis Advisor
-Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses. 
 
-This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g. 
+Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses.
+
+This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g.
 "Strongly recommend that a validation plan be mentioned")
 <img alt="Screenshot showing the Hypothesis Advisor" src="https://github.com/user-attachments/assets/ef70cbf1-db6b-4c15-81fd-ebabbda12e83" />
-
