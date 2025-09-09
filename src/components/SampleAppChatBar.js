@@ -35,6 +35,8 @@ export const ChatBar = ({placeholder = "What will you like to build..."}) => {
             width: "100%",
             marginLeft: "auto",
             marginRight: "auto",
+            // Match grid card gutters (cards use 16px external margins)
+            // so the chat bar aligns with the visual grid content width
             paddingLeft: "0.25rem",
             paddingRight: "0.25rem",
             paddingTop: "0.5rem",
