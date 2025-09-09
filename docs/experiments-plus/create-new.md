@@ -105,7 +105,7 @@ Now, complete the rest of the experiment setup as described above.
 
 ### Significance Level Adjustments
 
-By default, Pulse results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Pulse.
+By default, Experiment Results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Experiment Results.
 
 - **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (*α*) is divided by the number of test variants.
 - **Default Confidence Interval:** Choose a lower confidence interval (e.g., 80%) if you prefer faster results with higher tolerance for false positives, or stick with 95% for greater certainty.
@@ -116,7 +116,7 @@ By default, Pulse results display with 95% confidence intervals and without Bonf
 
 Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
 
-💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
+💡 **Target durations longer than 90 days:** By default, Statsig computes Experiment Results results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
 <img alt="Hypothesis Advisor Screenshot" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
