@@ -235,7 +235,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "ai-evals/overview",
                 "guides/aa-test",
                 "guides/seo-testing",
               ],
