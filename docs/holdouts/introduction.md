@@ -39,6 +39,10 @@ In the example below, the 1% Holdout is comparing the metric values of the 1% Ho
 <img width="1254" alt="Screen Shot 2025-03-15 at 3 49 19 PM" src="https://github.com/user-attachments/assets/b6c3724d-784d-45e3-ad6e-230bd9d82214" />
 
 
+## How to stop Holdouts
+To let the users who were held-out see new features, you can choose to disable or delete the holdout. This will also stop tracking the effects of held-out features. You can disable the holdout if you want to retain the results for further analysis or re-enable the holdout to apply to all selected configs again. Otherwise, you can delete the holdout if you are finished with analyzing the results and there's no need to re-enable the same holdout again.
+
+
 ## Best Practices
 1. **Size** - Statsig recommends a small holdout percentage, say 1% – 2%, to limit the number of customers who don’t see new features. 
 2. **Duration** - Statsig recommends operating holdouts for a period of three to six months, and then releasing the holdout. Prolonging the holdout period may increase the complexity of your software as you’d have to maintain a functioning product with no new features for a longer period.  
