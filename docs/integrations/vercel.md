@@ -32,7 +32,7 @@ Note that the marketplace app sets all required environment variables for the Fl
 
 If you aren't using NextJS, or prefer to use Statsig SDK's directly, you can follow the following steps to use Statsig SDK in your Vercel project.
 
-:::note 
+:::note
 Only Statsig node-lite and node is supported at this time. Statsig node-core is not yet supported; please reach out to our [support team](mailto:support@statsig.com) or via the [Statsig Slack channel](https://statsig.com/slack) if you require node-core support.
 :::
 
@@ -201,3 +201,11 @@ Use the 'Connect Account' flow in the [Vercel Marketplace](https://vercel.com/in
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
 
 After setting up the mapping, you'll be given an Edge Config Connection String, and Edge Config Item Key. Copy these values for use in env vars in the code snippets above - but if you need them again, you can always get back to it in the Statsig console by navigating to [Project Settings -> Integrations](https://console.statsig.com/integrations), and then select **Vercel Edge Config**
+
+## Sending logs to Statsig
+
+You can connect your Vercel logs to Statsig with a Log Drain to start exploring them in Logs Explorer.
+
+1.  From the [Vercel dashboard](https://vercel.com/), go to **Settings -> Drains** and click **Add Drain -> Integration**.
+2.  Select **Statsig**, follow the configuration steps provided, and choose a project to connect with the service.
+3.  Navigate to [Statsig's Logs Explorer](https://console.statsig.com/logs) to see your logs flow through.

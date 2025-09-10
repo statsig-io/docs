@@ -1,0 +1,57 @@
+---
+sidebar_label: Visual Editor V3
+title: Using Visual Editor V3 (Beta)
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-23
+displayed_sidebar: cloud
+---
+
+## Summary
+
+Visual Editor v3 provides a simpler interface for point-and-shoot experiments. Different from previous versions, experiments are created in the Statsig Console, and edited directly on top of the page. Sidecar still relies on a javascript script tag, though the package name has changed. 
+
+## Prerequisites:
+
+To run an experiment, you'll need to have the visual editor ("sidecar") script running on your website, or on any page you'd like to experiment on:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar-v2-beta/dist/index.min.js?apikey=client-key" ></script>
+```
+
+Additionally, to edit an experiment - you'll need the new Statsig Visual Editor [Chrome Extension](https://chromewebstore.google.com/detail/statsig-sidecar-v3/mmgjfcbidnlghegclgpkgegpdhbopjhn) installed.
+
+You also need to be a project admin, or have permissions to access console API keys, to use all Sidecar functionality.
+
+## Creating an Experiment
+
+You now create experiments in the console, on the Create Experiment dialogue, by changing the experiment type to "Visual Editor". 
+
+![Create Visual Editor Experiment](/img/sidecarv3creation.png)
+
+## Setting up an Experiment
+
+To setup an experiment - enter your metrics, any targeting (on URL, or other user attributes per the [StatsigUser object](/concepts/user)), and the URL you'd like to start editing your experiment from (make sure to start it with "https://"!). Click save, and click the "Open in Editor" button, at which point you'll see an editor bar appear along the bottom of the page:
+
+![Visual Editor Page](/img/sidecarv3page.png)
+
+## Making your edits
+
+By clicking the "Element selector" or pressing command + E, you enable the element editor, which provides a preset set of editable attributes depending on the element you select, for example:
+- *Text:* Text, Font attributes
+- *Button:* Text, target link
+- *Image:* Image source
+
+Plus all elements offer the opportunity to rearrange or hide attributes.
+
+![Visual Editor Editor](/img/sidecarv3editor.png)
+
+## Starting your experiment
+
+By clicking save in the bottom right hand side of the visual editor, your changes will be saved to the console. If you refresh the page in console, your changes should be listed. You can preview your experiment from the console page, or go ahead and launch it!
+
+
+## Beta Release Details
+
+As of September 2025, Sidecar v3 is in an open Beta release. Feel free to try the product, and share any feedback you have in our [Slack](https://statsig.com/slack)
