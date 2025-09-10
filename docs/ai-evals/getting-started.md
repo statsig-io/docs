@@ -11,7 +11,7 @@ last_update:
 
 
 ## Create/analyze an offline eval in 10 minutes
-(Coming soon: How to start an online eval in 15 minutes)
+<!-- (Coming soon: How to start an online eval in 15 minutes) -->
 
 
 **1. Create a Prompt within Statsig**

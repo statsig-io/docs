@@ -366,8 +366,10 @@ const config: Config = {
             from: "/integrations/vscode",
             to: "/integrations/introduction",
           },
-
-          
+          {
+            from: "/ai-ml/ai-prompt-experiment",
+            to: "/ai-evals/overview",
+          },
         ],
       },
     ],
