@@ -123,29 +123,12 @@ print(f"{exp.group_name}") # control
   </TabItem>
   <TabItem value="node-core">
 ```typescript
-import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+let persistedStorage =  new MyPersistentStorage() // See https://docs.statsig.com/server-core/node-core/#persistent-storage on how to implement it
+let options = new StatsigOptions(persistentStorage = persistedStorage)
+let statsig = new Statsig(secretKye, options)
+let user = new StatsigUser("a-user")
+let exp = statsig.getExperiment(user, ExperimentEvaluationOptions(userPersistentValues= persistedStorage.getUserPersistedValues(user, "user_id")))
 
-class MyPersistentStorage implements PersistentStorage {
-  private storage = new Map<string, UserPersistedValues>();
-
-  load(key: string): UserPersistedValues | null {
-    return this.storage.get(key) || null;
-  }
-
-  save(key: string, config_name: string, data: StickyValues): void {
-    const existing = this.storage.get(key) || {};
-    existing[config_name] = data;
-    this.storage.set(key, existing);
-  }
-
-  delete(key: string, config_name: string): void {
-    const existing = this.storage.get(key);
-    if (existing) {
-      delete existing[config_name];
-      this.storage.set(key, existing);
-    }
-  }
-}
 ```
   </TabItem>
   

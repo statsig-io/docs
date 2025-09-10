@@ -36,3 +36,7 @@ All of the above logic holds true for both SDKs. In both, the user’s assignmen
 A common assumption is that Statsig tracks of a list of all ids and what group they were assigned to for experiments/gates. While our data pipelines track users exposed to each variant to compute experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server SDKs. That won't scale - we've even talked to customers doing this in the past, and were paying more for Redis to maintain that state than they ended up paying for Statsig.
 * **Server SDKs can handle multiple users:** because they hold the ruleset in memory, Server SDKs can evaluate any user. Without a network request. This means you’ll have to pass a user object into the getExperiment method on Server SDKs, whereas on client SDKs you pass it into initialize(). 
 * **We ensure each user receives the same bucket:** our ID-based hashing assignment guarantees consistency. If you make a change in console that could affect user bucketing on an experiment, we’ll provide warning. 
+
+## Evaluation of null/empty unitIDs
+
+Note, we do not apply any filtering/ business logic before we assign an individual userID. This means that even a null or empty unitID will be bucketed depending on the salt.

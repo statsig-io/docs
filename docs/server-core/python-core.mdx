@@ -4,7 +4,7 @@ title: Python Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 import {
@@ -28,15 +28,15 @@ import {
   OutputLogger,
   ObservabilityClient,
   MigrationGuide,
-  ClientInitResponse
+  ClientInitResponse,
 } from "./Templates/index.mdx";
-
 
 import Preamble from "./_preamble.mdx";
 import Install from "./python/_install.mdx";
 import Initialize from "./python/_initialize.mdx";
 import CheckGate from "./python/_checkGate.mdx";
 import GetConfig from "./python/_getConfig.mdx";
+import GetPrompt from "./python/_getPrompt.mdx";
 import GetExperiment from "./python/_getExperiment.mdx";
 import GetFeatureGate from "./python/_getFeatureGate.mdx";
 import ParamStores from "./python/_paramStores.mdx";
@@ -54,8 +54,6 @@ import OutputLoggerContent from "./python/_output_logger.mdx";
 import ObservabilityClientContent from "./python/_observability_client.mdx";
 import ClientInitResponseContent from "./python/_clientInitResponse.mdx";
 
-
-
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -68,7 +66,7 @@ export const Builder = SDKDocsBuilder({
       MigrationGuide,
       {
         link: "/server-core/python/migration-guide",
-        sdkType: "Python"
+        sdkType: "Python",
       },
     ],
     [
@@ -86,6 +84,7 @@ export const Builder = SDKDocsBuilder({
         checkGate: <CheckGate />,
         getConfig: <GetConfig />,
         getExperiment: <GetExperiment />,
+        getPrompt: <GetPrompt />,
         logEvent: <LogEvent />,
         hideAsyncDisclaimer: true,
         getFeatureGate: <GetFeatureGate />,
@@ -117,10 +116,9 @@ export const Builder = SDKDocsBuilder({
     [OutputLogger, { content: <OutputLoggerContent /> }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

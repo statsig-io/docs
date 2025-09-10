@@ -18,28 +18,32 @@ In most cases though, Fieller Interval results are very similar to results from 
 
 ## Calculation
 
-### 1 Determine if a Fieller Interval is Well-Defined
+### 1: Determine if a Fieller Interval is Well-Defined
 
-Before proceeding to applying Fieller’s Theorem, we need to check that the denominator of the relative lift metric $\overline{X_C}$ is significantly distinct from 0.
+Before proceeding to applying Fieller’s Theorem, we need to check that the denominator of the relative lift metric $\Large \overline{X_C}$ is significantly distinct from 0.
 
-We do this by calculating the parameter g:
-$$g = \frac{Z_{\alpha/2}^2 \cdot var(X_C)}{(n_C-1) \cdot \overline{X_C}^2}$$
+We do this by calculating the parameter $\Large g$:
+
+$$
+\Large
+g = \frac{Z_{\alpha/2}^2 \cdot var(X_C)}{(n_C-1) \cdot \overline{X_C}^2}
+$$
 
 Where:
-$Z_{\alpha/2}$ is the critical value associated with the desired confidence level
-$var(X_C)$ is the variance of the control group metric values
-$n_C$ is the number of units in the control group
-$\overline{X_C}$ is the mean of the control group metric values
+$\Large Z_{\alpha/2}$ is the critical value associated with the desired confidence level $\Large var(X_C)$ is the variance of the control group metric values $\Large n_C$ is the number of units in the control group $\Large \overline{X_C}$ is the mean of the control group metric values
 
-When g < 1, the control mean is significantly different from 0, and we can use Fieller intervals.
+When $\Large g$ < 1, the control mean is significantly different from 0, and we can use Fieller intervals.
 
-### 2A Apply Fieller Interval Formula
+### 2A: Apply Fieller Interval Formula
 
 Since the control and test group results are independent of each other, covariance terms in Fieller's Theorem can be dropped.
 
-$$CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})$$
+$$
+\Large
+CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})
+$$
 
-### 2B Edge Case: Control Mean not Statistically Distinct from Zero
+### 2B: Edge Case: Control Mean not Statistically Distinct from Zero
 
 In rare cases (less than 5\% of observed metric comparisons on Statsig), g $\geq$ 1, which means that the control group’s mean is not statistically distinguishable from 0.
 
@@ -47,7 +51,10 @@ When $\overline{X_C}$ is not statistically different from zero, the denominator 
 
 When this happens, we surface the relative lift observed during the experiment.
 
-$$ \% \Delta \overline{X} = \frac{\overline{X_T}-\overline{X_C}}{\overline{X_C}}$$
+$$
+\Large
+\% \Delta \overline{X} = \frac{\overline{X_T}-\overline{X_C}}{\overline{X_C}}
+$$
 
 ## Enabling on Statsig
 

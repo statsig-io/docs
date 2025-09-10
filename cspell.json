@@ -582,6 +582,8 @@
     "sandboxing",
     "uuidv",
     "Unstarted",
+    "Clickhouse",
+    "clickhouse",
     "layerid",
     "expid",
     "parameterizing",
@@ -720,7 +722,11 @@
     "downsample",
     "multiset",
     "sublinear",
-    "targetable"
+    "targetable",
+    "Hajnal",
+    "Hajnal's",
+    "Cohen",
+    "Cohen's"
   ],
   "ignorePaths": [
     "node_modules/**",
