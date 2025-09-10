@@ -719,7 +719,8 @@
     "cutover",
     "downsample",
     "multiset",
-    "sublinear"
+    "sublinear",
+    "targetable"
   ],
   "ignorePaths": [
     "node_modules/**",
