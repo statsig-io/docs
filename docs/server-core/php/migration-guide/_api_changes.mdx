@@ -1,0 +1,30 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+### Key Package and Class Changes
+
+| Feature | PHP Core SDK | Legacy PHP SDK | Status |
+|---------|---------------|----------------|--------|
+| Package | `statsig/statsig-php-core` | Legacy PHP package | ⚠️ Changed |
+| Class | `Statsig\Statsig` | `Statsig\StatsigServer` | ⚠️ Changed |
+| Import | `use Statsig\Statsig;` | `use Statsig\StatsigServer;` | ⚠️ Changed |
+| Options | `StatsigOptions` with adapters | `StatsigOptions` with required adapters | ⚠️ Different structure |
+| User | `StatsigUser` | `StatsigUser` | ✓ Same |
+| Initialize | `$statsig->initialize()` | Constructor initialization | ⚠️ Different |
+| Check Gate | `$statsig->checkGate()` | `$statsig->checkGate()` | ✓ Same |
+| Get Config | `$statsig->getDynamicConfig()` | `$statsig->getConfig()` | ⚠️ Renamed |
+| Get Experiment | `$statsig->getExperiment()` | `$statsig->getExperiment()` | ✓ Same |
+| Get Layer | `$statsig->getLayer()` | `$statsig->getLayer()` | ✓ Same |
+| Log Event | `$statsig->logEvent()` | `$statsig->logEvent()` | ✓ Same |
+| Shutdown | `$statsig->shutdown()` | Manual cleanup | ⚠️ Added |
+| Flush Events | `$statsig->flushEvents()` | Via adapters | ⚠️ Different |
+
+### Cron Job Migration
+
+| Legacy PHP SDK | PHP Core SDK | Status |
+|----------------|--------------|--------|
+| `sync.php` script | `StatsigSyncConfig.php` script | ⚠️ Changed |
+| `send.php` script | `StatsigFlushEvents.php` script | ⚠️ Changed |
+| Manual adapter configuration | Built-in local file adapters | ⚠️ Simplified |
+
+For more details on the new API, see [PHP Core SDK documentation](/server-core/php-core).

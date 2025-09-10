@@ -1008,8 +1008,20 @@ const sidebars: SidebarsConfig = {
             },
             {
               className: "php-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server-core/php-core",
+              type: "category",
+              label: "PHP",
+              items: [
+                {
+                  type: "doc",
+                  id: "server-core/php-core",
+                  label: "PHP Core SDK",
+                },
+                {
+                  type: "doc",
+                  id: "server-core/php/migration-guide/index",
+                  label: "Migration Guide",
+                },
+              ],
             },
             {
               className: "golang-icon sidebar-icon sdk-sidebar-icon",
