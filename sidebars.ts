@@ -794,6 +794,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/quickstart",
+        "sdks/identify-users",
         "quickstarts/check-gate",
         "guides/abn-tests",
         "guides/logging-events",

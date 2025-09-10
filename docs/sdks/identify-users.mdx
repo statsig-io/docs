@@ -1,0 +1,69 @@
+---
+sidebar_label: Identify Users
+title: Identify Users
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-07-28
+---
+
+## Why identify users?
+
+When you run an experiment, rollout a feature, or log events - user objects are the core piece of information that determine:
+- Which bucket a user should be in
+- If a user should pass or fail a feature gate
+- How many unique users triggered an event
+
+User objects are also needed for experiment analysis - users are allocated to the test or control group by an ID, and the Statsig stats engine uses the same IDs on the users' events to determine the differnce in metrics between test and control. Adding user attributes looks different across Client and Server SDKs:
+
+## Identifying users in Client SDKs
+
+In client SDKs, the SDK is "initialized" for a single User Object at any one time. If you try to call a method like checkGate or getExperiment before your SDK is initialized, you won't get expected results - and you'll see warnings in the Statsig Console when you look at the diagnostics tab of any gate or experiment. Initialization requires a network request, which you fire by calling the initialize() method, or in React, useClientAsyncInit(). 
+
+This means that in client apps with asynchronous logic, you'll want to wait for initialization to complete before you check a gate. For example, in React: 
+
+```jsx
+export function App() {
+  const { client, isLoading } = useClientAsyncInit(
+    YOUR_CLIENT_KEY,
+    { userID: 'a-user' },
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <StatsigProvider client={client}>
+      <YourComponent />
+    </StatsigProvider>
+  );
+}
+```
+
+This also means that if you initialize with a certain user object, and the user object changes (e.g., the user logs in and now has a userID) then you'll need to call the updateUser method, which calls to the Statsig Server to refresh the values. For example, in React: 
+
+```jsx
+const { user, updateUserSync } = useStatsigUser();
+
+return <div>
+  <p>Current User: { user.userID }</p>
+
+  <button onClick={() => updateUserSync({userID: 'some-other-user'})}>
+    Update User
+  </button>
+</div>;
+```
+
+If you don't update the user before checking gates or experiments, they'll evaluate using the previous user object you initialized with, which can lead to unexpected behavior. 
+
+Any attribute added to the user object is targetable in the Statsig console - if you'd like to target users based on their email, companyID, or other attributes - add them to your User object.
+
+
+## Identifying users in Server SDKs
+
+In Server SDKs, you pass a User Object to each logEvent, checkGate or getFeatureGate call. The Server SDK holds the necessary rules in memory to enable correct evaluation. Every time you call one of these methods - you should pass all of the attributes needed to evaluate your gate or experiment. The Statsig SDKs don't "remember" or enrich previous attributes seen.
+
+## Enriched attributes
+
+The SDK and Statsig Servers attempt to enrich useful attributes onto each user object to give you more targeting power. On client SDKs, we add a StableID, which identifies a unique device. We also enrich properties like country, browser, appVersion and more, depending on the SDK you're using. See the [StatsigUser object](/concepts/user) docs for more information.
