@@ -1,56 +1,46 @@
-import React, {useState} from "react";
+import React, { useMemo, useState } from "react";
 import Icon from "@mui/material/Icon";
+import IconButton from "@mui/material/IconButton";
 
-export const ChatBar = ({placeholder = "What will you like to build..."}) => {
-  // Internal state management
+export const ChatBar = ({ placeholder = "What will you like to build..." }) => {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!query.trim()) {
-      return;
-    }
-
-    const encodedQuery = encodeURIComponent(query.trim());
-    const url = `https://statsig.sampleapp.ai?q=${encodedQuery}`;
-    window.open(url, "_blank");
-    return;
-  };
+  const buttonDisabled = useMemo(() => !query.trim(), [query]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        zIndex: "10",
-        borderRadius: "0.75rem",
-        backgroundColor:
-          "var(--docsearch-searchbox-background, var(--ifm-color-emphasis-100))",
-        border: "solid 1px #d8d8d8",
-        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
-        width: "100%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        // Match grid card gutters (cards use 16px external margins)
-        // so the chat bar aligns with the visual grid content width
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.25rem",
-        paddingLeft: "0.75rem",
-        paddingRight: "0.75rem",
-        paddingTop: "0.75rem",
-        paddingBottom: "1.25rem",
+    <form
+      target="_blank"
+      action="https://trystatsig.sampleapp.ai"
+      onSubmit={(e) => {
+        const form = e.target;
+        if (!form.checkValidity()) {
+          e.preventDefault();
+        }
       }}
     >
-      {/* Input area */}
       <div
         style={{
+          position: "relative",
+          zIndex: "10",
+          borderRadius: "0.75rem",
+          backgroundColor:
+            "var(--docsearch-searchbox-background, var(--ifm-color-emphasis-100))",
+          border: "solid 1px #d8d8d8",
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
+          width: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
           display: "flex",
           gap: "0.5rem",
           alignItems: "flex-start",
+          paddingLeft: "0.75rem",
+          paddingRight: "0.75rem",
+          paddingTop: "0.75rem",
+          paddingBottom: "1.25rem",
         }}
       >
         <textarea
+          name="q"
           placeholder={placeholder}
           style={{
             flex: "1 1 0%",
@@ -76,66 +66,51 @@ export const ChatBar = ({placeholder = "What will you like to build..."}) => {
             fontFamily:
               "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Ubuntu', sans-serif",
           }}
+          required
           value={query}
           onChange={(e) => {
             if (e && e.target) {
               const newValue = e.target.value;
-              console.log("onChange", newValue);
               setQuery(newValue);
             }
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
-              handleSubmit(e);
+              const form = e.target.form;
+              if (form.checkValidity()) {
+                form.submit();
+              }
             }
           }}
           rows={1}
         />
 
         {/* Submit button */}
-        {query.length > 0 && (
-          <button
-            type="button"
-            style={{
-              height: "2rem",
-              width: "2rem",
-              borderRadius: "0.75rem",
+        <IconButton
+          type="submit"
+          size="small"
+          disabled={buttonDisabled}
+          sx={{
+            transition: "opacity 0.2s ease-out",
+            backgroundColor: "var(--ifm-color-primary)",
+            color: "#fff",
+            opacity: 1,
+            "&.Mui-disabled": {
               backgroundColor: "var(--ifm-color-primary)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#FFFFFF",
-              transition: "background-color 0.15s ease-in-out",
-              border: "none",
-              cursor: "pointer",
-              opacity: !query.trim() ? 0.5 : 1,
-            }}
-            disabled={!query.trim()}
-            onClick={handleSubmit}
-            onMouseEnter={(e) => {
-              if (!e.target.disabled) {
-                e.target.style.backgroundColor =
-                  "var(--ifm-color-primary-dark)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!e.target.disabled) {
-                e.target.style.backgroundColor = "var(--ifm-color-primary)";
-              }
-            }}
-          >
-            <Icon
-              style={{
-                color: "white",
-                fontSize: "1.2rem",
-              }}
-            >
-              arrow_upward
-            </Icon>
-          </button>
-        )}
+              transition: "opacity 0.2s ease-in",
+              color: "#fff",
+              pointerEvents: "none",
+              opacity: 0,
+            },
+            "&:hover": {
+              backgroundColor: "var(--ifm-color-primary-dark)",
+            },
+          }}
+        >
+          <Icon>arrow_forward</Icon>
+        </IconButton>
       </div>
-    </div>
+    </form>
   );
 };
