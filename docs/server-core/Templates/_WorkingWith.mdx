@@ -20,18 +20,50 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 
 <div>{props.getExperiment}</div>
 
+### Getting a Prompt
+
+{props.getPrompt ? (
+
+<>
+<p>
+  Statsig can act as the control plane for your LLM prompts - allowing you to version and change them without deploying code. Learn more <a href="/ai-evals/overview/">here</a>. This API returns the full Prompt object, including all
+  customized parameters such as model, temperature, topP, max tokens, and more.
+  For example:
+</p>
+
+<div>{props.getPrompt}</div>
+</>
+) : <p>
+  <em>
+    Prompts are not yet available for this sdk. Need it now? Let us
+    know in <a href="https://statsig.com/slack">Slack</a>.
+  </em>
+</p>
+}
+
 ### Parameter Stores
 
 {props.paramStores ? (
-  <>
-    <p>
-      Sometimes you don't know whether you want a value to be a Feature Gate, Experiment, or Dynamic Config yet. If you want on-the-fly control of that outside of your deployment cycle,
-      you can use <a href="/client/concepts/parameter-stores/">Parameter Stores</a> to define a parameter that can be changed into at any point in the Statsig console. Parameter Stores are optional, but parameterizing your application can prove very useful for future flexibility and can even allow non-technical Statsig users to turn parameters into experiments.
-    </p>
-    <div>{props.paramStores}</div>
-  </>
-) : (
-  <p><em>Parameter stores are not yet available for this sdk.  Need it now? Let us know in <a href="https://statsig.com/slack">Slack</a>.</em></p>
+
+<>
+  <p>
+    Sometimes you don't know whether you want a value to be a Feature Gate,
+    Experiment, or Dynamic Config yet. If you want on-the-fly control of that
+    outside of your deployment cycle, you can use{" "}
+    <a href="/client/concepts/parameter-stores/">Parameter Stores</a> to define
+    a parameter that can be changed into at any point in the Statsig console.
+    Parameter Stores are optional, but parameterizing your application can prove
+    very useful for future flexibility and can even allow non-technical Statsig
+    users to turn parameters into experiments.
+  </p>
+  <div>{props.paramStores}</div>
+</>
+) : (<p>
+  <em>
+    Parameter stores are not yet available for this sdk. Need it now? Let us
+    know in <a href="https://statsig.com/slack">Slack</a>.
+  </em>
+</p>
 )}
 
 ### Logging an Event

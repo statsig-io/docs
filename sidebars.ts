@@ -235,7 +235,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
                 "guides/seo-testing",
               ],
@@ -429,9 +428,13 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
+          link:{
+            type: "doc",
+            id: "infra-analytics/overview",
+          },
           items: [
-            "infra-analytics/overview"
-          ]
+            "infra-analytics/logs-explorer",
+          ],
         },
         {
           type: "category",
@@ -470,6 +473,7 @@ const sidebars: SidebarsConfig = {
             id: "ai-evals/overview",
           },
           items: [
+            "ai-evals/getting-started",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
             "ai-evals/online-evals",
@@ -754,6 +758,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [
@@ -1211,6 +1216,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/databricks",
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/trino",
+        "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
         "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },
@@ -1385,14 +1391,18 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Other Features",
-      collapsed: true,
+      collapsed: false,
+      collapsible: false,
       items: [
         "statsig-warehouse-native/features/mex-on-warehouse-native",
         {
           type: "category",
           label: "Geotests",
+          link: {
+            type: "doc",
+            id: "statsig-warehouse-native/geotests/introduction",
+          },
           items: [
-            "statsig-warehouse-native/geotests/introduction",
             "statsig-warehouse-native/geotests/geotests-setup",
             "statsig-warehouse-native/geotests/methodology",
           ],

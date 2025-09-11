@@ -17,11 +17,12 @@ Single Sign-On (SSO) with OIDC can be configured for your Statsig Organization t
 
 ## Supported Providers
 We support any Identity Provider (IdP) that implements the OIDC protocol for SSO.
-We have custom documentation for the following OIDC providers:
+We have custom documentation for some of the following OIDC providers:
 - [Okta](okta_sso.md)
 - [Microsoft Entra ID (AzureAD)](azuread.md)
 - [Google](google.md)
 - Ping Identity
+  - Be sure to include `openid` and `email` in the scopes
 - OneLogin
 
 ## Configuration
