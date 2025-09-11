@@ -62,11 +62,15 @@ By default if you have turned on "Reviews Required" for your Project, reviews wi
 If you prefer to leverage an internal approvals workflow or, for example, want to run proposed config changes through a suite of automated tests before they go live, you can leverage **Pre-commit Webhooks**. Pre-commit Webhooks enable you to listen for config changes on the Statsig side, route those changes through internal approval processes, test suites, etc. and then leverage Console API to send back either a review approval or rejection before final changes can be committed. 
 
 To set up the webhook itself, navigate to **Settings** -> **Integrations** -> **Webhook**. 
-<img width="1590" height="1179" alt="Screen Shot 2025-08-12 at 4 28 12 PM" src="https://github.com/user-attachments/assets/fe50bc53-9a91-44f8-94c6-adca738ee88d" />
+<img width="797" height="898" alt="Screen Shot 2025-09-11 at 1 45 28 PM" src="https://github.com/user-attachments/assets/c798d95a-5643-4746-b34c-bfdf9eb7e68d" />
 
 To enable the Pre-commit Webhook experience: 
 1. Configure change validations via Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
-2. Configure the experience for Statsig Console users via **Settings** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes. 
+2. Configure the experience for Statsig Console users via **Settings** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes.
+
+<img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="https://github.com/user-attachments/assets/49c408da-0910-4a90-9ee3-7d1e114c9013" />
+<img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="https://github.com/user-attachments/assets/a01617b2-3bb0-4f20-a505-b9318dd220a7" />
+
 
 Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly. 
 
