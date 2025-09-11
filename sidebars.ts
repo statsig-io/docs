@@ -428,7 +428,13 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          items: ["infra-analytics/overview"],
+          link:{
+            type: "doc",
+            id: "infra-analytics/overview",
+          },
+          items: [
+            "infra-analytics/logs-explorer",
+          ],
         },
         {
           type: "category",
