@@ -22,7 +22,7 @@ Once connected, choose a Slack channel where you would like to receive Statsig's
 ![image](/img/slack-notifs.png)
 
 ## Team Notifications
-To receive your Statsig team's notifications in a share Slack channel, go to a Team's Settings and navigate to Slack Notifications section.<br />
+To receive your Statsig team's notifications in a shared Slack channel, go to a Team's Settings and navigate to Slack Notifications section.<br />
 ![image](/img/team-slack-settings.png)
 
 Add a Slack channel where you want to send your team's notifications, filter the relevant Team, and choose the notifications you want to subscribe to.
