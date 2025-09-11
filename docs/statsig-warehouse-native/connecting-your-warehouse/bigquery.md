@@ -10,13 +10,17 @@ last_update:
 
 ## Overview
 
-To set up connection with BigQuery, we need the following:
+To set up a connection with BigQuery, there are two supported methods:
 
-- Grant Permissions to a Statsig-owned Service Account
+- Grant Permissions to a Statsig-owned Service Account 
+- Provide Credentials for Your Own First-Party Service Account
+
+In both cases, you'll need: 
+
 - Your BigQuery Project ID
 - The dataset Statsig will use to save temporary tables and materialized results
 
-Start by enabling the BigQuery source in your project settings.
+Once you’ve chosen your method, start by enabling the BigQuery source in your project settings.
 
 ## Grant Permissions to Statsig's Service Account
 
@@ -37,6 +41,20 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 
 Now the service account should have the required permissions to run queries and materialize results.
 
+## Using a First Party Service Account
+1. Speak with your Statsig technical point of contact and request enabling 1st party service account connectivity for Big Query
+
+2. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
+
+![BQ 1st party service account](/img/1stprtybq.png)
+
+3. Create a new JSON key (which will download a JSON file)
+![BQ 1st party service account](/img/1stprtybq2.png)
+![BQ 1st party service account](/img/1stprtybq3.png)
+
+4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
+
+
 ## BigQuery Project ID
 
 Find your BigQuery Project ID below
@@ -55,18 +73,3 @@ C01d5f80s
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
-
-## Using a First Party Service Account
-1. Speak with your Statsig technical point of contact and request enabling 1st party service account connectivity for Big Query
-
-2. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
-
-![BQ 1st party service account](/img/1stprtybq.png)
-
-3. Create a new JSON key (which will download a JSON file)
-![BQ 1st party service account](/img/1stprtybq2.png)
-![BQ 1st party service account](/img/1stprtybq3.png)
-
-4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
-
-   
