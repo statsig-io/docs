@@ -70,7 +70,7 @@ GROUP BY group_id;
 
 Ratio metrics require adjustment due to potential unit-level covariance between the numerator and the denominator. Statsig uses the delta method to estimate this adjustment.
 
-By default, Statsig only includes numerators from metrics with non-null, non-zero denominators. This is configurable in the advanced settings.
+By default, Statsig treats ratio metrics as a conversion rate (unordered). That is, we only count numerator events for units that also performed the denominator event. This is configurable in Advanced settings, where you can switch to a simple ratio.
 
 ## Options
 
@@ -79,7 +79,7 @@ By default, Statsig only includes numerators from metrics with non-null, non-zer
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Winsorization
   - Specify a lower and/or upper percentile bound to winsorize at. Winsorization and its thresholds can be specified for both the numerator and denominator of the ratio metric independently. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
-- Include units which do not have a denominator
-  - Control whether you want to include numerators from units which don't have a denominator value
+- Treat as conversion rate (unordered). 
+  - Control whether to include numerator events only if the unit also performed the denominator event, regardless of order. Uncheck for a simple ratio, which counts numerator events for all units, even if they never performed the denominator event.
 - [Baked Metrics](../features/cohort-metrics.md)
   - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
