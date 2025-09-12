@@ -73,13 +73,12 @@ Ratio metrics require adjustment due to potential unit-level covariance between 
 By default, Statsig treats ratio metrics as a conversion rate (unordered). That is, we only count numerator events for units that also performed the denominator event. This is configurable in Advanced settings, where you can switch to a simple ratio.
 
 ## Options
-
+- Treat as conversion rate (unordered). 
+  - Control whether to include numerator events only if the unit also performed the denominator event, regardless of order. Uncheck for a simple ratio, which counts numerator events for all units, even if they never performed the denominator event.
 - [Cohort Windows](../features/cohort-metrics.md) (Numerator and Denominator)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
 - Winsorization
   - Specify a lower and/or upper percentile bound to winsorize at. Winsorization and its thresholds can be specified for both the numerator and denominator of the ratio metric independently. All values below the lower threshold, or above the upper threshold, will be clamped to that threshold to reduce the outsized impact of outliers on your analysis
-- Treat as conversion rate (unordered). 
-  - Control whether to include numerator events only if the unit also performed the denominator event, regardless of order. Uncheck for a simple ratio, which counts numerator events for all units, even if they never performed the denominator event.
 - [Baked Metrics](../features/cohort-metrics.md)
   - [Baked Metrics](../features/cohort-metrics.md) allow you to specify how long a metric needs to mature. This is common in situations like chargebacks or cancellations. Statsig will delay loading the data until the window has elapsed, and only calculate pulse results for that metric if a unit's metric has matured.
