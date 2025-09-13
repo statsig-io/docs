@@ -124,9 +124,9 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    }
    ```
 
-2. Create an IAM Role or IAM User
+2. Create an [IAM Role](?iam-method=iam-role) or [IAM User](?iam-method=iam-user)
 
-<Tabs>
+<Tabs queryString="iam-method">
 <TabItem value="iam-role" label="IAM Role" default>
 
 With an IAM Role, Statsig will assume your created IAM Role via a Statsig Service Account. The Statsig Account ID for this service account is provided in your Data Connection settings in the Statsig Console. Statsig will run queries directly on behalf of this IAM Role.
