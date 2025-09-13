@@ -87,7 +87,8 @@ Below are a few examples of some of the config change payloads. To best capture 
 {
   "user": {
       "name": "Test User",
-      "email": "testuser@email.com"
+      "email": "testuser@email.com",
+      "userID": "user_12345"
   },
   "timestamp": 1709660061095,
   "eventName": "statsig::config_change",
@@ -95,7 +96,8 @@ Below are a few examples of some of the config change payloads. To best capture 
       "type": "Gate",
       "name": "layout_v2",
       "description": "Description: Change default page layout",
-      "action": "created"
+      "action": "created",
+      "environment": "production"
   }
 }
 ```
@@ -106,7 +108,8 @@ Below are a few examples of some of the config change payloads. To best capture 
 {
   "user": {
       "name": "Test User",
-      "email": "testuser@email.com"
+      "email": "testuser@email.com",
+      "userID": "user_12345"
   },
   "timestamp": 1709658507446,
   "eventName": "statsig::config_change",
@@ -114,7 +117,8 @@ Below are a few examples of some of the config change payloads. To best capture 
       "type": "Experiment",
       "name": "heading_test",
       "description": "- Updated experiment settings\n    - Groups updated: control, test\n    - Parameters added: heading\n    - Parameters updated: directives",
-      "action": "updated"
+      "action": "updated",
+      "environment": "production"
   }
 }
 ```
