@@ -10,7 +10,7 @@ export const ChatBar = ({ placeholder = "What will you like to build..." }) => {
   return (
     <form
       target="_blank"
-      action="https://trystatsig.sampleapp.ai"
+      action="https://statsig.sampleapp.ai"
       onSubmit={(e) => {
         const form = e.target;
         if (!form.checkValidity()) {
