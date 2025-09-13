@@ -1,0 +1,67 @@
+## Server-Side Rendering (SSR) Considerations
+
+When using Astro with SSR enabled, you'll need to handle Statsig initialization carefully since the client SDK is designed for browser environments.
+
+### Client-Only Initialization
+
+Ensure Statsig only initializes on the client side:
+
+```astro
+---
+// src/components/statsig.astro
+---
+
+<script is:inline>
+  // Only initialize in browser environment
+  if (typeof window !== 'undefined') {
+    import('@statsig/js-client').then(({ StatsigClient }) => {
+      const statsig = new StatsigClient(
+        'client-YOUR_CLIENT_KEY_HERE',
+        { userID: 'user-123' }
+      );
+
+      statsig.initializeAsync().then(() => {
+        window.statsig = statsig;
+      });
+    });
+  }
+</script>
+```
+
+### Handling Server vs Client Rendering
+
+For components that need to work in both environments:
+
+```astro
+---
+// src/components/ConditionalFeature.astro
+const { fallbackContent = 'Loading...' } = Astro.props;
+---
+
+<div id="conditional-feature">
+  {fallbackContent}
+  
+  <script>
+    function updateFeature() {
+      if (typeof window !== 'undefined' && window.statsig) {
+        const enabled = window.statsig.checkGate('ssr_feature');
+        const container = document.getElementById('conditional-feature');
+        
+        if (enabled) {
+          container.innerHTML = '<p>Feature is enabled!</p>';
+        } else {
+          container.innerHTML = '<p>Feature is disabled</p>';
+        }
+      }
+    }
+    
+    // Try to update immediately, then retry if needed
+    updateFeature();
+    setTimeout(updateFeature, 1000);
+  </script>
+</div>
+```
+
+:::tip
+When using SSR, always provide meaningful fallback content that will be shown during server rendering and before Statsig initializes on the client.
+:::
