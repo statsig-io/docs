@@ -124,7 +124,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
    }
    ```
 
-2. Create an [IAM Role](?iam-method=iam-role) or [IAM User](?iam-method=iam-user)
+2. Create an IAM Role or IAM User:
 
 <Tabs queryString="iam-method">
 <TabItem value="iam-role" label="IAM Role" default>
