@@ -1,6 +1,29 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+:::warning Network Behavior & Performance Considerations
+
+By default, every `Statsig.initialize()` or `Statsig.initializeAsync()` call will make a network request to Statsig servers, even without configuring `StatsigOptions`. This can impact your app's performance and reliability:
+
+- **Throttling Risk**: Spiky or sudden increases in `initialize()` calls can cause your requests to be throttled by Statsig servers
+- **Network Dependency**: Each initialization requires a successful network connection to get the latest feature flag values
+
+To optimize initialization behavior, consider using `StatsigOptions` to configure caching, timeouts, and bootstrap values.
+
+:::
+
+:::caution Application Lifecycle Integration
+
+Be conscious of where you integrate `Statsig.initialize()` in your app lifecycle:
+
+- **Application.onCreate() Considerations**: If you integrate with `Application.onCreate()`, be aware that notification rendering can invoke `Application.onCreate()` even without the user tapping or opening the app
+- **Background Initialization**: This means your app may initialize Statsig and make network requests in the background when notifications are received
+- **Resource Usage**: Consider the impact on battery life and data usage from background initialization
+
+For better control, consider initializing Statsig only when the user actively opens your app, rather than in `Application.onCreate()`.
+
+:::
+
 <Tabs
   groupId="android-sdk-lang-choice"
   defaultValue="java"
