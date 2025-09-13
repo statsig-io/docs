@@ -235,7 +235,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
                 "guides/seo-testing",
               ],
@@ -429,7 +428,13 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          items: ["infra-analytics/overview"],
+          link:{
+            type: "doc",
+            id: "infra-analytics/overview",
+          },
+          items: [
+            "infra-analytics/logs-explorer",
+          ],
         },
         {
           type: "category",
@@ -753,6 +758,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [

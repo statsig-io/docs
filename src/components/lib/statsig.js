@@ -25,3 +25,21 @@ export function useExperiment(name) {
   }, [name, statsig]);
   return exp;
 }
+
+export function useDynamicConfig(name) {
+  const statsig = getStatsig();
+  const [config, setConfig] = useState(
+    statsig.loadingState === "Ready" ? statsig.getDynamicConfig(name) : null
+  );
+  useEffect(() => {
+    function handler() {
+      setConfig(statsig.getDynamicConfig(name));
+    }
+
+    statsig.on("values_updated", handler);
+    return () => {
+      statsig.off("values_updated", handler);
+    };
+  }, [name, statsig]);
+  return config;
+}
