@@ -370,6 +370,10 @@ const config: Config = {
             from: "/ai-ml/ai-prompt-experiment",
             to: "/ai-evals/overview",
           },
+          {
+            from: "/experiments-plus/bayesian-deprecated/",
+            to: "/experiments-plus/bayesian/",
+          },
         ],
       },
     ],
