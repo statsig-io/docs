@@ -434,6 +434,7 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "infra-analytics/logs-explorer",
+            "infra-analytics/topline-alerts-logs",
           ],
         },
         {
