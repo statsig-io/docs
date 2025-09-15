@@ -41,6 +41,16 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`disable_user_agent_parsing`**: 
   Disables user agent parsing. Set to `true` to improve performance if device/browser-based targeting is not needed.
 
+- **`wait_for_country_lookup_init`**: 
+  Default: false
+  
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time.
+
+- **`wait_for_user_agent_init`**: 
+  Default: false
+  
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+
 - **`enable_id_lists`**: 
   Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
@@ -77,7 +87,9 @@ $options = new StatsigOptions(
     600000, // specs_sync_interval_ms
     "INFO", // output_log_level
     true, // disable_country_lookup (for better performance)
-    true  // disable_user_agent_parsing (for better performance)
+    true, // disable_user_agent_parsing (for better performance)
+    false, // wait_for_country_lookup_init
+    false  // wait_for_user_agent_init
 );
 
 // Pass the options object into Statsig constructor
