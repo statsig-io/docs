@@ -7,36 +7,33 @@ slug: /infra-analytics/overview
 keywords:
   - owner:laurel
 last_update:
-  date: 2025-08-25
+  date: 2025-09-12
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 # Infra Analytics Overview
 
-**[Infra Analytics](https://statsig.com/infra-analytics)** helps you understand and protect the health of your system through logs, metrics, and traces. It provides a unified interface to explore, query, and alert on signals.
+**[Infra Analytics](https://statsig.com/infra-analytics)** helps you monitor and debug the health of your services directly inside Statsig. It pulls in logs, metrics, and alerts so you get system-level observability in the same place you analyze product outcomes.
 
-Logs Explorer is the primary surface of Infra Analytics.
-
----
-## Logs Explorer  
-
-Logs Explorer provides a way for you to search and analyze all of your product’s logs in one place. It is designed to help you quickly find the signals you care about, whether you’re debugging an incident, tracking regressions, or exploring system behavior.  
-
-### Searching in Logs Explorer  
-To identify the entries that matter, you can either search directly through a custom query or use our point-and-click query constructor. 
-
-Once you’ve found something of interest, you can filter and group by metadata fields (such as service, host, or status code) to uncover patterns and trends.  
-- **Filtering**: Narrow down logs to the subset relevant to your investigation.  
-- **Grouping**: Aggregate logs across dimensions (service, region, status, browser, etc.).  
-- **Visualization**: Plot log groupings over time to detect spikes, regressions, or unusual changes.  
-
-### Visualizations in Logs Explorer  
-In Log Explorer, visualizations make it easy to move beyond raw text logs into structured insights. For example, you can group logs by browser name and track how distributions change over time. These visualizations let you spot anomalies and shifts at a glance.  
-
-### Getting Started with Log Explorer  
-To get started with Log Explorer, follow the [OTEL onboarding guide](/server/concepts/open_telemetry) to set up log ingestion, then navigate to **Infra Analytics → Log Explorer** in the Statsig sidebar to begin exploring your logs. 
+What you can do:  
+- Search and analyze logs to investigate issues  
+- Collect metrics and traces through OpenTelemetry (OTEL)  
+- Create alerts tied to service health  
+- Connect infrastructure signals to product analytics for a unified understanding of impact  
 
 ---
-:::info
-Interested in Traces? Reach out in Slack to get access.
-:::
+
+## Feature Highlights  
+
+- **Logs Explorer**: Debug incidents with search, filters, and visualizations
+- **Topline Alerts**: Catch regressions and anomalies with log/metric-based triggers
+- **Metrics Explorer**: Inspect infrastructure metrics alongside product metrics
+
+---
+
+## Ready to Get Started?
+
+👉 [Set up OTEL ingestion](/server/concepts/open_telemetry) to start sending logs and metrics  
+👀 Traces are in limited preview — ping us in Slack if you’d like access
+
+---

@@ -4,6 +4,7 @@ title: Sample Apps
 ---
 
 import SampleAppCard from "@site/src/components/SampleAppCard";
+import {ChatBar} from "@site/src/components/SampleAppChatBar";
 
 ## Sample Applications
 
@@ -11,8 +12,16 @@ Explore sample applications built with Statsig to see how feature flags, experim
 
 <div
   style={{
+    paddingBottom: "20px",
+  }}
+>
+  <ChatBar placeholder="What would you like to build..." />
+</div>
+<div
+  style={{
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))"
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gap: "28px",
   }}
 >
   <SampleAppCard
