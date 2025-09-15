@@ -41,15 +41,15 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`disable_user_agent_parsing`**: 
   Disables user agent parsing. Set to `true` to improve performance if device/browser-based targeting is not needed.
 
-- **`wait_for_country_lookup_init`**: 
-  Default: false
+- **`init_timeout_ms`**: 
+  Default: 3000
   
-  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time.
+  Maximum time in milliseconds to wait for SDK initialization to complete. If initialization takes longer than this timeout, the SDK will continue to operate but may return default values until initialization completes.
 
-- **`wait_for_user_agent_init`**: 
+- **`fallback_to_statsig_api`**: 
   Default: false
   
-  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
 
 - **`enable_id_lists`**: 
   Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
@@ -89,7 +89,11 @@ $options = new StatsigOptions(
     true, // disable_country_lookup (for better performance)
     true, // disable_user_agent_parsing (for better performance)
     false, // wait_for_country_lookup_init
-    false  // wait_for_user_agent_init
+    false, // wait_for_user_agent_init
+    false, // disable_network
+    false, // disable_all_logging
+    3000, // init_timeout_ms
+    false  // fallback_to_statsig_api
 );
 
 // Pass the options object into Statsig constructor
