@@ -74,7 +74,7 @@ The adapter takes two arguments:
 - The `edgeConfigClient` you just created
 - The `edgeConfigItemKey` you were given when you created the integration (you can find it again in [Project Settings -> Integrations](https://console.statsig.com/integrations) - "vercel edge config")
 
-### 2. SDK Initialization
+### 3. SDK Initialization
 
 ```
 await statsig.initialize(
@@ -92,7 +92,7 @@ SDK initialization takes two arguments:
 - Your statsig secret key. This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console. This is used to authenticate your requests to the statsig backend. In this example, we've configured it as an environment variable
 - An options object. We are using the `dataAdapter` property to hook up the Edge Config to the SDK. We're also disabling the ID list sync to speed up initialization
 
-### 3. Checking a Gate
+### 4. Checking a Gate
 
 ```
 const result = statsig.checkGateSync(
@@ -105,7 +105,7 @@ const result = statsig.checkGateSync(
 
 This is a gate check in code. The first parameter is the `StatsigUser` object you are checking, and the second is the gate name. Refer to the [node sdk documentation](/server/nodejsServerSDK) for how to check other entities like experiments and dynamic configs. Here, we have created a user with a random userID for every evaluation to illustrate a gate with a partial rollout working.
 
-### 4. Flushing Events
+### 5. Flushing Events
 
 ```
 waitUntil(statsig.flush(1000));
