@@ -25,4 +25,4 @@ The following warehouses/tools are currently supported in Statsig Warehouse Nati
 - [Redshift](../connecting-your-warehouse/redshift.md)
 - [Trino](../connecting-your-warehouse/trino.md)
 - [Clickhouse](../connecting-your-warehouse/clickhouse.md)
-- [Fabric](connecting-your-warehouse/fabric.md)
+- [Fabric](../connecting-your-warehouse/fabric.md)
