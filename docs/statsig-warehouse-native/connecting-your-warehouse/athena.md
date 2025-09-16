@@ -1,5 +1,5 @@
 ---
-title: Athena
+title: Athena Connection
 slug: /statsig-warehouse-native/connecting-your-warehouse/athena
 sidebar_label: Athena
 keywords:

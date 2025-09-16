@@ -1,5 +1,5 @@
 ---
-title: Fabric Connection
+title: Fabric Connection [Beta]
 slug: /statsig-warehouse-native/connecting-your-warehouse/fabric
 sidebar_label: Fabric
 keywords:
