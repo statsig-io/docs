@@ -19,13 +19,11 @@ You will need to
 
 ## Add Statsig to your Fabric workspace
 
-1. On the [Fabric Workload Hub](https://app.fabric.microsoft.com/workloadhub/detail/Statsig.Statsig.Statsig?experience=fabric-developer), click the 'Add Workload' button to add Statsig to your selected workspace.
-![image](https://github.com/statsig-io/docs/blob/main/docs/assets/add_fabric_statsig_workload.png)
-
-2. Add Statsig as a new item in your Fabric workspace.
-
+1. On the [Fabric Workload Hub](https://app.fabric.microsoft.com/workloadhub/detail/Statsig.Statsig.Statsig?experience=fabric-developer), click the 'Add Workload' button to enable Statsig in your selected share workspace.
+![image](https://raw.githubusercontent.com/statsig-io/docs/refs/heads/main/docs/assets/add_fabric_statsig_workload.png)
+2. Add Statsig as a new item in your Fabric workspace
 3. Provide connection details to connect Statsig to your warehouse and data source
-![image](https://github.com/statsig-io/docs/blob/main/docs/assets/edit_fabric_statsig_warehouse_connection.png)
+![image](https://raw.githubusercontent.com/statsig-io/docs/refs/heads/main/docs/assets/edit_fabric_statsig_warehouse_connection.png)
 
 ## Creating a service principal
 The first step is to create a service principal and their associated credentials. You'll give Statsig access to this service principal to access Fabric resources. You should create a new service principal for Statsig, but you can use the same service principal to give Statsig access to multiple Fabric resources if necessary.
