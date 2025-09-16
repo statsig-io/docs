@@ -1,5 +1,5 @@
 ---
-title: Clickhouse [Beta]
+title: Clickhouse Connection [Beta]
 slug: /statsig-warehouse-native/connecting-your-warehouse/clickhouse
 sidebar_label: Clickhouse [Beta]
 keywords:
