@@ -64,4 +64,4 @@ You can use the `*` character as a wildcard in queries. A wildcard matches zero 
 | `@"log.file.path":"*/logs/pods/"`    | Path ends with `/logs/pods/`                       | `/mnt/storage/logs/pods/`                 |
 | `service:"api-*"`                      | Services with names starting with `api-`           | `api-gateway`, `api-auth`                 |
 | `message:"*timeout*"`                  | Log messages containing the word `timeout`         | `connection timeout`, `timeout exceeded`  |
-| `@message:""`                        | Return logs where the message field is **not null**| any log that has a `message` field        |
+| `@message!:""`                        | Return logs where the message field is **not null**| any log that has a `message` field        |
