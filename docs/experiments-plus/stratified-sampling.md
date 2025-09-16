@@ -10,45 +10,70 @@ last_update:
 
 ## What is Stratified Sampling
 
-Stratified sampling involves dividing the entire population into homogeneous groups called strata (plural for stratum). Random samples are then selected from each stratum. e.g. If you had  XS and XL customers and randomized them into two groups - Control and Test, you'd want both Control and Test to be balanced across XS and XL customers. You can also stratify based on a metric like Revenue/User. 
+Stratified sampling involves dividing the entire population into homogeneous groups called strata (plural for stratum). Random samples are then selected from each stratum. e.g. If you had XS and XL customers and randomized them into two groups - Control and Test, you'd want both Control and Test to be balanced across XS and XL customers. You can also stratify based on a metric like Revenue/User.
 
-With large numbers, randomization typically solves this. However in B2B scenarios and other relatively low volume or high variance scenarios, stratified sampling is useful to ensure this balance. Statsig supports both automated and manual stratified sampling. On tests where a tail-end of power users drive a large portion of an overall metric value, stratified sampling  meaningfully reduces false positive rates and makes your results more consistent and trustworthy. In our simulations, we saw around a 50% decrease in the variance of reported results.
+With large numbers, randomization typically solves this. However in B2B scenarios and other relatively low volume or high variance scenarios, stratified sampling is useful to ensure this balance. Statsig supports both automated and manual stratified sampling. On tests where a tail-end of power users drive a large portion of an overall metric value, stratified sampling meaningfully reduces false positive rates and makes your results more consistent and trustworthy. In our simulations, we saw around a 50% decrease in the variance of reported results.
 
 ## Automated Stratified Sampling
 
 ### How it works
+
 The Statsig SDKs use a _salt_ to randomize or bucket experiment subjects ([learn more](/faq#how-does-bucketing-within-the-statsig-sdks-work)). When you enable stratified sampling, we'll try n different salts (100 for now) and evaluate how "balanced" your groups. We evaluate this balance based on either a metric you pick - or an attribute you give us describing your experiment subjects. We pick the best salt from this set and save this as the salt to use. [Learn more](https://statsig.com/blog/introducing-stratified-sampling).
 ![image](https://github.com/statsig-io/docs/assets/31516123/99f72b83-9f14-45a3-aa6e-ffcbd6211ec7)
 
 The selection space for the salts is sufficiently large - stratifying multiple experiments on the same metric will not result in overlap. In the simulations we ran, the groups were as independent as expected which matched up with the literature here.
 
-
 ### Enabling Stratified Sampling
-You can enable this on experiment under Advanced Settings on the experiment setup page. There are two ways you can "stratify" on Statsig. 
-If you choose a metric to stratify using, we'll use that to balance the group. 
+
+You can enable this on experiment under Advanced Settings on the experiment setup page. There are two ways you can "stratify" on Statsig.
+If you choose a metric to stratify using, we'll use that to balance the group.
 ![image](https://github.com/statsig-io/docs/assets/31516123/0cfc499d-4fdf-44a8-ba2a-3537ba5bb904)
 
-If you instead choose an attribute or a classification (e.g. S, M, L, XL) we'll use that to balance the group. 
+If you instead choose an attribute or a classification (e.g. S, M, L, XL) we'll use that to balance the group.
+
 - On Statsig Cloud, you'll upload a CSV (in Beta)
 - On Statsig Warehouse Native, you'll use Entity Properties
-![image](https://github.com/statsig-io/docs/assets/31516123/102a839f-37fd-4443-807a-4b269f137490)
+  ![image](https://github.com/statsig-io/docs/assets/31516123/102a839f-37fd-4443-807a-4b269f137490)
 
-Once you press the Stratify button, we'll analyze a set of salts and pick the best one. 
+Once you press the Stratify button, we'll analyze a set of salts and pick the best one.
 ![image](https://github.com/statsig-io/docs/assets/31516123/412f5c78-8c4f-4f16-88d3-60d3d3555ffd)
 
+## FAQ and Best Practices
 
-### Manual assignment for Stratified Sampling
+- **What population is used when balancing?**
 
-When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is  meant for testing; overridden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. This will include the users you've manually overridden into each variant in all metric lift analyses. You can configure 100% of experiment participants into your test variants manually, or configure some subset of participants into variants manually and randomly assign the rest of your participants.
+  - When evaluating salts, Statsig computes balance using pre-experiment data for the entire targeted population of the experiment’s unit type (e.g., all `userID`s or all `customerID`s) over the selected lookback window. There is no filtering on exposure because the experiment has not started yet.
+
+- **How are new units handled after stratification?**
+
+  - Units that were not present in the pre-experiment data are still assigned deterministically by the chosen salt, i.e., effectively at random with respect to the balancing metric. They do not influence the salt selection and may introduce some drift from the initial balance.
+
+- **Should I use stratified sampling for every experiment?**
+
+  - Not necessarily. It’s most useful when you expect imbalance due to heterogeneous units (e.g., “whales”) or skewed metrics. The tradeoff is time/compute cost that scales with the number of units and adds steps before starting an experiment. If you don’t expect meaningful imbalance, a standard random split is generally recommended.
+
+- **Does salt evaluation assume 100% allocation? What about running at less than 100%?**
+
+  - Yes. All candidate salts are evaluated assuming 100% of the targeted population is allocated. If you then run the experiment at an allocation below 100%, random sampling of that subset can reintroduce imbalance (e.g., by chance, some high-impact units may fall disproportionately into one arm). For the period you care most about inference, prefer 100% allocation to preserve the intended balance. Lower allocations are best used briefly for safe rollouts rather than for the full experiment duration.
+
+- **Across candidate salts, is it the same set of users being evaluated?**
+
+  - Yes. Candidate salts are assessed over the same targeted population; only the randomization induced by the salt changes.
+
+- **How long does stratification take?**
+  - Duration depends on the number of units and the metric/source being queried. There is no fixed SLA; larger populations take longer.
+
+## Manual assignment for Stratified Sampling
+
+When setting up an experiment, you can configure overrides (e.g. force user X or Segment A into Control, force user Y or Segment B into Test). This is meant for testing; overridden users are excluded from experimental analysis in Pulse results. If you do want manual assignment for stratified sampling, you should check the _Include Overrides in Pulse_ checkbox. This will include the users you've manually overridden into each variant in all metric lift analyses. You can configure 100% of experiment participants into your test variants manually, or configure some subset of participants into variants manually and randomly assign the rest of your participants.
 
 :::note
 While you can add overrides for an ID type that is different than the ID type of the experiment, those ID evaluations will not be resolved to the id type of the experiment and will not contribute to pulse results.
 :::
 
-When you use the Statsig SDK for assignment, it takes care of randomization. When you control assignment of users, you're responsible for making sure users are balanced across experiment groups.   
+When you use the Statsig SDK for assignment, it takes care of randomization. When you control assignment of users, you're responsible for making sure users are balanced across experiment groups.
 
 ![image](https://user-images.githubusercontent.com/31516123/230964234-8cc81f66-f4f8-4f37-b6df-6d36d0d7ab98.png)
-
 
 ## Additional reading
 

@@ -27,6 +27,10 @@ You can find this information in your aws console within your specific cluster, 
 
 When you save the connection, we will run a series of tiny commands to test permissions -- e.g. creating a temp table, running a select/delete statement on that table, and then dropping that table.
 
+:::note
+The provided Service Account will require the following attributes: `enable_case_sensitive_identifier`, `enable_case_sensitive_super_attribute`. If these are not already set, Statsig will set them to TRUE upon setup completion.
+:::
+
 ## SSH Tunneling
 
 For Redshift connections, we also allow users to create an SSH tunnel into their Redshift cluster for a more secure and private access to the database.
