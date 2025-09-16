@@ -16,11 +16,14 @@ All you'll need is a table in your warehouse that has metric or event logging da
 
 Statsig will use your warehouse to store and analyze your experiment data; you have total control and visibility over the data itself. To connect your warehouse, visit your warehouse's setup page.
 
+- [Snowflake](../connecting-your-warehouse/snowflake.md)
+- [Athena](../connecting-your-warehouse/athena.md)
 - [BigQuery](../connecting-your-warehouse/bigquery.md)
 - [Databricks](../connecting-your-warehouse/databricks.md)
 - [Redshift](../connecting-your-warehouse/redshift.md)
-- [Snowflake](../connecting-your-warehouse/snowflake.md)
-- [Athena](../connecting-your-warehouse/athena.md)
+- [Trino](../connecting-your-warehouse/trino.md)
+- [Clickhouse](../connecting-your-warehouse/clickhouse.md)
+- [Fabric](../connecting-your-warehouse/fabric.md)
 
 ## Step 2: Connect to Data
 
