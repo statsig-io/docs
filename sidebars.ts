@@ -623,6 +623,7 @@ const sidebars: SidebarsConfig = {
             {
               "Slack, VS Code & Productivity": [
                 "integrations/github_code_references",
+                "integrations/gitlab_code_references",
                 "integrations/slack",
                 "integrations/jira",
               ],
