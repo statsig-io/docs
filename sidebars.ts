@@ -434,6 +434,7 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "infra-analytics/logs-explorer",
+            "infra-analytics/logs-explorer-queries",
             "infra-analytics/topline-alerts-logs",
           ],
         },
@@ -1219,6 +1220,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/trino",
         "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+        "statsig-warehouse-native/connecting-your-warehouse/fabric",
         "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },
