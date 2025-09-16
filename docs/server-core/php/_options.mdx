@@ -41,6 +41,16 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 - **`disable_user_agent_parsing`**: 
   Disables user agent parsing. Set to `true` to improve performance if device/browser-based targeting is not needed.
 
+- **`init_timeout_ms`**: 
+  Default: 3000
+  
+  Maximum time in milliseconds to wait for SDK initialization to complete. If initialization takes longer than this timeout, the SDK will continue to operate but may return default values until initialization completes.
+
+- **`fallback_to_statsig_api`**: 
+  Default: false
+  
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
+
 - **`enable_id_lists`**: 
   Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
@@ -77,7 +87,13 @@ $options = new StatsigOptions(
     600000, // specs_sync_interval_ms
     "INFO", // output_log_level
     true, // disable_country_lookup (for better performance)
-    true  // disable_user_agent_parsing (for better performance)
+    true, // disable_user_agent_parsing (for better performance)
+    false, // wait_for_country_lookup_init
+    false, // wait_for_user_agent_init
+    false, // disable_network
+    false, // disable_all_logging
+    3000, // init_timeout_ms
+    false  // fallback_to_statsig_api
 );
 
 // Pass the options object into Statsig constructor
