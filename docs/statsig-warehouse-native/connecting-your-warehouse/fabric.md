@@ -1,7 +1,7 @@
 ---
 title: Fabric Connection [Beta]
 slug: /statsig-warehouse-native/connecting-your-warehouse/fabric
-sidebar_label: Fabric
+sidebar_label: Fabric [Beta]
 keywords:
   - owner:xhuang
 last_update:
@@ -12,7 +12,7 @@ last_update:
 
 To set up connection with Microsoft Fabric, you must start from the [Fabric Workload Hub](https://app.fabric.microsoft.com/workloadhub/detail/Statsig.Statsig.Statsig?experience=fabric-developer).
 
-You will need to
+You will need to:
 - Add Statsig to your Fabric workspace
 - Create a service principal with access to Fabric, OneLake, and the shared workspace where you added Statsig
 - Grant access for Statsig's IP addresses to access your Microsoft Fabric account if you have firewall conditional access rules set
@@ -35,14 +35,15 @@ The first step is to create a service principal and their associated credentials
  - Make a note of the Application (client) ID and Directory (tenant) ID. You will use them later to connect Statsig.
 5. Create a secret for this application. Re-select the application you just created.
 6. On the navigation menu, click Certificates & secrets and then click + New client secret.
-7. In the Add a client secret pane, select an expiry period and enter a description for the client secret, eg "Statsig Credentials"
+7. In the Add a client secret pane, select an expiry period and enter a description for the client secret, eg "Statsig Credentials".
 8. Click Add and make a note of the client secret.
 
 ## Configuring Fabric to allow external access via service principals
-1. Click the Settings icon in the top right of the Fabric workspace, select [admin portal](https://app.fabric.microsoft.com/admin-portal?experience=fabric-developer) under Governance and insights.
-2. In the navigation menu, select Tenant settings.
-3. In the Developer settings section, set the Service principals can use Fabric APIs toggle to ON.
-4. In the OneLake settings section, set the Users can access data stored in OneLake with apps external to Fabric toggle to ON.
+1. Click the Settings icon in the top right of the Fabric workspace.
+2. Select [admin portal](https://app.fabric.microsoft.com/admin-portal?experience=fabric-developer) under Governance and insights.
+3. In the navigation menu, select Tenant settings.
+4. In the Developer settings section, set the Service principals can use Fabric APIs toggle to ON.
+5. In the OneLake settings section, set the Users can access data stored in OneLake with apps external to Fabric toggle to ON.
   
 ## Granting the service principal access to your workspace
 Any resources you wish to connect to must also be placed in a shared workspace. Once you have a shared workspace, you'll need to grant your new service principal access to the workspace.
@@ -56,6 +57,6 @@ The service principal can now access any resource within the workspace given the
 
 ### What IP addresses will Statsig access data warehouses from?
 
-[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from) to add Statsig's IP addresses in your firewall to only allow traffic originating from Statsig to access your Microsoft Fabric account. You can specify IP addresses to allow as part of [Microsoft Entra's conditional access](https://learn.microsoft.com/en-us/fabric/security/protect-inbound-traffic#entra-conditional-access).
-For Microsoft Fabric, Statsig uses 4.242.112.193 but it is recommended to allowlist all Statsig IP addresses.
+[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from) to add Statsig's IP addresses in your firewall to only allow traffic originating from Statsig to access your Microsoft Fabric account. You can specify IP addresses to allow as part of [Microsoft Entra's conditional access](https://learn.microsoft.com/en-us/fabric/security/protect-inbound-traffic#entra-conditional-access). 
 
+For Microsoft Fabric, Statsig uses 4.242.112.193 but it is recommended to allowlist all Statsig IP addresses.
