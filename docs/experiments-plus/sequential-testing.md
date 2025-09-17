@@ -55,7 +55,7 @@ In the **Setup** tab of your experiment, with Frequentist selected as your Analy
 
 Click on Edit at the top of the metrics section in Pulse to toggle Sequential Testing on/off.
 
-![Pulse metrics sequential testing toggle](/img/sequential_testing_toggle.png)
+![Pulse metrics sequential testing toggle](https://user-images.githubusercontent.com/90343952/191135447-5e094892-49e5-485e-8186-18732888662c.png)
 
 When enabled, an adjustment is automatically applied to results calculated before the target completion date of the experiment.
 
