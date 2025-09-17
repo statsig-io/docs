@@ -17,8 +17,8 @@ Holdouts measure the aggregate impact of multiple features. It involves a "holdo
 4.	By default Holdouts apply to a % of all users (Population = Everyone). You can optionally target the Holdout at a subset of users by applying a Targeting Gate (Population = Targeting Gate). e.g. If you wanted an iOS users only Holdout, you could apply a Targeting Gate that only passes iOS users.    
 5.	You must set the percentage of users to be held-out between 1% to 10%. Statsig recommends a small holdout percentage to limit the number of customers who don’t see new features. 
 
-![image](https://github.com/user-attachments/assets/81b634c7-f05e-493e-88c1-4c58d770a1d4)
-![image](https://github.com/user-attachments/assets/82c06037-7a12-4335-9ebf-81156a54d798)
+![Holdout creation interface](https://github.com/user-attachments/assets/81b634c7-f05e-493e-88c1-4c58d770a1d4)
+![Holdout configuration settings](https://github.com/user-attachments/assets/82c06037-7a12-4335-9ebf-81156a54d798)
 
 
 ## How to read Holdouts
@@ -52,7 +52,7 @@ Holdouts can only be applied to Experiments and Feature Gates that use the same 
 If a team plans to run experiments on both User ID and Stable ID, two separate holdouts are required to evaluate the cumulative impact of each type of experiment.
 :::
 
-![image](https://github.com/user-attachments/assets/cb2125f0-7fe2-4fbe-b6a3-3405dc300715)
+![Holdout unit ID type selection](https://github.com/user-attachments/assets/cb2125f0-7fe2-4fbe-b6a3-3405dc300715)
 
 
 ## Holdout effects on Gates & Experiments SDK methods

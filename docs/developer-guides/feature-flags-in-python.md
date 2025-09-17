@@ -90,7 +90,7 @@ To create and manage your feature flags:
    - Optionally, configure targeting rules based on user properties or environments.
    - Save the feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature flag creation interface](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 5. **Toggle Your Feature Flag**:
    - You can enable/disable the feature flag or configure more sophisticated targeting rules as needed.

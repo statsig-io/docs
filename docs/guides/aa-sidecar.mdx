@@ -23,18 +23,18 @@ There are many reasons to run an A/A test, one of the most common being to valid
 
 Navigate to the page on your website that you want to run an A/A Test. Open the Statsig Side car extension and click on 'New Experiment'. Fill in the title of your A/A test. 
 
-![image](/img/sidecar_aa_setup.png)
+![Sidecar experiment setup interface](/img/sidecar_aa_setup.png)
 
 Then, determine of the URI filter (i.e. All Pages, contains, etc.). After you have configured the URI, it is time to set up the variants. 
 
 With the variant 'Control', pick an action. In this example we are simply changing the content of an element, specifically the title, 'Getting Started is Simple'. 
 
 
-![image](/img/sidecar_aa_select.png)
+![Sidecar variant configuration screen](/img/sidecar_aa_select.png)
 
 Repeating the step above, you'll do the exact same action for the variant 'Test'. Your set up should look like the following. 
 
-![image](/img/sidecar_aa_final.png)
+![Sidecar A/A test final configuration](/img/sidecar_aa_final.png)
 
 From there, all you'll need to do is click 'Publish', this will push out the experiment to Statsig as a draft. 
 
@@ -63,5 +63,5 @@ What should you expect to see?
 * **Exposures**- make sure you’re seeing exposures flowing through as expected from your product. If you’re not seeing exposures, use the **Diagnostics** tab and the **Exposure Stream** to debug  
 * **Pulse results**- roughly 5% of your metrics in Pulse should be showing a statistically significant change due to the 95% confidence interval of Statsig’s stats engine 
 
-We recommend running your A/A long enough to reach most of your weekly active users, or at least a week.  
+We recommend running your A/A long enough to reach most of your weekly active users, or at least a week.    
 

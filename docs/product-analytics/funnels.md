@@ -45,7 +45,7 @@ You can also combine multiple events into a single step. This is especially usef
 
 Repeat these steps as needed. You can define a step as a combination of up to 5 events.
 
-![image](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
+![Funnel step configuration interface](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
 
 **Filtering to the first time a user performed an event[](/product-analytics/funnels#filtering-to-the-first-time-a-user-performed-an-event)**
 
@@ -54,7 +54,7 @@ It is sometimes useful to understand the first-time user experience, which may h
 1. Click “…” next to the event in question.
 2. Select the “**Filter to First Time**”.
 
-![image](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
+![Filter to first time event option](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
 
 **Renaming Steps[](/product-analytics/funnels#renaming-steps)**
 
@@ -130,13 +130,13 @@ Under each funnel step, you’ll see a quick summary that helps demystify your f
 
 Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups.
 
-![image](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
+![Funnel conversion summary table](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
 
 ### User Exploration
 
 Finally, by clicking any bar in the funnel, you have the option to download all users in that segment who dropped off or converted as a CSV file. You also have the option to view session streams to get a granular, event-by-event understanding of a user’s experience before and after the data point in question.
 
-![image](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
+![User exploration options interface](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
 
 ## Conversion Drivers[](/product-analytics/funnels#conversion-drivers)
 

@@ -14,7 +14,7 @@ You can use a segment to target a set of users in a feature gate or a dynamic co
 - In the criteria, select the **User in Segment** option
 - Select the segment that you want to use and enter a name
 
-  ![image](https://user-images.githubusercontent.com/1315028/129115596-fbaeb686-8adb-4ebe-9dcb-6dfecf0cf043.png)
+  ![Segment targeting configuration interface](https://user-images.githubusercontent.com/1315028/129115596-fbaeb686-8adb-4ebe-9dcb-6dfecf0cf043.png)
 
 - Click the **Add Rule** button
 - Click the **Save Changes** button at the top right of the **Rules** section

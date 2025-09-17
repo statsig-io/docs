@@ -118,7 +118,7 @@ Make sure all the statements ran successfully. This will create the schema and u
 - Find Snowflake in the integrations list and provide the requested credentials for the user you just created in step 1.
 - You can use the "Test Connection" button to make sure we can establish a connection to the table using the credentials provided.
 
-![image](https://user-images.githubusercontent.com/77478330/162287996-5f2e02f8-c461-4d69-8a36-fa1d79d913a3.png)
+![Snowflake integration configuration interface](https://user-images.githubusercontent.com/77478330/162287996-5f2e02f8-c461-4d69-8a36-fa1d79d913a3.png)
 
 ### 3. Load data into the new Statsig tables {#load-data}
 

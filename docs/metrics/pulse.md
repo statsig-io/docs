@@ -51,7 +51,7 @@ From [Metrics 101](/metrics/metrics-from-events),
 - [**event_dau**](/metrics/metrics-from-events#event-dau-metric) measures unique daily users who triggered a given event
 
 For example, the table below shows the **event_count** and **event_dau** metrics for two event types,_Page Views_ and _Add to Cart_, for three users over three days.
-![image](https://user-images.githubusercontent.com/1315028/187719553-c7e5c186-5dfe-4521-8bfb-1bb4b8cdb38d.png)
+![Event count and event DAU metrics table](https://user-images.githubusercontent.com/1315028/187719553-c7e5c186-5dfe-4521-8bfb-1bb4b8cdb38d.png)
 
 Over the duration of an experiment, Pulse results measure the change in:
 
@@ -60,11 +60,11 @@ Over the duration of an experiment, Pulse results measure the change in:
 
 For example, the table below shows the **Total event_count**, **Total Units**, and **Mean event_count** over the same three days as above, now in the context of an experiment.
 
-![image](https://user-images.githubusercontent.com/1315028/187721781-3240ebc6-43ae-4fd8-ac44-c3493308e127.png)
+![Experiment metrics table showing total event count and mean values](https://user-images.githubusercontent.com/1315028/187721781-3240ebc6-43ae-4fd8-ac44-c3493308e127.png)
 
 Similarly, the table below shows the **Total event_dau**, **Total Units**, and **Mean event_dau** over the same three days of the experiment. Alice was 'active' on three days for the _Page View_ event and on one day for the _Add to Cart_ event. Therefore, average event*dau for Alice is 3/3 for the \_Page View* event and 1/3 for the _Add to Cart_ event. In other words, Alice's **daily participation rate** is 1.00 for the _Page View_ event and 0.33 for the _Add to Cart_ event so far in the experiment. Statsig aggregates this average event_dau for each user in the experiment, with each user weighted equally.
 
-![image](https://user-images.githubusercontent.com/1315028/187721834-b8e94f15-f3ee-4584-924b-96e424ddcd0c.png)
+![Event DAU metrics table showing daily participation rates](https://user-images.githubusercontent.com/1315028/187721834-b8e94f15-f3ee-4584-924b-96e424ddcd0c.png)
 
 To measure the change in engagement for a call to action link or button, use event_count to measure the change in average clicks per user, and use event_dau to measure the change in users’ daily participation rate for the click.
 

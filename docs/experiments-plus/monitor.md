@@ -60,4 +60,4 @@ To monitor the exposures for all variants and control groups,
 - Click the **Results** tab and
 - The **Cumulative Exposures** panel shows the exposures for each variant in your experiment over time (as shown below)
 
-![image](https://user-images.githubusercontent.com/1315028/129122046-6d61f5fb-ed26-49d7-a774-52604c1aaa3a.png)
+![Cumulative exposures chart](https://user-images.githubusercontent.com/1315028/129122046-6d61f5fb-ed26-49d7-a774-52604c1aaa3a.png)

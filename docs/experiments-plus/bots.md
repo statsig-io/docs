@@ -59,7 +59,7 @@ You might, however, want to purposefully restrict what features bots see. For ex
 
 Bot filtering is done at the project level. Admins can opt out of filtering through their console settings.
 
-![image](https://github.com/user-attachments/assets/4c171000-6733-4136-a383-4cfd2b738ccb)
+![Bot filtering settings interface](https://github.com/user-attachments/assets/4c171000-6733-4136-a383-4cfd2b738ccb)
 
 ### Suggesting New Bots to Statsig
 

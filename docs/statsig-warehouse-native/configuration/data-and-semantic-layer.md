@@ -12,4 +12,4 @@ When using Statsig Warehouse Native, you configure metrics, experiments, and oth
 
 This functions as a lightweight Semantic Layer, which can integrate neatly into popular Semantic Layer tools like Cube or in-house YAML-based stores. This section dives into the building blocks of Statsig's configuration layer.
 
-![Image](/img/whn/data_flow_whn.png)
+![Warehouse Native data flow architecture diagram](/img/whn/data_flow_whn.png)

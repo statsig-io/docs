@@ -26,7 +26,7 @@ Here are three common frameworks we use at Statsig, which are also popular among
 3. **Break Down Your Business Levers**:
    - Decompose key drivers of your business to reveal more granular areas where you can experiment. For example, an e-commerce business might focus on increasing the checkout rate, which could lead to experiments on improving the CTA, reducing friction, or building urgency. 
 
-![image](https://user-images.githubusercontent.com/1315028/162062869-ead09b8f-0d2e-4c01-8bed-5c40039abe56.png)
+![Business levers breakdown diagram](https://user-images.githubusercontent.com/1315028/162062869-ead09b8f-0d2e-4c01-8bed-5c40039abe56.png)
 
 ### Prioritize Your Ideas
 

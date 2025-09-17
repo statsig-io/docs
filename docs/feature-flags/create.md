@@ -19,7 +19,7 @@ This guide walks through how to create a Feature Gate in the Statsig console, ho
 3. Click on the **Create** button.
 4. Enter the name and the description of the Feature Gate you want to create. It's best to name your gate based on what you are rolling out, such as "Zippy Home Page" for a new homepage.
 
-![image](https://github.com/user-attachments/assets/a14bc4f3-b768-4e6c-a84a-7bae449b2c7c)
+![Feature gate creation form](https://github.com/user-attachments/assets/a14bc4f3-b768-4e6c-a84a-7bae449b2c7c)
 
 5. Click **Create** to complete creating your Feature Gate.
 6. At this point, you've successfully created a new Feature Gate without any evaluation rules or conditions set up yet.
@@ -33,7 +33,7 @@ By default, a Feature Gate will return `false` when there are no rules configure
 2. Select the feature gate where you want to add a targeting rule
 3. Click the **+ Add New Rule** button.
 
-![Image](/img/feature-gates/add-rule.png)
+![Add rule button interface](/img/feature-gates/add-rule.png)
 
 4. Name your rule with something descriptive that other teammates will understand, such as "Mobile Users Only".
 

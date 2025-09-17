@@ -21,6 +21,6 @@ To create a **User Flow**,
 7. You can also optionally enter the depth of the flow to define the scope of your analysis 
 8. Click on **Create** to finish
 
-  ![image](https://user-images.githubusercontent.com/1315028/141128226-097e2441-e5ee-4e8d-8725-6d57d3fdeb83.png)
+  ![User flow creation interface](https://user-images.githubusercontent.com/1315028/141128226-097e2441-e5ee-4e8d-8725-6d57d3fdeb83.png)
 
-Assuming there's sufficient data for the User Flow, you'll see the chart appear in the console within a few minutes. 
+Assuming there's sufficient data for the User Flow, you'll see the chart appear in the console within a few minutes.  

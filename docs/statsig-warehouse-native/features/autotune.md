@@ -27,7 +27,7 @@ Once you have a Metric Source setup that exemplifies your success event, you are
 5. Create and name your variants for your Autotune Experiment. The variant that's listed as Control/Default will be returned when the Autotune Experiment is not running.
 6. Select your Metric Source that you defined earlier as shown below.
 
-![image](https://github.com/statsig-io/docs/assets/152932686/857371e2-22e4-4316-bca0-b310f541b5c3)
+![Autotune metric source configuration interface](https://github.com/statsig-io/docs/assets/152932686/857371e2-22e4-4316-bca0-b310f541b5c3)
 
 There are a few parameters you can specify:
 

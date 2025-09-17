@@ -59,9 +59,9 @@ $$
 ## Enabling on Statsig
 
 Controlling which relative confidence interval methodology you use is available in your Experimentation Settings at the Organization level, and changing this setting only impacts experiments created after the setting change.
-![image](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/9c8b90f8-1f0b-472f-883d-c3f30bd78696.png)
+![Experimentation settings configuration interface](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/9c8b90f8-1f0b-472f-883d-c3f30bd78696.png)
 
 In many cases, the results will be effectively the same as using the [Delta Method](/stats-engine/methodologies/delta-method), but especially if you’re running experiments with small sample sizes or noisy denominators, Fieller Intervals are more reliable. Thus, we'd strongly recommend using Fieller Intervals.
 
 In the experiment scorecard, Fieller Intervals will look like this
-![image](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/1cb4ebb6-0425-49bf-a319-48794d25ce96.png)
+![Experiment scorecard with Fieller intervals](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/1cb4ebb6-0425-49bf-a319-48794d25ce96.png)

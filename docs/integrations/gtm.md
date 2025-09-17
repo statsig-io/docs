@@ -10,7 +10,7 @@ last_update:
 
 This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig. This saves customers from having to retag their web properties with calls specific to Statsig's SDK. This integration uses a global listener to consume all GTM triggers and dispatch a corresponding event back to Statsig.
 
-![image](/img/gtm-logstream.png)
+![Statsig log stream showing GTM events](/img/gtm-logstream.png)
 _(statsig log stream showing GTM events flowing in)_
 
 ## Setup
@@ -42,22 +42,22 @@ await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
 ```
 
 ### Step 2: Create new tag 
-![image](/img/gtm-create-tag.png)
+![GTM create new tag interface](/img/gtm-create-tag.png)
 
 ### Step 3: Choose tag type
 Choose "Custom HTML" for tag type, and paste [this GTM code](#gtm-code) (including script tag)
 
-![image](/img/gtm-tag-configuration.png)
+![GTM tag configuration screen](/img/gtm-tag-configuration.png)
 
 ### Step 4: Adjust fire options
 Under Advanced Settings under "Tag Firing options", select "Once per page"
 
-![image](/img/gtm-create-tag-options.png)
+![GTM tag firing options settings](/img/gtm-create-tag-options.png)
 
 ### Step 5: Set Tag Trigger
 Below the "Tag Configuration" section, set the Trigger to "Initialization - All Pages" Option. 
 
-![image](/img/gtm-tag-trigger.png)
+![GTM tag trigger configuration](/img/gtm-tag-trigger.png)
 
 ### Step 6: Save tag and test
 After saving the tag, and publishing your updated GTM tag, tracking will be done automatically without any additional configuration.

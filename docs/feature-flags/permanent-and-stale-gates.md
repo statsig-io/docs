@@ -13,15 +13,15 @@ It is important for your codebase and team to bring feature gates to a final sta
 ## Types
 
 In your feature gates catalog, you'll see different **Types** displayed in the Status column, as well as under the filter option -
-![image](https://user-images.githubusercontent.com/120431069/224765362-9b9686f2-62b0-4605-8b8c-911987d343e0.png)
+![Feature gates catalog with status types filter](https://user-images.githubusercontent.com/120431069/224765362-9b9686f2-62b0-4605-8b8c-911987d343e0.png)
 
 - **Permanent Gates** (set by you)
   - **Permanent feature gates** are expected to live in your codebase for an extended period of time, beyond a feature release, usually for operations or infrastructure control. Common examples include user permissions (e.g. premium features based on subscription level) or circuit breakers/kill switches (e.g. terminating a connection to prevent negative customer impact) or even supporting legacy features in old app versions.
     - There are two ways to mark a gate as **Permanent**:
       - When creating the gate: the **Permanent** box in the gate creation flow
-        ![image](https://user-images.githubusercontent.com/120431069/224768058-1a1b74a2-6b5d-4bfd-b73c-e2fc1f4a7a7f.png)
+        ![Permanent checkbox in gate creation flow](https://user-images.githubusercontent.com/120431069/224768058-1a1b74a2-6b5d-4bfd-b73c-e2fc1f4a7a7f.png)
       - After a gate has been created: click on the "..." menu and then "Mark Gate Permanent"
-        ![image](https://user-images.githubusercontent.com/120431069/224763304-2002e482-8ef0-4025-b13c-acb92ffb2bcc.png)
+        ![Mark Gate Permanent menu option](https://user-images.githubusercontent.com/120431069/224763304-2002e482-8ef0-4025-b13c-acb92ffb2bcc.png)
   - Implications of marking a gate as **Permanent**
     - No change in the gate’s behavior when called
     - Easy filtering on feature gates catalog
@@ -56,5 +56,5 @@ In your feature gates catalog, you'll see different **Types** displayed in the S
 Using the **Stale** type discussed above, Statsig provides both in-console and external nudges to remind you to cleanup (or make Permanent) your feature gates.
 
 - **In-console:** See the reminder at the top of the individual feature gate page
-    ![image](https://user-images.githubusercontent.com/120431069/224457644-16844256-e7f8-4490-b07e-74f0d85eb6ee.png)
-- **Email/Slack:** We will proactively reach out to you with an email/ Slack reminder (if you've enabled the Slack integration) to clean up or mark permanent any stale gates you own. We will send this reminder nudge monthly until the gates are either cleaned up or marked as permanent. 
+    ![Stale gate cleanup reminder notification](https://user-images.githubusercontent.com/120431069/224457644-16844256-e7f8-4490-b07e-74f0d85eb6ee.png)
+- **Email/Slack:** We will proactively reach out to you with an email/ Slack reminder (if you've enabled the Slack integration) to clean up or mark permanent any stale gates you own. We will send this reminder nudge monthly until the gates are either cleaned up or marked as permanent.  

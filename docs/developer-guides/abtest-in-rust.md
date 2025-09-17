@@ -74,7 +74,7 @@ First, you'll need to set up your Rust environment.
     - Define your variants, by default, control and test variants.
     - Add a parameter that will be returned by each variant and add values to them - in our case we've added "backgroundColor" as a parameter with "blue" and "red" as the values.
 
-    ![image](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
+    ![Experiment variant configuration interface](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
 
 4. **Launch Your Experiment**:
     - After setting up your variants and their parameters, save your configurations and start the experiment.

@@ -89,7 +89,7 @@ To use feature flags in a web page with the Statsig JavaScript SDK, you'll start
    - Optionally, configure targeting rules based on user properties or environments.
    - Save your feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature gate creation interface](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 3. **Toggle and Configure Your Feature Gate**:
    - You can now toggle the feature gate on or off and configure detailed targeting rules directly from the Statsig console.

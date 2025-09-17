@@ -12,10 +12,10 @@ last_update:
 
 Layers (a.k.a. Universes) allow us to create experiments that are mutually exclusive to each other. Each layer has a logical representation of all your users and can have experiments created "within" this layer. Users that are in one experiment of a layer, cannot also be in another experiment in the same layer.
 
-![image](https://github.com/user-attachments/assets/7320a5ba-7a8f-482f-9366-cb3bf041c8eb)
+![Layer concept diagram showing mutually exclusive experiments](https://github.com/user-attachments/assets/7320a5ba-7a8f-482f-9366-cb3bf041c8eb)
 
 You can add experiments to a layer (or create a layer) during experiment creation.
-![image](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
+![Experiment creation interface with layer selection](https://github.com/user-attachments/assets/94948291-bc41-4ae7-a57a-e2f635737571)
 
 Once you create a layer, you'll be able to manage them on the layer management tab under Experiments.
 ![Layers Tab](https://github.com/user-attachments/assets/85a0ac12-b5f7-47b0-a8f2-4ebf29f31bc9)

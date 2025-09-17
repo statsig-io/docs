@@ -33,14 +33,14 @@ curl --request PUT 'https://statsigapi.net/console/v1/experiments/express_app_te
 --header 'STATSIG-API-KEY: console-REPLACE_WITH_YOURS'
 ``` 
 
-![image](/img/express-abtest.png)
+![Statsig experiment configuration interface](/img/express-abtest.png)
  
 ## Project Setup for Experimentation in NodeJS ExpressJS
 
 This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
 The main server entrypoint is `app.js` and the demo webpage source follows the handlebars standard, living in `views/index.hbs`.
 
-![image](/img/express-folder-structure.png)
+![ExpressJS project folder structure](/img/express-folder-structure.png)
 
 Aside from `statsig-node`, this example app requires several node modules, including:
 * `cookie-parser` for managing cookies for user identity
@@ -124,4 +124,4 @@ The template will be rendered and with access to the `testGroup` (string) variab
 </div>
 ```
 
-![image](/img/express-page.png)
+![ExpressJS sample app webpage showing experiment assignment](/img/express-page.png)

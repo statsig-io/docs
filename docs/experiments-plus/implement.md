@@ -54,7 +54,7 @@ Just a few simple events can help you measure how people are moving through a ce
 
 Once experiments are launched, you can't edit the groups without restarting the experiment, as users are already being allocated to each group. We therefore recommend testing each experiment in lower environments before starting. You can do this by clicking the "Test" button in the experiment setup page, then selecting "Enable for Environments". These environments should match your [SDK environment setup](/guides/using-environments/#configuring-environments). Testing in a lower environment and [overrides](/experiments-plus/overrides) can help you manually set your experiment "group" to properly test each variant.
 
-![image](/img/experiment_test_button.png)
+![Experiment test button interface](/img/experiment_test_button.png)
 
 ## Starting your experiment
 

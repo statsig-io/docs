@@ -53,7 +53,7 @@ These user metrics can be very useful in understanding the long-term behavior of
 
 You can customize the definition of DAU within the Statsig Console and specify or exclude a set of Statsig and custom events.  You can find this in the Project Settings. If you have privileges, you can edit this.
 
-![image](https://github.com/user-attachments/assets/8239e1f5-133c-4ae2-914a-df5864159ccf)
+![DAU definition configuration interface](https://github.com/user-attachments/assets/8239e1f5-133c-4ae2-914a-df5864159ccf)
 
 
 There are several options:

@@ -15,9 +15,9 @@ To create a segment,
 - Enter a name and description for your segment
 - Select the type of segment you want to create: **Conditional** or **ID List**, and click **Create** (Conditional is selected by default)
 
-![image](https://github.com/user-attachments/assets/e2dd3e0e-a003-4772-8426-cb02738f4017)
+![Segment creation interface](https://github.com/user-attachments/assets/e2dd3e0e-a003-4772-8426-cb02738f4017)
 
 
 For **Conditional Segments**, you can **[Add Rules](/segments/add-rule)** to complete the segment's definition. 
 
-For **ID List Segments**, you can **[Add an ID List](/segments/add-id-list)** to complete the segment's definition. 
+For **ID List Segments**, you can **[Add an ID List](/segments/add-id-list)** to complete the segment's definition.  

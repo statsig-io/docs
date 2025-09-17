@@ -20,7 +20,7 @@ Under the covers, normalizing a metric simply creates a ratio metric. The numera
 If you wanted to, you could also create this ratio metric yourself and use it in experiments - this is documented [here](https://docs.statsig.com/metrics/different-id). 
 
 ## How to do it
-You can create Normalized Metrics when adding metrics to an Experiment. ![image](https://github.com/user-attachments/assets/a440ccfa-0271-4fbd-ba9d-7bb858f3e180)
+You can create Normalized Metrics when adding metrics to an Experiment. ![Experiment metrics configuration interface](https://github.com/user-attachments/assets/a440ccfa-0271-4fbd-ba9d-7bb858f3e180)
 You can select the unitID to normalize using next. 
  <!-- ![Uploading image.png…]() -->
 

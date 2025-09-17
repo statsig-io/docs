@@ -47,7 +47,7 @@ You can extract information from here to get the required fields for Account Nam
 
 For the Account Name field, you can also enter your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-1-preferred-account-name-in-your-organization), which typically takes the form `<orgname>-<account_name>`. To find the `<orgname>` in the Snowflake console, click on your account profile (usually at the bottom left) to view account details as shown below.
 
-![image](https://user-images.githubusercontent.com/1315028/195217037-ad630f37-a8fe-4b61-823f-ce0e8c984ed0.png)
+![Snowflake account profile interface](https://user-images.githubusercontent.com/1315028/195217037-ad630f37-a8fe-4b61-823f-ce0e8c984ed0.png)
 :::
 
 ### Database and Schema Name
@@ -61,7 +61,7 @@ Provide the Schema and corresponding Database where Statsig will be able to mate
 To set up key-pair authentication, first follow the [snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) to generate the private and public keys, and then set the public key on the service user.
 
 The private key can then be provided here
-![image](https://github.com/user-attachments/assets/1fa7bda1-5d9c-414b-8e2f-7e36b900acfb)
+![Key-pair authentication configuration interface](https://github.com/user-attachments/assets/1fa7bda1-5d9c-414b-8e2f-7e36b900acfb)
 
 ### Boilerplate Setup SQL
 

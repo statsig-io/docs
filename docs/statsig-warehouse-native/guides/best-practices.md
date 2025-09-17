@@ -147,7 +147,7 @@ What is the split of compute time between full loads vs incremental loads vs cus
 How is compute time distributed across experiments? (useful to make sure value realized and compute costs incurred are roughly aligned)
 
 You can find this dashboard in the Left Nav under Analytics -> Dashboards -> Pipeline Overview
-![image](https://github.com/user-attachments/assets/684ae633-8054-4f41-8443-7df63fe81253)
+![Pipeline Overview dashboard interface](https://github.com/user-attachments/assets/684ae633-8054-4f41-8443-7df63fe81253)
 
 This is built using Statsig Product Analytics - you can customize any of these charts, or build new ones yourself. A favorite is to add in your average compute cost, so you can turn slot time per experiment into $ cost per experiment.
 

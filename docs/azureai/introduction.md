@@ -12,7 +12,7 @@ Statsig offers SDKs for integrating Azure AI models into server applications. Th
 * [Capture invocation and usage metrics](/azureai/capturing-metrics/) with no extra work
 * [Run A/B tests on parameters](/azureai/running-experiments) like model, prompt, temperature and more
 
-![image](https://github.com/user-attachments/assets/b23c79c3-8501-4390-a3f3-3496970eb272)
+![Azure AI integration architecture diagram](https://github.com/user-attachments/assets/b23c79c3-8501-4390-a3f3-3496970eb272)
 
 ## Currently supported SDKs
 
