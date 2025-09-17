@@ -1,6 +1,6 @@
 ---
-title: Access Pulse Reports in Warehouse Native
-sidebar_label: Access Pulse Reports
+title: Export Pulse Results to Your Warehouse in Warehouse Native
+sidebar_label: Export Pulse Results
 slug: /pulse/access-whn
 keywords:
   - owner:vm
