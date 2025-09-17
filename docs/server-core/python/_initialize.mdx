@@ -31,13 +31,13 @@ For production deployments using WSGI servers like uWSGI or Gunicorn, ensure Sta
 
 <Tabs
   groupId="python-server-deployment"
-  defaultValue="uwsgi"
+  defaultValue="uWSGI"
   values={[
-    {label: 'uWSGI', value: 'uwsgi'},
+    {label: 'uWSGI', value: 'uWSGI'},
     {label: 'Gunicorn', value: 'gunicorn'},
-    {label: 'FastAPI', value: 'fastapi'},
+    {label: 'FastAPI', value: 'FastAPI'},
   ]}>
-  <TabItem value="uwsgi">
+  <TabItem value="uWSGI">
 
 #### ✅ Correct: uWSGI example
 
@@ -98,7 +98,7 @@ gunicorn --config gunicorn_config.py app:app
 ```
 
   </TabItem>
-  <TabItem value="fastapi">
+  <TabItem value="FastAPI">
 
 #### ✅ Correct: FastAPI example
 
