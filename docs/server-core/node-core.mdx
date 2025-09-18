@@ -38,6 +38,7 @@ import GetFeatureGate from "./node/_getFeatureGate.mdx";
 import ParamStores from "./node/_paramStores.mdx";
 import GetExperiment from "./node/_getExperiment.mdx";
 import LogEvent from "./node/_logEvent.mdx";
+import ForwardLogLineEvent from "./node/_forwardLogLineEvent.mdx";
 import MoreFAQs from "./node/_faqs.mdx";
 import Options from "./node/_options.mdx";
 import ShutdownSnippet from "./node/_shutdown.mdx";
@@ -80,6 +81,7 @@ export const Builder = SDKDocsBuilder({
         getFeatureGate: <GetFeatureGate />,
         paramStores: <ParamStores />,
         sharedInstance: <SharedInstanceSnippet />,
+        forwardLogLineEvent: <ForwardLogLineEvent />,
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],

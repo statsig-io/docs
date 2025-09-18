@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/bonferroni-correction
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## What is Bonferroni Correction?
@@ -29,4 +29,4 @@ You can choose to apply these based on one or both of the following:
 
 When analyzing dimensions, if correction for metrics is enabled, it's applied separately for the dimensional breakdown. We use the number of dimensions as the total metric count to correct for _in the dimensional analysis_, but it does not impact topline metrics.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/038d75eb-5745-4587-b180-86b88594ccb9)
+![Bonferroni correction configuration interface](https://github.com/statsig-io/docs/assets/31516123/038d75eb-5745-4587-b180-86b88594ccb9)

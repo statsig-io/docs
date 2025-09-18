@@ -5,7 +5,7 @@ slug: /segments
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 ## What is a segment?
 A segment defines a reusable set of users. You can define a segment based on common user attributes such as location, client device, browser, client application version, or simply using user IDs. 

@@ -5,7 +5,7 @@ slug: /experiments-plus/geotests-setup
 keywords:
   - owner:makris
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # Get Started with Geotests
@@ -22,13 +22,13 @@ This guide walks you through creating a Geotest experiment using Statsig. The st
 
 First decide on one more geo types relevant to your business. Some of the most common are Postal Codes and DMAs (Designated Market Areas), but Statsig allows you to define any arbitrary geo type you'd like.
 
-![Image](/img/geotests/geo_types_settings.png)
+![Geo types configuration interface](/img/geotests/geo_types_settings.png)
 
 ## Configure your Metric Source
 
 Assuming you've already added a [metric source](/statsig-warehouse-native/configuration/metric-sources/) to Statsig, you can next indicate which column(s) represent the geo type(s) you've created.
 
-![Image](/img/geotests/geo_column_mapping.png)
+![Geo column mapping configuration screen](/img/geotests/geo_column_mapping.png)
 
 ## Create and Configure
 
@@ -36,12 +36,12 @@ Assuming you've already added a [metric source](/statsig-warehouse-native/config
 - Click the + Create button.
 - In the modal, select Analyze to analyze existing experiment data in your warehouse.
 
-![Image](/img/geotests/CreateXP.png)
+![Experiment creation modal with analyze option](/img/geotests/CreateXP.png)
 
 - Enter a name and description for your experiment.
 - Choose Geotest as the experiment type from the dropdown. Note: You do not need to specify an experiment source.
 
-![Image](/img/geotests/SetType.png)
+![Geotest experiment type selection dropdown](/img/geotests/SetType.png)
 
 In the Setup tab:
 
@@ -49,7 +49,11 @@ In the Setup tab:
 - Set the Geo Type (e.g., country_id).
 - Choose your Primary Metrics.
 
-![Image](/img/geotests/SetupXP.png)
+![Geotest experiment setup configuration screen](/img/geotests/SetupXP.png)
+
+:::note
+Metric types in a Geotest experiment are limited to SUM, COUNT, and COUNT_DISTINCT due to the assumptions made in running inference. We'll be adding more metric types in the future. Feel free to reach out to Statsig with suggestions.
+:::
 
 Configure:
 
@@ -59,11 +63,11 @@ Configure:
 - Alpha level (desired type I error rate, inverse of Confidence)
 - Optionally enable Budgeting or Holdouts
 
-![Image](/img/geotests/XPConfigs.png)
+![Experiment configuration settings interface](/img/geotests/XPConfigs.png)
 
 When you're happy with your initial settings, click "Use Experiment Designer" to begin to design process.
 
-![Image](/img/geotests/StartDesigner.png)
+![Experiment designer launch button](/img/geotests/StartDesigner.png)
 
 Here you can control:
 
@@ -71,7 +75,7 @@ Here you can control:
 - (Test) Inclusion List: Force some geos to be in your treatment cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
 - (Test) Exclusion List: Block some geos from being in your control cell. Leave blank to allow GeoLift to search for the most optimal set of geos without limits.
 
-![Image](/img/geotests/LimitGeos.png)
+![Geographic limitations configuration interface](/img/geotests/LimitGeos.png)
 
 When ready, click "Run Analysis" to generate a new Design Option Set based on your desired rules.
 
@@ -79,7 +83,7 @@ When ready, click "Run Analysis" to generate a new Design Option Set based on yo
 
 Once a Design Option Set has been created (usually takes a few minutes), it will be shown in your Experiment Designer tab. All design option sets generated are shown here, enabling you to look through prior design iterations as needed.
 
-![Image](/img/geotests/DesignerOptions.png)
+![Experiment designer options display](/img/geotests/DesignerOptions.png)
 
 Click into a completed design set (e.g. “Design Set 3”).
 
@@ -87,8 +91,8 @@ Click into a completed design set (e.g. “Design Set 3”).
 - Click View Cell Details to expand and see geo assignments
 - Select your desired design using the radio button, and clicking **Save Design to Experiment**.
 
-![Image](/img/geotests/DesignOption.png)
+![Design option selection interface](/img/geotests/DesignOption.png)
 
 ## Run Analysis
 
-![Image](/img/geotests/AnalysisResults.png)
+![Geotest analysis results dashboard](/img/geotests/AnalysisResults.png)

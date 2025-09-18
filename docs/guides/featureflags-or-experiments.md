@@ -4,7 +4,7 @@ title: When to use Feature Flags vs. Experiments?
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 With Statsig, you can create control and test groups and compare them using A/B testing via either **feature gates** or **experiments**. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.
@@ -40,7 +40,7 @@ Here are a few important considerations when deciding between a feature gate or 
    - **Experiment**: Increase the **Allocation%** to add more users to your test. Experiments are limited to a maximum 50/50 split.
    - In both cases, once users are assigned to a group, they continue to receive the same experience, meaning ramping up **Pass%** or **Allocation%** will not reshuffle users (i.e., no **resalt** occurs).
 
-![image](https://user-images.githubusercontent.com/1315028/158034863-71cc65ea-8833-47e8-a277-89119f7a00ab.png)
+![Feature gate and experiment configuration interface showing Pass% and Allocation% settings](https://user-images.githubusercontent.com/1315028/158034863-71cc65ea-8833-47e8-a277-89119f7a00ab.png)
 
 ---
 

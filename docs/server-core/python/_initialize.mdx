@@ -1,3 +1,6 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 ```python
 from statsig_python_core import Statsig, StatsigOptions # note, import statement has underscores while install has dashes
 
@@ -25,6 +28,16 @@ The Python Core SDK uses internal threading and async runtime components that do
 ### Initializing with WSGI servers
 
 For production deployments using WSGI servers like uWSGI or Gunicorn, ensure Statsig is initialized **after** the worker processes are forked, not in the main process.
+
+<Tabs
+  groupId="python-server-deployment"
+  defaultValue="uWSGI"
+  values={[
+    {label: 'uWSGI', value: 'uWSGI'},
+    {label: 'Gunicorn', value: 'gunicorn'},
+    {label: 'FastAPI', value: 'FastAPI'},
+  ]}>
+  <TabItem value="uWSGI">
 
 #### ✅ Correct: uWSGI example
 
@@ -64,6 +77,9 @@ processes = 4
 # Statsig will be initialized in each worker process
 ```
 
+  </TabItem>
+  <TabItem value="gunicorn">
+
 #### ✅ Correct: Gunicorn example
 
 ```python
@@ -80,3 +96,37 @@ def post_fork(server, worker):
 # Start Gunicorn with post-fork hook
 gunicorn --config gunicorn_config.py app:app
 ```
+
+  </TabItem>
+  <TabItem value="FastAPI">
+
+#### ✅ Correct: FastAPI example
+
+```python
+from fastapi import FastAPI
+from statsig_python_core import Statsig, StatsigOptions
+
+app = FastAPI()
+statsig = None
+
+@app.on_event("startup")
+async def startup_event():
+    global statsig
+    options = StatsigOptions()
+    options.environment = "production"
+    statsig = Statsig("your-server-secret-key", options)
+    statsig.initialize().wait()
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    if statsig:
+        statsig.shutdown().wait()
+
+@app.get("/")
+async def root():
+    # Use statsig here
+    return {"message": "Hello World"}
+```
+
+  </TabItem>
+</Tabs>

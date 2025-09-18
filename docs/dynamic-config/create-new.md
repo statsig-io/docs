@@ -5,7 +5,7 @@ slug: /dynamic-config/create-new
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 To create a dynamic config, 
@@ -14,5 +14,5 @@ To create a dynamic config,
 - Click the **Create New** button
 - Enter a name and description, and click **Create**
 
-![image](https://github.com/user-attachments/assets/f44b281f-be49-46ce-b60d-e68a647274ab)
+![Dynamic config creation interface](https://github.com/user-attachments/assets/f44b281f-be49-46ce-b60d-e68a647274ab)
 

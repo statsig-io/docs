@@ -6,7 +6,7 @@ description: How you can manage costs with statsig
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 This page is a high level summary of how to think about Warehouse Costs and Total Cost of Ownership on Statsig Warehouse Native. There's some duplication with the [best practices](./best-practices.md) page; treat that page an implementation guide and this page as a high-level overview.

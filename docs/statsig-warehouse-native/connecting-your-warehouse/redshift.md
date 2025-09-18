@@ -5,7 +5,7 @@ sidebar_label: Redshift
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -26,6 +26,10 @@ You can find this information in your aws console within your specific cluster, 
 ![Frame 1](https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png)
 
 When you save the connection, we will run a series of tiny commands to test permissions -- e.g. creating a temp table, running a select/delete statement on that table, and then dropping that table.
+
+:::note
+The provided Service Account will require the following attributes: `enable_case_sensitive_identifier`, `enable_case_sensitive_super_attribute`. If these are not already set, Statsig will set them to TRUE upon setup completion.
+:::
 
 ## SSH Tunneling
 

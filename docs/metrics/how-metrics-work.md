@@ -5,7 +5,7 @@ slug: /metrics/how-metrics-work
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # How Metrics Work on Statsig
@@ -31,7 +31,7 @@ There are two fundamental sources of metrics in Statsig:
 
 Statsig's Stats Engine joins these metrics with your exposure events from feature gates and experiments to compute experiment results and analytics.
 
-![Image](/img/data_flow_cloud.png)
+![Statsig data flow architecture diagram](/img/data_flow_cloud.png)
 
 :::info How are events and metrics billed?
 Each event (or a row when importing from your data warehouse) is billed once, regardless of how many experiments the event is used in.
