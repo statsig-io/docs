@@ -56,10 +56,24 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
+              link: {
+                type: "doc",
+                id: "guides/migration-overview",
+              },
               items: [
-                "guides/migrate-from-launchdarkly",
-                "guides/open-source-script",
-                "guides/ui-based-tool",
+                "guides/migrate-from-amplitude",
+                {
+                  type: "category",
+                  label: "Migrate from LaunchDarkly",
+                  link: {
+                    type: "doc",
+                    id: "guides/migrate-from-launchdarkly",
+                  },
+                  items: [
+                    "guides/open-source-script",
+                    "guides/ui-based-tool",
+                  ],
+                },
               ],
             },
           ],
