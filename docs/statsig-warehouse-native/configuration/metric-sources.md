@@ -5,7 +5,7 @@ sidebar_label: Metric Sources
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Metric Sources are how you schematize your warehouse data for Statsig, and they serve as the input data for metrics.
@@ -83,7 +83,7 @@ Statsig to see.
 
 When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting.
 
-![Screenshot 2024-01-09 at 4 15 05 PM](https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618)
+![Timestamp granularity configuration interface](https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618)
 
 When this setting is **not** enabled, the system performs a timestamp-based join. This means that events are attributed to the experiment results based on the exact time they occur in relation to the exposure time. For example, if a user is exposed to an experiment at `2024-01-01T11:00:00` and an event occurs at `2024-01-01T11:01:00` on the same day, the event will be attributed to the experiment results because it happened after the exposure. Conversely, if the event occurs at `2024-01-01T10:59:00`, just before the exposure, it will not be attributed to the experiment results since it happened prior to the exposure.
 

@@ -5,7 +5,7 @@ slug: /pulse/access-whn
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 
@@ -19,7 +19,7 @@ Exposures are automatically written to your warehouse to the table configured in
 ### Results
 With a SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded.
 
-![image](https://github.com/user-attachments/assets/0355e284-7e3f-40db-b441-fa2a00ccf3ab)
+![Project settings data connection export interface](https://github.com/user-attachments/assets/0355e284-7e3f-40db-b441-fa2a00ccf3ab)
 
 
 ### Schema of the Results Data Export Table

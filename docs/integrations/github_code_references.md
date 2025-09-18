@@ -3,7 +3,7 @@ title: Github Code References
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -20,7 +20,7 @@ This can be found in **Project Settings** > **Integrations Tab** > **Github Code
 
 The Integration should provide additional instructions on how to enable Github Code References.
 
-![image](/img/github_code_references/github_integration.png)
+![GitHub integration configuration interface](/img/github_code_references/github_integration.png)
 
 After inputting your token and organization name the integration will verify it can access repositories and notify you if there are any problems.
 

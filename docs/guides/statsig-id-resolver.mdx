@@ -4,26 +4,26 @@ title: Statsig ID Resolver
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## What is Statsig ID Resolver?
 
 Statsig ID Resolver is an integration set up at the project level that brings your ID names into console. IDs are used everywhere within Console, but unless you are an ID Wizard it is hard to tell at a glance who or what an ID belongs to. Take Feature Gate rules for example:
 
-![image](/img/id_resolver1.png)
+![Feature gate rules with raw user IDs](/img/id_resolver1.png)
 
 Each of the IDs shown represent a superhero with a name and other identifying information. After setting up ID Resolver you will be able to see an ID’s “name” next to each ID. In this example, the ID’s name is the superhero’s name followed by their publisher. You have the power to define “name” as whatever string is most useful for your project.
 
-![image](/img/id_resolver2.png)
+![Feature gate rules with resolved ID names](/img/id_resolver2.png)
 
 Additionally, after setting up ID Resolver Autocomplete you can begin typing in an ID’s name and have it auto-resolve to the correct ID
 
-![image](/img/id_resolver3.png)
+![ID autocomplete functionality in action](/img/id_resolver3.png)
 
 ID Resolver can be used wherever you enter IDs, for example in Feature Gate rules, Overrides, Users tab, and Segment ID lists
 
-![image](/img/id_resolver_4.png)
+![ID resolver usage across console interfaces](/img/id_resolver_4.png)
 
 ## Step 1 - Create your ID Resolver Webhook
 
@@ -88,8 +88,8 @@ This webhook should take in a `name` (the current partially typed name) and a po
 
 You can find Statsig ID Resolver under the Integrations tab within Project Settings
 
-![image](/img/id_resolver_setup_1.png)
+![ID resolver integration setup screen](/img/id_resolver_setup_1.png)
 
-![image](/img/id_resolver_setup_2.png)
+![ID resolver webhook configuration interface](/img/id_resolver_setup_2.png)
 
-And that's it! You're off to the races with easier-to-recognize IDs throughout the Console. 
+And that's it! You're off to the races with easier-to-recognize IDs throughout the Console.  

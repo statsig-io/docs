@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 To run a simple A/B test on a webpage using JavaScript and the Statsig SDK, focusing on showing text with a blue or red background based on the variant assigned, follow these steps. This guide includes creating a basic "Hello World" web application, integrating Statsig for A/B testing, and using the `get` method to determine the variant.
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         - **Parameters**: Add a parameter named `backgroundColor`. For each variant (e.g., `control` and `test`), assign `blue` to one and `red` to the other as the value for `backgroundColor`.
     - Configure other settings as needed, such as the percentage of users included in the experiment and targeting rules.
 
-    ![image](https://github.com/statsig-io/.github/assets/74588208/e5027dd6-908d-40f0-a6bd-de8cb5a6207b)
+    ![Experiment configuration interface showing parameter setup](https://github.com/statsig-io/.github/assets/74588208/e5027dd6-908d-40f0-a6bd-de8cb5a6207b)
 
 3. **Start the Experiment**:
     - Once your experiment is configured with the necessary variants and parameters, save and start the experiment to make it active.
