@@ -1,0 +1,86 @@
+---
+title: Next.js with Statsig
+sidebar_label: Next.js
+slug: /client/javascript-sdk/next-js
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+import { FeaturePillList } from "@site/src/components/FeaturePillList";
+
+import TipText from "./_sampleApp.mdx";
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown,
+  CodeExamples,
+} from "../Templates/index.mdx";
+
+import * as Install from "./nextjs/_nextJsInstall.mdx";
+import * as PageVsAppRouter from "./nextjs/_nextJSPageVsAppRouter.mdx";
+import * as Bootstrap from "./nextjs/_nextJsBootstrapCore.mdx";
+import * as CheckGate from "./nextjs/_nextJsCheckGate.mdx";
+import * as GetDynamicConfig from "./nextjs/_nextJsDynamicConfig.mdx";
+import * as GetExperiment from "./nextjs/_nextJsGetExperiment.mdx";
+import * as GetParamStore from "./nextjs/_nextJsParamStore.mdx";
+import * as Proxy from "./nextjs/_nextJsProxyCore.mdx";
+import * as LogEvent from "./nextjs/_nextJsLogEvent.mdx";
+import * as SrAndAc from "./_sessionReplayAutoCapture.mdx";
+import * as Advanced from "./nextjs/_nextJsAdvanced.mdx";
+import * as FlagsSDK from "./nextjs/_nextJsFlagsSdk.mdx";
+import * as SSG from "./nextjs/_nextJsSSG.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/js-client-monorepo",
+      },
+    ],
+    [Install, {}],
+    [PageVsAppRouter, {}],
+    [CheckGate, {}],
+    [GetDynamicConfig, {}],
+    [GetExperiment, {}],
+    [GetParamStore, {}],
+    [LogEvent, {}],
+    [SrAndAc, {}],
+    [Advanced, {}],
+    [Bootstrap, {}],
+    [Proxy, {}],
+    [SSG, {}],
+    [FlagsSDK, {}],
+  ],
+});
+
+export const toc = Builder.toc;
+
+<TipText />
+
+<FeaturePillList
+  features={[
+    { name: "Feature Gates", link: "#checking-a-gate" },
+    { name: "Experiments", link: "#getting-an-experiment" },
+    { name: "Dynamic Configs", link: "#getting-a-dynamic-config" },
+    { name: "Layers", link: "#getting-an-experiment" },
+    { name: "Event Logging", link: "#logging-an-event" },
+    { name: "Session Replay", link: "#session-replay" },
+    { name: "Auto Capture", link: "#autocapture" },
+    { name: "Parameter Stores", link: "#getting-a-parameter-store" },
+  ]}
+/>
+<>{Builder.result}</>

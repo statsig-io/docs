@@ -428,7 +428,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          link:{
+          link: {
             type: "doc",
             id: "infra-analytics/overview",
           },
@@ -847,7 +847,7 @@ const sidebars: SidebarsConfig = {
         {
           className: "next-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
-          id: "client/javascript-mono/nextjs/NextJsUsage",
+          id: "client/javascript-mono/NextJsUsage",
         },
         {
           className: "android-icon sidebar-icon sdk-sidebar-icon",
