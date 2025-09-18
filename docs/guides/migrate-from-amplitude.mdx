@@ -17,15 +17,15 @@ Migrating amplitude data into Statsig usually involves two steps: export and ing
 
 Amplitude offers a few different export methods. Pick the one that matches your data size and setup:
 
-### 1. S3 Export
+**1. S3 Export**
 
 For high volume backfills, you can dump your Amplitude data into an S3 bucket.
 
-### 2. Warehouse Export
+**2. Warehouse Export**
 
 If your Amplitude data is already in Snowflake, BigQuery, or Redshift, you can skip file downloads. Statsig can ingest directly from these warehouses (see Step 2.1)
 
-### 3. Export API
+**3. Export API**
 
 Use Amplitude's Export API to pull gzipped JSON
 - **Limit**: 4 GB per request so use hourly windows for large ranges
@@ -36,7 +36,7 @@ curl --location --request GET 'https://amplitude.com/api/2/export?start=<startti
 -u '{api_key}:{secret_key}'
 ```
 
-### 4. UI Download (CSV/JSON)
+**4. UI Download (CSV/JSON)**
 
 Go to Organization Settings → Project → Export Data
 - Best for small datasets or initial testing
@@ -54,7 +54,7 @@ Amplitude and Statsig store events in slightly different formats. To make your A
 | `event_properties` | `metadata` |
 | `user_properties` | `user` fields |
 
-### Before transform
+**Before transform**
 
 ```json
 // Amplitude event
@@ -73,7 +73,7 @@ Amplitude and Statsig store events in slightly different formats. To make your A
 }
 ```
 
-### After transform
+**After transform**
 
 ```json
 // Statsig event
@@ -103,18 +103,18 @@ Once your data look like Statsig events, you can start to bring them in. There a
 | Export API | Event Webhook | You're moving a few days/weeks of data programmatically |
 | UI download (CSV/JSON) | Event Webhook | You're testing or moving a small slice of data |
 
-### S3 ingestion
+**S3 ingestion**
 
 - Just ensure the files are transformed to Statsig schema, in Parquet/JSON/CSV form, and then follow [Statsig's S3 ingestion](https://docs.statsig.com/data-warehouse-ingestion/s3) steps.
 - Please note that you need to shard your Amplitude raw data into 1 day's data per directory for to be able into Statsig
 
-### Warehouse ingestion
+**Warehouse ingestion**
 
 - [Connect your warehouse to Statsig](https://docs.statsig.com/data-warehouse-ingestion/overview)
 - Point Statsig at a query that outputs events in the expected schema
 - Statsig ingests on a recurring schedule
 
-### UI download or Export API
+**UI download or Export API**
 
 The simple way to get these events into Statsig is to replay them through the [Event Webhook](https://docs.statsig.com/http-api#post-event-webhook).
 
