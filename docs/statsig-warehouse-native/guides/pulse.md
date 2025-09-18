@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Pulse is Statsig's visualization of how an experiment impacted target metrics. This page walks through the tool and how to use it to evaluate your experiment.
@@ -63,5 +63,5 @@ In the diagnostics tab, the results of Statistical and Data Quality checks are a
 ## Explore
 
 The explore tab allows you to use user dimensions to drill down and explore results. This is a powerful tool for diagnostics and hypothesis generation, though it's important to treat these results as inconclusive unless the experiment had a specific hypothesis in mind for your target population. You can also select from "special" tags including **All Metrics** (all metrics in your project) and **Scorecard Metrics** (all metrics on the experiment scorecard). 
-![image](https://github.com/statsig-io/docs/assets/31516123/829cf18b-e3bd-4a8b-ad51-5259bb3eda29)
+![Pulse explore tab interface](https://github.com/statsig-io/docs/assets/31516123/829cf18b-e3bd-4a8b-ad51-5259bb3eda29)
 

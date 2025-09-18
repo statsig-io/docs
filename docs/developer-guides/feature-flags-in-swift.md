@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Integrating feature flags into an iOS application using the Statsig Swift SDK involves several steps, starting with creating a basic iOS "Hello World" application in Xcode. Following that, you'll integrate the Statsig SDK to manage feature flags. 
@@ -143,7 +143,7 @@ Integrating feature flags into an iOS application using the Statsig Swift SDK in
    - Optionally, configure targeting rules based on user properties or environments.
    - Save your feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature flag creation interface in Statsig console](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 5. **Toggle and Configure Your Feature Flag**:
    - You can now toggle the feature flag on or off and configure detailed targeting rules directly from the Statsig console.

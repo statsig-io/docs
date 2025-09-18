@@ -46,6 +46,15 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 
   When set to true, the SDK will not log any events or exposures.
 
+- **`InitTimeoutMs`**: 
+  Default: 3000
+
+  Maximum time in milliseconds to wait for SDK initialization to complete. If initialization takes longer than this timeout, the SDK will continue to operate but may return default values until initialization completes.
+
+- **`FallbackToStatsigApi`**: 
+  Default: false
+
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
 
 ---
 
@@ -68,6 +77,8 @@ options := statsig.NewStatsigOptionsBuilder().
 		WithDisableCountryLookup(true).
 		WithDisableUserAgentParsing(true).
 		WithWaitForCountryLookupInit(false).
+		WithInitTimeoutMs(3000).
+		WithFallbackToStatsigApi(false).
 		Build()
 
 // Pass the options object when initializing the Statsig client

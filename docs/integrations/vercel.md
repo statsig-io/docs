@@ -3,7 +3,7 @@ title: Vercel
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -15,13 +15,13 @@ The integration also directly hooks into Vercel's Edge Config, providing low lat
 
 Head over to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. You'll be prompted to create a new Statsig project.
 
-![image](/img/vercel_marketplace_install.png)
+![Vercel marketplace installation interface](/img/vercel_marketplace_install.png)
 
 Enable Edge Config Syncing to have Statsig automatically push configs into Vercel's Edge Config for fast SDK Initialization. After installing the application, you can connect the application to a Vercel project to automatically pull in env vars to use in your project automatically.
 
 In the application page, you'll be able to go to your newly created Statsig project and configure gates and experiments. All gates and experiments will automatically be synced into Vercel for quick status checks and access.
 
-![image](/img/vercel_marketplace_view.png)
+![Vercel marketplace project view interface](/img/vercel_marketplace_view.png)
 
 ## Using Flags SDK in NextJS
 
@@ -74,7 +74,7 @@ The adapter takes two arguments:
 - The `edgeConfigClient` you just created
 - The `edgeConfigItemKey` you were given when you created the integration (you can find it again in [Project Settings -> Integrations](https://console.statsig.com/integrations) - "vercel edge config")
 
-### 2. SDK Initialization
+### 3. SDK Initialization
 
 ```
 await statsig.initialize(
@@ -92,7 +92,7 @@ SDK initialization takes two arguments:
 - Your statsig secret key. This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console. This is used to authenticate your requests to the statsig backend. In this example, we've configured it as an environment variable
 - An options object. We are using the `dataAdapter` property to hook up the Edge Config to the SDK. We're also disabling the ID list sync to speed up initialization
 
-### 3. Checking a Gate
+### 4. Checking a Gate
 
 ```
 const result = statsig.checkGateSync(
@@ -105,7 +105,7 @@ const result = statsig.checkGateSync(
 
 This is a gate check in code. The first parameter is the `StatsigUser` object you are checking, and the second is the gate name. Refer to the [node sdk documentation](/server/nodejsServerSDK) for how to check other entities like experiments and dynamic configs. Here, we have created a user with a random userID for every evaluation to illustrate a gate with a partial rollout working.
 
-### 4. Flushing Events
+### 5. Flushing Events
 
 ```
 waitUntil(statsig.flush(1000));

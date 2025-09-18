@@ -7,24 +7,23 @@ slug: /infra-analytics/logs-explorer
 keywords:
   - owner:laurel
 last_update:
-  date: 2025-09-10
+  date: 2025-09-12
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 Logs Explorer provides a way for you to search and analyze all of your product’s logs in one place. It is designed to help you quickly find the signals you care about, whether you’re debugging an incident, tracking regressions, or exploring system behavior.  
+- **Searching**: Slice logs down to only what’s relevant (by service, host, status code, etc.) 
+- **Grouping**: Aggregate logs by dimensions like region, status, or browser.
+- **Visualization**: Plot log groupings over time to spot spikes, regressions, or anomalies instantly.
 
 ---
 
 ### Searching in Logs Explorer  
-To identify the entries that matter, you can either search directly through a custom query or use our point-and-click query constructor. 
+You can find the logs you care about by:
+- **Writing queries**: Run custom searches to zero in on specific log entries.
+- **Using the query builder**: Point-and-click to construct filters without syntax overhead.
 
-Once you’ve found something of interest, you can filter and group by metadata fields (such as service, host, or status code) to uncover patterns and trends.  
-- **Filtering**: Narrow down logs to the subset relevant to your investigation.  
-- **Grouping**: Aggregate logs across dimensions (service, region, status, browser, etc.).  
-- **Visualization**: Plot log groupings over time to detect spikes, regressions, or unusual changes.  
-
-### Visualizations in Logs Explorer  
-In Log Explorer, visualizations make it easy to move beyond raw text logs into structured insights. For example, you can group logs by browser name and track how distributions change over time. These visualizations let you spot anomalies and shifts at a glance.  
+![Logs Explorer Overview](/img/infra-analytics/logs-explorer-1.png)
 
 ---
 

@@ -725,10 +725,12 @@
     "downsample",
     "multiset",
     "sublinear",
+    "targetable",
     "Hajnal",
     "Hajnal's",
     "Cohen",
-    "Cohen's"
+    "Cohen's",
+    "xhuang"
   ],
   "ignorePaths": [
     "node_modules/**",

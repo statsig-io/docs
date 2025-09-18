@@ -6,7 +6,7 @@ description: Monitor the health of experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Once you turn on your experiment, you can monitor the health of your experiment and view the exposures for the control and variants groups.

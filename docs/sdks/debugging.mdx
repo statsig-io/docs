@@ -5,7 +5,7 @@ slug: /sdk/debugging
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 import Tabs from '@theme/Tabs';
@@ -83,6 +83,7 @@ Log-line feedback is one of the simplest tools you have to understand how your S
 | `CountryLookupNotLoaded` | You initialized your SDK but disabled country lookups (likely for performance or memory usage reasons). | Error | Update your targeting to not rely on IP resolution; only use fields directly set on the user. |
 
 
+
         ### #2. Reason (new SDKs only)
         Newer versions of the sdk will contain both the above initialization state and the source of an individual value that was returned.
         | Reason Name           | Description| Type | Debugging Suggestions|
@@ -91,6 +92,7 @@ Log-line feedback is one of the simplest tools you have to understand how your S
         |`Sticky`| The value is from `keepDeviceValue = true` on the method call|Normal ||
         |`LocalOverride`|The value is from a local override set on the sdk|Normal ||
         |`Unrecognized`|The value was not included in the set of configs the client was operating with|Error|Confirm the experiment or gate is configured in the Statsig console and you're using the correct API key.|
+        |`Filtered`|The gate was filtered from the /initialize response because the default value for the environment was to fail, and non-existent gates fail by default|
 
         For example: `Network:Recognized` means the sdk had up to date values from a successful initialization network request, and the gate/config/experiment you were checking was defined in the payload.
 
