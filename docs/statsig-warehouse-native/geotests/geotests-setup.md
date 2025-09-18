@@ -51,6 +51,10 @@ In the Setup tab:
 
 ![Geotest experiment setup configuration screen](/img/geotests/SetupXP.png)
 
+:::note
+Metric types in a Geotest experiment are limited to SUM, COUNT, and COUNT_DISTINCT due to the assumptions made in running inference. We'll be adding more metric types in the future. Feel free to reach out to Statsig with suggestions.
+:::
+
 Configure:
 
 - Treatment Start/End Dates
