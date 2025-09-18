@@ -5,7 +5,7 @@ slug: /dynamic-config/add-rule
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 ## Add a rule to a dynamic config

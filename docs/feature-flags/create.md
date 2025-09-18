@@ -5,7 +5,7 @@ slug: /feature-flags/create
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 This guide walks through how to create a Feature Gate in the Statsig console, how to add an evaluation rule to a Feature Gate, how to implement the Feature Gate in your code, examples of common Feature Gate setups, and a list of all Feature Gate targeting conditions available in Statsig.

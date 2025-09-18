@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 To integrate feature flags into a Rust application with the Statsig SDK, you'll start by setting up a simple Rust "Hello World" app, then integrate Statsig to manage your feature flags. 

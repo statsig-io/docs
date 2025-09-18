@@ -5,7 +5,7 @@ sidebar_label: Metric Examples
 keywords:
   - owner:craig
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 For customers transitioning from other Warehouse Native Vendors, the format of metrics should be similar and generally customers have been able to use APIs to fetch remote configurations, translate them, and post them to Statsig without issue.

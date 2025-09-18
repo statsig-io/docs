@@ -4,7 +4,7 @@ slug: /org-admin/experiment_policy
 keywords:
   - owner:mseger
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 :::info

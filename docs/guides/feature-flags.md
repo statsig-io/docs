@@ -5,7 +5,7 @@ slug: /guides/feature-flags
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 This tutorial walks you through how to create your first feature flag in Statsig from end to end. Feature flags are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using feature flags include shipping new UI elements, API endpoints, or product features. In Statsig, we refer to feature flags as [Feature Gates](/feature-flags/overview) to distinguish them from other flagging and feature management tools in the product.

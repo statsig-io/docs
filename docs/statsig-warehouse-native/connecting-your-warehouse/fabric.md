@@ -5,7 +5,7 @@ sidebar_label: Fabric [Beta]
 keywords:
   - owner:xhuang
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 ## Overview

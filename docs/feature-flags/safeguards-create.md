@@ -5,7 +5,7 @@ slug: /safeguards/create
 keywords:
   - owner:Shubham
 last_update:
-  date: 2025-08-14
+  date: 2025-09-18
 ---
 
 You can create a Safeguard on one or multiple targeting rules within a Feature Gate. To create a Safeguard on a rule, follow the steps below:

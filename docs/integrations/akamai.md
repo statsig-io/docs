@@ -3,7 +3,7 @@ title: Akamai Edge KV
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-09
+  date: 2025-09-18
 ---
 
 ## Overview

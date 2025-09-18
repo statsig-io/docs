@@ -5,7 +5,7 @@ slug: /feature-flags/overview
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-08-14
+  date: 2025-09-18
 ---
 
 **Feature Gates**, commonly known as feature flags, allow you to toggle the behavior of your product in real time without deploying new code. 

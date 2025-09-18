@@ -5,7 +5,7 @@ slug: /experiments-plus/disable-group
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 ## Disabling a Group in an Experiment

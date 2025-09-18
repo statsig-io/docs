@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 Running a simple A/B experiment in a web page with Rust and the Statsig SDK only takes a couple steps, including setting up your Rust environment, integrating with Statsig for A/B testing, and configuring the experiment via the Statsig console. See below a 5-minute guide:

@@ -5,7 +5,7 @@ slug: /metrics/count_distinct_metric_type
 keywords:
   - owner:Aamodit 
 last_update:
-  date: 2025-08-22
+  date: 2025-09-18
 ---
 
 # Count Distinct Metrics

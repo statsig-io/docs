@@ -5,7 +5,7 @@ slug: /segments/implement
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 You can use a segment to target a set of users in a feature gate or a dynamic config as follows:

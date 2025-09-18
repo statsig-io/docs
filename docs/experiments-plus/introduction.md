@@ -6,7 +6,7 @@ slug: /experiments-plus
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 **Experimentation** is a powerful tool for making data-driven decisions that improve product outcomes and customer experiences. 

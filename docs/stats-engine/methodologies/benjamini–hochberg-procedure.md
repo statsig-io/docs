@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/benjamini–hochberg-procedure
 keywords:
   - owner:vm
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 ## What it is

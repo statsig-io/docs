@@ -5,7 +5,7 @@ sidebar_label: Redshift
 keywords:
   - owner:vm
 last_update:
-  date: 2025-09-16
+  date: 2025-09-18
 ---
 
 ## Overview

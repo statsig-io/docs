@@ -5,7 +5,7 @@ slug: /pulse/read-pulse
 keywords:
   - owner:vm
 last_update:
-  date: 2025-08-12
+  date: 2025-09-18
 ---
 
 ## Read Experiment Results

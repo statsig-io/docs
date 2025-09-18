@@ -7,7 +7,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 Funnel metrics are highly customizable Statsig Warehouse Native. You can easily set up a user journey and understand how your changes influence each step - at the user level, or at the session level.

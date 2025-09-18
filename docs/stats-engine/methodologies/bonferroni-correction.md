@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/bonferroni-correction
 keywords:
   - owner:vm
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 ## What is Bonferroni Correction?

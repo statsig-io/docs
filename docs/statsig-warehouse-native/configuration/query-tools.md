@@ -5,7 +5,7 @@ sidebar_label: Macros
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-29
+  date: 2025-09-18
 ---
 
 In **Metric** and **Assignment sources**, you can use Statsig Macros to directly inject a DATE() type which will be relative to the experiment period being loaded.

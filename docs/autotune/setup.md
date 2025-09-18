@@ -5,7 +5,7 @@ slug: /autotune/setup
 keywords:
   - owner:vm
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 ## How to set up Autotune

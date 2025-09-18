@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-17
+  date: 2025-09-18
 ---
 
 To integrate feature flags into a Ruby application using the Statsig SDK, you'll start by setting up a simple Ruby "Hello World" app, then integrate Statsig to manage your feature flags. 
