@@ -5,7 +5,7 @@ slug: /pulse/participating-units
 keywords:
   - owner:vm
 last_update:
-  date: 2025-09-03
+  date: 2025-09-17
 ---
 
 ## Definition

@@ -4,6 +4,9 @@ sidebar_label: One-Sample Tests
 slug: /stats-engine/one-sample-test
 keywords:
   - owner:vm
+last_update:
+  date: 2025-08-27
+
 ---
 
 ## One-Sample Tests (aka Fixed-Value Test)

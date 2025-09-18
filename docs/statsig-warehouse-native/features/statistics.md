@@ -5,7 +5,7 @@ sidebar_label: Overview
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 Statsig's statistics engine is designed to deliver the best analysis of experiment results in the market. We have four core values around our Stats Engine: Transparency, Trust, Flexibility, and Power

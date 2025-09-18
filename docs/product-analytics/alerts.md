@@ -5,7 +5,7 @@ slug: /product-analytics/alerts
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-08-12
 ---
 
 # Alerts 

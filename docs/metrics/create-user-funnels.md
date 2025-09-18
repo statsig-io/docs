@@ -5,7 +5,7 @@ slug: /metrics/create-user-funnels
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-17
 ---
 
 

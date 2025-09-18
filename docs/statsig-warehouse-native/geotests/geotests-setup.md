@@ -5,7 +5,7 @@ slug: /experiments-plus/geotests-setup
 keywords:
   - owner:makris
 last_update:
-  date: 2025-07-23
+  date: 2025-09-17
 ---
 
 # Get Started with Geotests

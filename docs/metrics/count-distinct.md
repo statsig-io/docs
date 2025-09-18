@@ -6,7 +6,6 @@ keywords:
   - owner:Aamodit 
 last_update:
   date: 2025-08-22
-
 ---
 
 # Count Distinct Metrics

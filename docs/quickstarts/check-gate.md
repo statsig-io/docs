@@ -5,7 +5,7 @@ slug: /quickstarts/feature-gates
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 This tutorial walks you through how to check your first Feature Gate in Statsig from end to end. Feature Gates, also known as feature flags, are a way to safely control the rollout of new features to your users without deploying additional code. Common examples for using Feature Gates include shipping new UI elements, API endpoints, or product features. 

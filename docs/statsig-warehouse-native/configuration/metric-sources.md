@@ -5,7 +5,7 @@ sidebar_label: Metric Sources
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Metric Sources are how you schematize your warehouse data for Statsig, and they serve as the input data for metrics.

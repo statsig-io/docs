@@ -5,14 +5,14 @@ slug: /pulse/drill-down
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-17
 ---
 
 ## Tooltip Overview
 
 A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
 
-![Screenshot 2025-02-06 at 6 39 09 PM](https://github.com/user-attachments/assets/767a8861-6034-4a60-966b-6d3ad94b843b)
+![Pulse drill-down analysis interface](https://github.com/user-attachments/assets/767a8861-6034-4a60-966b-6d3ad94b843b)
 
 - **Group**: The name of the group of users. For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control. In Experiments, these will be the variant names.
 - **Units**: The number of distinct units included in the metric. E.g.: Distinct users for user_id experiments, devices for stable_id experiments, etc.
@@ -48,15 +48,15 @@ In this view, select and drag as needed to zoom-in on different time ranges.  Th
 
 **Daily**: The metric impact on each calendar day without aggregating days together.  This is useful for assessing the variability of the metric day-over-day and the impact of specific events.  It's the recommended time series view for Holdouts, since it highlights the impact over time as new features are launched. 
 
-![Screenshot 2025-02-06 at 6 41 14 PM](https://github.com/user-attachments/assets/f42453a6-e413-47d5-b176-bb3e9b49a915)
+![Daily metric impact visualization interface](https://github.com/user-attachments/assets/f42453a6-e413-47d5-b176-bb3e9b49a915)
 
 **Cumulative**: Shows how the aggregated metric lift and confidence intervals evolve over time. 
 
-![Screenshot 2025-02-06 at 6 41 34 PM](https://github.com/user-attachments/assets/b2e9aea9-98fb-4e29-bccf-abae356d0173)
+![Cumulative metric lift visualization interface](https://github.com/user-attachments/assets/b2e9aea9-98fb-4e29-bccf-abae356d0173)
  
 **Days Since Exposure**: Shows the metric impact broken down by the number of days users have been in the experiment, which helps distinguish between novelty effects and sustained impact.  For key metrics, this view also shows pre-experiment metrics to identify an differences that existed between groups even before the experiment started.  
 
-![Screenshot 2025-02-06 at 6 41 49 PM](https://github.com/user-attachments/assets/17eeb054-43d8-424c-b43a-85c682bfcfb8)
+![Days since exposure metric visualization interface](https://github.com/user-attachments/assets/17eeb054-43d8-424c-b43a-85c682bfcfb8)
 
 
 ### Raw Data

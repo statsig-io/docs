@@ -5,7 +5,7 @@ sidebar_label: Understanding Experiments
 keywords:
   - owner:craig
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 Running statistical analysis for an experiment can be complex. Much of this complexity is abstracted away from the end user, but this commonly leads to questions - things like:

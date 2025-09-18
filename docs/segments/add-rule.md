@@ -5,7 +5,7 @@ slug: /segments/add-rule
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-17
 ---
 ## Create a rule for a segment
 

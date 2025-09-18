@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/cuped
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 ## CUPED - Controlled-experiment Using Pre-Existing Data

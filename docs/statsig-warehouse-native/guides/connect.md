@@ -5,7 +5,7 @@ sidebar_label: Overview
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-16
 ---
 
 To run analysis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:

@@ -6,7 +6,7 @@ description: Map cross-platform IDs in experiment analysis and analyze anonymous
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Statsig warehouse native natively supports resolving multiple IDs to one identified user, allowing you to easily expose an experiment on one identifier and analyze data coming from one to many mapped identities associated with that experimental unit.

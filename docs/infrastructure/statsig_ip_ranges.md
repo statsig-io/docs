@@ -3,7 +3,7 @@ title: Statsig IP Ranges
 keywords:
   - owner:eric
 last_update:
-  date: 2025-07-23
+  date: 2025-09-16
 ---
 
 Statsig reserves the following IP addresses and ranges for use by its services. If you have a network policy set up inside your systems, you should allowlist

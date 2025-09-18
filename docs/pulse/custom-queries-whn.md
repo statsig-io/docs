@@ -5,7 +5,7 @@ slug: /pulse/custom-queries-whn
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 import CustomQueries from '@site/docs/pulse/custom-queries.md';

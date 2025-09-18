@@ -5,7 +5,7 @@ sidebar_label: Tags & Teams
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 Statsig offers tools to enrich data sources, metrics, and entities with team ownership as well as arbitrary tags. These provide a powerful way to organize your data configuration, and also feed into advanced analytics tools like [meta-analysis](/experiments/meta-analysis.md).

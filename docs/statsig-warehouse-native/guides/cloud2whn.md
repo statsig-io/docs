@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 This page gives you a quick overview of what migrating from Statsig Cloud to Statsig Warehouse Native looks like. If you are an enterprise customer on Statsig Cloud and want to use Statsig Warehouse Native please work with your Statsig contact to evaluate feasibility. If all (or most) of your metrics come from your data warehouse already, migration can be straight forward. Migration only changes where metrics are computed - they are sourced in your warehouse with WHN. 

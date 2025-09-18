@@ -4,7 +4,7 @@ sidebar_label: Ratio
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-28
+  date: 2025-07-29
 ---
 
 ## Summary

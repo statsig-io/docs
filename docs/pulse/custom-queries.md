@@ -5,7 +5,7 @@ slug: /pulse/custom-queries
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 ## Custom "Explore" Queries
@@ -35,7 +35,7 @@ This timing behavior only affects precomputed user dimensions that run on a sche
 
 To run a Custom Query, navigate to the **Explore** tab within your experiment.
 
-<img width="467" alt="Screenshot 2025-02-06 at 6 49 18 PM" src="https://github.com/user-attachments/assets/b2737ba1-dbf4-4235-a806-afea5dfe9a78" />
+<img width="467" alt="Custom query explore tab interface" src="https://github.com/user-attachments/assets/b2737ba1-dbf4-4235-a806-afea5dfe9a78" />
 
 Custom Query fields: 
 
@@ -71,7 +71,7 @@ If you want a daily refresh of a given Custom Query, you can schedule your Custo
 
 <img width="1378" alt="Screenshot 2025-06-08 at 10 35 21 PM" src="https://github.com/user-attachments/assets/56d11b46-f2de-4569-89f7-b0a439910964" />
 
-<img width="505" alt="Screenshot 2025-02-06 at 6 53 33 PM" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
+<img width="505" alt="Scheduled query configuration interface" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
 
 ### Reviewing Custom Query Results
 
@@ -85,7 +85,7 @@ If [Sequential Testing](/experiments-plus/sequential-testing) is enabled for you
 
 Since custom queries are computed as a snapshot in time, sequential testing adjustments are computed for that specific analysis only. If you run additional custom queries with more or less data (e.g. more days in the analysis, more unique users in the experiment), the sequential testing adjustments will change accordingly. Some custom queries may have no sequential adjustments applied at all if they meet the configured minimum Days or Unique Exposures.
 
-![Screenshot 2025-02-26 at 8 43 10 AM](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
+![Sequential testing adjustments interface](https://github.com/user-attachments/assets/df7c4087-82c3-41fb-8f5d-124094ec4526)
 
 
 

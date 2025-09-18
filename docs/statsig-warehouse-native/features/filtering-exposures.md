@@ -5,7 +5,7 @@ sidebar_label: Filter Exposures
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 ## Filter Exposures by Qualifying Event

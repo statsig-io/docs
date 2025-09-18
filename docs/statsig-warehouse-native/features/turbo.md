@@ -6,7 +6,7 @@ description: Use turbo mode to reduce cost
 keywords:
   - owner:craig
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 By default, Statsig and other warehouse native platforms calculate cumulative results for every day in an experiment. This lets users take a historical analysis and get a rich historical view, or make changes and see how those changes "would have" impacted an analysis on previous days.

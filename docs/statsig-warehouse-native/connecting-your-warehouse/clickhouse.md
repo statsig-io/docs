@@ -5,7 +5,7 @@ sidebar_label: Clickhouse [Beta]
 keywords:
   - owner:vm
 last_update:
-  date: 2025-06-10
+  date: 2025-09-16
 ---
 
 :::warning

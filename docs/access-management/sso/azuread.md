@@ -4,7 +4,7 @@ title: Single Sign-On With Entra ID/Azure AD/Office 365
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-17
 ---
 Microsoft Entra ID, formerly known as Azure AD, is a supported IdP for SSO into Statsig.
 

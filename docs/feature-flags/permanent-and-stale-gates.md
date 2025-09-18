@@ -5,7 +5,7 @@ slug: /feature-flags/permanent-and-stale-gates
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-29
+  date: 2025-09-17
 ---
 
 It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described [here](/feature-flags/feature-flags-lifecycle). On Statsig, you can use feature gate **Types** to easily keep track of your flags that might be ready to brought to their final state.

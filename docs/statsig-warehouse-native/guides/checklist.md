@@ -5,7 +5,7 @@ sidebar_label: Setup Checklist
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-07-29
 ---
 
 After you've connected your warehouse and set up both metrics and assignment sources, you can ensure your setup is complete and correct by checking the following items:
