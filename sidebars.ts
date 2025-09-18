@@ -61,6 +61,7 @@ const sidebars: SidebarsConfig = {
                 id: "guides/migration-overview",
               },
               items: [
+                "guides/migrate-from-amplitude",
                 {
                   type: "category",
                   label: "Migrate from LaunchDarkly",
