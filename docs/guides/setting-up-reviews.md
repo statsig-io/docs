@@ -4,7 +4,7 @@ title: Setting up Reviews for Team Workflows
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 
@@ -12,11 +12,11 @@ You can enable reviews for all Statsig resources such as feature gates, dynamic 
 ### Turning on Change Reviews for a Project
 As a Project Admin, you can configure your project to require reviews for any changes. To enable reviews for your project, navigate to the **Project Settings** page, switch to the Reviews tab and toggle this on.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/45a439b5-7cf7-4f32-82d0-596c089f2359)
+![Project settings reviews configuration interface](https://github.com/statsig-io/docs/assets/31516123/45a439b5-7cf7-4f32-82d0-596c089f2359)
 
 - You can optionally allow different roles to bypass the review requirement and self-approve review requests by customizing the permissions available to user roles:
  
-![image](https://github.com/statsig-io/docs/assets/31516123/4b7db056-a6be-4a76-99c9-08f8dc053ed8)
+![User role permissions configuration screen](https://github.com/statsig-io/docs/assets/31516123/4b7db056-a6be-4a76-99c9-08f8dc053ed8)
 
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
@@ -31,11 +31,11 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 ### Teams
 To create a predefined group of reviewers, you can create Teams
-![image](https://github.com/statsig-io/docs/assets/31516123/1b1c72a9-ac98-4590-8690-c39d2e68489a)
+![Teams creation interface](https://github.com/statsig-io/docs/assets/31516123/1b1c72a9-ac98-4590-8690-c39d2e68489a)
 
 You can now use these predefined **Teams** when you submit any changes for review.
 
-![image](https://user-images.githubusercontent.com/1315028/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png)
+![Team selection for review submission](https://user-images.githubusercontent.com/1315028/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png)
 
 ### Enforcing Team Reviews
 You can _a priori_ restrict who can make changes to your Project by (a) turning on **Reviews Required** for your Project and (b) adding designated **Teams** or **Reviewers** when you create the Feature Gate or Experiment. 
@@ -72,7 +72,7 @@ To enable the Pre-commit Webhook experience:
 <img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="https://github.com/user-attachments/assets/a01617b2-3bb0-4f20-a505-b9318dd220a7" />
 
 
-Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly. 
+Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
 
 
 

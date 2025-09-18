@@ -5,11 +5,11 @@ slug: /statsig-warehouse-native/guides/scaling
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 
 You can now connect multiple Snowflake warehouses to your account, enabling better query performance by automatically distributing query jobs across all available warehouses. To set it up, you can head over to Settings > Project > Data Connection, and select Set up additional Warehouses.
-![image](https://github.com/user-attachments/assets/d3d4d05a-7627-4b0e-9ba7-aa4e6fe561e4)
+![Snowflake warehouse scaling configuration interface](https://github.com/user-attachments/assets/d3d4d05a-7627-4b0e-9ba7-aa4e6fe561e4)
 
 This is a beta feature, only available on Snowflake for now.

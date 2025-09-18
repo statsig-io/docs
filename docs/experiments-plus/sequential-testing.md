@@ -5,7 +5,7 @@ slug: /experiments-plus/sequential-testing
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## What's the problem with looking early in a "standard" A/B test?
@@ -28,7 +28,7 @@ Peeking, however well-intentioned, will always introduce some amount of selectio
 
 In the variety of Sequential Testing on Statsig, the experimental results for each preliminary analysis window are adjusted to compensate for the increased false positive rate associated with peeking. Statsig adjusts your p-values and confidence intervals automatically, and you can see this in the Results tab:
 
-![image](/img/sequential_testing_example.png)
+![Sequential testing results visualization](/img/sequential_testing_example.png)
 _In this example, the confidence intervals for each metric are expanded using the "wings" or "tabs". This serves as a quick visual indicator that sequential testing is enabled and shows you how much the intervals have been expanded._
 
 ![Screenshot 2025-02-24 at 10 17 04 AM](https://github.com/user-attachments/assets/c233dc78-fc61-46cb-8068-e657853a3a1d)
@@ -49,17 +49,17 @@ Sequential testing can be used anywhere you do an experimental analysis. This in
 
 In the **Setup** tab of your experiment, with Frequentist selected as your Analytics Type, you can enable Sequential Testing under the Analysis Settings section. This setting can be toggled at any time during the life of the experiment, and it does not need to be enabled prior to the start of the experiment.
 
-![image](/img/enable_freq_sequential_testing.png)
+![Sequential testing configuration interface](/img/enable_freq_sequential_testing.png)
 
 ### Interpreting Sequential Testing Results
 
 Click on Edit at the top of the metrics section in Pulse to toggle Sequential Testing on/off.
 
-![image](https://user-images.githubusercontent.com/90343952/191135447-5e094892-49e5-485e-8186-18732888662c.png)
+![Pulse metrics sequential testing toggle](https://user-images.githubusercontent.com/90343952/191135447-5e094892-49e5-485e-8186-18732888662c.png)
 
 When enabled, an adjustment is automatically applied to results calculated before the target completion date of the experiment.
 
-![image](https://user-images.githubusercontent.com/90343952/191135645-0042dced-3e8f-479f-8f63-c814dfbd4923.png)
+![Sequential testing confidence interval visualization](https://user-images.githubusercontent.com/90343952/191135645-0042dced-3e8f-479f-8f63-c814dfbd4923.png)
 
 The dashed line represents the expanded confidence interval resulting from the adjustment. The solid bar is the standard confidence interval computed without any adjustments. If the adjusted confidence interval overlaps with zero, this means the metric delta is not stat-sig at the moment, and the experiment should continue its course as planned.
 

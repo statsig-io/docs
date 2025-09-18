@@ -4,7 +4,7 @@ sidebar_label: Funnel++
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-28
+  date: 2025-09-18
 ---
 
 :::info
@@ -98,6 +98,6 @@ Funnels in experiment-analysis order strictly. For example, in the funnel A->B->
 ## Visualization
 
 In addition to breaking down lift by funnel steps, it is also possible to create funnel visualizations by step.
-![image](https://github.com/user-attachments/assets/c38ca372-5323-408f-89b6-121300b4e60c)
+![Funnel visualization by step breakdown](https://github.com/user-attachments/assets/c38ca372-5323-408f-89b6-121300b4e60c)
 
-![image](https://github.com/user-attachments/assets/8e10442f-be78-455e-84a3-053e4a61434a)
+![Funnel step analysis chart](https://github.com/user-attachments/assets/8e10442f-be78-455e-84a3-053e4a61434a)

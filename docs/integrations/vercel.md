@@ -3,7 +3,7 @@ title: Vercel
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -15,13 +15,13 @@ The integration also directly hooks into Vercel's Edge Config, providing low lat
 
 Head over to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. You'll be prompted to create a new Statsig project.
 
-![image](/img/vercel_marketplace_install.png)
+![Vercel marketplace installation interface](/img/vercel_marketplace_install.png)
 
 Enable Edge Config Syncing to have Statsig automatically push configs into Vercel's Edge Config for fast SDK Initialization. After installing the application, you can connect the application to a Vercel project to automatically pull in env vars to use in your project automatically.
 
 In the application page, you'll be able to go to your newly created Statsig project and configure gates and experiments. All gates and experiments will automatically be synced into Vercel for quick status checks and access.
 
-![image](/img/vercel_marketplace_view.png)
+![Vercel marketplace project view interface](/img/vercel_marketplace_view.png)
 
 ## Using Flags SDK in NextJS
 

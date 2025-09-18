@@ -5,7 +5,7 @@ slug: /pulse/best-faq
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!
@@ -47,7 +47,7 @@ This normally happens when your company is both using the SDK or event imports, 
 
 ## Our external source shows more exposure events than Statsig. Are data missing?
 
-Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. By default, Statsig uses UTC-0800 to define a "day".
+Exposures on the last day (the day you made a decision) are not counted as exposures. Please filter out that day when you analyze your external data. The exact hours which define a "day" for your project depend on which timezone your project is assigned.
 
 ## We log categorical metadata for a custom event, but Pulse doesn't show these breakouts. What's wrong?
 

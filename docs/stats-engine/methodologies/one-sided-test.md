@@ -5,7 +5,7 @@ slug: /stats-engine/one-sided-test
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## One-Sided Tests (aka One-Tailed Test, Non-Inferiority Test)
@@ -26,14 +26,14 @@ When setting up an experiment and identifying metrics to measure, the default se
 Our V1 doesn't support Bayesian testing yet.
 :::
 
-![image](https://github.com/user-attachments/assets/23044f21-6249-4fc1-9895-22111bb16010)
+![One-sided test configuration interface](https://github.com/user-attachments/assets/23044f21-6249-4fc1-9895-22111bb16010)
 
 ## How to read this
 
 Metrics using one-sided tests will show up in Pulse very similarly to two-sided tests. The only difference will be that we show a one-sided CI rather than a two-sided CI.
 
 Reading one-sided CIs can be a bit confusing at first. They either extend to infinity or negative infinity, which is a bit unusual, but this is entirely expected since we only detect changes in the other direction. As usual with CIs, they indicate that the real mean value of the metric likely falls into this range. Since the CI for the one-sided metric analyzed is so wide, it can be equally useful to read the results as having high confidence the mean value does not fall in the range outside the CI.
-![image](https://github.com/user-attachments/assets/7ab3d680-b4c4-4321-b1fc-cc506b0ab21b)
+![One-sided confidence interval visualization](https://github.com/user-attachments/assets/7ab3d680-b4c4-4321-b1fc-cc506b0ab21b)
 
 ## FAQ
 

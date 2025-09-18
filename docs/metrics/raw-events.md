@@ -5,7 +5,7 @@ slug: /metrics/raw-events
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # Raw Events
@@ -28,7 +28,7 @@ You must include at least one unit identifier when you record any raw events wit
 
 There are three ways to send raw events into Statsig.
 
-![image](https://user-images.githubusercontent.com/1315028/182466148-a40ad007-a60a-47b8-9cd3-9b27d0af82ed.png)
+![Raw events ingestion methods diagram](https://user-images.githubusercontent.com/1315028/182466148-a40ad007-a60a-47b8-9cd3-9b27d0af82ed.png)
 
 1. Integrate with Statsig's [client](/client/introduction) or [server](/server/introduction) SDKs or [HTTP](/http-api) API
 2. Set up Statsig as a destination in a data connector such as [Segment](/integrations/data-connectors/segment#configuring-incoming-events), [mParticle](/integrations/data-connectors/mparticle#configuring-incoming-events), [RudderStack](/integrations/data-connectors/rudderstack#configuring-incoming-events) and [Census](/integrations/data-connectors/census#configuring-incoming-events)

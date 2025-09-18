@@ -6,14 +6,14 @@ keywords:
   - owner:makris
   - sequential
 last_update:
-  date: 2025-09-04
+  date: 2025-09-18
 ---
 
 ## What is SPRT?
 
 The **Sequential Probability Ratio Test** (SPRT) is another, advanced methodology for running AB tests, differing from the traditional Null Hypothesis Significance Test (commonly called [Frequentist](/stats-engine/p-value) analysis). SPRT can meaningfully improve time to decision for your experiments, including detecting unwanted metric regressions much faster. It also tends to be much easier to share results to stakeholders who aren't super familiar with P-values and Significance levels. Lastly, SPRT has no penalties for peeking; there's no need for sequential testing plans, Alpha spending, or CI-penalties as SPRT is built to be a sequential test methodology from the start.
 
-![Image](/img/sprt/sprt_scorecard.png)
+![SPRT experiment results scorecard](/img/sprt/sprt_scorecard.png)
 
 ### Concepts
 
@@ -61,11 +61,11 @@ One of the nice things about SPRT is that this Likelihood Ratio is similar to ho
 
 **Enabling SPRT:** Select SPRT as your analysis method when setting up an AB test in the Statsig console.
 
-![image](/img/sprt/sprt_power_analysis.png)
+![SPRT power analysis configuration interface](/img/sprt/sprt_power_analysis.png)
 
 **Interpreting Results:** The experiment Results tab shows the latest likelihood ratio for each metric in your experiment and indicates when a decision boundary has been reached, allowing you to accept the null or alternative hypothesis with confidence.
 
-![image](/img/sprt/sprt_results_readout.png)
+![SPRT experiment results dashboard](/img/sprt/sprt_results_readout.png)
 
 ## Computing SPRT Results
 

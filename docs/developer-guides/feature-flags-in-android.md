@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 To implement feature flags in an Android app using the Statsig SDK, follow these steps, including creating a basic "Hello World" Android app, integrating Statsig, and managing feature flags in the Statsig console.
@@ -114,7 +114,7 @@ To implement feature flags in an Android app using the Statsig SDK, follow these
    - Configure targeting rules as needed.
    - Save your feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature flag creation interface in Statsig console](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 5. **Toggle Your Feature Flag**:
    - You can enable or disable your feature flag from the dashboard and configure it as needed.

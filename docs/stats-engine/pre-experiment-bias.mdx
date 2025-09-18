@@ -5,7 +5,7 @@ slug: /stats-engine/pre-experiment-bias
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 In some cases, users in two experiment groups can have meaningfully different average behaviors before your experiment applies any intervention to them. If this difference is maintained after your experiment starts, it's possible that experiment analysis will attribute that pre-existing difference to your intervention.
@@ -22,7 +22,7 @@ If bias is detected, users are notified and a warning is placed on relevant Puls
 Statsig provides a "Days Since Exposure" view to help identify novelty effects and existing pre-experiment effects. For example, the test group of the experiment below had a consistently higher mean
 than the control group in the week before exposure for this metric
 
-![image](https://user-images.githubusercontent.com/102695539/246545035-22ff2db6-9c08-4227-a53d-8faa8feb5e92.png)
+![Pre-experiment bias visualization showing test group with consistently higher mean than control group](https://user-images.githubusercontent.com/102695539/246545035-22ff2db6-9c08-4227-a53d-8faa8feb5e92.png)
 
 Statsig detects this bias by running the standard [pulse](/pulse/read-pulse) calculation on the pre-experiment term (looking back one week in cloud, and your configured CUPED lookback window in Warehouse Native), and calculating the p-value for the null hypothesis that the groups are identical.
 Relevant results will be flagged according to logic which balances awareness and false positives stemming from high numbers of scorecard metrics or groups.
