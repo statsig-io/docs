@@ -22,7 +22,7 @@ If you send 20,000 emails, and only a portion of those get delivered and opened 
 You can use the email open events to either handcraft an assignment source for an `Analyze Only` experiment or to [filter your analysis population](/statsig-warehouse-native/configuration/qualifying-events/#filter-by-qualifying-events) for an `Analyze Only` experiment.
 
 ### Configuring your scorecard metrics
-> What are you key down-funnel (_e.g._, on-site or in-app) success metrics for the experiment, and are you able to unifiy the email recipients with their subsequent  down-funnel interactions?
+> What are you key down-funnel (_e.g._, on-site or in-app) success metrics for the experiment, and are you able to unify the email recipients with their subsequent  down-funnel interactions?
 
 Email Open events can be useful both for filtering your test population or simply for the monitoring purposes, but is not typically a primary metric unless your experiment is testing out different subject lines.
 
