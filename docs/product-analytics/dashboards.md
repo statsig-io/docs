@@ -92,18 +92,17 @@ You can click on the filters button below the dashboard name to add a global fil
 
 #### Default Dashboard Filters
 
-You can now pin filters directly to your dashboards to make analysis easier and more efficient. Default dashboard filters allow you to set up commonly used filters that appear at the top of your dashboard and apply across all charts, providing a quick starting point for scoped analysis.
+Default dashboard filters allow you to pin commonly used filters directly to your dashboards, making it easier to analyze different views of your data without rebuilding filters from scratch. These filters appear at the top of your dashboard and apply across all eligible widgets, enabling quick comparison across different dimensions like company, region, or platform.
 
-**What You Can Do:**
-- Pin commonly used filters (e.g., "Company Name") to any dashboard
-- Quickly swap values to see how different users, cohorts, or properties impact the same set of charts
-- Use pinned filters as a starting point for scoped analysis
+To configure default dashboard filters:
 
-**How It Works:**
-From any dashboard, go to dashboard settings and configure "default filters". The pinned filter will appear at the top of the dashboard and apply across all charts. When you change the value (e.g., from Company A to Company B), the charts update automatically with no need to reconfigure each one.
+1. Navigate to your dashboard and click the settings cog ⚙️
+2. Scroll to "Default Filters" and configure the filters you want to pin to the dashboard
+3. Click Save
 
-**Impact on Your Analysis:**
-This makes it faster to compare trends across dimensions like company, region, or platform. Instead of duplicating dashboards or editing individual filters, you can reuse the same dashboard with dynamic, scoped filtering.
+Once configured, the pinned filters will appear at the top of your dashboard. You can quickly swap values to see how different users, cohorts, or properties impact the same set of charts. When you change a filter value, all charts on the dashboard update automatically without needing to reconfigure each widget individually.
+
+This feature is particularly useful for comparing trends across different segments of your data. Instead of duplicating dashboards or manually editing filters on each widget, you can reuse the same dashboard with dynamic filtering to perform scoped analysis more efficiently.
 
 ### Refreshing your Dashboard Widgets
 
