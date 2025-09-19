@@ -90,6 +90,20 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ![Dashboard global filter interface](https://github.com/user-attachments/assets/397d0197-632d-4f25-a8be-a5413575173f)
 
+#### Default Dashboard Filters
+
+You can now pin filters directly to your dashboards to make analysis easier and more efficient. Default dashboard filters allow you to set up commonly used filters that appear at the top of your dashboard and apply across all charts, providing a quick starting point for scoped analysis.
+
+**What You Can Do:**
+- Pin commonly used filters (e.g., "Company Name") to any dashboard
+- Quickly swap values to see how different users, cohorts, or properties impact the same set of charts
+- Use pinned filters as a starting point for scoped analysis
+
+**How It Works:**
+From any dashboard, go to dashboard settings and configure "default filters". The pinned filter will appear at the top of the dashboard and apply across all charts. When you change the value (e.g., from Company A to Company B), the charts update automatically with no need to reconfigure each one.
+
+**Impact on Your Analysis:**
+This makes it faster to compare trends across dimensions like company, region, or platform. Instead of duplicating dashboards or editing individual filters, you can reuse the same dashboard with dynamic, scoped filtering.
 
 ### Refreshing your Dashboard Widgets
 
