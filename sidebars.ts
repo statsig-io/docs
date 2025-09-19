@@ -1206,6 +1206,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
+            "statsig-warehouse-native/guides/email-experiments"
           ],
         },
         {
