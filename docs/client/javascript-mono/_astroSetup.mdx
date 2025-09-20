@@ -1,0 +1,84 @@
+import GitHubEmbed from "@site/src/components/GitHubEmbed";
+
+## Setup
+
+In your Astro project, create a `statsig.astro` component in your `src/components` folder. This component will initialize Statsig and should be included in your layout.
+
+```astro
+---
+// src/components/statsig.astro
+---
+
+<script is:inline>
+  import { StatsigClient } from '@statsig/js-client';
+
+  // Initialize Statsig
+  const statsig = new StatsigClient(
+    'client-YOUR_CLIENT_KEY_HERE', // Replace with your Client API key
+    { userID: 'user-123' }, // Replace with your user object
+  );
+
+  // Initialize and make globally available
+  statsig.initializeAsync().then(() => {
+    window.statsig = statsig;
+    console.log('Statsig initialized');
+  });
+</script>
+```
+
+### Adding to your layout
+
+Create or update your layout file to include the Statsig component. In your `src/layouts` folder, create or update a layout file:
+
+```astro
+---
+// src/layouts/Layout.astro
+import Statsig from '../components/statsig.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>My Astro Site</title>
+  </head>
+  <body>
+    <Statsig />
+    <slot />
+  </body>
+</html>
+```
+
+### Adding a user object
+
+The user object is a collection of properties that you want to target for feature gates and experiments, or metadata to slice your experiment results and event logging. See the [User (StatsigUser)](/concepts/user) doc for more information.
+
+```astro
+---
+// src/components/statsig.astro
+---
+
+<script is:inline>
+  import { StatsigClient } from '@statsig/js-client';
+
+  const statsig = new StatsigClient(
+    'client-YOUR_CLIENT_KEY_HERE',
+    { 
+      userID: 'user-123',
+      email: 'user@example.com',
+      country: 'US'
+    }
+  );
+
+  statsig.initializeAsync().then(() => {
+    window.statsig = statsig;
+  });
+</script>
+```
+
+:::info
+**Advanced:** There are a few different ways to initialize the StatsigClient, with trade-offs between latency and up-to-date values.
+You can read [Initialization Strategies](/client/javascript-sdk/init-strategies) to learn more.
+:::
