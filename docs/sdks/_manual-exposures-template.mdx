@@ -20,6 +20,7 @@ Manually logging exposures can be tricky and may lead to an imbalance in exposur
     {label: 'Get Config', value: 'config'},
     {label: 'Get Experiment', value: 'experiment'},
     {label: 'Get Layer', value: 'layer'},
+    {label: 'Get Parameter Store', value: 'parameterstore'},
   ]}>
 
 <TabItem value="gate">
@@ -67,6 +68,16 @@ To get a layer parameter without an exposure being logged, call the following.
 Later, if you would like to expose the layer parameter, you can call the following.
 
 <div>{props.layerExposureSnippet}</div>
+
+</TabItem>
+
+<TabItem value="parameterstore">
+
+To get a parameter store without an exposure being logged, call the following.
+
+<div>{props.parameterStoreSnippet}</div>
+
+Note: Parameter stores handle exposure logging internally based on the options provided. When exposure logging is disabled, accessing parameters within the store will not trigger exposure events.
 
 </TabItem>
 

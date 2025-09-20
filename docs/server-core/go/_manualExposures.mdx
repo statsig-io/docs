@@ -46,4 +46,10 @@ paramValue = layer.Get(aUser, "param_name")`}
       {`statsig.ManuallyLogLayerParameterExposure(aUser, "layer_name", "param_name")`}
     </CodeBlock>
   ),
+  parameterStoreSnippet: (
+    <CodeBlock language="jsx">
+      {`paramStore := statsig.GetParameterStore(aUser, "a_parameter_store_name", &statsig.ParameterStoreOptions{DisableExposureLogging: true})
+value := paramStore.GetString("a_parameter_name", "default_value")`}
+    </CodeBlock>
+  ),
 };

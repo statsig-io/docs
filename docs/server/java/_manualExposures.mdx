@@ -48,6 +48,10 @@ val promoTitle = layer.getString("title", "Welcome to Statsig!")`}
       {`Statsig.manuallyLogLayerParameterExposure(user, "user_promo_experiments");`}
     </CodeBlock>
   ),
+  parameterStoreSnippet: (
+    <CodeBlock language="java">
+      {`val parameterStore = Statsig.getParameterStore(user, "a_parameter_store_name")
+val value = parameterStore.getString("a_parameter_name", "default_value")`}
+    </CodeBlock>
+  ),
 };
-
-;
