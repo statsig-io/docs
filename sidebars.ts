@@ -921,6 +921,10 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "On Device Client SDKs",
+              link: {
+                type: "doc",
+                id: "client/onDevice"
+              },
               items: [
                 {
                   type: "category",
