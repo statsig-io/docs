@@ -137,6 +137,17 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              {
+                tagName: "script",
+                attributes: {
+                  async: true,
+                  src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+                  "data-website-id": "9cfab78c-ea0e-49f1-b19f-24081a9054b5",
+                  "data-project-name": "Statsig",
+                  "data-project-color": "#1963d2",
+                  "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
+                },
+              },
             ],
           };
         },
