@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from '@theme-original/Layout';
-import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
+// import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
 import { useDoc } from '@docusaurus/theme-common/internal';
 
 
@@ -123,7 +123,7 @@ export default function CustomLayout(props) {
         </div>
       )}
       <Layout {...props} />
-      <FloatingThumbs />
+      {/* <FloatingThumbs /> */}
     </>
   );
 }
