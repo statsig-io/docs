@@ -61,4 +61,5 @@ Call `Statsig.updateRuntimeOptions(runtimeMutableOptions: StatsigRuntimeMutableO
 
 - **loggingEnabled**: `Boolean`, default `true`
    - Setting this value to `false` will prevent the Statsig client from sending logging events over the network or saving events to its on-disk cache. The 1000 most recent events will be queued in memory. They can be logged to network (or cached) if `loggingEnabled` is set to `true` later during that session.
+        - Calling `Statsig.flush()` after setting `loggingEnabled` to `true` will immediately clear the queue and minimize loss of older log events
    - This can be useful for cases where it is necessary for users to grant permission before events should be logged, or in any other cases where logging should not be enabled
