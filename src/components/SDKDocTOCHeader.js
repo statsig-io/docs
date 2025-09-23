@@ -31,9 +31,6 @@ function Header() {
         color: "var(--ifm-color-content)",
       }}
     >
-      {updated && (
-        <div style={{ marginBottom: 5 }}>Last Updated: {updated ?? "..."}</div>
-      )}
       <a
         onClick={() =>
           window
