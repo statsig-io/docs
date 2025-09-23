@@ -523,6 +523,7 @@ const config: Config = {
       "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
       "data-modal-override-open-id": "ask-ai-navbar-button",
       "data-modal-override-open-id-ask-ai": "ask-ai-navbar-button",
+      "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
     },
   ],
   stylesheets: [
