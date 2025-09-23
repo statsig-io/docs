@@ -58,4 +58,4 @@ Call `Statsig.updateRuntimeOptions(runtimeMutableOptions: StatsigRuntimeMutableO
 These options are defined in `StatsigRuntimeMutableOptions` (which `StatsigOptions` extends) and are detailed below:
 - **loggingEnabled**: `Boolean`, default `true`
  - Setting this value to `false` will prevent Statsig from sending logging events over the network or saving events to cache. Statsig will store up to 1000 events in memory, which can be logged if the value is set to `true` later during that session.
- - This can be useful for cases where it is neccesary to users to grant permission before events should be logged, or in any other cases where logging should not be enabled
+ - This can be useful for cases where it is necessary to users to grant permission before events should be logged, or in any other cases where logging should not be enabled
