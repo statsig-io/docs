@@ -7,8 +7,9 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
 - **disableCurrentActivityLogging**: `Boolean`, default `false`
   - by default, any custom event your application logs with `Statsig.logEvent()` includes the current top-level activity. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
 
-- **disableDiagnosticsLogging**: `Boolean`, default `false`
-  - Prevent the SDK from sending useful debug information to Statsig
+- **disableDiagnosticsLogging**: `Boolean`, default `false` **(Deprecated)**
+  - Deprecated: This option is no longer available
+  - Previously: Prevent the SDK from sending useful debug information to Statsig
 
 - **initTimeoutMs**: `Long`, default `3000`
   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
