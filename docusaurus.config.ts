@@ -439,6 +439,9 @@ const config: Config = {
           type: "search",
         },
         {
+          type: "custom-askAI",
+        },
+        {
           type: "custom-signupCTA",
         },
       ],
@@ -509,6 +512,20 @@ const config: Config = {
       ],
     },
   } satisfies Preset.ThemeConfig,
+  scripts: [
+    {
+      id: "kapa-widget-script",
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      defer: true,
+      "data-website-id": "418990dd-0615-4ba7-b52f-3ab8c1af4e79",
+      "data-project-name": "Statsig",
+      "data-button-hide": "true",
+      "data-search-mode-enable": "true",
+      "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
+      "data-modal-override-open-id": "ask-ai-navbar-button",
+      "data-modal-override-open-id-ask-ai": "ask-ai-navbar-button",
+    },
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     {
