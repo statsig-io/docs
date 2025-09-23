@@ -7,6 +7,23 @@ last_update:
   date: 2025-09-18
 ---
 
+## Direct Initialization API Access for Server SDKs, October 31, 2025
+
+#### What's changing?
+Until mid-2024, Statsig's Server SDKs downloaded configuration values directly from Statsig servers upon startup. Since then, we've transitioned to hosting these configuration files on a secure CDN, which greatly reduces initialization time and increases reliability (we use Cloudflare, which has near-zero downtime.) As we've transitioned to this approach, we've made the decision to deprecate direct API access, which is only available in long outdated SDK versions. We're asking all customers to discontinue using these SDK versions, and upgrade to a newer version.
+
+#### Change required
+The only change required is a minor SDK version bump, no code changes are needed. You'll need to bump your SDK to at least: 
+- **go-sdk** 1.30.3
+- **java-server** 1.9.0
+- **py-server** 0.28.0
+- **ruby-server** 1.29.0
+- **statsig-node** 5.25.0
+- **.NET** 1.29.0
+- **Node-lite** 0.5.0
+
+We're asking all customers to make this change by October 31st, 2025. 
+
 ## New Method for Country Resolution
 
 Starting December 9th, 2024, Statsig will **switch to a method of resolving IP Addresses to country codes in our client SDKs with greatly improved accuracy**, which may result in different gate behavior for some users. Statsig currently depends on a [homegrown package](https://github.com/statsig-io/ip3country) for country resolution on both Client and Server SDKs, which lacks IPV6 support. To resolve countries without bloating our SDK sizes, we'll begin to rely on our cloud provider's country resolution when serving requests to the /initialize endpoint.
