@@ -5,7 +5,7 @@ slug: /integrations/introduction
 keywords:
   - owner:brock
 last_update:
-  date: 2025-04-22
+  date: 2025-09-18
 ---
 
 _For Warehouse Integrations, go to this [page](/data-warehouse-ingestion/introduction)._

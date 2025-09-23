@@ -4,8 +4,25 @@ sidebar_label: Deprecation Notices
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
+
+## Direct Initialization API Access for Server SDKs, October 31, 2025
+
+#### What's changing?
+Until mid-2024, Statsig's Server SDKs downloaded configuration values directly from Statsig servers upon startup. Since then, we've transitioned to hosting these configuration files on a secure CDN, which greatly reduces initialization time and increases reliability (we use Cloudflare, which has near-zero downtime.) As we've transitioned to this approach, we've made the decision to deprecate direct API access, which is only available in long outdated SDK versions. We're asking all customers to discontinue using these SDK versions, and upgrade to a newer version.
+
+#### Change required
+The only change required is a minor SDK version bump, no code changes are needed. You'll need to bump your SDK to at least: 
+- **go-sdk** 1.30.3
+- **java-server** 1.9.0
+- **py-server** 0.28.0
+- **ruby-server** 1.29.0
+- **statsig-node** 5.25.0
+- **.NET** 1.29.0
+- **Node-lite** 0.5.0
+
+We're asking all customers to make this change by October 31st, 2025. 
 
 ## New Method for Country Resolution
 

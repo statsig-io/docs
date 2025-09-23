@@ -5,7 +5,7 @@ sidebar_label: Configuring Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to existing assignment data from your warehouse. In the other, you'll configure the experiment in Statsig, use the Statsig SDK, and then analyze the resulting exposures in your warehouse.
@@ -21,7 +21,7 @@ There's two types of experiments in Statsig Warehouse Native:
 - Analyze: these are for 3rd-party or in-house exposure sources
 - Assign & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
+![Experiment type selection interface](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
 
 Next, you'll give the experiment a name, specify your hypothesis, and pick the experiment from your exposure sources. You can sync sources
 if your exposure isn't loaded in the dropdown.

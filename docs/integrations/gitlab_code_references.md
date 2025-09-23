@@ -3,7 +3,7 @@ title: GitLab Code References
 keywords:
   - owner:kenny
 last_update:
-  date: 2025-09-16
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -19,7 +19,7 @@ This can be found in **Project Settings** > **Integrations Tab** > **GitLab Code
 
 The Integration should provide additional instructions on how to enable GitLab Code References.
 
-![image](/img/gitlab_code_references/gitlab_integration.png)
+![GitLab integration configuration interface](/img/gitlab_code_references/gitlab_integration.png)
 
 After inputting your token and organization name the integration will verify it can access repositories and notify you if there are any problems.
 

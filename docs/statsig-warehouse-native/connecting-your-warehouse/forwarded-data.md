@@ -11,7 +11,7 @@ If you log events or exposures to Statsig's SDK, Statsig will put that data back
 By default, when setting up a data connection to your warehouse, we'll automatically create tables 'exposures' and 'events' where we'll forward SDK data to.
 
 If you want to change the name of the table that are used for forwarded data, in the data connection page under the 'advanced' tab and you'll find the option to change the name of said tables.
-![image](/img/forwarded_data_tables.png)
+![Forwarded data table configuration interface](/img/forwarded_data_tables.png)
 
 :::note
 If you've already had data exported and change the table name, future data will be written to the new table.

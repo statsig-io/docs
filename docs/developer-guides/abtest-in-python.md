@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Running a simple A/B experiment in a web page with Python and the Statsig SDK involves a few distinct steps, including creating a basic web server, integrating with Statsig for A/B testing, and configuring the experiment via the Statsig console. Below is a step-by-step guide.
@@ -84,7 +84,7 @@ First, you'll need a simple Python web server. Flask is a lightweight WSGI web a
     - Define your variants, for example, `variant_a` and `variant_b`.
     - Add a parameter called `'text'` for each variant and configure the text you wish to display, such as "This is Control Variant" and "This is Test Variant".
 
-    ![image](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
+    ![Experiment variant configuration interface](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
 
 4. **Launch Your Experiment**:
     - After setting up your variants and their parameters, save your configurations and start the experiment.

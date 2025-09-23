@@ -3,7 +3,7 @@ title: Datadog
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ### Overview
@@ -18,7 +18,7 @@ There are four key use-cases to the Datadog integration:
 
 1. To create a Datadog API key, navigate to **Organization Settings** > **API Keys**. If you have the permission to create API keys, click **New Key**.
 
-![Image](https://user-images.githubusercontent.com/26360698/232632837-d1e81380-78a3-48a2-887d-72b13d541b0a.png)
+![Datadog API key creation interface](https://user-images.githubusercontent.com/26360698/232632837-d1e81380-78a3-48a2-887d-72b13d541b0a.png)
 
 2. Paste the API key in the text box at the top of the integration dialog, then hit "Confirm".
 
@@ -32,7 +32,7 @@ someone edits a Feature Gate.
 
 These events can be found in the Datadog Events Explorer.
 
-![image](https://user-images.githubusercontent.com/26360698/232636042-ee5cf1d0-e9e7-4158-903b-5a447ab14575.png)
+![Datadog Events Explorer interface](https://user-images.githubusercontent.com/26360698/232636042-ee5cf1d0-e9e7-4158-903b-5a447ab14575.png)
 
 ### Event Totals Forwarding
 
@@ -71,7 +71,7 @@ Statsig events are mapped to Datadog metrics with listed tags as follows:
 
 #### Example of check_gate metric
 
-![image](https://user-images.githubusercontent.com/26360698/232629870-e1776bd6-c63d-438d-863e-2d7a3a347eab.png)
+![Datadog check_gate metric visualization](https://user-images.githubusercontent.com/26360698/232629870-e1776bd6-c63d-438d-863e-2d7a3a347eab.png)
 
 ### Datadog RUM integration
-This integration requires a client-side setup as outlined [here in DataDog documentation](https://docs.datadoghq.com/integrations/statsig-rum/). 
+This integration requires a client-side setup as outlined [here in DataDog documentation](https://docs.datadoghq.com/integrations/statsig-rum/).    
