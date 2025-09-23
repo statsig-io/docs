@@ -146,10 +146,9 @@ const config: Config = {
                   "data-project-name": "Statsig",
                   "data-project-color": "#1963d2",
                   "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
-                  "data-scale-factor": "1.4"
+                  "data-scale-factor": "1.4",
                   "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
-                  "data-modal-disclaimer": "This custom LLM for Statsig answers questions using documentation, API references, blogs, and videos. Note its responses are AI-generated, please rate the answers to let us know what you think!",
-                  "data-answer-feedback-info-text": "All feedback is reviewed by the Statsig team.",
+                  "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
                   "data-search-mode-enabled": "true"
                 },
               },
