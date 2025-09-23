@@ -78,6 +78,39 @@ Returns `GateResult`:
 - `isLoading: boolean;` - the loading/initializing state of the SDK
 - `value: boolean` - the value of the feature gate (false by default)
 
+### `useGateValue`
+
+A react hook to get the boolean value of a Statsig Feature Gate. This is a convenience hook that returns just the boolean value.
+
+Parameters:
+
+- `gateName: string` - the name of the gate to check
+
+Returns `boolean`:
+
+- `value: boolean` - the value of the feature gate (false by default)
+
+:::note
+This hook will log an exposure on render. Use `useStatsigClient.checkGate` if you need to control when the exposure is logged.
+:::
+
+### `useFeatureGate`
+
+A react hook to get a Statsig Feature Gate object with additional metadata.
+
+Parameters:
+
+- `gateName: string` - the name of the gate to check
+
+Returns `FeatureGate`:
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `gate: FeatureGate` - the backing `FeatureGate` object with additional metadata
+
+:::note
+This hook will log an exposure on render. Use `useStatsigClient.checkGate` if you need to control when the exposure is logged.
+:::
+
 ### `useConfig`
 
 A react hook to get a Statsig Dynamic Config.
@@ -90,6 +123,23 @@ Returns `ConfigResult`:
 
 - `isLoading: boolean;` - the loading/initializing state of the SDK
 - `config: DynamicConfig` - the backing `DynamicConfig` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
+
+### `useDynamicConfig`
+
+A react hook to get a Statsig Dynamic Config. This is a convenience hook that returns the config and logs an exposure on render.
+
+Parameters:
+
+- `configName: string` - the name of the config to get
+
+Returns `ConfigResult`:
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `config: DynamicConfig` - the backing `DynamicConfig`
+
+:::note
+This hook will log an exposure on render. Use `useStatsigClient.getDynamicConfig` if you need to control when the exposure is logged.
+:::
 
 ### `useExperiment`
 
@@ -116,6 +166,107 @@ Returns `LayerResult`:
 
 - `isLoading: boolean;` - the loading/initializing state of the SDK
 - `layer: Layer` - the backing `Layer` (see the [statsig-js sdk docs](/client/deprecated/jsClientSDK) for more information)
+
+### `useParameterStore`
+
+A react hook to get a Statsig Parameter Store.
+
+Parameters:
+
+- `storeName: string` - the name of the parameter store to get
+
+Returns `ParameterStore`:
+
+- `isLoading: boolean;` - the loading/initializing state of the SDK
+- `store: ParameterStore` - the backing `ParameterStore` object
+
+**Example Usage:**
+
+```tsx
+import { useParameterStore } from '@statsig/react-native-bindings';
+
+function MyComponent() {
+  const store = useParameterStore('my_parameter_store');
+  
+  // Get parameters with fallback values - exposure logged here
+  const title = store.get('page_title', 'Default Title');
+  const maxItems = store.get('max_items', 10);
+  const isEnabled = store.get('feature_enabled', false);
+  
+  return <Text>{title}</Text>;
+}
+```
+
+:::note
+Exposures are logged when calling `.get()` on parameters, not when the hook is called.
+:::
+
+### `useStatsigUser`
+
+A react hook that provides access to the current StatsigUser and methods for updating user properties.
+
+Returns `UseStatsigUserResult`:
+
+- `user: StatsigUser` - the current user object
+- `updateUserSync: (user: StatsigUser) => StatsigUpdateDetails` - synchronously update the user
+- `updateUserAsync: (user: StatsigUser) => Promise<StatsigUpdateDetails>` - asynchronously update the user and fetch new values
+
+**Example Usage:**
+
+```tsx
+import { useStatsigUser } from '@statsig/react-native-bindings';
+
+function LoginComponent() {
+  const { user, updateUserAsync } = useStatsigUser();
+  
+  const handleLogin = async () => {
+    await updateUserAsync({ 
+      userID: "user123",
+      email: "user@example.com" 
+    });
+  };
+  
+  return (
+    <Button onPress={handleLogin} title="Login" />
+  );
+}
+```
+
+### `useStatsigClient`
+
+A react hook to access the StatsigClient instance directly for advanced usage.
+
+Returns `UseStatsigClientResult`:
+
+- `client: StatsigClient` - the StatsigClient instance
+- `isLoading: boolean` - whether the client is still initializing
+- `checkGate: (gateName: string) => boolean` - check a gate (logs exposure when called)
+- `getDynamicConfig: (configName: string) => DynamicConfig` - get a config (logs exposure when called)
+- `getExperiment: (experimentName: string) => DynamicConfig` - get an experiment (logs exposure when called)
+- `getLayer: (layerName: string) => Layer` - get a layer
+- `logEvent: (eventName: string, value?: string | number, metadata?: Record<string, string>) => void` - log an event
+
+**Example Usage:**
+
+```tsx
+import { useStatsigClient } from '@statsig/react-native-bindings';
+
+function MyComponent() {
+  const { checkGate, logEvent } = useStatsigClient();
+  
+  const handleButtonClick = () => {
+    if (checkGate('new_button_design')) {
+      logEvent('button_clicked', 1, { variant: 'new' });
+      // Show new button design
+    } else {
+      logEvent('button_clicked', 1, { variant: 'old' });
+      // Show old button design
+    }
+  };
+  
+  return <Button onPress={handleButtonClick} title="Click Me" />;
+}
+```
 
 ### `useStatsigLogEffect`
 
