@@ -10,7 +10,7 @@ From this point on, all APIs will require you to specify the user (see [Statsig 
 
 ### Reading a Dynamic Config
 
-Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
 
 <div>{props.getConfig}</div>
 
@@ -36,6 +36,26 @@ Then we have **Layers/Experiments**, which you can use to run A/B/n experiments.
 ) : <p>
   <em>
     Prompts are not yet available for this sdk. Need it now? Let us
+    know in <a href="https://statsig.com/slack">Slack</a>.
+  </em>
+</p>
+}
+
+### Getting a PromptSet
+
+{props.getPromptSet ? (
+
+<>
+<p>
+A Prompt Set is used during online evaluations to make it easy to run shadow evaluations on your candidate prompts. The live prompt is served directly to the user, while candidate prompts are run in the background for comparison and logging. This function returns the full set of prompt versions—both the live version and all candidate versions—so you can track performance, iterate safely, and gain insights into which prompts work best before making changes live.
+  For example:
+</p>
+
+<div>{props.getPromptSet}</div>
+</>
+) : <p>
+  <em>
+    PromptSets are not yet available for this sdk. Need it now? Let us
     know in <a href="https://statsig.com/slack">Slack</a>.
   </em>
 </p>
@@ -77,18 +97,21 @@ Learn more about identifying users, group analytics, and best practices for logg
 ### Sending Events to Log Explorer
 
 {props.forwardLogLineEvent ? (
-  <>
-    <p>
-      You can forward logs to Logs Explorer for convenient analysis using the Forward Log Line Event API. This lets you include custom metadata and event values with each log.
-    </p>
-    <div>{props.forwardLogLineEvent}</div>
-  </>
-) : (
-  <>
-    <p>
-      Sending events to Log Explorer is not yet available for this sdk. Need it now? Let us know in <a href="https://statsig.com/slack">Slack</a>.
-    </p>
-  </>
+
+<>
+  <p>
+    You can forward logs to Logs Explorer for convenient analysis using the
+    Forward Log Line Event API. This lets you include custom metadata and event
+    values with each log.
+  </p>
+  <div>{props.forwardLogLineEvent}</div>
+</>
+) : (<>
+  <p>
+    Sending events to Log Explorer is not yet available for this sdk. Need it
+    now? Let us know in <a href="https://statsig.com/slack">Slack</a>.
+  </p>
+</>
 )}
 
 ### Retrieving Feature Gate Metadata
