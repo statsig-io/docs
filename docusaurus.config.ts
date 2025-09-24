@@ -440,9 +440,11 @@ const config: Config = {
         // },
         {
           type: "custom-askAI",
+          position: "right",
         },
         {
           type: "custom-signupCTA",
+          position: "right",
         },
       ],
     },
