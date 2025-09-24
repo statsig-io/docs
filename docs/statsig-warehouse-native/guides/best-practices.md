@@ -119,6 +119,47 @@ If this is not possible, it's a good idea to:
 - Schedule your Statsig runs after your main runs - this also ensures the data in your experiment analysis is fresh
 - Use API triggers to launch Statsig analyses after the main run is finished
 
+## Analytics Optimization
+
+When using Statsig’s Metric Explorer to visualize the data within your warehouse, optimizing table layout and clustering configurations can greatly improve latency. This section serves to describe a set of best practices you can employ to improve the performance of analytics queries. Here are recommendations for some of the most commonly used warehouses.
+
+### BigQuery
+
+#### Table Layout - Partitioning & Clustering
+
+We advise partitioning on event date and clustering on event when defining your events table. This will improve performance as the majority of queries will filter for the name of the event and the time it was logged. When defining the partition on event date, you should truncate the timestamp to day-level granularity instead of using the raw timestamp (which would otherwise have millisecond precision resulting in very high cardinality).
+
+```
+-- Create an events table partitioned by date and clustered by event.
+CREATE TABLE dataset.events (
+  ts TIMESTAMP NOT NULL,
+  event STRING NOT NULL,
+  ...
+)
+PARTITION BY DATE(ts)
+CLUSTER BY event;
+```
+
+BigQuery’s support for applying a cluster to an existing table is limited. Additionally, adding a cluster to an existing table will not automatically recluster the data right away. Given this, if you need to repartition on event date or add a cluster by event, you can create a new table with the correct partitions and clusters using your current table.
+
+```
+-- Using an existing events table, create a new table that is partitioned by date and clustered by event.
+CREATE OR REPLACE TABLE dataset.events_new
+PARTITION BY DATE(ts)
+CLUSTER BY event
+AS
+SELECT *
+FROM dataset.events;
+
+-- (Optional) Swap the name of your new table with the old one for consistency.
+DROP TABLE dataset.events;
+ALTER TABLE dataset.events_new RENAME TO events;
+```
+
+### Questions?
+
+If you need additional support in optimizing your warehouse configuration for analytics, please reach out in the Slack support channel for your organization within Statsig Connect.
+
 ## Debugging
 
 Statsig shows you all the SQL being run, and any errors that occur. Generally these are caused by changing underlying tables or Metric Sources, causing a metric query to fail. Here's some best practices for debugging Statsig Queries.
