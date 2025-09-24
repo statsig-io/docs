@@ -389,21 +389,21 @@ const config: Config = {
         autoCollapseCategories: false,
       },
     },
-    algolia: {
-      appId: "JOWHDNMZRN",
+    // algolia: {
+    //   appId: "JOWHDNMZRN",
 
-      apiKey: "2a538120ca7db3411698786731f3c2f6",
+    //   apiKey: "2a538120ca7db3411698786731f3c2f6",
 
-      indexName: "statsig",
+    //   indexName: "statsig",
 
-      contextualSearch: true,
+    //   contextualSearch: true,
 
-      searchParameters: {
-        facetFilters: [],
-      },
+    //   searchParameters: {
+    //     facetFilters: [],
+    //   },
 
-      insights: true,
-    },
+    //   insights: true,
+    // },
     navbar: {
       title: "",
       logo: {
@@ -435,9 +435,9 @@ const config: Config = {
           label: "SDKs & APIs",
           id: "sdk-api", //don't edit this without rerunning algolia scraper
         },
-        {
-          type: "search",
-        },
+        // {
+        //   type: "search",
+        // },
         {
           type: "custom-askAI",
         },
