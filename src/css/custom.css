@@ -211,14 +211,14 @@ span.math.math-inline {
   color: #fff;
 }
 
-.DocSearch-Button-Key {
+/* .DocSearch-Button-Key {
   background: white !important;
   box-shadow: none !important;
 }
 
 .DocSearch-Button-Placeholder {
   font-family: "Open Sans", sans-serif;
-}
+} */
 
 .col {
   padding: 0px 16px;
@@ -240,19 +240,19 @@ span.math.math-inline {
     padding: 0px 60px;
   }
 
-  .navbar__items>div:has(.DocSearch) {
+  /* .navbar__items>div:has(.DocSearch) {
     margin-left: auto;
     margin-right: 10px;
-  }
+  } */
 
   .navbar__logo {
     height: 25px;
     margin-left: 5px;
   }
 
-  .DocSearch-Button {
+  /* .DocSearch-Button {
     min-width: 350px;
-  }
+  } */
 }
 
 .warning {
@@ -742,10 +742,10 @@ html[data-theme='dark'] .welcome-card p {
   margin-right: 0.5rem;
 }
 
-.DocSearch-Button {
+/* .DocSearch-Button {
   min-width: 300px;
   max-width: 100%;
-}
+} */
 
 .ask-ai-button {
   display: inline-flex;
@@ -768,9 +768,9 @@ html[data-theme='dark'] .welcome-card p {
     font-size: 0.85rem;
   }
 
-  .DocSearch-Button {
+  /* .DocSearch-Button {
     min-width: 180px;
-  }
+  } */
 }
 
 @media (max-width: 996px) {
@@ -782,9 +782,9 @@ html[data-theme='dark'] .welcome-card p {
     font-size: 0.8rem;
   }
 
-  .DocSearch-Button {
+  /* .DocSearch-Button {
     min-width: 150px;
-  }
+  } */
 
   .navbar__logo {
     height: 22px;
@@ -809,5 +809,16 @@ html[data-theme='dark'] .welcome-card p {
 
   .desktop-only {
     display: inline !important;
+  }
+}
+
+/* Override Docusaurus mobile navbar behavior to show Ask AI button only */
+@media (max-width: 768px) {
+  .navbar__items--right .navbar__item:has(.ask-ai-button) {
+    display: flex !important;
+  }
+  
+  .navbar__items--right:has(.ask-ai-button) {
+    display: flex !important;
   }
 }
