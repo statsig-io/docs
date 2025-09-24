@@ -534,6 +534,7 @@ const config: Config = {
       "data-search-include-source-names": '["Documentation"]',
       "data-search-display-num-results": "6",
       "data-modal-full-screen-on-mobile": "false",
+      "data-kapa-branding-text": "Powered by kapa.ai and Statsig"
     },
   ],
   stylesheets: [
