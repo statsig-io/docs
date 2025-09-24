@@ -528,6 +528,7 @@ const config: Config = {
       "data-search-mode-enabled": "true",
       "data-modal-open-on-command-k": "true",
       "data-search-include-source-names": '["Documentation"]',
+      "data-search-display-num-results": "6",
     },
   ],
   stylesheets: [
