@@ -812,13 +812,13 @@ html[data-theme='dark'] .welcome-card p {
   }
 }
 
-/* Override Docusaurus mobile navbar behavior to show Ask AI button */
+/* Override Docusaurus mobile navbar behavior to show Ask AI button only */
 @media (max-width: 768px) {
-  .navbar__items--right .navbar__item {
+  .navbar__items--right .navbar__item:has(.ask-ai-button) {
     display: flex !important;
   }
   
-  .navbar__items--right {
+  .navbar__items--right:has(.ask-ai-button) {
     display: flex !important;
   }
 }
