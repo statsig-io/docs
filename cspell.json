@@ -294,6 +294,7 @@
     "quantile",
     "quartile",
     "queryable",
+    "recluster",
     "redshift",
     "repo",
     "resalt",
