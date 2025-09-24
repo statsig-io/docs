@@ -533,7 +533,7 @@ const config: Config = {
       "data-modal-open-on-command-k": "true",
       "data-search-include-source-names": '["Documentation"]',
       "data-search-display-num-results": "6",
-      "data-modal-with-overlay": "false",
+      "data-modal-full-screen-on-mobile": "false",
     },
   ],
   stylesheets: [
