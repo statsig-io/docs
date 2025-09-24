@@ -11,7 +11,7 @@ last_update:
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 import { FeaturePillList } from "@site/src/components/FeaturePillList";
 
-import TipText from "./_sampleApp.mdx";
+import SampleTipText from "./_sampleApp.mdx";
 
 import {
   SDKDocsBuilder,
@@ -69,7 +69,7 @@ export const Builder = SDKDocsBuilder({
 
 export const toc = Builder.toc;
 
-<TipText />
+<SampleTipText />
 
 <FeaturePillList
   features={[
@@ -83,4 +83,5 @@ export const toc = Builder.toc;
     { name: "Parameter Stores", link: "#getting-a-parameter-store" },
   ]}
 />
+
 <>{Builder.result}</>

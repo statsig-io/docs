@@ -12,7 +12,7 @@ import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 import { FeaturePillList } from "@site/src/components/FeaturePillList";
 
-import TipText from "./_sampleApp.mdx";
+import SampleTipText from "./_sampleApp.mdx";
 
 import {
   SDKDocsBuilder,
@@ -75,8 +75,6 @@ export const Builder = SDKDocsBuilder({
   ],
 });
 
-<TipText />
-
 export const toc = Builder.toc;
 
 <FeaturePillList
@@ -88,4 +86,7 @@ export const toc = Builder.toc;
     { name: "Event Logging", link: "#basics-log-event" },
   ]}
 />
+
+<SampleTipText />
+
 <>{Builder.result}</>
