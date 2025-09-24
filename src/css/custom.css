@@ -811,3 +811,14 @@ html[data-theme='dark'] .welcome-card p {
     display: inline !important;
   }
 }
+
+/* Override Docusaurus mobile navbar behavior to show Ask AI button */
+@media (max-width: 768px) {
+  .navbar__items--right .navbar__item {
+    display: flex !important;
+  }
+  
+  .navbar__items--right {
+    display: flex !important;
+  }
+}
