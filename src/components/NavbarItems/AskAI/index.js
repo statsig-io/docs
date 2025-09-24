@@ -48,7 +48,7 @@ const AskAI = () => {
   }, []);
 
   return (
-    <div className="navbar__item">
+    <div className="navbar__item mobile-only">
       <button
         id={ASK_AI_BUTTON_ID}
         className="signupCTA CTA ask-ai-button"
