@@ -137,6 +137,21 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              {
+                tagName: "script",
+                attributes: {
+                  async: true,
+                  src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+                  "data-website-id": "418990dd-0615-4ba7-b52f-3ab8c1af4e79",
+                  "data-project-name": "Statsig",
+                  "data-project-color": "#1963d2",
+                  "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
+                  "data-scale-factor": "0.8",
+                  "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
+                  "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
+                  "data-search-mode-enabled": "true"
+                },
+              },
             ],
           };
         },
