@@ -69,10 +69,7 @@ const sidebars: SidebarsConfig = {
                     type: "doc",
                     id: "guides/migrate-from-launchdarkly",
                   },
-                  items: [
-                    "guides/open-source-script",
-                    "guides/ui-based-tool",
-                  ],
+                  items: ["guides/open-source-script", "guides/ui-based-tool"],
                 },
               ],
             },
@@ -442,7 +439,7 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          link:{
+          link: {
             type: "doc",
             id: "infra-analytics/overview",
           },
@@ -492,7 +489,14 @@ const sidebars: SidebarsConfig = {
             "ai-evals/getting-started",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
-            "ai-evals/online-evals",
+            {
+              type: "category",
+              label: "Online Evals",
+              items: [
+                "ai-evals/online-evals",
+                "ai-evals/create-an-online-eval",
+              ],
+            },
           ],
         },
       ],
@@ -923,7 +927,7 @@ const sidebars: SidebarsConfig = {
               label: "On Device Client SDKs",
               link: {
                 type: "doc",
-                id: "client/onDevice"
+                id: "client/onDevice",
               },
               items: [
                 {
@@ -1210,7 +1214,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
-            "statsig-warehouse-native/guides/email-experiments"
+            "statsig-warehouse-native/guides/email-experiments",
           ],
         },
         {
