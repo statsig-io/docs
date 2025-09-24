@@ -526,6 +526,8 @@ const config: Config = {
       "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
       "data-answer-feedback-info-text": "All feedback is reviewed by the Statsig team.",
       "data-search-mode-enabled": "true",
+      "data-modal-open-on-command-k": "true",
+      "data-search-include-source-names": '["Documentation"]',
     },
   ],
   stylesheets: [
