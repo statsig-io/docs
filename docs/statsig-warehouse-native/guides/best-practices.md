@@ -156,6 +156,84 @@ DROP TABLE dataset.events;
 ALTER TABLE dataset.events_new RENAME TO events;
 ```
 
+### Databricks
+
+#### (Preferred) Use Liquid Clustering
+
+When making clustering decisions in your events table layout, [liquid clustering](https://docs.databricks.com/aws/en/delta/clustering) provides a flexible approach that allows you to modify your clustering keys without needing to manually rewrite existing data.
+
+We recommend employing liquid clustering for your events table with the following:
+
+```
+-- Enable liquid clustering for your events table.
+ALTER TABLE events SET TBLPROPERTIES ('delta.liquidClustering.enabled' = 'true');
+
+-- Cluster on the event column.
+ALTER TABLE events ALTER CLUSTER BY (event);
+
+-- Trigger clustering using the OPTIMIZE command.
+OPTIMIZE events;
+```
+
+If your events table is frequently being updated, Databricks recommends scheduling `OPTIMIZE` jobs every 1-2 hours. This will incrementally apply liquid clustering to your table.
+
+#### (Alternative) Partitioning and ZORDER
+
+If you choose not to use liquid partitioning, our recommendation is to partition on a single low cardinality column such as the date of the event. Try to avoid adding more than one column on the partition unless absolutely necessary and don't partition on a column that has a cardinality that would exceed one thousand. We suggest using a generated column to simplify pruning:
+
+```
+-- Define a partition on the event date generated column.
+CREATE TABLE events (ts TIMESTAMP, event STRING, event_date DATE GENERATED ALWAYS AS (CAST(ts AS DATE))) USING DELTA PARTITIONED BY (event_date);
+```
+
+You can use `ZORDER` to colocate similar values within a file for a high cardinality column, which benefits query performance by improving data skipping. We recommend doing this on the event column:
+
+```
+-- ZORDER by the event column to improve data skipping.
+OPTIMIZE events ZORDER BY (event);
+```
+
+Using a scheduled job that runs `OPTIMIZE` on the last week’s event data, you can improve query performance by compacting the number of small data files into fewer, larger files:
+
+```
+-- Periodically optimize the events table based on the last week of data.
+OPTIMIZE events WHERE event_date >= current_date() - INTERVAL 7 DAYS;
+```
+
+In general, avoid partitioning on a combination of event date and event. For even small queries, this can create a lot of overhead. Given 500 events, this would cause a 30-day query to hit 15,000 partitions. Instead, partition only by date as described above and `ZORDER` on the event.
+
+If extra parallelism is desired without introducing too many partitions, you can `ZORDER` by an additional bucket column. This bucket column can be defined as follows:
+
+```
+-- Add bucket column for extra parallelism.
+ALTER TABLE events ADD COLUMN event_bucket INT GENERATED ALWAYS AS (pmod(hash(event), 16));
+
+-- Rewrite data into new files based on this ZORDER key.
+OPTIMIZE events ZORDER BY (event_bucket);
+```
+
+#### Partition Pruning
+
+Dynamic File Pruning will enable Spark to prune partitions based on filter values at runtime. It should be enabled if possible using:
+
+```
+-- Turn on Dynamic File Pruning.
+SET spark.databricks.optimizer.dynamicFilePruning = true;
+```
+
+#### Handling Skew and Joins
+
+To rebalance skew and adjust join strategy, we advise turning on Adaptive Query Execution:
+
+```
+-- Turn on Adapative Query Execution
+SET spark.sql.adaptive.enabled = true;
+```
+
+#### Compute Choices
+
+The Photon query engine allows for faster execution of queries with more efficient use of CPU and memory. If possible, it should be enabled for your compute cluster or SQL warehouse.
+
 ### Questions?
 
 If you need additional support in optimizing your warehouse configuration for analytics, please reach out in the Slack support channel for your organization within Statsig Connect.

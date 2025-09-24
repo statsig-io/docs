@@ -731,7 +731,8 @@
     "Hajnal's",
     "Cohen",
     "Cohen's",
-    "xhuang"
+    "xhuang",
+    "ZORDER"
   ],
   "ignorePaths": [
     "node_modules/**",
