@@ -362,8 +362,18 @@ const config: Config = {
             from: "/client/concepts/autocapture/",
             to: "/webanalytics/autocapture/",
           },
-
-          
+          {
+            from: "/integrations/vscode",
+            to: "/integrations/introduction",
+          },
+          {
+            from: "/ai-ml/ai-prompt-experiment",
+            to: "/ai-evals/overview",
+          },
+          {
+            from: "/experiments-plus/bayesian-deprecated/",
+            to: "/experiments-plus/bayesian/",
+          },
         ],
       },
     ],
@@ -379,21 +389,21 @@ const config: Config = {
         autoCollapseCategories: false,
       },
     },
-    algolia: {
-      appId: "JOWHDNMZRN",
+    // algolia: {
+    //   appId: "JOWHDNMZRN",
 
-      apiKey: "2a538120ca7db3411698786731f3c2f6",
+    //   apiKey: "2a538120ca7db3411698786731f3c2f6",
 
-      indexName: "statsig",
+    //   indexName: "statsig",
 
-      contextualSearch: true,
+    //   contextualSearch: true,
 
-      searchParameters: {
-        facetFilters: [],
-      },
+    //   searchParameters: {
+    //     facetFilters: [],
+    //   },
 
-      insights: true,
-    },
+    //   insights: true,
+    // },
     navbar: {
       title: "",
       logo: {
@@ -425,11 +435,16 @@ const config: Config = {
           label: "SDKs & APIs",
           id: "sdk-api", //don't edit this without rerunning algolia scraper
         },
+        // {
+        //   type: "search",
+        // },
         {
-          type: "search",
+          type: "custom-askAI",
+          position: "right",
         },
         {
           type: "custom-signupCTA",
+          position: "right",
         },
       ],
     },
@@ -499,6 +514,35 @@ const config: Config = {
       ],
     },
   } satisfies Preset.ThemeConfig,
+  scripts: [
+    {
+      id: "kapa-widget-script",
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      defer: true,
+      "data-website-id": "418990dd-0615-4ba7-b52f-3ab8c1af4e79",
+      "data-project-name": "Statsig",
+      "data-project-color": "#1963d2",
+      "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
+      "data-scale-factor": "1.2",
+      "data-modal-lock-scroll": "false",
+      "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
+      "data-button-hide": "true",
+      "data-modal-override-open-id": "ask-ai-navbar-button",
+      "data-modal-override-open-id-ask-ai": "ask-ai-navbar-button",
+      "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
+      "data-answer-feedback-info-text": "All feedback is reviewed by the Statsig team.",
+      "data-search-mode-enabled": "true",
+      "data-modal-open-on-command-k": "true",
+      "data-modal-command-k-search-mode-default": "true",
+      "data-modal-search-input-placeholder": "Search Statsig docs...",
+      "data-search-include-source-names": '["Documentation"]',
+      "data-search-show-ask-ai-cta": "false",
+      "data-search-result-link-target": "_self",
+      "data-modal-full-screen-on-mobile": "false",
+      "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
+      "data-question-text-color": "#1963d2",
+    },
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     {

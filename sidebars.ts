@@ -56,10 +56,21 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
+              link: {
+                type: "doc",
+                id: "guides/migration-overview",
+              },
               items: [
-                "guides/migrate-from-launchdarkly",
-                "guides/open-source-script",
-                "guides/ui-based-tool",
+                "guides/migrate-from-amplitude",
+                {
+                  type: "category",
+                  label: "Migrate from LaunchDarkly",
+                  link: {
+                    type: "doc",
+                    id: "guides/migrate-from-launchdarkly",
+                  },
+                  items: ["guides/open-source-script", "guides/ui-based-tool"],
+                },
               ],
             },
           ],
@@ -235,7 +246,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
                 "guides/seo-testing",
               ],
@@ -429,9 +439,16 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
+          link: {
+            type: "doc",
+            id: "infra-analytics/overview",
+          },
           items: [
-            "infra-analytics/overview"
-          ]
+            "infra-analytics/logs-explorer",
+            "infra-analytics/events-mode-logs-explorer",
+            "infra-analytics/logs-explorer-queries",
+            "infra-analytics/topline-alerts-logs",
+          ],
         },
         {
           type: "category",
@@ -470,9 +487,17 @@ const sidebars: SidebarsConfig = {
             id: "ai-evals/overview",
           },
           items: [
+            "ai-evals/getting-started",
             "ai-evals/prompts",
             "ai-evals/offline-evals",
-            "ai-evals/online-evals",
+            {
+              type: "category",
+              label: "Online Evals",
+              items: [
+                "ai-evals/online-evals",
+                "ai-evals/create-an-online-eval",
+              ],
+            },
           ],
         },
       ],
@@ -617,9 +642,9 @@ const sidebars: SidebarsConfig = {
             {
               "Slack, VS Code & Productivity": [
                 "integrations/github_code_references",
+                "integrations/gitlab_code_references",
                 "integrations/slack",
                 "integrations/jira",
-                "integrations/vscode",
               ],
             },
             {
@@ -755,6 +780,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [
@@ -795,6 +821,7 @@ const sidebars: SidebarsConfig = {
       collapsible: false,
       items: [
         "sdks/quickstart",
+        "sdks/identify-users",
         "quickstarts/check-gate",
         "guides/abn-tests",
         "guides/logging-events",
@@ -899,6 +926,10 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "On Device Client SDKs",
+              link: {
+                type: "doc",
+                id: "client/onDevice",
+              },
               items: [
                 {
                   type: "category",
@@ -1184,6 +1215,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
+            "statsig-warehouse-native/guides/email-experiments",
           ],
         },
         {
@@ -1212,6 +1244,8 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/databricks",
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/trino",
+        "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+        "statsig-warehouse-native/connecting-your-warehouse/fabric",
         "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },
@@ -1386,14 +1420,18 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Other Features",
-      collapsed: true,
+      collapsed: false,
+      collapsible: false,
       items: [
         "statsig-warehouse-native/features/mex-on-warehouse-native",
         {
           type: "category",
           label: "Geotests",
+          link: {
+            type: "doc",
+            id: "statsig-warehouse-native/geotests/introduction",
+          },
           items: [
-            "statsig-warehouse-native/geotests/introduction",
             "statsig-warehouse-native/geotests/geotests-setup",
             "statsig-warehouse-native/geotests/methodology",
           ],

@@ -4,7 +4,7 @@ title: Advanced Configurations
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## Single Page App Support
@@ -42,6 +42,20 @@ window.statsigOptions = {
   // example of disabling logging for 
   loggingEnabled: 'disabled'
 }
+```
+
+## Managing Consent
+Prior to Sidecar script tag, configure these runtime options to disable browser storage and tracking:
+```js
+window.statsigOptions = {
+  loggingEnabled: "disabled",
+  disableStorage: true
+}
+```
+Later on, after the user gives consent, re-enable storage and tracking:
+
+```js
+__STATSIG__.instance().updateRuntimeOptions({loggingEnabled: "browser-only", disableStorage: false});
 ```
 
 ## Persisting stableID across subdomains

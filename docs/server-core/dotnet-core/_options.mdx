@@ -12,6 +12,8 @@ var options = new StatsigOptionsBuilder()
     .SetDisableCountryLookup(false)
     .SetDisableUserAgentParsing(false)
     .SetDisableAllLogging(false)
+    .SetInitTimeoutMs(3000)
+    .SetFallbackToStatsigApi(false)
     .SetEnableIDLists(true)
     .SetIDListsURL("https://custom-api.statsig.com/v1/get_id_lists")
     .SetIDListsSyncIntervalMs(60000)
@@ -37,6 +39,8 @@ var statsig = new Statsig("server-secret-key", options);
 - **SetDisableCountryLookup(bool)**: Disable automatic country detection
 - **SetDisableUserAgentParsing(bool)**: Disable user agent parsing
 - **SetDisableAllLogging(bool)**: Disable all event logging
+- **SetInitTimeoutMs(int)**: Maximum time in milliseconds to wait for SDK initialization (default: 3000ms)
+- **SetFallbackToStatsigApi(bool)**: Fallback to Statsig API when custom adapters fail (default: false)
 - **SetEnableIDLists(bool)**: Enable ID list targeting
 - **SetIDListsURL(string)**: Override the default ID lists endpoint
 - **SetIDListsSyncIntervalMs(int)**: How often to sync ID lists (default: 60000ms)

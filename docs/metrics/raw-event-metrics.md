@@ -5,7 +5,7 @@ slug: /metrics/metrics-from-events
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # Auto-generated Metrics
@@ -30,14 +30,14 @@ Up until October 16, 2024, Statsig also auto-computed values for an  **event_dau
 
 When you click on an event type in the **Events** tab, you will see a detailed view of the event, including any metrics linked to that event. Click on these metrics to visit the detail pages for these metrics. 
 
-![Screenshot 2024-11-13 at 8 33 18 AM](https://github.com/user-attachments/assets/e4967643-33b4-46b6-9fca-5cee83f8f0a6)
+![Event metrics dashboard view](https://github.com/user-attachments/assets/e4967643-33b4-46b6-9fca-5cee83f8f0a6)
 
 ## Event Count Metric
 Event count is the simplest metric in your Statsig Project. For every event recorded, Statsig automatically creates an **event_count** metric based on the number of times Statsig receives that event each day. In experiments, Statsig calculates this value for each user, and each user can have values ranging from 0, 1, 2,... etc.
 
 You will find an **event_count** metric for each event type that you record in the Statsig console. The name of the metric matches the name of the raw event and its metric type is marked as **event_count**. 
 
-![Screenshot 2024-11-13 at 8 37 30 AM](https://github.com/user-attachments/assets/4b7b30d6-d14d-4430-81a5-4fc467d466d2)
+![Event count metric configuration interface](https://github.com/user-attachments/assets/4b7b30d6-d14d-4430-81a5-4fc467d466d2)
 
 
 ## User Accounting Metrics
@@ -64,7 +64,7 @@ Auto-generated **User Accounting Metrics** are not supported today for data ware
 
 The **Metrics Catalog** tab allows you to quickly search and tag your metrics. Tags enable organizing your metrics and creating collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, or business objective. You can also create a loose collection of guardrail metrics that teams can add to every experiment to ensure they are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on.
 
-![Screenshot 2024-11-13 at 8 36 05 AM](https://github.com/user-attachments/assets/d22ff8d2-5aea-42b4-86e0-126c25678e15)
+![Metrics catalog interface](https://github.com/user-attachments/assets/d22ff8d2-5aea-42b4-86e0-126c25678e15)
 
 ## Event DAU Metric (Legacy Support Only)
 
@@ -91,4 +91,4 @@ Statsig computes the **event_dau** for each unit ID that you define in your Stat
 
 You will find an **event_dau** metric for each event type that you record with Statsig. The name of the metric matches the name of the raw event and its metric type is marked as **event_dau**. 
 
-![Screenshot 2024-11-13 at 8 37 18 AM](https://github.com/user-attachments/assets/008034e9-cce8-4e6f-bce1-84a789ac4a19)
+![Event DAU metric configuration interface](https://github.com/user-attachments/assets/008034e9-cce8-4e6f-bce1-84a789ac4a19)

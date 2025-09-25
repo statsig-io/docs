@@ -3,7 +3,7 @@ title: Braze
 keywords:
   - owner:danielwest
 last_update:
-  date: 2025-07-28
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -17,7 +17,7 @@ Enabling the Braze integration allows you to export Statsig exposure events to y
 }
 ```
 
-You can then filter exposed users into a Segment in Braze. Custom Attributes will be forwarded to Braze users by having the unit ID from the gate/experiment as the `external_id` in Braze.
+You can then filter exposed users into a Segment in Braze. Custom Attributes will be forwarded to Braze users by having the unit ID from the gate/experiment as the `external_id` in Braze by default. You can choose to provide a custom Unit ID Type from your Statsig project to be forwarded as the `external_id` for all gate/experiment exposures. This can be provided in the ID Type Mapping section of the Setup dialog for this integration. The integration will attempt to use this custom ID Type if it is provided in the SDK call at the time of exposure, and will fall back to the experiment's Unit ID Type if not.
 
 ## Setup in Statsig
 

@@ -3,7 +3,38 @@ import { useLocation } from 'react-router-dom';
 import Layout from '@theme-original/Layout';
 import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
 import { useDoc } from '@docusaurus/theme-common/internal';
+import { AskAIProvider, useAskAI } from '../../contexts/AskAIContext';
 
+
+function KapaEventHandler() {
+  const { setIsAskAIOpen } = useAskAI();
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.Kapa) {
+      return;
+    }
+
+    const handleModalOpen = () => {
+      setIsAskAIOpen(true);
+    };
+
+    const handleModalClose = () => {
+      setIsAskAIOpen(false);
+    };
+
+    window.Kapa('onModalOpen', handleModalOpen);
+    window.Kapa('onModalClose', handleModalClose);
+
+    return () => {
+      if (window.Kapa) {
+        window.Kapa('onModalOpen', handleModalOpen, 'remove');
+        window.Kapa('onModalClose', handleModalClose, 'remove');
+      }
+    };
+  }, [setIsAskAIOpen]);
+
+  return null;
+}
 
 export default function CustomLayout(props) {
   const location = useLocation();
@@ -104,7 +135,7 @@ export default function CustomLayout(props) {
   }, [location]);
 
   return (
-    <>
+    <AskAIProvider>
       {/* Only show debug banner in development mode */}
       {isDevelopment && pageViews !== null && pageViews !== 0 && (
         <div style={{
@@ -122,8 +153,9 @@ export default function CustomLayout(props) {
           Page Owner: {pageOwner || 'Unknown'}
         </div>
       )}
+      <KapaEventHandler />
       <Layout {...props} />
       <FloatingThumbs />
-    </>
+    </AskAIProvider>
   );
 }

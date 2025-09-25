@@ -5,7 +5,7 @@ slug: /experiments-plus/differential-impact-detection-whn
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 import DifferentialImpact from '@site/docs/experiments-plus/differential-impact-detection.md';

@@ -34,6 +34,11 @@ import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/s
 
 class MyPersistentStorage implements PersistentStorage {
   private storage = new Map<string, UserPersistedValues>();
+  constructor() {
+      this.load = this.load.bind(this);
+      this.save = this.save.bind(this);
+      this.delete = this.delete.bind(this);
+  }
 
   load(key: string): UserPersistedValues | null {
     return this.storage.get(key) || null;
@@ -52,6 +57,29 @@ class MyPersistentStorage implements PersistentStorage {
       this.storage.set(key, existing);
     }
   }
+  
+  getUserPersistedValue(user: StatsigUser, idType: string): UserPersistedValues | null {
+    const storageKey = this.getStorageKey(user, idType);
+    if (storageKey !== null) {
+      return this.load(storageKey);
+    }
+    return null;
+  }
+
+  private getStorageKey(user: StatsigUser, idType: string): string | null {
+    const lowerCaseIdType = idType.toLowerCase();
+
+    if (lowerCaseIdType === "user_id" || lowerCaseIdType === "userid") {
+      const id = user.userID;
+      return id ? `${id}:userID` : null;
+    } else if (user.customIDs) {
+      const id = user.customIDs[idType];
+      return id ? `${id}:${idType}` : null;
+    }
+
+    return null;
+  }
+
 }
 ```
 

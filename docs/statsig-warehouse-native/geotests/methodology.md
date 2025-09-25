@@ -5,16 +5,10 @@ slug: /experiments-plus/geotests/methodology
 keywords:
   - owner:makris
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # Geotesting Methodology
-
-:::tip
-
-Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
-
-:::
 
 ## How it's different
 
@@ -65,9 +59,9 @@ Plotting some metric of interest for a bunch of relevant geographies can show th
 
 ![Example data from the GeoLift package walkthrough. ](/img/geotests/GeosPreTest.png)
 
-Example data from the GeoLift package walkthrough. 
+Example data from the GeoLift package walkthrough.
 
-But what happens when we run a campaign or make some change in just some of these geos? How can we tell if a fluctuation in this graph is random noise or real stat-sig result? 
+But what happens when we run a campaign or make some change in just some of these geos? How can we tell if a fluctuation in this graph is random noise or real stat-sig result?
 
 ![A marketing campaign that starts on day 91 (black dotted line) could have affected the treatment cities of Chicago and Portland. But how can you tell any real effect from all the noise?](/img/geotests/GeosTest.png)
 
@@ -82,7 +76,7 @@ We turn to causal inference modeling to answer this question. Thankfully, a vari
 
 When your training data is able to produce strong models that can predict metric outcome well, you end up with strong estimates of an induced effect:
 
-![Image](/img/geotests/Period_Split.png)
+![Geotest period split diagram showing pre-treatment and post-treatment phases](/img/geotests/Period_Split.png)
 
 ![Subtracting the modeled Synthetic Control values from the observed Treatment values reveals any incremental effect for the Treatment geos.](/img/geotests/Incremental_Effects.png)
 
