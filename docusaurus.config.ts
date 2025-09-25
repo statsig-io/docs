@@ -523,7 +523,6 @@ const config: Config = {
       "data-project-name": "Statsig",
       "data-project-color": "#1963d2",
       "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
-      "data-modal-size": "80%",
       "data-scale-factor": "1.1",
       "data-modal-lock-scroll": "false",
       "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
