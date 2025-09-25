@@ -3,7 +3,7 @@ title: Fastly
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-18
+  date: 2025-09-25
 ---
 
 ## Overview
@@ -16,24 +16,24 @@ Navigate to [Project Settings -> Integrations](https://console.statsig.com/integ
 
 You will need to input the following:
 - **Fastly API Key** - Can be found in Fastly portal under **Account** -> **API Tokens**. We need an "Automation token" with "Engineer Roles" and the following scopes: "global" and "global:read"
-- **Store Type** - Select "Config Store" or "KV Store"
-- either **Config Store ID** OR **KV Store ID**- You can create a new Config Store or KV Store for this integration, or reuse an existing one
+- **Store Type** - Select "KV Store"
+- **KV Store ID**- You can create a new KV Store for this integration, or reuse an existing one
 
 There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows.  For now, you can leave this unchecked.
 
 After filling this out, click **Enable**.
 
-Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your store.  Under your Config or KV Store, look for a key starting with the prefix `statsig-`.  The ending part of that key is your project ID.  You'll need this later.
+Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your store.  Under your KV Store, look for a key starting with the prefix `statsig-`.  This is the key to your statsig config specs in the Fastly KV store.
 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your fastly compute.
 
-The remainder of this document assumes you are using nodejs.  If you are using another language, see the sdk language specific documentation for how to apply the implementation to that language.  You may need to implement a custom data adapter for your language -  we currently only offer the `statsig-node-fastly-kv` package in node.
+The remainder of this document assumes you are using Node.js.  If you are using another language, see the sdk language specific documentation for how to apply the implementation to that language.  You may need to implement a custom data adapter for your language -  we currently only offer the `statsig-node-fastly-kv` package in node. This data adapter will work out of the box for statsig usage in the fastly/js-compute runtime. Note this data adapter currently only supports Fastly KV store.
 
-First up, you'll need to install the statsig sdk and the fastly kv data adapter.
+First up, you'll need to install the statsig **node-lite** sdk and the fastly kv data adapter.
 
 ```bash
-npm install statsig-node statsig-node-fastly-kv
+npm install statsig-node-lite statsig-node-fastly-kv
 ```
 
 Then, you need to hook it all up.  This involves:
@@ -46,37 +46,42 @@ If you've used a statsig sdk in the past, step 2 should be familiar, though you'
 
 In our example, we are checking a gate called "test_fastly" that is set to pass for 50% of everyone.  We create a random userID on every request, and we should see it evaluate to true 50% of the time.
 
+### Imports
+Import the statsig **node-lite** sdk and the statsig fastly kv adapter.
+```
+import Statsig from 'statsig-node-lite';
+import { FastlyDataAdapter } from 'statsig-node-fastly-kv';
+```
+
 ### 1. The `FastlyDataAdapter`
 ```
-const dataAdapter = new FastlyDataAdapter(<KV_STORE_NAME>, 'statsig-<PROJECT_ID>');
+const dataAdapter = new FastlyDataAdapter(<YOUR_KV_STORE_NAME>, '<CONFIG_SPEC_KEY>');
 ```
 
 The adapter takes two arguments:
-- The KV store name you set up previously.  This must be accessible and [linked to the compute service](https://www.fastly.com/documentation/guides/concepts/resources/)
-- Your statsig project id.  This is the string that comes after `statsig-` in the KV key your config is stored under.  You can also find it in any url when you are on the Statsig Console.  For example, `https://console.statsig.com/7LhuarZImmfNdtl9IsDJeX/gates/test_fastly/diagnostics` has a project ID of `7LhuarZImmfNdtl9IsDJeX`
+- Your KV store name.
+  - Your KV store must be linked to your compute service. To do so, go to **KV STORES** -> **Your KV Store** -> **Linked Services** -> **Link Service**
+- Your KV store item key. (Will begin with "statsig-************...")
 
 
 ### 2. SDK Initialization
 ```
-const res = await statsig.initialize(
-    env.STATSIG_SECRET_KEY,
-    { 
-      dataAdapter: dataAdapter,
+await Statsig.initialize("secret-******************", {
+      dataAdapter,
+      disableIdListsSync: true,
       initStrategyForIDLists: 'none',
-      disableIdListsSync: true
-    },
-);
+    });
 ```
 
 SDK initialization takes two arguments:
-- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we've configured it as an environment variable
+- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we have hardcoded it for simplicity. In production environments, please protect your Statsig server key. Refer to this [Fastly documentation](https://www.fastly.com/documentation/reference/compute/ecp-env/) for using environemnt variables in the Compute Platform.
 - An options object.  We are using the `dataAdapter` property to hook up the Fastly KV store to the SDK.  We're also disabling the ID list sync to speed up initialization
 
 
 
 ### 3. Checking a Gate
 ```
-const result = statsig.checkGateSync(
+const result = Statsig.checkGateSync(
   {
     userID: String(randomIntFromInterval(1, 10000000)),
   },
@@ -89,45 +94,60 @@ This is a gate check in code.  The first parameter is the `StatsigUser` object y
 ### 4. Flushing Events
 
 ```
-event.waitUntil(statsig.flush(1000));
+await Statsig.flush();
 ```
 
-This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.  We also set a 1s timeout to ensure the flush wont block the response.
+This flushes all events from the sdk to statsig.  Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged.
 
 ### Putting it all together
 
 ```
 /// <reference types="@fastly/js-compute" />
 import { FastlyDataAdapter } from 'statsig-node-fastly-kv';
-import statsig from 'statsig-node';
+import Statsig from 'statsig-node-lite';
+
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
 async function handleRequest(event) {
-  const dataAdapter = new FastlyDataAdapter(<KV_STORE_NAME>, 'statsig-<PROJECT_ID>');
+  try {
+    const dataAdapter = new FastlyDataAdapter(<YOUR_KV_NAME>, <CONFIG_SPEC_KEY>);
 
-  await statsig.initialize(
-    env.STATSIG_SECRET_KEY,
-    { 
-      dataAdapter: dataAdapter,
+    await Statsig.initialize("secret-**********************", {
+      dataAdapter,
+      disableIdListsSync: true,
       initStrategyForIDLists: 'none',
-      disableIdListsSync: true
-    },
-  );
+    });
 
-  const result = statsig.checkGateSync(
-    {
+    const userID = String(randomIntFromInterval(1, 10000000));
+
+    const result = Statsig.checkGateSync({
       userID: String(randomIntFromInterval(1, 10000000)),
-    },
-    "test_fastly",
-  );
-  event.waitUntil(statsig.flush(1000));
-  return new Response(JSON.stringify(result), {
-    status: 200,
-    headers: new Headers({ "Content-Type": "text/html; charset=utf-8" }),
-  });
+    }, "test_fastly");
+
+    await Statsig.flush();
+
+    return new Response(JSON.stringify({
+      userID: userID,
+      gateResult: result
+    }), {
+      status: 200,
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+
+  } catch (error) {
+    console.error('Error in handleRequest:', error);
+    
+    return new Response(JSON.stringify({ 
+      error: 'Internal server error',
+      details: error.message 
+    }), {
+      status: 500,
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+  }
 }
 
-function randomIntFromInterval(min, max) { // min and max included 
+function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 ```
