@@ -74,7 +74,7 @@ await Statsig.initialize("secret-******************", {
 ```
 
 SDK initialization takes two arguments:
-- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we have hardcoded it for simplicity. In production environments, please protect your Statsig server key. Refer to this [Fastly documentation](https://www.fastly.com/documentation/reference/compute/ecp-env/) for using environemnt variables in the Compute Platform.
+- Your statsig secret key.  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests to the statsig backend.  In this example, we have hardcoded it for simplicity. In production environments, please protect your Statsig server key. Refer to this [Fastly documentation](https://www.fastly.com/documentation/reference/compute/ecp-env/) for using environment variables in the Compute Platform.
 - An options object.  We are using the `dataAdapter` property to hook up the Fastly KV store to the SDK.  We're also disabling the ID list sync to speed up initialization
 
 
