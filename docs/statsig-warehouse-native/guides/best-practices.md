@@ -234,6 +234,54 @@ SET spark.sql.adaptive.enabled = true;
 
 The Photon query engine allows for faster execution of queries with more efficient use of CPU and memory. If possible, it should be enabled for your compute cluster or SQL warehouse.
 
+### Redshift
+
+#### Table Design - Distribution Style and Sort Key
+
+As Redshift does not support partitioning by column, we can instead employ use of a sort key. Given most event tables are generally append-only and time-based, we advise use of a compound sort key on (timestamp, event) so that the data is ordered by time. Given all analytics queries will filter on timestamp, this should allow for queries to read only the relevant blocks.
+
+Ordering secondarily by event will mean rows are grouped by event within each time block, which can reduce scan size when filtering by event. We want pruning to be primarily upon timestamp, which is why it is kept as the first key.
+
+Given there can be significant skew among event types, we generally advise using an automatic distribution style rather than distributing upon the event column. This will allow Redshift to make distribution decisions based on the size of the table and query patterns. You can create an events table with the above recommendations in mind as follows:
+
+```
+-- Create an events table with an automatic distrbution style and sort key on timestamp, event.
+CREATE TABLE events (
+  event       VARCHAR NOT NULL,
+  ts          TIMESTAMP     NOT NULL,
+	...
+)
+DISTSTYLE AUTO
+COMPOUND SORTKEY (ts, event);
+```
+
+If you already have an events table and want to leverage the recommended distribution style and sort key, you won’t be able to apply those changes by modifying the existing table. Instead, you can create a new table and copy over data:
+
+```
+-- Create a new events table with the preferred distribution style and sort key.
+CREATE TABLE events_new (
+  event       VARCHAR NOT NULL,
+  ts          TIMESTAMP     NOT NULL,
+	...
+)
+DISTSTYLE AUTO
+COMPOUND SORTKEY (ts, event);
+
+-- Copy over data from the old events table.
+INSERT INTO events_new (event, ts, ...)
+SELECT event_id, ts, ...
+FROM events;
+
+-- Rename the two tables in a single transaction.
+BEGIN;
+ALTER TABLE events RENAME TO events_old;
+ALTER TABLE events_new RENAME TO events;
+COMMIT;
+
+-- Drop the old table.
+DROP TABLE events_old;
+```
+
 ### Questions?
 
 If you need additional support in optimizing your warehouse configuration for analytics, please reach out in the Slack support channel for your organization within Statsig Connect.
