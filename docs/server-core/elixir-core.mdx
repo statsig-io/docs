@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -24,9 +26,8 @@ import {
   PersistentStorage,
   DataStore,
   OutputLogger,
-  ObservabilityClient
+  ObservabilityClient,
 } from "./Templates/index.mdx";
-
 
 import Preamble from "./_preamble.mdx";
 import Install from "./elixir/_install.mdx";
@@ -39,7 +40,6 @@ import LogEvent from "./elixir/_logEvent.mdx";
 import MoreFAQs from "./elixir/_faqs.mdx";
 import Options from "./elixir/_options.mdx";
 import ShutdownSnippet from "./elixir/_shutdown.mdx";
-
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -72,15 +72,16 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet /> }],
-    [PersistentStorage, { }],
-    [DataStore, { }],
-    [OutputLogger, { }],
-    [ObservabilityClient, { }],
+    [PersistentStorage, {}],
+    [DataStore, {}],
+    [OutputLogger, {}],
+    [ObservabilityClient, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

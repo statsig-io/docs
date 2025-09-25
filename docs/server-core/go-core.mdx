@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -75,19 +77,20 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [ManualExposures, { ...ManualExposureSnippets }],
-    [StatsigUser, { }],
+    [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <LocalOverridesSnippet /> }],
-    [PersistentStorage, { }],
-    [DataStore, { }],
-    [OutputLogger, { }],
-    [ObservabilityClient, { }],
+    [PersistentStorage, {}],
+    [DataStore, {}],
+    [OutputLogger, {}],
+    [ObservabilityClient, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

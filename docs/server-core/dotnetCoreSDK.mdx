@@ -12,11 +12,13 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import * as _Notes from "./dotnet-core/_notes.mdx";
 export const Notes = _Notes;
 
-import Install from "./dotnet-core/_install.mdx"
-import Initialize from "./dotnet-core/_initialize.mdx"
+import Install from "./dotnet-core/_install.mdx";
+import Initialize from "./dotnet-core/_initialize.mdx";
 import CheckGate from "./dotnet-core/_checkGate.mdx";
 import GetFeatureGate from "./dotnet-core/_getFeatureGate.mdx";
 import GetConfig from "./dotnet-core/_getConfig.mdx";
@@ -91,11 +93,16 @@ export const Builder = SDKDocsBuilder({
       LocalOverridesSection,
       { addedInVersion: "1.0.0", snippet: <LocalOverrides /> },
     ],
-    [ManualExposuresSection, { addedInVersion: "1.0.0", snippet: <ManualExposures /> }],
+    [
+      ManualExposuresSection,
+      { addedInVersion: "1.0.0", snippet: <ManualExposures /> },
+    ],
     [Notes, {}],
-  ]
+  ],
 });
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>

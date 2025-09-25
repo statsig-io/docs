@@ -77,10 +77,9 @@ export const Builder = SDKDocsBuilder({
     [ShutdownSnippet, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <RefSnippets.default /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-
