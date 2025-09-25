@@ -49,6 +49,7 @@ import SharedInstanceSnippet from "./node/_sharedInstance.mdx";
 import DataStoreContent from "./node/_data_store.mdx";
 import ObservabilityClientContent from "./node/_observability_client.mdx";
 import PersistentStorageContent from "./node/_persistent_storage.mdx";
+import OutputLoggerContent from "./node/_output_logger.mdx";
 import * as ReferenceSnippets from "./node/_reference.mdx";
 import ClientInitResponseSnippet from "./node/_clientInitResponse.mdx";
 import EventSubscriptionsSnippet from "./node/_eventSubscriptions.mdx";
@@ -102,7 +103,7 @@ export const Builder = SDKDocsBuilder({
     [LocalOverrides, { snippet: <OverridesSnippet /> }],
     [PersistentStorage, { content: <PersistentStorageContent /> }],
     [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, {}],
+    [OutputLogger, { content: <OutputLoggerContent /> }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
