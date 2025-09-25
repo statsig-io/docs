@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -30,7 +32,7 @@ import {
   DataStore,
   OutputLogger,
   ObservabilityClient,
-  FieldsNeededMethods
+  FieldsNeededMethods,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -56,7 +58,6 @@ import ExampleProgramContent from "./java/_example.mdx";
 import ObservabilityClientContent from "./java/_observability_client.mdx";
 import SharedInstanceSnippet from "./java/_sharedInstance.mdx";
 import DataStoreContent from "./java/_data_store.mdx";
-
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -92,27 +93,38 @@ export const Builder = SDKDocsBuilder({
     [StatsigUser, { statsigUser: <UserSnippet /> }],
     [StatsigOptions, { options: <Options /> }],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [LocalOverrides, { snippet: <OverridesSnippet />,},],
-    [PersistentStorage, { }],
+    [LocalOverrides, { snippet: <OverridesSnippet /> }],
+    [PersistentStorage, {}],
     [DataStore, { content: <DataStoreContent /> }],
-    [OutputLogger, { }],
+    [OutputLogger, {}],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
-    [FAQ, { 
-      faqs: <>
-        <MoreFAQs />
-        <h3 id="java-core-vs-legacy-java-sdk">Java Core vs Legacy Java SDK</h3>
-        <CoreVsLegacyContent />
-        <h3 id="supported-os-and-architecture-combinations">Supported OS and Architecture Combinations</h3>
-        <SupportedCombinationsContent />
-        <h3 id="example-program">Sample App</h3>
-        <ExampleProgramContent />
-      </> 
-    }],
+    [
+      FAQ,
+      {
+        faqs: (
+          <>
+            <MoreFAQs />
+            <h3 id="java-core-vs-legacy-java-sdk">
+              Java Core vs Legacy Java SDK
+            </h3>
+            <CoreVsLegacyContent />
+            <h3 id="supported-os-and-architecture-combinations">
+              Supported OS and Architecture Combinations
+            </h3>
+            <SupportedCombinationsContent />
+            <h3 id="example-program">Sample App</h3>
+            <ExampleProgramContent />
+          </>
+        ),
+      },
+    ],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
     [FieldsNeededMethods, {}],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>

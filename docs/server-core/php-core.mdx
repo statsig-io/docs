@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -26,7 +28,7 @@ import {
   DataStore,
   OutputLogger,
   ObservabilityClient,
-  CustomAdapters
+  CustomAdapters,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -69,19 +71,20 @@ export const Builder = SDKDocsBuilder({
         hideAsyncDisclaimer: true,
       },
     ],
-    [StatsigUser, { }],
+    [StatsigUser, {}],
     [StatsigOptions, { options: <Options /> }],
-    [CustomAdapters, { }],
+    [CustomAdapters, {}],
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
-    [PersistentStorage, { }],
-    [DataStore, { }],
-    [OutputLogger, { }],
-    [ObservabilityClient, { }],
-    [FAQ, { }],
-  ]
-})
+    [PersistentStorage, {}],
+    [DataStore, {}],
+    [OutputLogger, {}],
+    [ObservabilityClient, {}],
+    [FAQ, {}],
+  ],
+});
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

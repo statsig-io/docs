@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -28,9 +30,8 @@ import {
   ObservabilityClient,
   Reference,
   FieldsNeededMethods,
-  EventSubscriptions
+  EventSubscriptions,
 } from "./Templates/index.mdx";
-
 
 import Preamble from "./_preamble.mdx";
 import Install from "./rust/_install.mdx";
@@ -54,8 +55,6 @@ import ObservabilityClientContent from "./rust/_observability_client.mdx";
 import PersistentStorageContent from "./rust/_persistent_storage.mdx";
 import * as ReferenceSnippets from "./rust/_reference.mdx";
 import EventSubscriptionsSnippet from "./rust/_eventSubscriptions.mdx";
-
-
 
 export const Builder = SDKDocsBuilder({
   sections: [
@@ -99,10 +98,11 @@ export const Builder = SDKDocsBuilder({
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
     [FieldsNeededMethods, {}],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+<SampleTipText />
+
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

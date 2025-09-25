@@ -12,6 +12,8 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
+import SampleTipText from "./_sampleApp.mdx";
+
 import {
   Repository,
   GettingStarted,
@@ -118,6 +120,8 @@ export const Builder = SDKDocsBuilder({
     [FAQ, { faqs: <MoreFAQs /> }],
   ],
 });
+
+<SampleTipText />
 
 export const toc = Builder.toc;
 
