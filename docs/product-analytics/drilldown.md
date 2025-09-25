@@ -28,7 +28,8 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, horizontal bar charts, and stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric’s underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
 - **Detailed Data Control**: Adjust the granularity of your data analysis, from high-level overviews to detailed breakdowns. Use features like rolling averages to smooth data for more accurate trend analysis and decision-making.
-- **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
+- **Analyze Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
+- **Sample Ratio Mismatch Debugging**: See your experiment group P-Values across a time-series chart and drill down on dimensions (e.g. country, platform, or custom properties) to understand where imbalance is happening.
 
 # Using the Metric Drilldown Chart
 
