@@ -27,13 +27,9 @@ function Header() {
         backgroundColor: "var(--ifm-navbar-background-color)",
         borderRadius: 10,
         fontSize: 12,
-        marginBottom: 15,
         color: "var(--ifm-color-content)",
       }}
     >
-      {updated && (
-        <div style={{ marginBottom: 5 }}>Last Updated: {updated ?? "..."}</div>
-      )}
       <a
         onClick={() =>
           window

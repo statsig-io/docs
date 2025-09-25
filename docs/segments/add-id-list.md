@@ -5,19 +5,42 @@ slug: /segments/add-id-list
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
-## Create an ID list for a segment
+## Adding ID Lists
 
-An ID list enables you specify the user IDs or stable IDs that you want to target as a reusable segment.
+### What is an ID List?
+An ID List enables you to define a reusable audience segment using user identifiers like `userID`, `stableID`, or `organizationID`.
 
-Assuming you have created a segment of type ID List,
- - If you're not already there, navigate to the segment page on https://console.statsig.com
- - Click the **Edit** button in the ID List panel 
- - Enter the list of identifiers and click **Confirm**
- 
-![image](https://user-images.githubusercontent.com/1315028/146095989-f0633201-1051-42f4-a1fb-4a8a7e55fcb7.png)
+You can manage ID Lists by manually adding/removing IDs, uploading CSVs, or replacing the entire list.
+
+
+### Creating an ID List Segment
+
+1. Navigate to the **Segments** section in the [Statsig Console](https://console.statsig.com).
+2. Click **Create New Segment**.
+3. Toggle the segment type from **Conditional** to **ID List**.
+   ![Create New Segment](https://github.com/user-attachments/assets/af7c5cb3-adc2-4e88-a411-b5844a541e49)
+4. Select the **ID type** you want to build from.
+   ![Create New Segment](https://github.com/user-attachments/assets/958b7545-7f23-4559-8a66-99af01d39952)
+  
+
+
+### Managing IDs
+
+Once inside your ID List segment, you have a variety of options:
+
+- **Manual Entry**: Enter IDs directly into the input box.
+![Create New Segment](https://github.com/user-attachments/assets/ee94e6bc-475b-47a0-96a7-5ddba398d58c)
+- **Upload CSV**: Import a list of IDs from a CSV.
+- **Bulk Actions**: Choose how your input affects the existing list:
+  - **Add**: Add IDs to the list
+  - **Remove**: Remove matching IDs from the list
+  - **Replace**: Clear all IDs and replace with a new list
+
+
+
 
 You can also sync in an ID list Segment from sources like an [Amplitude Cohorts](https://help.amplitude.com/hc/en-us/articles/4789303290011) or [Segment Audiences](/integrations/data-connectors/segment#syncing-statsig-segment-id-lists-with-segment-personas-audiences) or from a custom source using the [Console API](/console-api/segments)
 

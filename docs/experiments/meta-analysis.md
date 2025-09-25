@@ -5,7 +5,7 @@ slug: /experimentation/meta-analysis
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 ## The Concept
@@ -25,7 +25,7 @@ This view lets you to filter down to experiments a team has run. At a glance you
 5. Do experiments run for their planned duration - or much longer or shorter?
 6. Do experiments impact key business metrics - or only shallow or team level metrics?
 7. How much do they impact key business metrics?
-![image](https://github.com/user-attachments/assets/d1e1db49-18b4-46af-93f7-4c0e58c5bdb0)
+![Experiment timeline view dashboard](https://github.com/user-attachments/assets/d1e1db49-18b4-46af-93f7-4c0e58c5bdb0)
 
 
 ## Metric Impact (Batting Average)
@@ -34,7 +34,7 @@ Common ways to use this include
 - Sniff testing whether the claim that the next experiment will move this metric by 15% is a good idea.
 - Establishing reasonable goals, based on past ability to move this metric
 
-![image](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
+![Metric batting average analysis chart](https://github.com/user-attachments/assets/72f987a4-02ba-4937-9f3d-06892c55e4e9)
 
 
 ## Metric Correlation View
@@ -45,9 +45,9 @@ Often the metric you want to move isn't very sensitive and takes a while to meas
 This view lets you plot two metrics on the same chart - each data point is an experiment's impact on them. You can quickly get a sense for whether the metrics tend to move together - or not. You can also remove outliers, filter down to a team's experiments or download the underlying dataset.
 
 In this hypothetical example - "Checkouts" is the metric you want to move, but it's not very sensitive. "AddToCart" correlates well with "Checkouts", while "ViewItemDetail" doesn't.
-![image](https://github.com/statsig-io/docs/assets/31516123/016285b0-cdc4-46a4-8fdf-204b20b5b0e4)
+![Metric correlation scatter plot](https://github.com/statsig-io/docs/assets/31516123/016285b0-cdc4-46a4-8fdf-204b20b5b0e4)
 
-![image](https://github.com/statsig-io/docs/assets/31516123/c29e5d7d-d8b6-4841-acaf-8d521a5db398)
+![Metric correlation analysis interface](https://github.com/statsig-io/docs/assets/31516123/c29e5d7d-d8b6-4841-acaf-8d521a5db398)
 
 
 ## Metric Insights
@@ -59,6 +59,6 @@ This view lets you pick a metric and see all experiments and feature rollouts th
 The KB acts as a searchable repository of experiment learning across teams. It helps you find shipped, healthy experiments and gain context on past effort and generate ideas on new things to try. 
 
 Make it easy for new team mates to explore and find experiments a team ran, or where a topic was mentioned. Our meta-analysis tools offer more structured  means to discover and look across your experiment corpus, but when you do want free text search, this exists. 
-![image](https://github.com/user-attachments/assets/860430c4-a754-4ff8-aa85-8bf49a755801)
+![Knowledge bank search interface](https://github.com/user-attachments/assets/860430c4-a754-4ff8-aa85-8bf49a755801)
 
 

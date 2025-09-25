@@ -5,7 +5,7 @@ slug: /experiments-plus/geotests/methodology
 keywords:
   - owner:makris
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 # Geotesting Methodology
@@ -76,7 +76,7 @@ We turn to causal inference modeling to answer this question. Thankfully, a vari
 
 When your training data is able to produce strong models that can predict metric outcome well, you end up with strong estimates of an induced effect:
 
-![Image](/img/geotests/Period_Split.png)
+![Geotest period split diagram showing pre-treatment and post-treatment phases](/img/geotests/Period_Split.png)
 
 ![Subtracting the modeled Synthetic Control values from the observed Treatment values reveals any incremental effect for the Treatment geos.](/img/geotests/Incremental_Effects.png)
 
