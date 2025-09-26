@@ -34,7 +34,6 @@ import {
 import Preamble from "./_preamble.mdx";
 import Install from "./python/_install.mdx";
 import Initialize from "./python/_initialize.mdx";
-import TestedPlatforms from "./python/_tested_platforms.mdx";
 import CheckGate from "./python/_checkGate.mdx";
 import GetConfig from "./python/_getConfig.mdx";
 import GetPrompt from "./python/_getPrompt.mdx";
@@ -62,10 +61,6 @@ export const Builder = SDKDocsBuilder({
       {
         repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3",
       },
-    ],
-    [
-      () => <TestedPlatforms />,
-      {},
     ],
     [
       MigrationGuide,

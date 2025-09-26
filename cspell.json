@@ -739,7 +739,10 @@
     "Cohen",
     "Cohen's",
     "xhuang",
-    "ZORDER"
+    "ZORDER",
+    "pypa",
+    "manylinux",
+    "Manylinux"
   ],
   "ignorePaths": [
     "node_modules/**",
