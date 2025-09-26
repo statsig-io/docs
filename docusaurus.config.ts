@@ -43,7 +43,9 @@ const config: Config = {
   plugins: [
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
-      const isNetlifyPreview = process.env.CONTEXT === "deploy-preview" || process.env.CONTEXT === "branch-deploy";
+      const isNetlifyPreview =
+        process.env.CONTEXT === "deploy-preview" ||
+        process.env.CONTEXT === "branch-deploy";
       const tier = isProd && !isNetlifyPreview ? "production" : "development";
       return {
         name: "docusaurus-plugin-statsig",
@@ -152,7 +154,17 @@ const config: Config = {
           },
           {
             to: "/feature-flags/overview",
-            from: ["/feature-gates/overview", "/feature-gates", "/feature-flags", "/feature-gates/working-with", "/feature-flags/working-with", "/feature-gates/implement", "/feature-gates/implement/client", "/feature-gates/implement/server", "/feature-gates/implement/http-api"],
+            from: [
+              "/feature-gates/overview",
+              "/feature-gates",
+              "/feature-flags",
+              "/feature-gates/working-with",
+              "/feature-flags/working-with",
+              "/feature-gates/implement",
+              "/feature-gates/implement/client",
+              "/feature-gates/implement/server",
+              "/feature-gates/implement/http-api",
+            ],
           },
           {
             to: "/feature-flags/create",
@@ -196,7 +208,13 @@ const config: Config = {
           },
           {
             to: "/",
-            from: ["/feature-flags/implement", "/feature-flags/implement/client", "/feature-flags/implement/server", "/feature-flags/implement/http-api", "/category/walkthrough-guides"],
+            from: [
+              "/feature-flags/implement",
+              "/feature-flags/implement/client",
+              "/feature-flags/implement/server",
+              "/feature-flags/implement/http-api",
+              "/category/walkthrough-guides",
+            ],
           },
           {
             to: "/pulse/read-pulse",
@@ -232,7 +250,12 @@ const config: Config = {
           },
           {
             to: "/product-analytics/overview",
-            from: ["/product-analytics", "/mex", "/mex/overview", "/metrics/events-explorer"],
+            from: [
+              "/product-analytics",
+              "/mex",
+              "/mex/overview",
+              "/metrics/events-explorer",
+            ],
           },
           {
             to: "/product-analytics/drilldown",
@@ -256,7 +279,10 @@ const config: Config = {
           },
           {
             to: "/client/javascript-sdk",
-            from: ["/client/introduction/javascript-sdk","/client/jsClientSDK"],
+            from: [
+              "/client/introduction/javascript-sdk",
+              "/client/jsClientSDK",
+            ],
           },
           {
             to: "/client/javascript-sdk/react",
@@ -272,7 +298,12 @@ const config: Config = {
           },
           {
             to: "/client/javascript-sdk/next-js",
-            from: ["/guides/nextjs-feature-flags", "/client/javascript-sdk/next-js-pages-router", "/guides/nextjs-page-router-feature-flags", "/client/javascript-sdk/next-js-app-router"],
+            from: [
+              "/guides/nextjs-feature-flags",
+              "/client/javascript-sdk/next-js-pages-router",
+              "/guides/nextjs-page-router-feature-flags",
+              "/client/javascript-sdk/next-js-app-router",
+            ],
           },
           {
             to: "/client/javascript-sdk/migrating-from-statsig-js",
@@ -288,7 +319,10 @@ const config: Config = {
           },
           {
             to: "/client/concepts/initialize",
-            from: ["/client/javascript-sdk/react/init-strategies", "/client/concepts/bootstrapping"],
+            from: [
+              "/client/javascript-sdk/react/init-strategies",
+              "/client/concepts/bootstrapping",
+            ],
           },
           {
             to: "/concepts/user",
@@ -522,15 +556,19 @@ const config: Config = {
       "data-website-id": "418990dd-0615-4ba7-b52f-3ab8c1af4e79",
       "data-project-name": "Statsig",
       "data-project-color": "#1963d2",
-      "data-project-logo": "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
+      "data-project-logo":
+        "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
       "data-scale-factor": "1.2",
       "data-modal-lock-scroll": "false",
-      "data-modal-image": "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
+      "data-modal-image":
+        "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
       "data-button-hide": "true",
       "data-modal-override-open-id": "ask-ai-navbar-button",
       "data-modal-override-open-id-ask-ai": "ask-ai-navbar-button",
-      "data-modal-disclaimer": "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
-      "data-answer-feedback-info-text": "All feedback is reviewed by the Statsig team.",
+      "data-modal-disclaimer":
+        "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
+      "data-answer-feedback-info-text":
+        "All feedback is reviewed by the Statsig team.",
       "data-search-mode-enabled": "true",
       "data-modal-open-on-command-k": "true",
       "data-modal-command-k-search-mode-default": "true",
@@ -541,6 +579,24 @@ const config: Config = {
       "data-modal-full-screen-on-mobile": "false",
       "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
       "data-question-text-color": "#1963d2",
+
+      "data-modal-body-bg-color": "#1b1b1d",
+      "data-modal-header-bg-color": "#1b1b1d",
+      "data-modal-text-color": "#ffffff",
+      "data-modal-disclaimer-bg-color": "#1b1b1d",
+      "data-answer-feedback-bg-color": "#1b1b1d",
+      "data-switch-bg-color": "#333335",
+      "data-query-input-text-color": "#ffffff",
+      "data-query-input-bg-color": "#333335",
+      "data-answer-feedback-border-color": "#333335",
+      "data-search-result-badge-bg-color": "#1b1b1d",
+      "data-search-result-hover-bg-color": "#333335",
+      "data-search-result-active-bg-color": "#1963d2",
+      "data-search-result-active-text-color": "#ffffff",
+      "data-search-result-text-color": "#ffffff",
+      "data-search-result-source-text-color": "#bbbbbd",
+      "data-search-no-result-text-color": "#ffffff",
+      "data-close-button-color": "#bbbbbd",
     },
   ],
   stylesheets: [
