@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 
 const ASK_AI_BUTTON_ID = "ask-ai-navbar-button";
-const ASK_AI_LABEL = "Ask AI";
-const ASK_AI_ICON_SRC = "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg";
+const ASK_AI_LABEL = "Discover";
+const ASK_AI_ICON_SRC =
+  "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg";
 const KAPA_SCRIPT_ID = "kapa-widget-script";
 
 const openKapaWidget = () => {
@@ -10,7 +11,7 @@ const openKapaWidget = () => {
     return false;
   }
 
-  const opener = window.Kapa?.open;
+  const opener = window.Kapa?.open({ mode: "search" });
   if (typeof opener === "function") {
     opener.call(window.Kapa);
     return true;
@@ -55,7 +56,12 @@ const AskAI = () => {
         type="button"
         onClick={handleClick}
       >
-        <img className="ask-ai-button__icon" src={ASK_AI_ICON_SRC} alt="" aria-hidden="true" />
+        <img
+          className="ask-ai-button__icon"
+          src={ASK_AI_ICON_SRC}
+          alt=""
+          aria-hidden="true"
+        />
         <span className="ask-ai-button__label">{ASK_AI_LABEL}</span>
       </button>
     </div>
