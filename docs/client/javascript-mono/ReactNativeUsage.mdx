@@ -10,7 +10,9 @@ last_update:
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-import { FeaturePillList } from '@site/src/components/FeaturePillList';
+import { FeaturePillList } from "@site/src/components/FeaturePillList";
+
+import SampleTipText from "./_sampleApp.mdx";
 
 import {
   SDKDocsBuilder,
@@ -66,20 +68,21 @@ export const Builder = SDKDocsBuilder({
     [ReactGatesAndConfigs, { packageName: "react-native" }],
     [ReactNativeLoadingState, {}],
     [ReactNativeAdvanced, {}],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <FeaturePillList
-    features={[
-      { name: "Feature Gates", link: "#basics-check-gate" },
-      { name: "Experiments", link: "#basics-get-experiment" },
-      { name: "Dynamic Configs", link: "#basics-get-config" },
-      { name: "Layers", link: "#basics-get-layer" },
-      { name: "Event Logging", link: "#basics-log-event" },
-    ]
-  }
+  features={[
+    { name: "Feature Gates", link: "#basics-check-gate" },
+    { name: "Experiments", link: "#basics-get-experiment" },
+    { name: "Dynamic Configs", link: "#basics-get-config" },
+    { name: "Layers", link: "#basics-get-layer" },
+    { name: "Event Logging", link: "#basics-log-event" },
+  ]}
 />
-<>{Builder.result}</>
 
+<SampleTipText />
+
+<>{Builder.result}</>

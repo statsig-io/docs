@@ -12,7 +12,7 @@ import {
   HOOK__SDKDocUpdate,
 } from "../sdks/_SDKDocsBuilder.mdx";
 
-import { FeaturePillList } from '@site/src/components/FeaturePillList';
+import { FeaturePillList } from "@site/src/components/FeaturePillList";
 
 import {
   Repository,
@@ -73,9 +73,9 @@ import GetParameterStore from "./javascript-mono/_getParameterStore.mdx";
 import GetParameter from "./javascript-mono/_getParameter.mdx";
 import { Snippets as ManualExposureSnippets } from "./javascript-mono/_manualExposures.mdx";
 
-import * as StableID from './javascript-mono/StableID.mdx'
-import * as OverrideAdapter from './javascript-mono/_overrideAdapter.mdx'
-import * as Debugging from './javascript-mono/_debugging.mdx'
+import * as StableID from "./javascript-mono/StableID.mdx";
+import * as OverrideAdapter from "./javascript-mono/_overrideAdapter.mdx";
+import * as Debugging from "./javascript-mono/_debugging.mdx";
 
 export const TypedGetters = _typedGetters;
 
@@ -98,7 +98,13 @@ export const Builder = SDKDocsBuilder({
       },
     ],
     [TypedGetters, {}],
-    [EvaluationDetails, { snippetUrl: "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx" }],
+    [
+      EvaluationDetails,
+      {
+        snippetUrl:
+          "https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-evaluation-details.tsx",
+      },
+    ],
     [
       CodeExamples,
       {
@@ -108,7 +114,10 @@ export const Builder = SDKDocsBuilder({
     ],
     [
       ParameterStore,
-      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
+      {
+        getParameterStore: <GetParameterStore />,
+        getParameter: <GetParameter />,
+      },
     ],
     [StatsigUser, {}],
     [UpdateUser, {}],
@@ -129,22 +138,24 @@ export const Builder = SDKDocsBuilder({
     [LogOnlyData, {}],
     [Debugging, {}],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ]
-})
+  ],
+});
 
 export const toc = Builder.toc;
 
 <FeaturePillList
-    features={[
-      { name: "Feature Gates", link: "#feature-gates" },
-      { name: "Experiments", link: "#layers" },
-      { name: "Dynamic Configs", link: "#dynamic-configs" },
-      { name: "Layers", link: "#layers" },
-      { name: "Event Logging", link: "#event-logging" },
-      { name: "Session Replay", link: "#session-replay" },
-      { name: "Auto Capture", link: "#autocapture" },
-      { name: "Parameter Stores", link: "#parameter-stores" }
-    ]
-  }
+  features={[
+    { name: "Feature Gates", link: "#feature-gates" },
+    { name: "Experiments", link: "#layers" },
+    { name: "Dynamic Configs", link: "#dynamic-configs" },
+    { name: "Layers", link: "#layers" },
+    { name: "Event Logging", link: "#event-logging" },
+    { name: "Session Replay", link: "#session-replay" },
+    { name: "Auto Capture", link: "#autocapture" },
+    { name: "Parameter Stores", link: "#parameter-stores" },
+  ]}
 />
+
+> **💡 Tip:** Get started quickly with one of our [sample apps](https://github.com/statsig-io/js-client-monorepo/tree/main/samples)!
+
 <>{Builder.result}</>
