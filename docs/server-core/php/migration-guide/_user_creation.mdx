@@ -1,0 +1,39 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+User creation remains the same in the new PHP Core SDK.
+
+<Tabs>
+  <TabItem value="new" label="New User Creation" default>
+    ```php
+    use Statsig\StatsigUser;
+
+    $user = new StatsigUser(
+        "user_123",
+        "user@example.com",
+        "192.168.0.1",
+        "Mozilla/5.0",
+        "US",
+        [
+            "subscription_level" => "premium"
+        ]
+    );
+    ```
+  </TabItem>
+  <TabItem value="legacy" label="Legacy User Creation">
+    ```php
+    use Statsig\StatsigUser;
+
+    $user = new StatsigUser(
+        "user_123",
+        "user@example.com",
+        "192.168.0.1",
+        "Mozilla/5.0",
+        "US",
+        [
+            "subscription_level" => "premium"
+        ]
+    );
+    ```
+  </TabItem>
+</Tabs>
