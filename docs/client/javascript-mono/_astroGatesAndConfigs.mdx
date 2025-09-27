@@ -1,0 +1,96 @@
+## Using Feature Gates and Dynamic Configs
+
+Once Statsig is initialized, you can use feature gates and dynamic configs in your Astro components using client-side directives.
+
+### Feature Gates
+
+```astro
+---
+// src/components/FeatureExample.astro
+---
+
+<div id="feature-container">
+  <script>
+    // Wait for Statsig to be available
+    function checkFeature() {
+      if (window.statsig) {
+        const showNewFeature = window.statsig.checkGate('new_feature_gate');
+        const container = document.getElementById('feature-container');
+        
+        if (showNewFeature) {
+          container.innerHTML = '<h2>New Feature is Enabled!</h2>';
+        } else {
+          container.innerHTML = '<h2>Standard Experience</h2>';
+        }
+      } else {
+        // Retry if Statsig isn't ready yet
+        setTimeout(checkFeature, 100);
+      }
+    }
+    
+    checkFeature();
+  </script>
+</div>
+```
+
+### Dynamic Configs
+
+```astro
+---
+// src/components/ConfigExample.astro
+---
+
+<div id="config-container">
+  <script>
+    function loadConfig() {
+      if (window.statsig) {
+        const config = window.statsig.getConfig('button_config');
+        const buttonColor = config.get('color', 'blue');
+        const buttonText = config.get('text', 'Click me');
+        
+        const container = document.getElementById('config-container');
+        container.innerHTML = `
+          <button style="background-color: ${buttonColor}">
+            ${buttonText}
+          </button>
+        `;
+      } else {
+        setTimeout(loadConfig, 100);
+      }
+    }
+    
+    loadConfig();
+  </script>
+</div>
+```
+
+### Experiments
+
+```astro
+---
+// src/components/ExperimentExample.astro
+---
+
+<div id="experiment-container">
+  <script>
+    function runExperiment() {
+      if (window.statsig) {
+        const experiment = window.statsig.getExperiment('button_test');
+        const variant = experiment.get('variant', 'control');
+        
+        const container = document.getElementById('experiment-container');
+        
+        if (variant === 'treatment') {
+          container.innerHTML = '<button class="treatment-button">Try New Design</button>';
+        } else {
+          container.innerHTML = '<button class="control-button">Original Design</button>';
+        }
+      } else {
+        setTimeout(runExperiment, 100);
+      }
+    }
+    
+    runExperiment();
+  </script>
+</div>
+```
