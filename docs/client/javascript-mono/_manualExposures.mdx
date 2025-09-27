@@ -47,4 +47,10 @@ const paramValue = layer.get('a_param_name', 'fallback_value');`}
 const paramValue = layer.get('a_param_name', 'fallback_value');`}
     </CodeBlock>
   ),
+  parameterStoreSnippet: (
+    <CodeBlock language="jsx">
+      {`const parameterStore = myStatsigClient.getParameterStore('a_parameter_store_name', { disableExposureLog: true });
+const value = parameterStore.get('a_parameter_name', 'default_value');`}
+    </CodeBlock>
+  ),
 };
