@@ -6,16 +6,14 @@ last_update:
 
 ## Overview
 
-Statsig offers support to use statsig configs on AWS edge services, providing low latency for gate and experiment evaluations in your AWS project.
-
-This guide will highlight the most optimal setup for using statsig with AWS to leverage performance on the edge.
+Statsig supports evaluation on AWS Lambda@Edge, enabling ultra low-latency experimentation on content at the edge. This guide outlines our recommended Lambda@Edge architecture.
 
 ## Architecture
 
 This integration uses the following AWS services:
 
-- **S3**: Centralized configuration storage to store your statsig configs
-- **Lambda@Edge**: Executes your project code which uses the statsig edge SDK at CloudFront edge locations
+- **S3**: Centralized configuration storage for your statsig configs
+- **Lambda@Edge**: Executes your project code which uses the Statsig edge SDK at CloudFront edge locations
 - **CloudFront**: Global CDN that triggers Lambda@Edge functions and caches responses
 - **IAM**: Manages permissions for Lambda@Edge functions to access S3
 - **CloudWatch**: Provides logging and monitoring for your edge functions
@@ -24,10 +22,9 @@ This integration uses the following AWS services:
 
 **Statsig**:
 
-- Statsig account
-- Configured statsig project
-- A 50/50 feature gate for testing. This guide refers to this gate as "test_gate"
-- Client API Key (**Settings** -> **Keys & Environments**)
+- Statsig account (sign up [here](https://console.statsig.com/sign_up))
+- A 50/50 feature gate for testing (create one [here](https://console.statsig.com/gates)). This guide refers to this gate as "test_gate"
+- Client API Key ([**Settings** -> **Keys & Environments**](https://console.statsig.com/api_keys))
 
 **AWS**:
 
@@ -35,7 +32,7 @@ This integration uses the following AWS services:
 
 ## S3 Storage Setup
 
-For edge integrations, the statsig SDK needs access to storage located as close to the lambda as possible. On AWS, we recommend storing your statsig project definition in a S3 bucket.
+For edge integrations, the Statsig SDK needs access to storage located near the lambda. On AWS, we recommend storing your Statsig project definition in a S3 bucket.
 
 #### Create S3 Bucket
 
@@ -100,7 +97,8 @@ This should return your config specs
 
 ## Create Lambda@Edge Function
 
-**CRITICAL**: Must be created in **us-east-1** region
+:::warning Warning: The Lambda@Edge function must be created in **us-east-1**
+:::
 
 1. Change region to **us-east-1** (top-right corner)
 2. Navigate to **Lambda Dashboard**
@@ -111,9 +109,7 @@ This should return your config specs
 7. Keep the default permission
 8. Click **Create function**
 
-## Using the statsig SDK
-
-This section explains how to use the statsig SDK within your Lambda function
+## Using the Statsig SDK
 
 ### The Basics
 
@@ -125,7 +121,7 @@ npm install @statsig/edge-client
 import {StatsigEdgeClient} from "@statsig/edge-client"
 ```
 
-Install and import the statsig edge SDK. This SDK is a one stop shop for all edge integrations, including AWS.
+Install and import the Statsig edge SDK. This SDK is a one-stop-shop for all edge integrations, including AWS.
 
 ### Initialize
 
@@ -160,9 +156,9 @@ The `checkGate` method requires two arguments:
 
 #### **Add Function Code**
 
-This setup guide aims to complete every step through the AWS console. We suggest you work on your project on your local. Once you are ready to deploy your code, upload it as a zip to your function's code tab. Ensure your project is built and all packages are installed before you test or deploy it in the Lambda console.
+This setup guide aims to complete every step through the AWS console. We suggest you work on your project locally. Once you are ready to deploy your code, upload it as a zip to your function's code tab. Ensure your project is built and all packages are installed before you test or deploy it in the Lambda console.
 
-The following is an example of a Lambda Function using the statsig SDK. You can use this example to test your setup. Make sure to replace the `clientKey` variable with your statsig client API key and the `s3url` variable with your S3 object url.
+The following is an example of a Lambda Function using the Statsig SDK. You can use this example to test your setup. Make sure to replace the `clientKey` variable with your statsig client API key and the `s3url` variable with your S3 object url.
 
 ```javascript
 import { StatsigEdgeClient } from "@statsig/edge-client";
@@ -290,7 +286,7 @@ Deployment is complete when **Last modified** changes from "deploying" to a date
 
 ## Testing Setup
 
-Now, your AWS components are configured and your function code is configured to use statsig. Every time you make a change to your function code, remember to **publish a new version**. Every time a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behavior. This will ensure the changes are propagated to the edge. Every change takes about **10-15** minutes to propagate to all edge locations.
+Now, your AWS components are configured and your function code is configured to use Statsig. Every time you make a change to your function code, remember to **publish a new version**. Every time a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behavior. This will ensure the changes are propagated to the edge. Every change takes about **10-15** minutes to propagate to all edge locations.
 
 ### Connectivity test
 
@@ -333,7 +329,7 @@ To keep your config specs up to date, you can update your S3 config storage when
 
 ## Considerations
 
-This is the end of the statsig AWS edge integration setup guide. Please keep in mind this guide is meant to help you set up your project and get started. Ensure you make changes in your setup to support your required security needs when using this integration in production. Configure your AWS resource security and permissions as needed. Please protect your API keys.
+This guide is meant as a quickstart, ensure you make setup changes to support your security requirements when desploying this integration to production. Configure your AWS resource security and permissions as needed, and always protect your API keys.
 
 ## Common Issues
 
