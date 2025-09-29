@@ -12,7 +12,7 @@ Statsig supports evaluation on AWS Lambda@Edge, enabling ultra low-latency exper
 
 This integration uses the following AWS services:
 
-- **S3**: Centralized configuration storage for your statsig configs
+- **S3**: Centralized configuration storage for your Statsig configs
 - **Lambda@Edge**: Executes your project code which uses the Statsig edge SDK at CloudFront edge locations
 - **CloudFront**: Global CDN that triggers Lambda@Edge functions and caches responses
 - **IAM**: Manages permissions for Lambda@Edge functions to access S3
@@ -50,7 +50,7 @@ Create a file named `statsig-config.json` with your experiment configurations
 
 If you do not have your config specs, this is how you can get them:
 
-- Call the statsig CDN endpoint with you client key.
+- Call the Statsig CDN endpoint with you client key.
 
   ```bash
   curl https://api.statsigcdn.com/v1/download_config_specs/<YOUR_CLIENT_API_KEY>.json
@@ -87,7 +87,7 @@ If you do not have your config specs, this is how you can get them:
 
 Test that your configuration is accessible
 
-From your list of objects in your bucket, select the file with your statsig configs. Once highlighted, click **Copy URL**. Test this endpoint.
+From your list of objects in your bucket, select the file with your Statsig configs. Once highlighted, click **Copy URL**. Test this endpoint.
 
 ```bash
 https://mybucketname.s3.us-east-1.amazonaws.com/config.json
@@ -131,7 +131,7 @@ const client = new StatsigEdgeClient(clientKey);
 
 This creates an instance of the edge client. The edge client takes one argument.
 
-- `sdkKey : string` Your statsig client API key. (**Settings** -> **Keys & Environments**)
+- `sdkKey : string` Your Statsig client API key. (**Settings** -> **Keys & Environments**)
 
 ```bash
 const specs = await client.initializeFromCDN("<YOUR S3 URL>");
@@ -139,7 +139,7 @@ const specs = await client.initializeFromCDN("<YOUR S3 URL>");
 
 This calls the initialize method from the edge client. The `initializeFromCDN` method requires one argument:
 
-- `url: string` The url to your storage for your statsig config specs
+- `url: string` The url to your storage for your Statsig config specs
 
 In the AWS use case, the url to specify is your S3 config file url
 
@@ -152,13 +152,13 @@ const gateValue = client.checkGate("test_gate", user);
 The `checkGate` method requires two arguments:
 
 - `name: string ` The name of your gate
-- `user: Statsiguser` The statsig user being checked for this gate
+- `user: Statsiguser` The Statsig user being checked for this gate
 
 #### **Add Function Code**
 
 This setup guide aims to complete every step through the AWS console. We suggest you work on your project locally. Once you are ready to deploy your code, upload it as a zip to your function's code tab. Ensure your project is built and all packages are installed before you test or deploy it in the Lambda console.
 
-The following is an example of a Lambda Function using the Statsig SDK. You can use this example to test your setup. Make sure to replace the `clientKey` variable with your statsig client API key and the `s3url` variable with your S3 object url.
+The following is an example of a Lambda Function using the Statsig SDK. You can use this example to test your setup. Make sure to replace the `clientKey` variable with your Statsig client API key and the `s3url` variable with your S3 object url.
 
 ```javascript
 import { StatsigEdgeClient } from "@statsig/edge-client";
@@ -219,9 +219,9 @@ Your package.json should look something like this:
 
 ### Lambda only
 
-If you are interested in only hosting your project on AWS Lambda without operating on the edge, your setup is now complete. Your function is ready to be invoked and to use the statsig SDK within it.
+If you are interested in only hosting your project on AWS Lambda without operating on the edge, your setup is now complete. Your function is ready to be invoked and to use the Statsig SDK within it.
 
-If you want Lambda@Edge services, to use statsig on the edge, please continue with the setup guide.
+If you want Lambda@Edge services, to use Statsig on the edge, please continue with the setup guide.
 
 ### Create IAM Execution Role for Lambda@Edge
 
@@ -308,7 +308,7 @@ curl https://d1abc123xyz.cloudfront.net/
 
 ```
 
-If you get a successful response, with different gate values (true and false) for different users. You are now set up to use statsig on AWS edge!
+If you get a successful response, with different gate values (true and false) for different users. You are now set up to use Statsig on AWS edge!
 
 ### CloudWatch Logs
 
@@ -325,7 +325,7 @@ You can also access logs in your Lambda function dashboard
 
 ### keeping Config Specs Updated
 
-To keep your config specs up to date, you can update your S3 config storage whenever you make changes to your statsig project definition. Simply delete the current object in your bucket, and upload your new JSON file with the same name. If you want to keep your old config specs in your bucket, you can add the new specs JSON file with a different name. Ensure you change your S3 url in your Lambda function if your S3 object name ever changes.
+To keep your config specs up to date, you can update your S3 config storage whenever you make changes to your Statsig project definition. Simply delete the current object in your bucket, and upload your new JSON file with the same name. If you want to keep your old config specs in your bucket, you can add the new specs JSON file with a different name. Ensure you change your S3 url in your Lambda function if your S3 object name ever changes.
 
 ## Considerations
 
