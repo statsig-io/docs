@@ -90,7 +90,7 @@ If you do not have your config specs, this is how you can get them:
 
 Test that your configuration is accessible
 
-From your list of objects in your bucket, select the file with your statsig configs. Once highlighted click **Copy URL**. Test this endpoint.
+From your list of objects in your bucket, select the file with your statsig configs. Once highlighted, click **Copy URL**. Test this endpoint.
 
 ```bash
 https://mybucketname.s3.us-east-1.amazonaws.com/config.json
@@ -120,8 +120,6 @@ Further explanation and breakdown of the usage of the statsig SDK within this co
 ```javascript
 import { StatsigEdgeClient } from "@statsig/edge-client";
 
-let configCache = null;
-
 export const handler = async (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
@@ -141,7 +139,6 @@ export const handler = async (event, context, callback) => {
       gateValue: gateValue,
       user: user,
       timestamp: new Date().toISOString(),
-      cached: configCache !== null,
     };
 
     callback(null, {
@@ -199,7 +196,7 @@ Your package.json should look something like this:
 2. Select **YourFunctionName-role-####**
 3. Click **Trust relationships**
 4. Click **Edit trust policy**
-5. Use the following in your edit code window window:
+5. Use the following in your edit code window:
 
 ```json
 {
@@ -252,7 +249,7 @@ Your package.json should look something like this:
 3. **Save changes**
 
 **Wait for Deployment** (10-15 minutes for global propagation to all edge locations)
-Deployment is complete when **Last modified** changes from to "deploying" to a date
+Deployment is complete when **Last modified** changes from "deploying" to a date
 
 ## Statsig Integration
 
@@ -260,13 +257,19 @@ At this point, all of your required AWS components are created and configured. L
 
 This section will break down and explain parts of the example lambda function code
 
+### Instal
+
+```bash
+npm install @statsig/edge-client
+```
+
+Install the statsig edge SDK. This SDK is a one stop shop for all edge integrations, including AWS.
+
 ### Import
 
 ```bash
 import {StatsigEdgeClient} from "@statsig/edge-client"
 ```
-
-Import the StatsigEdgeClient SDK. This SDK is a one stop shop for all edge integrations, including AWS.
 
 ### Initialize
 
@@ -319,7 +322,6 @@ curl https://d1abc123xyz.cloudfront.net/
     gateValue: True,
     user: 24,
     timestamp: "2025-01-23T12:00:00.000Z",
-    cached: False,
 }
 
 ```
@@ -328,7 +330,7 @@ If you get a successful response, with different gate values (true and false) fo
 
 ### CloudWatch Logs
 
-CloudWatch is an observability service provided by AWS. This is great resource for for debugging and data collection purposes.
+CloudWatch is an observability service provided by AWS. This is great resource for debugging and data collection purposes.
 
 How to locate your functions logs:
 
@@ -349,40 +351,38 @@ This is the end of the statsig AWS edge integration setup guide. Please keep in 
 
 - **Possible Cause**:
   - Lambda@Edge function not properly attached to CloudFront
-    - **Solution**:
-      - Check CloudFront behavior configuration
+  - **Solution**:
+    - Check CloudFront behavior configuration
 - **Possible Cause**:
   - Function has errors
-    - **Solution**:
-      - Check CloudWatch and Lambda logs
+  - **Solution**:
+    - Check CloudWatch and Lambda logs
 
 **S3 Configuration Errors:**
 
 - **Possible Cause**:
   - S3 bucket policy doesn't allow public access or file not found
-    - **Solution**:
-      - Verify bucket policy and test S3 URL directly
+  - **Solution**:
+    - Verify bucket policy and test S3 URL directly
 
 **Statsig SDK Initialization Errors:**
 
 - **Possible Cause**:
   - Invalid S3 configuration format
-    - **Solution**:
-      - Validate JSON format
+  - **Solution**:
+    - Validate JSON format
 - **Possible Cause**:
-
   - Incorrect client API key
-    - **Solution**:
-      - Ensure you are using the correct client key
-
+  - **Solution**:
+    - Ensure you are using the correct client key
 - **Possible Cause**:
   - Network issues
-    - **Solution**:
-      - Check S3 accessibility
+  - **Solution**:
+    - Check S3 accessibility
 
 **Module Import Errors:**
 
-- **Probable Cause**:
+- **Possible Cause**:
   - Missing dependencies in package.json
-    - **Solution**:
-      - Ensure `@statsig/edge-client` is included in dependencies
+  - **Solution**:
+    - Ensure `@statsig/edge-client` is included in dependencies
