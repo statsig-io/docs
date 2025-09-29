@@ -217,7 +217,7 @@ span.math.math-inline {
   gap: 0.75rem;
   padding: 0.625rem 1rem;
   background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--docsearch-searchbox-border-color, #d4d4d4);
+  border: 1px solid transparent;
   border-radius: 20px;
   color: var(--docsearch-text-color, #1c1e21);
   font-size: 0.9375rem;
@@ -295,12 +295,13 @@ span.math.math-inline {
 
 /* Dark mode support */
 [data-theme="dark"] .ask-ai-search-button {
-  border-color: var(--docsearch-searchbox-border-color, #565872);
-  color: var(--docsearch-text-color, #ebebf5);
+  border: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .ask-ai-search-button:hover {
   background-color: var(--docsearch-searchbox-background-hover, #393b54);
+  border-color: var(--ifm-color-primary-lighter);
 }
 
 [data-theme="dark"] .ask-ai-search-icon {
