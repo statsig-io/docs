@@ -37,7 +37,7 @@ This integration uses the following AWS services:
 
 The S3 bucket will be leveraged to store your statsig Config specifications. Since Amazon does not provide a traditional KV store for lambda@edge, we will treat the S3 storage as our KV store.
 
-### Create S3 Bucket
+**Create S3 Bucket**
 
 1. From your AWS console dashboard, navigate to **S3**
 2. Click **Create Bucket**
@@ -45,13 +45,13 @@ The S3 bucket will be leveraged to store your statsig Config specifications. Sin
 4. **Block Public Access**: Uncheck "Block all public access"
 5. Click **Create bucket**
 
-### Create Statsig Config File
+**Create Statsig Config File**
 
 Create a file named `statsig-config.json` with your experiment configurations
 
-**this file must be a JSON**
+** Note: this file must be a JSON**
 
-If you do not have your config specs, this how you can get them:
+If you do not have your config specs, this is how you can get them:
 
 - Call the statsig CDN endpoint with you client key.
 
@@ -59,14 +59,14 @@ If you do not have your config specs, this how you can get them:
   https://api.statsigcdn.com/v1/download_config_specs/<YOUR_CLIENT_API_KEY>.json
   ```
 
-### Upload Config Specs to S3
+**Upload Config Specs to S3**
 
 1. Open your S3 bucket
 2. Click **Upload**
 3. Select your `statsig-config.json` file
 4. Click **Upload**
 
-### Set Bucket Policy
+**Set Bucket Policy**
 
 1. Go to **S3 bucket** → **Permissions** → **Bucket Policy**
 2. Add the following policy (replace `YOUR-BUCKET-NAME`):
@@ -86,7 +86,7 @@ If you do not have your config specs, this how you can get them:
 }
 ```
 
-### Test S3 Access
+**Test S3 Access**
 
 Test that your configuration is accessible
 
@@ -111,7 +111,7 @@ This should return your config specs
 7. Keep the default permission
 8. Click **Create function**
 
-### Add Function Code
+#### **Add Function Code**
 
 This setup guide aims to complete every step through the AWS console. We suggest you work on your project on your local. Once you are ready to deploy your code, upload it as a zip to your function's code tab. Ensure your project is built and all packages are installed before you test or deploy it in the Lambda console.
 
@@ -241,7 +241,7 @@ Your package.json should look something like this:
 3. Click **Create distribution**
 4. **Note the Distribution Domain Name** (e.g., `d1abc123xyz.cloudfront.net`)
 
-### Add Lambda@Edge Function Association
+#### Add Lambda@Edge Function Association
 
 1. In your distribution, navigate to the **Behaviors** tab → **Edit** the default behavior
 2. **Function associations**:
@@ -286,7 +286,7 @@ This calls the initialize method from the edge client. The `initializeFromCDN` m
 
 - `url: string` The url to your storage for your statsig config specs
 
-In the AWS use case, the url to specify is the S3 url
+In the AWS use case, the url to specify is your S3 config file url
 
 ### Checking a Gate
 
@@ -301,7 +301,7 @@ The `checkGate` method requires two arguments:
 
 ## Testing Setup
 
-Now, your AWS components are configured and your function code is configured to use statsig. Every time you make a change to your function code, remember to **publish a new version**. Every time a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behavior. This will ensure the changes are propagated to the edge. Every change takes about **10-15** miniutes to propagate to all edge locations.
+Now, your AWS components are configured and your function code is configured to use statsig. Every time you make a change to your function code, remember to **publish a new version**. Every time a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behavior. This will ensure the changes are propagated to the edge. Every change takes about **10-15** minutes to propagate to all edge locations.
 
 ### Connectivity test
 
@@ -310,7 +310,7 @@ Now, your AWS components are configured and your function code is configured to 
 curl https://d1abc123xyz.cloudfront.net/
 ```
 
-Expected response:
+**Expected response:**
 
 ```bash
 {
@@ -324,7 +324,7 @@ Expected response:
 
 ```
 
-If you get a successful response, with different gate values (True and false) for different users. You are now set up to use statsig on AWS edge!
+If you get a successful response, with different gate values (true and false) for different users. You are now set up to use statsig on AWS edge!
 
 ### CloudWatch Logs
 
@@ -341,7 +341,7 @@ You can also access logs in your Lambda function dashboard
 
 ## Considerations
 
-This is the end of the statsig AWS edge integration setup guide. Please keep in mind this guide is meant to help you set up your project and get started. Ensure you make changes in your setup to support your required security needs when using this integration in production. Configure your AWS resource security and permissisons as needed. Please protect your API keys.
+This is the end of the statsig AWS edge integration setup guide. Please keep in mind this guide is meant to help you set up your project and get started. Ensure you make changes in your setup to support your required security needs when using this integration in production. Configure your AWS resource security and permissions as needed. Please protect your API keys.
 
 ## Common Issues
 
