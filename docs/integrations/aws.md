@@ -27,7 +27,7 @@ This integration uses the following AWS services:
 - Statsig account
 - Configured statsig project
 - A 50/50 feature gate for testing. This guide refers to this gate as "test_gate"
-- Client API Key (**Settings** -> **Keys & Environemnts**)
+- Client API Key (**Settings** -> **Keys & Environments**)
 
 **AWS**:
 
@@ -39,7 +39,7 @@ The S3 bucket will be leveraged to store your statsig Config specifications. Sin
 
 ### Create S3 Bucket
 
-1. From your AWS console dashboard, naviagte to **S3**
+1. From your AWS console dashboard, navigate to **S3**
 2. Click **Create Bucket**
 3. **Bucket name**: Choose a bucket name. It must be globally exclusive
 4. **Block Public Access**: Uncheck "Block all public access"
@@ -115,7 +115,7 @@ This should return your config specs
 
 This setup guide aims to complete every step through the AWS console. We suggest you work on your project on your local. Once you are ready to deploy your code, upload it as a zip to your function's code tab. Ensure your project is built and all packages are installed before you test or deploy it in the Lambda console.
 
-Further expalanation and breakdown of the usage of the statsig sdk within this code will be provided later in this guide.
+Further explanation and breakdown of the usage of the statsig SDK within this code will be provided later in this guide.
 
 ```javascript
 import { StatsigEdgeClient } from "@statsig/edge-client";
@@ -243,7 +243,7 @@ Your package.json should look something like this:
 
 ### Add Lambda@Edge Function Association
 
-1. In your distribution, naviagte to the **Behaviors** tab → **Edit** the default behavior
+1. In your distribution, navigate to the **Behaviors** tab → **Edit** the default behavior
 2. **Function associations**:
    - **Function type**: Viewer request
    - Select Lambda@Edge
@@ -258,7 +258,7 @@ Deployment is complete when **Last modified** changes from to "deploying" to a d
 
 At this point, all of your required AWS components are created and configured. Let's configure the usage of statsig in your code.
 
-This section will break down and explain parts of the exapmle lambda function code
+This section will break down and explain parts of the example lambda function code
 
 ### Import
 
@@ -266,7 +266,7 @@ This section will break down and explain parts of the exapmle lambda function co
 import {StatsigEdgeClient} from "@statsig/edge-client"
 ```
 
-Import the StatsigEdgeClient sdk. This sdk is a one stop shop for all edge integrations, inluding AWS.
+Import the StatsigEdgeClient SDK. This SDK is a one stop shop for all edge integrations, including AWS.
 
 ### Initialize
 
@@ -276,7 +276,7 @@ const client = new StatsigEdgeClient(clientKey);
 
 This creates an instance of the edge client. The edge client takes one argument.
 
-- `sdkKey : string` Your statsig client API key. (**Settings** -> **Keys & Environemnts**)
+- `sdkKey : string` Your statsig client API key. (**Settings** -> **Keys & Environments**)
 
 ```bash
 const specs = await client.initializeFromCDN("<YOUR S3 URL>");
@@ -284,7 +284,7 @@ const specs = await client.initializeFromCDN("<YOUR S3 URL>");
 
 This calls the initialize method from the edge client. The `initializeFromCDN` method requires one argument:
 
-- `url: string` The url to your stoarge for you statsig config specs
+- `url: string` The url to your storage for your statsig config specs
 
 In the AWS use case, the url to specify is the S3 url
 
@@ -301,7 +301,7 @@ The `checkGate` method requires two arguments:
 
 ## Testing Setup
 
-Now, your AWS components are configured and your function code is configured to use statsig. everytime you make a change to your function code, remeber to **publish a new version**. Everytime a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behaviour. This will ensure the chnages are propagated to the edge. Every chnage takes about **10-15** miniutes to propagate to all edge locations.
+Now, your AWS components are configured and your function code is configured to use statsig. Every time you make a change to your function code, remember to **publish a new version**. Every time a new version of your Lambda function is created make sure to update your **Function ARN / Name** in your distribution's behavior. This will ensure the changes are propagated to the edge. Every change takes about **10-15** miniutes to propagate to all edge locations.
 
 ### Connectivity test
 
@@ -310,7 +310,7 @@ Now, your AWS components are configured and your function code is configured to 
 curl https://d1abc123xyz.cloudfront.net/
 ```
 
-Expected resposne:
+Expected response:
 
 ```bash
 {
@@ -324,7 +324,7 @@ Expected resposne:
 
 ```
 
-If you get a succesful response, with different gate values (True and false) for different users. You are now set up to use statsig on AWS edge!
+If you get a successful response, with different gate values (True and false) for different users. You are now set up to use statsig on AWS edge!
 
 ### CloudWatch Logs
 
@@ -341,7 +341,7 @@ You can also access logs in your Lambda function dashboard
 
 ## Considerations
 
-This is the end of the statsig AWS edge integration setup guide. Please keep in mind this guide is meant to help you set up your porject and get started. Ensure you make changes in your setup to support your required security needs when using this integration in production. Configure your AWS resource security and permisisons as needed. Please protect your API keys.
+This is the end of the statsig AWS edge integration setup guide. Please keep in mind this guide is meant to help you set up your project and get started. Ensure you make changes in your setup to support your required security needs when using this integration in production. Configure your AWS resource security and permissisons as needed. Please protect your API keys.
 
 ## Common Issues
 
@@ -373,7 +373,7 @@ This is the end of the statsig AWS edge integration setup guide. Please keep in 
 
   - Incorrect client API key
     - **Solution**:
-      - Ensure you are using the corrent client key
+      - Ensure you are using the correct client key
 
 - **Possible Cause**:
   - Network issues
