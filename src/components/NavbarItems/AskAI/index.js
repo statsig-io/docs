@@ -24,6 +24,8 @@ const openKapaWidgetWhenReady = () => {
 };
 
 const AskAI = () => {
+  const [modifierKey, setModifierKey] = React.useState("Ctrl"); // Default to Ctrl
+
   const handleClick = useCallback((e) => {
     e.preventDefault();
     openKapaWidgetWhenReady();
@@ -33,6 +35,13 @@ const AskAI = () => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       openKapaWidgetWhenReady();
+    }
+  }, []);
+
+  // Set up the modifier key based on platform
+  React.useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setModifierKey(navigator.platform?.includes("Mac") ? "⌘" : "Ctrl");
     }
   }, []);
 
@@ -85,7 +94,7 @@ const AskAI = () => {
       </svg>
       <span className="ask-ai-search-text">Search with Ask AI</span>
       <span className="ask-ai-shortcut">
-        <kbd>{navigator?.platform?.includes("Mac") ? "⌘" : "Ctrl"}</kbd>
+        <kbd>{modifierKey}</kbd>
         <kbd>K</kbd>
       </span>
     </button>
