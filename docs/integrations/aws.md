@@ -35,7 +35,7 @@ This integration uses the following AWS services:
 
 ## S3 Storage Setup
 
-For edge integrations, the statsig SDK needs access to storage located as close to the lambda as posisble. On AWS, we recommend storing your statsig project defintion in a S3 bucket.
+For edge integrations, the statsig SDK needs access to storage located as close to the lambda as possible. On AWS, we recommend storing your statsig project definition in a S3 bucket.
 
 #### Create S3 Bucket
 
@@ -113,7 +113,7 @@ This should return your config specs
 
 ## Using the statsig SDK
 
-This section explains how to use the statsig SDK within your Lambda fucntion
+This section explains how to use the statsig SDK within your Lambda function
 
 ### The Basics
 
