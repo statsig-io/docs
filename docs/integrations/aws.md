@@ -329,7 +329,7 @@ To keep your config specs up to date, you can update your S3 config storage when
 
 ## Considerations
 
-This guide is meant as a quickstart, ensure you make setup changes to support your security requirements when desploying this integration to production. Configure your AWS resource security and permissions as needed, and always protect your API keys.
+This guide is meant as a quickstart, ensure you make setup changes to support your security requirements when deploying this integration to production. Configure your AWS resource security and permissions as needed, and always protect your API keys.
 
 ## Common Issues
 
