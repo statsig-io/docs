@@ -574,7 +574,7 @@ const config: Config = {
       "data-modal-command-k-search-mode-default": "true",
       "data-modal-search-input-placeholder": "Search Statsig docs...",
       "data-search-include-source-names": '["Documentation"]',
-      "data-search-show-ask-ai-cta": "true",
+      "data-search-show-ask-ai-cta": "false",
       "data-search-result-link-target": "_self",
       "data-modal-full-screen-on-mobile": "false",
       "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
