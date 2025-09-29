@@ -257,7 +257,7 @@ At this point, all of your required AWS components are created and configured. L
 
 This section will break down and explain parts of the example lambda function code
 
-### Instal
+### Install
 
 ```bash
 npm install @statsig/edge-client
