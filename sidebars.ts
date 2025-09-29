@@ -637,6 +637,7 @@ const sidebars: SidebarsConfig = {
                 "integrations/workersai",
                 "integrations/fastly",
                 "integrations/akamai",
+                "integrations/aws",
               ],
             },
             {
