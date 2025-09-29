@@ -36,11 +36,30 @@ const AskAI = () => {
     }
   }, []);
 
-  // Detect OS for keyboard shortcut display
-  const isMac =
-    typeof navigator !== "undefined" &&
-    /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
-  const modifierKey = isMac ? "⌘" : "Ctrl";
+  // Add global keyboard listener for both "/" and "Cmd/Ctrl + K"
+  React.useEffect(() => {
+    const handleGlobalKeyPress = (e) => {
+      // Prevent triggering when typing in input fields
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
+        return;
+
+      // Check for "/" key
+      if (e.key === "/") {
+        e.preventDefault();
+        openKapaWidgetWhenReady();
+        return;
+      }
+
+      // Check for Cmd/Ctrl + K
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openKapaWidgetWhenReady();
+      }
+    };
+
+    document.addEventListener("keydown", handleGlobalKeyPress);
+    return () => document.removeEventListener("keydown", handleGlobalKeyPress);
+  }, []);
 
   return (
     <button
@@ -64,9 +83,9 @@ const AskAI = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="ask-ai-search-text">Search or Ask AI</span>
+      <span className="ask-ai-search-text">Search with Ask AI</span>
       <span className="ask-ai-shortcut">
-        <kbd>{modifierKey}</kbd>
+        <kbd>{navigator?.platform?.includes("Mac") ? "⌘" : "Ctrl"}</kbd>
         <kbd>K</kbd>
       </span>
     </button>
