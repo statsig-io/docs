@@ -49,7 +49,7 @@ The S3 bucket will be leveraged to store your statsig Config specifications. Sin
 
 Create a file named `statsig-config.json` with your experiment configurations
 
-** Note: this file must be a JSON**
+**Note: this file must be a JSON**
 
 If you do not have your config specs, this is how you can get them:
 
