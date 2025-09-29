@@ -37,7 +37,7 @@ This integration uses the following AWS services:
 
 The S3 bucket will be leveraged to store your statsig Config specifications. Since Amazon does not provide a traditional KV store for lambda@edge, we will treat the S3 storage as our KV store.
 
-**Create S3 Bucket**
+#### Create S3 Bucket
 
 1. From your AWS console dashboard, navigate to **S3**
 2. Click **Create Bucket**
@@ -45,7 +45,7 @@ The S3 bucket will be leveraged to store your statsig Config specifications. Sin
 4. **Block Public Access**: Uncheck "Block all public access"
 5. Click **Create bucket**
 
-**Create Statsig Config File**
+#### Create Statsig Config File
 
 Create a file named `statsig-config.json` with your experiment configurations
 
@@ -59,14 +59,14 @@ If you do not have your config specs, this is how you can get them:
   https://api.statsigcdn.com/v1/download_config_specs/<YOUR_CLIENT_API_KEY>.json
   ```
 
-**Upload Config Specs to S3**
+#### Upload Config Specs to S3
 
 1. Open your S3 bucket
 2. Click **Upload**
 3. Select your `statsig-config.json` file
 4. Click **Upload**
 
-**Set Bucket Policy**
+#### Set Bucket Policy
 
 1. Go to **S3 bucket** → **Permissions** → **Bucket Policy**
 2. Add the following policy (replace `YOUR-BUCKET-NAME`):
@@ -86,7 +86,7 @@ If you do not have your config specs, this is how you can get them:
 }
 ```
 
-**Test S3 Access**
+#### Test S3 Access
 
 Test that your configuration is accessible
 
