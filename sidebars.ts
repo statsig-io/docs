@@ -444,6 +444,7 @@ const sidebars: SidebarsConfig = {
             id: "infra-analytics/overview",
           },
           items: [
+            "infra-analytics/getting-started",
             "infra-analytics/logs-explorer",
             "infra-analytics/events-mode-logs-explorer",
             "infra-analytics/logs-explorer-queries",
