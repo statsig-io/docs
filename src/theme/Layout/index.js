@@ -69,7 +69,6 @@ function KapaEventHandler() {
           padding: 12px 16px;
           cursor: pointer;
           border-bottom: 1px solid #e5e7eb;
-          background: #f9fafb;
           border-radius: 8px;
           margin-bottom: 4px;
           transition: background-color 0.2s, box-shadow 0.2s;
