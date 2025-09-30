@@ -427,11 +427,14 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Alerts",
+              link: {
+                type: "doc",
+                id: "product-analytics/alerts",
+              },
               items: [
-                "product-analytics/alerts",
                 "product-analytics/rollout_alerts",
                 "product-analytics/topline_alerts",
-              ],
+              ],            
             },
           ],
         },
