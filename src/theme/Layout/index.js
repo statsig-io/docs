@@ -62,7 +62,7 @@ function KapaEventHandler() {
         const customResult = document.createElement('div');
         customResult.className = 'custom-ask-ai-cta';
         customResult.setAttribute('role', 'button');
-        customResult.setAttribute('tabindex', '-1');
+        customResult.setAttribute('tabindex', '0');
         customResult.style.cssText = `
           display: flex;
           align-items: center;
@@ -70,7 +70,10 @@ function KapaEventHandler() {
           cursor: pointer;
           border-bottom: 1px solid #e5e7eb;
           background: #f9fafb;
-          transition: background-color 0.2s;
+          border-radius: 8px;
+          margin-bottom: 4px;
+          transition: background-color 0.2s, box-shadow 0.2s;
+          outline: none;
         `;
         
         customResult.innerHTML = `
@@ -83,9 +86,28 @@ function KapaEventHandler() {
 
         customResult.addEventListener('mouseenter', () => {
           customResult.style.backgroundColor = '#f3f4f6';
+          customResult.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
         });
         customResult.addEventListener('mouseleave', () => {
           customResult.style.backgroundColor = '#f9fafb';
+          customResult.style.boxShadow = 'none';
+        });
+        
+        customResult.addEventListener('focus', () => {
+          customResult.style.backgroundColor = '#f3f4f6';
+          customResult.style.boxShadow = '0 0 0 2px #1963d2';
+        });
+        customResult.addEventListener('blur', () => {
+          customResult.style.backgroundColor = '#f9fafb';
+          customResult.style.boxShadow = 'none';
+        });
+        
+        customResult.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            customResult.click();
+          }
         });
 
         customResult.addEventListener('click', (e) => {
