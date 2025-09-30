@@ -22,13 +22,83 @@ function KapaEventHandler() {
       setIsAskAIOpen(false);
     };
 
+    const handleSearchResultsCompleted = (event) => {
+      const { query } = event;
+      if (!query || !query.trim()) return;
+
+      setTimeout(() => {
+        const kapaContainer = document.getElementById('kapa-widget-container');
+        if (!kapaContainer || !kapaContainer.shadowRoot) return;
+        
+        const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+        if (!modal) return;
+        
+        const divsInModal = modal.querySelectorAll('div');
+        const resultsContainer = Array.from(divsInModal).find(div => {
+          const anchorChildren = Array.from(div.children).filter(child => child.tagName === 'A');
+          return anchorChildren.length > 5;
+        });
+        
+        if (!resultsContainer) return;
+
+        const existingCustomResult = resultsContainer.querySelector('.custom-ask-ai-cta');
+        if (existingCustomResult) {
+          existingCustomResult.remove();
+        }
+
+        const customResult = document.createElement('div');
+        customResult.className = 'custom-ask-ai-cta';
+        customResult.setAttribute('role', 'button');
+        customResult.setAttribute('tabindex', '-1');
+        customResult.style.cssText = `
+          display: flex;
+          align-items: center;
+          padding: 12px 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #e5e7eb;
+          background: #f9fafb;
+          transition: background-color 0.2s;
+        `;
+        
+        customResult.innerHTML = `
+          <svg style="width: 20px; height: 20px; min-width: 20px; margin-right: 12px; color: #1963d2;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+            <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; color: #1963d2; font-size: 14px;">Ask AI: ${query}</div>
+            <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Get instant answers powered by AI</div>
+          </div>
+        `;
+
+        customResult.addEventListener('mouseenter', () => {
+          customResult.style.backgroundColor = '#f3f4f6';
+        });
+        customResult.addEventListener('mouseleave', () => {
+          customResult.style.backgroundColor = '#f9fafb';
+        });
+
+        customResult.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.Kapa) {
+            window.Kapa.open({ mode: 'ai', query: query });
+          }
+        });
+
+        resultsContainer.insertBefore(customResult, resultsContainer.firstChild);
+      }, 100);
+    };
+
     window.Kapa("onModalOpen", handleModalOpen);
     window.Kapa("onModalClose", handleModalClose);
+    window.Kapa("onSearchResultsCompleted", handleSearchResultsCompleted);
 
     return () => {
       if (window.Kapa) {
         window.Kapa("onModalOpen", handleModalOpen, "remove");
         window.Kapa("onModalClose", handleModalClose, "remove");
+        window.Kapa("onSearchResultsCompleted", handleSearchResultsCompleted, "remove");
       }
     };
   }, [setIsAskAIOpen]);
