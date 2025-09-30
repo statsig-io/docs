@@ -61,10 +61,7 @@ function KapaEventHandler() {
         `;
         
         customResult.innerHTML = `
-          <svg style="width: 20px; height: 20px; min-width: 20px; margin-right: 12px; color: #1963d2;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <circle cx="12" cy="12" r="10" stroke-width="2"/>
-            <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+          <span style="font-size: 20px; min-width: 20px; margin-right: 12px;">✨</span>
           <div style="flex: 1;">
             <div style="font-weight: 600; color: #1963d2; font-size: 14px;">Ask AI: ${query}</div>
             <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Get instant answers powered by AI</div>
@@ -83,6 +80,32 @@ function KapaEventHandler() {
           e.stopPropagation();
           if (window.Kapa) {
             window.Kapa.open({ mode: 'ai', query: query });
+            
+            setTimeout(() => {
+              const kapaContainer = document.getElementById('kapa-widget-container');
+              if (kapaContainer && kapaContainer.shadowRoot) {
+                const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+                if (modal) {
+                  const textarea = modal.querySelector('.mantine-Input-wrapper.mantine-Textarea-wrapper textarea');
+                  if (textarea) {
+                    textarea.focus();
+                    
+                    const submitButton = modal.querySelector('button[type="submit"]') || 
+                                       modal.querySelector('button[aria-label*="send"]') ||
+                                       modal.querySelector('button[aria-label*="submit"]') ||
+                                       modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
+                    
+                    if (submitButton) {
+                      submitButton.click();
+                      
+                      setTimeout(() => {
+                        textarea.focus();
+                      }, 100);
+                    }
+                  }
+                }
+              }
+            }, 500); // Give time for the AI tab to fully load
           }
         });
 
