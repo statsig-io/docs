@@ -90,7 +90,8 @@ function KapaEventHandler() {
                   if (textarea) {
                     textarea.focus();
                     
-                    const submitButton = modal.querySelector('button[type="submit"]') || 
+                    const submitButton = modal.querySelector('button.mantine-ActionIcon-root[data-variant="filled"]') || 
+                                       modal.querySelector('button[type="submit"]') ||
                                        modal.querySelector('button[aria-label*="send"]') ||
                                        modal.querySelector('button[aria-label*="submit"]') ||
                                        modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
