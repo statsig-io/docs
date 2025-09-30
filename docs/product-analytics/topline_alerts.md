@@ -3,60 +3,77 @@ title: Topline Alerts
 sidebar_label: Topline Alerts
 slug: /product-analytics/alerts/topline_alerts
 keywords:
-  - owner:mseger
+  - owner:laurel
 last_update:
-  date: 2025-04-08
+  date: 2025-09-30
 ---
 
-## Topline Metric Alerts
-Topline Metric Alerts are currently in Beta on both Statsig Cloud and Statsig Warehouse Native as part of Statsig's Product Analytics suite. 
+Topline Alerts notify you when key metrics cross a threshold or change significantly. They are available in Statsig Cloud and Statsig Warehouse Native.
+- **Threshold Alerts:** Trigger when a metric crosses a fixed limit.
+- **Change Alerts:** Trigger when a metric shifts by an absolute amount or a percentage.
 
-Topline Alerts are threshold based (anomaly detection coming soon). On Statsig Cloud they are evaluated every minute for small evaluation windows. On Statsig Warehouse Native you can define the evaluation frequency and lookback window. 
+---
 
-### Configuring a Topline Alert
-To configure a Topline Alert, head to **Analytics** -> **Topline Alerts** tab where you can find all your Topline Alerts and configure new ones. Tap **+Create** and name your new alert.  Under alert configuration, there are a few settings, which will differ depending on whether you are on Statsig Cloud or Statsig Warehouse Native- 
+# Creating a Topline Alert
+### **Step 1:** Navigate to Topline Alerts
+In the left product menu, go to **Analytics** -> **Topline Alerts**
 
-**Event/ Metric Source Configuration**
+### **Step 2:** Create a New Alert
+Click **+Create** and give the new alert a name.
 
-On Statsig Cloud, you will select the event you want to alert on, then choose the aggregation for this event. On Statsig Warehouse Native, you will choose the Metric Source you want to use and filter to the event/ metric you want to alert on. 
+### **Step 3:** Select the Event or Metric Source. 
+Choose the data you want to monitor. 
+- **On Statsig Warehouse Native:** Select a Metric Source and filter down to your desired event/metric. 
+- **On Statsig Cloud:** Select the event you want to alert on, then choose the aggregation for this event.
+  
+  Example: Monitor `mex_query` with P90 latency. We will also filter out internal employee queries.
 
-In this example alert we're configuring on Statsig Cloud, we're going to set an alert on P90 latency of a Metrics Explorer (MEX query). 
+  <img width="1053" alt="Screen Shot 2025-03-01 at 8 42 59 AM" src="https://github.com/user-attachments/assets/a002eb84-107d-404e-a898-71cd1c633c5b" />
 
-Our event name is "mex_query" and we log latency as a dimension of this event, so we will select the event, choose "P90" aggregation of the "latency" event dimension. You can also apply a filter to the event, for example I could filter out any Statsig internal employee queries. 
+### **Step 4:** Review the Alert Preview
+At the top of the page, the preview shows how your metric is trending over time. Use this to confirm the configuration looks correct.
+If you need deeper analysis, you can open the metric directly in Metrics Explorer (MEx) for further exploration.
 
-We'll see a preview of the event values in the **Alert Preview** section above event configuration. 
+  <img width="1141" alt="Screen Shot 2025-03-01 at 8 55 51 AM" src="https://github.com/user-attachments/assets/399884de-2ea5-4314-b3aa-4c94d5c2d510" />
 
-<img width="1052" alt="Screen Shot 2025-03-01 at 8 32 31 AM" src="https://github.com/user-attachments/assets/1a8be658-ec02-4ed2-994c-ad39d8df4a5d" />
+### **Step 5:** Set Alert Conditions
+Choose when the alert should fire. The preview will update as you set conditions.
 
-<img width="1053" alt="Screen Shot 2025-03-01 at 8 42 59 AM" src="https://github.com/user-attachments/assets/a002eb84-107d-404e-a898-71cd1c633c5b" />
-
-<img width="1141" alt="Screen Shot 2025-03-01 at 8 55 51 AM" src="https://github.com/user-attachments/assets/399884de-2ea5-4314-b3aa-4c94d5c2d510" />
-
-**Alert Conditions**
-
-The next step in configuring your alert is setting your alert conditions. Set the alert threshold, directionality, and an "Alert" and "Warning" value. On Statsig Cloud, you will choose the time window over which you want to evaluate the alert. 
-
-<img width="1053" alt="Screen Shot 2025-03-01 at 8 46 24 AM" src="https://github.com/user-attachments/assets/f7175682-e777-4eb7-a9d4-f748263871f1" />
-
-When configuring an alert on Warehouse Native, you will need to define the evaluation frequency, lookback, and max delay. The evaluation frequency and lookback period you define will influence the cost of evaluating this alert in your warehouse. 
-
-<img width="1091" alt="Screen Shot 2025-04-03 at 8 51 06 PM" src="https://github.com/user-attachments/assets/0318ada2-a077-4c74-a9cf-ff3b22b9140f" />
+Set the alert condition type, directionality, and _"Alert"_ / _"Warn"_ values. 
+- **On Statsig Cloud:** Choose the time window over which you want to evaluate the alert.
+- **On Warehouse Native:** Define the evaluation frequency, lookback, and max delay. The evaluation frequency and lookback period you define will influence the cost of evaluating this alert in your warehouse.
 
 
-**Notification**
+| Alert Condition Type         | When to Use                          | Example                                                   |
+|--------------------|-----------------------------------------|-----------------------------------------------------------|
+| **Threshold**     | Use when you want to stay above or below a fixed number. | “Alert me when P90 latency spikes above 15 seconds.” |
+| **Change**        | Use when the absolute size of the change matters. | “Alert me when hourly P90 latency increases by 10 secounds.” |
+| **Change (%)**    | Use when the relative size of the change matters more than raw numbers. | “Alert me when hourly P90 latency increases by 50%.” |
 
-The final step in alert configuration is to configure your alert message and set the list of who should be notified when the alert fires. All alert subscribers will receive a notification via email, in the Statsig Console, and via Slack for users who have configured Slack notifications for their Statsig accounts. You can enable company-wide notification settings (such as routing all alerts to a Slack channel) in your project Integration settings.
 
-### Viewing Alert History 
+### **Step 6:** Add Notifications
+
+A well-crafted alert should clearly describe what happened. **Start by writing the notification message.** If relevant, suggest next steps for the person receiving it. 
+
+You can then **add subscribers** who should be notified, and **set a priority level** so alerts can be triaged appropriately.
+- All subscribers will receive notifications by email, in the Statsig Console, and through Slack if connected. 
+- You can also configure project-wide defaults, such as routing all alerts to a Slack channel, under Integration settings.
+
+### **Step 7:** Save!!!
+🎉 Congrats - You've just finished making your alert.
+
+When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. You can mute an alert for a period of time while you work on resolving any issues to avoid notification spam.
+<img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
+
+
 To view alert history, head to the **Diagnostics** tab of the alert page, where you can see a history of when the alert has triggered. 
 
 <img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
 
+---
 
-### Alert Resolution
-When an alert fires, it will show up as active at the top of the alert page. At this point, you can explore Samples of the event or explore the topline trend via Metrics Explorer. You can mute an alert for a period of time while you work on resolving any issues to avoid notification spam.
+### Interested in more?
 
-<img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
-
-
+- 👉 Check out how to [create a Topline Alert on log lines](/infra-analytics/topline-alerts-logs)
+- 🔔 Learn how to set up [team Slack notifications](https://docs.statsig.com/integrations/slack/#team-notifications)
 
