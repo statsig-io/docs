@@ -16,6 +16,19 @@ function KapaEventHandler() {
 
     const handleModalOpen = () => {
       setIsAskAIOpen(true);
+      
+      setTimeout(() => {
+        const kapaContainer = document.getElementById('kapa-widget-container');
+        if (kapaContainer && kapaContainer.shadowRoot) {
+          const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+          if (modal) {
+            const searchInput = modal.querySelector('.mantine-TextInput-input');
+            if (searchInput) {
+              searchInput.focus();
+            }
+          }
+        }
+      }, 100);
     };
 
     const handleModalClose = () => {
