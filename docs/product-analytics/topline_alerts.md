@@ -47,7 +47,7 @@ Set the alert condition type, directionality, and _"Alert"_ / _"Warn"_ values.
 | Alert Condition Type         | When to Use                          | Example                                                   |
 |--------------------|-----------------------------------------|-----------------------------------------------------------|
 | **Threshold**     | Use when you want to stay above or below a fixed number. | “Alert me when P90 latency spikes above 15 seconds.” |
-| **Change**        | Use when the absolute size of the change matters. | “Alert me when hourly P90 latency increases by 10 secounds.” |
+| **Change**        | Use when the absolute size of the change matters. | “Alert me when hourly P90 latency increases by 10 seconds.” |
 | **Change (%)**    | Use when the relative size of the change matters more than raw numbers. | “Alert me when hourly P90 latency increases by 50%.” |
 
 
