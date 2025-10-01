@@ -95,16 +95,31 @@ function KapaEventHandler() {
           customResult.style.boxShadow = 'none';
         });
         
-        customResult.addEventListener('focus', () => {
+        const applyFocusStyle = () => {
           customResult.style.backgroundColor = '#f3f4f6';
           customResult.style.border = '2px solid #1963d2';
           customResult.style.boxShadow = 'none';
-        });
-        customResult.addEventListener('blur', () => {
+        };
+        
+        const removeFocusStyle = () => {
           customResult.style.backgroundColor = 'transparent';
           customResult.style.border = '2px solid transparent';
           customResult.style.boxShadow = 'none';
+        };
+
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'tabindex') {
+              if (customResult.getAttribute('tabindex') === '0') {
+                applyFocusStyle();
+              } else {
+                removeFocusStyle();
+              }
+            }
+          });
         });
+        
+        observer.observe(customResult, { attributes: true, attributeFilter: ['tabindex'] });
 
         const handleActivation = (e) => {
           e.preventDefault();
@@ -142,11 +157,19 @@ function KapaEventHandler() {
         };
         
         customResult.addEventListener('click', handleActivation);
-        customResult.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+        
+        const handleKeyDown = (e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && customResult.getAttribute('tabindex') === '0') {
             handleActivation(e);
           }
-        });
+        };
+        
+        document.addEventListener('keydown', handleKeyDown);
+        
+        customResult._cleanup = () => {
+          observer.disconnect();
+          document.removeEventListener('keydown', handleKeyDown);
+        };
 
         resultsContainer.insertBefore(customResult, resultsContainer.firstChild);
       }, 100);
