@@ -27,6 +27,12 @@ CURE solves the no-covariate problem by allowing practitioners to specify additi
 
 This can reduce experiment runtimes more than CUPED in isolation and, when combined with Statsig's Entity Properties, allows practitioners to trivially plug in existing feature stores to this variance reduction technique.
 
+:::info Note
+Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset. 
+It is expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). 
+Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned.
+:::
+
 ## How it's different
 
 This technique is similar to standard regression estimate used across other experimentation tools, but stands out in several ways:
@@ -71,10 +77,6 @@ Statsig will surface information on CURE in experiment diagnostics, giving detai
 # Outputs
 
  You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduced -- which has been helpful for users deciding which features to use.
-
-# Notes
-
-Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset, is it expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned about a concerning change.
 
 ## Feature Selection
 
