@@ -19,7 +19,7 @@ Statsig currently supports three types of Topline Alerts:
 | **Change**        | Use when the absolute size of the change matters. | “Alert me when hourly P90 latency increases by 10 seconds.” |
 | **Change (%)**    | Use when the relative size of the change matters more than raw numbers. | “Alert me when hourly P90 latency increases by 50%.” |
 
-
+<br />
 ---
 
 # Creating a Topline Alert
@@ -63,21 +63,18 @@ Notifications go to email, the Statsig Console, and Slack if connected. Project-
 
 
 ### **Step 7:** Save & Monitor
-Save the alert. When it fires, it will appear at the top of the page. From here, you can:
-- View samples of the event
-- Open the trend in [Metrics Explorer](https://docs.statsig.com/product-analytics/drilldown)
-- Mute the alert temporarily if it is noisy or already under investigation
-<img width="1439" alt="Screen Shot 2025-03-01 at 9 27 24 AM" src="https://github.com/user-attachments/assets/fba30475-c902-4878-911c-31108c7a7bc4" />
+Save the alert. When it fires, it will appear at the top of the page. 
 
+The **Diagnostics** tab will show past activity of the alert. This includes trigger history with options to inspect samples, launch into Metrics Explorer, or mute.  
 
-To review past activity, go to the **Diagnostics** tab. This shows alert history with options to inspect samples, launch into Metrics Explorer, or mute.  
-
-<img width="1436" alt="Screen Shot 2025-03-01 at 9 30 03 AM" src="https://github.com/user-attachments/assets/8d6e786f-09c1-4617-8230-4f11fb665ecc" />
+![alert setup](/img/infra-analytics/topline-alerts-diagnostics.png)
+<br />
 
 ---
 
 ### Interested in more?
 
-- 👉 Check out how to [create a Topline Alert on log lines](/infra-analytics/topline-alerts-logs)
-- 🔔 Learn how to set up [team Slack notifications](https://docs.statsig.com/integrations/slack/#team-notifications)
+- [Create log-based alerts](/infra-analytics/topline-alerts-logs) to catch issues directly from event logs 
+- [Use Rollout Alerts](/product-analytics/alerts/rollout_alerts) to monitor metrics in the context of feature gates and experiments
+- [Set up team Slack notifications](https://docs.statsig.com/integrations/slack/#team-notifications) to keep your alerts visible where your team works.
 
