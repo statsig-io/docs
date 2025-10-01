@@ -63,6 +63,7 @@ function KapaEventHandler() {
         customResult.className = 'custom-ask-ai-cta';
         customResult.setAttribute('href', '#');
         customResult.setAttribute('role', 'button');
+        customResult.setAttribute('tabindex', '0');
         customResult.style.cssText = `
           display: flex;
           align-items: center;
