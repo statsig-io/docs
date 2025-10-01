@@ -503,6 +503,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "ai-evals/getting-started",
             "ai-evals/prompts",
+            "ai-evals/graders",
             "ai-evals/offline-evals",
             {
               type: "category",
