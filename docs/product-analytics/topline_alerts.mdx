@@ -8,9 +8,9 @@ last_update:
   date: 2025-09-30
 ---
 
-Topline Alerts notify you when key metrics cross a threshold or change significantly. They are available in Statsig Cloud and Statsig Warehouse Native.
+Topline Alerts notify you when key metrics shift beyond a threshold or change in value. They are available in Statsig Cloud and Statsig Warehouse Native.
 
-Statsig supports three types of alerts:
+Statsig currently supports three types of Topline Alerts:
 
 
 | Alert Condition Type         | When to Use                          | Example                                                   |
@@ -34,14 +34,14 @@ Pick the data you want to monitor.
 - **On Statsig Warehouse Native:** Select a Metric Source, filter, and group by your desired dimensions.
 - **On Statsig Cloud:** Select the event, aggregation, filters, and group by conditions for this alert.
   
-  Example: Monitor `mex_query` with P90 latency. We will also filter out internal employee queries.
+_Example:_ We're going to set set up an alert to monitor P90 latency of `mex_query` events. We're going to filter out internal employee queries and group by an additional dimension called `hadGroupBy`.
 
-  <img width="1053" alt="Screen Shot 2025-03-01 at 8 42 59 AM" src="https://github.com/user-attachments/assets/a002eb84-107d-404e-a898-71cd1c633c5b" />
+![alert setup](/img/infra-analytics/topline-alerts-choose-events.png)
 
 ### **Step 4:** Review your metric in Alert Preview
 The preview shows how your metric is trending with the current setup. Confirm values look correct, or open the metric in [Metrics Explorer](https://docs.statsig.com/product-analytics/drilldown) for deeper analysis.  
 
-  <img width="1141" alt="Screen Shot 2025-03-01 at 8 55 51 AM" src="https://github.com/user-attachments/assets/399884de-2ea5-4314-b3aa-4c94d5c2d510" />
+![alert setup](/img/infra-analytics/topline-alerts-preview.png)
 
 ### **Step 5:** Set Alert Conditions
 The preview will update along with your setup changes. Define the:
@@ -50,6 +50,9 @@ The preview will update along with your setup changes. Define the:
 - _"Alert"_ / _"Warn"_ values
 - Evaluation window
   - **On Warehouse Native:** Define the evaluation frequency, lookback, and max delay. These will influence the cost of evaluating this alert in your warehouse.
+
+![alert setup](/img/infra-analytics/topline-alerts-conditions.png)
+
 
 ### **Step 6:** Add Notifications
 Notifications go to email, the Statsig Console, and Slack if connected. Project-wide defaults are available in the Settings menu. 
