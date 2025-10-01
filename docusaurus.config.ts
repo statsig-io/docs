@@ -198,6 +198,21 @@ const config: Config = {
                                         }, true);
                                       });
                                     }
+                                    
+                                    const askAiCta = kapaModal.querySelector('a[href="#"]');
+                                    if (askAiCta && askAiCta.textContent.includes('Ask AI')) {
+                                      askAiCta.setAttribute('tabindex', '-1');
+                                      askAiCta.blur();
+                                      askAiCta.style.backgroundColor = 'transparent';
+                                      askAiCta.style.outline = 'none';
+                                      
+                                      const ctaObserver = new MutationObserver(() => {
+                                        if (askAiCta.style.backgroundColor !== 'transparent') {
+                                          askAiCta.style.backgroundColor = 'transparent';
+                                        }
+                                      });
+                                      ctaObserver.observe(askAiCta, { attributes: true, attributeFilter: ['style', 'class'] });
+                                    }
                                   }
                                 }, 100);
                               }
