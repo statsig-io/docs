@@ -16,7 +16,7 @@ A grader is the evaluation component that scores or judges the output of an AI s
 
 Think of it as the core evaluation unit in the workflow:
 Inputs: The grader takes in the AI model’s response (and sometimes the “ideal” or ground-truth answer if one exists).
-Process: It applies a scoring method. This could be: Rule-based (exact string match, regex check, BLEU/GLEU score, cosine similarity) or LLM-as-a-Judge (using another model to evaluate correctness, relevance, style, or safety).
+Process: It applies a scoring method. This could be: Rule-based (exact string match, regex check, cosine similarity) or LLM-as-a-Judge (using another model to evaluate correctness, relevance, style, or safety).
 
 Outputs: It produces a score - ideally 0 (Fail) or Pass (1). This score feeds into the overall Statsig experiment or eval framework to determine performance across datasets, experiments, or model versions.
 
