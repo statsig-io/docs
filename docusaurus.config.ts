@@ -149,25 +149,40 @@ const config: Config = {
                           const activeElement = document.activeElement;
                           const kapaModal = document.querySelector('[data-kapa-widget]');
                           
-                          if (kapaModal && activeElement && activeElement.tagName === 'INPUT') {
-                            const isKapaInput = kapaModal.contains(activeElement);
+                          if (kapaModal && activeElement) {
+                            const isKapaInput = kapaModal.contains(activeElement) && 
+                                              (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA');
                             
                             if (isKapaInput) {
-                              const searchTab = kapaModal.querySelector('label:first-child');
-                              const askAiTab = kapaModal.querySelector('label:last-child');
+                              const searchTab = kapaModal.querySelector('label[for*="search"], label:first-child');
+                              const askAiTab = kapaModal.querySelector('label[for*="ask"], label:last-child');
                               
-                              const isSearchModeActive = searchTab && 
-                                (searchTab.classList.contains('active') || 
-                                 searchTab.getAttribute('aria-selected') === 'true' ||
-                                 !askAiTab.classList.contains('active'));
+                              const isInSearchMode = !askAiTab || !askAiTab.classList.contains('active') || 
+                                                    (searchTab && searchTab.classList.contains('active'));
                               
-                              if (isSearchModeActive) {
+                              if (isInSearchMode) {
+                                console.log('Preventing Enter key in Kapa search mode');
                                 e.preventDefault();
                                 e.stopPropagation();
                                 e.stopImmediatePropagation();
                                 return false;
                               }
                             }
+                          }
+                        }
+                      }, true);
+                      
+                      document.addEventListener('submit', function(e) {
+                        const kapaModal = document.querySelector('[data-kapa-widget]');
+                        if (kapaModal && kapaModal.contains(e.target)) {
+                          const searchTab = kapaModal.querySelector('label:first-child');
+                          const askAiTab = kapaModal.querySelector('label:last-child');
+                          
+                          if (!askAiTab || !askAiTab.classList.contains('active')) {
+                            console.log('Preventing form submission in Kapa search mode');
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
                           }
                         }
                       }, true);
@@ -183,28 +198,48 @@ const config: Config = {
                                 setTimeout(() => {
                                   const kapaModal = document.querySelector('[data-kapa-widget]') || modal;
                                   if (kapaModal) {
-                                    const searchInput = kapaModal.querySelector('input[type="text"], input[placeholder*="Search"], input[placeholder*="search"]');
-                                    if (searchInput && !searchInput.hasAttribute('data-enter-intercepted')) {
-                                      searchInput.setAttribute('data-enter-intercepted', 'true');
-                                      
-                                      ['keydown', 'keypress', 'keyup'].forEach(eventType => {
-                                        searchInput.addEventListener(eventType, function(e) {
-                                          if (e.key === 'Enter') {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            e.stopImmediatePropagation();
-                                            return false;
-                                          }
-                                        }, true);
-                                      });
-                                    }
+                                    const allInputs = kapaModal.querySelectorAll('input, textarea');
+                                    allInputs.forEach(input => {
+                                      if (!input.hasAttribute('data-enter-intercepted')) {
+                                        input.setAttribute('data-enter-intercepted', 'true');
+                                        
+                                        ['keydown', 'keypress', 'keyup'].forEach(eventType => {
+                                          input.addEventListener(eventType, function(e) {
+                                            if (e.key === 'Enter') {
+                                              const searchTab = kapaModal.querySelector('label:first-child');
+                                              const askAiTab = kapaModal.querySelector('label:last-child');
+                                              
+                                              if (!askAiTab || !askAiTab.classList.contains('active')) {
+                                                console.log('Preventing Enter on input in search mode');
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                e.stopImmediatePropagation();
+                                                return false;
+                                              }
+                                            }
+                                          }, true);
+                                        });
+                                      }
+                                    });
                                     
                                     const askAiCta = kapaModal.querySelector('a[href="#"]');
-                                    if (askAiCta && askAiCta.textContent.includes('Ask AI')) {
+                                    if (askAiCta && askAiCta.textContent && askAiCta.textContent.includes('Ask AI')) {
                                       askAiCta.setAttribute('tabindex', '-1');
                                       askAiCta.blur();
-                                      askAiCta.style.backgroundColor = 'transparent';
+                                      askAiCta.style.backgroundColor = 'transparent !important';
                                       askAiCta.style.outline = 'none';
+                                      
+                                      askAiCta.addEventListener('click', function(e) {
+                                        const searchTab = kapaModal.querySelector('label:first-child');
+                                        const askAiTab = kapaModal.querySelector('label:last-child');
+                                        
+                                        if (!askAiTab || !askAiTab.classList.contains('active')) {
+                                          console.log('Preventing Ask AI CTA click in search mode');
+                                          e.preventDefault();
+                                          e.stopPropagation();
+                                          return false;
+                                        }
+                                      }, true);
                                       
                                       const ctaObserver = new MutationObserver(() => {
                                         if (askAiCta.style.backgroundColor !== 'transparent') {
