@@ -139,6 +139,61 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              {
+                tagName: "script",
+                innerHTML: `
+                  (function() {
+                    function setupKapaCustomization() {
+                      const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                          mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) {
+                              const modal = node.querySelector ? node.querySelector('[data-kapa-widget]') : 
+                                           (node.getAttribute && node.getAttribute('data-kapa-widget') !== null ? node : null);
+                              
+                              if (modal || (node.nodeType === 1 && node.querySelector && node.querySelector('[data-kapa-widget]'))) {
+                                setTimeout(() => {
+                                  const kapaModal = document.querySelector('[data-kapa-widget]') || modal;
+                                  if (kapaModal) {
+                                    const askAiCta = kapaModal.querySelector('a[href="#"]');
+                                    if (askAiCta && askAiCta.textContent && askAiCta.textContent.includes('Ask AI')) {
+                                      askAiCta.setAttribute('tabindex', '-1');
+                                      askAiCta.blur();
+                                      askAiCta.style.backgroundColor = 'transparent !important';
+                                      askAiCta.style.outline = 'none';
+                                      
+                                      const ctaObserver = new MutationObserver(() => {
+                                        if (askAiCta.style.backgroundColor !== 'transparent') {
+                                          askAiCta.style.backgroundColor = 'transparent';
+                                        }
+                                      });
+                                      ctaObserver.observe(askAiCta, { attributes: true, attributeFilter: ['style', 'class'] });
+                                    }
+                                  }
+                                }, 100);
+                              }
+                            }
+                          });
+                        });
+                      });
+                      
+                      observer.observe(document.body, {
+                        childList: true,
+                        subtree: true
+                      });
+                    }
+                    
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', setupKapaCustomization);
+                    } else {
+                      setupKapaCustomization();
+                    }
+                  })();
+                `,
+                attributes: {
+                  type: "text/javascript",
+                },
+              },
             ],
           };
         },
@@ -574,7 +629,7 @@ const config: Config = {
       "data-modal-command-k-search-mode-default": "true",
       "data-modal-search-input-placeholder": "Search Statsig docs...",
       "data-search-include-source-names": '["Documentation"]',
-      "data-search-show-ask-ai-cta": "false",
+      "data-search-show-ask-ai-cta": "true",
       "data-search-result-link-target": "_self",
       "data-modal-full-screen-on-mobile": "false",
       "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
