@@ -29,7 +29,9 @@ This can reduce experiment runtimes more than CUPED in isolation and, when combi
 
 :::info Note
 Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset. 
+
 It is expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). 
+
 Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned.
 :::
 
