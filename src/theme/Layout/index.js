@@ -56,8 +56,17 @@ function KapaEventHandler() {
 
         const existingCustomResult = resultsContainer.querySelector('.custom-ask-ai-cta');
         if (existingCustomResult) {
+          if (existingCustomResult._cleanup) {
+            existingCustomResult._cleanup();
+          }
           existingCustomResult.remove();
         }
+
+        const escapeHtml = (text) => {
+          const div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        };
 
         const customResult = document.createElement('a');
         customResult.className = 'custom-ask-ai-cta';
@@ -78,52 +87,36 @@ function KapaEventHandler() {
           text-decoration: none;
         `;
         
+        const escapedQuery = escapeHtml(query);
         customResult.innerHTML = `
           <span style="font-size: 20px; min-width: 20px; margin-right: 12px;">✨</span>
           <div style="flex: 1;">
-            <div style="font-weight: 600; color: #1963d2; font-size: 14px;">Ask AI: ${query}</div>
+            <div style="font-weight: 600; color: #1963d2; font-size: 14px;">Ask AI: ${escapedQuery}</div>
             <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Get instant answers powered by AI</div>
           </div>
         `;
 
-        customResult.addEventListener('mouseenter', () => {
+        const handleMouseEnter = () => {
           customResult.style.backgroundColor = '#f3f4f6';
           customResult.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-        });
-        customResult.addEventListener('mouseleave', () => {
+        };
+        
+        const handleMouseLeave = () => {
           customResult.style.backgroundColor = 'transparent';
           customResult.style.boxShadow = 'none';
-        });
+        };
         
-        const applyFocusStyle = () => {
+        const handleFocus = () => {
           customResult.style.backgroundColor = '#f3f4f6';
           customResult.style.border = '2px solid #1963d2';
           customResult.style.boxShadow = 'none';
         };
         
-        const removeFocusStyle = () => {
+        const handleBlur = () => {
           customResult.style.backgroundColor = 'transparent';
           customResult.style.border = '2px solid transparent';
           customResult.style.boxShadow = 'none';
         };
-
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'tabindex') {
-              if (customResult.getAttribute('tabindex') === '0') {
-                applyFocusStyle();
-              } else {
-                removeFocusStyle();
-              }
-            }
-          });
-        });
-        
-        observer.observe(customResult, { attributes: true, attributeFilter: ['tabindex'] });
-
-        if (customResult.getAttribute('tabindex') === '0') {
-          applyFocusStyle();
-        }
 
         const handleActivation = (e) => {
           e.preventDefault();
@@ -160,18 +153,25 @@ function KapaEventHandler() {
           }
         };
         
-        customResult.addEventListener('click', handleActivation);
-        
         const handleKeyDown = (e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && e.target === customResult && customResult.getAttribute('tabindex') === '0') {
+          if ((e.key === 'Enter' || e.key === ' ') && e.target === customResult) {
             handleActivation(e);
           }
         };
         
+        customResult.addEventListener('mouseenter', handleMouseEnter);
+        customResult.addEventListener('mouseleave', handleMouseLeave);
+        customResult.addEventListener('focus', handleFocus);
+        customResult.addEventListener('blur', handleBlur);
+        customResult.addEventListener('click', handleActivation);
         kapaContainer.shadowRoot.addEventListener('keydown', handleKeyDown);
         
         customResult._cleanup = () => {
-          observer.disconnect();
+          customResult.removeEventListener('mouseenter', handleMouseEnter);
+          customResult.removeEventListener('mouseleave', handleMouseLeave);
+          customResult.removeEventListener('focus', handleFocus);
+          customResult.removeEventListener('blur', handleBlur);
+          customResult.removeEventListener('click', handleActivation);
           kapaContainer.shadowRoot.removeEventListener('keydown', handleKeyDown);
         };
 
