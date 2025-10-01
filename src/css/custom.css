@@ -920,6 +920,19 @@ html[data-theme="dark"] .welcome-card p {
   }
 }
 
+/* Prevent Ask AI CTA from being selected by default */
+.DocSearch-Dropdown .DocSearch-Hit[data-testid="ask-ai"]:first-child,
+.DocSearch-Dropdown .DocSearch-Hit.DocSearch-Hit--askAI:first-child,
+.DocSearch-Dropdown .DocSearch-Hit[aria-label*="Ask AI"]:first-child {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* Ensure regular search results can still be selected */
+.DocSearch-Hit[aria-selected="true"]:not([data-testid="ask-ai"]):not(.DocSearch-Hit--askAI) {
+  background-color: var(--docsearch-hit-active-color, #005fcc) !important;
+}
+
 /* Override Docusaurus mobile navbar behavior to show Ask AI button only */
 @media (max-width: 768px) {
   .navbar__items--right .navbar__item:has(.ask-ai-button) {
