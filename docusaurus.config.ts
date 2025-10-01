@@ -143,50 +143,7 @@ const config: Config = {
                 tagName: "script",
                 innerHTML: `
                   (function() {
-                    function interceptKapaEnterKey() {
-                      document.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter') {
-                          const activeElement = document.activeElement;
-                          const kapaModal = document.querySelector('[data-kapa-widget]');
-                          
-                          if (kapaModal && activeElement) {
-                            const isKapaInput = kapaModal.contains(activeElement) && 
-                                              (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA');
-                            
-                            if (isKapaInput) {
-                              const searchTab = kapaModal.querySelector('label[for*="search"], label:first-child');
-                              const askAiTab = kapaModal.querySelector('label[for*="ask"], label:last-child');
-                              
-                              const isInSearchMode = !askAiTab || !askAiTab.classList.contains('active') || 
-                                                    (searchTab && searchTab.classList.contains('active'));
-                              
-                              if (isInSearchMode) {
-                                console.log('Preventing Enter key in Kapa search mode');
-                                e.preventDefault();
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                                return false;
-                              }
-                            }
-                          }
-                        }
-                      }, true);
-                      
-                      document.addEventListener('submit', function(e) {
-                        const kapaModal = document.querySelector('[data-kapa-widget]');
-                        if (kapaModal && kapaModal.contains(e.target)) {
-                          const searchTab = kapaModal.querySelector('label:first-child');
-                          const askAiTab = kapaModal.querySelector('label:last-child');
-                          
-                          if (!askAiTab || !askAiTab.classList.contains('active')) {
-                            console.log('Preventing form submission in Kapa search mode');
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return false;
-                          }
-                        }
-                      }, true);
-                      
+                    function setupKapaCustomization() {
                       const observer = new MutationObserver(function(mutations) {
                         mutations.forEach(function(mutation) {
                           mutation.addedNodes.forEach(function(node) {
@@ -198,48 +155,12 @@ const config: Config = {
                                 setTimeout(() => {
                                   const kapaModal = document.querySelector('[data-kapa-widget]') || modal;
                                   if (kapaModal) {
-                                    const allInputs = kapaModal.querySelectorAll('input, textarea');
-                                    allInputs.forEach(input => {
-                                      if (!input.hasAttribute('data-enter-intercepted')) {
-                                        input.setAttribute('data-enter-intercepted', 'true');
-                                        
-                                        ['keydown', 'keypress', 'keyup'].forEach(eventType => {
-                                          input.addEventListener(eventType, function(e) {
-                                            if (e.key === 'Enter') {
-                                              const searchTab = kapaModal.querySelector('label:first-child');
-                                              const askAiTab = kapaModal.querySelector('label:last-child');
-                                              
-                                              if (!askAiTab || !askAiTab.classList.contains('active')) {
-                                                console.log('Preventing Enter on input in search mode');
-                                                e.preventDefault();
-                                                e.stopPropagation();
-                                                e.stopImmediatePropagation();
-                                                return false;
-                                              }
-                                            }
-                                          }, true);
-                                        });
-                                      }
-                                    });
-                                    
                                     const askAiCta = kapaModal.querySelector('a[href="#"]');
                                     if (askAiCta && askAiCta.textContent && askAiCta.textContent.includes('Ask AI')) {
                                       askAiCta.setAttribute('tabindex', '-1');
                                       askAiCta.blur();
                                       askAiCta.style.backgroundColor = 'transparent !important';
                                       askAiCta.style.outline = 'none';
-                                      
-                                      askAiCta.addEventListener('click', function(e) {
-                                        const searchTab = kapaModal.querySelector('label:first-child');
-                                        const askAiTab = kapaModal.querySelector('label:last-child');
-                                        
-                                        if (!askAiTab || !askAiTab.classList.contains('active')) {
-                                          console.log('Preventing Ask AI CTA click in search mode');
-                                          e.preventDefault();
-                                          e.stopPropagation();
-                                          return false;
-                                        }
-                                      }, true);
                                       
                                       const ctaObserver = new MutationObserver(() => {
                                         if (askAiCta.style.backgroundColor !== 'transparent') {
@@ -263,9 +184,9 @@ const config: Config = {
                     }
                     
                     if (document.readyState === 'loading') {
-                      document.addEventListener('DOMContentLoaded', interceptKapaEnterKey);
+                      document.addEventListener('DOMContentLoaded', setupKapaCustomization);
                     } else {
-                      interceptKapaEnterKey();
+                      setupKapaCustomization();
                     }
                   })();
                 `,
