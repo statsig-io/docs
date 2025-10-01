@@ -37,7 +37,7 @@ This is fairly representative of what you can expect using Statsig at scale and 
 
 Relative to Experiment Size, you will see a great deal of variation in spend depending on how many metrics you use, what kind of metrics, and how "dense" your metrics are, but generally we see numbers like the below for cost when teams follow best practices:
 
-| Experiment Size                                   | Cost per Experiment Load                                       | Lifetime Cost per Experiment (4 Weeks with Daily Refreshes & Drilldowns) | Lifetime Cost Using [Turbo Mode](../features/turbo) |
+| Experiment Size                                   | Cost per Experiment Load (Updating results)                                      | Lifetime Cost per Experiment (4 Weeks with Daily Refreshes & Drilldowns) | Lifetime Cost Using [Turbo Mode](../features/turbo) |
 | ------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------- |
 | Small (50k or less units)                         | < $0.05                                                        | \$0.25 - $2.00                                                           | \$0.25 - $1.00                                      |
 | Medium                                            | < $0.25                                                        | \$1.00 - $10.00                                                          | \$1.00 - $5.00                                      |

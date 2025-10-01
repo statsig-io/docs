@@ -119,6 +119,208 @@ If this is not possible, it's a good idea to:
 - Schedule your Statsig runs after your main runs - this also ensures the data in your experiment analysis is fresh
 - Use API triggers to launch Statsig analyses after the main run is finished
 
+## Analytics Optimization
+
+When using Statsig’s Metric Explorer to visualize the data within your warehouse, optimizing table layout and clustering configurations can greatly improve latency. This section serves to describe a set of best practices you can employ to improve the performance of analytics queries. Here are recommendations for some of the most commonly used warehouses.
+
+### BigQuery
+
+#### Table Layout - Partitioning & Clustering
+
+We advise partitioning on event date and clustering on event when defining your events table. This will improve performance as the majority of queries will filter for the name of the event and the time it was logged. When defining the partition on event date, you should truncate the timestamp to day-level granularity instead of using the raw timestamp (which would otherwise have millisecond precision resulting in very high cardinality).
+
+```
+-- Create an events table partitioned by date and clustered by event.
+CREATE TABLE dataset.events (
+  ts TIMESTAMP NOT NULL,
+  event STRING NOT NULL,
+  ...
+)
+PARTITION BY DATE(ts)
+CLUSTER BY event;
+```
+
+BigQuery’s support for applying a cluster to an existing table is limited. Additionally, adding a cluster to an existing table will not automatically recluster the data right away. Given this, if you need to repartition on event date or add a cluster by event, you can create a new table with the correct partitions and clusters using your current table.
+
+```
+-- Using an existing events table, create a new table that is partitioned by date and clustered by event.
+CREATE OR REPLACE TABLE dataset.events_new
+PARTITION BY DATE(ts)
+CLUSTER BY event
+AS
+SELECT *
+FROM dataset.events;
+
+-- (Optional) Swap the name of your new table with the old one for consistency.
+DROP TABLE dataset.events;
+ALTER TABLE dataset.events_new RENAME TO events;
+```
+
+### Databricks
+
+#### (Preferred) Use Liquid Clustering
+
+When making clustering decisions in your events table layout, [liquid clustering](https://docs.databricks.com/aws/en/delta/clustering) provides a flexible approach that allows you to modify your clustering keys without needing to manually rewrite existing data.
+
+We recommend employing liquid clustering for your events table with the following:
+
+```
+-- Enable liquid clustering for your events table.
+ALTER TABLE events SET TBLPROPERTIES ('delta.liquidClustering.enabled' = 'true');
+
+-- Cluster on the event column.
+ALTER TABLE events ALTER CLUSTER BY (event);
+
+-- Trigger clustering using the OPTIMIZE command.
+OPTIMIZE events;
+```
+
+If your events table is frequently being updated, Databricks recommends scheduling `OPTIMIZE` jobs every 1-2 hours. This will incrementally apply liquid clustering to your table.
+
+#### (Alternative) Partitioning and ZORDER
+
+If you choose not to use liquid partitioning, our recommendation is to partition on a single low cardinality column such as the date of the event. Try to avoid adding more than one column on the partition unless absolutely necessary and don't partition on a column that has a cardinality that would exceed one thousand. We suggest using a generated column to simplify pruning:
+
+```
+-- Define a partition on the event date generated column.
+CREATE TABLE events (ts TIMESTAMP, event STRING, event_date DATE GENERATED ALWAYS AS (CAST(ts AS DATE))) USING DELTA PARTITIONED BY (event_date);
+```
+
+You can use `ZORDER` to colocate similar values within a file for a high cardinality column, which benefits query performance by improving data skipping. We recommend doing this on the event column:
+
+```
+-- ZORDER by the event column to improve data skipping.
+OPTIMIZE events ZORDER BY (event);
+```
+
+Using a scheduled job that runs `OPTIMIZE` on the last week’s event data, you can improve query performance by compacting the number of small data files into fewer, larger files:
+
+```
+-- Periodically optimize the events table based on the last week of data.
+OPTIMIZE events WHERE event_date >= current_date() - INTERVAL 7 DAYS;
+```
+
+In general, avoid partitioning on a combination of event date and event. For even small queries, this can create a lot of overhead. Given 500 events, this would cause a 30-day query to hit 15,000 partitions. Instead, partition only by date as described above and `ZORDER` on the event.
+
+If extra parallelism is desired without introducing too many partitions, you can `ZORDER` by an additional bucket column. This bucket column can be defined as follows:
+
+```
+-- Add bucket column for extra parallelism.
+ALTER TABLE events ADD COLUMN event_bucket INT GENERATED ALWAYS AS (pmod(hash(event), 16));
+
+-- Rewrite data into new files based on this ZORDER key.
+OPTIMIZE events ZORDER BY (event_bucket);
+```
+
+#### Partition Pruning
+
+Dynamic File Pruning will enable Spark to prune partitions based on filter values at runtime. It should be enabled if possible using:
+
+```
+-- Turn on Dynamic File Pruning.
+SET spark.databricks.optimizer.dynamicFilePruning = true;
+```
+
+#### Handling Skew and Joins
+
+To rebalance skew and adjust join strategy, we advise turning on Adaptive Query Execution:
+
+```
+-- Turn on Adapative Query Execution
+SET spark.sql.adaptive.enabled = true;
+```
+
+#### Compute Choices
+
+The Photon query engine allows for faster execution of queries with more efficient use of CPU and memory. If possible, it should be enabled for your compute cluster or SQL warehouse.
+
+### Redshift
+
+#### Table Design - Distribution Style and Sort Key
+
+As Redshift does not support partitioning by column, we can instead employ use of a sort key. Given most event tables are generally append-only and time-based, we advise use of a compound sort key on (timestamp, event) so that the data is ordered by time. Given all analytics queries will filter on timestamp, this should allow for queries to read only the relevant blocks.
+
+Ordering secondarily by event will mean rows are grouped by event within each time block, which can reduce scan size when filtering by event. We want pruning to be primarily upon timestamp, which is why it is kept as the first key.
+
+Given there can be significant skew among event types, we generally advise using an automatic distribution style rather than distributing upon the event column. This will allow Redshift to make distribution decisions based on the size of the table and query patterns. You can create an events table with the above recommendations in mind as follows:
+
+```
+-- Create an events table with an automatic distrbution style and sort key on timestamp, event.
+CREATE TABLE events (
+  event       VARCHAR NOT NULL,
+  ts          TIMESTAMP     NOT NULL,
+	...
+)
+DISTSTYLE AUTO
+COMPOUND SORTKEY (ts, event);
+```
+
+If you already have an events table and want to leverage the recommended distribution style and sort key, you won’t be able to apply those changes by modifying the existing table. Instead, you can create a new table and copy over data:
+
+```
+-- Create a new events table with the preferred distribution style and sort key.
+CREATE TABLE events_new (
+  event       VARCHAR NOT NULL,
+  ts          TIMESTAMP     NOT NULL,
+	...
+)
+DISTSTYLE AUTO
+COMPOUND SORTKEY (ts, event);
+
+-- Copy over data from the old events table.
+INSERT INTO events_new (event, ts, ...)
+SELECT event_id, ts, ...
+FROM events;
+
+-- Rename the two tables in a single transaction.
+BEGIN;
+ALTER TABLE events RENAME TO events_old;
+ALTER TABLE events_new RENAME TO events;
+COMMIT;
+
+-- Drop the old table.
+DROP TABLE events_old;
+```
+
+### Snowflake
+
+#### Clustering Keys
+
+Given Snowflake does not allow for explicit partitioning, we recommend using clustering keys on the event date and event to improve performance as the majority of queries will filter for the name of the event and the time it was logged. Note that we advise clustering on the timestamp truncated to day-level granularity instead of the raw timestamp (which would otherwise have millisecond precision causing very high cardinality).
+
+```
+-- Cluster events on the timestamp truncated to day and event.
+ALTER TABLE events CLUSTER BY (DATE_TRUNC('day', ts), event);
+```
+
+If you have a high cardinality of unique event types, it might be advisable to add a search optimization on event instead of clustering by that column. See the [next section](#managing-high-cardinality-columns) for details.
+
+#### Managing High Cardinality Columns
+
+If there are high cardinality columns that you frequently reference in Metrics Explorer filters, consider using search optimization rather than clustering by it. This avoids an overly large range of values for each micro-partition generated by Snowflake, which would make pruning inefficient. For high cardinality columns, we can instead rely on the auxiliary search index generated through search optimization.
+
+```
+-- Add search optimization for fast lookups.
+ALTER TABLE events ADD SEARCH OPTIMIZATION ON EQUALITY(some_column);
+```
+
+#### Monitoring Clustering
+
+You can use `SYSTEM$CLUSTERING_INFORMATION` to check if your current clustering scheme is effective. Large values of average_depth and average_overlaps may indicate the existing table should be reclustered on different keys with lower cardinality.
+
+```
+-- Given an events table clustered on event date and event, check the clustering information.
+SELECT SYSTEM$CLUSTERING_INFORMATION('YOUR_DATABASE.YOUR_SCHEMA.EVENTS', '(DATE_TRUNC(''day'', ts), event)');
+```
+
+#### Timestamp Column
+
+If possible, use the `TIMESTAMP_NTZ` (no timezone) type for your timestamp column. This saves on space as the offset metadata will not need to be stored. It additionally can help speed up queries as it allows Snowflake to avoid the extra work for timezone normalization internally, which would otherwise take place during filtering and pruning of micro-partitions.
+
+### Questions?
+
+If you need additional support in optimizing your warehouse configuration for analytics, please reach out in the Slack support channel for your organization within Statsig Connect.
+
 ## Debugging
 
 Statsig shows you all the SQL being run, and any errors that occur. Generally these are caused by changing underlying tables or Metric Sources, causing a metric query to fail. Here's some best practices for debugging Statsig Queries.

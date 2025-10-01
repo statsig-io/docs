@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './FloatingThumbs.module.css'; // Optional: use CSS Modules
 import { useLocation } from 'react-router-dom';
+import { useAskAI } from '../../contexts/AskAIContext';
 
 const getStatsig = () => {
   if (typeof window === 'undefined' || !window.Statsig?.instances) {
@@ -16,6 +17,7 @@ const hasInteractedBefore = () => {
 
 const FloatingThumbs = () => {
   const location = useLocation();
+  const { isAskAIOpen } = useAskAI();
   const [isOpen, setIsOpen] = useState(true);
   const [showFeedback, setShowFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
@@ -117,7 +119,7 @@ const FloatingThumbs = () => {
   const statsig = getStatsig();
   const isFeedbackEnabled = statsig ? statsig.checkGate('docs_feedback_enabled') : false;
 
-  if (!isFeedbackEnabled || !isOpen || !hasSpentEnoughTime || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
+  if (!isFeedbackEnabled || !isOpen || !hasSpentEnoughTime || isAskAIOpen || (hasInteractedBefore() && (!showFeedback && !showThanks))) return null;
 
   return (
     <div className={showFeedback ? styles.feedbackDialog : styles.dialog}>

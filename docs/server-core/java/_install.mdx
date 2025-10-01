@@ -217,3 +217,53 @@ RUN apk add --no-cache libgcc gcompat
 
 The Statsig Java Core SDK automatically detects musl-based systems and will use the appropriate musl-compatible native libraries (e.g., `x86_64-unknown-linux-musl`, `aarch64-unknown-linux-musl`).
 :::
+
+## Tested Platforms
+
+<details>
+<summary>Docker base images where the Java Core SDK has been tested and verified</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Docker Base Image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>amazoncorretto:21</code></td>
+      <td>Amazon Corretto 21 JDK</td>
+    </tr>
+    <tr>
+      <td><code>amazoncorretto:21-alpine-jdk</code></td>
+      <td>Amazon Corretto 21 JDK on Alpine Linux</td>
+    </tr>
+    <tr>
+      <td><code>amazonlinux:2</code></td>
+      <td>Amazon Linux 2</td>
+    </tr>
+    <tr>
+      <td><code>public.ecr.aws/amazonlinux/amazonlinux:2023</code></td>
+      <td>Amazon Linux 2023</td>
+    </tr>
+    <tr>
+      <td><code>azul/zulu-openjdk-alpine:21</code></td>
+      <td>Azul Zulu OpenJDK 21 on Alpine Linux</td>
+    </tr>
+    <tr>
+      <td><code>azul/zulu-openjdk:21</code></td>
+      <td>Azul Zulu OpenJDK 21</td>
+    </tr>
+    <tr>
+      <td><code>eclipse-temurin:21-jdk</code></td>
+      <td>Eclipse Temurin 21 JDK</td>
+    </tr>
+    <tr>
+      <td><code>eclipse-temurin:21-jdk-alpine</code></td>
+      <td>Eclipse Temurin 21 JDK on Alpine Linux</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
