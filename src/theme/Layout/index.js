@@ -163,7 +163,7 @@ function KapaEventHandler() {
         customResult.addEventListener('click', handleActivation);
         
         const handleKeyDown = (e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && customResult.getAttribute('tabindex') === '0') {
+          if ((e.key === 'Enter' || e.key === ' ') && e.target === customResult && customResult.getAttribute('tabindex') === '0') {
             handleActivation(e);
           }
         };
