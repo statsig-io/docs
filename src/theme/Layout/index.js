@@ -121,6 +121,10 @@ function KapaEventHandler() {
         
         observer.observe(customResult, { attributes: true, attributeFilter: ['tabindex'] });
 
+        if (customResult.getAttribute('tabindex') === '0') {
+          applyFocusStyle();
+        }
+
         const handleActivation = (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -164,11 +168,11 @@ function KapaEventHandler() {
           }
         };
         
-        document.addEventListener('keydown', handleKeyDown);
+        kapaContainer.shadowRoot.addEventListener('keydown', handleKeyDown);
         
         customResult._cleanup = () => {
           observer.disconnect();
-          document.removeEventListener('keydown', handleKeyDown);
+          kapaContainer.shadowRoot.removeEventListener('keydown', handleKeyDown);
         };
 
         resultsContainer.insertBefore(customResult, resultsContainer.firstChild);
