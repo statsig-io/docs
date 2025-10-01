@@ -139,6 +139,90 @@ const config: Config = {
                   src: "/js/koala.js",
                 },
               },
+              {
+                tagName: "script",
+                innerHTML: `
+                  (function() {
+                    function interceptKapaEnterKey() {
+                      document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter') {
+                          const activeElement = document.activeElement;
+                          const kapaModal = document.querySelector('[data-kapa-widget]');
+                          
+                          if (kapaModal && activeElement && activeElement.tagName === 'INPUT') {
+                            const isKapaInput = kapaModal.contains(activeElement);
+                            
+                            if (isKapaInput) {
+                              const searchTab = kapaModal.querySelector('label:first-child');
+                              const askAiTab = kapaModal.querySelector('label:last-child');
+                              
+                              const isSearchModeActive = searchTab && 
+                                (searchTab.classList.contains('active') || 
+                                 searchTab.getAttribute('aria-selected') === 'true' ||
+                                 !askAiTab.classList.contains('active'));
+                              
+                              if (isSearchModeActive) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                e.stopImmediatePropagation();
+                                return false;
+                              }
+                            }
+                          }
+                        }
+                      }, true);
+                      
+                      const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                          mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) {
+                              const modal = node.querySelector ? node.querySelector('[data-kapa-widget]') : 
+                                           (node.getAttribute && node.getAttribute('data-kapa-widget') !== null ? node : null);
+                              
+                              if (modal || (node.nodeType === 1 && node.querySelector && node.querySelector('[data-kapa-widget]'))) {
+                                setTimeout(() => {
+                                  const kapaModal = document.querySelector('[data-kapa-widget]') || modal;
+                                  if (kapaModal) {
+                                    const searchInput = kapaModal.querySelector('input[type="text"], input[placeholder*="Search"], input[placeholder*="search"]');
+                                    if (searchInput && !searchInput.hasAttribute('data-enter-intercepted')) {
+                                      searchInput.setAttribute('data-enter-intercepted', 'true');
+                                      
+                                      ['keydown', 'keypress', 'keyup'].forEach(eventType => {
+                                        searchInput.addEventListener(eventType, function(e) {
+                                          if (e.key === 'Enter') {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            e.stopImmediatePropagation();
+                                            return false;
+                                          }
+                                        }, true);
+                                      });
+                                    }
+                                  }
+                                }, 100);
+                              }
+                            }
+                          });
+                        });
+                      });
+                      
+                      observer.observe(document.body, {
+                        childList: true,
+                        subtree: true
+                      });
+                    }
+                    
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', interceptKapaEnterKey);
+                    } else {
+                      interceptKapaEnterKey();
+                    }
+                  })();
+                `,
+                attributes: {
+                  type: "text/javascript",
+                },
+              },
             ],
           };
         },
@@ -574,7 +658,7 @@ const config: Config = {
       "data-modal-command-k-search-mode-default": "true",
       "data-modal-search-input-placeholder": "Search Statsig docs...",
       "data-search-include-source-names": '["Documentation"]',
-      "data-search-show-ask-ai-cta": "false",
+      "data-search-show-ask-ai-cta": "true",
       "data-search-result-link-target": "_self",
       "data-modal-full-screen-on-mobile": "false",
       "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
