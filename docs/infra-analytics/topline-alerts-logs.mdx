@@ -7,7 +7,7 @@ slug: /infra-analytics/topline-alerts-logs
 keywords:
   - owner:laurel
 last_update:
-  date: 2025-09-15
+  date: 2025-10-02
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -19,11 +19,11 @@ Detect regressions in your infrastructure by evaluating logs in real time. You c
 
 By combining log filters with [Topline Alerts](https://docs.statsig.com/product-analytics/alerts/topline_alerts), you will know immediately when things start failing without writing custom scripts or dashboards.
 
-## When to Use Log-based Alerts
+**When to Use Log-based Alerts:**
 
-- **Monitoring success rates** - Ensure your team is maintaining SLOs
-- **Detecting error spikes** - Monitor 5xx logs rising above baseline
-- **Watching for region or client-specific issues** - Identify failures concentrated in one country or device type
+- **Monitoring success rates** - Catch regressions before they impact SLOs.
+- **Detecting error spikes** - Trigger when 5xx or other errors rise above baseline. 
+- **Isolate by segment** - Identify failures concentrated in by region, client, or device type
 
 ---
 
@@ -81,6 +81,7 @@ In this example, we're going to create a monitor for success rate of a GET reque
 ---
 
 ## Best Practices
+- Set up [Slack notifications](/integrations/slack) for team visibility
 - Keep formulas simple (ratios & percentages are easiest to scan)
 - Add group-by dimensions (like country or app version) to pinpoint where issues occur
 - Write clear notification text that explains what the alert means
