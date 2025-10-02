@@ -6,21 +6,16 @@ const KAPA_SCRIPT_ID = "kapa-widget-script";
 const openKapaWidget = () => {
   if (typeof window === "undefined") return false;
   
-  // Set up minimal user attributes for Kapa.ai
   try {
-    // Safe access to specific Statsig instance with fallbacks
     const stableID = window.Statsig?.instances?.['client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX']?.getContext?.()?.stableID;
-    console.log("Statsig stableID:", stableID);
     if (stableID) {
       window.kapaSettings = {
         user: {
           stableID: stableID,
         },
       };
-      console.log("Kapa.ai user attributes set:", window.kapaSettings);
     }
   } catch (e) {
-    // Fail gracefully if Statsig context is not available
   }
   
   const opener = window.Kapa?.open({ mode: "search" });
