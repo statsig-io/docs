@@ -741,7 +741,9 @@
     "xhuang",
     "ZORDER",
     "IMDS",
-    "resourcedetection"
+    "resourcedetection",
+    "llms",
+    "LLMs"
   ],
   "ignorePaths": [
     "node_modules/**",
