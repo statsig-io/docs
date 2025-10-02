@@ -440,8 +440,9 @@ const sidebars: SidebarsConfig = {
                 id: "product-analytics/alerts",
               },
               items: [
-                "product-analytics/rollout_alerts",
                 "product-analytics/topline_alerts",
+                "product-analytics/rollout_alerts",
+
               ],            
             },
           ],
@@ -455,9 +456,19 @@ const sidebars: SidebarsConfig = {
             id: "infra-analytics/overview",
           },
           items: [
-            "infra-analytics/logs-explorer",
-            "infra-analytics/events-mode-logs-explorer",
-            "infra-analytics/logs-explorer-queries",
+
+          {
+            type: "category",
+            label: "Logs Explorer",
+            link: {
+              type: "doc",
+              id: "infra-analytics/logs-explorer",
+            },
+            items: [
+              "infra-analytics/events-mode-logs-explorer",
+              "infra-analytics/logs-explorer-queries",
+            ],            
+          },
             "infra-analytics/topline-alerts-logs",
           ],
         },
@@ -500,6 +511,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "ai-evals/getting-started",
             "ai-evals/prompts",
+            "ai-evals/graders",
             "ai-evals/offline-evals",
             {
               type: "category",
