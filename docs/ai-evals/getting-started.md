@@ -9,43 +9,62 @@ last_update:
   date: 2025-07-25
 ---
 
+# Getting Started with AI Evals
 
-## Create/analyze an offline eval in 10 minutes
+This guide walks you through creating and analyzing your first offline evaluation in about 10 minutes. You'll learn how to set up an AI Config (Prompt), create a test dataset, configure automated grading, and view evaluation results.
+
+## Create and Analyze an Offline Eval in 10 Minutes
 <!-- (Coming soon: How to start an online eval in 15 minutes) -->
 
 
-**1. Create a Prompt within Statsig**
+### Step 1: Create an AI Config (Prompt)
 
-This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app and use it. You can create multiple versions of the prompt as you iterate, and choose which one is "live" (retrieved by the SDK).
+An AI Config captures the instruction you provide to an LLM to accomplish a specific task, along with model configuration (provider, model name, temperature, etc.). You can create multiple versions as you iterate and choose which one is "live" (retrieved by your application).
+
+Use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve and use your AI Config in production.
 
 <img alt="image" src="https://github.com/user-attachments/assets/a17b3c4d-2126-4dfe-8d4b-d40b1838f878" />
 
 
 
-**2. Create a dataset you can use to evaluate LLM completions for your prompt**
+### Step 2: Create an Evaluation Dataset
 
-For the example above, this might be a list of words, along side known good translations in French. Small lists can be entered (or upload a CSV).
+Build a dataset to evaluate LLM completions for your prompt. For the translation example above, this would include a list of words alongside known correct translations in French. 
+
+You can enter small datasets manually or upload a CSV file for larger test sets.
 
 <img alt="image" src="https://github.com/user-attachments/assets/6d4b1abc-bde9-4d63-9d0c-95fef60b3f9a" />
 
 
-**3. Create a grader that will grade LLM completions for your prompt**
+### Step 3: Configure a Grader
 
-Configure a grader that compares the LLM completion text with the reference output. You can use one of the out of box string evaluators, or even configure an LLM-as-a-Judge evaluator that mimics a human's grading rubric.
+Set up a grader to automatically score your LLM outputs. You can:
+- Use built-in string evaluators (exact match, contains, regex)
+- Configure an LLM-as-a-Judge evaluator that applies human-like grading rubrics
+- Create custom graders for domain-specific evaluation criteria
+
+The grader compares the LLM completion with the reference output and assigns a score from 0 (fail) to 1 (pass).
 
 <img alt="image" src="https://github.com/user-attachments/assets/3cd510f7-c267-4cdd-bebe-dbee527a5318" />
 
-**3. Run evaluation**
+### Step 4: Run Your Evaluation
 
-Run an evaluation on a version of the prompt. You should see results in a few minutes that look like this. You can click into any row of the dataset to understand more about the evaluation for that row.
+Execute the evaluation on a specific version of your AI Config. Results typically appear within a few minutes, showing:
+- Overall score distribution
+- Per-row evaluation details (click any row to see the full assessment)
+- Pass/fail rates across your dataset
 
 <img alt="image" src="https://github.com/user-attachments/assets/c450f277-b2ba-4657-b747-440b43859f20" />
 
-You can categorize your dataset, and break scores out by category.
+### Step 5: Analyze and Compare Results
+
+**Categorize and segment your results:**
+You can categorize your dataset (e.g., by language, complexity, topic) and view scores broken down by category to identify specific areas for improvement.
 
 <img alt="image" src="https://github.com/user-attachments/assets/3c0de7c4-6721-4a45-9a61-04a63db68913" />
 
-If you have scores for multiple versions, you can compare them to see what changed between versions.
+**Compare versions:**
+If you have evaluation scores for multiple AI Config versions, compare them side-by-side to understand what changed between versions and identify improvements or regressions.
 
 <img alt="image" src="https://github.com/user-attachments/assets/fd593e52-ddec-4826-bf4b-c2ca1d43e4f0" />
 
