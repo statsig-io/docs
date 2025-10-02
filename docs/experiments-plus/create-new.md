@@ -133,6 +133,11 @@ Once set, you can track progress against the target duration/exposures in the ex
 
 Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses.
 
-This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g.
-"Strongly recommend that a validation plan be mentioned")
 <img alt="Screenshot showing the Hypothesis Advisor" src="https://github.com/user-attachments/assets/ef70cbf1-db6b-4c15-81fd-ebabbda12e83" />
+
+This Statsig AI feature is default disabled and has to be enabled for your project. 
+Do this from Settings -> Experiment -> Project -> Statsig AI. 
+This is also where you configure any custom requirements you want Hypothesis Advisor to ensure adherence to (e.g. "Strongly recommend that a validation plan be mentioned").
+
+<img alt="Setting showing how to enable Statsig AI" src="/img/ai/hypothesis-advisor-enable-settings.png" />
+
