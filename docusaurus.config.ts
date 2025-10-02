@@ -408,6 +408,10 @@ const config: Config = {
             from: "/experiments-plus/bayesian-deprecated/",
             to: "/experiments-plus/bayesian/",
           },
+          {
+            from: '/product-analytics/topline_alerts',
+            to: '/product-analytics/alerts/topline_alerts',
+          },
         ],
       },
     ],
