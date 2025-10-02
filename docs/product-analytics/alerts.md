@@ -3,16 +3,15 @@ title: Alerts Overview
 sidebar_label: Alerts Overview
 slug: /product-analytics/alerts
 keywords:
-  - owner:shubham
+  - owner:laurel
 last_update:
-  date: 2025-09-18
+  date: 2025-10-02
 ---
 
 # Alerts 
 Statsig offers two types of alerts on the platform today:
-1. **Rollout Alerts**- These are alerts on a metric's value _in the context of_ a gate or experiment rollout.
-2. **Topline Metric Alerts**- These are alerts on a metric's topline value, independent of any experiment or gate. 
-
+1. **[Topline Metric Alerts](/product-analytics/alerts/topline_alerts)** - Monitor a metric’s overall performance, independent of experiments or gates. These alerts keep you informed about topline trends and highlight when key product or business metrics move in a concerning direction.
+2. **[Rollout Alerts](/product-analytics/alerts/rollout_alerts)** - Monitor how a metric behaves in the context of a feature gate or experiment rollout. These alerts help you confirm that no critical metrics regress when introducing a new change.
 
 Topline Alerts are useful for keeping tabs on topline trends and ensuring you know if key product and business metrics are trending in a concerning direction. Rollout Alerts are helpful to confirm no key metrics are regressing when you start rolling out a new feature or experiment.  
 
