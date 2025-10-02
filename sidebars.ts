@@ -432,9 +432,8 @@ const sidebars: SidebarsConfig = {
                 id: "product-analytics/alerts",
               },
               items: [
-                "product-analytics/alerts/topline_alerts",
-                "product-analytics/alerts/rollout_alerts",
-
+                "product-analytics/topline_alerts",
+                "product-analytics/rollout_alerts",
               ],            
             },
           ],
