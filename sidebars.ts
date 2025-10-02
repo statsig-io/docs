@@ -448,19 +448,19 @@ const sidebars: SidebarsConfig = {
             id: "infra-analytics/overview",
           },
           items: [
-
-          {
-            type: "category",
-            label: "Logs Explorer",
-            link: {
-              type: "doc",
-              id: "infra-analytics/logs-explorer",
+            "infra-analytics/getting-started",
+            {
+              type: "category",
+              label: "Logs Explorer",
+              link: {
+                type: "doc",
+                id: "infra-analytics/logs-explorer",
+              },
+              items: [
+                "infra-analytics/events-mode-logs-explorer",
+                "infra-analytics/logs-explorer-queries",
+              ],            
             },
-            items: [
-              "infra-analytics/events-mode-logs-explorer",
-              "infra-analytics/logs-explorer-queries",
-            ],            
-          },
             "infra-analytics/topline-alerts-logs",
           ],
         },
