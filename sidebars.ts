@@ -515,8 +515,11 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Online Evals",
+              link: {
+                type: "doc",
+                id: "ai-evals/online-evals",
+              },
               items: [
-                "ai-evals/online-evals",
                 "ai-evals/create-an-online-eval",
               ],
             },
