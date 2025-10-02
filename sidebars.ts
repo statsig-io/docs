@@ -392,13 +392,21 @@ const sidebars: SidebarsConfig = {
           className: "sidecar-icon sidebar-icon",
           items: [
             "guides/sidecar-experiments/introduction",
-            "guides/sidecar-experiments/setup",
-            "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/sidecar-v3",
             "guides/sidecar-experiments/measuring-experiments",
-            "guides/sidecar-experiments/advanced-configurations",
-            "guides/sidecar-experiments/publishing-experiments",
-            "guides/sidecar-experiments/integrating-gtm",
-            "guides/aa-sidecar",
+            "guides/sidecar-experiments/advanced-configurations-v3",
+            {
+              type: "category",
+              label: "(Legacy) Sidecar",
+              items: [
+                "guides/sidecar-experiments/setup",
+                "guides/sidecar-experiments/creating-experiments",
+                "guides/sidecar-experiments/advanced-configurations",
+                "guides/sidecar-experiments/publishing-experiments",
+                "guides/sidecar-experiments/integrating-gtm",
+                "guides/aa-sidecar",
+              ],
+            }
           ],
         },
         {
