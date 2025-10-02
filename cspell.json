@@ -739,7 +739,9 @@
     "Cohen",
     "Cohen's",
     "xhuang",
-    "ZORDER"
+    "ZORDER",
+    "IMDS",
+    "resourcedetection"
   ],
   "ignorePaths": [
     "node_modules/**",
