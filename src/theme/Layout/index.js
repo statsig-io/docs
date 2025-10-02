@@ -1,16 +1,16 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import Layout from '@theme-original/Layout';
-import FloatingThumbs from '../../components/FloatingThumbs/FloatingThumbs';
-import { useDoc } from '@docusaurus/theme-common/internal';
-import { AskAIProvider, useAskAI } from '../../contexts/AskAIContext';
+import { AskAIProvider, useAskAI } from "../../contexts/AskAIContext";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
+import FloatingThumbs from "../../components/FloatingThumbs/FloatingThumbs";
+import Layout from "@theme-original/Layout";
+import { useDoc } from "@docusaurus/theme-common/internal";
+import { useLocation } from "react-router-dom";
 
 function KapaEventHandler() {
   const { setIsAskAIOpen } = useAskAI();
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.Kapa) {
+    if (typeof window === "undefined" || !window.Kapa) {
       return;
     }
 
@@ -22,13 +22,13 @@ function KapaEventHandler() {
       setIsAskAIOpen(false);
     };
 
-    window.Kapa('onModalOpen', handleModalOpen);
-    window.Kapa('onModalClose', handleModalClose);
+    window.Kapa("onModalOpen", handleModalOpen);
+    window.Kapa("onModalClose", handleModalClose);
 
     return () => {
       if (window.Kapa) {
-        window.Kapa('onModalOpen', handleModalOpen, 'remove');
-        window.Kapa('onModalClose', handleModalClose, 'remove');
+        window.Kapa("onModalOpen", handleModalOpen, "remove");
+        window.Kapa("onModalClose", handleModalClose, "remove");
       }
     };
   }, [setIsAskAIOpen]);
@@ -39,18 +39,18 @@ function KapaEventHandler() {
 export default function CustomLayout(props) {
   const location = useLocation();
   const [pageViews, setPageViews] = useState(null);
-  const [pageOwner, setPageOwner] = useState('');
-  
-  const isNodeEnvDevelopment = process.env.NODE_ENV === 'development';
+  const [pageOwner, setPageOwner] = useState("");
+
+  const isNodeEnvDevelopment = process.env.NODE_ENV === "development";
   const [isLocalHost, setIsLocalHost] = useState(false);
-  
+
   useEffect(() => {
     setIsLocalHost(
-      window.location.hostname === 'localhost' || 
-      window.location.hostname === '127.0.0.1'
+      window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
     );
   }, []);
-  
+
   const isDevelopment = isNodeEnvDevelopment && isLocalHost;
 
   // Extract page owner from meta tags
@@ -59,22 +59,22 @@ export default function CustomLayout(props) {
     const timeoutId = setTimeout(() => {
       const metaKeywords = document.querySelector('meta[name="keywords"]');
       if (metaKeywords) {
-        const content = metaKeywords.getAttribute('content');
+        const content = metaKeywords.getAttribute("content");
         if (content) {
           const ownerMatch = content.match(/owner:([^\s,]+)/);
           if (ownerMatch && ownerMatch[1]) {
             setPageOwner(ownerMatch[1]);
-            Statsig.instance().logEvent('PageLoadOwner', window.location.href, {
+            Statsig.instance().logEvent("PageLoadOwner", window.location.href, {
               pageOwner: ownerMatch[1],
             });
           } else {
-            setPageOwner('');
+            setPageOwner("");
           }
         } else {
-          setPageOwner('');
+          setPageOwner("");
         }
       } else {
-        setPageOwner('');
+        setPageOwner("");
       }
     }, 100); // Small delay to ensure DOM is updated
 
@@ -82,32 +82,31 @@ export default function CustomLayout(props) {
   }, [location]);
 
   useEffect(() => {
-
     if (isDevelopment) {
-      fetch('/page_views.csv')
-        .then(response => response.text())
-        .then(csvContent => {
-          const lines = csvContent.split('\n');
+      fetch("/page_views.csv")
+        .then((response) => response.text())
+        .then((csvContent) => {
+          const lines = csvContent.split("\n");
           const viewsData = {};
-          
+
           for (let i = 1; i < lines.length; i++) {
             const line = lines[i].trim();
             if (line) {
-              const [views, url] = line.split(',');
+              const [views, url] = line.split(",");
               viewsData[url] = parseInt(views, 10);
             }
           }
-          
-          let currentUrl = 'docs.statsig.com' + location.pathname;
-          if (currentUrl !== 'docs.statsig.com/' && currentUrl.endsWith('/')) {
+
+          let currentUrl = "docs.statsig.com" + location.pathname;
+          if (currentUrl !== "docs.statsig.com/" && currentUrl.endsWith("/")) {
             currentUrl = currentUrl.slice(0, -1);
           }
-          
-          console.log('Looking for URL:', currentUrl);
+
+          console.log("Looking for URL:", currentUrl);
           setPageViews(viewsData[currentUrl] || 0);
         })
-        .catch(error => {
-          console.error('Failed to fetch page views data:', error);
+        .catch((error) => {
+          console.error("Failed to fetch page views data:", error);
           setPageViews(0);
         });
     }
@@ -116,20 +115,26 @@ export default function CustomLayout(props) {
   useLayoutEffect(() => {
     // Wait a small tick to ensure DOM is fully rendered
     setTimeout(() => {
-      const hasSidebar = document.querySelector('.theme-doc-sidebar-container');
+      const hasSidebar = document.querySelector(".theme-doc-sidebar-container");
       if (!hasSidebar) {
-        console.log("doesn't have sidebar")
-        Statsig.instance().logEvent('NoSidebarPageLoad', window.location.href, {
+        console.log("doesn't have sidebar");
+        Statsig.instance().logEvent("NoSidebarPageLoad", window.location.href, {
           pageOwner: pageOwner,
         });
       }
-      const docsearchRankingConfig = Statsig.instance().getDynamicConfig('docsearch_ranking_manual');
-      const url = window.location.href.replace(/^https?:\/\//, '').replace(/\/+$/, '');
+      const docsearchRankingConfig = Statsig.instance().getDynamicConfig(
+        "docsearch_ranking_manual"
+      );
+      const url = window.location.href
+        .replace(/^https?:\/\//, "")
+        .replace(/\/+$/, "");
       const docsearchRankingManual = docsearchRankingConfig.get(url, 0);
-      document.querySelectorAll('.docsearch-ranking-manual').forEach(el => el.remove());
-      const newElement = document.createElement('div');
-      newElement.setAttribute('ranking', docsearchRankingManual);
-      newElement.classList.add('docsearch-ranking-manual');
+      document
+        .querySelectorAll(".docsearch-ranking-manual")
+        .forEach((el) => el.remove());
+      const newElement = document.createElement("div");
+      newElement.setAttribute("ranking", docsearchRankingManual);
+      newElement.classList.add("docsearch-ranking-manual");
       document.body.appendChild(newElement); //We'll consume this in the algolia crawler
     }, 0);
   }, [location]);
@@ -138,19 +143,21 @@ export default function CustomLayout(props) {
     <AskAIProvider>
       {/* Only show debug banner in development mode */}
       {isDevelopment && pageViews !== null && pageViews !== 0 && (
-        <div style={{
-          backgroundColor: 'red',
-          color: 'white',
-          padding: '10px',
-          textAlign: 'center',
-          fontWeight: 'bold',
-          position: 'sticky',
-          top: 0,
-          zIndex: 9999,
-        }}>
-          DEBUG MODE - Current Path: {location.pathname} | 
-          Page Views: {pageViews !== null ? pageViews.toLocaleString() : 'Loading...'} |
-          Page Owner: {pageOwner || 'Unknown'}
+        <div
+          style={{
+            backgroundColor: "red",
+            color: "white",
+            padding: "10px",
+            textAlign: "center",
+            fontWeight: "bold",
+            position: "sticky",
+            top: 0,
+            zIndex: 9999,
+          }}
+        >
+          DEBUG MODE - Current Path: {location.pathname} | Page Views:{" "}
+          {pageViews !== null ? pageViews.toLocaleString() : "Loading..."} |
+          Page Owner: {pageOwner || "Unknown"}
         </div>
       )}
       <KapaEventHandler />
