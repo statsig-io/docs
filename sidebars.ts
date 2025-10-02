@@ -831,16 +831,21 @@ const sidebars: SidebarsConfig = {
   api: [
     {
       type: "category",
-      label: "SDK Quickstarts",
+      label: "Quickstart Guide",
       collapsed: false,
       collapsible: false,
-      items: [
-        "sdks/quickstart",
-        "sdks/identify-users",
-        "quickstarts/check-gate",
-        "guides/abn-tests",
-        "guides/logging-events",
-      ],
+        items: [
+          "sdks/quickstart",
+          "sdks/identify-users",
+          "quickstarts/check-gate",
+          "guides/abn-tests",
+          "guides/logging-events",
+          {
+            type: "doc",
+            id: "sdks/build-with-llms",
+            className: "ai-icon sidebar-icon",
+          },
+        ],
     },
     {
       type: "category",
