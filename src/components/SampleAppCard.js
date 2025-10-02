@@ -8,7 +8,7 @@ export default function SampleAppCard({title, link, image}) {
     <a
       href={link}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
       style={{color: "inherit"}}
     >
       <Card

@@ -90,6 +90,19 @@ You can click on the filters button below the dashboard name to add a global fil
 
 ![Dashboard global filter interface](https://github.com/user-attachments/assets/397d0197-632d-4f25-a8be-a5413575173f)
 
+#### Default Dashboard Filters
+
+Default dashboard filters allow you to pin commonly used filters directly to your dashboards, making it easier to analyze different views of your data without rebuilding filters from scratch. These filters appear at the top of your dashboard and apply across all eligible widgets, enabling quick comparison across different dimensions like company, region, or platform.
+
+To configure default dashboard filters:
+
+1. Navigate to your dashboard and click the settings cog ⚙️
+2. Scroll to "Default Filters" and configure the filters you want to pin to the dashboard
+3. Click Save
+
+Once configured, the pinned filters will appear at the top of your dashboard. You can quickly swap values to see how different users, cohorts, or properties impact the same set of charts. When you change a filter value, all charts on the dashboard update automatically without needing to reconfigure each widget individually.
+
+This feature is particularly useful for comparing trends across different segments of your data. Instead of duplicating dashboards or manually editing filters on each widget, you can reuse the same dashboard with dynamic filtering to perform scoped analysis more efficiently.
 
 ### Refreshing your Dashboard Widgets
 

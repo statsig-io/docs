@@ -7,8 +7,9 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
 - **disableCurrentActivityLogging**: `Boolean`, default `false`
   - by default, any custom event your application logs with `Statsig.logEvent()` includes the current top-level activity. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
 
-- **disableDiagnosticsLogging**: `Boolean`, default `false`
-  - Prevent the SDK from sending useful debug information to Statsig
+- **disableDiagnosticsLogging**: `Boolean`, default `false` **(Deprecated)**
+  - Deprecated: This option is no longer available
+  - Previously: Prevent the SDK from sending useful debug information to Statsig
 
 - **initTimeoutMs**: `Long`, default `3000`
   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
@@ -50,3 +51,15 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
    - used to signal the environment tier the user is currently in. 
    - `setTier` can be PRODUCTION, STAGING or DEVELOPMENT. e.g. passing in a value of `Tier.STAGING` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
    - `setEnvironmentParameter` can be used for custom tiers, eg `options.setEnvironmentParameter("tier", "test")`
+
+#### Runtime Options
+Starting in `V4.43.0`, a subset of options can be set during initialization and later updated while the Statsig client is running.
+
+These options are defined in `StatsigRuntimeMutableOptions` (which `StatsigOptions` extends) and are detailed below.
+
+Call `Statsig.updateRuntimeOptions(runtimeMutableOptions: StatsigRuntimeMutableOptions)` or the corresponding method in `StatsigClient` to update the Statsig client with new values.
+
+- **loggingEnabled**: `Boolean`, default `true`
+   - Setting this value to `false` will prevent the Statsig client from sending logging events over the network or saving events to its on-disk cache. The 1000 most recent events will be queued in memory. They can be logged to network (or cached) if `loggingEnabled` is set to `true` later during that session.
+   - Calling `Statsig.flush()` after setting `loggingEnabled` to `true` will immediately clear the queue and minimize loss of older log events
+   - This can be useful for cases where it is necessary for users to grant permission before events should be logged, or in any other cases where logging should not be enabled

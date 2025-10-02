@@ -1,8 +1,8 @@
 ---
 sidebar_label: Migrate from LaunchDarkly
-title: Migrate your feature flags from LaunchDarkly
+title: LaunchDarkly Migration Guide
 keywords:
-  - owner:oliver
+  - owner:Shubham
 last_update:
   date: 2025-08-22
 ---

@@ -1,0 +1,74 @@
+---
+title: Create an Online Eval
+
+sidebar_label: Create an Online Eval
+slug: /ai-evals/create-an-online-eval
+
+last_update:
+  date: 2025-09-23
+---
+
+## Create/analyze an online eval in 15 minutes
+
+<!-- (Coming soon: How to start an online eval in 15 minutes) -->
+
+**1. Identify your Prompt Set**
+
+In Prompts, there are three prompt types: Live, Candidate, and Archive. Before starting an online evaluation, it’s important to organize your prompt versions into these categories:
+
+- **Live** prompt is the version actively served to users.
+
+- **Candidate** prompts are not shown to users but run in the background. The user’s input is still processed against them, and their outputs are logged and graded alongside the live version.
+
+- **Archive** prompts are inactive versions that are not served and kept offline.
+
+Your prompt set will comprise of the Live version and Candidate versions.
+
+![Image](/img/ai/version-types.png)
+
+**2. Load your prompt set in code and run completions on user input**
+
+In the example below, we demonstrate how to integrate your prompt set into an application using the Statsig SDKs. Any macros in your prompts will be replaced with the user input. The live version of the prompt is extracted and served to the user, with completions run on it. At the same time, completions are also run in the background on the shadow (candidate) prompts for evaluation and comparison.
+
+```js
+const promptSet = statsig.getPromptSet("ai_config_name", userInput);
+
+// get the live prompt
+const livePrompt = promptSet.getLive();
+
+// get the shadow prompts
+const shadowPrompts = promptSet.getShadows();
+
+// run completions on your live prompt and show the output to the user
+const liveOutput = client.completions.create(my_model, livePrompt);
+
+// simulateneously run completions on the shadow prompts to get their output
+```
+
+**3. Score your output using graders**
+
+Once you have a completion’s output, it should be evaluated using a grader—either one created in Statsig or a custom grader of your choice. The resulting score should always fall within the range of 0 to 1.
+
+**4. Log Eval Results to Statsig**
+
+You can log your scores as events in Statsig to see the results in your console
+
+```js
+// log results for the live version
+Statsig.logEvent("<grader_name>", "<ai_config_name>", {
+  score: "<live_version_score> [0-1]",
+  version_name: "<version_name>",
+});
+
+// log results for all the shadow versions too
+Statsig.logEvent("<grader_name>", "<ai_config_name>", {
+  score: "<shadow_version_score>",
+  version_name: "<version_name>",
+});
+```
+
+**5. View Results in Statsig**
+
+You can now view these results in Statsig! Select the version you want to evaluate and the versions you want to compare it against. This end to end online eval helps you iterate on your prompts and gain valuable insights.
+
+![Image](/img/ai/online-results.png)

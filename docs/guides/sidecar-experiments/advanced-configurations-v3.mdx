@@ -1,0 +1,73 @@
+---
+sidebar_label: Advanced Configurations
+title: Advanced Configurations
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+## Advanced Targeting & Segmentation
+This approach allows you to set User Identity and Attributes for Sidecar, enabling you to perform more advanced targeting and results segmentation. 
+
+By default, Sidecar & Autocapture use `stableID` (an auto-generated device-level guid that gets stored in the user's localStorage) for tracking purposes. If you wish to enrich autocapture events with known user identities and attributes, you can define the following object _prior_ to autocapture/sidecar being loaded.
+
+Watch this [video tutorial](https://tinyurl.com/sidecar-targeting) on how to configure more advanced targeting for your Sidecar experiments.
+```js
+window.statsigUser = {
+  userID: "<USER ID>",
+  custom: { // optional attributes object
+     isLoggedIn: false 
+  }
+}
+```
+
+## Accessing the Statsig js client
+For accessing the underlying Statsig js client instance, you can call `StatsigSidecar.getStatsigInstance()`.
+
+## Configuring Runtime Options
+This allows you to handle Consent Management, GDPR compliance and more. All of the [StatsigOptions](https://docs.statsig.com/client/javascript-sdk/#statsig-options) provided by the JavaScript SDK are also fully-supported with Sidecar. These can be passed to Sidecar via:
+```js
+window.statsigOptions = {
+  // example of disabling logging for 
+  loggingEnabled: 'disabled'
+}
+```
+
+## Managing Consent
+Prior to Sidecar script tag, configure these runtime options to disable browser storage and tracking:
+```js
+window.statsigOptions = {
+  loggingEnabled: "disabled",
+  disableStorage: true
+}
+```
+Later on, after the user gives consent, re-enable storage and tracking:
+
+```js
+__STATSIG__.instance().updateRuntimeOptions({loggingEnabled: "browser-only", disableStorage: false});
+```
+
+## Persisting stableID across subdomains
+Statsig uses `localStorage` as the preferred mechanism for storing the user's stableID. Localstorage keys do not persist across any origin boundaries including across subdomains. For example, a user visiting `https://example.com`, `https://show.example.com` and `https://account.example.com` would be issued three distinct stableIDs. 
+
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
+
+To install, simply paste the following in your HEAD section.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s};Path=/`}(o)}}();</script>
+
+<!-- Manually attach stableID from local storage -->
+<script>
+if(localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
+  window.statsigUser = {
+    customIDs: {stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')}
+  }
+}
+</script>
+
+<!-- sidecar script below -->
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=[client-YOUR-STATSIG-CLIENT-KEY]"></script>
+```
