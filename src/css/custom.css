@@ -930,3 +930,9 @@ html[data-theme="dark"] .welcome-card p {
     display: flex !important;
   }
 }
+
+/* Consistent table widths for logs-explorer-queries page */
+.logs-query-tables table {
+  width: 100%;
+  table-layout: fixed;
+}

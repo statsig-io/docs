@@ -21,6 +21,8 @@ Plain text searches will only match against the **log message field**, not the e
 
 ---
 
+<div className="logs-query-tables">
+
 ## Basics
 
 ### Property Prefixes
@@ -65,3 +67,4 @@ You can use the `*` character as a wildcard in queries. A wildcard matches zero 
 | `service:"api-*"`                      | Services with names starting with `api-`           | `api-gateway`, `api-auth`                 |
 | `@route:"*products/*"`                  | Page routes containing the string `products/`         | `shopify.com/products/tshirts`, `shopify.com/cart/products/view`  |
 | `@message!:""`                        | Return logs where the message field is **not null**| any log that has a `message` field        |
+</div>
