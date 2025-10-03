@@ -5,6 +5,19 @@ const KAPA_SCRIPT_ID = "kapa-widget-script";
 
 const openKapaWidget = () => {
   if (typeof window === "undefined") return false;
+  
+  try {
+    const stableID = window.Statsig?.instances?.['client-XlqSMkAavOmrePNeWfD0fo2cWcjxkZ0cJZz64w7bfHX']?.getContext?.()?.stableID;
+    if (stableID) {
+      window.kapaSettings = {
+        user: {
+          stableID: stableID,
+        },
+      };
+    }
+  } catch (e) {
+  }
+  
   const opener = window.Kapa?.open({ mode: "search" });
   if (typeof opener === "function") {
     opener.call(window.Kapa);

@@ -51,5 +51,5 @@ When an ID List is small (no more than 1000 IDs), it is synchronized in the same
 
 We recommend always keeping your ID Lists to be no more than 1000 IDs in each, unless you are okay with the caveats mentioned above.
 
-### (deprecated) Large ID Lists(!)
-Statsig's support for very large ID lists has been deprecated. To target hundreds of thousands of users (or billions), the preferred pattern is to set an attribute on the User object passed to the Statsig SDK. e.g. pass in user_type:Paid or user_type:Trial in the User object, instead of having ID Lists that enumerate the Paid and Trial users. This does require your app to have this information when calling the Statsig SDK, but you're better able to control how/where to cache this information.
+### (Limited Beta) Large ID Lists(!)
+To target hundreds of thousands of users (or billions), the more performant pattern is to set an attribute on the User object passed to the Statsig SDK. e.g. pass in user_type:Paid or user_type:Trial in the User object, instead of having ID Lists that enumerate the Paid and Trial users. This does require your app to have this information when calling the Statsig SDK, and you're better able to control how/where to cache this information. If you have a use-case that requires leveraging ID lists larger than 1000 IDs, please reach out to our team via Slack (note this is in limited Beta and is not available for Free/ Pro users at this time). 
