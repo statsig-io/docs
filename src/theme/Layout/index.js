@@ -16,19 +16,178 @@ function KapaEventHandler() {
 
     const handleModalOpen = () => {
       setIsAskAIOpen(true);
+      
+      setTimeout(() => {
+        const kapaContainer = document.getElementById('kapa-widget-container');
+        if (kapaContainer && kapaContainer.shadowRoot) {
+          const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+          if (modal) {
+            const searchInput = modal.querySelector('.mantine-TextInput-input');
+            if (searchInput) {
+              searchInput.focus();
+            }
+          }
+        }
+      }, 100);
     };
 
     const handleModalClose = () => {
       setIsAskAIOpen(false);
     };
 
+    const handleSearchResultsCompleted = (event) => {
+      const { query } = event;
+      if (!query || !query.trim()) return;
+
+      setTimeout(() => {
+        const kapaContainer = document.getElementById('kapa-widget-container');
+        if (!kapaContainer || !kapaContainer.shadowRoot) return;
+        
+        const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+        if (!modal) return;
+        
+        const divsInModal = modal.querySelectorAll('div');
+        const resultsContainer = Array.from(divsInModal).find(div => {
+          const anchorChildren = Array.from(div.children).filter(child => child.tagName === 'A');
+          return anchorChildren.length > 5;
+        });
+        
+        if (!resultsContainer) return;
+
+        const existingCustomResult = resultsContainer.querySelector('.custom-ask-ai-cta');
+        if (existingCustomResult) {
+          existingCustomResult.remove();
+        }
+
+        const customResult = document.createElement('a');
+        customResult.className = 'custom-ask-ai-cta';
+        customResult.setAttribute('href', '#');
+        customResult.setAttribute('role', 'button');
+        customResult.setAttribute('tabindex', '0');
+        customResult.style.cssText = `
+          display: flex;
+          align-items: center;
+          padding: 12px 16px;
+          cursor: pointer;
+          background: transparent;
+          border-radius: 8px;
+          margin-bottom: 4px;
+          transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+          outline: none;
+          border: 2px solid transparent;
+          text-decoration: none;
+        `;
+        
+        customResult.innerHTML = `
+          <span style="font-size: 20px; min-width: 20px; margin-right: 12px;">✨</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; color: #1963d2; font-size: 14px;">Ask AI: ${query}</div>
+            <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Get instant answers powered by AI</div>
+          </div>
+        `;
+
+        customResult.addEventListener('mouseenter', () => {
+          customResult.style.backgroundColor = '#f3f4f6';
+          customResult.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        });
+        customResult.addEventListener('mouseleave', () => {
+          customResult.style.backgroundColor = 'transparent';
+          customResult.style.boxShadow = 'none';
+        });
+        
+        const applyFocusStyle = () => {
+          customResult.style.backgroundColor = '#f3f4f6';
+          customResult.style.border = '2px solid #1963d2';
+          customResult.style.boxShadow = 'none';
+        };
+        
+        const removeFocusStyle = () => {
+          customResult.style.backgroundColor = 'transparent';
+          customResult.style.border = '2px solid transparent';
+          customResult.style.boxShadow = 'none';
+        };
+
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'tabindex') {
+              if (customResult.getAttribute('tabindex') === '0') {
+                applyFocusStyle();
+              } else {
+                removeFocusStyle();
+              }
+            }
+          });
+        });
+        
+        observer.observe(customResult, { attributes: true, attributeFilter: ['tabindex'] });
+
+        if (customResult.getAttribute('tabindex') === '0') {
+          applyFocusStyle();
+        }
+
+        const handleActivation = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.Kapa) {
+            window.Kapa.open({ mode: 'ai', query: query });
+            
+            setTimeout(() => {
+              const kapaContainer = document.getElementById('kapa-widget-container');
+              if (kapaContainer && kapaContainer.shadowRoot) {
+                const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+                if (modal) {
+                  const textarea = modal.querySelector('.mantine-Input-wrapper.mantine-Textarea-wrapper textarea');
+                  if (textarea) {
+                    textarea.focus();
+                    
+                    const submitButton = modal.querySelector('button.mantine-ActionIcon-root[data-variant="filled"]') || 
+                                       modal.querySelector('button[type="submit"]') ||
+                                       modal.querySelector('button[aria-label*="send"]') ||
+                                       modal.querySelector('button[aria-label*="submit"]') ||
+                                       modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
+                    
+                    if (submitButton) {
+                      submitButton.click();
+                      
+                      setTimeout(() => {
+                        textarea.focus();
+                      }, 100);
+                    }
+                  }
+                }
+              }
+            }, 500);
+          }
+        };
+        
+        customResult.addEventListener('click', handleActivation);
+        
+        const handleKeyDown = (e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && e.target === customResult && customResult.getAttribute('tabindex') === '0') {
+            handleActivation(e);
+          }
+        };
+        
+        kapaContainer.shadowRoot.addEventListener('keydown', handleKeyDown);
+        
+        customResult._cleanup = () => {
+          observer.disconnect();
+          kapaContainer.shadowRoot.removeEventListener('keydown', handleKeyDown);
+        };
+
+        resultsContainer.insertBefore(customResult, resultsContainer.firstChild);
+      }, 100);
+    };
+
     window.Kapa("onModalOpen", handleModalOpen);
     window.Kapa("onModalClose", handleModalClose);
+    window.Kapa("onSearchResultsCompleted", handleSearchResultsCompleted);
 
     return () => {
       if (window.Kapa) {
         window.Kapa("onModalOpen", handleModalOpen, "remove");
         window.Kapa("onModalClose", handleModalClose, "remove");
+        window.Kapa("onSearchResultsCompleted", handleSearchResultsCompleted, "remove");
       }
     };
   }, [setIsAskAIOpen]);
