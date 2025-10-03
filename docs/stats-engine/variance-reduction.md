@@ -5,7 +5,7 @@ slug: /stats-engine/variance_reduction
 keywords:
   - owner:vm
 last_update:
-  date: 2025-02-13
+  date: 2025-09-18
 ---
 
 ## Variance Reduction

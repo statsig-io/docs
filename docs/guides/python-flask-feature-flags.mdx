@@ -4,7 +4,7 @@ title: How to set up Feature Flags in Python with Flask
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
 Discover how easy and efficient it is to implement feature flags in your Flask applications. Flask, Python's lightweight web framework, is an excellent choice for developers looking to integrate feature flags into their projects. This guide walks you through the process using the [Python Server SDK](/server/pythonSDK), demonstrating how Statsig's tools can enhance your Flask projects.
@@ -90,7 +90,7 @@ Click next on the Statsig setup page, and you'll be given the opportunity to nam
 
 Click next, and set the "rule" on your feature flag to allow "Everyone" (in the dropdown) and leave the "pass percent" at 100%. Click next and you should see an empty log stream (for now). Now, change your secretRoute function to look like this:
 
-![image](/img/everyone_gate.png)
+![Feature gate rule configuration with Everyone at 100% pass](/img/everyone_gate.png)
 
 ```Python 
 @app.route('/secretRoute')
@@ -108,7 +108,7 @@ Now, when we access this route, we'll only be granted access if our gate's rules
 
 But if you head back to your rule and change it to 100% fail, then wait a moment and refresh, you should see "failed feature flag" checking your secretRoute. Congratulations! You've set up your first feature flag.
 
-![image](/img/everyone0_gate.png)
+![Feature gate rule configuration with Everyone at 0% pass](/img/everyone0_gate.png)
 
 It's important to note that changes with a Server SDK won't be instantaneous; see the architecture diagram on our [Server SDK Introduction Page](/server/introduction) for more.
 
@@ -135,7 +135,7 @@ def secretRoute():
 
 Now, we've added an email field to our user - which we can pass in in a query parameter, for example, http://127.0.0.1:5000/secretRoute?email=brock@statsig.com. Now, let's go change our rule in the Statsig console (pressing the back button) to show only users where their email contains @statsig.com - and pass 100% of those users.
 
-![image](/img/statsigemail_gate.png)
+![Feature gate email targeting rule configuration](/img/statsigemail_gate.png)
 
 Now, when we refresh the URL above, we should have access! But if we change the email to not include @statsig.com by even one character, we will no longer have access. This is the fundamental concept of access management, and it unlocks so many more possibilities!
 

@@ -6,7 +6,7 @@ description: Map cross-platform IDs in experiment analysis and analyze anonymous
 keywords:
   - owner:vm
 last_update:
-  date: 2024-11-13
+  date: 2025-09-18
 ---
 
 Statsig warehouse native natively supports resolving multiple IDs to one identified user, allowing you to easily expose an experiment on one identifier and analyze data coming from one to many mapped identities associated with that experimental unit.
@@ -51,9 +51,15 @@ The direction of first-touch mapping will be based on the experiment; all second
 
 Data is attributed to the group of the first associated primary ID seen in the exposure. If a secondary ID has multiple associated primary IDs, the group of the first primary ID will be used. Note that this means users that cross groups are not discarded from analysis but instead are assigned based on the the first experience they had.
 
-Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
-
 Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
+
+### Last Touch Mapping (beta)
+
+Same as first touch but data is attributed to the most recent primary ID.
+
+
+### Note on ID stitching
+Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
 
 :::info
 We are interested in supporting more complex 1-to-many relationships of identities and are eager to partner with customers to develop these capabilities if a more advanced use-case is required.
@@ -69,10 +75,10 @@ To use Identity Resolution across experiments in your project, you will need a l
 
 Once that's done, you can simply select this source when configuring your secondary ID type, and Statsig handles the join for you.
 
-![Screenshot 2024-01-11 at 10 31 04 AM](https://github.com/statsig-io/docs/assets/102695539/3fc0422d-ed96-4fe6-9e52-05e24a6cc2a2)
+![ID resolution source configuration interface](https://github.com/statsig-io/docs/assets/102695539/3fc0422d-ed96-4fe6-9e52-05e24a6cc2a2)
 
 If you want to use a Statsig SDK to populate this table, you can log an event (like a "Signup" event that has both the logged-out identifier and the user ID on the same event. Events sent via the Statsig SDK are written into your warehouse - and you can configure an Identity Resolution source on top of that using something like this -
-![image](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
+![Identity resolution configuration interface](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
 
 ### Using Assignment Source
 
@@ -91,6 +97,10 @@ Behind the scenes:
 This works natively across Metric Sources, so you can easily set up funnel or ratio metrics across the two ID types.
 
 Analysis is done using the primary ID - this process associates metric values that are on an associated secondary ID.
+
+### Mapping Changes
+
+If a change is made to the entity property source or assignment source's definition or underlying data, that will be reflected on the next reload. This is **why** a full reload is required, since otherwise historical changes to the mapping can lead to inconsistent data on incremental reloads or explore queries.
 
 ### Best Practices
 

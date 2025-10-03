@@ -5,7 +5,7 @@ slug: /release-pipeline/trigger
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-04-18
+  date: 2025-09-18
 ---
 
 # Triggering Release Pipelines
@@ -28,7 +28,9 @@ For an existing feature gate or dynamic config, you can attach a Release Pipelin
 
 ![Attaching a pipeline via sidebar](/img/release-pipeline/sidebar-attach.png)
 
-**Note:** You must have at least one Release Pipeline created before it will appear in the dropdown menu. See [Create and Manage Pipelines](/release-pipeline/create-and-manage) for instructions on creating pipelines.
+:::note
+You must have at least one Release Pipeline created before it will appear in the dropdown menu. See [Create and Manage Pipelines](/release-pipeline/create-and-manage) for instructions on creating pipelines.
+:::
 
 ## Starting a Rollout
 

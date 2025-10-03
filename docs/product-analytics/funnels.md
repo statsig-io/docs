@@ -1,14 +1,15 @@
 ---
 title: Funnel Charts
 tags:
-- Statsig Cloud 
+  - Statsig Cloud
 sidebar_label: Funnels
 slug: /product-analytics/funnels
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-10
+  date: 2025-09-18
 ---
+
 # Funnels
 
 ## Overview
@@ -21,6 +22,7 @@ Funnel Charts in Metrics Explorer provide a granular understanding of what porti
 - **Identifying Drop-off Points**: Pinpoint where users drop-off of a process, allowing targeting improvements at these points.
 - **Comparing User Segments**: Observe how different user segments move through the funnel, highlighting variations in behavior based on demographics, user types, or other criteria.
 - **Product Optimization**: Determine which features or steps effectively move users to the next stage, and which require improvements.
+- **Experiment Analysis**: Understand the conversion rates before and after first exposure to an experiment.
 
 ## Defining a User Funnel
 
@@ -31,7 +33,7 @@ To define a funnel, select a series of a events that represent different parts o
 To do so:
 
 1. Go to **Metrics Explorer** under **Analytics** in the Navigation Bar, and switch over to the Funnel Charts view.
-2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties. For WHN, you would add steps directly from your **Metric Source**. For Statsig Cloud, you can leverage events or metrics for the steps. 
+2. Add steps to your funnel using the “**+**” icon. **Optionally add filters** to funnel steps to target specific event or user properties. For WHN, you would add steps directly from your **Metric Source**. For Statsig Cloud, you can leverage events or metrics for the steps.
 
 **Combining Multiple Events into one step[](/product-analytics/funnels#combining-multiple-events-into-one-step)**
 
@@ -43,8 +45,7 @@ You can also combine multiple events into a single step. This is especially usef
 
 Repeat these steps as needed. You can define a step as a combination of up to 5 events.
 
-![image](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
-
+![Funnel step configuration interface](https://github.com/user-attachments/assets/2e0d34ba-cff9-4a19-9fe5-ea6ef19b1cfb)
 
 **Filtering to the first time a user performed an event[](/product-analytics/funnels#filtering-to-the-first-time-a-user-performed-an-event)**
 
@@ -53,7 +54,7 @@ It is sometimes useful to understand the first-time user experience, which may h
 1. Click “…” next to the event in question.
 2. Select the “**Filter to First Time**”.
 
-![image](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
+![Filter to first time event option](https://github.com/user-attachments/assets/aa72701f-b9c2-47ae-81e8-514a1c1d971b)
 
 **Renaming Steps[](/product-analytics/funnels#renaming-steps)**
 
@@ -83,7 +84,9 @@ To this end, Statsig allows you to perform individual or group analytics. This e
 
 You can choose any of the ID types defined in your Statsig project to create a funnel over.
 
-***Group analytics is not a paid add-on at Statsig and is included at no-extra cost for all tiers.***
+If you have an experiment exposure selected, make sure that the ID type selected matches that of the experiment.
+
+**_Group analytics is not a paid add-on at Statsig and is included at no-extra cost for all tiers._**
 
 ### Step 4: Define the Conversion Window[](/product-analytics/funnels#step-4-define-the-conversion-window)
 
@@ -115,7 +118,7 @@ When toggled on, this calculates funnel conversions per calendar day. A given un
 
 ### Conversion rate vs. Number of Conversions
 
-At the top right of the funnel chart, you’ll see the Conversion Rate vs. Conversions selector. This selector allows you to switch between viewing the y-axis of your funnel as a conversion rate or the number of conversions. This feature is particularly powerful when used in conjunction with a group by. Toggling between conversion rate and number of conversions, you can see both the relative and absolute scales in conversions across different user groups. 
+At the top right of the funnel chart, you’ll see the Conversion Rate vs. Conversions selector. This selector allows you to switch between viewing the y-axis of your funnel as a conversion rate or the number of conversions. This feature is particularly powerful when used in conjunction with a group by. Toggling between conversion rate and number of conversions, you can see both the relative and absolute scales in conversions across different user groups.
 
 ### Conversion Summary and Table
 
@@ -125,13 +128,62 @@ Under each funnel step, you’ll see a quick summary that helps demystify your f
 - The percentage and number of units that have dropped off, again this number is relative to the first step of the funnel
 - The average time it takes for each user to convert
 
-Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups. 
+Next, in the conversion table, you’ll find the percentage and number of units that have converted relative to the first step of the funnel and relative to the previous step. Again, this feature is particularly useful when grouping by a certain property in which you want to compare conversions between user groups.
 
-![image](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
+![Funnel conversion summary table](https://github.com/user-attachments/assets/073f9f20-f26f-4af4-a4e9-65d65474b97f)
 
 ### User Exploration
 
 Finally, by clicking any bar in the funnel, you have the option to download all users in that segment who dropped off or converted as a CSV file. You also have the option to view session streams to get a granular, event-by-event understanding of a user’s experience before and after the data point in question.
 
-![image](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
+![User exploration options interface](https://github.com/user-attachments/assets/2c140de9-bce8-4813-91b1-8f2d8d1e9a66)
 
+## Conversion Drivers[](/product-analytics/funnels#conversion-drivers)
+
+Conversion Drivers identify statistically significant factors that correlate with funnel conversion or drop-off at each step. This analysis surfaces event properties, user properties, and intermediary events that influence user progression through your funnel.
+
+![Conversion Drivers Interface](/img/conversion-drivers-funnels.png)
+
+To access Conversion Drivers:
+
+1. Click on any funnel step
+2. Select **"View Drop-Off & Conversion Drivers"**
+3. Configure the analysis scope using the dropdown filters
+
+![Conversion Drivers Entry Point](/img/conversion-drivers-context-menu.png)
+
+### Analysis Configuration[](/product-analytics/funnels#analysis-configuration)
+
+You can configure which data types to include in the analysis:
+
+- **Event Properties**: Attributes attached to events (e.g., platform, plan_type, referral_code)
+- **User Properties**: User-level attributes (e.g., country, account_age, signup_method)
+- **Intermediary Events**: Events that occurred between the selected funnel steps
+
+### Driver Metrics[](/product-analytics/funnels#driver-metrics)
+
+Each identified driver displays:
+
+- **Conversion Likelihood**: Expressed as a multiplier of the funnel's conversion rate (e.g., users with platform::Android are 1.2x as likely to convert)
+- **Conversion Rate**: Percentage of users with this factor who converted
+- **Participant Share**: Percentage of total funnel participants who had this factor
+
+### Detailed Analysis[](/product-analytics/funnels#detailed-analysis)
+
+Click on any driver to access the drilldown view, which provides:
+
+- **Conversion Matrix**: Side-by-side comparison of conversion outcomes for users with and without the factor
+- **Correlation Coefficient**: Statistical measure of the factor's association with funnel completion (also known as the [phi coefficient](https://en.wikipedia.org/wiki/Phi_coefficient))
+
+You can group your funnel by any identified driver by clicking the group by option. This reconfigures the funnel chart to show conversion performance segmented by the selected property.
+
+### Use Cases[](/product-analytics/funnels#use-cases)
+
+Conversion Drivers are useful for:
+
+- Exploratory analysis when investigating funnel performance without predefined hypotheses
+- Root cause analysis of conversions/drop-offs
+- Validating assumptions about user segment behavior
+- Monitoring funnel performance changes over time
+
+**Availability**: Conversion Drivers require a Pro plan subscription or Enterprise plan with the Advanced Analytics package.

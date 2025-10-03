@@ -5,7 +5,7 @@ slug: /autotune/bandit-faq
 keywords:
   - owner:craig
 last_update:
-  date: 2025-03-20
+  date: 2025-09-18
 ---
 
 ### When should I see data show up in a bandit?
@@ -23,3 +23,17 @@ The variants return this JSON as a config, just like dynamic configs or experime
 ### Why use a linked experiment?
 
 Bandits optimize for a single target metric or event. This doesn't give a super-rich analysis of how the bandit is impacting your users on its own. Wrapping a bandit in an experiment where the control group gets a default experience and the variant group gets served an experience by the bandit gives you the ability to get deeper insights on how it is impacting your end users. This step is highly recommended!
+
+### Where is my Autotune data available?
+
+Autotune data is downloaded hourly into the `statsig_first_exposures` metric source. Click into the history modal on the autotune itself to see the SQL and tables generated for an individual autotune.
+
+### Why was a "losing" variant chosen?
+
+Autotune makes the assumption that a metric is consistent across time; in other words, if a metric has strong seasonality (e.g. a metric which tanks on the weekends) it is not a good candidate for usage in an Autotune experiment. With seasonality, this case is possible:
+
+- One variant which consistently performs worse than other variants gets less and less traffic, until it has essentially zero traffic
+- Other variants, which are still receiving traffic, see their metric tank when the season effects kick in
+- The variant with zero traffic doesn't see that metric tank (because no traffic is being allocated to it), which causes it to be chosen as the winning variant
+
+This may sometimes cause a "losing" variant to be chosen as the winner.

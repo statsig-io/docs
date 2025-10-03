@@ -5,24 +5,21 @@ slug: /experiments-plus/geotests
 keywords:
   - owner:makris
 last_update:
-  date: 2025-04-16
+  date: 2025-09-18
 ---
 
 # Geotests
 
-Sometimes you just can't run an A/B test. That's where Geotests come into the picture.
+Sometimes you just can't run an A/B test at a per-user level. Some common causes are:
 
-One of the most common use cases are in marketing; you can't A/B test on 3rd party ad platforms, but geo-testing lets you evaluate the incrementality of your program.
+- You don't have per-user control over who sees what, e.g. a third-party marketing platform like Meta or Google Ads.
+- You can't attribute metrics to individuals, e.g. total store foot traffic can't be tied to which users received your email campaign.
 
-Geotests are specialized experiments that allow you to target users based on their geographic location. They enable you to test features, content, or experiences across any type of geographic area. By splitting your campaign up amongst DMAs or postal codes, for example, you can measure its incrementality even when an ads platform doesn't support it.
+Geotests help solve these problems. One of the most common use cases is marketing; you can't A/B test on 3rd party ad platforms, but geo-testing lets you evaluate the incrementality of your program.
+
+Geotests are specialized experiments that allow you to target users based on geographic location. These tests enable you to test features, content, or experiences across any type of geographic area you specify. By splitting your campaign up amongst DMAs or postal codes, for example, you can measure its incrementality even when an ads platform doesn't support it.
 
 Geotests are particularly valuable for businesses with global audiences who need to optimize their product for regional differences in user needs, preferences, or regulatory requirements.
-
-:::tip
-
-Geotests is currently in Alpha release. Statsig is actively interested in working with customers to understand your use-case and make improvements. Please reach out if you're interested in using Geotesting capabilities.
-
-:::
 
 # Why use Geotests
 
@@ -30,9 +27,10 @@ Statsig's Geotesting is designed to combine the flexibility and statistical rigo
 
 Geotesting:
 
-1. Includes an automated Experiment Designer to help you select where and when to run your campaign.
-2. Help export your campaign definition to your campaign platform, making setup faster and less error-prone.
-3. Automates analysis, using your own data that never leaves your warehouse.
+1. Uses the data already in your warehouse, avoiding expensive and time-consuming exports.
+2. Includes an automated Experiment Designer to help you select where and when to run your campaign.
+3. Help export your campaign definition to your campaign platform, making setup faster and less error-prone.
+4. Automates analysis of the campaign, providing statistical rigor to measure incrementality.
 
 # GeoLift
 

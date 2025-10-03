@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-09-18
 ---
 
 Using feature flags in a Python application with Statsig involves a few steps, starting from setting up a simple Python app to integrating Statsig and using its SDK to manage feature flags. Here's how to go about it:
@@ -90,7 +90,7 @@ To create and manage your feature flags:
    - Optionally, configure targeting rules based on user properties or environments.
    - Save the feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature flag creation interface](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 5. **Toggle Your Feature Flag**:
    - You can enable/disable the feature flag or configure more sophisticated targeting rules as needed.

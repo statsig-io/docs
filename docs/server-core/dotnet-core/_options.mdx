@@ -1,0 +1,47 @@
+`StatsigOptions` can be configured using the `StatsigOptionsBuilder` pattern:
+
+```csharp
+var options = new StatsigOptionsBuilder()
+    .SetSpecsURL("https://custom-api.statsig.com/v1/download_config_specs")
+    .SetLogEventURL("https://custom-api.statsig.com/v1/rgstr")
+    .SetEnvironment("production")
+    .SetSpecsSyncIntervalMs(30000)
+    .SetEventLoggingMaxQueueSize(1000)
+    .SetWaitForCountryLookupInit(true)
+    .SetWaitForUserAgentInit(true)
+    .SetDisableCountryLookup(false)
+    .SetDisableUserAgentParsing(false)
+    .SetDisableAllLogging(false)
+    .SetInitTimeoutMs(3000)
+    .SetFallbackToStatsigApi(false)
+    .SetEnableIDLists(true)
+    .SetIDListsURL("https://custom-api.statsig.com/v1/get_id_lists")
+    .SetIDListsSyncIntervalMs(60000)
+    .SetGlobalCustomFields(new Dictionary<string, object>
+    {
+        ["app_version"] = "1.2.3",
+        ["build_number"] = "456"
+    })
+    .Build();
+
+var statsig = new Statsig("server-secret-key", options);
+```
+
+## Available Options
+
+- **SetSpecsURL(string)**: Override the default specs download endpoint
+- **SetLogEventURL(string)**: Override the default event logging endpoint  
+- **SetEnvironment(string)**: Set the environment tier (e.g., "production", "staging")
+- **SetSpecsSyncIntervalMs(int)**: How often to sync configuration specs (default: 10000ms)
+- **SetEventLoggingMaxQueueSize(int)**: Maximum events to queue before flushing
+- **SetWaitForCountryLookupInit(bool)**: Wait for country lookup initialization
+- **SetWaitForUserAgentInit(bool)**: Wait for user agent parsing initialization
+- **SetDisableCountryLookup(bool)**: Disable automatic country detection
+- **SetDisableUserAgentParsing(bool)**: Disable user agent parsing
+- **SetDisableAllLogging(bool)**: Disable all event logging
+- **SetInitTimeoutMs(int)**: Maximum time in milliseconds to wait for SDK initialization (default: 3000ms)
+- **SetFallbackToStatsigApi(bool)**: Fallback to Statsig API when custom adapters fail (default: false)
+- **SetEnableIDLists(bool)**: Enable ID list targeting
+- **SetIDListsURL(string)**: Override the default ID lists endpoint
+- **SetIDListsSyncIntervalMs(int)**: How often to sync ID lists (default: 60000ms)
+- **SetGlobalCustomFields(Dictionary\<string, object\>)**: Global custom fields for all events

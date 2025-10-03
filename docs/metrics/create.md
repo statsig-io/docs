@@ -5,7 +5,7 @@ slug: /metrics/create
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-01-07
+  date: 2025-09-18
 ---
 
 Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
@@ -14,13 +14,14 @@ Custom metrics are computed by Statsig from your raw events. To create custom me
 
 Statsig supports five types of custom metrics:
 
-| Metric Type | Description                                                                                                           | Examples                                                    |
-| ----------- | --------------------------------------------------------------------------------------------------------------------  | ----------------------------------------------------------- |
-| Event Count | **Total count of events** filtered by the _Value_, _Metadata_, or _User Object_ properties of an event type           | **Add to Cart** event filtered by category type             |
-| User Count  | **Number of unique users** that trigger events filtered by the _Value_, _Metadata_, or _User Object_ of an event type | **Active Users** based on their views of a product category |
-| Aggregation | **Sum or Average** of the _Value_, _Metadata_, and _User Object_ property of an event type                            | **Total Revenue**                                           |
-| Ratio       | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart)  | **Cart Conversion Rate**, **Sessions per User**             |
-| Funnel      | **Funnels**- funnel of multiple events with conversion tracking                                                       | **Sign-up Funnel**, **Checkout Funnel**                     |
+| Metric Type    | Description                                                                                                           | Examples                                                    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------  | ----------------------------------------------------------- |
+| Event Count    | **Total count of events** filtered by the _Value_, _Metadata_, or _User Object_ properties of an event type           | **Add to Cart** event filtered by category type             |
+| User Count     | **Number of unique users** that trigger events filtered by the _Value_, _Metadata_, or _User Object_ of an event type | **Active Users** based on their views of a product category |
+| Aggregation    | **Sum or Average** of the _Value_, _Metadata_, and _User Object_ property of an event type                            | **Total Revenue**                                           |
+| Ratio          | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart)  | **Cart Conversion Rate**, **Sessions per User**             |
+| Funnel         | **Funnels**- funnel of multiple events with conversion tracking                                                       | **Sign-up Funnel**, **Checkout Funnel**                     |
+| Count Distinct | **Count Distinct**- Number of unique values for a given field, often approximated with sketches                       | **Unique Songs** listened per user                          |
 
 Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments. After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
 
@@ -88,6 +89,10 @@ You can create a custom funnel metric, from either the Custom Metrics Creation w
 
 ![Screen Shot 2023-09-12 at 1 33 10 PM](https://github.com/statsig-io/docs/assets/101903926/86914826-b8ce-4b4b-9514-39f31d05687a)
 
+:::info Important Note
+Statsig handles funnel metrics differently between our Cloud and Warehouse Native platforms. Funnel metrics using our Cloud platform are *always* unordered, meaning that funnel steps can be completed in any order, and they have a time window of *one day*. This means that for the metric to record a completion, all steps must be triggered by a user within 24 hours. In contrast, funnel metrics on Warehouse Native have the option to be set with strict ordering and custom time windows.
+:::
+
 ### Components of Funnel Metrics
 
 Funnel metrics have a few components:
@@ -105,7 +110,16 @@ In the example below, the **Square** variant shows a lift in the **overall funne
 - Both the **Square** and **Circle** variants show a lift in top-of-funnel DAU (_Land Page View Start DAU_). However, only the **Square** variant shows statistically significant increase in end-of-funnel DAU (_Purchase Event End DAU_).
 - The overall funnel conversion rate improvement for **Square** is primarily due to the higher conversion from _Checkout Event_ to _Purchase Event_ stages in the funnel.
 
-![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+![Funnel experiment results showing Square variant performance](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+
+### 6 Count Distinct Metrics
+
+:::warning
+Sketch-based count distinct metrics are not live yet.
+:::
+
+- **What it is:** A high-performance way to estimate the number of distinct values using compact sketch data structures. Example use cases include trying to determine unique songs per user or unique products purchased by user.
+- **Benefit:** Delivers much faster computation and uses significantly less memory compared to full exact distinct counting, especially at high cardinality.
 
 ### Custom Metrics & Dimensions
 

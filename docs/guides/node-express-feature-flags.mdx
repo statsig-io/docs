@@ -4,7 +4,7 @@ title: Feature Flags in NodeJS ExpressJS
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
 ExpressJS, renowned for its efficiency and minimalist design, is a cornerstone framework for NodeJS developers. This guide focuses on integrating feature flags in NodeJS ExpressJS applications using Statsig's NodeJS Server SDK. Discover how to enhance your ExpressJS app with feature flags for flexible and dynamic user experiences.
@@ -27,14 +27,14 @@ curl --request POST 'https://statsigapi.net/console/v1/gates' \
 --header 'Content-Type: application/json' \
 --data-raw '{"name":"express_app_bg","idType":"userID","isEnabled":true,"rules":[{"name":"Everyone","passPercentage":50,"conditions":[{"type":"public"}]}]}'
 ``` 
-![image](/img/express-gate.png)
+![Feature gate configuration interface](/img/express-gate.png)
 
 ## Project Outline
 
 This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
 The main server entrypoint is `app.js` and the demo webpage source follows the handlebars standard, living in `views/index.hbs`.
 
-![image](/img/express-folder-structure.png)
+![ExpressJS project folder structure](/img/express-folder-structure.png)
 
 Aside from `statsig-node`, this example app requires several node modules, including:
 * `cookie-parser` for managing cookies for user identity
@@ -126,4 +126,4 @@ The template will be rendered and with access to the `backgroundFeatureEnabled` 
 </div>
 ```
 
-![image](/img/express-page.png)
+![ExpressJS app with feature flag enabled](/img/express-page.png)

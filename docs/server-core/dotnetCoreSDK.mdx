@@ -1,0 +1,101 @@
+---
+sidebar_label: .NET
+title: .NET Core Server SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import * as _Notes from "./dotnet-core/_notes.mdx";
+export const Notes = _Notes;
+
+import Install from "./dotnet-core/_install.mdx"
+import Initialize from "./dotnet-core/_initialize.mdx"
+import CheckGate from "./dotnet-core/_checkGate.mdx";
+import GetFeatureGate from "./dotnet-core/_getFeatureGate.mdx";
+import GetConfig from "./dotnet-core/_getConfig.mdx";
+import GetExperiment from "./dotnet-core/_getExperiment.mdx";
+import GetLayer from "./dotnet-core/_getLayer.mdx";
+import GetParameterStore from "./dotnet-core/_getParameterStore.mdx";
+import LogEvent from "./dotnet-core/_logEvent.mdx";
+import Options from "./dotnet-core/_options.mdx";
+import User from "./dotnet-core/_user.mdx";
+import Shutdown from "./dotnet-core/_shutdown.mdx";
+import ClientInitResponse from "./dotnet-core/_clientInitResponse.mdx";
+import LocalOverrides from "./dotnet-core/_localOverrides.mdx";
+import ManualExposures from "./dotnet-core/_manualExposures.mdx";
+import EvaluationOptions from "./dotnet-core/_evaluationOptions.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  Shutdown as ShutdownSection,
+  ClientInitResponse as ClientInitResponseSection,
+  LocalOverrides as LocalOverridesSection,
+  ManualExposures as ManualExposuresSection,
+} from "./Templates/index.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: ".NET Core",
+        install: <Install />,
+        skipStatsigOptionsDescription: true,
+        initialize: <Initialize />,
+        skipInitializeDescription: true,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        getLayer: <GetLayer />,
+        getParameterStore: <GetParameterStore />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+      },
+    ],
+    [StatsigUser, { user: <User /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [ShutdownSection, { shutdown: <Shutdown /> }],
+    [
+      ClientInitResponseSection,
+      {
+        sdkName: ".NET Core",
+        addedInVersion: "1.0.0",
+        snippet: <ClientInitResponse />,
+        signature: () => <code>GetClientInitializeResponse</code>,
+      },
+    ],
+    [
+      LocalOverridesSection,
+      { addedInVersion: "1.0.0", snippet: <LocalOverrides /> },
+    ],
+    [ManualExposuresSection, { addedInVersion: "1.0.0", snippet: <ManualExposures /> }],
+    [Notes, {}],
+  ]
+});
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>

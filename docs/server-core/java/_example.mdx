@@ -87,7 +87,16 @@ Create a `pom.xml` file with:
   </TabItem>
 </Tabs>
 
-### Create Java Application
+### Create Application
+
+<Tabs
+  groupId="java-core-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
 
 Create a file named `ExampleApp.java`:
 
@@ -116,6 +125,38 @@ public class ExampleApp {
     }
 }
 ```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+Create a file named `ExampleApp.kt`:
+
+```kotlin
+import com.statsig.*
+
+fun main() {
+    // Initialize Statsig
+    val options = StatsigOptions.Builder().build()
+    val statsig = Statsig("YOUR_SERVER_SECRET_KEY", options)
+    statsig.initialize().get()
+    
+    try {
+        // Check a feature gate
+        val isEnabled = statsig.checkGate("my_feature_gate", "user123")
+        println("Feature gate is ${if (isEnabled) "enabled" else "disabled"}")
+        
+        // Get a config
+        val config = statsig.getConfig("my_config", "user123")
+        println("Config value: ${config.getValue("some_parameter", "default_value")}")
+    } finally {
+        // Always shutdown Statsig when done
+        statsig.shutdown().get()
+    }
+}
+```
+
+  </TabItem>
+</Tabs>
 
 Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [Statsig Console](https://console.statsig.com/api_keys).
 

@@ -5,7 +5,7 @@ slug: /experiments-plus/cure
 keywords:
   - owner:craig
 last_update:
-  date: 2025-03-21
+  date: 2025-09-18
 ---
 
 # CURE
@@ -27,6 +27,14 @@ CURE solves the no-covariate problem by allowing practitioners to specify additi
 
 This can reduce experiment runtimes more than CUPED in isolation and, when combined with Statsig's Entity Properties, allows practitioners to trivially plug in existing feature stores to this variance reduction technique.
 
+:::info Note
+Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset. 
+
+It is expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). 
+
+Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned.
+:::
+
 ## How it's different
 
 This technique is similar to standard regression estimate used across other experimentation tools, but stands out in several ways:
@@ -39,12 +47,12 @@ This technique is similar to standard regression estimate used across other expe
 
 The original version of CUPED specified by Microsoft [(Deng, et. al.)](https://www.exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf) is equivalent to running an OLS regression with one independent variables. However, this adjustment does not need to be a single-variable regression (or a regression at all). A regression has the benefit of guaranteeing identical or lowered variance, but so long as an adjustment is unbiased, any adjustment is mathematically valid.
 
-This by calculating the covariance matrix between covariates and experiment outcomes in SQL, you can cheaply generate the required inputs to generate multi-variate regressions and use these to adjust post-exposure values in an unbiased manner -- so long as this estimator is unbiased (critically, meaning the regression is demeaned and only uses pre-experiment data). Similarly to the original paper's proof, this yields an estimator that has variance less than or equal to the existing estimator. That means that:
+Thus by calculating the covariance matrix between covariates and experiment outcomes in SQL, you can cheaply generate the required inputs to generate multi-variate regressions and use these to adjust post-exposure values in an unbiased manner -- so long as this estimator is unbiased (critically, meaning the regression is demeaned and only uses pre-experiment data). Similarly to the original paper's proof, this yields an estimator that has variance less than or equal to the existing estimator. That means that:
 
 - if covariates do not exist, nothing happens and the adjusted estimator is identical to the unadjusted
 - in the worst case where covariates are uncorrelated, the adjusted estimator is identical to the unadjusted
 - if no additional covariates are applied, CURE is mathematically equivalent to CUPED
-- if additional covariates are applied that increase the R2 or portion of explained variance, CURE reduces variance more than CUPED
+- if additional covariates are applied that increase the $R^2$ (i.e. portion of explained variance), CURE reduces variance more than CUPED
 
 # Data Sources
 
@@ -71,10 +79,6 @@ Statsig will surface information on CURE in experiment diagnostics, giving detai
 # Outputs
 
  You can view the DAG history to see the exact coefficients used and the table they are stored within. Additionally, Statsig will render an explanation in-console of which variables contributed to reducing variance, and how much variance was reduced -- which has been helpful for users deciding which features to use.
-
-# Notes
-
-Similar to CUPED, CURE can modify the point estimates of groups; though the total value across all experimental groups will sum to the same value as in the unadjusted dataset, is it expected that there may be drift in value between the groups (particularly if there's some pre-experiment differences and the correlation is high). Generally this can be seen as the algorithm adjusting for pre-existing deltas in experiment groups, but please reach out in slack if you are concerned about a concerning change.
 
 ## Feature Selection
 

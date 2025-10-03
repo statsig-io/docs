@@ -3,7 +3,7 @@ title: Jira
 keywords:
   - owner:brock
 last_update:
-  date: 2024-03-27
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -16,4 +16,4 @@ Get a [Server Secret Key from the statsig console](https://console.statsig.com/a
 
 To configure the app, go to Apps > Statsig > Allow Access.  Then, enter your api key:
 
-![image](https://user-images.githubusercontent.com/74584483/185266500-4695bad9-b219-4b51-8e88-cc6059799d50.png)
+![Jira app configuration interface](https://user-images.githubusercontent.com/74584483/185266500-4695bad9-b219-4b51-8e88-cc6059799d50.png)

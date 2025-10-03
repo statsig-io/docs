@@ -4,14 +4,13 @@ title: Project Access Management
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 :::info 
-Note- This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
-
+This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO. 
 :::
 
-In the [Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access. 
+In the [Basic Settings page](https://console.statsig.com/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access. 
 
 ## Roles 
 
@@ -26,7 +25,7 @@ The different Project Roles available are:
 
 ## Custom Roles
 Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
-![image](https://github.com/statsig-io/docs/assets/112416832/1b5a0601-6311-401e-87e3-5d1055a025e7)
+![Custom roles configuration interface](https://github.com/statsig-io/docs/assets/112416832/1b5a0601-6311-401e-87e3-5d1055a025e7)
 
 ## Automatic Project Invitations
 
@@ -34,8 +33,8 @@ To simplify sending invitations for a Project, you can allow users creating a ne
 
 To enable this feature:
 
-1. Go to your [Project Basic Settings page](https://console.statsig.com/24vDD6KOtLJqjrw1Y6oj4C/settings).
+1. Go to your [Project Basic Settings page](https://console.statsig.com/settings).
 2. Click on the `Edit Project Settings` button.
 3. Toggle the checkbox labeled `Anyone who signs up with the same email domain can join` and choose the role that users will be assigned to.
 
-![image](https://user-images.githubusercontent.com/75151332/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png)
+![Project settings automatic invitation configuration](https://user-images.githubusercontent.com/75151332/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png)

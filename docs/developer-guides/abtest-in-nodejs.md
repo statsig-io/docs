@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-09-18
 ---
 
 To run a simple A/B experiment in a webpage with Node.js using the Statsig SDK, you'll go through a few essential steps. This will involve setting up a simple Node.js server, integrating with the Statsig SDK for A/B testing, and configuring your experiment in the Statsig console.
@@ -82,7 +82,7 @@ To run a simple A/B experiment in a webpage with Node.js using the Statsig SDK, 
     - Add variants for your experiment (e.g., `control` and `test`).
     - Within each variant's configuration, add a parameter named `textToShow` and assign the text you wish to display for each variant.
 
-    ![image](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
+    ![Experiment variant configuration interface](https://github.com/statsig-io/.github/assets/74588208/8a667aeb-9189-4e7d-8a22-a42dabcdfe09)
 
 4. **Launch the Experiment**:
     - After setting up your variants and parameters, save and start the experiment.

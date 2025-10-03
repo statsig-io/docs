@@ -5,7 +5,7 @@ slug: /experiments-plus/conclude-experiment-defer-decision
 keywords:
   - owner:vm
 last_update:
-  date: 2024-12-04
+  date: 2025-09-18
 ---
 ## Conclude the Experiment now and Defer Analysis for later
 

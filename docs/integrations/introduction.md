@@ -5,7 +5,7 @@ slug: /integrations/introduction
 keywords:
   - owner:brock
 last_update:
-  date: 2025-04-22
+  date: 2025-09-18
 ---
 
 _For Warehouse Integrations, go to this [page](/data-warehouse-ingestion/introduction)._
@@ -44,4 +44,3 @@ Update the following places when Feature Gates/Experiments/Dynamic Configs chang
 ### Other
 
 - Jira: track Statsig gate rollout status and A/B test results from Jira issues
-- Visual Studio Code: bring Statsig gates and experiments into your VSCode development environment

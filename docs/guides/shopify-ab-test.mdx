@@ -4,7 +4,7 @@ title: A/B Testing on Shopify
 keywords:
   - owner:brock
 last_update:
-  date: 2025-01-02
+  date: 2025-09-18
 ---
 
 ## Use cases &amp; considerations
@@ -51,15 +51,25 @@ Note that code deployed outside the scope of a custom pixel will not fire during
 
 Below is boilerplate custom pixel code that provides a function to send events back to Statsig. You should subscribe to the various events and event metadata necessary for your experimentation practices. This [sample GTM pixel](https://help.shopify.com/en/manual/promoting-marketing/pixels/custom-pixels/gtm-tutorial) shows some of the common events and metadata that you can capture and track to Statsig.
 ```js
+const getStableID = () => {  
+  // New gen JS-SDK stores in dynamic keyed localstorage entries
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);    
+    if (key && key.includes('statsig.stable_id.')) {
+      const value = localStorage.getItem(key);
+      return value.replace(/"/gi, '');
+    }
+  }
+  // Old gen JS-SDK stores in specific localStorage key
+  const fallback = localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID');  
+  if (fallback) {
+    return fallback.replace(/"/gi, '');
+  }
+};
+
 /**
 * Util function for tracking events back to statsig
-* Find the user's stableID checking js-sdk >= v2 then fallback to v1 storage key
 */
-const stableID = (function () {
-  for (var key in localStorage) {
-    if (key.includes('statsig.stable_id.')) return localStorage.getItem(key).replace(/"/gi, '');
-  }
-})() || localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID');
 const statsigEvent = async (eventKey, eventValue = null, metadata = {}, userObject = {}) => {
   Object.assign(userObject, {
     customIDs: {stableID: stableID} // attach stableID automatically
@@ -102,6 +112,6 @@ Using [Shopify Headless](https://shopify.dev/docs/storefronts/headless) gives yo
 Whether you're using Shopify's [Hydrogen app](https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals) and its frameworks or a [custom headless stack](https://shopify.dev/docs/storefronts/headless/bring-your-own-stack), you can integrate Statsig's SDK as needed in order to assign users to experiments. Integrating Statsig in this architecture will follow a similar pattern to our recommendation to [integrating with headless CMS platforms](/guides/cms-integrations).
 
 #### Integrating data sources for experiment metrics
-Along with the measuring simple click stream and point-of-sale behavior as [outlined here](http://localhost:3004/guides/first-shopify-abtest#configure-event-tracking-and-metrics), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
+Along with the measuring simple click stream and point-of-sale behavior as [outlined here](/guides/shopify-ab-test/#configure-event-tracking), commerce businesses performing deeper experimentation often want to integrate offline data systems and measure experiments using existing metrics that the broader business uses. 
 
 Commonly, the Data Warehouse is the source of truth for user purchase data and other categories of offline data. This affords customers the ability to define more [bespoke metrics](/statsig-warehouse-native/configuration/metrics#metric-types) using filtering, aggregations and incorporating other datasets in the warehouse for segmenting experiment results.   

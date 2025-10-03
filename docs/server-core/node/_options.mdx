@@ -23,7 +23,7 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
   Default off. If turned on, SDK will not collect any loggings within the sessions, including custom events and config check exposure events.
 
 - **`enableIDLists`**: `Optional<bool>`  
-  Default off. You need to turn this on if you are using legacy Big ID Lists.
+  Default off. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
 - **`disableUserAgentParsing`** `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
@@ -60,6 +60,9 @@ The `StatsigOptions` class is used to specify optional parameters when initializ
 
 - **`observabilityClient`**: `Optional<ObservabilityClient>`  
   Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](https://docs.statsig.com/sdk_monitoring/)
+
+- **`persistentStorage`**: `Optional<PersistentStorage>`  
+  Interface for you to user persistent storage within sdk. To view more [details](https://docs.statsig.com/server/concepts/persistent_assignment/)
 
 - **`proxyConfig`**: `Optional<ProxyConfig>`  
   Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:

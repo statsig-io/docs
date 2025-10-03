@@ -5,7 +5,7 @@ sidebar_label: Assignment Sources
 keywords:
   - owner:vm
 last_update:
-  date: 2024-06-12
+  date: 2025-09-18
 ---
 
 Assignment Sources are how you schematize your assignment data for Statsig, and they serve as the input data for determining who is in an experiment, and which treatment they got.

@@ -5,7 +5,7 @@ slug: /stats-engine/methodologies/winsorization
 keywords:
   - owner:vm
 last_update:
-  date: 2025-01-15
+  date: 2025-09-18
 ---
 
 import DocumentationFork from "@site/src/components/DocumentationFork";
@@ -18,7 +18,7 @@ Winsorization is a common technique for removing noise in experiment results, sp
 
 Winsorization refers to the practice of measuring the percentile Px of a metric and setting all values over Px to Px.
 
-Statsig computes the Px value using all non-zero and non-null values of the metric.
+Statsig computes the Px value using all non-zero and non-null unit-level values of the metric; metrics are aggregated from rows or events, and then the Px'th unit's value is used as the threshold to adjust other units' values.
 
 <DocumentationFork
   cloud={<Cloud />}

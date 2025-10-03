@@ -5,9 +5,11 @@ sidebar_label: Overview
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-04
+  date: 2025-09-18
 ---
 
 When using Statsig Warehouse Native, you configure metrics, experiments, and other schematized data objects that allow Statsig to perform analysis on top of your warehouse.
 
 This functions as a lightweight Semantic Layer, which can integrate neatly into popular Semantic Layer tools like Cube or in-house YAML-based stores. This section dives into the building blocks of Statsig's configuration layer.
+
+![Warehouse Native data flow architecture diagram](/img/whn/data_flow_whn.png)

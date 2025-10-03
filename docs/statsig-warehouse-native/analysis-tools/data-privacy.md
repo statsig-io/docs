@@ -6,7 +6,7 @@ description: Understand how Statsig uses your warehouse
 keywords:
   - owner:vm
 last_update:
-  date: 2024-08-07
+  date: 2025-09-18
 ---
 
 One advantage of using Statsig Warehouse Native is that user-level data comes directly from your source of truth without needing to be copied or leave your warehouse. This page walks through how Statsig interacts with your warehouse.

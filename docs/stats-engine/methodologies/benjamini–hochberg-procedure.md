@@ -5,14 +5,14 @@ slug: /stats-engine/methodologies/benjamini–hochberg-procedure
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-14
+  date: 2025-09-18
 ---
 
 ## What it is
 The Benjamini-Hochberg Procedure ("BH" procedure) is a statistical method that reduces the probability of false positives by adjusting the significance level for multiple comparisons. It is not as extreme as a [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction), because instead of controlling the chance of at least one false positive (Family Wise Error Rate), BH controls the expected value of false positives when the null hypothesis has been rejected (False Discovery Rate).
 
 Like with many other analysis settings, you can enable BH procedure for individual experiments (or configure global Experiment Settings to default it). 
-![image](https://github.com/user-attachments/assets/c865494e-0ae4-489c-a416-45848b4d10bc)
+![Benjamini-Hochberg procedure configuration interface](https://github.com/user-attachments/assets/c865494e-0ae4-489c-a416-45848b4d10bc)
 
 
 ## Methodology

@@ -1,0 +1,40 @@
+---
+title: iOS/tvOS/macOS Repo Migration Guide
+displayed_sidebar: api
+keywords:
+  - owner:andre
+last_update:
+  date: 2025-09-18
+---
+
+We renamed the iOS/macOS/tvOS repo from `ios-sdk` to `statsig-kit`
+
+### Motivation
+
+The Statsig Swift SDK repo used to live on `statsig-io/ios-sdk`. Since Xcode uses the repository name as the package name, it would use `ios-sdk`.
+This same repo name is used by other packages, like Spotify's, which caused a conflict for apps trying to import both SDKs.
+
+Given that this issue was blocking some customers from using Statsig, we decided to rename the repo. Thank you to everyone that reported the issue.
+
+## Migration Guide
+
+### Apps using Xcode
+
+> **Optional Migration**: The existing repo will continue working thanks to GitHub's redirect.
+
+![img](/img/ios-repo-migration-xcode.png)
+
+1. In Xcode, click on your project on the sidebar. That's usually the item on the root of the tree view.
+2. Choose your project under the "Project" section of the second sidebar
+3. Choose the "Package Dependencies" tab on the top
+4. Find Statsig's SDK row
+5. On the Location column, replace `https://github.com/statsig-io/ios-sdk.git` with `https://github.com/statsig-io/statsig-kit.git` 
+
+### Packages using Package.swift
+
+> **Required Migration**: GitHub's repo redirect doesn't work for packages using Package.swift
+
+1. Open your Package.swift file
+2. Replace `https://github.com/statsig-io/ios-sdk.git` with `https://github.com/statsig-io/statsig-kit.git`
+3. Replace `ios-sdk` with `statsig-kit`
+4. Build your project. If you get an error, build again at least once.

@@ -1,0 +1,95 @@
+---
+sidebar_label: Setup & Usage
+title: Visual Editor Setup & Usage
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+displayed_sidebar: cloud
+---
+
+## Summary
+
+Visual Editor v3 provides a simpler interface for point-and-shoot experiments. Different from previous versions, experiments are created in the Statsig Console, and edited directly on top of the page. Sidecar still relies on a javascript script tag, though the package name has changed. 
+
+## Prerequisites:
+
+### 1. Installing the Sidecar Script
+For experiments to take effect, you'll need to have the visual editor ("sidecar") script running on your website, on any page you'd like to experiment on:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar-v2-beta/dist/index.min.js?apikey=client-key" ></script>
+```
+
+Replace `client-key` with a client key from your Statsig project, which you can find at [Settings > Keys & Environments](https://console.statsig.com/api_keys).
+
+Most website builders also support the ability to add script tags on your website, like:
+[Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags?topics=site-settings),
+ [Wordpress](https://wordpress.com/go/website-building/how-to-properly-add-javascript-to-wordpress-3-top-methods/), 
+ [Wix](https://support.wix.com/en/article/embedding-custom-code-on-your-site), 
+ [Squarespace](https://support.squarespace.com/hc/en-us/articles/205815928-Adding-custom-code-to-your-site), 
+ [Weebly](https://weeblytutorials.com/embed-javascript-weebly).
+
+### 2. Installing the Chrome Extension (for editing)
+Additionally, to create edits for experiment variants - you'll need the new Statsig Visual Editor [Chrome Extension](https://chromewebstore.google.com/detail/statsig-sidecar-v3/mmgjfcbidnlghegclgpkgegpdhbopjhn) installed.
+
+You also need to be a project admin, or have permissions to access console API keys, to use all Sidecar functionality.
+
+## Creating an Experiment
+
+You now create experiments in the console, on the Create Experiment dialogue, by changing the experiment type to "Visual Editor". 
+
+![Create Visual Editor Experiment](/img/sidecarcreation.gif)
+
+## Setting up an Experiment
+
+### Metrics
+
+When you add the Statsig Visual Editor script to your website, it will automatically begin tracking events like clicks, page views, Core Web Vitals, and more. We call these [autocapture](/webanalytics/autocapture/) metrics. You can add any of these metrics to your experiment, or customize them to be filtered to certain attributes (e.g. clicking a certain button, visiting a certain page) by creating a new metric in the Metrics Catalogue tab, see [Metrics](https://docs.statsig.com/metrics/101) for more info. Add at least one metric to your experiment before continuing.
+
+### URL Filters
+
+Often, you'll want an experiment to only be evaluated on some subset of the pages on your website. You can configure which URLs your experiment should run on by: 
+* **All Pages** - anywhere Sidecar client is installed
+* **Contains** - The page URL must contain the value entered, for example "pricing"
+* **Exact Match** - The page URL must match the exact value specified here. 
+* **Regex** - Regular expressions, for example `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/
+
+![URL Targeting](/img/sidecarv3urlfilters.png)
+
+### Audiences
+
+Statsig will also infer information about each user - like their country, device and browser type, a unique identifier called StableID, and more. You can target based on any of these attributes with the "audiences" targeting section. You can also target on custom attributes added to the Window.StatsigUser object, though this requires a line or two of code.
+
+### Visual Editor Starting URL
+
+Before you begin editing experiment variants, you'll also need to add a Visual Editor URL, where the editor will open when you first begin editing. Add a URL, being sure it starts with "https://", then click save and you're ready to begin editing.
+
+To setup an experiment - enter your metrics, any targeting (on URL, or other user attributes per the [StatsigUser object](/concepts/user)), and the URL you'd like to start editing your experiment from (make sure to start it with "https://"). Click save, then click the "Open in Editor" button, at which point you'll see an editor bar appear along the bottom of the page:
+
+![Visual Editor Page](/img/sidecarv3openxp.gif)
+
+## Making your edits
+
+By clicking the "Element selector" or pressing command + E, you enable the element editor, which provides a preset set of editable attributes depending on the element you select, for example:
+- *Text:* Text, Font attributes
+- *Button:* Text, target link
+- *Image:* Image source
+
+Plus all elements offer the opportunity to rearrange or hide attributes.
+
+![Visual Editor Editor](/img/sidecarv3editor.png)
+
+## Starting your experiment
+
+By clicking save in the bottom right hand side of the visual editor, your changes will be saved to the console. If you return to the page in console and refresh, your changes should be listed. You can preview your experiment by clicking the three dots in the variant table. When you're confident with your changes, you can go ahead and launch the experiment by clicking "Start" in the top right hand corner. After this, your experiment will begin appearing for end users and your metrics will be collected.
+
+
+## Beta Release Details
+
+As of September 2025, Sidecar v3 is in an open Beta release. Feel free to try the product, and share any feedback you have in our [Slack](https://statsig.com/slack)
+
+### Advanced Script Setup
+Add these query string parameters to the Sidecar script URL for additional controls over Sidecar client behavior
+- `&reduceflicker=0` will disable the brief hiding of the `<body>` tag while the client initializes
+- `&autocapture=0` will disable event autocapture

@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-09-25
+  date: 2025-09-18
 ---
 
 To integrate feature flags into a Ruby application using the Statsig SDK, you'll start by setting up a simple Ruby "Hello World" app, then integrate Statsig to manage your feature flags. 
@@ -84,7 +84,7 @@ To integrate feature flags into a Ruby application using the Statsig SDK, you'll
    - Configure targeting rules as needed.
    - Save your feature flag.
 
-   ![image](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
+   ![Feature flag creation interface](https://github.com/statsig-io/.github/assets/74588208/08e67ba8-b148-4b53-8a7e-ab17e3db4346)
 
 5. **Toggle Your Feature Flag**:
    - You can now enable or disable your feature flag from the dashboard and configure it as needed.

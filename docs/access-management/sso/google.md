@@ -4,7 +4,7 @@ title: SSO with Google as your IdP
 keywords:
   - owner:shubham
 last_update:
-  date: 2023-10-12
+  date: 2025-09-18
 ---
 ## Requirements
 

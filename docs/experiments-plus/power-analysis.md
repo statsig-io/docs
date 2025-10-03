@@ -5,7 +5,7 @@ slug: /experiments-plus/power-analysis
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-13
+  date: 2025-09-18
 ---
 
 ### What is Power Analysis?
@@ -40,6 +40,10 @@ Power Analysis Calculator can be accessed from the tools menu. It's also linked 
 Your past power analysis calculations will be available to view in the "Past Analyses" tab.
 
 <img width="1200" alt="Screenshot 2025-03-12 at 8 04 31 AM" src="https://github.com/user-attachments/assets/82a91aa4-dd3a-4d09-aca4-2de8b43f49e8" />
+
+If you want to attach an existing power analysis to an experiment, that option is available via the dropdown menu on an existing power analysis.
+
+![Power analysis attachment interface](/img/attach_power_analysis_to_experiment.png)
 
 ## Population Types
 
@@ -79,7 +83,7 @@ When looking at the results, you can modify certain inputs like "# of Groups", "
 
 If you already know the available allocation, fixed allocation allows you to understand how the length of the experiment impacts the MDE. The example below shows how the MDE for a page load metric shrinks over time in an experiment with 100% allocation.  After 1 week we expect 5200 users per group and an MDE of 21.6%, by week 4 the number of users per group should increase to ~48k and the MDE is reduced to 7%.
 
-   ![image](https://github.com/statsig-io/docs/assets/90343952/c3b5e22c-951e-4ef1-84a9-0b935a2e18e8)
+   ![Fixed allocation analysis results chart](https://github.com/statsig-io/docs/assets/90343952/c3b5e22c-951e-4ef1-84a9-0b935a2e18e8)
 
 ### Fixed MDE Analysis
 
@@ -87,11 +91,11 @@ If you already know the effect size you want to measure, fixed MDE analysis allo
 
 The results show the minimum number of weeks needed to reach this MDE for different allocation percentages.  In the example below, the experiment should run for at least 2 weeks with 65% allocation or 4 weeks with 50% allocation.  There's no way achieve the desired MDE in 1 week, as this would require more than 100% allocation (more users than we expect to see in one week).
 
-   ![image](https://github.com/statsig-io/docs/assets/90343952/494a847a-89a0-4487-86e5-a4d453e04fb1)
+   ![Fixed MDE analysis results table](https://github.com/statsig-io/docs/assets/90343952/494a847a-89a0-4487-86e5-a4d453e04fb1)
 
 ## Advanced Options
 
-   ![image](https://user-images.githubusercontent.com/90343952/145122364-02af83d7-ea3d-4b24-8a10-506c1f227f8b.png)
+   ![Advanced power analysis options interface](https://user-images.githubusercontent.com/90343952/145122364-02af83d7-ea3d-4b24-8a10-506c1f227f8b.png)
 
 
 Advanced settings to customize the analysis:
@@ -107,7 +111,7 @@ Advanced settings to customize the analysis:
 
 The relative percentage MDE for a given metric *X* is computed using the following equation:
 
-![image](https://user-images.githubusercontent.com/90343952/220699401-79cfc732-e7c8-431a-8a3e-72f1d83e1339.png)
+![MDE calculation formula](https://user-images.githubusercontent.com/90343952/220699401-79cfc732-e7c8-431a-8a3e-72f1d83e1339.png)
 
 * *X-bar* is the mean metric value across all users 
 * *var(X)* is the population variance of the metric  
@@ -115,4 +119,7 @@ The relative percentage MDE for a given metric *X* is computed using the followi
 * *Z<sub>1-&beta;</sub>* is the standard Z-score for the selected power.  Typically *1-&beta; = 0.8* and *Z<sub>1-&beta;</sub> = 0.84*
 * *Z<sub>1-&alpha;/2</sub>* is the standard Z-score for the selected significance level in a 2-sided test.  Typically *&alpha; = 0.05* and *Z<sub>1-&alpha;/2</sub> = 1.96*
 
-**Note:** This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.  For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel. 
+:::note
+This calculation relies on statistics computed across the entire user base of the project.  It does not account for the fact that experiments targeting only a subset of users may have different summary statistics for their key metrics.
+For example, the metric mean and variance can be different in an experiment that targets only Android users or one that exposes users at the lower part of an acquisition funnel.
+:::

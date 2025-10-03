@@ -1,10 +1,10 @@
 ---
-sidebar_label: Get Started
-title: Get Started with the Statsig SDKs
+sidebar_label: Get started with SDKs
+title: Get started with the Statsig SDK
 keywords:
   - owner:jinayoon
 last_update:
-  date: 2025-04-07
+  date: 2025-09-18
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
@@ -41,20 +41,23 @@ export const toc = Builder.toc
 
 This quickstart will guide you through quickly installing the Statsig SDK in a client app. If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/getting-started) or read about choosing between [client or server SDKs](/sdks/client-vs-server).
 <Tabs
-  defaultValue="react"
+  defaultValue="js"
   groupId="install-language"
   values={[
-    {label: <span><img src='/img/sdk/sdk_react.png' alt="React" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />React</span>, value: 'react'},
     {label: <span><img src='/img/sdk/sdk_js.png' alt="JavaScript" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />JS snippet</span>, value: 'js'},
+    {label: <span><img src='/img/sdk/sdk_react.png' alt="React" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />React</span>, value: 'react'},
     {label: <span><img src='/img/sdk/sdk_python.png' alt="Python" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />Python</span>, value: 'python'},
     {label: <span><img src='/img/sdk/sdk_node.png' alt="Node" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />Node</span>, value: 'node'},
     {label: <span>
-      <img src='/img/sdk/sdk_swift.png' alt="iOS" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
-      <img src='/img/sdk/sdk_android.png' alt="Android" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
-      <img src='/img/sdk/sdk_flutter.svg' alt="Flutter" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
-      <img src='/img/sdk/sdk_rust.svg' alt="Rust" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
-      <img src='/img/sdk/sdk_ruby.png' alt="Ruby" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
-      ... +24 more
+      <span className="desktop-only">
+        <img src='/img/sdk/sdk_swift.png' alt="iOS" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+        <img src='/img/sdk/sdk_android.png' alt="Android" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+        <img src='/img/sdk/sdk_flutter.svg' alt="Flutter" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+        <img src='/img/sdk/sdk_rust.svg' alt="Rust" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+        <img src='/img/sdk/sdk_ruby.png' alt="Ruby" style={{ height: '16px', marginRight: '8px', verticalAlign: 'middle' }} />
+        +24 more SDKs
+      </span>
+      <span className="mobile-only">+24 SDKs</span>
     </span>, value: 'more'},
   ]}>
 
@@ -65,31 +68,58 @@ This quickstart will guide you through quickly installing the Statsig SDK in a c
     npm install @statsig/react-bindings
     ```
 
-  ### 2. Import the StatsigProvider
-  In your App Router, import the StatsigProvider.
-
-  ```tsx
-  import StatsigProvider from "@statsig/react-bindings";
-  ```
-
-  ### 3. Wrap child components
+  ### 2. Wrap child components
   Next, update your app's default function so that the StatsigProvider wraps around all child components.
 
   ```tsx
+  import { StatsigProvider } from "@statsig/react-bindings";
+
   export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
       <StatsigProvider 
-        sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+        sdkKey={"client-MY-STATSIG-CLIENT-KEY"} // 
         user={{ userID: "quickstart-user" }}
-        }}>
+        loadingComponent={<div>Loading...</div>}>
         {children}
       </StatsigProvider>
     );
   }
   ```
 
-  ### 4. Add client key
+  ### 3. Add client key
   Create a client API key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_CLIENT_KEY>` in the code snippet from the previous step.
+
+  ### 4. Basic Usage
+
+  <Tabs>
+    <TabItem value="Check a Gate">
+    First, create a gate on the [Feature Gates page](https://console.statsig.com/gates) in console, then check it in-code:
+    ```jsx
+    const { client } = useStatsigClient();
+    return (
+      <div>Gate is {client.checkGate('check_user') ? 'passing' : 'failing'}.</div>
+    );
+    ```
+    </TabItem>
+    <TabItem value="Get an Experiment Value">
+    First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
+    ```jsx
+    const { client } = useStatsigClient();
+    const experiment = client.getExperiment('my_experiment_name');
+
+    return (
+      <div>Headline Parameter: {experiment.get('my_experiment_parameter_name', 'fallback_value')}.</div>
+    );
+    ```
+    </TabItem>
+    <TabItem value="Log an Event">
+    You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
+    ```jsx
+    const { client } = useStatsigClient();
+    return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
+    ```
+    </TabItem>
+  </Tabs>
 
   ### 5. Next steps
   Congratulations! You've successfully set up the Statsig SDK in React. Continue on to the tutorials, or jump in to the full [Next.js](/client/javascript-sdk/next-js) or [React](/client/javascript-sdk/react) SDK libraries.
@@ -100,7 +130,7 @@ This quickstart will guide you through quickly installing the Statsig SDK in a c
     The easiest way to get up and running is by adding the Statsig JavaScript snippet to your website. 
     
     ### 1. Paste the code snippet
-    In the `<head>` section of your website, paste the following code snippet.
+    In the `<head>` section of your website, paste the following code snippet: 
 
     ```html
     <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=<REPLACE_WITH_YOUR_CLIENT_KEY>"></script>
@@ -109,12 +139,44 @@ This quickstart will guide you through quickly installing the Statsig SDK in a c
   ### 2. Add client key
   Create a client API key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_CLIENT_KEY>` in the code snippet from the previous step.
 
-   ### 3. Next steps
-   Congratulations! You've set up the Statsig JavaScript snippet. Once installed, you'll be able to:
-    - Start [recording events](/webanalytics/overview).
-    - Watch [session replays](/session-replay/overview).
-    - Run [experiments](/experiments-plus).
-    - Use [feature flags](/feature-flags/overview).
+  ### 3. Basic usage
+  <Tabs>
+    <TabItem value="Check a Gate">
+    First, create a gate on the [Feature Gates page](https://console.statsig.com/gates) in console, then check it in-code:
+    ```jsx
+    window.Statsig.instance().checkGate("my_feature_gate_name");
+    ```
+    
+    :::note
+    You'll want to wait for the SDK to initialize before checking a gate to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    :::
+    </TabItem>
+    <TabItem value="Get an Experiment Value">
+    First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
+    ```jsx
+    window.Statsig.instance().getExperiment("my_experiment_name").get('my_experiment_parameter_name');
+    ```
+    
+    :::note
+    You'll want to wait for the SDK to initialize before getting an experiment to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
+    :::
+    </TabItem>
+    <TabItem value="Log an Event">
+    You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
+    ```jsx
+    window.Statsig.instance().logEvent("my_checkout_event_name", "event_value_item_1234", {"event_metadata": "my_metadata"})
+    ```
+    </TabItem>
+  </Tabs>
+
+  ### 4. Next steps
+  Congratulations! You've set up the Statsig JavaScript snippet. You can now start:
+  - Start [recording events](/webanalytics/overview)
+  - Watch [session replays](/session-replay/overview)
+  - Run [experiments](/experiments-plus)
+  - Use [feature flags](/feature-flags/overview)
+
+  See the [Javascript SDK reference](/client/javascript-sdk) for more info.
   </TabItem>
   <TabItem value="python">
   ### 1. Install Statsig packages
@@ -139,8 +201,39 @@ statsig.shutdown().wait()
 ### 3. Add server secret key
 Create a server secret key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>` in the code snippet from the previous step.
 
-### 4. Next steps
-Congratulations! You've successfully set up the Statsig SDK in Python. Continue on to the tutorials, or jump in to the full [Python](/server-core/python-core) SDK library.
+### 4. Basic Usage
+<Tabs>
+    <TabItem value="Check a Gate">
+    First, create a gate on the [Feature Gates page](https://console.statsig.com/gates) in console, then check it in-code:
+    ```python
+    user_object = StatsigUser(user_id="123", email="testuser@statsig.com") //add any number of other attributes
+    gate_value = statsig.check_gate(user_object, "my_feature_gate_name"):
+    ```
+    </TabItem>
+    <TabItem value="Get an Experiment Value">
+    First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
+    ```python
+    user_object = StatsigUser(user_id="123", email="testuser@statsig.com"
+    my_experiment_object = statsig.get_experiment(user_object, "my_experiment_name")
+    my_experiment_parameter_value = my_experiment_object.get_string('my_experiment_parameter_name')
+    ```
+    </TabItem>
+    <TabItem value="Log an Event">
+    You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
+    ```python
+    user_object = StatsigUser(user_id="123", email="testuser@statsig.com"
+
+    statsig.log_event(
+      user=user_object,
+      event_name="my_checkout_event_name",
+      value="SKU_12345"
+    )
+    ```
+    </TabItem>
+  </Tabs>
+
+### 5. Next steps
+Congratulations! You've set up the Statsig SDK in Python. Continue on to our tutorials, or jump in to the full [Python SDK Reference.](/server-core/python-core)
 
   </TabItem>
   <TabItem value="node">
@@ -166,7 +259,38 @@ await statsigWithOptions.initialize();
 ### 3. Add server secret key
 Create a server secret key in the [Statsig console Settings](https://console.statsig.com/api_keys). Copy and paste it to replace `<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>` in the code snippet from the previous step.
 
-### 4. Next steps
+### 4. Basic Usage
+<Tabs>
+  <TabItem value="Check a Gate">
+  First, create a gate on the [Feature Gates page](https://console.statsig.com/gates) in console, then check it in-code:
+  ```js
+  const userObject = new StatsigUser({ userID: "123", email="testuser@statsig.com" });
+  const is_gate_enabled = statsig.checkGate(userObject, "my_feature_gate_name"):
+  ```
+  </TabItem>
+  <TabItem value="Get an Experiment Value">
+  First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
+  ```js
+  const userObject = new StatsigUser({ userID: "123", email="testuser@statsig.com" });
+  const myExperimentObject = statsig.getExperiment(userObject, "my_experiment_name")
+  const myExperimentParameterValue = myExperimentObject.getValue('my_experiment_parameter_name')
+  ```
+  </TabItem>
+  <TabItem value="Log an Event">
+  You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
+  ```js
+  userObject = StatsigUser(user_id="123", email="testuser@statsig.com"
+
+  statsig.logEvent(
+    userObject,
+    "my_checkout_event_name",
+    "SKU_12345" //value for the event
+  );
+  ```
+  </TabItem>
+</Tabs>
+
+### 5. Next steps
 Congratulations! You've successfully set up the Statsig SDK in Node.js. Continue on to the tutorials, or jump in to the full [Node.js](/server-core/node-core) SDK library.
 </TabItem>
   <TabItem value="more">

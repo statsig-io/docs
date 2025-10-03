@@ -1,0 +1,16 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var experiment = statsig.GetExperiment(user, "button_color_test");
+
+var buttonColor = experiment.Get<string>("color", "blue");
+var fontSize = experiment.Get<int>("font_size", 14);
+var showBorder = experiment.Get<bool>("show_border", true);
+
+Console.WriteLine($"Experiment Name: {experiment.Name}");
+Console.WriteLine($"Group Name: {experiment.GroupName}");
+Console.WriteLine($"Rule ID: {experiment.RuleID}");
+Console.WriteLine($"Button Color: {buttonColor}");
+```

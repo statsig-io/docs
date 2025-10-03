@@ -5,7 +5,7 @@ slug: /feature-flags/test-gate
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-03-27
+  date: 2025-09-18
 ---
 
 
@@ -21,11 +21,11 @@ To validate your feature gate using the built-in Test Gate tool,
 - Select the feature gate that you want to validate
 - At the bottom of the page, the **Test Gate** window that lists all properties available in the rules you have created as shown below.
 
-![image](https://user-images.githubusercontent.com/1315028/129104501-9e7349ae-31fe-47ea-97da-0520fd3d7e1b.png)
+![Test Gate interface showing property fields](https://user-images.githubusercontent.com/1315028/129104501-9e7349ae-31fe-47ea-97da-0520fd3d7e1b.png)
 
 - Click in the window and edit the value of the Email property to include the users that you want to target. For example, type jdoe@example.com as shown below. When email domain matches “@example.com”, the feature gate check succeeds and the window shows a PASS. Otherwise, it fails and the window shows a FAIL.
 
-![image](https://user-images.githubusercontent.com/1315028/129104434-0f09087d-80da-4a62-84ac-c51e607e72a1.png)
+![Test Gate showing PASS result for email validation](https://user-images.githubusercontent.com/1315028/129104434-0f09087d-80da-4a62-84ac-c51e607e72a1.png)
 
 ## Option 2: Use the Statsig Test App
 To validate your feature gate using the Test App, 
@@ -34,7 +34,7 @@ To validate your feature gate using the Test App,
 - Select the feature gate that you want to validate
 - At the bottom of the page, click on **Check Gate in Test App** at the top right of the Test Gate window as shown below by the red arrow; this will open a new browser window with a prototype Javascript client that initializes and calls the Statsig `checkGate` API. 
 
-![image](https://user-images.githubusercontent.com/1315028/138148684-581bb8d5-86ba-4aef-b24d-44e540fa91f1.png)
+![Check Gate in Test App button location](https://user-images.githubusercontent.com/1315028/138148684-581bb8d5-86ba-4aef-b24d-44e540fa91f1.png)
 
 ## Option 3: Use the Diagnostics tab
 To validate your feature gate using a live log stream,  
@@ -44,10 +44,10 @@ To validate your feature gate using a live log stream,
 - Click on the **Diagnostics** tab (next to the Setup tab)
 - Scroll down to the **Exposure Stream** panel, where you will see a live stream of gate check events as they happen as shown below
 
-![image](https://user-images.githubusercontent.com/1315028/138149819-5082d7e5-f7ee-42e8-b1ac-f57d9732e68f.png)
+![Exposure Stream panel showing live gate check events](https://user-images.githubusercontent.com/1315028/138149819-5082d7e5-f7ee-42e8-b1ac-f57d9732e68f.png)
 
 - In the **Event Count by Group panel** as shown below, you can also validate that your application is recording events as expected for users who are exposed to the new feature (or not). Specifically, if you've started to record a new event type to test the impact of a new feature, you can also validate that these events are starting to show as more users are exposed to the new feature.  
 
-![image](https://user-images.githubusercontent.com/1315028/141017409-f750c1c6-4c54-4140-bc4d-a3b83f1568fc.png)
+![Event Count by Group panel showing feature exposure metrics](https://user-images.githubusercontent.com/1315028/141017409-f750c1c6-4c54-4140-bc4d-a3b83f1568fc.png)
 
 

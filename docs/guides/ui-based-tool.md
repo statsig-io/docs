@@ -4,7 +4,7 @@ title: UI-Based Tool
 keywords:
   - owner:oliver
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 You can follow this guide to use Statsig's built in LaunchDarkly migration tool. Please note that this UI-based tool only imports the "production" environment at the moment.
 
@@ -17,16 +17,16 @@ You can follow this guide to use Statsig's built in LaunchDarkly migration tool.
 ## **How it works[](/guides/migrate-from-launchdarkly#how-it-works)**
 
 1. You will be prompted to Import Feature Gates if you don't have any feature gates in your project.
-![image](/img/ui-based-tool1.png)
+![Import Feature Gates prompt](/img/ui-based-tool1.png)
 
 2. Select LaunchDarkly as the platform you want to migrate from.
-![image](/img/ui-based-tool2.png)
+![Platform selection interface](/img/ui-based-tool2.png)
 
 3. Enter your LaunchDarkly Project Key and API Key/access token.
-![image](/img/ui-based-tool3.png)
+![LaunchDarkly credentials input form](/img/ui-based-tool3.png)
 
 4. Preview the migration summary. We'll highlight what gates we can and can't migrate. Gates we don't migrate include gates with segments (coming soon) and gates with non-Boolean flags.
-![image](/img/ui-based-tool4.png)
+![Migration summary preview screen](/img/ui-based-tool4.png)
 
 5. Finish migration of the gates. All your migrated gates will be tagged "Migrated" so you can identify them.
-![image](/img/ui-based-tool5.png)
+![Migration completion confirmation](/img/ui-based-tool5.png)

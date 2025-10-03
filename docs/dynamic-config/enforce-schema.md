@@ -5,7 +5,7 @@ slug: /dynamic-config/enforce-schema
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-07-29
+  date: 2025-09-18
 ---
 
 Dynamic configs support schemas using [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) syntax to enforce a common convention between the return values for each rule you'll set.

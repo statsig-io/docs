@@ -1,0 +1,20 @@
+```go
+user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+
+// You can disable exposure logging for this specific check
+dynamicConfigOptions := &statsig.GetDynamicConfigOptions{DisableExposureLogging: false}
+
+dynamic_config := "a_config"
+config := s.GetDynamicConfig(*user, dynamic_config, dynamicConfigOptions)
+
+// Access the config values
+str_val := config.GetString("str_val", "default_str_val") // returns String
+int_val := config.GetNumber("number_val", 100) // returns float64
+bool_val := config.GetBool("bool_val", false) // returns bool
+interface_val := config.GetSlice("interface_val", "default_interface_val") // returns interface{}
+map_val := config.GetMap("map_val", "default_map_val") // returns map[string]interface{}
+
+// The config object also provides metadata about the evaluation
+fmt.Println(config.RuleID) // The ID of the rule that served this config
+fmt.Println(config.IDType) // The type of the evaluation (experiment, config, etc)
+```

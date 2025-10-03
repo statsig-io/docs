@@ -5,7 +5,7 @@ slug: /server/concepts/forward_proxy
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-04
+  date: 2025-09-18
 ---
 
 
@@ -53,10 +53,7 @@ While providing this capability, the forward proxy also provides other benefits 
 
 ## Integration with SDK 
 :::info
-NOTE:  
-
-`Java/Kotlin`, `Python`, and `NodeJS` SDKs have beta versions which support a full integration with Statsig Forward Proxy including GRPC Mode integration with Statsig Forward Proxy.
-For other server sdks, there is no support on full integration yet, you can override download_config_spec api in StatsigOptions in order to integrate. You should use carefully and consult us. 
+`Legacy Java/Kotlin`, `Legacy Python`, `Python Server Core` and `Node Server Core` SDKs provide the option for Forward Proxy integration with GRPC streaming. For other server SDKs, you can integrate with the Forward Proxy via HTTP by overriding the initialize endpoints in StatsigOptions. Feel free to consult us in [Slack](https://statsig.com/slack) on this approach.
 :::
 You can now configure SDK network using different network protocol to integrate with Statsig Forward Proxy for different endpoints. 
 There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can currently configure the download_config_specs to use the proxy. We are actively developing the latter two.

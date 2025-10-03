@@ -14,7 +14,7 @@ External data store for Statsig values.
   When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
 
 - **`enable_id_lists`**: Option\<bool\>
-  Enable/disable ID list functionality.
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
 - **`disable_user_agent_parsing`** `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.

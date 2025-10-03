@@ -5,7 +5,7 @@ sidebar_label: Configuring Experiments
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
 Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to existing assignment data from your warehouse. In the other, you'll configure the experiment in Statsig, use the Statsig SDK, and then analyze the resulting exposures in your warehouse.
@@ -21,7 +21,7 @@ There's two types of experiments in Statsig Warehouse Native:
 - Analyze: these are for 3rd-party or in-house exposure sources
 - Assign & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
+![Experiment type selection interface](https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3)
 
 Next, you'll give the experiment a name, specify your hypothesis, and pick the experiment from your exposure sources. You can sync sources
 if your exposure isn't loaded in the dropdown.
@@ -55,10 +55,18 @@ Statsig has many settings you can configure in your experiment. Defaults for the
 - Whether to apply [Sequential Testing](/experiments-plus/sequential-testing) adjustments
 - Allocation Duration
   - You can choose to stop enrolling new users into the experiment after X days
-  - Note that you need to set up [Persistent Assignment](/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+  
+:::note
+You need to set up [Persistent Assignment](/client/concepts/persistent_assignment) to retain already-enrolled users to stay in the same group
+:::
 - Cohort Duration
   - You can choose to specify a timeline for collecting metric data
+  - You can choose to only include units with a completed duration, so units with incomplete data will not be included in pulse
 - Whether to allow cohort metrics to mature after experiment end
+  
+:::note
+Once you configure this value, it will overwrite the choice for `only include units with a completed duration` (see above)
+:::
 - [ID stitching](/statsig-warehouse-native/features/id-resolution)
 - Whether and how to apply [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction)
 - Default Confidence Intervals
@@ -85,4 +93,6 @@ For a Statsig-configured experiment where you're using the Statsig SDKs to gener
 
 Under the covers, if the # of exposures on an experiment is < 1 million we perform a just-in-time update of exposures in your warehouse when Pulse is loaded.
 
-Note : We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environments or from overrides since these are not used in analysis.
+:::note
+We only write to your warehouse exposure information that will be used for experiment analysis. We will not write exposures in pre-production environments or from overrides since these are not used in analysis.
+:::

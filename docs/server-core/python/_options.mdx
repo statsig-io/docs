@@ -29,7 +29,7 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Maximum number of events to queue before forcing a flush.
 
 - **`enable_id_lists`**: `Optional[bool]`  
-  Enable/disable BIG ID list functionality (IDList > 1000) 
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 
 - **`disable_user_agent_parsing`** `Optional[bool]`
   Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
@@ -62,10 +62,10 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 - **`output_log_level`**: `Optional[str]`  
   Controls the verbosity of SDK logs.
 
-- **`persistent_storage`**: `Optional[PersistentStorageBaseClass]`  
+- **`persistent_storage`**: `Optional[PersistentStorage]`  
   Adapter / Interface to use persistent assignment within SDK. [More details](https://docs.statsig.com/server/concepts/persistent_assignment/)
 
-- **`observability_client`**: `Optional[ObservabilityClientBaseClass]`  
+- **`observability_client`**: `Optional[ObservabilityClient]`  
   Adapter to listen monitor the health of SDK. See [details](https://docs.statsig.com/sdk_monitoring/)
 
 - **`data_store`**: `Optional[DataStore]`  
@@ -81,7 +81,12 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
   Compression method for exposure logging. Default: "gzip". Options: "gzip", "dictionary"
 
 - **`proxy_config`**: `Optional[ProxyConfig]`  
-  Proxy configuration for network requests. Includes proxy_host, proxy_port, proxy_auth, and proxy_protocol.
+  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
+  - `proxy_host`: Optional string specifying the proxy server host
+  - `proxy_port`: Optional number specifying the proxy server port
+  - `proxy_auth`: Optional string for proxy authentication (format: "username:password")
+  - `proxy_protocol`: Optional string specifying the protocol (e.g., "http", "https")
+
 
 ---
 
@@ -90,11 +95,20 @@ The `statsig.initialize()` method takes an optional parameter `options` to custo
 ```python
 from statsig_python_core import StatsigOptions
 
+# Define proxy configuration if needed
+proxy_config = {
+    "proxy_host": "proxy.example.com",
+    "proxy_port": 8080,
+    # "proxy_auth": "username:password",  # Uncomment if authentication is needed
+    "proxy_protocol": "http"
+}
+
 # Initialize StatsigOptions with custom parameters
 options = StatsigOptions()
 options.environment = "development"
 options.init_timeout_ms = 3000
 options.disable_all_logging = False
+options.proxy_config = proxy_config
 
 # Pass the options object into statsig.initialize()
 statsig = Statsig("secret-key", options)

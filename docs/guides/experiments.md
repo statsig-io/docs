@@ -4,7 +4,7 @@ title: Experiment Types on Statsig
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
 This guide provides a quick overview of  experiment types we've seen people run on Statsig. 

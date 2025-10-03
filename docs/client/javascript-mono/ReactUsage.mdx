@@ -5,12 +5,14 @@ slug: /client/javascript-sdk/react
 keywords:
   - owner:brock
 last_update:
-  date: 2025-01-15
+  date: 2025-08-20
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-import { FeaturePillList } from '@site/src/components/FeaturePillList';
+import { FeaturePillList } from "@site/src/components/FeaturePillList";
+
+import SampleTipText from "./_sampleApp.mdx";
 
 import {
   SDKDocsBuilder,
@@ -62,6 +64,8 @@ export const ReactTesting = _reactTesting;
 import * as _reactSessionReplay from "./react/_reactSessionReplay.mdx";
 export const ReactSessionReplay = _reactSessionReplay;
 
+import * as UsingPersistentValues from "./react/_usingPersistentValues.mdx";
+
 export const Builder = SDKDocsBuilder({
   sections: [
     [
@@ -78,21 +82,25 @@ export const Builder = SDKDocsBuilder({
     [ReactHooks, {}],
     [ReactTesting, {}],
     [ReactSessionReplay, {}],
+    [UsingPersistentValues, {}],
   ],
 });
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <FeaturePillList
-    features={[
-      { name: "Feature Gates", link: "#feature-gates" },
-      { name: "Experiments", link: "#experiments" },
-      { name: "Dynamic Configs", link: "#dynamic-configs" },
-      { name: "Layers", link: "#layers" },
-      { name: "Event Logging", link: "#event-logging" },
-      { name: "Session Replay", link: "#session-replay" },
-      { name: "Auto Capture", link: "#autocapture" },
-    ]
-  }
+  features={[
+    { name: "Feature Gates", link: "#feature-gates" },
+    { name: "Experiments", link: "#experiments" },
+    { name: "Dynamic Configs", link: "#dynamic-configs" },
+    { name: "Layers", link: "#layers" },
+    { name: "Parameter Stores", link: "#parameter-stores" },
+    { name: "Event Logging", link: "#event-logging" },
+    { name: "Session Replay", link: "#session-replay" },
+    { name: "Auto Capture", link: "#autocapture" },
+  ]}
 />
+
+<SampleTipText />
+
 <>{Builder.result}</>

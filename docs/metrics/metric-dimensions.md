@@ -16,7 +16,7 @@ Statsig enables you to define up to four custom dimensions for an event (one via
 
 Providing custom dimensions with logged events allows you to break down the impact on the total **add-to-cart** events by category in Pulse as shown below. This enables you to zero in on the category that's most impacted by your experiment.
 
-![image](https://user-images.githubusercontent.com/1315028/162332284-259ea614-8cb6-4c9d-aebd-3e41f9092a64.png)
+![Pulse results breakdown by product category](https://user-images.githubusercontent.com/1315028/162332284-259ea614-8cb6-4c9d-aebd-3e41f9092a64.png)
 
 Statsig recommends keeping the number of distinct dimensions in your logging less than 8. This is because tracking dimensions involves additional computational and storage resources, so we prioritize notable dimensions that make up a significant portion of your traffic. As a rule of thumb, we track dimensions that make up >5% of your total event volume. We don't track lower frequency dimensions since they generally have larger degrees of statistical noise and wider confidence intervals. We will bucket them in an "Other" bucket.
 

@@ -4,7 +4,7 @@ title: Java Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2025-01-31
+  date: 2025-09-18
 ---
 
 import {
@@ -29,7 +29,8 @@ import {
   PersistentStorage,
   DataStore,
   OutputLogger,
-  ObservabilityClient
+  ObservabilityClient,
+  FieldsNeededMethods
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -53,6 +54,8 @@ import CoreVsLegacyContent from "./java/_core_vs_legacy.mdx";
 import SupportedCombinationsContent from "./java/_supported_combinations.mdx";
 import ExampleProgramContent from "./java/_example.mdx";
 import ObservabilityClientContent from "./java/_observability_client.mdx";
+import SharedInstanceSnippet from "./java/_sharedInstance.mdx";
+import DataStoreContent from "./java/_data_store.mdx";
 
 
 export const Builder = SDKDocsBuilder({
@@ -81,6 +84,7 @@ export const Builder = SDKDocsBuilder({
         getConfig: <GetConfig />,
         logEvent: <LogEvent />,
         paramStores: <ParamStores />,
+        sharedInstance: <SharedInstanceSnippet />,
         hideAsyncDisclaimer: true,
       },
     ],
@@ -90,7 +94,7 @@ export const Builder = SDKDocsBuilder({
     [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
     [LocalOverrides, { snippet: <OverridesSnippet />,},],
     [PersistentStorage, { }],
-    [DataStore, { }],
+    [DataStore, { content: <DataStoreContent /> }],
     [OutputLogger, { }],
     [ObservabilityClient, { content: <ObservabilityClientContent /> }],
     [FAQ, { 
@@ -105,6 +109,7 @@ export const Builder = SDKDocsBuilder({
       </> 
     }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
+    [FieldsNeededMethods, {}],
   ]
 })
 

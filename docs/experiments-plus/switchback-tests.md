@@ -5,7 +5,7 @@ slug: /experiments-plus/switchback-tests
 keywords:
   - owner:vm
 last_update:
-  date: 2024-05-09
+  date: 2025-09-18
 ---
 
 # What is Switchback Testing? 
@@ -100,6 +100,10 @@ There are a few different ways to define targeting, namely-
 
 **ID Type** lets you specify an ID type to randomize across, e.g. choosing a custom ID such as CityID will automatically randomize different CityIDs across Treatment/ Control over the course of the different switchback windows. This is useful if you have a very large or dynamic number of experiment units you want to randomize across over the course of the experiment. 
 
+:::info
+Randomized bucketing is an advanced feature, please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
+
 ![Screen Shot 2023-10-04 at 11 44 44 AM](https://github.com/statsig-io/docs/assets/101903926/3c79d1c1-8b15-401c-9635-6b3d4b08d416)
 
 Depending on which bucketing method you've chosen, the **Schedule** section of experiment setup enables you to configure-
@@ -114,12 +118,13 @@ Depending on which bucketing method you've chosen, the **Schedule** section of e
 
 Burn-in/ burn-out periods enable you to define periods at both the beginning and end of your switchback windows to discard exposures from analysis. This is typically leveraged when there are risks of “bleed over effect” from the previous treatment while a population is switching between test and control.
 
-# Reading Results 
+## Reading Results 
 
 Both Diagnostics and Pulse metric lifts results for Switchback tests will look and feel like Statsig’s traditional A/B tests, with a few modifications- 
 
 - **No hourly Pulse-** At the beginning of a traditional A/B/n experiment on Statsig, you can start to see hourly Pulse results flow through within ~10-15 minutes of experiment start. Given in a Switchback you will only see either *all* Test or *all* Control exposures right at experiment start, we have disabled Hourly Pulse until you have a meaningful amount of data. However, in lieu of Hourly Pulse you can still leverage the more real-time **Diagnostics** tab to verify checks are coming in and bucketing as expected.
 - **No time-series**- The Daily and Days Since First Exposure time-series are not available for Switchback tests.  This is due to the bootstrapping methodology used to obtain the statistics, which relies on pooling all the available days together in order to have enough statistical power.
+- **No dimension breakdown**- Breaking down a metric by user property or event property is not available for Switchback tests.  
 - **Advanced statistical techniques-** CUPED and Sequential Testing are not yet available on Switchback tests.
 
 ![Screen Shot 2023-09-27 at 10 30 21 AM](https://github.com/statsig-io/docs/assets/101903926/657cce2d-22b0-41cf-8b43-2d3f05cfefb8)

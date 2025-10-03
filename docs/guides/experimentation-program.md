@@ -4,7 +4,7 @@ title: Bootstrapping Your Experimentation Program
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-03
+  date: 2025-09-18
 ---
 
 In this guide, we'll outline a straightforward and successful approach to starting an experimentation program using Statsig at your company. Best of all, you can get started completely free with Statsig’s free tier, which includes up to 5M events per month and no limit on the number of team members.
@@ -26,7 +26,7 @@ Here are three common frameworks we use at Statsig, which are also popular among
 3. **Break Down Your Business Levers**:
    - Decompose key drivers of your business to reveal more granular areas where you can experiment. For example, an e-commerce business might focus on increasing the checkout rate, which could lead to experiments on improving the CTA, reducing friction, or building urgency. 
 
-![image](https://user-images.githubusercontent.com/1315028/162062869-ead09b8f-0d2e-4c01-8bed-5c40039abe56.png)
+![Business levers breakdown diagram](https://user-images.githubusercontent.com/1315028/162062869-ead09b8f-0d2e-4c01-8bed-5c40039abe56.png)
 
 ### Prioritize Your Ideas
 

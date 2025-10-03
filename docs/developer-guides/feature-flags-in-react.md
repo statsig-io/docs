@@ -6,7 +6,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-07
+  date: 2025-05-23
 ---
 
 Integrating feature flags into a React web application using the Statsig React SDK involves a few key steps. First, you'll start by setting up a basic React application. Then, you'll integrate Statsig to manage feature flags.
@@ -24,7 +24,7 @@ Integrating feature flags into a React web application using the Statsig React S
    - Ensure you have Node.js installed on your system.
    - Create a new React app by running the following command in your terminal:
      ```
-     npx create-react-app hello-world-react
+     npm create vite@latest hello-world-react -- --template react
      ```
    - Navigate into your new app directory:
      ```

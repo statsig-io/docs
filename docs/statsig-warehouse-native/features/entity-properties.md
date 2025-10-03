@@ -7,7 +7,7 @@ displayed_sidebar: cloud
 keywords:
   - owner:vm
 last_update:
-  date: 2024-08-05
+  date: 2025-09-18
 ---
 
 # Entity Properties
@@ -16,8 +16,8 @@ Entity Properties are categorical details about an entity (e.g. a user) in an ex
 
 You can either provide additional detail about an entity that doesn't typically change (e.g. a user's home country), or a property that may change as part of an experiment (e.g. Subscriber Status : True/False). For the latter, you provide a timestamp field which will be used to identify most recent value prior to the user's exposure. This prevents imbalanced groups and biased results from when an experimental treatment impacts the property, for example if it increased the subscription rate.
 
-![image](https://github.com/statsig-io/docs/assets/31516123/7fcac725-54b4-46be-bb68-52fcc308fe5f)
+![Entity properties configuration interface](https://github.com/statsig-io/docs/assets/31516123/7fcac725-54b4-46be-bb68-52fcc308fe5f)
 
 
-![image](https://github.com/statsig-io/docs/assets/31516123/6c151cf4-d343-4750-8bfd-a6d48afd6e10)
+![Entity properties setup form](https://github.com/statsig-io/docs/assets/31516123/6c151cf4-d343-4750-8bfd-a6d48afd6e10)
 

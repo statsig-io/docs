@@ -3,7 +3,7 @@ title: Vercel
 keywords:
   - owner:brock
 last_update:
-  date: 2025-02-26
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -15,13 +15,13 @@ The integration also directly hooks into Vercel's Edge Config, providing low lat
 
 Head over to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. You'll be prompted to create a new Statsig project.
 
-![image](/img/vercel_marketplace_install.png)
+![Vercel marketplace installation interface](/img/vercel_marketplace_install.png)
 
 Enable Edge Config Syncing to have Statsig automatically push configs into Vercel's Edge Config for fast SDK Initialization. After installing the application, you can connect the application to a Vercel project to automatically pull in env vars to use in your project automatically.
 
 In the application page, you'll be able to go to your newly created Statsig project and configure gates and experiments. All gates and experiments will automatically be synced into Vercel for quick status checks and access.
 
-![image](/img/vercel_marketplace_view.png)
+![Vercel marketplace project view interface](/img/vercel_marketplace_view.png)
 
 ## Using Flags SDK in NextJS
 
@@ -31,6 +31,10 @@ Note that the marketplace app sets all required environment variables for the Fl
 ## Using the Statsig SDK
 
 If you aren't using NextJS, or prefer to use Statsig SDK's directly, you can follow the following steps to use Statsig SDK in your Vercel project.
+
+:::note
+Only Statsig node-lite and node is supported at this time. Statsig node-core is not yet supported; please reach out to our [support team](mailto:support@statsig.com) or via the [Statsig Slack channel](https://statsig.com/slack) if you require node-core support.
+:::
 
 First up, you'll need to install the statsig sdk and the vercel edge config data adapter.
 
@@ -70,7 +74,7 @@ The adapter takes two arguments:
 - The `edgeConfigClient` you just created
 - The `edgeConfigItemKey` you were given when you created the integration (you can find it again in [Project Settings -> Integrations](https://console.statsig.com/integrations) - "vercel edge config")
 
-### 2. SDK Initialization
+### 3. SDK Initialization
 
 ```
 await statsig.initialize(
@@ -88,7 +92,7 @@ SDK initialization takes two arguments:
 - Your statsig secret key. This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console. This is used to authenticate your requests to the statsig backend. In this example, we've configured it as an environment variable
 - An options object. We are using the `dataAdapter` property to hook up the Edge Config to the SDK. We're also disabling the ID list sync to speed up initialization
 
-### 3. Checking a Gate
+### 4. Checking a Gate
 
 ```
 const result = statsig.checkGateSync(
@@ -101,7 +105,7 @@ const result = statsig.checkGateSync(
 
 This is a gate check in code. The first parameter is the `StatsigUser` object you are checking, and the second is the gate name. Refer to the [node sdk documentation](/server/nodejsServerSDK) for how to check other entities like experiments and dynamic configs. Here, we have created a user with a random userID for every evaluation to illustrate a gate with a partial rollout working.
 
-### 4. Flushing Events
+### 5. Flushing Events
 
 ```
 waitUntil(statsig.flush(1000));
@@ -197,3 +201,11 @@ Use the 'Connect Account' flow in the [Vercel Marketplace](https://vercel.com/in
 <img src="https://user-images.githubusercontent.com/87334575/205374493-08dfc561-2095-45f2-be10-bba1a1958bf9.png" width="474" height="400" />
 
 After setting up the mapping, you'll be given an Edge Config Connection String, and Edge Config Item Key. Copy these values for use in env vars in the code snippets above - but if you need them again, you can always get back to it in the Statsig console by navigating to [Project Settings -> Integrations](https://console.statsig.com/integrations), and then select **Vercel Edge Config**
+
+## Sending logs to Statsig
+
+You can connect your Vercel logs to Statsig with a Log Drain to start exploring them in Logs Explorer.
+
+1.  From the [Vercel dashboard](https://vercel.com/), go to **Settings -> Drains** and click **Add Drain -> Integration**.
+2.  Select **Statsig**, follow the configuration steps provided, and choose a project to connect with the service.
+3.  Navigate to [Statsig's Logs Explorer](https://console.statsig.com/logs) to see your logs flow through.

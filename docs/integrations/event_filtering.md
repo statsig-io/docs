@@ -3,7 +3,7 @@ title: Event Filtering
 keywords:
   - owner:brock
 last_update:
-  date: 2022-05-31
+  date: 2025-09-18
 ---
 
 Once you've enabled an integration, you can select specific events that you want to send and/or receive by clicking on the **Event Filtering** button.
@@ -18,11 +18,11 @@ If your integration includes "Incoming" events, you can filter which ones Statsi
 - Select the integration you wish to filter events for.
 - In the dialog that appears, select "Event Filtering"
 
-![image](https://user-images.githubusercontent.com/1315028/150829446-149dc7c5-0025-451a-8fae-09760b4f0566.png)
+![Event filtering dialog interface](https://user-images.githubusercontent.com/1315028/150829446-149dc7c5-0025-451a-8fae-09760b4f0566.png)
 
 - You can now search for specific events and select or deselect the events that you want Statsig to ingest.
 
-![image](https://user-images.githubusercontent.com/1315028/150829346-e2f29d7e-bca3-4427-8d54-02e96f37951d.png)
+![Event selection interface for incoming events](https://user-images.githubusercontent.com/1315028/150829346-e2f29d7e-bca3-4427-8d54-02e96f37951d.png)
 
 ## Outgoing Event Filtering
 
@@ -32,4 +32,4 @@ If your integration includes "Outgoing" events, you can select which ones being 
 - Select the integration you wish to filter events for.
 - In the dialog that appears, select "Event Filtering"
 
-![image](https://user-images.githubusercontent.com/1315028/150853774-6112c939-d101-4e15-9f74-3d872e6ba6f3.png)
+![Outgoing event filtering configuration](https://user-images.githubusercontent.com/1315028/150853774-6112c939-d101-4e15-9f74-3d872e6ba6f3.png)

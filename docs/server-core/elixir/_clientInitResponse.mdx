@@ -1,0 +1,56 @@
+## Client Initialize Response
+
+The Node Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
+
+```typescript
+// Get client initialize response for a user
+{:ok, layer} = Statsig.get_client_init_response_as_string("user_promo_experiments", user)
+
+// Pass values to a client SDK to initialize without a network request
+```
+
+### Options
+
+The `getClientInitializeResponse` method accepts an optional `options` parameter with the following properties:
+
+```typescript
+export interface ClientInitializeResponseOptions {
+  hashAlgorithm?: string;        // Algorithm used for hashing gate/experiment names (default: 'djb2')
+  clientSdkKey?: string;         // Client SDK key to use for initialization
+  includeLocalOverrides?: boolean; // Whether to include local overrides in the response
+}
+```
+
+#### Hash Algorithm
+
+The `hashAlgorithm` option specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'djb2'` for better performance and smaller payload size.
+
+```typescript
+// Use djb2 hashing algorithm for better performance
+const values = statsig.getClientInitializeResponse(user, {
+  hashAlgorithm: 'djb2',
+});
+```
+
+#### Client SDK Key
+
+The `clientSdkKey` option lets you filter the response to only the specific feature gates, experiments, dynamic configs, layers, or parameter stores that a particular client key has access to - effectively letting you apply [target apps](/sdk-keys/target-apps/).
+
+```typescript
+// Specify a client SDK key
+const values = statsig.getClientInitializeResponse(user, {
+  clientSdkKey: 'client-key',
+});
+```
+
+
+#### Local Overrides
+
+The `includeLocalOverrides` option determines whether to consider [local overrides](#local-overrides) you've set when evaluating each config in the response.
+
+```typescript
+// Include local overrides in the response
+const values = statsig.getClientInitializeResponse(user, {
+  includeLocalOverrides: true,
+});
+```

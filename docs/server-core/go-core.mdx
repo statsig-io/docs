@@ -1,0 +1,93 @@
+---
+sidebar_label: Go
+title: Go Server SDK
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigOptions,
+  StatsigUser,
+  ManualExposures,
+  Shutdown,
+  Reference,
+  LocalOverrides,
+  PersistentStorage,
+  DataStore,
+  OutputLogger,
+  ObservabilityClient,
+} from "./Templates/index.mdx";
+
+import Preamble from "./_preamble.mdx";
+import Install from "./go/_install.mdx";
+import Initialize from "./go/_initialize.mdx";
+import CheckGate from "./go/_checkGate.mdx";
+import GetExperiment from "./go/_getExperiment.mdx";
+import GetFeatureGate from "./go/_getFeatureGate.mdx";
+import GetConfig from "./go/_getConfig.mdx";
+import ParamStores from "./go/_paramStores.mdx";
+import LogEvent from "./go/_logEvent.mdx";
+import Options from "./go/_options.mdx";
+import ShutdownSnippet from "./go/_shutdown.mdx";
+import Flush from "./go/_flush.mdx";
+import LocalOverridesSnippet from "./go/_localOverrides.mdx";
+import { Snippets as ManualExposureSnippets } from "./go/_manualExposures.mdx";
+import MoreFAQs from "./go/_faqs.mdx";
+
+export const Builder = SDKDocsBuilder({
+  sections: [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/statsig-server-core/tree/main/statsig-go",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "go",
+        install: <Install />,
+        preamble: <Preamble />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getExperiment: <GetExperiment />,
+        getFeatureGate: <GetFeatureGate />,
+        getConfig: <GetConfig />,
+        logEvent: <LogEvent />,
+        hideAsyncDisclaimer: true,
+        paramStores: <ParamStores />,
+      },
+    ],
+    [ManualExposures, { ...ManualExposureSnippets }],
+    [StatsigUser, { }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet />, flush: <Flush /> }],
+    [LocalOverrides, { snippet: <LocalOverridesSnippet /> }],
+    [PersistentStorage, { }],
+    [DataStore, { }],
+    [OutputLogger, { }],
+    [ObservabilityClient, { }],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ]
+})
+
+export const toc = Builder.toc
+
+<>{Builder.result}</>
+

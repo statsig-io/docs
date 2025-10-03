@@ -7,7 +7,7 @@ slug: /product-analytics/user-journeys
 keywords:
   - owner:akin
 last_update:
-  date: 2025-03-11
+  date: 2025-09-18
 ---
 
 # User Journeys
@@ -16,7 +16,7 @@ last_update:
 
 The User Journeys chart shows you the many paths users are taking through your product so you can better understand the end-user experience. 
 
-![image](https://github.com/user-attachments/assets/51e0c508-45cf-4839-93a0-3bf63e4e961d)
+![User journeys sankey diagram visualization](https://github.com/user-attachments/assets/51e0c508-45cf-4839-93a0-3bf63e4e961d)
 
 
 ### Use cases

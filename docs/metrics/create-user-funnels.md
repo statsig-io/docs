@@ -5,7 +5,7 @@ slug: /metrics/create-user-funnels
 keywords:
   - owner:shubham
 last_update:
-  date: 2022-08-09
+  date: 2025-09-18
 ---
 
 
@@ -36,7 +36,7 @@ In the example below, the **Square** variant shows a lift in the **overall funne
 * Both the **Square** and **Circle** variants show a lift in top-of-funnel DAU (_Land Page View Start DAU_). However, only the **Square** variant shows statistically significant increase in end-of-funnel DAU (_Purchase Event End DAU_).
 * The overall funnel conversion rate improvement for **Square** is primarily due to the higher conversion from _Checkout Event_ to _Purchase Event_ stages in the funnel.  
 
-![image](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
+![Funnel experiment results showing Square variant performance](https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png)
 
 
 

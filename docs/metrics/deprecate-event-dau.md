@@ -5,7 +5,7 @@ slug: /metrics/deprecate-event-dau
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-03
+  date: 2025-09-18
 ---
 
 ### Deprecation Details

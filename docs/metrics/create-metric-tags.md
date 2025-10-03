@@ -5,7 +5,7 @@ slug: /metrics/create-metric-tags
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-02-28
+  date: 2025-09-18
 ---
 
 # Tagging Metrics 
@@ -20,15 +20,15 @@ In the **Metrics Catalog** tab, click on the **Tags** filter icon in the upper r
 
 Tap on the **Create New Tag** in the upper right-hand corner of the tag manager tab to create a new tag. Enter a name and description for your new tag. Click on **Create**. 
 
-![image](https://user-images.githubusercontent.com/1315028/154555162-9309a3f5-0278-4a04-8620-245408e5d6d0.png)
+![Create new tag dialog](https://user-images.githubusercontent.com/1315028/154555162-9309a3f5-0278-4a04-8620-245408e5d6d0.png)
 
 From now on, you can quickly add this tag to any metric using the **+** icon when you hover on the metric. To see what metrics are associated with a given tag, you can reference the **Tags** tab within Project Settings. 
 
-![image](https://user-images.githubusercontent.com/1315028/154557097-3a2e07d9-1bb4-4cc5-9d03-c96b61f34296.png)
+![Metrics catalog with tag management interface](https://user-images.githubusercontent.com/1315028/154557097-3a2e07d9-1bb4-4cc5-9d03-c96b61f34296.png)
 
 Once you've tagged your metrics, you can zoom into **Metric Lifts** in Pulse for the tagged metrics to focus on the results that matter the most to you.
 
-![image](https://user-images.githubusercontent.com/1315028/154556623-79b2b198-b24d-40fa-bcf8-0feccef70f29.png)
+![Pulse results showing tagged metric lifts](https://user-images.githubusercontent.com/1315028/154556623-79b2b198-b24d-40fa-bcf8-0feccef70f29.png)
 
 
 ## Core Tag 

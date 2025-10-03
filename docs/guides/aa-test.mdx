@@ -4,26 +4,23 @@ title: Running an A/A (aa) Test
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
-In this guide, we will walk you through how to leverage Statsig’s platform to run an A/A test on your product.  
 
-:::info This guide assumes that you have successfully set up and configured your Statsig SDK. For a step-by-step guide on how to do this, see our [“Your first feature”](/guides/first-feature) guide.
+In this guide, you will create and implement an A/A test on your product in Statsig from end to end. This is commonly used to validate a new experimentation engine you may be integrating with. 
 
-:::
+For new users just getting started with Statsig, we often recommend running an A/A test to provide a “low-stakes” first test environment to ensure that you have your metrics set up correctly and are seeing exposures flowing through as expected before kicking off your first real A/B test.  
 
-## Why run an A/A (aa) test?  
+By the end of this tutorial, you will have:
+* Created a new **Feature Gate** in the Statsig console, set up as an "A/A test"
 
-There are many reasons to run an A/A test, one of the most common being to validate a new experimentation engine you may be integrating with (in this case Statsig).  For new users just getting started with Statsig, we often recommend running an A/A test to provide a “low-stakes” first test environment, ensuring that you’ve got your metrics set up correctly and are seeing exposures flowing through as expected before kicking off your first real A/B test. 
+## Prerequisites
+1. You already have a [Statsig account](https://console.statsig.com/sign_up)
+2. You already [integrated the Statsig Client SDK](/sdks/quickstart) into an existing application
 
-Here at Statsig, we are continuously running both live and offline simulation A/A tests on our stats engine- if you want to check one out for yourself, see this example in our Swaggr Demo Project!  
-
-## How to run an A/A test
-
-The easiest way to run an A/A test in Statsig is by leveraging a [Feature Flag](/feature-flags/overview). You can also leverage an [Experiment](/guides/abn-tests) to run an A/A, but we chose to use a Feature Gate for this tutorial for simplicity. 
-
-## Step 1: Create a new feature gate in the Statsig console
+## Step 1: Create a feature gate in the console
+The easiest way to run an A/A test in Statsig is by leveraging a [Feature Gate](/feature-flags/overview). You can also leverage an [Experiment](/guides/abn-tests) to run an A/A, but we chose to use a Feature Gate for this tutorial for simplicity. 
 
 Log into the Statsig console at https://console.statsig.com/ and navigate to **Feature Gates** in the left-hand navigation panel.
 
@@ -50,7 +47,7 @@ Check that it is working as expected by typing in some dummy user IDs into the c
 
 ![check_rule_fail](https://user-images.githubusercontent.com/101903926/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png)
 
-## Step 2: Check the feature gate in your application and log an event 
+## Step 2: Check the feature gate in your code
 
 Copy the code snippet in the upper right hand corner of your feature gate page under the **< >** symbol and drop it into your application at the point you want to call the A/A check.  
 
@@ -82,7 +79,7 @@ What should you expect to see?
 
 We recommend running your A/A long enough to reach most of your weekly active users, or at least a week.  
 
-## Offline AA Tests
+## Simulated A/A Tests
 
 We’ve made running A/A tests at scale easy by setting up simulated A/A tests that run every day in the background, for every company on the platform. An A/A test is like an A/B test - but both groups get the same experience. A/A tests help build trust in your experimentation platform (and your metrics!)
 
@@ -113,4 +110,4 @@ You can download the running history of your simulated A/A test performance via 
 | avg_units_per_test               | The number of units (often users) sampled into the A/A test         |
 | avg_participating_units_per_test | The number of units in the test with a value for this metric        |
 
-![image](https://user-images.githubusercontent.com/31516123/199562491-84d9b7c4-1cea-4308-a0a9-c04a14a41671.png)
+![A/A test results table showing statistical significance percentages](https://user-images.githubusercontent.com/31516123/199562491-84d9b7c4-1cea-4308-a0a9-c04a14a41671.png)

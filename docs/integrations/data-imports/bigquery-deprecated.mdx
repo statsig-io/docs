@@ -4,10 +4,12 @@ slug: bigquery
 keywords:
   - owner:tim
 last_update:
-  date: 2022-09-07
+  date: 2025-09-18
 ---
 
-**Note: this solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.**
+:::note
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+:::
 
 ## Overview
 
@@ -55,10 +57,10 @@ CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics_signal(
 1. In your Statsig console, navigate to Project Settings -> Integrations -> BigQuery. Here you will see the Statsig service account. Copy it to be used later.
 
 2. In your BigQuery's [IAM & Admin settings](https://console.cloud.google.com/iam-admin/), add the Statsig service account you copied in step 1 as a new principal for your project, and give it "BigQuery Read Session User" role.
-   ![image](https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png)
+   ![BigQuery IAM permissions configuration](https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png)
 
 3. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on the dataset.
-   ![image](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
+   ![BigQuery dataset permissions setup](https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png)
 
 4. Back to your Statsig console's BigQuery integration dialog, and enter your BigQuery project and dataset name. Then click "Enable".
 

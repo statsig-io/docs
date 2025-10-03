@@ -5,27 +5,27 @@ slug: /experiments-plus/bayesian
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-12
+  date: 2025-09-18
 ---
 
 ### Bayesian Testing in Statsig
 
 Experiments are frequentist by default. To switch to Bayesian mode, go to Advanced Settings.
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/c9c01a57-fe13-47a9-b734-20d6e8d715a4)
+![Bayesian experiment configuration interface](https://github.com/statsig-io/docs/assets/132317445/c9c01a57-fe13-47a9-b734-20d6e8d715a4)
 
 The experiment type cannot be modified once the experiment starts.
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/be912632-6200-4408-977c-92f48dfdd7bc)
+![Bayesian experiment type selection interface](https://github.com/statsig-io/docs/assets/132317445/be912632-6200-4408-977c-92f48dfdd7bc)
 
 Deep dive analysis should also reflect Bayesian statistics
 
-![Image](https://github.com/statsig-io/docs/assets/132317445/c9214142-d11f-48c8-92a4-53581bbc498c)
+![Bayesian deep dive analysis interface](https://github.com/statsig-io/docs/assets/132317445/c9214142-d11f-48c8-92a4-53581bbc498c)
 
 ### Informed Bayesian
 
 Bayesian experiments allow you to specify a prior belief on the relative average treatment effect. Statsig will combine the prior distribution with the observed data to display the prior-adjusted results. You can enable this by selecting the option to "use informative priors".
-![Image](https://github.com/user-attachments/assets/0aa0a52c-4f97-42af-82dd-4d26dd1de7c0)
+![Informative priors configuration interface](https://github.com/user-attachments/assets/0aa0a52c-4f97-42af-82dd-4d26dd1de7c0)
 
 
 ### Drawing the Correct Prior Distribution From Historical Data

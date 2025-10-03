@@ -3,7 +3,7 @@ title: Braze
 keywords:
   - owner:danielwest
 last_update:
-  date: 2025-04-22
+  date: 2025-09-18
 ---
 
 ## Overview
@@ -17,11 +17,15 @@ Enabling the Braze integration allows you to export Statsig exposure events to y
 }
 ```
 
-You can then filter exposed users into a Segment in Braze. Custom Attributes will be forwarded to Braze users by having the unit ID from the gate/experiment as the `external_id` in Braze.
+You can then filter exposed users into a Segment in Braze. Custom Attributes will be forwarded to Braze users by having the unit ID from the gate/experiment as the `external_id` in Braze by default. You can choose to provide a custom Unit ID Type from your Statsig project to be forwarded as the `external_id` for all gate/experiment exposures. This can be provided in the ID Type Mapping section of the Setup dialog for this integration. The integration will attempt to use this custom ID Type if it is provided in the SDK call at the time of exposure, and will fall back to the experiment's Unit ID Type if not.
 
 ## Setup in Statsig
 
-This integration is only available for Statsig Enterprise customers. Please reach out to our support team to get this enabled for your project. Then, you will be able to find 'Braze' as an option in your Statsig project's [list of integrations](https://console.statsig.com/integrations) from within Statsig console.
+:::info
+This is available for Enterprise contracts. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+:::
+
+After it has been enabled, you will be able to find 'Braze' as an option in your Statsig project's [list of integrations](https://console.statsig.com/integrations) from within Statsig console.
 
 1. Open your [Braze dashboard](https://dashboard.braze.com/). Navigate to Settings > APIs and Identifiers, then open the API Keys tab.
 2. Create or select an existing API key that has the 'users.track' permission. Enter the API Key Identifier in the Braze Integration Setup dialog in your Statsig project.

@@ -5,7 +5,7 @@ slug: /metrics/local-metrics
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-11-07
+  date: 2025-09-18
 ---
 
 # Local Metrics

@@ -4,7 +4,7 @@ title: Okta SCIM Troubleshooting
 keywords:
   - owner:shubham
 last_update:
-  date: 2025-02-25
+  date: 2025-09-18
 ---
 
 import Alert from "@mui/material/Alert";
@@ -17,7 +17,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 
 | Error | Solution |
 |-------|----------|
-| User userID is not allowed to be created in this organization | Ensure that the users you are assigning to Statsig have the correct email domain. We require users to have the org's email domain. |
+| User userID is not allowed to be created in this organization | Ensure that the users you are assigning to Statsig have the correct email domain. We require users to have the org's email domain. Contact Statsig if you need to add additional domains. |
 | Owner cannot be modified | The owner of the organization can only be replaced by another user. |
 | Cannot set multiple owners | We do not allow multiple owners for an organization. Ensure that you are not trying to set multiple owners for the organization. |
 | Project creation is not supported via SCIM | Project creation is not supported via SCIM. Please create projects in the Statsig Console. |

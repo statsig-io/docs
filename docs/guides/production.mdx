@@ -4,7 +4,7 @@ title: Moving from POC to Production
 keywords:
   - owner:vm
 last_update:
-  date: 2024-10-03
+  date: 2025-09-18
 ---
 
 This guide introduces the steps for transitioning from a proof of concept (POC) or limited test on Statsig to a full-scale production deployment.
@@ -14,7 +14,7 @@ This guide introduces the steps for transitioning from a proof of concept (POC) 
 1. **Rename the project if needed**: Most teams continue using the project created during the trial, but it's a good time to rename it if necessary.
 2. **Decide if you need multiple projects**: Tools like tags and granular permissions allow you to manage multiple teams within a single project. Create a new project only if you're working on a completely separate product where the definition of a user (and DAU) is distinct, and no metrics need to be shared across projects. To avoid accidental creation of projects, you can restrict this to Admins.
    
-![image](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
+![Project access restriction settings](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
 
 3. **Seed your project**: Set up tags to use consistently across feature gates, experiments, and metrics.
 4. **Create Segments**: Identify internal employees or testers by creating [Segments](/segments) so you can easily override them into feature rollouts and experiments.
@@ -25,7 +25,7 @@ To streamline user onboarding and deactivation, set up [Single Sign-On (SSO)](/a
 
 You can also make your project **Open** so that new users verified by SSO automatically gain access, or keep it **Closed** and manually approve new access requests.
 
-![image](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
+![SSO project access configuration](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
 
 ## 3. Define Change Management Policies for Production
 
@@ -33,8 +33,8 @@ To ensure safe production changes, Statsig allows you to [require reviews](/guid
 
 For non-production environments like dev or staging, follow our [recommended approach](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) to manage environments effectively.
 
-![image](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
-![image](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
+![Environment management configuration](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
+![Review groups setup interface](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
 
 ## 4. Set Up Key Metrics and Dimensions
 
@@ -49,7 +49,7 @@ Consider the following:
 
 Also, decide whether to [export data from Statsig](/integrations/data-exports/overview) back into your systems and if you want to [customize the DAU definition](/metrics/user#definition-of-a-daily-active-user) to better reflect your business needs (e.g., only counting meaningful events).
 
-![image](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
+![Metrics and dimensions setup dashboard](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
 
 ## 5. Determine IDs for Experimentation
 
@@ -81,7 +81,7 @@ If you're on Statsig’s **Enterprise Support**, consider organizing specific tr
 - Switch to using the **Slack Support** channel with an SLA for faster assistance.
 
 Some useful topics for engaging teams:
-![image](https://user-images.githubusercontent.com/31516123/180329958-315e2719-5951-4698-82c1-0221353ead95.png)
+![Team training topics overview](https://user-images.githubusercontent.com/31516123/180329958-315e2719-5951-4698-82c1-0221353ead95.png)
 
 ## 8. Plan Your Migration Strategy (If Applicable)
 

@@ -1,0 +1,21 @@
+---
+title: Offline Evals
+
+sidebar_label: Offline Evals
+slug: /ai-evals/offline-evals
+
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-09-18
+---
+
+## What are Offline Evals
+Offline evals offer a quick, automated grading of model outputs on a fixed test set. They catch wins / regressions early—before any real users are exposed. e.g. compare a new support‑bot’s replies to gold (human curated) answers to decide if it is good enough to ship. 
+
+Steps to do this on Statsig - 
+1. Create a Prompt. This contains the prompt for your task (e.g. Classify tickets as high, medium or low urgency based on ticket text)
+2. Upload a sample dataset - with example inputs and ideal answers (e.g. Ticket1 text, High; Ticket2 text, Low)
+3. Run your AI on that dataset to produce output. (e.g. classify each ticket in this example)
+4. Grade or score the outputs. You can do this by comparing ideal answer in the dataset with the output your AI generated.
+5. Create multiple versions of your prompts. Compare scores across versions and promote the best one to be Live.

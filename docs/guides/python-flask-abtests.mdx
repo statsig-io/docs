@@ -4,7 +4,7 @@ title: Run an A/B Test with Python Flask
 keywords:
   - owner:brock
 last_update:
-  date: 2024-10-02
+  date: 2025-09-18
 ---
 
 Python Flask, a popular lightweight framework, is not only user-friendly but also robust enough for consumer-facing applications. One of the exciting capabilities it offers is the ability to conduct A/B tests efficiently. In this guide, we'll demonstrate how you can A/B test with Python Flask using Statsig's free tier, an essential tool for dynamic web application development.
@@ -63,7 +63,7 @@ def experimentRoute():
 
 After stopping and starting your project again, you'll be able to see this route at [http://127.0.0.1:5000/experimentRoute](http://127.0.0.1:5000/experimentRoute). You won't see much now, just a red screen!
 
-![image](/img/red_backgroundcolor.png)
+![Flask app showing red background color](/img/red_backgroundcolor.png)
 
 What we'd like to do is make our app show a different color for each user using an A/B test (what we call an "experiment") in Statsig. If our app had more functionality, we could then see which color users preferred or which supported our business metrics and make a decision to choose that option. Even without building more functionality, Statsig could show you differences in metrics like WAU and DAU with a single line of code!
 
@@ -86,7 +86,7 @@ Next, we'll set up an experiment! Click on experiments in the left-hand side of 
 
 Next, we should add a hypothesis for our experiment—as is best practice. For this example, we can say "blue will perform better than red." You should also add at least one primary metric to the experiment, for now, we can just chose one like DAU. Then, we need to add parameters to our experiment, which will actually result in different experiences for the user. I've added a parameter called "background-color" with the variants "red" and "blue".
 
-![image](/img/redblue_abtest.png)
+![Statsig experiment configuration with red and blue variants](/img/redblue_abtest.png)
 
 Notice that we've set the percentage to 50%, meaning that half of our users (as randomized by the user_id) will see each treatment. Click on save in the bottom right-hand corner, then "start" in the top right, and your A/B test is ready to go.
 
@@ -117,7 +117,9 @@ Now, you are able to set a userID in your URL parameters like such: [127.0.0.1:5
 
 ![img](/img/blue_exposure.png)
 
-Note: You won't see a different one every time due to how our randomization works, but over time, the distribution should be even. If not, you may have a [Sample Ratio Mismatch]((https://www.statsig.com/blog/sample-ratio-mismatch).
+:::note
+You won't see a different one every time due to how our randomization works, but over time, the distribution should be even. If not, you may have a [Sample Ratio Mismatch]((https://www.statsig.com/blog/sample-ratio-mismatch).
+:::
 
 Thanks for reading this tutorial! If you have trouble or any other questions, please join our [Slack Group](https://statsig.com/slack).
 

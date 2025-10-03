@@ -3,7 +3,7 @@ title: Getting Started
 keywords:
   - owner:vijaye
 last_update:
-  date: 2024-11-15
+  date: 2025-09-18
 ---
 
 import Tabs from "@theme/Tabs";
@@ -42,11 +42,11 @@ dotnet add package StatsigAzureAI
 
 Log into your Azure AI Studio console and create a new deployment that you'd like to use.
 
-![image](https://github.com/user-attachments/assets/3172d6f9-176e-4a3b-817f-3a5bd3af4291)
+![Azure AI Studio model deployment creation interface](https://github.com/user-attachments/assets/3172d6f9-176e-4a3b-817f-3a5bd3af4291)
 
 Once confirmed, you will be taken to the details page of that model.  
 
-![image](https://github.com/user-attachments/assets/b8f46ed9-ce02-486f-b6f7-1d09f7b62f33)
+![Azure AI model deployment details page](https://github.com/user-attachments/assets/b8f46ed9-ce02-486f-b6f7-1d09f7b62f33)
 
 Now, copy the **Target URI** (this will be your _endpoint_ in code) and the **Key** - you'll need this in the SDK to call the APIs.
 
@@ -58,7 +58,7 @@ This guide assumes you have an existing Statsig account. Please go here to creat
 
 Go to your **Project Settings** and choose the **Keys & Environments** tab on the left.  Scroll down to **API Keys** section and copy the Server Secret Key.  If one doesn't exist, you will have to create one, or ask your project admin to create one for you.
 
-![image](https://github.com/user-attachments/assets/f60f6f2b-60d0-4804-8db5-b82d4ac96bcf)
+![Statsig project settings API keys section](https://github.com/user-attachments/assets/f60f6f2b-60d0-4804-8db5-b82d4ac96bcf)
 
 
 ## Step 4: Initialize Azure AI Server

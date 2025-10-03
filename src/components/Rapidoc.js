@@ -3,6 +3,7 @@ import { useColorMode } from '@docusaurus/theme-common/internal';
 
 import Alert from "@mui/material/Alert";
 
+
 // Map entities to their corresponding OpenAPI tags
 const entityToTagMap = {
   gates: "Gates",
@@ -23,6 +24,9 @@ const entityToTagMap = {
   ingestions: "Ingestions",
   tags: "Tags",
   keys: "Keys",
+  "param-store": "Param Store",
+  "warehouse-connections": "Warehouse Connections",
+  "change-validation": "Change Validation",
 };
 
 export const apiVersions = [
@@ -76,6 +80,27 @@ export default function Rapidoc(props) {
         .then(removeNonFeatureTags)
         .then((data) => {
           rapidoc.loadSpec(data);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl
+            });
+          } catch (error) {
+            // noop
+          }
+        })
+        .catch((error) => {
+          console.log('Rapidoc: Fetch failed for all-endpoints-generated:', error.message);
+          try {
+            window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+              entity: 'all-endpoints-generated',
+              specUrl: specUrl,
+              error: error.message
+            });
+            console.log('Rapidoc: Failure event logged successfully');
+          } catch (logError) {
+            console.error('Rapidoc: Failed to log failure event:', logError);
+          }
         });
       return;
     }
@@ -98,6 +123,29 @@ export default function Rapidoc(props) {
         } else {
           // If tag is not found, load the full spec
           rapidoc.loadSpec(data);
+        }
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_success', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag
+          });
+        } catch (error) {
+          // noop
+        }
+      })
+      .catch((error) => {
+        console.log('Rapidoc: Fetch failed for entity:', entity, 'error:', error.message);
+        try {
+          window.Statsig.instance().logEvent('openapi_spec_fetch_failure', specUrl, {
+            entity: entity,
+            specUrl: specUrl,
+            tag: tag,
+            error: error.message
+          });
+          console.log('Rapidoc: Failure event logged successfully for entity:', entity);
+        } catch (logError) {
+          console.error('Rapidoc: Failed to log failure event for entity:', entity, logError);
         }
       });
   }, [specUrl, entity]);
@@ -155,6 +203,10 @@ export default function Rapidoc(props) {
           header.<br />
           The value should be a Console API Key which can be created in{" "}
           <code>'Project Settings' {">"} 'API Keys' tab</code>. <br />
+          You can{" "}
+          <a href="https://console.statsig.com/api_keys" target="_blank" rel="noopener noreferrer">
+            create or manage your keys here
+          </a>.
           To use the 'try it' section on this page, enter your Console API into
           the box below.
         </p>

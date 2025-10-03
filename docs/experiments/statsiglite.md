@@ -5,7 +5,7 @@ slug: /experimentation/statsig-lite
 keywords:
   - owner:vm
 last_update:
-  date: 2025-03-05
+  date: 2025-09-18
 ---
 
 ## What it is

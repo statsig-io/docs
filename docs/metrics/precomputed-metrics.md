@@ -5,7 +5,7 @@ slug: /metrics/precomputed-metrics
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-10-14
+  date: 2025-09-18
 ---
 
 ## Importing Precomputed Metrics

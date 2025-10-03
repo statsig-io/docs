@@ -1,0 +1,40 @@
+## Behavioral Changes
+
+**User-Agent Parsing**
+
+- The SDK now uses a lightweight YAML-based User-Agent parser based on a reduced version of the [ua-parser regex definitions](https://github.com/statsig-io/statsig-server-core/blob/00ad0e4024ca5d30f21892c8f2f23e836165a509/statsig-rust/resources/ua_parser_regex_lite.yaml#L4).
+- This parser supports the following commonly used browsers:
+  - Chrome
+  - Firefox / Firefox Mobile
+  - Safari / Mobile Safari
+  - Chrome Mobile
+  - Android
+  - Edge / Edge Mobile
+  - IE Mobile
+  - Opera Mobile
+- If your use case requires identifying less common browsers, you should parse the User-Agent externally before sending it to Statsig.
+
+**Lazy Initialization: User-Agent Parser & Country Lookup**
+
+- User-Agent parsing and country lookup are now **lazy-loaded by default** to improve SDK initialization performance.
+- If your application relies on these features being ready **immediately after** `initialize()`, you can opt in by setting:
+  - <code>{props.waitForUserAgentInit || 'wait_for_user_agent_init'}</code>
+  - <code>{props.waitForCountryLookupInit || 'wait_for_country_lookup_init'}</code>
+- ⚠️ Enabling these options will increase total initialization time.
+- To **disable** these features entirely, use the following `StatsigOptions` flags:
+  - <code>{props.disableUserAgentParsing || 'disable_user_agent_parsing'}</code>
+  - <code>{props.disableCountryLookup || 'disable_country_lookup'}</code>
+
+**ID List Feature**
+
+- The ID List functionality is **disabled by default**.
+- To enable it, set the following in your `StatsigOptions`:
+  - <code>{props.enableIdLists || 'enable_id_lists'}</code>
+
+**Endpoint Changes (v1 → v2)**
+
+- The core SDK now fetches configuration specs from a new endpoint:
+  - **Old**: `v1/download_config_specs`
+  - **New**: `v2/download_config_specs`
+- If you are hosting your own **pass-through proxy**, ensure it supports and correctly routes the `v2` endpoint.
+- If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.

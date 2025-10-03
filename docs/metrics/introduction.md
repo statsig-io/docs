@@ -5,7 +5,7 @@ slug: /metrics
 keywords:
   - owner:shubham
 last_update:
-  date: 2024-08-15
+  date: 2025-09-18
 ---
 
 # Metrics User Guide
@@ -16,7 +16,7 @@ Statsig automatically creates these metrics from the **raw events** that you log
 
 Statsig can also reuse your existing **precomputed metrics** by natively integrating and pulling data from your cloud data warehouse. You can also choose to ingest metrics into Statsig using an HTTP endpoint or Azure Blob storage.   
 
-![image](https://user-images.githubusercontent.com/31516123/200041707-e6cc4f1e-7ec4-4044-8afe-e877964eb2dc.png)
+![Data integration architecture diagram](https://user-images.githubusercontent.com/31516123/200041707-e6cc4f1e-7ec4-4044-8afe-e877964eb2dc.png)
 
 The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metrics/201), and [301](/metrics/301) level guides that step through basic concepts to real-time analytics in Statsig. 
 
@@ -47,7 +47,7 @@ The **Metrics User Guide** consists of [Metrics 101](/metrics/101), [201](/metri
 
 Statsig combines product experimentation with real-time analytics to help you achieve 360° **product observability**. 
 
-![image](https://user-images.githubusercontent.com/1315028/182259790-b898161f-6657-4d52-8367-f3bdeb8d6037.png)
+![Product observability dashboard overview](https://user-images.githubusercontent.com/1315028/182259790-b898161f-6657-4d52-8367-f3bdeb8d6037.png)
 
 
 Get started with [Metrics 101](/metrics/101).

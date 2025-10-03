@@ -1,0 +1,31 @@
+`EvaluationOptions` allows you to customize the behavior of feature flag evaluations:
+
+```csharp
+var options = new EvaluationOptions(disableExposureLogging: true);
+
+var gateValue = statsig.CheckGate(user, "feature_gate", options);
+var config = statsig.GetDynamicConfig(user, "product_config", options);
+var experiment = statsig.GetExperiment(user, "button_test", options);
+var layer = statsig.GetLayer(user, "user_prefs_layer", options);
+```
+
+## Options
+
+- **DisableExposureLogging**: When `true`, prevents automatic exposure event logging for this evaluation. Useful when you want to evaluate a feature flag without affecting analytics or experiment results.
+
+## Use Cases
+
+- **Internal Tools**: Check flag values for debugging without affecting user metrics
+- **Conditional Logic**: Evaluate flags as part of complex logic where exposure should be logged manually later
+
+When exposure logging is disabled, you can manually log exposures later using the manual exposure methods:
+
+```csharp
+var options = new EvaluationOptions(disableExposureLogging: true);
+var gateValue = statsig.CheckGate(user, "feature_gate", options);
+
+if (shouldLogExposure)
+{
+    statsig.ManuallyLogGateExposure(user, "feature_gate");
+}
+```

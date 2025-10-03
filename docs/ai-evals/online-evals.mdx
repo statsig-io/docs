@@ -1,0 +1,23 @@
+---
+title: Overview
+
+sidebar_label: Overview
+slug: /ai-evals/online-evals
+
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-09-18
+---
+
+## What are Online Evals
+
+Online evals let you grade your model output in production on real world use cases. You can run the "live" version of a prompt, but can also shadow run "candidate" versions of a prompt, without exposing users to them. Grading works directly on the model output, and has to work without a ground truth to compare against.
+
+Steps to do this in Statsig -
+
+1. Create a Prompt. This contains the prompt for your task (e.g. Summarize ticket content. Don't include email addresses or credit cards in the summary). Create a v2 prompt that improves on this.
+2. In your app, use and produce model output using the v1 and v2 prompts. The output from v1 is rendered to the user; the output from v1 and v2 are judged by an LLM-as-a-judge.
+3. The grades from v1 and v2 are logged back to Statsig and can be compared there.
+
+_Note: Online Evals is currently in beta. If you're interested in this feature, reach out to us on Slack!_

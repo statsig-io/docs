@@ -7,7 +7,7 @@ slug: /product-analytics/dashboards
 keywords:
   - owner:akin
 last_update:
-  date: 2024-12-12
+  date: 2025-09-18
 ---
 
 # Dashboards
@@ -22,7 +22,7 @@ There are two ways to create a dashboard:
 
 1. Navigate to the Dashboards tab and click Create. Here, you have the option to choose one of Statsig’s [Dashboard Templates](#dashboard-templates) or create a custom new one
     
-![image](https://github.com/user-attachments/assets/15696f0e-17b8-4413-a5fe-ab68f6c5c7c7)
+![Dashboard creation interface](https://github.com/user-attachments/assets/15696f0e-17b8-4413-a5fe-ab68f6c5c7c7)
 
     
 2. You can also create a Dashboard directly from Metrics Explorer. To do this, once you have finished building a chart:
@@ -31,7 +31,7 @@ There are two ways to create a dashboard:
     3. Select “Create New Dashboard” from the Dashboard Destination selector
     4. Finally, give your new Dashboard a name
 
-![image](https://github.com/user-attachments/assets/012d7dc0-a09b-4424-af10-ab8a714040cb)
+![Export to dashboard from Metrics Explorer](https://github.com/user-attachments/assets/012d7dc0-a09b-4424-af10-ab8a714040cb)
 
 
 ### Adding Charts, Feature Gates, and Experiments to a Dashboard
@@ -64,11 +64,11 @@ There are several types of dashboard widgets you can add or create including:
 
 By default, the charts and widgets on a dashboard are synced with the date range set for the entire dashboard. To update this default date range, click the pencil icon in the top right corner of the dashboard. In the settings that appear, you can modify the dashboard's title, description, and "Default Date Lookback Range." This selection will determine the date range that is automatically applied each time you open the dashboard. Choosing the "Chart Default" option allows each chart to revert to the date range originally set when it was first added to the dashboard, offering greater customization to your dashboard.
 
-![image](https://github.com/user-attachments/assets/a89fc3b7-48f6-40b2-a226-11c925553f14)
+![Dashboard settings and date range configuration](https://github.com/user-attachments/assets/a89fc3b7-48f6-40b2-a226-11c925553f14)
 
 You can also change the date range of the dashboard on the fly by modifying the date picker on the top right of the dashboard. Applying changes to this selector will synchronize all charts and widgets on the dashboard. Note that any changes made here will not be saved the next time you open up the dashboard.
 
-![image](https://github.com/user-attachments/assets/1c038930-f9bd-4d94-9bb4-4ba84a417dda)
+![Dashboard date picker interface](https://github.com/user-attachments/assets/1c038930-f9bd-4d94-9bb4-4ba84a417dda)
 
 ### Exporting your Dashboard
 
@@ -82,20 +82,46 @@ If you want to share a static version of your dashboard, print it, or save it fo
 
 If you want to duplicate or clone any of your dashboards, open the desired dashboard, and click the settings dropdown "..." in the top right corner, then click on the "Clone" button. This will bring up the dialog for you to clone your dashboard, and take you there upon success.
 
-![image](https://github.com/user-attachments/assets/abf7b681-5859-4a0e-b63e-d6fe16ea6e77)
+![Dashboard clone dialog](https://github.com/user-attachments/assets/abf7b681-5859-4a0e-b63e-d6fe16ea6e77)
 
 ### Filtering your Dashboard
 
 You can click on the filters button below the dashboard name to add a global filter to your dashboard. The filter will be applied across all eligible widgets and you can quickly view updated results across all widgets, rather than having to filter each widget individually. You can also use free-form text to apply filters for more generic values, such as filtering emails that contain '@gmail.com'.
 
-![image](https://github.com/user-attachments/assets/397d0197-632d-4f25-a8be-a5413575173f)
+![Dashboard global filter interface](https://github.com/user-attachments/assets/397d0197-632d-4f25-a8be-a5413575173f)
 
+#### Default Dashboard Filters
+
+Default dashboard filters allow you to pin commonly used filters directly to your dashboards, making it easier to analyze different views of your data without rebuilding filters from scratch. These filters appear at the top of your dashboard and apply across all eligible widgets, enabling quick comparison across different dimensions like company, region, or platform.
+
+To configure default dashboard filters:
+
+1. Navigate to your dashboard and click the settings cog ⚙️
+2. Scroll to "Default Filters" and configure the filters you want to pin to the dashboard
+3. Click Save
+
+Once configured, the pinned filters will appear at the top of your dashboard. You can quickly swap values to see how different users, cohorts, or properties impact the same set of charts. When you change a filter value, all charts on the dashboard update automatically without needing to reconfigure each widget individually.
+
+This feature is particularly useful for comparing trends across different segments of your data. Instead of duplicating dashboards or manually editing filters on each widget, you can reuse the same dashboard with dynamic filtering to perform scoped analysis more efficiently.
 
 ### Refreshing your Dashboard Widgets
 
-To ensure your dashboard data is up to date, simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
+To ensure your dashboard data is up to date, you can refresh dashboard widgets in several ways:
 
-![image](https://github.com/user-attachments/assets/2799df0e-2a71-454b-8fee-df0420cdf68b)
+**Manual Refresh**: Simply click the refresh button shown in the image below to refresh all dashboard widgets at once.
+
+![Dashboard refresh button](https://github.com/user-attachments/assets/2799df0e-2a71-454b-8fee-df0420cdf68b)
+
+**Automatic Dashboard Refreshes**: Dashboards can now be automatically refreshed on a schedule with results cached for faster loading and a snappier experience.
+
+You can configure a refresh frequency for each dashboard (e.g. hourly, daily) and automatically cache results in the background. Once set, queries for that dashboard will run on the specified schedule and store the results. When someone opens the dashboard, they'll see the most recent cached data instantly, instead of triggering fresh queries.
+
+To configure automatic dashboard refreshes:
+1. Navigate to your dashboard and click the settings cog ⚙️
+2. Scroll to "Schedule Dashboard Refresh" and set the interval
+3. Click Save
+
+This feature helps dashboards load faster and stay up to date without manual effort, especially helpful for shared dashboards or recurring check-ins where you want fresh data ready without delay.
 
 
 ### Organize your Dashboard
@@ -114,7 +140,7 @@ To dive into a chart on the dashboard, click the [ ] icon. Once expanded, you 
 
 If you want to save changes to a chart on the dashboard, configure the chart as desired and click "Save" to update the existing chart, or "Save As" to create a new chart on your dashboard.
 
-![image](https://github.com/user-attachments/assets/aa563da7-eab1-4578-a081-1ad1f343cc5c)
+![Chart editing interface in dashboard](https://github.com/user-attachments/assets/aa563da7-eab1-4578-a081-1ad1f343cc5c)
 
 
 ## Tips

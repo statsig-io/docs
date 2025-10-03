@@ -4,7 +4,7 @@ slug: /templates/templates
 keywords:
   - owner:mseger
 last_update:
-  date: 2025-02-06
+  date: 2025-09-18
 ---
 
 # Templates

@@ -6,7 +6,7 @@ description: Analyzing Cohorts with Statsig
 keywords:
   - owner:craig
 last_update:
-  date: 2025-05-07
+  date: 2025-09-18
 ---
 
 # Cohort Metrics
@@ -31,9 +31,12 @@ Cohort metrics on Statsig are feature-rich. This page explains the different set
 
 ## Basic Cohort Windows
 
-Basic cohort windows are fairly simple. They are a filter on metric data with a time range relative to the unit's time of exposure. For example, this cohort metric from 1 to 6 days would filter to events from 24 hours until 144 hours from when they were exposed to the experiment.
+Basic cohort windows are fairly simple. They are a filter on metric data with a time range relative to the unit's time of exposure. 
+For example, this cohort metric from 1 to 6 days would filter to events from 24 hours until 144 hours from when they were exposed to the experiment.
 
-Note that this is calculated as a timestamp comparison; a unit enrolled at 12pm will have exactly 24 hours until they hit the end of a 0-1 day cohort.
+:::note
+This is calculated as a timestamp comparison; a unit enrolled at 12pm will have exactly 24 hours until they hit the end of a 0-1 day cohort.
+:::
 
 For metrics from data sources that are marked as daily data, the cohort comparison is truncated to a date so that day-0 data behaves as expected (e.g. a user exposed on `2025-01-05T09:00` will include the date-based data from `2025-01-05` instead of truncating to times "after 9:00am").
 
@@ -58,7 +61,7 @@ If the cohort period goes over the end of the experiment, the default behavior i
 
 ![Basic cohort over end example](/img/whn/basic_cohort_over_end_example.png)
 
-If the metric is configured to only allow completed cohort windows, the unit is completely excluded from the analysis. For example they are not part of the denominator for the average value of a sum or count metric, and their metric data is filtered from the analysis.
+If the metric is configured to only allow completed cohort windows, the unit is completely excluded from the analysis. They are not part of the denominator for the average value of a sum or count metric, and their metric data is filtered from the analysis.
 
 ![Basic cohort example](/img/whn/completed_window_example.png)
 
@@ -92,7 +95,10 @@ This setting is only available for assign and analyze experiments.
 
 On the **Experiment Population** section of the experiment setup page, there is an option for allocation-based cohorting under **Configure Analysis Period** with Analysis Type **Cohorted Duration**. This is identical to the metric-based cohort, but applies globally to all possible metrics in the experiment analysis. This is a great way to globally add a cohort when appropriate, e.g. new user experiments.
 
-Note that when this is used in conjunction with metric cohorts, the minimal end of the cohort window will be used. For example, if a metric cohort is set to end at 7 days and the experiment at 10, 7 will be used. If the metric cohort is set to end at 7 days and the experiment at 5, 5 will be used.
+:::note
+When this is used in conjunction with metric cohorts, the minimal end of the cohort window will be used. 
+For example, if a metric cohort is set to end at 7 days and the experiment at 10 days, 7 will be used. If the metric cohort is set to end at 7 days and the experiment at 5 days, 5 will be used.
+:::
 
 The **only include units with a completed cohort window** setting can also be specified at the experiment level and will apply to all metrics in the experiment if so. If not checked, this will be applied on a metric-by-metric basis.
 
