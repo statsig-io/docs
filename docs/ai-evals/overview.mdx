@@ -12,15 +12,31 @@ last_update:
 :::info
 AI Evals are currently in beta; Reach out in Slack to get access. For a quick overview with screenshots - see [here](/ai-evals/getting-started)
 :::
+Statsig AI Evals helps you deploy AI with confidence by providing tools to benchmark, iterate, and launch AI systems without code changes. Run offline and online evaluations, control deployments with AI Configs, and optimize with experimentation.
+
+
 
 ## What are AI Evals?
-Statsig AI Evals have a few core components to help iterate and serve your LLM apps in production. 
-1. **[Prompts](/ai-evals/prompts)**: Prompts are a way to represent your LLM prompt (and associated LLM config like Model Provider, Model, Temperature etc). This typically represents a task you're getting the LLM to do (e.g. "Classify this ticket to a triage queue" or "Summarize this text"). You can version prompts, choose in Statsig which version is currently live and retrieve and use this prompt in Production using the Statsig server SDKs. It is possible to use Prompts as the control pane for your LLM apps without using the rest of the Evals product suite. 
-2. **[Offline Evals](/ai-evals/offline-evals)**: Offline evals offer a quick, automated grading of model outputs on a fixed test set. They catch wins / regressions early—before any real users are exposed. e.g. compare a new support‑bot’s replies to gold (human curated) answers to decide if it is good enough to ship. It is possible to grade output even without a golden dataset (e.g. if you're having an LLM validate English to French translation). 
-3. **[Online Evals](/ai-evals/online-evals)**: Online evals let you grade your model output in production on real world use cases. You can run the "live" version of a prompt, but can also shadow run "candidate" versions of a prompt, without exposing users to them. Grading works directly on the model output, and has to work without a ground truth to compare against. 
+Statsig AI Evals provides a comprehensive platform for developing, testing, and deploying LLM applications in production. The core components include: 
+1. **[AI Configs (Prompts)](/ai-evals/prompts)**: AI Configs store your LLM prompt, model configuration, and parameters (like Model Provider, Model, Temperature, etc.) in Statsig. This gives you version control, deployment management, and the ability to test configurations without code changes. You can version your AI configs, choose which version is live, and retrieve configurations in production using the Statsig server SDKs. AI Configs serve as the control plane for your LLM applications and can be used independently or with the full Evals suite. 
+2. **[Offline Evals](/ai-evals/offline-evals)**: Run automated evaluations of model outputs on curated test datasets before deploying to production. Offline evals catch wins and regressions early—before real users are exposed. For example, compare a new support bot's replies against gold-standard (human-curated) answers to validate quality. You can grade outputs even without a golden dataset using techniques like LLM-as-a-judge for tasks such as translation quality assessment. 
+3. **[Online Evals](/ai-evals/online-evals)**: Evaluate model performance in production on real-world use cases. Run your "live" version for users while shadow-testing "candidate" versions in the background without user impact. Online evals grade model outputs directly in production using automated graders that work without ground truth comparisons, enabling continuous quality monitoring and A/B testing of AI features. 
 
-## What about Gates, Experiments and Analytics?
-The standard suite of Statsig product building capabilities are also available for use here. For example, you can target an LLM feature at a set of people that meet some criteria with a Feature Gate, or choose to roll out a new prompt version as an Experiment and understand impact on metrics, similar to any other experiment.
+## Integration with Statsig Platform
+The full suite of Statsig's product development capabilities works seamlessly with AI Evals. You can:
+- **Feature Gates**: Target AI features to specific user segments or gradually roll out new AI configurations
+- **Experiments**: A/B test different prompt versions or models and measure impact on business metrics
+- **Analytics**: Track evaluation performance, costs, latency, and user engagement metrics in real-time dashboards
+- **Version Management**: Use AI Configs to manage releases, run automatic evaluations on every new configuration, and maintain deployment control
 
-### LLM as a Judge
-Some grading can use heuristics (e.g. check if the AI generated output matches the ideal answer in the dataset when the output is as simple as High, Medium or Low). Some grading can't - you're trying to decide if "Your ticket has been escalated" and "This ticket has been escalated" mean the same thing. LLM-as-a-judge lets you quickly and cheaply evaluate AI outputs at scale without needing tons of human reviewers. It mimics how a human would assess quality — and while not perfect, it's fast, consistent, and good enough to compare different versions of your model or prompt. In this example, we could write an LLM-as-a-judge prompt "Score how close this answer is to the ideal one on a scale between 0-1.0".
+## Automated Grading with LLM as a Judge
+
+Some evaluations can use simple heuristics (e.g., checking if the AI output matches an expected value like "High", "Medium", or "Low"). However, many real-world scenarios require more nuanced evaluation—such as determining whether "Your ticket has been escalated" and "This ticket has been escalated" convey the same meaning.
+
+LLM-as-a-judge enables fast, scalable evaluation of AI outputs without requiring extensive human review. It mimics human assessment of quality and, while not perfect, provides consistent and efficient comparison across different model versions or prompts. For example, you can create an LLM-as-a-judge grader with a prompt like: "Score how close this answer is to the ideal one on a scale from 0 to 1.0, where 1.0 means perfect semantic equivalence."
+
+This automated grading approach is particularly valuable for:
+- Evaluating semantic similarity and tone
+- Assessing output quality at scale
+- Comparing multiple AI configurations without manual review
+- Maintaining consistent evaluation criteria across iterations
