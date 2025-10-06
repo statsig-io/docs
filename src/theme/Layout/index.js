@@ -35,6 +35,12 @@ function KapaEventHandler() {
       setIsAskAIOpen(false);
     };
 
+    const escapeHtml = (text) => {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    };
+
     const handleSearchResultsCompleted = (event) => {
       const { query } = event;
       if (!query || !query.trim()) return;
@@ -61,12 +67,6 @@ function KapaEventHandler() {
           }
           existingCustomResult.remove();
         }
-
-        const escapeHtml = (text) => {
-          const div = document.createElement('div');
-          div.textContent = text;
-          return div.innerHTML;
-        };
 
         const customResult = document.createElement('a');
         customResult.className = 'custom-ask-ai-cta';
@@ -121,36 +121,34 @@ function KapaEventHandler() {
         const handleActivation = (e) => {
           e.preventDefault();
           e.stopPropagation();
-          if (window.Kapa) {
-            window.Kapa.open({ mode: 'ai', query: query });
+          
+          if (!window.Kapa) return;
+          
+          window.Kapa.open({ mode: 'ai', query: query });
+          
+          setTimeout(() => {
+            const kapaContainer = document.getElementById('kapa-widget-container');
+            if (!kapaContainer?.shadowRoot) return;
             
-            setTimeout(() => {
-              const kapaContainer = document.getElementById('kapa-widget-container');
-              if (kapaContainer && kapaContainer.shadowRoot) {
-                const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
-                if (modal) {
-                  const textarea = modal.querySelector('.mantine-Input-wrapper.mantine-Textarea-wrapper textarea');
-                  if (textarea) {
-                    textarea.focus();
-                    
-                    const submitButton = modal.querySelector('button.mantine-ActionIcon-root[data-variant="filled"]') || 
-                                       modal.querySelector('button[type="submit"]') ||
-                                       modal.querySelector('button[aria-label*="send"]') ||
-                                       modal.querySelector('button[aria-label*="submit"]') ||
-                                       modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
-                    
-                    if (submitButton) {
-                      submitButton.click();
-                      
-                      setTimeout(() => {
-                        textarea.focus();
-                      }, 100);
-                    }
-                  }
-                }
-              }
-            }, 500);
-          }
+            const modal = kapaContainer.shadowRoot.querySelector('section[aria-modal="true"]');
+            if (!modal) return;
+            
+            const textarea = modal.querySelector('.mantine-Input-wrapper.mantine-Textarea-wrapper textarea');
+            if (!textarea) return;
+            
+            textarea.focus();
+            
+            const submitButton = modal.querySelector('button.mantine-ActionIcon-root[data-variant="filled"]') || 
+                               modal.querySelector('button[type="submit"]') ||
+                               modal.querySelector('button[aria-label*="send"]') ||
+                               modal.querySelector('button[aria-label*="submit"]') ||
+                               modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
+            
+            if (submitButton) {
+              submitButton.click();
+              setTimeout(() => textarea.focus(), 100);
+            }
+          }, 500);
         };
         
         const handleKeyDown = (e) => {
