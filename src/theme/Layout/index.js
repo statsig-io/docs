@@ -168,7 +168,7 @@ function KapaEventHandler() {
         };
         
         const handleKeyDown = (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter') {
             handleActivation(e);
           }
         };
