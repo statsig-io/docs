@@ -96,27 +96,31 @@ function KapaEventHandler() {
           </div>
         `;
 
-        const handleMouseEnter = () => {
-          customResult.style.backgroundColor = '#f3f4f6';
-          customResult.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        const setStyles = (styles) => {
+          Object.assign(customResult.style, styles);
         };
         
-        const handleMouseLeave = () => {
-          customResult.style.backgroundColor = 'transparent';
-          customResult.style.boxShadow = 'none';
-        };
+        const handleMouseEnter = () => setStyles({
+          backgroundColor: '#f3f4f6',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+        });
         
-        const handleFocus = () => {
-          customResult.style.backgroundColor = '#f3f4f6';
-          customResult.style.border = '2px solid #1963d2';
-          customResult.style.boxShadow = 'none';
-        };
+        const handleMouseLeave = () => setStyles({
+          backgroundColor: 'transparent',
+          boxShadow: 'none'
+        });
         
-        const handleBlur = () => {
-          customResult.style.backgroundColor = 'transparent';
-          customResult.style.border = '2px solid transparent';
-          customResult.style.boxShadow = 'none';
-        };
+        const handleFocus = () => setStyles({
+          backgroundColor: '#f3f4f6',
+          border: '2px solid #1963d2',
+          boxShadow: 'none'
+        });
+        
+        const handleBlur = () => setStyles({
+          backgroundColor: 'transparent',
+          border: '2px solid transparent',
+          boxShadow: 'none'
+        });
 
         const handleActivation = (e) => {
           e.preventDefault();
@@ -138,11 +142,23 @@ function KapaEventHandler() {
             
             textarea.focus();
             
-            const submitButton = modal.querySelector('button.mantine-ActionIcon-root[data-variant="filled"]') || 
-                               modal.querySelector('button[type="submit"]') ||
-                               modal.querySelector('button[aria-label*="send"]') ||
-                               modal.querySelector('button[aria-label*="submit"]') ||
-                               modal.querySelector('svg[data-icon="arrow-right"]')?.closest('button');
+            const submitButtonSelectors = [
+              'button.mantine-ActionIcon-root[data-variant="filled"]',
+              'button[type="submit"]',
+              'button[aria-label*="send"]',
+              'button[aria-label*="submit"]'
+            ];
+            
+            let submitButton = null;
+            for (const selector of submitButtonSelectors) {
+              submitButton = modal.querySelector(selector);
+              if (submitButton) break;
+            }
+            
+            if (!submitButton) {
+              const arrowIcon = modal.querySelector('svg[data-icon="arrow-right"]');
+              submitButton = arrowIcon?.closest('button');
+            }
             
             if (submitButton) {
               submitButton.click();
