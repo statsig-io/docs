@@ -164,7 +164,7 @@ function KapaEventHandler() {
               submitButton.click();
               setTimeout(() => textarea.focus(), 100);
             }
-          }, 500);
+          }, 300);
         };
         
         const handleKeyDown = (e) => {
