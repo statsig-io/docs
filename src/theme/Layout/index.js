@@ -154,7 +154,7 @@ function KapaEventHandler() {
         };
         
         const handleKeyDown = (e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && e.target === customResult) {
+          if (e.key === 'Enter' || e.key === ' ') {
             handleActivation(e);
           }
         };
@@ -164,7 +164,7 @@ function KapaEventHandler() {
         customResult.addEventListener('focus', handleFocus);
         customResult.addEventListener('blur', handleBlur);
         customResult.addEventListener('click', handleActivation);
-        kapaContainer.shadowRoot.addEventListener('keydown', handleKeyDown);
+        customResult.addEventListener('keydown', handleKeyDown);
         
         customResult._cleanup = () => {
           customResult.removeEventListener('mouseenter', handleMouseEnter);
@@ -172,7 +172,7 @@ function KapaEventHandler() {
           customResult.removeEventListener('focus', handleFocus);
           customResult.removeEventListener('blur', handleBlur);
           customResult.removeEventListener('click', handleActivation);
-          kapaContainer.shadowRoot.removeEventListener('keydown', handleKeyDown);
+          customResult.removeEventListener('keydown', handleKeyDown);
         };
 
         resultsContainer.insertBefore(customResult, resultsContainer.firstChild);
