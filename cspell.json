@@ -742,7 +742,7 @@
     "ZORDER",
     "pypa",
     "manylinux",
-    "Manylinux"
+    "Manylinux",
     "IMDS",
     "resourcedetection",
     "llms",
