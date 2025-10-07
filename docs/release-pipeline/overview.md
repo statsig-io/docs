@@ -51,7 +51,7 @@ Consider implementing Release Pipelines when you need to:
 ## Getting Started
 
 :::note
-Release Pipeline is currently only supported in Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0). Legacy SDKs will continue to work but will not get the full features of release pipelines.
+Release Pipeline is currently only supported in a handful of Statsig SDk's (Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0), [Legacy Python SDK](/server/pythonSDK), and [Ruby SDK](/server/rubySDK)). Other Legacy SDKs will continue to work but will not get the full features of release pipelines.
 :::
 
 Follow these tutorials to begin implementing Release Pipelines:
