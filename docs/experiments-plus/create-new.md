@@ -5,7 +5,7 @@ slug: /experiments-plus/create-new
 keywords:
   - owner:vm
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 :::tip[Warehouse Native users]
@@ -15,6 +15,7 @@ You're viewing the Cloud docs for this page. Metrics and experiments behave diff
 This doc walks through the steps of creating a new experiment in the Statsig console. If you're looking for an end-to-end guide that includes integrating the Statsig SDK, see [Run your first experiment](/guides/abn-tests).
 
 ### User-level Experiments
+
 To create a user-level experiment, follow these steps:
 
 1. Log into the Statsig console at [https://console.statsig.com/](https://console.statsig.com/)
@@ -24,7 +25,7 @@ To create a user-level experiment, follow these steps:
 5. By default, your experiment runs in its own **Layer**. A Layer allows you to manage multiple experiments and feature flags together. If you want to add this experiment to an existing Layer, select **Add Layer** under **Advanced** in the experiment creation modal. You can also create a new Layer by selecting **Create New Layer**.
 6. Click **Create**
 
-![image](https://github.com/user-attachments/assets/f7c0bdd7-8fdf-485a-b90f-e2aa619149c4)
+![Experiment creation modal interface](https://github.com/user-attachments/assets/f7c0bdd7-8fdf-485a-b90f-e2aa619149c4)
 
 ### Configure Your Scorecard
 
@@ -44,14 +45,16 @@ For best practices on configuring your Scorecard, read more [here](/pulse/read-p
 This is where most of your experiment configuration happens.
 
 #### Allocation
+
 For **Allocation**, enter the percentage of users you want to assign to this experiment. You can allocate up to 100% of eligible users, but it’s good practice to start with a smaller percentage, verify the experiment’s stability, and then ramp up the allocation.
 
-![image](https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png)
+![Experiment allocation configuration interface](https://user-images.githubusercontent.com/101903926/203620564-028c7244-c77b-4f51-92e1-40f522a03902.png)
 
 #### Targeting
+
 To configure **Targeting** criteria, click to edit the **Targeting** section. You can either set new targeting criteria or use an existing **Feature Gate**. This will limit the experiment to only the users who meet the defined conditions.
 
-![image](https://github.com/user-attachments/assets/6f20dfbc-725f-4384-bd06-1fe23c15fcf6)
+![Experiment targeting configuration interface](https://github.com/user-attachments/assets/6f20dfbc-725f-4384-bd06-1fe23c15fcf6)
 
 - If your targeting is straightforward, creating it through Inline Targeting works well. (Click "Criteria: Everyone" to get started.)
 - For more advanced targeting (e.g., progressive rollouts) or if you want to maintain targeting criteria when you launch your experiment, it’s better to reference an existing **Feature Gate**.
@@ -66,7 +69,7 @@ When configuring **Groups and Parameters**, it’s a good idea to define your pa
 
 You can add additional groups by clicking the "+" next to the existing groups. The user allocation will automatically adjust as you add more groups.
 
-![image](https://user-images.githubusercontent.com/101903926/203623897-5ae52609-80cc-4927-a64b-5e3af0005fd0.png)
+![Experiment groups and parameters configuration interface](https://user-images.githubusercontent.com/101903926/203623897-5ae52609-80cc-4927-a64b-5e3af0005fd0.png)
 
 In addition, you can name, describe, and even add variant images for each group under the **Groups** section. However, only the parameters and values will affect what users see—group names and descriptions are not used in the experiment code.
 
@@ -77,7 +80,7 @@ By default, experiments randomize users based on **User ID**. If you need to use
 1. Click the **ID Type** dropdown menu and choose the desired ID type.
 2. Click **Create**
 
-![image](https://github.com/user-attachments/assets/8be2c2b5-d9ad-49cb-81c0-a48dfab0a158)
+![ID type selection dropdown interface](https://github.com/user-attachments/assets/8be2c2b5-d9ad-49cb-81c0-a48dfab0a158)
 
 Afterward, continue with the same steps described above to finish configuring the experiment.
 
@@ -99,24 +102,26 @@ If you want to create an experiment that excludes users exposed to other experim
 2. Select an existing **Layer** or create a new one.
 3. Click **Create**.
 
-![image](https://github.com/user-attachments/assets/09f23cb7-284d-4504-9a22-85eb7cc51534)
+![Isolated experiment layer configuration interface](https://github.com/user-attachments/assets/09f23cb7-284d-4504-9a22-85eb7cc51534)
 
 Now, complete the rest of the experiment setup as described above.
 
 ### Significance Level Adjustments
 
-By default, Pulse results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Pulse.
+By default, Experiment Results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Experiment Results.
 
-- **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (*α*) is divided by the number of test variants.
+- **Bonferroni Correction:** Apply this to reduce the risk of false positives in experiments with multiple test groups. The significance level (_α_) is divided by the number of test variants.
 - **Default Confidence Interval:** Choose a lower confidence interval (e.g., 80%) if you prefer faster results with higher tolerance for false positives, or stick with 95% for greater certainty.
 
-![image](https://github.com/user-attachments/assets/a6019d56-5c7f-43de-9679-dbf3579483e1)
+![Significance level adjustment settings interface](https://github.com/user-attachments/assets/a6019d56-5c7f-43de-9679-dbf3579483e1)
 
 ### Target Duration
 
 Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
 
-💡 **Target durations longer than 90 days:** By default, Statsig computes Pulse results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
+![Target duration setting interface](/img/target_duration_setting.png)
+
+💡 **Target durations longer than 90 days:** By default, Statsig computes Experiment Results results for the first 90 days, though the experiment itself can run longer. Before setting a duration beyond 90 days, ask yourself if results past that period will still be relevant, and if earlier data might already provide the insights you need.
 
 <img alt="Hypothesis Advisor Screenshot" src="https://github.com/user-attachments/assets/371f7de7-f428-41d5-ad0e-8fdf9d223982" />
 
@@ -125,9 +130,14 @@ Once set, you can track progress against the target duration/exposures in the ex
 ---
 
 ### Hypothesis Advisor
-Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses. 
 
-This feature has to be enabled for your project. Do this from Settings -> Experiment -> Project -> Statsig AI. This is also where you configure any custom requirements you want to configure (e.g. 
-"Strongly recommend that a validation plan be mentioned")
+Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses.
+
 <img alt="Screenshot showing the Hypothesis Advisor" src="https://github.com/user-attachments/assets/ef70cbf1-db6b-4c15-81fd-ebabbda12e83" />
+
+This Statsig AI feature is default disabled and has to be enabled for your project. 
+Do this from Settings -> Experiment -> Project -> Statsig AI. 
+This is also where you configure any custom requirements you want Hypothesis Advisor to ensure adherence to (e.g. "Strongly recommend that a validation plan be mentioned").
+
+<img alt="Setting showing how to enable Statsig AI" src="/img/ai/hypothesis-advisor-enable-settings.png" />
 

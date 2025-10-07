@@ -3,7 +3,7 @@ title: Statsig IP Ranges
 keywords:
   - owner:eric
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 Statsig reserves the following IP addresses and ranges for use by its services. If you have a network policy set up inside your systems, you should allowlist
@@ -26,6 +26,8 @@ allowing only certain IPs.
 
 - 34.38.207.120/30 (4 addresses)
 
+- 4.242.112.193 (Microsoft Fabric Warehouse Native)
+
 :::info
 Webhook requests can be very high volume and may not be initiated from these IP Ranges. Consider using [Webhook Signatures](/integrations/event_webhook#webhook-signature) to validate webhook requests.
 :::
@@ -37,3 +39,5 @@ These IPs back the domains (e.g. `api.statsig.com`, `featuregates.org`, `statsig
 - 34.120.214.181
 
 - 34.128.128.0/29 (8 addresses)
+
+- 4.242.112.193 (Microsoft Fabric Warehouse Native)

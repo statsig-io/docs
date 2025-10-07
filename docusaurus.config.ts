@@ -43,7 +43,9 @@ const config: Config = {
   plugins: [
     function statsig() {
       const isProd = process.env.NODE_ENV === "production";
-      const isNetlifyPreview = process.env.CONTEXT === "deploy-preview" || process.env.CONTEXT === "branch-deploy";
+      const isNetlifyPreview =
+        process.env.CONTEXT === "deploy-preview" ||
+        process.env.CONTEXT === "branch-deploy";
       const tier = isProd && !isNetlifyPreview ? "production" : "development";
       return {
         name: "docusaurus-plugin-statsig",
@@ -147,12 +149,22 @@ const config: Config = {
       {
         redirects: [
           {
-            from: "/guides/guides/feature-gates",
             to: "/guides/feature-flags",
+            from: "/guides/guides/feature-gates",
           },
           {
             to: "/feature-flags/overview",
-            from: ["/feature-gates/overview", "/feature-gates", "/feature-flags", "/feature-gates/working-with", "/feature-flags/working-with", "/feature-gates/implement", "/feature-gates/implement/client", "/feature-gates/implement/server", "/feature-gates/implement/http-api"],
+            from: [
+              "/feature-gates/overview",
+              "/feature-gates",
+              "/feature-flags",
+              "/feature-gates/working-with",
+              "/feature-flags/working-with",
+              "/feature-gates/implement",
+              "/feature-gates/implement/client",
+              "/feature-gates/implement/server",
+              "/feature-gates/implement/http-api",
+            ],
           },
           {
             to: "/feature-flags/create",
@@ -196,35 +208,41 @@ const config: Config = {
           },
           {
             to: "/",
-            from: ["/feature-flags/implement", "/feature-flags/implement/client", "/feature-flags/implement/server", "/feature-flags/implement/http-api", "/category/walkthrough-guides"],
+            from: [
+              "/feature-flags/implement",
+              "/feature-flags/implement/client",
+              "/feature-flags/implement/server",
+              "/feature-flags/implement/http-api",
+              "/category/walkthrough-guides",
+            ],
           },
           {
             to: "/pulse/read-pulse",
             from: ["/experiments-plus/read-results", "/pulse"],
           },
           {
-            from: "/experiments-plus/rules",
             to: "/experiments-plus/getting-group#rules",
+            from: "/experiments-plus/rules",
           },
           {
-            from: "/experiments-plus/working-with",
             to: "/experiments-plus",
+            from: "/experiments-plus/working-with",
           },
           {
-            from: "/experiments-plus/experimentation/why-experiment",
             to: "/experiments-plus#why-experiment",
+            from: "/experiments-plus/experimentation/why-experiment",
           },
           {
-            from: "/experiments-plus/experimentation/scenarios",
             to: "/experiments-plus#scenarios-for-experimentation",
+            from: "/experiments-plus/experimentation/scenarios",
           },
           {
-            from: "/experiments-plus/experimentation/common-terms",
             to: "/experiments-plus#key-concepts-in-experimentation",
+            from: "/experiments-plus/experimentation/common-terms",
           },
           {
-            from: "/experiments-plus/experimentation/choosing-randomization-unit",
             to: "/experiments-plus#choosing-the-right-randomization-unit",
+            from: "/experiments-plus/experimentation/choosing-randomization-unit",
           },
           {
             to: "/experiments-plus/stop-assignments",
@@ -232,7 +250,12 @@ const config: Config = {
           },
           {
             to: "/product-analytics/overview",
-            from: ["/product-analytics", "/mex", "/mex/overview", "/metrics/events-explorer"],
+            from: [
+              "/product-analytics",
+              "/mex",
+              "/mex/overview",
+              "/metrics/events-explorer",
+            ],
           },
           {
             to: "/product-analytics/drilldown",
@@ -251,12 +274,15 @@ const config: Config = {
             from: "/mex/retention",
           },
           {
-            from: "/metrics/metric-alerts",
             to: "/product-analytics/alerts/",
+            from: "/metrics/metric-alerts",
           },
           {
             to: "/client/javascript-sdk",
-            from: ["/client/introduction/javascript-sdk","/client/jsClientSDK"],
+            from: [
+              "/client/introduction/javascript-sdk",
+              "/client/jsClientSDK",
+            ],
           },
           {
             to: "/client/javascript-sdk/react",
@@ -267,76 +293,84 @@ const config: Config = {
             from: ["/client/reactNative", "/client/reactNativeSDK"],
           },
           {
-            from: "/client/reactNativeExpoSDK",
             to: "/client/javascript-sdk/expo",
+            from: "/client/reactNativeExpoSDK",
           },
           {
             to: "/client/javascript-sdk/next-js",
-            from: ["/guides/nextjs-feature-flags", "/client/javascript-sdk/next-js-pages-router", "/guides/nextjs-page-router-feature-flags", "/client/javascript-sdk/next-js-app-router"],
+            from: [
+              "/guides/nextjs-feature-flags",
+              "/client/javascript-sdk/next-js-pages-router",
+              "/guides/nextjs-page-router-feature-flags",
+              "/client/javascript-sdk/next-js-app-router",
+            ],
           },
           {
             to: "/client/javascript-sdk/migrating-from-statsig-js",
             from: ["/js-migration", "/js-migration-rn", "/js-migration-expo"],
           },
           {
-            from: "/js-migration-react",
             to: "/client/javascript-sdk/migrating-from-statsig-react",
+            from: "/js-migration-react",
           },
           {
-            from: "/layers/js-tutorial",
             to: "/client/javascript-sdk#layers",
+            from: "/layers/js-tutorial",
           },
           {
             to: "/client/concepts/initialize",
-            from: ["/client/javascript-sdk/react/init-strategies", "/client/concepts/bootstrapping"],
+            from: [
+              "/client/javascript-sdk/react/init-strategies",
+              "/client/concepts/bootstrapping",
+            ],
           },
           {
             to: "/concepts/user",
             from: ["/server/concepts/user/", "/client/concepts/user/"],
           },
           {
-            from: "/statsig-warehouse-native/guides/assignment-sources/",
             to: "/statsig-warehouse-native/configuration/assignment-sources",
+            from: "/statsig-warehouse-native/guides/assignment-sources/",
           },
           {
+            to: "/statsig-warehouse-native/introduction",
             from: "/guides/experiment-analysis/",
-            to: "/statsig-warehouse-native/introduction",
           },
           {
+            to: "/statsig-warehouse-native/introduction",
             from: "/statsig-warehouse-native",
-            to: "/statsig-warehouse-native/introduction",
           },
           {
-            from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
+            from: "/stats-engine/offlineaa",
           },
           {
             to: "/console-api/all-endpoints-generated",
             from: "/console-api/all-endpoints",
           },
           {
-            from: "/insights/",
             to: "/aggregated-impact",
+            from: "/insights/",
           },
           {
-            from: "/dynamic-config/implement/",
             to: "/dynamic-config/working-with",
+            from: "/dynamic-config/implement/",
           },
           {
-            from: "/sdks/sdks-overview",
             to: "/sdks/getting-started",
+            from: "/sdks/sdks-overview",
           },
           {
-            from: "/debugging",
             to: "/sdk/debugging",
+            from: "/debugging",
           },
           {
-            from: "/messages/serverRequiredUserID/",
             to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+            from: "/messages/serverRequiredUserID/",
           },
           {
-            from: "/guides/landing-page-experiments",
             to: "/guides/sidecar-experiments/introduction",
+            from: "/guides/landing-page-experiments",
           },
           {
             to: "/integrations/terraform/introduction",
@@ -344,30 +378,24 @@ const config: Config = {
           },
           {
             to: "/ai-evals/overview",
-            from: "/ai-configs",
+            from: ["/ai-configs", "/prompts", "/aievals", "/ai-evals", "/ai-ml/ai-prompt-experiment"],
           },
           {
-            to: "/ai-evals/overview",
-            from: "/prompts",
-          },
-          {
-            to: "/ai-evals/overview",
-            from: "/aievals",
-          },
-          {
-            to: "/ai-evals/overview",
-            from: "/ai-evals",
-          },
-          {
-            from: "/client/concepts/autocapture/",
             to: "/webanalytics/autocapture/",
+            from: "/client/concepts/autocapture/",
           },
           {
-            from: "/integrations/vscode",
             to: "/integrations/introduction",
+            from: "/integrations/vscode",
           },
-
-          
+          {
+            to: "/experiments-plus/bayesian/",
+            from: "/experiments-plus/bayesian-deprecated/",
+          },
+          {
+            to: '/product-analytics/alerts/topline_alerts',
+            from: '/product-analytics/topline_alerts',
+          },
         ],
       },
     ],
@@ -383,21 +411,21 @@ const config: Config = {
         autoCollapseCategories: false,
       },
     },
-    algolia: {
-      appId: "JOWHDNMZRN",
+    // algolia: {
+    //   appId: "JOWHDNMZRN",
 
-      apiKey: "2a538120ca7db3411698786731f3c2f6",
+    //   apiKey: "2a538120ca7db3411698786731f3c2f6",
 
-      indexName: "statsig",
+    //   indexName: "statsig",
 
-      contextualSearch: true,
+    //   contextualSearch: true,
 
-      searchParameters: {
-        facetFilters: [],
-      },
+    //   searchParameters: {
+    //     facetFilters: [],
+    //   },
 
-      insights: true,
-    },
+    //   insights: true,
+    // },
     navbar: {
       title: "",
       logo: {
@@ -429,11 +457,16 @@ const config: Config = {
           label: "SDKs & APIs",
           id: "sdk-api", //don't edit this without rerunning algolia scraper
         },
+        // {
+        //   type: "search",
+        // },
         {
-          type: "search",
+          type: "custom-askAI",
+          position: "right",
         },
         {
           type: "custom-signupCTA",
+          position: "right",
         },
       ],
     },
@@ -503,6 +536,39 @@ const config: Config = {
       ],
     },
   } satisfies Preset.ThemeConfig,
+  scripts: [
+    {
+      id: "kapa-widget-script",
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      defer: true,
+      "data-website-id": "418990dd-0615-4ba7-b52f-3ab8c1af4e79",
+      "data-project-name": "Statsig",
+      "data-project-color": "#1963d2",
+      "data-project-logo":
+        "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg",
+      "data-scale-factor": "1.2",
+      "data-modal-lock-scroll": "false",
+      "data-modal-image":
+        "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg",
+      "data-button-hide": "true",
+      "data-modal-override-open-id": "ask-ai-navbar-button",
+      "data-modal-disclaimer":
+        "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!",
+      "data-answer-feedback-info-text":
+        "All feedback is reviewed by the Statsig team.",
+      "data-search-mode-default": "true",
+      "data-search-mode-enabled": "true",
+      "data-modal-open-on-command-k": "true",
+      "data-modal-command-k-search-mode-default": "true",
+      "data-modal-search-input-placeholder": "Search Statsig docs...",
+      "data-search-include-source-names": '["Documentation"]',
+      "data-search-show-ask-ai-cta": "false",
+      "data-search-result-link-target": "_self",
+      "data-modal-full-screen-on-mobile": "false",
+      "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
+      "data-question-text-color": "#1963d2",
+    },
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     {

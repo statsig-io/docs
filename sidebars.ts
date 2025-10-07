@@ -56,10 +56,22 @@ const sidebars: SidebarsConfig = {
               type: "category",
               label: "Migration Guides",
               collapsed: true,
+              link: {
+                type: "doc",
+                id: "guides/migration-overview",
+              },
               items: [
-                "guides/migrate-from-launchdarkly",
-                "guides/open-source-script",
-                "guides/ui-based-tool",
+                "guides/migrate-from-amplitude",
+                "guides/migrate-from-mixpanel",
+                {
+                  type: "category",
+                  label: "Migrate from LaunchDarkly",
+                  link: {
+                    type: "doc",
+                    id: "guides/migrate-from-launchdarkly",
+                  },
+                  items: ["guides/open-source-script", "guides/ui-based-tool"],
+                },
               ],
             },
           ],
@@ -235,7 +247,6 @@ const sidebars: SidebarsConfig = {
               label: "Types of experiments",
               items: [
                 "experiments-plus/switchback-tests",
-                "ai-ml/ai-prompt-experiment",
                 "guides/aa-test",
                 "guides/seo-testing",
               ],
@@ -382,13 +393,21 @@ const sidebars: SidebarsConfig = {
           className: "sidecar-icon sidebar-icon",
           items: [
             "guides/sidecar-experiments/introduction",
-            "guides/sidecar-experiments/setup",
-            "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/sidecar-v3",
             "guides/sidecar-experiments/measuring-experiments",
-            "guides/sidecar-experiments/advanced-configurations",
-            "guides/sidecar-experiments/publishing-experiments",
-            "guides/sidecar-experiments/integrating-gtm",
-            "guides/aa-sidecar",
+            "guides/sidecar-experiments/advanced-configurations-v3",
+            {
+              type: "category",
+              label: "(Legacy) Sidecar",
+              items: [
+                "guides/sidecar-experiments/setup",
+                "guides/sidecar-experiments/creating-experiments",
+                "guides/sidecar-experiments/advanced-configurations",
+                "guides/sidecar-experiments/publishing-experiments",
+                "guides/sidecar-experiments/integrating-gtm",
+                "guides/aa-sidecar",
+              ],
+            }
           ],
         },
         {
@@ -417,11 +436,14 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Alerts",
+              link: {
+                type: "doc",
+                id: "product-analytics/alerts",
+              },
               items: [
-                "product-analytics/alerts",
-                "product-analytics/rollout_alerts",
                 "product-analytics/topline_alerts",
-              ],
+                "product-analytics/rollout_alerts",
+              ],            
             },
           ],
         },
@@ -429,7 +451,26 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Infra Analytics",
           className: "infra-analytics-icon sidebar-icon",
-          items: ["infra-analytics/overview"],
+          link: {
+            type: "doc",
+            id: "infra-analytics/overview",
+          },
+          items: [
+            "infra-analytics/getting-started",
+            {
+              type: "category",
+              label: "Logs Explorer",
+              link: {
+                type: "doc",
+                id: "infra-analytics/logs-explorer",
+              },
+              items: [
+                "infra-analytics/events-mode-logs-explorer",
+                "infra-analytics/logs-explorer-queries",
+              ],            
+            },
+            "infra-analytics/topline-alerts-logs",
+          ],
         },
         {
           type: "category",
@@ -470,8 +511,16 @@ const sidebars: SidebarsConfig = {
           items: [
             "ai-evals/getting-started",
             "ai-evals/prompts",
+            "ai-evals/graders",
             "ai-evals/offline-evals",
-            "ai-evals/online-evals",
+            {
+              type: "category",
+              label: "Online Evals",
+              items: [
+                "ai-evals/online-evals",
+                "ai-evals/create-an-online-eval",
+              ],
+            },
           ],
         },
       ],
@@ -616,6 +665,7 @@ const sidebars: SidebarsConfig = {
             {
               "Slack, VS Code & Productivity": [
                 "integrations/github_code_references",
+                "integrations/gitlab_code_references",
                 "integrations/slack",
                 "integrations/jira",
               ],
@@ -753,6 +803,7 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               "Open Telemetry": ["server/concepts/open_telemetry"],
+              Cloudflare: ["server/concepts/cloudflare"],
             },
             {
               "Domains & IP": [
@@ -788,15 +839,21 @@ const sidebars: SidebarsConfig = {
   api: [
     {
       type: "category",
-      label: "SDK Quickstarts",
+      label: "Quickstart Guide",
       collapsed: false,
       collapsible: false,
-      items: [
-        "sdks/quickstart",
-        "quickstarts/check-gate",
-        "guides/abn-tests",
-        "guides/logging-events",
-      ],
+        items: [
+          "sdks/quickstart",
+          "sdks/identify-users",
+          "quickstarts/check-gate",
+          "guides/abn-tests",
+          "guides/logging-events",
+          {
+            type: "doc",
+            id: "sdks/build-with-llms",
+            className: "ai-icon sidebar-icon",
+          },
+        ],
     },
     {
       type: "category",
@@ -837,7 +894,7 @@ const sidebars: SidebarsConfig = {
         {
           className: "next-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
-          id: "client/javascript-mono/nextjs/NextJsUsage",
+          id: "client/javascript-mono/NextJsUsage",
         },
         {
           className: "android-icon sidebar-icon sdk-sidebar-icon",
@@ -897,6 +954,10 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "On Device Client SDKs",
+              link: {
+                type: "doc",
+                id: "client/onDevice",
+              },
               items: [
                 {
                   type: "category",
@@ -1182,6 +1243,7 @@ const sidebars: SidebarsConfig = {
             "statsig-warehouse-native/guides/sdks",
             "statsig-warehouse-native/guides/aatest",
             "metrics/different-id",
+            "statsig-warehouse-native/guides/email-experiments",
           ],
         },
         {
@@ -1211,6 +1273,7 @@ const sidebars: SidebarsConfig = {
         "statsig-warehouse-native/connecting-your-warehouse/redshift",
         "statsig-warehouse-native/connecting-your-warehouse/trino",
         "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+        "statsig-warehouse-native/connecting-your-warehouse/fabric",
         "statsig-warehouse-native/connecting-your-warehouse/other",
       ],
     },

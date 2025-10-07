@@ -11,12 +11,12 @@ last_update:
 
 
 ## Create/analyze an offline eval in 10 minutes
-(Coming soon: How to start an online eval in 15 minutes)
+<!-- (Coming soon: How to start an online eval in 15 minutes) -->
 
 
 **1. Create a Prompt within Statsig**
 
-This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app and use it. 
+This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app and use it. You can create multiple versions of the prompt as you iterate, and choose which one is "live" (retrieved by the SDK).
 
 <img alt="image" src="https://github.com/user-attachments/assets/a17b3c4d-2126-4dfe-8d4b-d40b1838f878" />
 

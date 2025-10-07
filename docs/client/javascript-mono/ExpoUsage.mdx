@@ -5,12 +5,14 @@ slug: /client/javascript-sdk/expo
 keywords:
   - owner:brock
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-import { FeaturePillList } from '@site/src/components/FeaturePillList';
+import { FeaturePillList } from "@site/src/components/FeaturePillList";
+
+import SampleTipText from "./_sampleApp.mdx";
 
 import {
   SDKDocsBuilder,
@@ -70,20 +72,21 @@ export const Builder = SDKDocsBuilder({
     [ExpoLoadingState, {}],
     [ExpoAdvanced, {}],
     [ExpoDebugging, {}],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <FeaturePillList
-    features={[
-      { name: "Feature Gates", link: "#basics-check-gate" },
-      { name: "Experiments", link: "#basics-get-experiment" },
-      { name: "Dynamic Configs", link: "#basics-get-config" },
-      { name: "Layers", link: "#basics-get-layer" },
-      { name: "Event Logging", link: "#basics-log-event" },
-    ]
-  }
+  features={[
+    { name: "Feature Gates", link: "#basics-check-gate" },
+    { name: "Experiments", link: "#basics-get-experiment" },
+    { name: "Dynamic Configs", link: "#basics-get-config" },
+    { name: "Layers", link: "#basics-get-layer" },
+    { name: "Event Logging", link: "#basics-log-event" },
+  ]}
 />
-<>{Builder.result}</>
 
+<SampleTipText />
+
+<>{Builder.result}</>

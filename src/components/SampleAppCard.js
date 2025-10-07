@@ -3,17 +3,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import React from "react";
 
-export default function SampleAppCard({ title, link, image }) {
+export default function SampleAppCard({title, link, image}) {
   return (
     <a
       href={link}
       target="_blank"
-      rel="noopener noreferrer"
-      style={{ color: "inherit" }}
+      rel="noopener"
+      style={{color: "inherit"}}
     >
       <Card
         style={{
-          margin: "16px",
           display: "flex",
           flexDirection: "column",
           alignItems: "stretch",

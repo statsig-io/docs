@@ -5,14 +5,19 @@ slug: /exp-templates/decision-framework
 keywords:
   - owner:Kaz
 last_update:
-  date: 2025-07-23
+  date: 2025-09-18
 ---
 
-A Decision Framework for experiment templates allows teams to standardize their interpretation of results and decision-making process. Once configured, it provides clear recommendations for which group to ship based on experimental outcomes. While the framework highlights recommended actions based on metric movements, it does not enforce any actions.
+A Decision Framework for experiments allows teams to standardize their interpretation of results and decision-making process. Once configured, it provides clear recommendations for which group to ship based on experimental outcomes. While the framework highlights recommended actions based on metric movements, it does not enforce any actions.
+
+## Where to add Decision Frameworks
+- Decision Frameworks can be added to an experiment template. This framework will apply to all experiments created from that template
+- Decision Frameworks can be added to individual experiments ad-hoc by pressing the three-dot menu 
+  - Requiring a decision framework for experiments is a setting that can be configured at the project-level. This can be useful to enforce that experimenters are thoughtfully selecting decision criteria before running an experiment.
 
 ## Setup
 
-To configure a Decision Framework, find your desired experiment template under **Settings** → **Templates**, then navigate to the **Decision Framework** tab. By selecting one primary metric and one or more guardrail metrics, you can choose a recommended action based on metric performance.
+To configure a Decision Framework, add it from your experiment, or find your desired experiment template under **Settings** → **Templates**, then navigate to the **Decision Framework** tab. By selecting one primary metric and one or more guardrail metrics, you can choose a recommended action based on metric performance.
 
 ![Team-level Templates Settings](/img/templates/df_setup_3.png)
 
