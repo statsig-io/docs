@@ -62,6 +62,7 @@ const sidebars: SidebarsConfig = {
               },
               items: [
                 "guides/migrate-from-amplitude",
+                "guides/migrate-from-mixpanel",
                 {
                   type: "category",
                   label: "Migrate from LaunchDarkly",
