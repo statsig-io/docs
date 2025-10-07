@@ -11,7 +11,7 @@ last_update:
 ---
 import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
-Logs Explorer provides a way for you to search and analyze all of your product’s logs in one place. It is designed to help you quickly find the signals you care about, whether you’re debugging an incident, tracking regressions, or exploring system behavior.  
+Logs Explorer provides a way for you to search and analyze all of your product’s logs in one place. It works for logs, traces, and [ingested events](/infra-analytics/events-mode-logs-explorer), so you can use the same interface whether you’re debugging infra issues or investigating product event streams. 
 - **Searching**: Slice logs down to only what’s relevant (by service, host, status code, etc.) 
 - **Grouping**: Aggregate logs by dimensions like region, status, or browser.
 - **Visualization**: Plot log groupings over time to spot spikes, regressions, or anomalies instantly.
@@ -28,7 +28,9 @@ You can find the logs you care about by:
 ---
 
 ### Getting Started with Log Explorer  
-To get started with Log Explorer, follow the [OTEL onboarding guide](/server/concepts/open_telemetry) to set up log ingestion. Once that's ready, you can navigate to **Infra Analytics → Log Explorer** in the Statsig sidebar to begin exploring your logs. 
+To get started with Log Explorer, follow the [OTEL onboarding guide](/infra-analytics/getting-started) to set up log ingestion. Once that's ready, you can navigate to **Infra Analytics → Log Explorer** in the Statsig sidebar to begin exploring your logs. 
+
+You can also use Logs Explorer in [Events Mode](/infra-analytics/events-mode-logs-explorer) to search and analyze your existing Statsig Events — no additional instrumentation needed.
 
 ---
 :::info

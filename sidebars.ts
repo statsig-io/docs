@@ -62,6 +62,7 @@ const sidebars: SidebarsConfig = {
               },
               items: [
                 "guides/migrate-from-amplitude",
+                "guides/migrate-from-mixpanel",
                 {
                   type: "category",
                   label: "Migrate from LaunchDarkly",
@@ -392,13 +393,21 @@ const sidebars: SidebarsConfig = {
           className: "sidecar-icon sidebar-icon",
           items: [
             "guides/sidecar-experiments/introduction",
-            "guides/sidecar-experiments/setup",
-            "guides/sidecar-experiments/creating-experiments",
+            "guides/sidecar-experiments/sidecar-v3",
             "guides/sidecar-experiments/measuring-experiments",
-            "guides/sidecar-experiments/advanced-configurations",
-            "guides/sidecar-experiments/publishing-experiments",
-            "guides/sidecar-experiments/integrating-gtm",
-            "guides/aa-sidecar",
+            "guides/sidecar-experiments/advanced-configurations-v3",
+            {
+              type: "category",
+              label: "(Legacy) Sidecar",
+              items: [
+                "guides/sidecar-experiments/setup",
+                "guides/sidecar-experiments/creating-experiments",
+                "guides/sidecar-experiments/advanced-configurations",
+                "guides/sidecar-experiments/publishing-experiments",
+                "guides/sidecar-experiments/integrating-gtm",
+                "guides/aa-sidecar",
+              ],
+            }
           ],
         },
         {
@@ -427,11 +436,14 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Alerts",
+              link: {
+                type: "doc",
+                id: "product-analytics/alerts",
+              },
               items: [
-                "product-analytics/alerts",
-                "product-analytics/rollout_alerts",
                 "product-analytics/topline_alerts",
-              ],
+                "product-analytics/rollout_alerts",
+              ],            
             },
           ],
         },
@@ -444,9 +456,19 @@ const sidebars: SidebarsConfig = {
             id: "infra-analytics/overview",
           },
           items: [
-            "infra-analytics/logs-explorer",
-            "infra-analytics/events-mode-logs-explorer",
-            "infra-analytics/logs-explorer-queries",
+            "infra-analytics/getting-started",
+            {
+              type: "category",
+              label: "Logs Explorer",
+              link: {
+                type: "doc",
+                id: "infra-analytics/logs-explorer",
+              },
+              items: [
+                "infra-analytics/events-mode-logs-explorer",
+                "infra-analytics/logs-explorer-queries",
+              ],            
+            },
             "infra-analytics/topline-alerts-logs",
           ],
         },
@@ -489,6 +511,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "ai-evals/getting-started",
             "ai-evals/prompts",
+            "ai-evals/graders",
             "ai-evals/offline-evals",
             {
               type: "category",
@@ -816,16 +839,21 @@ const sidebars: SidebarsConfig = {
   api: [
     {
       type: "category",
-      label: "SDK Quickstarts",
+      label: "Quickstart Guide",
       collapsed: false,
       collapsible: false,
-      items: [
-        "sdks/quickstart",
-        "sdks/identify-users",
-        "quickstarts/check-gate",
-        "guides/abn-tests",
-        "guides/logging-events",
-      ],
+        items: [
+          "sdks/quickstart",
+          "sdks/identify-users",
+          "quickstarts/check-gate",
+          "guides/abn-tests",
+          "guides/logging-events",
+          {
+            type: "doc",
+            id: "sdks/build-with-llms",
+            className: "ai-icon sidebar-icon",
+          },
+        ],
     },
     {
       type: "category",
@@ -866,7 +894,7 @@ const sidebars: SidebarsConfig = {
         {
           className: "next-icon sidebar-icon sdk-sidebar-icon",
           type: "doc",
-          id: "client/javascript-mono/nextjs/NextJsUsage",
+          id: "client/javascript-mono/NextJsUsage",
         },
         {
           className: "android-icon sidebar-icon sdk-sidebar-icon",

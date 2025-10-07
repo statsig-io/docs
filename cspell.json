@@ -743,6 +743,10 @@
     "pypa",
     "manylinux",
     "Manylinux"
+    "IMDS",
+    "resourcedetection",
+    "llms",
+    "LLMs"
   ],
   "ignorePaths": [
     "node_modules/**",

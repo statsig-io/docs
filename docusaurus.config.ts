@@ -149,8 +149,8 @@ const config: Config = {
       {
         redirects: [
           {
-            from: "/guides/guides/feature-gates",
             to: "/guides/feature-flags",
+            from: "/guides/guides/feature-gates",
           },
           {
             to: "/feature-flags/overview",
@@ -221,28 +221,28 @@ const config: Config = {
             from: ["/experiments-plus/read-results", "/pulse"],
           },
           {
-            from: "/experiments-plus/rules",
             to: "/experiments-plus/getting-group#rules",
+            from: "/experiments-plus/rules",
           },
           {
-            from: "/experiments-plus/working-with",
             to: "/experiments-plus",
+            from: "/experiments-plus/working-with",
           },
           {
-            from: "/experiments-plus/experimentation/why-experiment",
             to: "/experiments-plus#why-experiment",
+            from: "/experiments-plus/experimentation/why-experiment",
           },
           {
-            from: "/experiments-plus/experimentation/scenarios",
             to: "/experiments-plus#scenarios-for-experimentation",
+            from: "/experiments-plus/experimentation/scenarios",
           },
           {
-            from: "/experiments-plus/experimentation/common-terms",
             to: "/experiments-plus#key-concepts-in-experimentation",
+            from: "/experiments-plus/experimentation/common-terms",
           },
           {
-            from: "/experiments-plus/experimentation/choosing-randomization-unit",
             to: "/experiments-plus#choosing-the-right-randomization-unit",
+            from: "/experiments-plus/experimentation/choosing-randomization-unit",
           },
           {
             to: "/experiments-plus/stop-assignments",
@@ -274,8 +274,8 @@ const config: Config = {
             from: "/mex/retention",
           },
           {
-            from: "/metrics/metric-alerts",
             to: "/product-analytics/alerts/",
+            from: "/metrics/metric-alerts",
           },
           {
             to: "/client/javascript-sdk",
@@ -293,8 +293,8 @@ const config: Config = {
             from: ["/client/reactNative", "/client/reactNativeSDK"],
           },
           {
-            from: "/client/reactNativeExpoSDK",
             to: "/client/javascript-sdk/expo",
+            from: "/client/reactNativeExpoSDK",
           },
           {
             to: "/client/javascript-sdk/next-js",
@@ -310,12 +310,12 @@ const config: Config = {
             from: ["/js-migration", "/js-migration-rn", "/js-migration-expo"],
           },
           {
-            from: "/js-migration-react",
             to: "/client/javascript-sdk/migrating-from-statsig-react",
+            from: "/js-migration-react",
           },
           {
-            from: "/layers/js-tutorial",
             to: "/client/javascript-sdk#layers",
+            from: "/layers/js-tutorial",
           },
           {
             to: "/client/concepts/initialize",
@@ -329,48 +329,48 @@ const config: Config = {
             from: ["/server/concepts/user/", "/client/concepts/user/"],
           },
           {
-            from: "/statsig-warehouse-native/guides/assignment-sources/",
             to: "/statsig-warehouse-native/configuration/assignment-sources",
+            from: "/statsig-warehouse-native/guides/assignment-sources/",
           },
           {
+            to: "/statsig-warehouse-native/introduction",
             from: "/guides/experiment-analysis/",
-            to: "/statsig-warehouse-native/introduction",
           },
           {
+            to: "/statsig-warehouse-native/introduction",
             from: "/statsig-warehouse-native",
-            to: "/statsig-warehouse-native/introduction",
           },
           {
-            from: "/stats-engine/offlineaa",
             to: "/guides/aa-test#offline-aa-tests",
+            from: "/stats-engine/offlineaa",
           },
           {
             to: "/console-api/all-endpoints-generated",
             from: "/console-api/all-endpoints",
           },
           {
-            from: "/insights/",
             to: "/aggregated-impact",
+            from: "/insights/",
           },
           {
-            from: "/dynamic-config/implement/",
             to: "/dynamic-config/working-with",
+            from: "/dynamic-config/implement/",
           },
           {
-            from: "/sdks/sdks-overview",
             to: "/sdks/getting-started",
+            from: "/sdks/sdks-overview",
           },
           {
-            from: "/debugging",
             to: "/sdk/debugging",
+            from: "/debugging",
           },
           {
-            from: "/messages/serverRequiredUserID/",
             to: "/concepts/user#why-is-an-id-always-required-for-server-sdks",
+            from: "/messages/serverRequiredUserID/",
           },
           {
-            from: "/guides/landing-page-experiments",
             to: "/guides/sidecar-experiments/introduction",
+            from: "/guides/landing-page-experiments",
           },
           {
             to: "/integrations/terraform/introduction",
@@ -378,35 +378,23 @@ const config: Config = {
           },
           {
             to: "/ai-evals/overview",
-            from: "/ai-configs",
+            from: ["/ai-configs", "/prompts", "/aievals", "/ai-evals", "/ai-ml/ai-prompt-experiment"],
           },
           {
-            to: "/ai-evals/overview",
-            from: "/prompts",
-          },
-          {
-            to: "/ai-evals/overview",
-            from: "/aievals",
-          },
-          {
-            to: "/ai-evals/overview",
-            from: "/ai-evals",
-          },
-          {
-            from: "/client/concepts/autocapture/",
             to: "/webanalytics/autocapture/",
+            from: "/client/concepts/autocapture/",
           },
           {
-            from: "/integrations/vscode",
             to: "/integrations/introduction",
+            from: "/integrations/vscode",
           },
           {
-            from: "/ai-ml/ai-prompt-experiment",
-            to: "/ai-evals/overview",
-          },
-          {
-            from: "/experiments-plus/bayesian-deprecated/",
             to: "/experiments-plus/bayesian/",
+            from: "/experiments-plus/bayesian-deprecated/",
+          },
+          {
+            to: '/product-analytics/alerts/topline_alerts',
+            from: '/product-analytics/topline_alerts',
           },
         ],
       },
@@ -574,7 +562,7 @@ const config: Config = {
       "data-modal-command-k-search-mode-default": "true",
       "data-modal-search-input-placeholder": "Search Statsig docs...",
       "data-search-include-source-names": '["Documentation"]',
-      "data-search-show-ask-ai-cta": "true",
+      "data-search-show-ask-ai-cta": "false",
       "data-search-result-link-target": "_self",
       "data-modal-full-screen-on-mobile": "false",
       "data-kapa-branding-text": "Powered by kapa.ai and Statsig",
