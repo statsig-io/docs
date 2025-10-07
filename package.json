@@ -28,6 +28,7 @@
     "@mdx-js/react": "^3.0.0",
     "@mui/material": "^5.16.7",
     "@radix-ui/react-slot": "^1.1.0",
+    "@sampleapp.ai/sdk": "^1.0.29",
     "@staticons/react": "^0.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
