@@ -40,7 +40,7 @@ Since the control and test group results are independent of each other, covarian
 
 $$
 \Large
-CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})
+CI(\% \Delta \overline{X} ) = \frac{1}{1-g} *(\frac{\overline{X_T}}{\overline{X_C}} \pm \frac{Z_{\alpha/2}}{\overline{X_C}} \sqrt{ \frac{\overline{X_T}^2}{\overline{X_C}^2} \cdot \frac{var(X_C)}{n_C-1} + (1-g)\frac{var(X_T)}{n_T-1} }) - 1
 $$
 
 ### 2B: Edge Case: Control Mean not Statistically Distinct from Zero
