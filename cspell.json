@@ -746,7 +746,8 @@
     "IMDS",
     "resourcedetection",
     "llms",
-    "LLMs"
+    "LLMs",
+    "mathrm"
   ],
   "ignorePaths": [
     "node_modules/**",
