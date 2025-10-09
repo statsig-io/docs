@@ -8,6 +8,10 @@ last_update:
   date: 2025-09-18
 ---
 
+:::info Note
+Warehouse Native is part of Statsig's Enterprise tier. Please [contact us to learn more](https://statsig.com/pricing)
+:::
+
 To run analysis on your warehouse, Statsig needs to connect to your warehouse via a service user. You control the access this user gets to your warehouse. In general, Statsig will require:
 
 - Read access to metric data and exposures data
