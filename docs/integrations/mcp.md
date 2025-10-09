@@ -47,24 +47,36 @@ Once you've added and saved the configuration file, restart Cursor or Claude Des
 ## Current MCP capabilities
 
 ### Experiments (A/B Tests)
+
 - **Get_List_of_Experiments**: List all experiments in the project with optional status filtering
 - **Get_Experiment_Details_by_ID**: Get experiment details including groups and parameters
 - **Create_Experiment**: Create new experiments with groups, hypothesis, etc.
 - **Update_Experiment_Entirely**: Replace entire experiment configuration (any excluded data will be removed - the MCP will understand this.)
 
 ### Gates (Feature Flags)
+
 - **Get_List_of_Gates**: List all gates/flags with optional type filtering (e.g., STALE, PERMANENT)
 - **Get_Gate_Details_by_ID**: Get complete gate configuration details (rules, ID type, etc.)
 - **Create_Gate**: Create new gate/flag with targeting rules and settings
 - **Update_Gate_Entirely**: Replace entire gate setup with new rules and settings (any excluded data will be removed - the MCP will understand this.)
 
 ### Dynamic Configs
+
 - **Get_List_of_Dynamic_Configs**: List all dynamic config objects in the project
 - **Get_Dynamic_Config_Details_by_ID**: Retrieve detailed config including targeting rules, return values
 - **Create_Dynamic_Config**: Create new config with rules, return values, etc.
 - **Update_Dynamic_Config_Entirely**: Replace entire dynamic config with new targeting and values (any excluded data will be removed - the MCP will understand this.)
 
 Need other functions? We're happy to consider additions by request, reach out in Slack.
+
+## **Setting up in Codex**
+
+```bash
+codex mcp add statsig -- npx --yes mcp-remote https://api.statsig.com/v1/mcp \
+  --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
+```
+
+This will update your `~/.codex/config.toml`.
 
 ## **Setting up in Cursor**
 
@@ -81,7 +93,7 @@ The configuration file is located at:
 
 On Claude Code, we recommend using the http transport directly, run this command on the command line anywhere you use Claude Code:
 
-```bash 
+```bash
 claude mcp add --transport http statsig-local https://api.statsig.com/v1/mcp \
   --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
 ```
