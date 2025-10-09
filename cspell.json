@@ -740,10 +740,14 @@
     "Cohen's",
     "xhuang",
     "ZORDER",
+    "pypa",
+    "manylinux",
+    "Manylinux",
     "IMDS",
     "resourcedetection",
     "llms",
-    "LLMs"
+    "LLMs",
+    "mathrm"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -26,11 +26,11 @@ We do this by calculating the parameter $\Large g$:
 
 $$
 \Large
-g = \frac{Z_{\alpha/2}^2 \cdot var(X_C)}{(n_C-1) \cdot \overline{X_C}^2}
+g = \frac{Z_{\alpha/2}^2 \cdot \mathrm{var}(X_C)}{(n_C-1) \cdot \overline{X_C}^2}
 $$
 
 Where:
-$\Large Z_{\alpha/2}$ is the critical value associated with the desired confidence level $\Large var(X_C)$ is the variance of the control group metric values $\Large n_C$ is the number of units in the control group $\Large \overline{X_C}$ is the mean of the control group metric values
+$\Large Z_{\alpha/2}$ is the critical value associated with the desired confidence level $\Large \mathrm{var}(X_C)$ is the variance of the control group metric values $\Large n_C$ is the number of units in the control group $\Large \overline{X_C}$ is the mean of the control group metric values
 
 When $\Large g$ < 1, the control mean is significantly different from 0, and we can use Fieller intervals.
 
@@ -40,7 +40,7 @@ Since the control and test group results are independent of each other, covarian
 
 $$
 \Large
-CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})
+CI(\% \Delta \overline{X} ) = \frac{1}{1-g} \left \frac{\overline{X_T}}{\overline{X_C}} \pm \frac{Z_{\alpha/2}}{\overline{X_C}} \sqrt{ \frac{\overline{X_T}^2}{\overline{X_C}^2} \cdot \frac{\mathrm{var}(X_C)}{n_C-1} + (1-g)\frac{\mathrm{var}(X_T)}{n_T-1} } \right - 1
 $$
 
 ### 2B: Edge Case: Control Mean not Statistically Distinct from Zero
