@@ -28,6 +28,10 @@ Do NOT embed your Server Secret Key in client-side applications, or expose it in
 
 <div>{props.initialize}</div>
 
+<div>
+  You should initialize once for lifecycle of your webserver, and reuse the initialized instance for all subsequent requests
+</div>
+
 <>
   {props.skipInitializeDescription || (
     <div>
