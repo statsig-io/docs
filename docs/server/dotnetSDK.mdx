@@ -1,10 +1,10 @@
 ---
-sidebar_label: .NET Server
-title: .NET Server SDK
+sidebar_label: Legacy .NET Server
+title: Legacy .NET Server SDK
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-18
+  date: 2025-10-13
 ---
 
 import {
@@ -82,10 +82,9 @@ export const Builder = SDKDocsBuilder({
     [Instances, { constructor: <MultiInstanceExample /> }],
     [FAQ, { faqs: <MoreFAQs /> }],
     [Reference, { snippets: <ReferenceSnippets.default /> }],
-  ]
-})
+  ],
+});
 
-export const toc = Builder.toc
+export const toc = Builder.toc;
 
 <>{Builder.result}</>
-

@@ -407,7 +407,7 @@ const sidebars: SidebarsConfig = {
                 "guides/sidecar-experiments/integrating-gtm",
                 "guides/aa-sidecar",
               ],
-            }
+            },
           ],
         },
         {
@@ -443,7 +443,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "product-analytics/topline_alerts",
                 "product-analytics/rollout_alerts",
-              ],            
+              ],
             },
           ],
         },
@@ -467,7 +467,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 "infra-analytics/events-mode-logs-explorer",
                 "infra-analytics/logs-explorer-queries",
-              ],            
+              ],
             },
             "infra-analytics/topline-alerts-logs",
           ],
@@ -842,18 +842,18 @@ const sidebars: SidebarsConfig = {
       label: "Quickstart Guide",
       collapsed: false,
       collapsible: false,
-        items: [
-          "sdks/quickstart",
-          "sdks/identify-users",
-          "quickstarts/check-gate",
-          "guides/abn-tests",
-          "guides/logging-events",
-          {
-            type: "doc",
-            id: "sdks/build-with-llms",
-            className: "ai-icon sidebar-icon",
-          },
-        ],
+      items: [
+        "sdks/quickstart",
+        "sdks/identify-users",
+        "quickstarts/check-gate",
+        "guides/abn-tests",
+        "guides/logging-events",
+        {
+          type: "doc",
+          id: "sdks/build-with-llms",
+          className: "ai-icon sidebar-icon",
+        },
+      ],
     },
     {
       type: "category",
@@ -1089,11 +1089,6 @@ const sidebars: SidebarsConfig = {
                 },
               ],
             },
-            {
-              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
-              type: "doc",
-              id: "server/dotnetSDK",
-            },
           ],
         },
 
@@ -1134,6 +1129,11 @@ const sidebars: SidebarsConfig = {
               className: "php-icon sidebar-icon sdk-sidebar-icon",
               type: "doc",
               id: "server/phpSDK",
+            },
+            {
+              className: "dotnet-icon sidebar-icon sdk-sidebar-icon",
+              type: "doc",
+              id: "server/dotnetSDK",
             },
           ],
         },
