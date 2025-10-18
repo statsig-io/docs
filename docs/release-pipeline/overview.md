@@ -17,7 +17,7 @@ Release Pipeline is currently in Beta. Statsig team is working on adding more fe
 :::
 
 :::info
-Release Pipeline is an Enterprise feature.  Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
+Release Pipeline is an Enterprise feature. Please reach out to our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.
 :::
 
 ## When to Use Release Pipelines
@@ -33,6 +33,7 @@ Consider implementing Release Pipelines when you need to:
 - Enable instant rollbacks if issues arise during any phase
 
 **Especially valuable for:**
+
 - Platform engineering teams managing multi-environment, multi-region infrastructure
 - DevOps practitioners implementing progressive delivery strategies
 - SREs responsible for maintaining system reliability across complex deployments
@@ -40,17 +41,17 @@ Consider implementing Release Pipelines when you need to:
 
 ## Key Concepts
 
-| Concept | Description |
-|---------|-------------|
-| **Release Pipeline** | Defines the complete release strategy for a feature gate or dynamic config change |
-| **Phase** | A distinct stage in the pipeline with specific conditions targeting designated release segments |
-| **Trigger** | An event initiated when a feature gate or dynamic config starts using a Release Pipeline |
-| **Action** | Controls that can be applied to an active Trigger to manage the release process |
+| Concept              | Description                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| **Release Pipeline** | Defines the complete release strategy for a feature gate or dynamic config change               |
+| **Phase**            | A distinct stage in the pipeline with specific conditions targeting designated release segments |
+| **Trigger**          | An event initiated when a feature gate or dynamic config starts using a Release Pipeline        |
+| **Action**           | Controls that can be applied to an active Trigger to manage the release process                 |
 
 ## Getting Started
 
 :::note
-Release Pipeline is currently only supported in Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0). Legacy SDKs will continue to work but will not get the full features of release pipelines.
+Release Pipeline is currently only supported in a handful of Statsig SDk's (Statsig's [Server Core SDKs](https://www.statsig.com/blog/introducing-statsig-server-core-v0-1-0), [Legacy Python SDK](/server/pythonSDK), and [Ruby SDK](/server/rubySDK)). Other Legacy SDKs will continue to work but will not get the full features of release pipelines.
 :::
 
 Follow these tutorials to begin implementing Release Pipelines:
