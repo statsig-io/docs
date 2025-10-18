@@ -26,6 +26,7 @@ import {
   FieldsNeededMethods,
   ClientInitResponse,
   EventSubscriptions,
+  MigrationGuide,
 } from "./Templates/index.mdx";
 
 import Preamble from "./_preamble.mdx";
@@ -69,6 +70,13 @@ export const Builder = SDKDocsBuilder({
         install: <Install />,
         preamble: <Preamble />,
         initialize: <Initialize />,
+      },
+    ],
+    [
+      MigrationGuide,
+      {
+        link: "/server-core/node/migration-guide",
+        sdkType: "Node",
       },
     ],
     [
