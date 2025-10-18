@@ -16,7 +16,7 @@
 
 **Lazy Initialization: User-Agent Parser & Country Lookup**
 
-- User-Agent parsing and country lookup are now **lazy-loaded by default** to improve SDK initialization performance.
+- Country lookup and third-party ua parsersare now **lazy-loaded by default** to improve SDK initialization performance.
 - If your application relies on these features being ready **immediately after** `initialize()`, you can opt in by setting:
   - <code>{props.waitForUserAgentInit || 'wait_for_user_agent_init'}</code>
   - <code>{props.waitForCountryLookupInit || 'wait_for_country_lookup_init'}</code>
@@ -38,3 +38,11 @@
   - **New**: `v2/download_config_specs`
 - If you are hosting your own **pass-through proxy**, ensure it supports and correctly routes the `v2` endpoint.
 - If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
+
+** New DataStore cache format**
+  - **Old**: (Except Node v6+)
+    - config_spec cahce key is: statsig.cache
+    - IDLists statsig.id_lists 
+  - **New**
+    - config_spec cache key:  `statsig|/v2/download_config_specs|plain_text|{SHA256HashedBase64(secretkey)}`
+    - IDLists: We don't support idlist data store. 
