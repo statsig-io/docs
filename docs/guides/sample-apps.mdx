@@ -4,26 +4,38 @@ title: Sample Apps
 ---
 
 import SampleAppCard from "@site/src/components/SampleAppCard";
-import {ChatBar} from "@site/src/components/SampleAppChatBar";
+import {ChatBar} from "@sampleapp.ai/sdk";
 
 ## Sample Applications
 
-Explore sample applications built with Statsig to see how feature flags, experiments, and analytics work in real-world scenarios.
+Explore sample applications built with Statsig to see how feature flags, experiments, and analytics work in real-world scenarios or try Statsig with your use case in the chat bar.
 
 <div
   style={{
     paddingBottom: "20px",
   }}
 >
-  <ChatBar placeholder="What would you like to build..." />
+  <ChatBar
+    placeholder="What would you like to build..."
+    height="100px"
+    typingTexts={[
+      "Describe your use case, and we'll show Statsig integrated with it",
+      "Build an ecommerce application",
+      "Build a patient-provider appointment portal",
+      "Create a banking dashboard with an analytics graph using recharts",
+      "Create a social media feed",
+    ]}
+    playgroundUid="statsig"
+  />
 </div>
+
 <div
   style={{
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     gap: "28px",
-  }}
->
+}}>
+
   <SampleAppCard
     title="TaskMaster Pro A/B Testing"
     link="https://statsig.sampleapp.ai/share/zBrBQANriSlxaDy1VU-3j"
