@@ -1,0 +1,23 @@
+| Old Option | New / Notes |
+|------------|-------------|
+| `IDataAdapter` (required) | `specs_adapter` - Use `StatsigLocalFileSpecsAdapter` |
+| `ILoggingAdapter` | `event_logging_adapter` - Use `StatsigLocalFileEventLoggingAdapter` |
+| `setEnvironmentTier()` | `environment` parameter in constructor |
+| `setEventQueueSize()` | `event_logging_max_queue_size` |
+| N/A | `specs_url` - Custom URL for fetching specifications |
+| N/A | `log_event_url` - Custom URL for logging events |
+| N/A | `event_logging_flush_interval_ms` - How often events are flushed |
+| N/A | `specs_sync_interval_ms` - How often specs are synced |
+| N/A | `output_log_level` - Controls SDK log verbosity |
+| N/A | `disable_country_lookup` - Improves performance if not needed |
+| N/A | `disable_user_agent_parsing` - Improves performance if not needed |
+| N/A | `enable_id_lists` - Required for segments with >1000 IDs |
+
+### FFI Requirement
+The new PHP Core SDK requires the FFI extension to be enabled:
+- Set `ffi.enable=true` in your php.ini file
+- This is required for the SDK to interface with the Rust core
+
+### Cron Job Changes
+- Legacy: `sync.php` and `send.php` scripts
+- New: `StatsigSyncConfig.php` and `StatsigFlushEvents.php` scripts
