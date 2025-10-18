@@ -1,0 +1,91 @@
+## Using Statsig Hooks in Route Components
+
+Once you've wrapped your app with `StatsigProvider`, you can use Statsig hooks in any component rendered by your routes.
+
+### Feature Gates in Routes
+
+```tsx
+import { useFeatureGate } from '@statsig/react-bindings';
+import { useParams } from 'react-router-dom';
+
+function ProductPage() {
+  const { productId } = useParams();
+  const showReviews = useFeatureGate('product_reviews');
+  const showRecommendations = useFeatureGate('product_recommendations');
+  
+  return (
+    <div>
+      <h1>Product {productId}</h1>
+      {showReviews && <ReviewsSection productId={productId} />}
+      {showRecommendations && <RecommendationsSection />}
+    </div>
+  );
+}
+```
+
+### Experiments in Routes
+
+```tsx
+import { useExperiment } from '@statsig/react-bindings';
+
+function CheckoutPage() {
+  const experiment = useExperiment('checkout_flow_test');
+  const checkoutVariant = experiment.get('variant', 'control');
+  
+  return (
+    <div>
+      {checkoutVariant === 'single_page' ? (
+        <SinglePageCheckout />
+      ) : (
+        <MultiStepCheckout />
+      )}
+    </div>
+  );
+}
+```
+
+### Dynamic Configs for Route Behavior
+
+```tsx
+import { useDynamicConfig } from '@statsig/react-bindings';
+
+function SearchPage() {
+  const searchConfig = useDynamicConfig('search_settings');
+  const maxResults = searchConfig.get('max_results', 10);
+  const enableFilters = searchConfig.get('enable_filters', false);
+  
+  return (
+    <div>
+      <SearchResults limit={maxResults} />
+      {enableFilters && <SearchFilters />}
+    </div>
+  );
+}
+```
+
+### Logging Events from Routes
+
+```tsx
+import { useStatsigClient } from '@statsig/react-bindings';
+import { useLocation } from 'react-router-dom';
+
+function ProductPage() {
+  const { logEvent } = useStatsigClient();
+  const location = useLocation();
+  
+  const handlePurchase = (productId: string, price: number) => {
+    logEvent('purchase', price, {
+      product_id: productId,
+      page_path: location.pathname
+    });
+  };
+  
+  return (
+    <div>
+      <button onClick={() => handlePurchase('prod-123', 29.99)}>
+        Buy Now
+      </button>
+    </div>
+  );
+}
+```
