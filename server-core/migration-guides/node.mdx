@@ -1,0 +1,47 @@
+---
+title: Node Core SDK Migration Guide
+sidebarTitle: Node Migration
+description: Migrate from the legacy Node JS Server SDK to the new Node JS Core SDK
+---
+
+import Intro from '/snippets/server-core/migration-guides/_Intro.mdx'
+import Installation from '/snippets/server-core/migration-guides/_Installation.mdx'
+import GlobalChanges from '/snippets/server-core/migration-guides/_GlobalChanges.mdx'
+import MigrationHelp from '/snippets/server-core/migration-guides/_MigrationHelp.mdx'
+import NeedHelp from '/snippets/server-core/migration-guides/_NeedHelp.mdx'
+
+import NodeUserCreation from '/snippets/server-core/node/migration-guide/user-creation.mdx'
+import NodeInstallation from '/snippets/server-core/node/migration-guide/installation.mdx'
+import NodeAPIChanges from '/snippets/server-core/node/migration-guide/api-changes.mdx'
+import NodeStatsigOptions from '/snippets/server-core/node/migration-guide/statsig-options.mdx'
+
+<Intro sdkType="Node JS" />
+
+<NodeInstallation />
+
+## StatsigUser
+
+<NodeUserCreation />
+
+## API Changes
+
+<NodeAPIChanges />
+
+<GlobalChanges 
+  waitForUserAgentInit="wait_for_user_agent_init"
+  waitForCountryLookupInit="wait_for_country_lookup_init"
+  disableUserAgentParsing="disable_user_agent_parsing"
+  disableCountryLookup="disable_country_lookup"
+  enableIdLists="enable_id_lists"
+/>
+
+## StatsigOptions Changes
+
+The table below shows the mapping between legacy SDK options and Server Core SDK options:
+
+<NodeStatsigOptions />
+
+<MigrationHelp />
+
+<NeedHelp />
+

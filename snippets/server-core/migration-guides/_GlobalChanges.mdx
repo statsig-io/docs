@@ -52,7 +52,18 @@ The core SDK now fetches configuration specs from a new endpoint:
 
 If you are hosting your own **pass-through proxy**, ensure it supports and correctly routes the `v2` endpoint.
 
-If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
+- If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
+</Accordion>
 
-  </Accordion>
+<Accordion title="DataStore cache format">
+
+** New DataStore cache format**
+- **Old**: (Except Node v6+)
+  - config_spec cahce key is: statsig.cache
+  - IDLists statsig.id_lists 
+- **New**
+  - config_spec cache key:  `statsig|/v2/download_config_specs|plain_text|{SHA256HashedBase64(secretkey)}`
+  - IDLists: We don't support idlist data store. 
+
+</Accordion>
 </AccordionGroup>

@@ -1321,6 +1321,10 @@
       "destination": "/server-core/migration-guides/java"
     },
     {
+      "source": "/server-core/node/migration-guide",
+      "destination": "/server-core/migration-guides/node"
+    },
+    {
       "source": "/feature-flags/bots",
       "destination": "/experiments/monitoring/bots"
     },
