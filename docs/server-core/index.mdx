@@ -30,6 +30,45 @@ Server Core SDKs are available on an opt-in basis, with native SDKs still availa
 - **Ruby**: In Development, planned for Late 2025
 - **[Go](./go-core)**: Beta
 
+### Breaking Changes
+
+#### Version 0.10.0: User Agent Parser Change
+
+Starting in v0.10.0, the default user agent parser has changed from a third-party library to a new experimental parser. The new parser is **faster and uses significantly less memory** while maintaining compatibility with most use cases.
+
+**What changed:**
+- The default value for user agent parsing now uses the experimental parser
+- The experimental parser provides better performance and reduced memory footprint
+
+**Migration:**
+If you need to continue using the previous third-party user agent parser, you can opt back in by setting the `__experimental_ua_parsing_enabled` option to `false` in your `StatsigOptions`:
+
+```javascript
+// Node.js example
+const options = {
+  __experimental_ua_parsing_enabled: false,
+  // ... other options
+};
+```
+
+```python
+# Python example
+options = StatsigOptions(
+    __experimental_ua_parsing_enabled=False,
+    # ... other options
+)
+```
+
+```java
+// Java example
+StatsigOptions options = new StatsigOptions.Builder()
+    .setExperimentalUaParsingEnabled(false)
+    // ... other options
+    .build();
+```
+
+**Note:** The configuration option name begins with double underscores (`__experimental_ua_parsing_enabled`) to indicate it's an advanced option. Most users should not need to change this setting and will benefit from the improved performance of the new parser.
+
 ### Technical differences
 
 **Build process:** Statsig Server Core uses a core library written in Rust, with bindings written to other languages. In the vast majority of cases, this results in an unchanged development experience with superior performance, but given that the Rust code must compile into a binary usable in your development and deployment environments, some development snafus exist:
