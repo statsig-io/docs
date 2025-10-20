@@ -4,6 +4,10 @@ sidebarTitle: 'User Profiles'
 description: 'A collection of properties about the people using your product for flexible analysis and segmentation'
 ---
 
+<Info>
+User Profiles is currently in beta, please contact Statsig Support to enable.
+</Info>
+
 ## Overview
 
 User Profiles are a collection of properties about the people using your product. In Metrics Explorer, you can join these profile properties with any event for analysis and segmentation. Previously, user properties had to be present on each event you wanted to analyze. Now they live independently on the user profile, letting you:
@@ -24,5 +28,3 @@ In both client and server core SDKs, Statsig will automatically update the user 
 Now, when you’re querying on Metrics Explorer, you’ll be able to take advantage of user profile properties through filters or group-bys. Because we join your events with the user profile table in the background, queries in Metrics Explorer may take slightly longer to process.
 
 You can also see all user profile properties on the Users Tab for a specific unit type + ID.
-
-This feature is currently in private beta. 
