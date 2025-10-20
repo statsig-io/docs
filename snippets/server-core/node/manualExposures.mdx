@@ -1,0 +1,43 @@
+All of the main SDK functions (`checkGate`, `getDynamicConfig`, `getExperiment`, `getLayer`) accept an optional `disableExposureLogging` parameter. When this is set to `true`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
+```jsx
+const result = statsig.checkGate(aUser, 'a_gate_name', {disableExposureLogging: true});
+```
+
+```jsx
+statsig.manuallyLogGateExposure(aUser, 'a_gate_name');
+```
+</Tab>
+
+<Tab title="Dynamic Configs">
+```jsx
+const config = statsig.getDynamicConfig(aUser, 'a_dynamic_config_name',  {disableExposureLogging: true});
+```
+
+```jsx
+statsig.manuallyLogDynamicConfigExposure(aUser, 'a_dynamic_config_name');
+```
+</Tab>
+
+<Tab title="Experiments">
+```jsx
+const experiment = statsig.getExperiment(aUser, 'an_experiment_name',  {disableExposureLogging: true});
+```
+
+```jsx
+statsig.manuallyLogExperimentExposure(aUser, 'an_experiment_name');
+```
+</Tab>
+
+<Tab title="Layers">
+```jsx
+const layer = statsig.getLayer(aUser, 'a_layer_name',  {disableExposureLogging: true});
+const paramValue = layer.get('a_param_name', 'fallback_value');
+```
+
+```jsx
+statsig.manuallyLogLayerParameterExposure(aUser, 'a_layer_name', 'a_param_name');
+```
+</Tab>
+</Tabs>

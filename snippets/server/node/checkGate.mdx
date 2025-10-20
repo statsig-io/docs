@@ -1,0 +1,16 @@
+```javascript
+const user = {
+  userID: '12345',
+  email: '12345@gmail.com',
+  ...
+};
+
+const showNewDesign = Statsig.checkGate(user, 'new_homepage_design');
+if (showNewDesign) {
+  // show new design here
+} else {
+  // show old design here
+}
+```
+
+

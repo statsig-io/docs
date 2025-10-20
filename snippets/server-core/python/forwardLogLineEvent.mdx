@@ -1,0 +1,19 @@
+```python
+user = StatsigUser(
+    user_id="a-user",
+    custom={
+        "service": "my-service",
+        "pod": "my-pod",
+        "namespace": "my-namespace",
+        "container": "my-container",
+        # ...include any service-specific metadata
+    }
+)
+
+# levels: trace, debug, info, log, warn, error
+statsig.forward_log_line_event(user, "warn", "script failed to load", {
+    "custom_metadata": "script_name:my-script"
+    # ... include any event-specific metadata
+})
+```
+

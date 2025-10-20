@@ -1,0 +1,9 @@
+```python
+gate = statsig.get_feature_gate(StatsigUser("user-id"), "gate-name")
+print(gate.name)  # 'gate-name'
+print(gate.value)  # True or False
+print(gate.rule_id)  # rule ID that was evaluated
+print(gate.evaluation_details)  # evaluation metadata
+```
+
+

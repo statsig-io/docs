@@ -1,0 +1,19 @@
+```cpp
+// Values via getLayer
+
+Layer layer = StatsigClient::Shared().GetLayer("name");
+std::string promoTitle = layer.GetValue("title").get<std::string>();
+double discount = layer.GetValue("discount").get<double>();
+
+// or, via getExperiment
+
+Experiment titleExperiment = StatsigClient::Shared().GetExperiment("new_user_promo_title");
+Experiment priceExperiment = StatsigClient::Shared().GetExperiment("new_user_promo_price");
+
+std::string promoTitle = titleExperiment.GetValue()["title"].get<std::string>();
+double discount = priceExperiment.GetValue()["discount"].get<double>();
+```
+
+<Info>
+Layer.GetValue and Experiment.GetValue return JsonObj which are unordered maps of string to `nlohmann/json`. See https://github.com/nlohmann/json
+</Info>

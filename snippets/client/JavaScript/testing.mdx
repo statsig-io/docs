@@ -1,0 +1,47 @@
+## Testing
+
+Mock Statsig APIs in Jest to isolate business logic.
+
+```tsx
+import { StatsigClient } from '@statsig/js-client';
+
+export async function transform(input: string): Promise<string> {
+  const client = new StatsigClient('client-xyz', { userID: 'a-user' }, {
+    networkConfig: {
+      preventAllNetworkTraffic:
+        typeof process !== 'undefined' && process.env['NODE_ENV'] === 'test',
+    },
+  });
+
+  await client.initializeAsync();
+
+  if (client.checkGate('a_gate')) {
+    input = 'transformed';
+  }
+
+  const experiment = client.getExperiment('an_experiment');
+  input += '-' + experiment.get('my_param', 'fallback');
+
+  await client.shutdown();
+  return input;
+}
+```
+
+```tsx
+import { StatsigClient } from '@statsig/js-client';
+
+jest.mock('@statsig/js-client');
+
+test('string transformations', async () => {
+  jest
+    .spyOn(StatsigClient.prototype, 'checkGate')
+    .mockImplementation(() => true);
+
+  jest
+    .spyOn(StatsigClient.prototype, 'getExperiment')
+    .mockImplementation(() => ({ get: () => 'my-value' } as any));
+
+  const result = await transform('original');
+  expect(result).toBe('transformed-my-value');
+});
+```

@@ -1,0 +1,4 @@
+## Shutting Statsig Down
+
+Because we batch and periodically flush events, some events may not have been sent when your app/server shuts down. To make sure all logged events are properly flushed, you should call `shutdown()` before your app/server shuts down:
+

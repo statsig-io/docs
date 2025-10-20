@@ -1,0 +1,21 @@
+You can configure certain aspects of the SDKs behavior by passing a StatsigOptions object during initialization.
+
+<ResponseField name="eventQueueMaxSize" type="Int" default="20">
+  The maximum number of events to batch before flushing logs to the server.
+</ResponseField>
+
+<ResponseField name="eventQueueInternalMs" type="Double" default="10,000">
+  How frequently to flush queued logs.
+</ResponseField>
+
+<ResponseField name="eventLoggingAPI" type="String" default="https://events.statsigapi.net/v1/rgstr">
+  The API where all events are sent.
+</ResponseField>
+
+<ResponseField name="configSpecAPI" type="String" default="https://api.statsigcdn.com/v1/download_config_specs/">
+  The API used to fetch the latest configurations.
+</ResponseField>
+
+<ResponseField name="environment" type="StatsigEnvironment" default="{}">
+  An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+</ResponseField>

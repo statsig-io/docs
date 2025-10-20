@@ -1,0 +1,594 @@
+---
+title: Getting Started with OTEL + Statsig
+sidebarTitle: Getting Started
+description: Setup and send OpenTelemetry telemetry to Statsig for Infra Analytics (Logs Explorer, Metrics Explorer, Alerts).
+---
+
+This guide helps you setup and send OpenTelemetry telemetry to Statsig so you can use Infra Analytics (Logs Explorer, Metrics Explorer, Alerts).
+
+There are two common paths:
+- Kubernetes/OpenTelemetry Collector: scrape logs and metrics from your cluster and export to Statsig. See [Open Telemetry Logs and Metrics](/server/concepts/open_telemetry) for a more complete guide.
+- Applications: export traces, metrics, and logs directly from your app over OTLP/HTTP to Statsig or to your collector. See the quick starts below.
+
+<Info>
+**Endpoint & Auth**
+- Endpoint: `https://api.statsig.com/otlp`
+- Auth header: `statsig-api-key: <your Server SDK Secret key>`
+</Info>
+
+---
+## Application Telemetry quick starts
+
+<Tabs>
+<Tab title="Node.js">
+
+Install dependencies:
+
+```bash
+npm install --save \
+  @opentelemetry/sdk-node \
+  @opentelemetry/auto-instrumentations-node \
+  @opentelemetry/exporter-trace-otlp-http \
+  @opentelemetry/exporter-metrics-otlp-http \
+  @opentelemetry/api-logs \
+  @opentelemetry/sdk-logs \
+  @opentelemetry/exporter-logs-otlp-http \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions
+```
+
+Initialize OpenTelemetry (e.g., `instrumentation.js`):
+
+```js
+// instrumentation.js
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
+const { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION } = require('@opentelemetry/semantic-conventions');
+
+// import if you want to enable traces
+const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
+const { OTLPMetricExporter } = require('@opentelemetry/exporter-metrics-otlp-http');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
+const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
+
+// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+// const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
+const statsigKey = process.env.STATSIG_SERVER_SDK_SECRET;
+const headers = { 'statsig-api-key': statsigKey ?? '' };
+
+const sdk = new NodeSDK({
+  resource: resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: process.env.OTEL_SERVICE_NAME || 'statsig-node-service',
+    [ATTR_SERVICE_VERSION]: process.env.VERSION || '1',
+    env: process.env.NODE_ENV || 'development',
+  }),
+  // Optional: enable traces if you want to try out tracing
+  // traceExporter: new OTLPTraceExporter({
+  //  url: 'https://api.statsig.com/otlp/v1/traces',
+  //  headers,
+  // }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: 'https://api.statsig.com/otlp/v1/metrics',
+      // or
+      // url: <your-collector-endpoint>/v1/metrics
+      headers,
+    }),
+    exportIntervalMillis: 60000,
+  }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+
+sdk.start();
+
+```
+
+To set up application logs with OTel, you can use the pino or winston bridges. The example below using [Pino](https://getpino.io/#/) with 
+[Pino auto instrumentation](https://www.npmjs.com/package/@opentelemetry/instrumentation-pino).
+
+Install the pino instrumentation:
+```bash
+npm i pino @opentelemetry/instrumentation-pino
+```
+
+```js
+// instrumentation.js (continued)
+const { BatchLogRecordProcessor } = require('@opentelemetry/sdk-logs');
+
+const statsigKey = process.env.STATSIG_SERVER_SDK_SECRET;
+const headers = { 'statsig-api-key': statsigKey ?? '' };
+
+const sdk = new NodeSDK({
+  // ... other config ...
+  logRecordProcessors: [
+    new BatchLogRecordProcessor(
+      new OTLPLogExporter({
+        url: 'https://api.statsig.com/otlp/v1/logs',
+        // or
+        // url: <your-collector-endpoint>/v1/logs
+        headers
+      })
+    ),
+  ],
+  instrumentations: [getNodeAutoInstrumentations(), new PinoInstrumentation()],
+});
+
+
+// in your application code, e.g., app.js
+const pino = require('pino');
+
+const logger = pino();
+
+logger.info('OTel logs initialized');
+```
+
+The Statsig SDK also supports forwarding logs to Log Explorer; see the alternative logging example below.
+
+```js
+// Requires: npm i @statsig/statsig-node-core
+const { Statsig, StatsigUser } = require('@statsig/statsig-node-core');
+
+const s = new Statsig(process.env.STATSIG_SERVER_SDK_SECRET);
+await s.initialize();
+
+const user = new StatsigUser({
+  userID: 'a-user',
+  custom: { service: process.env.OTEL_SERVICE_NAME || 'my-node-service' },
+});
+
+// levels: trace, debug, info, log, warn, error
+s.forwardLogLineEvent(user, 'info', 'service started', { version: process.env.npm_package_version });
+
+ try {
+   // your app code
+ } catch (err) {
+   s.forwardLogLineEvent(user, 'error', 'unhandled error', {
+     message: String(err?.message || err),
+     stack: err?.stack,
+   });
+ }
+
+```
+
+Run your service:
+
+make sure that you require or import `instrumentation.js` before any other application code to ensure instrumentation is set up correctly.
+
+```bash
+STATSIG_SERVER_SDK_SECRET=YOUR_SECRET \
+OTEL_SERVICE_NAME=my-node-service \
+node -r ./instrumentation.js app.js
+```
+
+Tip: you can configure exporters via env instead of code:
+- `OTEL_EXPORTER_OTLP_ENDPOINT=https://api.statsig.com/otlp`
+- `OTEL_EXPORTER_OTLP_HEADERS=statsig-api-key=${STATSIG_SERVER_SDK_SECRET}`
+- `OTEL_EXPORTER_OTLP_PROTOCOL=http/json`
+
+</Tab>
+
+<Tab title="Next.js">
+
+You can view the official Next.js OpenTelemetry instructions for [pages router here](https://nextjs.org/docs/pages/guides/open-telemetry) and for [app router here](https://nextjs.org/docs/app/guides/open-telemetry)
+
+Install dependencies:
+
+```bash
+npm install @opentelemetry/sdk-node @opentelemetry/resources @opentelemetry/semantic-conventions @opentelemetry/sdk-trace-node @opentelemetry/exporter-trace-otlp-http @opentelemetry/auto-instrumentations-node
+```
+
+Add `instrumentation.ts` at the app root (Next 13+):
+
+```ts
+// instrumentation.ts
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
+
+// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+// const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
+export async function register() {
+  const headers = { 'statsig-api-key': process.env.STATSIG_SERVER_SDK_SECRET ?? '' };
+
+  const sdk = new NodeSDK({
+    resource: new Resource({
+      [ATTR_SERVICE_NAME]: process.env.OTEL_SERVICE_NAME || 'statsig-node-service',
+      [ATTR_SERVICE_VERSION]: process.env.VERSION || '1',
+      env: process.env.NODE_ENV || 'development',
+    }),
+    // Optional: enable traces if you want to try out tracing
+    // traceExporter: new OTLPTraceExporter({
+    //   url: 'https://api.statsig.com/otlp/v1/traces',
+    //  headers,
+    // }),
+    metricReader: new PeriodicExportingMetricReader({
+      exporter: new OTLPMetricExporter({
+        url: 'https://api.statsig.com/otlp/v1/metrics',
+        // or
+        // url: <your-collector-endpoint>/v1/metrics
+        headers,
+      }),
+      exportIntervalMillis: 60000,
+    }),
+    instrumentations: [getNodeAutoInstrumentations()],
+  });
+
+  sdk.start();
+}
+```
+
+To set up application logs with OTel, you can use the pino or winston bridges. The example below using [Pino](https://getpino.io/#/) with 
+[Pino auto instrumentation](https://www.npmjs.com/package/@opentelemetry/instrumentation-pino).
+
+Install the pino instrumentation:
+```bash
+npm i pino @opentelemetry/instrumentation-pino
+```
+
+```js
+// instrumentation.ts (continued)
+import { BatchLogRecordProcessor } from '@opentelemetry/sdk-logs';
+
+const statsigKey = process.env.STATSIG_SERVER_SDK_SECRET;
+const headers = { 'statsig-api-key': statsigKey ?? '' };
+
+const sdk = new NodeSDK({
+  // ... other config ...
+  logRecordProcessors: [
+    new BatchLogRecordProcessor(
+      new OTLPLogExporter({
+        url: 'https://api.statsig.com/otlp/v1/logs',
+        // or
+        // url: <your-collector-endpoint>/v1/logs
+        headers
+      })
+    ),
+  ],
+  instrumentations: [getNodeAutoInstrumentations(), new PinoInstrumentation()],
+});
+
+
+// in your application code, e.g., app.ts
+import pino from 'pino';
+
+const logger = pino();
+
+logger.info('OTel logs initialized');
+```
+
+The Statsig SDK also supports forwarding logs to Log Explorer; see the alternative logging example below.
+
+```js
+// Requires: npm i @statsig/statsig-node-core
+import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
+
+const s = new Statsig(process.env.STATSIG_SERVER_SDK_SECRET);
+await s.initialize();
+
+const user = new StatsigUser({
+  userID: 'a-user',
+  custom: { service: process.env.OTEL_SERVICE_NAME || 'my-node-service' },
+});
+
+// levels: trace, debug, info, log, warn, error
+s.forwardLogLineEvent(user, 'info', 'service started', { version: process.env.npm_package_version });
+
+ try {
+   // your app code
+ } catch (err) {
+   s.forwardLogLineEvent(user, 'error', 'unhandled error', {
+     message: String(err?.message || err),
+     stack: err?.stack,
+   });
+ }
+```
+Note: In Next.js, mark '@statsig/statsig-node-core' as a server external package in `next.config.js` to avoid bundling.
+
+### Using Vercel + Statsig integration
+
+If you're deploying to Vercel, you can use the Statsig + Vercel integration to automatically forward logs from Vercel to Statsig. See [Vercel + Statsig](https://docs.statsig.com/integrations/vercel/).
+
+Notes
+- Keep `STATSIG_SERVER_SDK_SECRET` out of client bundles (do not use `NEXT_PUBLIC_`).
+- Client/browser tracing requires separate web tracer setup; do not send secrets client-side. Consider routing via a Collector.
+
+</Tab>
+
+<Tab title="Other Languages/Frameworks">
+
+
+Sending OTLP data directly to statsig without a collector is only supported for Node.js applications at this time. For other languages and frameworks, you can send OTLP data to a collector and have the collector forward the data to Statsig.
+
+See the [Collector quick starts](#collector-quick-starts) below for example configurations. And see the [OpenTelemetry Language APIs & SDKs documentation](https://opentelemetry.io/docs/languages/) for installation and configuration instructions for other languages and frameworks.
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Collector quick starts
+
+Running a Collector is optional but recommended for production workloads.
+
+Use the OpenTelemetry Collector as a gateway to receive OTLP from your applications and forward to Statsig.
+This is useful if you want to centralize telemetry collection, add advanced sampling methods like tail-based sampling, or scrape logs/metrics from hosts or Kubernetes.
+
+<Tabs>
+<Tab title="Kubernetes (Helm)">
+
+Create a minimal `values.yaml` for the OpenTelemetry Collector that forwards all signals (traces, metrics, logs) to Statsig:
+
+```yaml title="values.yaml"
+config:
+  receivers:
+    otlp:
+      protocols:
+        http:
+        grpc:
+
+  processors:
+    batch: {}
+
+  exporters:
+    otlphttp:
+      endpoint: https://api.statsig.com/otlp
+      encoding:  json
+      headers:
+        statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+
+  service:
+    pipelines:
+      traces:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [otlphttp]
+      metrics:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [otlphttp]
+      logs:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [otlphttp]
+```
+
+Install the Collector with Helm:
+
+```bash
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+helm install otel-gateway open-telemetry/opentelemetry-collector \
+  -n otel --create-namespace \
+  -f values.yaml
+```
+
+Provide the Statsig key as an environment variable to the Collector pods (for example via a Secret and envFrom). Your applications then send OTLP to the in-cluster Collector endpoint (for example `http://otel-gateway-collector.otel.svc.cluster.local:4318`).
+
+For a production setup that also scrapes Kubernetes logs/metrics, see the full guide: [Open Telemetry Logs and Metrics](/server/concepts/open_telemetry).
+
+<Note>
+**Version requirement**
+
+The `encoding: json` option in the OTLP HTTP exporter requires Collector v0.95.0 or newer. If you pin the image via Helm values, set `image.tag: "0.95.0"` (or newer).
+</Note>
+
+</Tab>
+
+<Tab title="Docker (Compose)">
+
+Use Docker Compose to run a Collector gateway that accepts OTLP and forwards to Statsig.
+
+```yaml title="docker-compose.yaml"
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    environment:
+      - STATSIG_SERVER_SDK_SECRET=${STATSIG_SERVER_SDK_SECRET}
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+```
+
+Create the Collector config referenced above:
+
+```yaml title="otel-collector-config.yaml"
+receivers:
+  otlp:
+    protocols:
+      http:
+      grpc:
+
+processors:
+  batch: {}
+
+exporters:
+  otlphttp:
+    endpoint: https://api.statsig.com/otlp
+    encoding:  json
+    headers:
+      statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+```
+
+Start the Collector:
+
+```bash
+export STATSIG_SERVER_SDK_SECRET=YOUR_SECRET
+docker compose up -d
+```
+
+Point your applications at the Collector (HTTP): `http://localhost:4318` (or `http://otel-collector:4318` from other compose services). The Collector forwards to Statsig with your key.
+
+</Tab>
+
+<Tab title="Other">
+
+You can run the Collector in other environments (VMs, bare metal, etc) using the config below. See the [Collector documentation](https://opentelemetry.io/docs/collector/installation/) for other installation and deployment methods.
+
+```yaml title="otel-collector-config.yaml"
+exporters:
+  otlphttp:
+    endpoint: https://api.statsig.com/otlp
+    encoding: json
+    headers:
+      statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+```
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Common Collector Configs (K8s & Docker)
+
+The following examples show popular receivers/processors you can enable in your Collector and still export to Statsig via the same `otlphttp` exporter.
+
+Note: These components live in the contrib distribution. Use an image that includes them:
+- Docker: `otel/opentelemetry-collector-contrib` or newer
+- Helm: set `image.repository: otel/opentelemetry-collector-contrib` (and a compatible `image.tag`)
+
+Helm values (contrib image):
+
+```yaml title="values.yaml"
+image:
+  repository: otel/opentelemetry-collector-contrib
+  tag: "latest"
+  pullPolicy: IfNotPresent
+```
+
+### A. File logs (filelog receiver)
+
+Reads and parses logs from files on disk. Useful for hosts, containers, or Kubernetes nodes.
+
+Minimal example:
+
+```yaml
+receivers:
+  filelog:
+    include: [ /var/log/myservice/*.json ]
+    start_at: beginning
+    operators:
+      - type: json_parser
+        timestamp:
+          parse_from: attributes.time
+          layout: '%Y-%m-%dT%H:%M:%S%z'
+
+processors:
+  batch: {}
+
+exporters:
+  otlphttp:
+    endpoint: https://api.statsig.com/otlp
+    encoding: json
+    headers:
+      statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [batch]
+      exporters: [otlphttp]
+```
+
+Kubernetes tip: to tail container logs on nodes, mount host paths (e.g., `/var/log/pods` and `/var/lib/docker/containers`) into the Collector DaemonSet and set `include` to those paths.
+
+### B. EC2 resource detection (resourcedetection processor)
+
+Automatically adds AWS EC2 metadata (cloud provider, region/zone, instance id) to your telemetry.
+
+```yaml
+processors:
+  resourcedetection/ec2:
+    detectors: [env, ec2]
+    timeout: 2s
+    override: false
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [resourcedetection/ec2, batch]
+      exporters: [otlphttp]
+    metrics:
+      receivers: [otlp]
+      processors: [resourcedetection/ec2, batch]
+      exporters: [otlphttp]
+    logs:
+      receivers: [otlp]
+      processors: [resourcedetection/ec2, batch]
+      exporters: [otlphttp]
+```
+
+Permissions: the Collector must be able to reach the EC2 metadata service (IMDS). Ensure network access to `169.254.169.254` and IMDSv2 where required.
+
+### C. Docker container metrics (docker_stats receiver)
+
+Emits container CPU, memory, network, and block IO metrics by querying the Docker daemon.
+
+```yaml
+receivers:
+  docker_stats:
+    endpoint: unix:///var/run/docker.sock
+    collection_interval: 15s
+
+processors:
+  batch: {}
+
+exporters:
+  otlphttp:
+    endpoint: https://api.statsig.com/otlp
+    encoding: json
+    headers:
+      statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+
+service:
+  pipelines:
+    metrics:
+      receivers: [docker_stats]
+      processors: [batch]
+      exporters: [otlphttp]
+```
+
+Requirements:
+- Linux only (not supported on darwin/windows).
+- Mount the Docker socket into the Collector container: `/var/run/docker.sock`.
+
+---
+
+
+
+## Resources
+
+- OpenTelemetry Collector: https://opentelemetry.io/docs/collector/
+- Kubernetes Collector components: https://opentelemetry.io/docs/platforms/kubernetes/collector/components/
+- Helm chart: https://github.com/open-telemetry/opentelemetry-helm-charts
+- Collector configuration reference: https://opentelemetry.io/docs/collector/configuration
+- OTLP protocol specification: https://opentelemetry.io/docs/specs/otlp/
+- Filelog receiver (contrib): https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
+- Resource detection processor (contrib): https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
+- Docker stats receiver (contrib): https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/dockerstatsreceiver
+- Collector contrib distribution: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib

@@ -1,0 +1,11 @@
+```csharp
+DynamicConfig config = StatsigClient.GetConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+string itemName = config.Get<string>("product_name", "Awesome Product v1");
+double price = config.Get<double>("price", 10.0);
+bool shouldDiscount = config.Get<bool>("discount", false);
+```
+

@@ -1,0 +1,8 @@
+```javascript
+const Statsig = require("statsig-node");
+
+await Statsig.initialize(
+  "server-secret-key",
+  { environment: { tier: "staging" } } // optional, if not set, for >v6.0.0, sdk will default to be production  
+);
+```

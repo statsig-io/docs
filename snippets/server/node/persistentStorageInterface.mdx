@@ -1,0 +1,26 @@
+```typescript
+export interface IUserPersistentStorage {
+  /**
+   * Returns the full map of persisted values for a specific user key
+   * @param key user key
+   */
+  load(key: string): UserPersistedValues;
+
+  /**
+   * Save the persisted values of a config given a specific user key
+   * @param key user key
+   * @param configName Name of the config/experiment
+   * @param data Object representing the persistent assignment to store for the given user-config
+   */
+  save(key: string, configName: string, data: StickyValues): void;
+
+  /**
+   * Delete the persisted values of a config given a specific user key
+   * @param key user key
+   * @param configName Name of the config/experiment
+   */
+  delete(key: string, configName: string): void;
+}
+```
+
+

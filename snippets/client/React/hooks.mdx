@@ -1,0 +1,152 @@
+## React Hooks
+
+<Warning>
+Hooks that read gates, configs, experiments, or layers will log exposures on render. Use `useStatsigClient` to defer checks until you actually change the UI.
+</Warning>
+
+### Feature Gate Hooks
+
+- Recommended: `useStatsigClient().checkGate` logs when invoked.
+- `useGateValue` returns the boolean value and logs immediately.
+- `useFeatureGate` returns the full gate object with details.
+
+```tsx
+import {
+  useFeatureGate,
+  useGateValue,
+  useStatsigClient,
+} from '@statsig/react-bindings';
+
+const { checkGate } = useStatsigClient();
+const gateValue = useGateValue('my_gate');
+const gate = useFeatureGate('my_gate');
+
+return (
+  <div>
+    {checkGate('my_gate') && <p>Passing</p>}
+    {gateValue && <p>Passing</p>}
+    {gate.value && <p>Passing ({gate.details.reason})</p>}
+  </div>
+);
+```
+
+### Dynamic Config Hooks
+
+- Recommended: `useStatsigClient().getDynamicConfig` defers exposure until called.
+- `useDynamicConfig` logs on render.
+
+```tsx
+import { useDynamicConfig, useStatsigClient } from '@statsig/react-bindings';
+
+const config = useDynamicConfig('my_dynamic_config');
+const { getDynamicConfig } = useStatsigClient();
+
+return (
+  <div>
+    <p>Reason: {config.details.reason}</p>
+    <p>Value: {config.get('a_value', 'fallback_value')}</p>
+    <p>Another Value: {getDynamicConfig('my_dynamic_config').get('a_bool', false)}</p>
+  </div>
+);
+```
+
+### Experiment Hooks
+
+- Recommended: `useStatsigClient().getExperiment` to control exposures.
+- `useExperiment` logs on render.
+
+```tsx
+import { useExperiment, useStatsigClient } from '@statsig/react-bindings';
+
+const experiment = useExperiment('my_experiment');
+const { getExperiment } = useStatsigClient();
+
+return (
+  <div>
+    <p>Group: {getExperiment('my_experiment').groupName}</p>
+    <p>Value: {experiment.get('a_value', 'fallback_value')}</p>
+  </div>
+);
+```
+
+### Layer Hooks
+
+Layers only log exposures when you call `.get()`.
+
+```tsx
+import { useLayer, useStatsigClient } from '@statsig/react-bindings';
+
+const layer = useLayer('my_layer');
+const { getLayer } = useStatsigClient();
+
+return (
+  <div>
+    <p>Group: {getLayer('my_layer').groupName}</p>
+    <p>Value: {layer.get('a_value', 'fallback_value')}</p>
+  </div>
+);
+```
+
+### Parameter Store Hooks
+
+```tsx
+import { useParameterStore } from '@statsig/react-bindings';
+
+function MyComponent() {
+  const store = useParameterStore('my_parameter_store');
+  const title = store.get('page_title', 'Default Title');
+  const maxItems = store.get('max_items', 10);
+  const isEnabled = store.get('feature_enabled', false);
+
+  const storeNoExposure = useParameterStore('my_parameter_store', {
+    disableExposureLog: true,
+  });
+
+  return <div>{title}</div>;
+}
+```
+
+### Log Events From Hooks
+
+```tsx
+import { useStatsigClient } from '@statsig/react-bindings';
+
+const { logEvent } = useStatsigClient();
+
+return <button onClick={() => logEvent('my_event')}>Click Me</button>;
+```
+
+### StatsigUser Hook
+
+```tsx
+import { useStatsigUser } from '@statsig/react-bindings';
+
+const { user, updateUserSync } = useStatsigUser();
+
+return (
+  <div>
+    <p>Current User: {user.userID}</p>
+    <button onClick={() => updateUserSync({ userID: 'some-other-user' })}>
+      Update User
+    </button>
+  </div>
+);
+```
+
+### Direct Access to the Client
+
+```tsx
+import { useStatsigClient } from '@statsig/react-bindings';
+
+const { client } = useStatsigClient();
+console.log('stableID', client.getContext().stableID);
+```
+
+### Client Initialization Hooks
+
+- `useClientAsyncInit` — fetches the latest values before rendering.
+- `useClientBootstrapInit` — bootstrap from server-provided values.
+
+<Info>
+You can also initialize your own client instance manually. See <a href="/client/concepts/initialize">Initialization Strategies</a> for alternatives.
+</Info>

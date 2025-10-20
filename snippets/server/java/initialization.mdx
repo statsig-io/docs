@@ -1,0 +1,22 @@
+<CodeGroup>
+```java Java
+import com.statsig.sdk.Statsig;
+
+StatsigOptions options = new StatsigOptions();
+// Customize options as needed. For example:
+// options.initTimeoutMs = 9999;
+Future initFuture = Statsig.initializeAsync("server-secret-key", options);
+initFuture.get();
+```
+
+```kotlin Kotlin
+import com.statsig.sdk.Statsig
+
+val options = StatsigOptions().apply {
+        // Customize options as needed. For example:
+        initTimeoutMs = 9999
+}
+async { Statsig.initialize("server-secret-key", options) }.await()
+```
+</CodeGroup>
+

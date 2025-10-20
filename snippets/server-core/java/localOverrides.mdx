@@ -1,0 +1,66 @@
+Local overrides allow you to override feature gate and config values for testing purposes.
+
+<CodeGroup>
+```java Java
+import java.util.HashMap;
+import java.util.Map;
+
+// Override a gate
+statsig.overrideGate("my_feature_gate", true);
+
+// Override a config
+Map<String, Object> configOverride = new HashMap<>();
+configOverride.put("key", "value");
+configOverride.put("number", 42);
+statsig.overrideConfig("my_config", configOverride);
+
+// Override an experiment
+Map<String, Object> experimentOverride = new HashMap<>();
+experimentOverride.put("variant", "test");
+statsig.overrideExperiment("my_experiment", experimentOverride);
+
+// Override a layer
+Map<String, Object> layerOverride = new HashMap<>();
+layerOverride.put("layer_param", "override_value");
+statsig.overrideLayer("my_layer", layerOverride);
+
+// Clear all overrides
+statsig.clearAllOverrides();
+
+// Clear specific override
+statsig.clearGateOverride("my_feature_gate");
+statsig.clearConfigOverride("my_config");
+```
+
+```kotlin Kotlin
+// Override a gate
+statsig.overrideGate("my_feature_gate", true)
+
+// Override a config
+val configOverride = mapOf(
+    "key" to "value",
+    "number" to 42
+)
+statsig.overrideConfig("my_config", configOverride)
+
+// Override an experiment
+val experimentOverride = mapOf(
+    "variant" to "test"
+)
+statsig.overrideExperiment("my_experiment", experimentOverride)
+
+// Override a layer
+val layerOverride = mapOf(
+    "layer_param" to "override_value"
+)
+statsig.overrideLayer("my_layer", layerOverride)
+
+// Clear all overrides
+statsig.clearAllOverrides()
+
+// Clear specific override
+statsig.clearGateOverride("my_feature_gate")
+statsig.clearConfigOverride("my_config")
+```
+</CodeGroup>
+

@@ -1,0 +1,17 @@
+### Prefetching Users
+
+Use `prefetchData` to prepare values for another user so you can switch synchronously later.
+
+```tsx
+const nextUser = { userID: 'my-other-user' };
+
+await client.dataAdapter.prefetchData(nextUser);
+// Optionally handle failures without blocking the UI
+client.dataAdapter.prefetchData(nextUser).catch((err) => {
+  console.warn('Failed to prefetch', err);
+});
+
+client.updateUserSync(nextUser);
+const gate = client.getFeatureGate('a_gate');
+console.log(gate.value, gate.details.reason); // true, 'Prefetch:Recognized'
+```

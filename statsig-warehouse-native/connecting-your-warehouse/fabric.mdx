@@ -1,0 +1,65 @@
+---
+title: Fabric Connection [Beta]
+sidebarTitle: Fabric [Beta]
+keywords:
+  - owner:xhuang
+last_update:
+  date: 2025-09-18
+---
+
+## Overview
+
+To set up connection with Microsoft Fabric, you must start from the [Fabric Workload Hub](https://app.fabric.microsoft.com/workloadhub/detail/Statsig.Statsig.Statsig?experience=fabric-developer).
+
+You will need to:
+- Add Statsig to your Fabric workspace
+- Create a service principal with access to Fabric, OneLake, and the shared workspace where you added Statsig
+- Grant access for Statsig's IP addresses to access your Microsoft Fabric account if you have firewall conditional access rules set
+
+## Add Statsig to your Fabric workspace
+
+1. On the [Fabric Workload Hub](https://app.fabric.microsoft.com/workloadhub/detail/Statsig.Statsig.Statsig?experience=fabric-developer), click the 'Add Workload' button to enable Statsig in your selected share workspace.
+<Frame>
+  <img src="https://raw.githubusercontent.com/statsig-io/docs/refs/heads/main/docs/assets/add_fabric_statsig_workload.png" alt="Fabric workload hub interface showing Add Workload button" />
+</Frame>
+2. Add Statsig as a new item in your Fabric workspace
+3. Provide connection details to connect Statsig to your warehouse and data source
+<Frame>
+  <img src="https://raw.githubusercontent.com/statsig-io/docs/refs/heads/main/docs/assets/edit_fabric_statsig_warehouse_connection.png" alt="Statsig warehouse connection configuration interface" />
+</Frame>
+
+## Creating a service principal
+The first step is to create a service principal and their associated credentials. You'll give Statsig access to this service principal to access Fabric resources. You should create a new service principal for Statsig, but you can use the same service principal to give Statsig access to multiple Fabric resources if necessary.
+
+1. Sign in to the Azure portal.
+2. In the navigation menu, select Microsoft Entra ID (formerly Azure Active Directory).
+3. Click App registrations under Manage and then click + New registration.
+4. Enter a Name for your application such as "Statsig on Fabric". In the Supported account types section, select Accounts in this organizational directory only and click Register
+ - Make a note of the Application (client) ID and Directory (tenant) ID. You will use them later to connect Statsig.
+5. Create a secret for this application. Re-select the application you just created.
+6. On the navigation menu, click Certificates & secrets and then click + New client secret.
+7. In the Add a client secret pane, select an expiry period and enter a description for the client secret, eg "Statsig Credentials".
+8. Click Add and make a note of the client secret.
+
+## Configuring Fabric to allow external access via service principals
+1. Click the Settings icon in the top right of the Fabric workspace.
+2. Select [admin portal](https://app.fabric.microsoft.com/admin-portal?experience=fabric-developer) under Governance and insights.
+3. In the navigation menu, select Tenant settings.
+4. In the Developer settings section, set the Service principals can use Fabric APIs toggle to ON.
+5. In the OneLake settings section, set the Users can access data stored in OneLake with apps external to Fabric toggle to ON.
+  
+## Granting the service principal access to your workspace
+Any resources you wish to connect to must also be placed in a shared workspace. Once you have a shared workspace, you'll need to grant your new service principal access to the workspace.
+
+1. Select the workspace and then click Manage Access.
+2. Click + Add people or groups.
+3. Select the name of the service principal you created in Step 1. If it doesn't appear, make sure you've enabled the Service principals can use Fabric APIs setting above.
+4. In the drop-down menu, select Contributor.
+
+The service principal can now access any resource within the workspace given the appropriate endpoint.
+
+### What IP addresses will Statsig access data warehouses from?
+
+[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from) to add Statsig's IP addresses in your firewall to only allow traffic originating from Statsig to access your Microsoft Fabric account. You can specify IP addresses to allow as part of [Microsoft Entra's conditional access](https://learn.microsoft.com/en-us/fabric/security/protect-inbound-traffic#entra-conditional-access). 
+
+For Microsoft Fabric, Statsig uses 4.242.112.193 but it is recommended to allowlist all Statsig IP addresses.

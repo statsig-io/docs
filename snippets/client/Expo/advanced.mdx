@@ -1,0 +1,62 @@
+## Advanced
+
+### Expo Without React
+
+In some scenarios, you may need to use the `StatsigClient` when you are not in the React component tree. Things like background tasks or handling notifications. 
+For these, you can use the Expo specific `StatsigClientExpo`.
+
+```tsx
+import { StatsigClientExpo } from '@statsig/expo-bindings';
+
+const myClient = new StatsigClientExpo(
+  YOUR_CLIENT_KEY,
+  { userID: "a-user" }
+);
+
+await myClient.initializeAsync();
+
+if (myClient.checkGate("my_gate")) {
+  // do something cool
+}
+```
+
+### Synchronous Storage with MMKV
+
+If you are utilizing [MMKV](https://github.com/mrousavy/react-native-mmkv) in your project, and would prefer to use that instead of the default ([AsyncStorage](https://github.com/react-native-async-storage)). 
+You can provide you own `StorageProvider` via `StatsigOptions`. 
+
+Something like:
+```tsx
+import { MMKV } from "react-native-mmkv";
+import { StorageProvider } from "@statsig/client-core";
+import { StatsigProviderExpo } from "@statsig/expo-bindings";
+
+function App() {
+    const [storageProvider] = useState<StorageProvider>(() => {
+      const mmkv = new MMKV();
+
+      return {
+        isReady: () => true,
+        isReadyResolver: () => null,
+        getProviderName: () => "MMKV",
+        getAllKeys: () => mmkv.getAllKeys(),
+        getItem: (key: string) => mmkv.getString(key) ?? null,
+        setItem: (key: string, value: string) => mmkv.set(key, value),
+        removeItem: (key: string) => mmkv.delete(key),
+      };
+    });
+
+   return (
+    <StatsigProviderExpo
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      options={{
+        storageProvider, // <- Passed into StatsigOptions
+      }}
+    >
+      <Text>...</Text>
+    </StatsigProviderExpo>
+   );
+}
+```
+

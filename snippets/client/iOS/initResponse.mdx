@@ -1,0 +1,21 @@
+
+<CodeGroup>
+```swift Swift
+let response = Statsig.getInitializeResponseJson()
+if let values = response.values {
+    print(values)
+}
+let details = response.evaluationDetails
+```
+
+```objective-c Objective C
+ExternalInitializeResponse *response = [Statsig getInitializeResponseJson];
+NSString *values = response.values;
+if (values) {
+    NSLog(@"%@", values);
+}
+EvaluationDetails *details = response.evaluationDetails;
+```
+</CodeGroup>
+
+

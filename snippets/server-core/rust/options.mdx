@@ -1,0 +1,159 @@
+<Accordion title="StatsigOptions">
+
+<ResponseField name="data_store" type="Option<Arc<dyn DataStoreTrait>>">
+  External data store for Statsig values.
+</ResponseField>
+
+<ResponseField name="disable_all_logging" type="Option<bool>">
+  When true, disables all event logging.
+</ResponseField>
+
+<ResponseField name="disable_network" type="Option<bool>">
+  When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+</ResponseField>
+
+<ResponseField name="enable_id_lists" type="Option<bool>">
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+</ResponseField>
+
+<ResponseField name="disable_user_agent_parsing" type="Option<bool>" default="false">
+  If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+</ResponseField>
+
+<ResponseField name="wait_for_user_agent_init" type="Option<bool>" default="false">
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+</ResponseField>
+
+<ResponseField name="disable_user_country_lookup" type="Option<bool>" default="false">
+  If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+</ResponseField>
+
+<ResponseField name="wait_for_country_lookup_init" type="Option<bool>" default="false">
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time.
+</ResponseField>
+
+<ResponseField name="environment" type="Option<String>">
+  Environment parameter for evaluation.
+</ResponseField>
+
+<ResponseField name="event_logging_adapter" type="Option<Arc<dyn EventLoggingAdapter>>">
+  Custom adapter for event logging.
+</ResponseField>
+
+<ResponseField name="event_logging_flush_interval_ms" type="Option<u32>">
+  How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="event_logging_max_queue_size" type="Option<u32>">
+  Maximum number of events to queue before forcing a flush.
+</ResponseField>
+
+<ResponseField name="event_logging_max_pending_batch_queue_size" type="Option<u32>">
+  Maximum number of batches of events to hold in buffer to retry.
+</ResponseField>
+
+<ResponseField name="fallback_to_statsig_api" type="Option<bool>">
+  Whether to fallback to the Statsig API if custom endpoints fail.
+</ResponseField>
+
+<ResponseField name="id_lists_adapter" type="Option<Arc<dyn IdListsAdapter>>">
+  Custom adapter for ID lists.
+</ResponseField>
+
+<ResponseField name="id_lists_sync_interval_ms" type="Option<u32>">
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="id_lists_url" type="Option<String>">
+  Custom URL for fetching ID lists.
+</ResponseField>
+
+<ResponseField name="init_timeout_ms" type="Option<u64>">
+  Sets the maximum timeout for initialization requests (in milliseconds).
+</ResponseField>
+
+<ResponseField name="log_event_url" type="Option<String>">
+  Custom URL for logging events.
+</ResponseField>
+
+<ResponseField name="observability_client" type="Option<Weak<dyn ObservabilityClient>>">
+  Client for collecting observability data.
+</ResponseField>
+
+<ResponseField name="output_log_level" type="Option<LogLevel>">
+  Controls the verbosity of SDK logs.
+</ResponseField>
+
+<ResponseField name="override_adapter" type="Option<Arc<dyn OverrideAdapter>>">
+  Custom adapter for overrides.
+</ResponseField>
+
+<ResponseField name="spec_adapters_config" type="Option<Vec<SpecAdapterConfig>>">
+  Configuration for specification adapters.
+</ResponseField>
+
+<ResponseField name="specs_adapter" type="Option<Arc<dyn SpecsAdapter>>">
+  Custom adapter for specifications.
+</ResponseField>
+
+<ResponseField name="specs_sync_interval_ms" type="Option<u32>">
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="specs_url" type="Option<String>">
+  Custom URL for fetching feature specifications.
+</ResponseField>
+
+<ResponseField name="global_custom_fields" type="Option<HashMap<String, DynamicValue>>">
+  Global custom fields to include with all evaluations.
+</ResponseField>
+
+<ResponseField name="proxy_config" type="Option<ProxyConfig>">
+  Configuration for connecting through a proxy server. The `ProxyConfig` struct has the following properties:
+  - `proxy_host`: Option\<String\> - Specifies the proxy server host
+  - `proxy_port`: Option\<u16\> - Specifies the proxy server port
+  - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
+  - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
+</ResponseField>
+
+
+### Example Usage
+
+```rust
+use statsig_rust::{Statsig, StatsigOptions};
+use std::sync::Arc;
+
+// Initialize StatsigOptions with custom parameters
+let mut options = StatsigOptions::default();
+options.environment = Some("development".to_string());
+options.init_timeout_ms = Some(3000);
+options.disable_all_logging = Some(false);
+options.enable_id_lists = Some(true);
+options.output_log_level = Some(LogLevel::Info); // LogLevel enum, not a string
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+
+// Or, use the builder pattern for a more fluent interface
+let options = StatsigOptions::builder()
+    .environment(Some("development".to_string()))
+    .init_timeout_ms(Some(3000))
+    .disable_all_logging(Some(false))
+    .enable_id_lists(Some(true))
+    .specs_sync_interval_ms(Some(30000))
+    // Configure proxy settings
+    .proxy_config(Some(ProxyConfig {
+        proxy_host: Some("proxy.example.com".to_string()),
+        proxy_port: Some(8080),
+        proxy_protocol: Some("https".to_string()),
+        proxy_auth: None, // Use Some("username:password".to_string()) if authentication is required
+    }))
+    .build();
+
+// Pass the options object into Statsig::new()
+let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
+statsig.initialize().await?;
+```
+
+</Accordion>

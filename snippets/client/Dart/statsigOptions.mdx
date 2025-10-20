@@ -1,0 +1,14 @@
+<ResponseField name="initTimeout" type="int" default="3">
+  Used to decide how long (in seconds) the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
+
+  If you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
+</ResponseField>
+
+<ResponseField name="api" type="string" default="https://statsigapi.net/v1/">
+  The endpoint to use for all SDK network requests. You should not override this (unless you have another API that implements the Statsig API endpoints).
+</ResponseField>
+
+<ResponseField name="environment" type="string" default="">
+  The environment tier to evaluate rules for the current user. Default empty, which is the same as "production." On non-production tiers, events will not make it in to downstream pulse results.
+</ResponseField>
+

@@ -1,0 +1,84 @@
+---
+title: SDK Health Hub Warnings
+sidebarTitle: cloud
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+### Detecting Initializations
+
+Initialization is the step in SDK setup where your SDK downloads the values for your set of Flags(Gates), Experiments, Dynamic Configs, etc., and prepares itself to log events. In all SDKs, initialization entails calling a method like .initialize() - with occasional naming variation between SDKs (e.g., InitializeAsync in javascript). 
+
+*How to solve:* If you're using a less common SDK (.NET, Dart, Unity, PHP), or an older version, its possible that this section can appear incomplete erroneously. Otherwise - all you need to do is initialize your SDK - see the [docs for the SDK you're using.](/sdks/getting-started)
+
+### Initialization Success
+
+Initialization success is the percent of initialization attempts that the SDK is making that are successfully returning values from the Statsig servers. 
+
+*How to solve:* Common issues on client SDKs include adblockers, poor network conditions, or attempts to initialize/updateUser happening without a network connection (common with backgrounded Android apps, for example). If you suspect adblockers, consider setting up a [proxy](/custom_proxy/). Poor network conditions are difficult to resolve. Server issues are less common - but may include improper networking restrictions in your cluster, or unsuccessful use of a custom initialization approach, like an improperly configured data adapter. Inspecting specific error logs where your Server SDK is running is likely to yield more information on the issue.
+
+### Initialization Size
+
+As you add more gates, experiments, and dynamic configs to your project - the size of your initialize() payload will grow. On client SDKs, the initialize payload is "evaluated", meaning it'll have only the results for a single user in the payload, but on Server SDKs - this'll contain the set of rules defining the results for all users.
+
+*How to solve:* Archiving stale gates and experiments, and limiting the size of any dynamic configs you use is the first line of defense for a fast initialize. While we provide a great degree of freedom in how you use Statsig, storing large amounts of data in Dynamic Configs isn't recommended. [Target Apps](/sdk-keys/target-apps/) are another solution that limits the configs that any one client/server key can retrieve (usually, limiting them to only those which are needed). 
+
+### Initialization Time
+
+Initialize is served from CDNs on Statsig's Server SDKs, and our servers for Client SDKs. Initialize time is largely driven by clients' network conditions, but initialize size can also contribute.
+
+*How to solve:* Consider the advice above for reducing your initialize size.
+
+### Detecting Config Checks
+
+Any time you call .checkGate, .getExperiment, .getDynamicConfig or similar in the Statsig SDKs, a "check" event is sent to our servers to help you see usage of your configs, and understand user allocation to experiments. If you're using Statsig's gates, experiments, or dynamic configs in your app, you should see data in this field.
+
+*How to solve:* On client SDKs, exposure data can sometimes be lost because of adblockers, or in cases where users are immediately redirected after a "check", as the SDK can sometimes fail to send out the exposure event. On server SDKs, a common issue is that the process exits before the events are sent - typical in serverless situations. Calling .shutdown or .flush on the SDK can prevent this, refer to your SDK reference docs. Another common issue is accidentally disabling exposure logging on either your checks or in the StatsigOptions, or misconfiguring an event logging API in StatsigOptions. 
+
+### Config ID Presence
+
+Every config (gate, experiment, or Dynamic Config) in Statsig has an ID type that is used to randomly bucket users into groups. When that ID is absent from your "checks", Statsig can't accurately bucket those users (they'll all be placed in the same bucket, perhaps unbalancing your experiment).
+
+*How to solve:* inspect your code paths to ensure that the ID type you're using is the correct one for where you're running the experiment: if its a logged-out experiment, an anonymous identifier like StableID is most appropriate. For a quick fix, you can also add a targeting gate to an experiment, filtering out any users with a null ID type. 
+
+### Healthy Evaluation Reasons
+
+When you check a Statsig gate/experiment/dynamic config - the SDK will always provide a value, to ensure your customer experience is unaffected even if something goes wrong. Instead of panicking when something hasn't worked quite right - the SDKs expose "Evaluation Reason" as a key source of information for if the SDK is in a healthy state when you make checks. Reasons are discussed in detail in our [debugging docs](/sdk/debugging#evaluation-reason).
+
+*How to solve:* 
+ - If your evaluation reason looks like: `uninitialized`,  `unrecognized`,  `novalues`, `loading`, review your [Initialization Strategy](/client/concepts/initialize). With uninitialized, its common that you've forgotten to call initialize at all. Loading and Novalues often mean that you're checking a config before initialization returns, or that a successful initialization doesn't have values for the user object that you're using (e.g., you called updateUserSync(), which changes the user without getting new values for them.)
+ - If your evaluation reason look like: `error` or `unsupported`, you likely need to update your SDK version, as you're attempting to use a rule type that your SDK doesn't support.
+ - If your evaluation reason looks like: `bootstrapstableidmismatch` or `invalidbootstrap`, see our [debugging guides](/sdk/debugging#faqs) for these issues.
+ - If your evaluation reason looks like `noclient`, then you might be trying to check a config outside of the \<StatsigProvider\> in React.
+
+### Detecting Events
+
+In Statsig, you can use the .logEvent() method in any SDK to create metrics that support your experiments. Without events - Statsig's functionality is limited, and we won't be able to perform experiment analysis, or use Metrics Explorer. If you're using Statsig Warehouse Native, this section might appear empty.
+
+*How to solve:* If you already have a source of events you'd like to use, you can import them with one of our [Integrations](/integrations/introduction), or a data import from your [warehouse](/data-warehouse-ingestion/introduction). Otherwise, start tracking your events with .logEvent() in your code. Sometimes, log events can not make it to the Statsig platform if you have a misconfigured StatsigOption (like disableAllLogging), or if you're not calling .flush or .shutdown before your process exits (most common in serverless applications).
+
+### Event ID Presence
+
+For an event to be useful in Statsig, it should have at least some IDs attached to it - like userIDs, stableIDs, or other customIDs that you can set. Some SDKs have typing that forces at least one ID to be included, but others don't.
+
+*How to solve:* Ensure that your user objects have at least one ID on them, or acknowledge that they'll be unusable in experiment analysis.
+
+### Latest Versions
+
+We're constantly updating Statsig's SDKs with performance, security and functionality improvements. We encourage you to always monitor and bump your SDK versions. While we only sometimes publish official end-of-life notices for SDK versions, we encourage you to stay on a version that is at most 6 months old.
+
+*How to solve:* Visit your [SDK reference](/sdks/getting-started) to find the latest version.
+
+### Client Bootstrapping
+
+[Client Bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) is a method to use Server SDKs to provide initialization values to client SDKs. Along with performance benefits (this request can be parallelized with other requests your client makes, reducing load times), client bootstrapping improves resilience in the case of a Statsig outage, as Server SDKs have continual, uninterrupted access to rulesets. 
+
+*How to solve:* visit our [guides on client bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) to assess if its the right initialization strategy for you.
+
+### Target Applications
+
+[Target Applications] help you filter the gates/experiments/dynamic configs that any one SDK key can access. This has performance benefits - like improving your initialize performance by reducing your payload sizes, but also can have privacy benefits for your application - like the ability to limit visibility of server-targeted configs to the frontend.
+
+*How to solve:* Visit the [Target Apps page](https://console.statsig.com/settings/apps) on console to set up your first target apps. 

@@ -1,0 +1,29 @@
+There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution.
+
+You should create an adapter that implements `Statsig\Adapters\IConfigAdapter` that hooks up to your caching solution. By default, we provide a local file solution that can be useful for first time setup but is challenging to work with in production settings.
+
+For help with the interface and implementing an adapter, browse the [adapters directory](https://github.com/statsig-io/php-sdk/tree/main/src/Adapters) in the open source SDK repository.
+
+```php
+require_once __DIR__ . '/vendor/autoload.php'; // path to installation folder
+
+use Statsig\StatsigServer;
+use Statsig\StatsigOptions;
+use Statsig\Adapters\LocalFileDataAdapter;
+use Statsig\Adapters\LocalFileLoggingAdapter;
+
+$config_adapter = new LocalFileDataAdapter();
+$logging_adapter = new LocalFileLoggingAdapter();
+$options = new StatsigOptions($config_adapter, $logging_adapter);
+$this->statsig = new StatsigServer("server-sdk-key", $options);
+```
+
+### 🔥 Warning - You need to schedule a job 🔥
+
+<Warning>
+#### V3.0+
+If you do not configure a job to update the config values, SDK does not fire a network request to fetch the latest config value anymore, instead, config values fetched earlier will be used.
+</Warning>
+
+See [Cron Jobs](#cron-jobs)
+

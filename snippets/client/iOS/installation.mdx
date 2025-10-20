@@ -1,0 +1,40 @@
+To use the SDK in your project, you must add Statsig as a dependency.
+
+<Tabs>
+<Tab title="Swift Package Manager">
+In your Xcode, select File > Swift Packages > Add Package Dependency
+and enter the URL https://github.com/statsig-io/statsig-kit.git.
+
+You can also include it directly in your project's Package.swift. Find out the latest release version on our [GitHub page](https://github.com/statsig-io/statsig-kit/releases).
+
+```swift
+//...
+dependencies: [
+    // see the latest version on https://github.com/statsig-io/statsig-kit/releases
+    .package(url: "https://github.com/statsig-io/statsig-kit.git", .upToNextMinor("X.Y.Z")),
+],
+//...
+targets: [
+    .target(
+        name: "YOUR_TARGET",
+        dependencies: ["Statsig"]
+    )
+],
+//...
+```
+</Tab>
+
+<Tab title="Cocoapods">
+If you are using CocoaPods, our pod name is 'Statsig', and you can include the following line to your Podfile:
+
+```ruby
+use_frameworks!
+target 'TargetName' do
+  //...
+  pod 'Statsig', '~> X.Y.Z'
+end
+```
+
+Find the latest versions by searching [cocoapods.org](https://cocoapods.org/) or on [Github](https://github.com/statsig-io/statsig-kit/releases).
+</Tab>
+</Tabs>

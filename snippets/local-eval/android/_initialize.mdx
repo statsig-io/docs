@@ -1,0 +1,98 @@
+<CodeGroup>
+
+```java Java
+import com.statsig.androidlocalevalsdk.*;
+
+// ...
+
+android.app.Application app = // ref to your Application instance
+
+StatsigOptions opts = new StatsigOptions();
+opts.setEnvironmentParameter("tier", "staging");
+
+StatsigClient client = Statsig.INSTANCE.getClient();
+client.initializeAsync(
+        app,
+        "client-YOUR_CLIENT_SDK_KEY",
+        new IStatsigCallback() {
+            @Override
+            public void onStatsigInitialize(@NotNull InitializationDetails initDetails) {
+                // Statsig Ready
+            }
+
+            @Override
+            public void onStatsigInitialize() {
+                // deprecated
+            }
+        },
+        opts
+);
+
+// or, create your own instance of StatsigClient
+StatsigClient client = new StatsigClient();
+client.initializeAsync(...);
+```
+
+```kotlin Kotlin
+import com.statsig.androidlocalevalsdk.*
+
+// ...
+
+val opts = StatsigOptions()
+opts.setEnvironmentParameter("tier", "staging")
+
+Statsig.client.initializeAsync(
+    application, // ref to your Application instance
+    "client-YOUR_CLIENT_SDK_KEY",
+    object : IStatsigCallback {
+        override fun onStatsigInitialize(initDetails: InitializationDetails) {
+            // Statsig Ready
+        }
+
+        override fun onStatsigInitialize() {
+            // deprecated
+        }
+    },
+    opts
+)
+
+// or, create your own instance of StatsigClient
+val client = StatsigClient()
+client.initializeAsync(...)
+```
+
+</CodeGroup>
+
+### Synchronous Initialization
+
+```kotlin
+import com.statsig.androidlocalevalsdk.*
+
+ // (optional) Configure the SDK if needed
+val opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+val specs = "..." // JSON string of your configurations
+
+let details = Statsig.client.initializeSync(application, "client-YOUR_CLIENT_SDK_KEY", specs, opts)
+```
+
+It is possible to configure the SDK to use cached values if they are newer than the local file.
+This can be useful if you ship your app with a local file, but would like it to only be used for the first session.
+In the following example, the SDK will only use initialSpecs if there is no cache or if the cache is older than initialSpecs.
+
+```kotlin
+val options = StatsigOptions()
+options.useNewerCacheValuesOverProvidedValues = true
+
+Statsig.client.initializeSync(
+  application,
+  "client-YOUR_CLIENT_SDK_KEY",
+  specs,
+  options
+)
+```
+
+<Note>
+You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
+</Note>

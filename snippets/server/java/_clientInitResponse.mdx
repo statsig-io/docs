@@ -1,0 +1,24 @@
+Available in v1.4.1+
+
+<Tabs>
+  <Tab title="Java">
+
+```java
+StatsigUser user = new StatsigUser("user_id");
+Map<String, Object> initializeValues = driver.getClientInitializeResponse(user);
+
+// pass initializeValues to a client SDK to initialize without a network request
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```kotlin
+val user = StatsigUser("user_id");
+val initializeValues = Statsig.getClientInitializeResponse(user);
+
+// pass initializeValues to a client SDK to initialize without a network request
+```
+
+  </Tab>
+</Tabs>

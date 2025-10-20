@@ -1,0 +1,6 @@
+<!--
+  tags: ["remove","subtract","action","UI"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M16.75 10a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0ZM18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-3.548.624a.625.625 0 1 0 0-1.25H5.548a.625.625 0 1 0 0 1.25h8.904Z" clip-rule="evenodd"/>
+</svg>

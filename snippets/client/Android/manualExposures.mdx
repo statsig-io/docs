@@ -1,0 +1,107 @@
+<Tabs>
+  <Tab title="Check Gate">
+    To check a gate without an exposure being logged:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    val result = Statsig.checkGateWithExposureLoggingDisabled("a_gate_name")
+    ```
+
+    ```java Java
+    boolean result = Statsig.checkGateWithExposureLoggingDisabled("a_gate_name");
+    ```
+    </CodeGroup>
+
+    Later, to manually log the gate exposure:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    Statsig.manuallyLogGateExposure("a_gate_name")
+    ```
+
+    ```java Java
+    Statsig.manuallyLogGateExposure("a_gate_name");
+    ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Get Config">
+    To get a dynamic config without an exposure being logged:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    val config = Statsig.getConfigWithExposureLoggingDisabled("a_config_name")
+    ```
+
+    ```java Java
+    DynamicConfig config = Statsig.getConfigWithExposureLoggingDisabled("a_config_name");
+    ```
+    </CodeGroup>
+
+    Later, to manually log the config exposure:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    Statsig.manuallyLogConfigExposure("a_config_name")
+    ```
+
+    ```java Java
+    Statsig.manuallyLogConfigExposure("a_config_name");
+    ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Get Experiment">
+    To get an experiment without an exposure being logged:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    val experiment = Statsig.getExperimentWithExposureLoggingDisabled("an_experiment_name")
+    ```
+
+    ```java Java
+    DynamicConfig experiment = Statsig.getExperimentWithExposureLoggingDisabled("an_experiment_name");
+    ```
+    </CodeGroup>
+
+    Later, to manually log the experiment exposure:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    Statsig.manuallyLogExperimentExposure("an_experiment_name", false)
+    ```
+
+    ```java Java
+    Statsig.manuallyLogExperimentExposure("an_experiment_name", false);
+    ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Get Layer">
+    To get a layer parameter without an exposure being logged:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    val layer = Statsig.getLayerWithExposureLoggingDisabled("a_layer_name", false)
+    val result = layer.getString("a_parameter_name", "fallback")
+    ```
+
+    ```java Java
+    Layer layer = Statsig.getLayerWithExposureLoggingDisabled("a_layer_name");
+    String result = layer.getString("a_parameter_name", "fallback");
+    ```
+    </CodeGroup>
+
+    Later, to manually log the layer parameter exposure:
+
+    <CodeGroup>
+    ```kotlin Kotlin
+    Statsig.manuallyLogLayerParameterExposure("a_layer_name", "a_parameter_name", false)
+    ```
+
+    ```java Java
+    Statsig.manuallyLogLayerParameterExposure("a_layer_name", "a_parameter_name", false);
+    ```
+    </CodeGroup>
+  </Tab>
+</Tabs>

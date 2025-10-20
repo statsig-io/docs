@@ -1,0 +1,51 @@
+---
+title: Server Data Stores  / Data Adapter
+---
+
+One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a Statsig API outage, can my integration continue to function?
+
+The short answer is yes. Your server SDK will continue to operate normally, serving the most recent set of known values in response to calls like `checkGate`, `getConfig`, `getExperiment`, and `getLayer`.
+Once the API is back up and operating normally, your SDK will automatically refetch the most up-to-date version of your project.
+
+But what about spinning up a new server, or a new SDK instance, while Statsig is down?
+
+This is what we built the `DataAdapter`/`DataStore` for.
+
+## DataAdapter (or DataStore)
+
+DataAdapters allow you to plug in your own storage solution as a cache that the Statsig Server SDKs use to load your project configurations (ie; all experiments, configs, gates and their targeting/allocation rules). Some of the key use-cases for Data Adapter are: reducing dependency on Statsig servers for initialization, improving initialization time by loading config from a local data store, and providing customers with controls for minimizing network I/O. Data Adapters define a simple API that you have to implement: `initialize`, `get`, `set`, and `shutdown` for setup, reading, writing, and closing.
+
+### Recommended Implementation
+
+In most cases, **your webservers should only implement the read path (`get`)**.  
+Leaving the write path (`set`) empty is the best practice. Otherwise, every SDK instance across all of your servers will attempt to write to the store whenever it sees an update, which is inefficient and can lead to unnecessary contention or duplication.
+
+Instead, you should have a single source of truth that keeps your datastore up-to-date:
+
+- Run a **separate out-of-band service** that implements the SDK and is responsible for writing updates into the datastore via `set`.
+- Or, use a **cron job / periodic job** to fetch the config from the Statsig CDN endpoint and update your datastore under the correct cache keys (`statsig.cache`, `statsig.id_lists`, and `statsig.id_lists::{list_name}`).  
+
+The Statsig SDK already handles this refresh logic out of the box, so separating the read and write responsibilities is the cleanest and most reliable pattern.
+
+### Data Adapter Logic
+- When the Statsig SDK is initialized with a DataAdapter, it will first attempt to load config via `DataAdapter.get`.  
+  - If the entry exists, it will use it.  
+  - If the entry does not exist, and `localMode` is not enabled, it will fetch the config from Statsig servers and (if you have a writer service) persist it via `DataAdapter.set`.  
+- Post-initialization, the SDK will continue to poll Statsig servers for updates and, when available, save them back to your data store (if you’ve implemented `set` and designated a writer service).  
+- If the SDK client is initialized with `localMode=true`, this will disable all network fetches from Statsig.  
+- The cache keys used to be:
+  - `statsig.cache` → config specs  
+  - `statsig.id_lists` → lookup of id lists  
+  - `statsig.id_lists::{list_name}` → actual id list values
+- but in the latest node and server core sdks, the format has changed:
+  - `statsig|{path}|{format}|{hashedSDKKey}` where `path` is `/v1/download_config_specs` or `/v1/get_id_lists`, format is `plain_text`, and the `djb2` has of the sdk key is the last bit
+  - the SDK will handle this for you, reach out if you are trying to recreate this path yourself to double check
+
+<Note>
+Most DataAdapters are currently only used for the `initialize` path for getting a project definition.
+
+At the time of this writing, only `Node.js`, `Ruby`, `Go`, `Java` and `.NET` support polling for updates.  
+If you're interested in using a DataAdapter as the source of truth indefinitely, please reach out in our [Slack community](https://statsig.com/slack) and let us know which language this would be useful for!
+</Note>
+
+For information on your specific SDK language, see the language-specific docs in the left-hand column.

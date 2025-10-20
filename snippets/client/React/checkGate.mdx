@@ -1,0 +1,20 @@
+```tsx
+import {
+  useFeatureGate,
+  useGateValue,
+  useStatsigClient,
+} from '@statsig/react-bindings';
+
+const { checkGate } = useStatsigClient();
+const gateValue = useGateValue('my_gate');
+const gate = useFeatureGate('my_gate');
+
+return (
+  <div>
+    {checkGate('my_gate') && <p>Passing</p>}
+    {gateValue && <p>Passing</p>}
+    {gate.value && <p>Passing ({gate.details.reason})</p>}
+  </div>
+);
+```
+

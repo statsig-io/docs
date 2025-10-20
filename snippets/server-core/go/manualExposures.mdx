@@ -1,0 +1,44 @@
+All of the main SDK functions (`CheckGate`, `GetDynamicConfig`, `GetExperiment`, `GetLayer`) accept an optional options parameter with `DisableExposureLogging` field. When this is set to `true`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
+```go
+result := statsig.CheckGate(aUser, "a_gate_name", statsig.CheckGateOptions{DisableExposureLogging: true})
+```
+
+```go
+statsig.ManuallyLogGateExposure(aUser, "gate_name")
+```
+</Tab>
+
+<Tab title="Dynamic Configs">
+```go
+config := statsig.GetDynamicConfig(aUser, "config_name", statsig.GetDynamicConfigOptions{DisableExposureLogging: true})
+```
+
+```go
+statsig.ManuallyLogDynamicConfigExposure(aUser, "config_name")
+```
+</Tab>
+
+<Tab title="Experiments">
+```go
+experiment := statsig.GetExperiment(aUser, "experiment_name", statsig.GetExperimentOptions{DisableExposureLogging: true})
+```
+
+```go
+statsig.ManuallyLogExperimentExposure(aUser, "experiment_name")
+```
+</Tab>
+
+<Tab title="Layers">
+```go
+layer := statsig.GetLayer(aUser, "layer_name", statsig.GetLayerOptions{DisableExposureLogging: true})
+paramValue := layer.Get(aUser, "param_name")
+```
+
+```go
+statsig.ManuallyLogLayerParameterExposure(aUser, "layer_name", "param_name")
+```
+</Tab>
+</Tabs>
+

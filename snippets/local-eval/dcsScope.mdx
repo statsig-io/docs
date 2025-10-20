@@ -1,0 +1,20 @@
+<Warning>
+For On-Device Evaluation, you'll need to add the **"Allow Download Config Specs"** scope. Client keys, by default, are not able to download the project definition for on-device evaluation.
+
+While client keys are safe to include, Server and Console keys should always be kept private.
+</Warning>
+
+<Accordion title="How to add the scope">
+  <Tabs>
+    <Tab title="New SDK Keys">
+      When creating a new client key, select **"Allow Download Config Specs"**
+      
+      ![Add DCS Scope to New Key](/images/local-eval/new-keys.png)
+    </Tab>
+    <Tab title="Existing SDK Keys">
+      To add the scope to an existing key, under **Project Settings** > **API Keys** > **Client API Keys**, select **Actions** > **Edit Scopes**, and select **"Allow Download Config Specs"**, then **Save**.
+      
+      ![Add DCS Scope to Existing Key](/images/local-eval/existing-keys.png)
+    </Tab>
+  </Tabs>
+</Accordion>

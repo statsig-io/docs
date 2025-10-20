@@ -1,0 +1,47 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { useExperiment, useLayer} from "@statsig/react-bindings";
+
+export default function Home() {
+  const layer = useLayer("my_experiment_layer");
+  // or
+  const experiment = useExperiment("my_experiment");
+
+  return (
+    <div>
+      Title: {layer.get('title', 'Fallback Title')}
+      {/* or */}
+      Title: {experiment.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+
+<Note>
+In an App Router app, you need to use the [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+</Note>
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { useExperiment, useLayer} from "@statsig/react-bindings";
+
+export default function Home() {
+  const layer = useLayer("my_experiment_layer");
+  // or
+  const experiment = useExperiment("my_experiment");
+
+  return (
+    <div>
+      Title: {layer.get('title', 'Fallback Title')}
+      {/* or */}
+      Title: {experiment.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>

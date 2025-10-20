@@ -1,0 +1,48 @@
+<Tabs>
+  <Tab title="Java">
+
+```java
+// Values via getLayer
+
+Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+DynamicConfig titleExperiment = Statsig.getExperimentSync(user, "new_user_promo_title");
+DynamicConfig priceExperiment = Statsig.getExperimentSync(user, "new_user_promo_price");
+
+String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+Double discount = priceExperiment.getDouble("discount", 0.1);
+
+...
+
+Double price = msrp * (1 - discount);
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```kotlin
+// Values via getLayer
+
+val layer = Statsig.getLayerSync(user, "user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+
+val titleExperiment = Statsig.getExperimentSync(user, "new_user_promo_title")
+val priceExperiment = Statsig.getExperimentSync(user, "new_user_promo_price")
+
+val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+val discount = priceExperiment.getDouble("discount", 0.1)
+
+...
+
+val price = msrp * (1 - discount)
+```
+
+  </Tab>
+</Tabs>

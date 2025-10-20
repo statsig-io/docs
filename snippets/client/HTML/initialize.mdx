@@ -1,0 +1,31 @@
+The HTML snippet we provide wraps an instance of the statsig javascript sdk.  Simply providing your client API key in the url is enough to auto initialize the SDK, as the installation step recommends.
+
+However, you should likely move to a manual initialization if you need any of the following:
+
+- custom user properties
+- custom initialization options
+- check gates, configs, experiments, or log events
+
+To manually initialize an instance of the sdk, remove the key parameter from the script tag, and do the following:
+
+
+```js
+const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } = window.Statsig;
+    
+const client = new StatsigClient(
+    '<CLIENT-SDK-KEY>', 
+    { userID: 'a-user' }
+);
+
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+
+await client.initializeAsync();
+
+// check gates, configs, experiments, or log events
+```
+
+The `StatsigClient` instance you create is also available via `window.Statsig`, so you can reference it globally.
+
+At this point, you have access to all of the methods available in the [Javascript SDK](/client/javascript-sdk) via your instance of the `StatsigClient`.  Refer to that documentation for initialization details and core methods.
+

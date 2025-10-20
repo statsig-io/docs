@@ -1,0 +1,149 @@
+---
+title: "Walkthrough guide for Gate Management with CLI"
+sidebarTitle: "Example: Gate Management"
+---
+
+<Info>
+The walkthrough guide assumes you have Statsig CLI installed and configured with the right API keys.  Please refer to the [Statsig CLI Overview](/statsigcli) to get started
+</Info>
+
+## Create a new gate
+
+You can create a new empty gate with no rules by calling `create` command on gates
+
+``` bash
+$ siggy gates create my-first-gate
+
+# Response
+{
+  id: 'my-first-gate',
+  name: 'my-first-gate',
+  description: '',
+  idType: 'userID',
+  lastModifierID: '..',
+  ...
+}
+```
+
+## Update new rules
+
+New rules could be updated by passing a rule object to the `update` command. This will replace the existing rules as a whole.
+
+``` bash
+$ siggy gates update my-first-gate '{
+    "rules": [
+      {
+        "name": "all employees",
+        "passPercentage": 100,
+        "conditions": [
+          {
+            "type": "email",
+            "operator": "str_contains_any",
+            "targetValue": [
+              "@statsig.com"
+            ]
+          }
+        ]
+      }
+    ]
+  }'
+
+# Response
+{
+  id: 'my-first-gate',
+  name: 'my-first-gate',
+  ...
+  rules: [
+    {
+      id: '729Qb4MVDs0YrIjNR5aOSm',
+      name: 'all employees',
+      passPercentage: 100,
+      conditions: [
+        {
+          type: 'email',
+          targetValue: [ '@statsig.com' ],
+          operator: 'str_contains_any'
+        }
+      ],
+    }
+  ],
+  ...
+}
+```
+
+## Check if the gate works
+
+When the Client API key is configured correctly, you can invoke the gate for different users and validate the gate works
+
+Passing in no user object will create an empty user object and evaluate the gate against that
+
+``` bash
+$ siggy gates check my-first-gate
+
+# Response
+{
+  name: 'my-first-gate',
+  value: false,
+  rule_id: 'default',
+  group_name: null
+}
+```
+
+You can also pass a user object crafted as JSON using the `--user` option
+
+``` bash
+$ siggy gates check my-first-gate --user '{ "email": "siggy@statsig.com" }'
+
+# Response
+{
+  name: 'my-first-gate',
+  value: true,
+  rule_id: '729Qb4MVDs0YrIjNR5aOSm',
+  group_name: null
+}
+```
+
+## List all gates
+
+``` bash
+$  siggy gates list
+
+# Response
+[
+  {
+    id: 'my-first-gate',
+    name: 'my-first-gate',
+    lastModifiedTime: 1718222637700,
+    lastModifierName: 'CONSOLE API'
+  },
+  {
+    id: 'from_siggy',
+    name: 'from_siggy',
+    lastModifiedTime: 1717807438090,
+    lastModifierName: 'CONSOLE API'
+  }
+  ...
+]
+```
+
+## Delete gate
+
+You could also delete this gate via the CLI.  By default there is a confirmation prompt that requires interaction.
+
+``` bash
+$ siggy gates delete my-first-gate
+
+# Response
+Are you sure you want to delete gate (id: my-first-gate)? (y/n): 
+```
+
+You could override it by using the `--force` option.
+
+``` bash
+$ siggy gates delete my-first-gate --force
+
+# Response
+Gate deleted successfully.
+```
+
+

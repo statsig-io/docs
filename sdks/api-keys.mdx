@@ -1,0 +1,51 @@
+---
+title: API Keys
+---
+
+## Overview
+
+There are three main types of API keys:
+
+1. **Client API Key**: Intended for getting configuration and logging events on the client side.
+2. **Server Secret Key**: Intended for getting configuration and logging events on the server side.
+3. **Console API Key**: The most powerful key, intended for server side use for full CRUD operations on your Statsig project.
+
+### Client API Keys
+
+Client API keys are required to initialize all Statsig client SDKs.  They are intended to be used in a client environment, such as a mobile app or a web app, where the key itself cannot be secret.
+
+Client API keys have access to the following:
+
+- /initialize endpoint, which returns all evaluated gates/configs/experiments/layers for a given user, with the names hashed.
+- /log_event endpoint, which logs events to Statsig.
+
+Because they cannot access the actual names, and because the gates/configs/experiments/layers are all pre-evaluated, the project definition is not accessible via a Client API Key.  This means that any conditions you create in the console, say, for a gate to pass for certain users or email addresses, will not be accessible via a Client API Key.
+
+### Server Secret Keys
+
+Server Secret Keys are required to initialize all Statsig server SDKs. They are intended to be used on webservers or in server scripts, and have access to the following:
+
+- /download_config_specs endpoint, which downloads the configuration for a project
+- /log_event endpoint, which logs events to Statsig.
+
+### Console API Keys
+
+Console API Keys should be treated as the most powerful keys in your project. Not only can they read all project configuration, they can also create, update, and delete entities in your project.
+
+They have access to the entire suite of [console api](/console-api/all-endpoints-generated) endpoints.
+
+You can also create **Personal Console API Keys** that are scoped to your role in Statsig - if your role has limited access, the same access conditions will be applied to the personal key. The intended use case is for multi-user projects where each user can have their own keys for clean access and audit logs. The ability to generate personal keys can be controlled in the [organization info settings tab](https://console.statsig.com/settings?tab=organization). 
+
+### Additional Considerations
+
+You can use [target apps](/sdk-keys/target-apps) in combination with server secret keys and client api keys to control which gates/configs/experiments/layers are accessible via each key.
+
+Both client and server secret keys can also be used to access individual entities via the http api (/check_gate, /get_config, /get_layer)
+
+#### Client Keys with Server Permissions
+Client keys can also get access to the download_config_specs endpoint via a scope you can add to the key. This is intended only for client local evaluation SDKs, like the [js-on-device-eval sdk](/client/js-on-device-eval-client), which we generally only encourage using in specific situations.
+
+Creating a key like this requires additional consideration. Your entire project scope is exposed to clients that can access this key: the names and configurations of all experiments and feature flags accessible by your client key are exposed. This risk may be acceptable (in fact, many other experimentation platforms operate in this manner by default), but you may choose to put additional processes in place to avoid the inclusion of certain information - like plaintext email addresses used in targeting, or confidential config names. We encourage you to:
+1. Consider if on-device evaluation is the right choice for your use case. While on-device has [some benefits](/client/js-on-device-eval-client#pros), we generally view precomputed SDKs as the default solution. Discuss this with us in your [slack channel](https://statsig.com/slack).
+2. Educate Statsig users on your team of the types of information they should and shouldn't use in configs based on your info security policy.
+3. Use [target apps](/sdk-keys/target-apps/) to filter your configs to only the ones needed for the client side, both for privacy and performance.

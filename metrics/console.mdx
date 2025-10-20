@@ -1,0 +1,43 @@
+---
+title: "Metrics Dashboard"
+description: "Explore your metrics and events through the Statsig console with real-time visualization and organization tools."
+---
+
+Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172450890-4a4c95eb-a362-49a6-90ad-68f3460a933f.png" alt="Metrics unit type selection" />
+</Frame>
+
+## Events
+The Metrics console allows you to visualize all the events that you have logged in Statsig. The **Events** tab shows all the events, including a real-time stream of events as they come in.
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172451019-fc450842-a546-4ea0-94a9-d54df8279ed2.png" alt="Events tab view" />
+</Frame>
+
+You can toggle between a list view or chart view of your events to view the trend line over time.  
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172461387-a3d42641-2c2c-4128-aabc-fc2b5dba2ed9.png" alt="Events chart view" />
+</Frame>
+
+From here you can drill into each event and see a detailed view of the logs, broken down by each unique value that was logged.
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172462231-ff2f3063-0c4e-49fd-af17-7147bd09d3d1.png" alt="Event detailed view" />
+</Frame>
+
+## Metrics Catalog
+The **Metrics Catalog** tab allows you to search and tag your metrics, as well as [create custom metrics](/metrics/create). Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172462680-68a6de4e-17bf-4b11-920d-6d7830551012.png" alt="Metrics catalog" />
+</Frame>
+
+ Similar to the **Events** tab, you can toggle between a list view or chart view of your metrics to view the trend line over time.  
+ 
+ <Frame>
+   <img src="https://user-images.githubusercontent.com/101903926/172462947-877bbcc7-46b3-45cd-ac57-d0dc2c949d7d.png" alt="Metrics chart view" />
+ </Frame>
+

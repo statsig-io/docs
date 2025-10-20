@@ -1,0 +1,114 @@
+---
+title: "Identify Users"
+---
+
+## Why identify users?
+
+When you run an experiment, rollout a feature, or log events, Statsig needs to know who the user is to determine:
+- Targeting: whether a feature gate should pass or fail for a given user
+- Experiment bucketing: which group a user belongs to
+- Analytics: How many unique users triggered an event
+
+This is achieved by passing a User Object to Statsig SDKs. User Object is also needed for experiment analysis - users are allocated to the test or control group by an ID, and the Statsig stats engine uses the same ID on the users' events to determine the difference in metrics between test and control.
+
+## Basic User Object
+
+Start by defining a basic user object:
+
+<CodeGroup>
+
+```jsx Basic User Object
+{
+  "userID": "u_123",       // required for most setups
+  "email": "user@example.com" // optional
+}
+```
+
+</CodeGroup>
+
+Later, you can layer in more details when you need finer targeting. To learn more about enriching User Object with more attributes, scroll down to [Enriched Attributes](#enriched-attributes).
+
+## Identifying users in Client SDKs
+
+In client SDKs, the SDK is "initialized" for a single User Object at any one time. If you try to call a method like checkGate or getExperiment before your SDK is initialized, you won't get expected results - and you'll see warnings in the Statsig Console when you look at the diagnostics tab of any gate or experiment. Initialization requires a network request, which you fire by calling the `initialize()` method, or in React, `useClientAsyncInit()`.
+
+This means that in client apps with asynchronous logic, you'll want to wait for initialization to complete before you check a gate. For example, in React:
+
+<CodeGroup>
+
+```jsx React Example
+export function App() {
+  const { client, isLoading } = useClientAsyncInit(
+    YOUR_CLIENT_KEY,
+    user={ userID: "u_123"} // user object
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <StatsigProvider client={client}>
+      <MainApp />
+    </StatsigProvider>
+  );
+}
+```
+
+</CodeGroup>
+
+This also means that if you initialize with a certain user object, and the user object changes (e.g., the user logs in and now has a `userID`) then you'll need to call the `updateUser` method, which calls to the Statsig Server to refresh the values. For example, in React:
+
+<CodeGroup>
+
+```jsx Update User
+const { user, updateUserSync } = useStatsigUser();
+
+return <div>
+  <p>Current User: { user.userID }</p>
+
+  <button onClick={() => updateUserSync({userID: 'some-other-user'})}>
+    Update User
+  </button>
+</div>;
+```
+
+</CodeGroup>
+
+If you don't update the user before checking gates or experiments, they'll evaluate using the previous user object you initialized with, which can lead to unexpected behavior.
+
+Any attribute added to the user object is targetable in the Statsig console - if you'd like to target users based on their `email`, `companyID`, or other attributes - add them to your User object.
+
+## Identifying users in Server SDKs
+
+In Server SDKs, you pass a User Object with each evaluation or event call such as logEvent, checkGate or getFeatureGate. The Server SDK holds the necessary rules in memory to enable correct evaluation. Every time you call one of these methods - you should pass all of the attributes needed to evaluate your gate or experiment. The Statsig SDKs don't "remember" or enrich previous attributes seen.
+
+Example (Node.js)
+
+<CodeGroup>
+
+```jsx Node.js Example
+import { Statsig } from "statsig-node";
+
+await Statsig.initialize("<YOUR_SERVER_KEY>");
+
+const user = { userID: "u_123", custom: { plan: "premium" } };
+
+const gate = await Statsig.checkGate(user, "beta_feature");
+if (gate) {
+  console.log("Gate passed");
+}
+```
+
+</CodeGroup>
+
+## Enriched attributes
+
+Statsig attempts to enrich the user object with useful attributes to give you more targeting power. Examples of what Statsig can enrich for you:
+- `stableID`: an anonymous identifier which identifies a unique device on client SDKs
+- `country`: derived from IP or device locale
+- `appVersion`: pulled from mobile SDKs
+- `browser` / `OS`: captured from user agent
+- and more...
+
+To learn about all available fields — including `custom` attributes, `customIDs`, and `privateAttributes` — see the [StatsigUser object](/concepts/user) docs.

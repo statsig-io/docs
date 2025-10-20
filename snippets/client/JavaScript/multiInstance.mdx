@@ -1,0 +1,19 @@
+```tsx
+import { StatsigClient } from '@statsig/js-client';
+
+const mainClient = new StatsigClient('client-xyz', { userID: 'a-user' });
+const secondaryClient = new StatsigClient('client-abc', { userID: 'another-user' });
+
+await Promise.all([
+  mainClient.initializeAsync(),
+  secondaryClient.initializeAsync(),
+]);
+
+if (mainClient.checkGate('a_gate')) {
+  // ...
+}
+
+if (secondaryClient.checkGate('some_other_gate')) {
+  // ...
+}
+```

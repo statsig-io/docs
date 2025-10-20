@@ -1,0 +1,79 @@
+Data stores allow you to customize how the SDK fetches and caches feature specifications, enabling advanced use cases like using Redis or other distributed caches.
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+class MyDataStore implements DataStore {
+    @Override
+    public String getDataSync(String key) {
+        // Synchronously fetch data for the given key
+        // This is called during SDK evaluation
+        return null;
+    }
+
+    @Override
+    public CompletableFuture<Void> setData(String key, String data) {
+        // Store data for the given key
+        // Called when SDK receives updates from Statsig
+        return CompletableFuture.completedFuture(null);
+    }
+
+    @Override
+    public CompletableFuture<Void> initialize() {
+        // Perform any initialization needed for your data store
+        return CompletableFuture.completedFuture(null);
+    }
+
+    @Override
+    public void shutdown() {
+        // Clean up resources
+    }
+}
+
+// Use data store
+StatsigOptions options = new StatsigOptions.Builder()
+    .setDataStore(new MyDataStore())
+    .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+import java.util.concurrent.CompletableFuture
+
+class MyDataStore : DataStore {
+    override fun getDataSync(key: String): String? {
+        // Synchronously fetch data for the given key
+        // This is called during SDK evaluation
+        return null
+    }
+
+    override fun setData(key: String, data: String): CompletableFuture<Void> {
+        // Store data for the given key
+        // Called when SDK receives updates from Statsig
+        return CompletableFuture.completedFuture(null)
+    }
+
+    override fun initialize(): CompletableFuture<Void> {
+        // Perform any initialization needed for your data store
+        return CompletableFuture.completedFuture(null)
+    }
+
+    override fun shutdown() {
+        // Clean up resources
+    }
+}
+
+// Use data store
+val options = StatsigOptions.Builder()
+    .setDataStore(MyDataStore())
+    .build()
+
+val statsig = Statsig("secret-key", options)
+statsig.initialize().get()
+```
+</CodeGroup>
+

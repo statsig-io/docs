@@ -1,0 +1,6 @@
+<!--
+  tags: ["time","scheduling","history","delay"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M16.75 10a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0ZM18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-4.335c.369 0 .667.299.667.667v3.217l2.562 1.48a.667.667 0 1 1-.666 1.154l-2.854-1.648a.667.667 0 0 1-.375-.623v-3.58c0-.368.298-.667.667-.667Z" clip-rule="evenodd"/>
+</svg>

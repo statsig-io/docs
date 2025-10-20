@@ -1,0 +1,26 @@
+```csharp
+var sharedStatsig = Statsig.NewShared("server-secret-key");
+await sharedStatsig.Initialize();
+
+// Later, anywhere in your codebase
+var statsig = Statsig.Shared();
+
+// Use the shared instance
+var result = statsig.CheckGate(user, "my_gate");
+```
+
+The shared instance is useful for:
+- Singleton pattern usage across your application
+- Dependency injection scenarios
+- Avoiding multiple SDK instances
+
+Remember to clean up the shared instance on shutdown:
+
+```csharp
+var statsig = Statsig.Shared();
+await statsig.FlushEvents();
+await statsig.Shutdown();
+
+Statsig.RemoveSharedInstance();
+```
+

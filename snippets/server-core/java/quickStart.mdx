@@ -1,0 +1,140 @@
+### Quick Start Example
+
+<Steps>
+<Step title="Create a new Java project">
+Create a new Gradle or Maven project with the following structure:
+
+```
+my-statsig-app/
+├── build.gradle (or pom.xml)
+└── src/main/java/ExampleApp.java
+```
+</Step>
+
+<Step title="Add Statsig dependency">
+<CodeGroup>
+```groovy build.gradle
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X:uber'
+}
+
+application {
+    mainClass = 'ExampleApp'
+}
+```
+
+```xml pom.xml
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>my-statsig-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.statsig</groupId>
+            <artifactId>javacore</artifactId>
+            <version>X.X.X</version>
+            <classifier>uber</classifier>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <mainClass>ExampleApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+</CodeGroup>
+
+Replace `X.X.X` with the latest version from [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore).
+</Step>
+
+<Step title="Write your application code">
+<CodeGroup>
+```java ExampleApp.java
+import com.statsig.*;
+
+public class ExampleApp {
+    public static void main(String[] args) throws Exception {
+        // Initialize Statsig
+        StatsigOptions options = new StatsigOptions.Builder().build();
+        Statsig statsig = new Statsig("YOUR_SERVER_SECRET_KEY", options);
+        statsig.initialize().get();
+        
+        try {
+            // Check a feature gate
+            boolean isEnabled = statsig.checkGate("user123", "my_feature_gate");
+            System.out.println("Feature gate is " + (isEnabled ? "enabled" : "disabled"));
+            
+            // Get a config
+            DynamicConfig config = statsig.getConfig("user123", "my_config");
+            System.out.println("Config value: " + config.getString("some_parameter", "default_value"));
+        } finally {
+            // Always shutdown Statsig when done
+            statsig.shutdown();
+        }
+    }
+}
+```
+
+```kotlin ExampleApp.kt
+import com.statsig.*
+
+fun main() {
+    // Initialize Statsig
+    val options = StatsigOptions.Builder().build()
+    val statsig = Statsig("YOUR_SERVER_SECRET_KEY", options)
+    statsig.initialize().get()
+    
+    try {
+        // Check a feature gate
+        val isEnabled = statsig.checkGate("user123", "my_feature_gate")
+        println("Feature gate is ${if (isEnabled) "enabled" else "disabled"}")
+        
+        // Get a config
+        val config = statsig.getConfig("user123", "my_config")
+        println("Config value: ${config.getString("some_parameter", "default_value")}")
+    } finally {
+        // Always shutdown Statsig when done
+        statsig.shutdown().get()
+    }
+}
+```
+</CodeGroup>
+
+Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [Statsig Console](https://console.statsig.com/).
+</Step>
+
+<Step title="Run the application">
+<CodeGroup>
+```bash Gradle
+./gradlew run
+```
+
+```bash Maven
+mvn compile exec:java
+```
+</CodeGroup>
+
+If everything is set up correctly, you should see output related to your feature gate and configuration.
+</Step>
+</Steps>
+

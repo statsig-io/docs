@@ -1,0 +1,10 @@
+```swift
+// Getting values via getLayer
+let layer = Statsig.shared.getLayer("my_layer", user)
+let name: String? = layer.getValue(param: "product_name", fallback: "Unknown") as? String
+
+// or, using getExperiment
+let experiment = Statsig.shared.getExperiment("my_experiment", user)
+let name: String? = experiment.value["product_name"] as? String
+let price: Double? = experiment.value["price"] as? Double
+```

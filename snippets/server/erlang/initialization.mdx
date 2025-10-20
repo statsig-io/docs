@@ -1,0 +1,18 @@
+<CodeGroup>
+```erlang Erlang
+statsig:initialize(<<"secret-key">>).
+
+% or with options
+Options = #{environment => #{tier => <<"staging">>}},
+statsig:initialize(<<"secret-key">>, Options).
+```
+
+```elixir Elixir
+Statsig.initialize("secret-key")
+
+# or with options
+options = %{environment: %{tier: "staging"}}
+Statsig.initialize("secret-key", options)
+```
+</CodeGroup>
+

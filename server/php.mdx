@@ -1,0 +1,57 @@
+---
+title: Legacy PHP Server SDK
+sidebarTitle: PHP
+description: Statsig's Legacy Server SDK for PHP applications
+icon: "php"
+---
+
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+
+import installation from '/snippets/server/php/installation.mdx'
+import initialization from '/snippets/server/php/initialization.mdx'
+import checkGate from '/snippets/server/php/checkGate.mdx'
+import getDynamicConfig from '/snippets/server/php/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server/php/getExperiment.mdx'
+import logEvent from '/snippets/server/php/logEvent.mdx'
+import cronJobs from '/snippets/server/php/cronJobs.mdx'
+
+[Github Repository](https://github.com/statsig-io/php-sdk)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<InitializationWarning/>
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getDynamicConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<LogEventIntro/>
+<logEvent/>
+
+Learn more about identifying users, group analytics, and best practices for logging events in the [logging events guide](/guides/logging-events).
+
+<cronJobs/>
+
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>

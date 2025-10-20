@@ -1,0 +1,14 @@
+export const StatsigUserNotes = ({ sdkName }) => (
+  <>
+    {sdkName && (
+      <Note>
+        For the {sdkName} On-Device Evaluation SDK, you pass the `StatsigUser` object {sdkName === "JavaScript" ? "into" : "directly into"} each evaluation method (`checkGate`, `getConfig`, etc.) rather than during initialization.
+      </Note>
+    )}
+    
+    <Note>
+      Unlike precomputed evaluation SDKs, the on-device evaluation SDK does not have an `updateUser` method since it evaluates gates/configs/experiments in real-time for any user object you pass in.
+    </Note>
+  </>
+);
+

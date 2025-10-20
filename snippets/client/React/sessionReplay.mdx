@@ -1,0 +1,45 @@
+## Session Replay
+
+Install `@statsig/session-replay` and register the plugin to record user sessions.
+
+```tsx
+import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+
+function App() {
+  const { client } = useClientAsyncInit(
+   'client-KEY',
+    { userID: 'a-user' },
+    { plugins: [new StatsigSessionReplayPlugin()] },
+  );
+
+  return (
+    <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
+      <div>Hello World</div>
+    </StatsigProvider>
+  );
+}
+```
+
+## Web Analytics / Auto Capture
+
+Capture clicks and page views automatically with `@statsig/web-analytics`.
+
+```tsx
+import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+function App() {
+  const { client } = useClientAsyncInit(
+   'client-KEY',
+    { userID: 'a-user' },
+    { plugins: [new StatsigAutoCapturePlugin()] },
+  );
+
+  return (
+    <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
+      <div>Hello World</div>
+    </StatsigProvider>
+  );
+}
+```

@@ -1,0 +1,6 @@
+<!--
+  tags: ["action","history","UI","control"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M5.655 9.439a.643.643 0 1 0 .909-.91L4.989 6.956h6.976a3.91 3.91 0 1 1 0 7.818H3.55a.626.626 0 0 0 0 1.253h8.415a5.162 5.162 0 1 0 0-10.324H4.989l1.575-1.575a.643.643 0 1 0-.91-.91l-2.55 2.55a.793.793 0 0 0 0 1.122l2.55 2.55Z" clip-rule="evenodd"/>
+</svg>

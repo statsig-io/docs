@@ -1,0 +1,172 @@
+---
+title: Working With Stable ID
+---
+
+
+
+## StableID
+
+StableID is a concept in Statsig that allows us to have a consistent identifier for a single device. 
+This allows Statsig to run [experiments on logged out](/guides/first-device-level-experiment) users (users without a UserID) 
+as well as target gates on the device level rather than the user level.
+
+
+### How it works
+
+When you initialize the SDK for the first time, it checks if a StableID is already present in local storage. 
+If it's missing, the SDK generates a new StableID and saves it in local storage. On subsequent initializations, 
+the SDK retrieves and reuses the previously stored StableID.
+
+The StableID is stored in local storage under the key `statsig.stable_id.<SDK_KEY_HASH>`. 
+Each SDK key has its own StableID, meaning that if you're using multiple SDK keys, each one will have a separate StableID.
+
+It's important to note that local storage is not shared across different domains or subdomains. 
+This means that if you are working across multiple domains or subdomains, the StableID will be isolated to each domain's local storage.
+
+If you need a StableID to persist across domains, you'll need to implement your own mechanism to store and retrieve the StableID, such as using a cookie as [demonstrated here](#persisting-stableid-across-subdomain). 
+
+The Statsig SDK does not use any cookies itself.
+
+### Accessing the StableID
+
+You can access StableID that the Statsig client is using by calling `getContext()` and then checking the `stableID` field.
+
+<Tabs>
+  <Tab title="Javascript">
+
+[View sample code on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-access-stable-id.tsx)
+
+```typescript
+const client = new StatsigClient('client-sdk-key', { userID: 'a-user' });
+await client.initializeAsync();
+
+const stableID = client.getContext().stableID;
+console.log('StableID:', stableID);
+```
+
+  </Tab>
+  <Tab title="React">
+
+[View sample code on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/react-precomp/sample-react-precomp-access-stable-id.tsx)
+
+```typescript
+import { useClientAsyncInit } from '@statsig/react-bindings';
+
+function App() {
+  const { client } = useClientAsyncInit('client-sdk-key', { userID: 'a-user' });
+  
+  const stableID = client.getContext().stableID;
+  console.log('StableID:', stableID);
+  
+  return <div>StableID: {stableID}</div>;
+}
+```
+
+  </Tab>
+</Tabs>
+
+### Overriding StableID
+
+If your app already has something similar to a StableID and you would prefer to use that instead, 
+you can override the default behavior by simply passing your value in as part of the `StatsigUser` object.
+
+
+<Tabs>
+  <Tab title="Javascript">
+
+[View sample code on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-stable-id-overrride.tsx)
+
+```typescript
+const client = new StatsigClient(
+  'client-sdk-key', 
+  { 
+    userID: 'a-user',
+    customIDs: { stableID: 'my-custom-stable-id' }
+  }
+);
+await client.initializeAsync();
+```
+
+  </Tab>
+  <Tab title="React">
+
+[View sample code on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/react-precomp/sample-react-stable-id-override.tsx)
+
+```typescript
+import { useClientAsyncInit } from '@statsig/react-bindings';
+
+function App() {
+  const { client } = useClientAsyncInit(
+    'client-sdk-key', 
+    { 
+      userID: 'a-user',
+      customIDs: { stableID: 'my-custom-stable-id' }
+    }
+  );
+  
+  return <div>Using custom StableID</div>;
+}
+```
+
+  </Tab>
+</Tabs>
+
+
+<Note>
+
+Once overridden, the new StableID will be persisted to local storage so it will be used for future sessions.
+
+</Note>
+
+### Persisting StableID across subdomain
+
+If you are assigning a user to a test on one subdomain, and tracking behavior for metrics purposes on a different subdomain, you'll need to have this solution in place to ensure Statsig can properly attribute cross-origin behavior to the Test Group assignment that took place on the initial experiment domain. 
+
+To install, simply paste the first script tag prior to SDK initialization and include code that manually pulls the stableID onto the user object.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s};Path=/`}(o)}}();</script>
+
+<!-- Manually attach stableID to user object -->
+<script>
+const userObj = {};
+if(localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
+  userObj.customIDs = {stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')};
+}
+const statsigClient = new Statsig.StatsigClient('<client-sdk-key>', userObj, {/* OPTIONS */});
+</script>
+```
+<center><small>(please use the above code at your discretion and test thoroughly)</small></center>
+
+### Keeping StableID Consistent across Client & Server
+
+If you have a backend service running a Statsig SDK as well as using the Statsig client in your frontend, 
+you may need to have the same StableID accessible in both environments.
+
+It is highly dependent on your setup, but usually you can send the StableID up with any requests from your frontend. 
+If the backend ever receives a request without a StableID, it can generate one and have the client store it (usually as a cookie) for future requests.
+
+Because Server SDKs are designed to handle multiple Users, they do not generate their own StableIDs.
+
+Here is an example showing how you might use a cookie to share the StableID across client and server and use it bootstrap the client SDK.
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap-full.tsx)
+
+```typescript
+// Server-side: Generate or retrieve StableID
+const stableID = req.cookies.stableID || generateNewStableID();
+res.cookie('stableID', stableID);
+
+// Get bootstrap values from server SDK
+const bootstrapValues = await statsig.getClientInitializeResponse(
+  { customIDs: { stableID } }
+);
+
+// Client-side: Initialize with bootstrap values
+const client = new StatsigClient(
+  'client-sdk-key',
+  { customIDs: { stableID: getCookie('stableID') } },
+  { initializeValues: bootstrapValues }
+);
+```

@@ -1,0 +1,39 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { useDynamicConfig } from "@statsig/react-bindings";
+
+export default function Home() {
+  const config = useDynamicConfig("my_dynamic_config");
+
+  return (
+    <div>
+      Title: {config.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+
+<Note>
+In an App Router app, you need to use the [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+</Note>
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { useDynamicConfig } from "@statsig/react-bindings";
+
+export default function Home() {
+  const config = useDynamicConfig("my_dynamic_config");
+
+  return (
+    <div>
+      Title: {config.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>

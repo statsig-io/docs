@@ -1,0 +1,15 @@
+```tsx
+import { useDynamicConfig, useStatsigClient } from '@statsig/react-bindings';
+
+const config = useDynamicConfig('my_dynamic_config');
+const { getDynamicConfig } = useStatsigClient();
+
+return (
+  <div>
+    <p>Reason: {config.details.reason}</p>
+    <p>Value: {config.get('a_value', 'fallback_value')}</p>
+    <p>Another Value: {getDynamicConfig('my_dynamic_config').get('a_bool', false)}</p>
+  </div>
+);
+```
+

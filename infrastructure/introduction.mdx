@@ -1,0 +1,45 @@
+---
+title: Infrastructure Ops Overview
+sidebarTitle: Overview
+description: The foundation that enables reliable feature flagging, experimentation, and analytics at enterprise scale.
+keywords:
+  - owner:eric
+last_update:
+  date: 2025-09-18
+---
+
+## Why Infrastructure Matters for Feature Flagging & Experimentation
+
+Feature flagging and experimentation platforms require robust infrastructure to deliver consistent, low-latency responses that don't impact an application's performance. Every feature gate evaluation, experiment assignment, and analytics event must be processed reliably to ensure:
+
+- **Consistent User Experiences**: Users should always receive the same feature variant throughout their session
+- **Real-time Decision Making**: Feature flags need to evaluate in milliseconds to avoid blocking your application
+- **Accurate Experiment Results**: Every user interaction must be captured and processed to generate reliable statistical insights
+- **Business Continuity**: Infrastructure downtime can't block feature releases or compromise running experiments
+
+## Enterprise-Grade Scale & Reliability
+
+Statsig is built to process massive volumes of data while maintaining enterprise-grade reliability standards:
+
+### Key Metrics
+- **2+ Trillion** events processed per day
+- **Over 3 Billion** unique monthly experiment subjects  
+- **99.99%** infrastructure uptime for API & Console
+
+### Scalable Architecture
+
+Statsig's infrastructure has been battle-tested by companies including including OpenAI, Atlassian, Microsoft, Notion, Flipkart, and other enterprises operating at massive scale. But all customers get access to enterprise-grade infrastructure from day one.
+
+This means never a reason to switch tools or migrate to an "enterprise-grade" solution as you grow. Statsig can scale with you regardless of volume. Our investment in scaled infrastructure also allows us to offer affordable pricing across all products and customer tiers.
+
+Infrastructure isn't limited to just serving configs and logging events. Statsig also provides comprehensive infrastructure management including:
+- Real-time health checks and monitoring
+- Automated guardrails on feature rollouts and releases
+- Multi-region deployment for global availability
+- Built-in redundancy and failover capabilities
+
+## Getting Started
+
+The section includes documentation about infrastructure setup and operations guide for your team when using Statsig. In general, Statsig works out of box with no additional setup required. Some instructions here apply to specific use cases due to special requirements.
+
+If you have any questions/concerns, drop on in to our [slack channel](https://www.statsig.com/slack) and let us know.

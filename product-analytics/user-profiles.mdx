@@ -1,0 +1,28 @@
+---
+title: 'User Profiles'
+sidebarTitle: 'User Profiles'
+description: 'A collection of properties about the people using your product for flexible analysis and segmentation'
+---
+
+## Overview
+
+User Profiles are a collection of properties about the people using your product. In Metrics Explorer, you can join these profile properties with any event for analysis and segmentation. Previously, user properties had to be present on each event you wanted to analyze. Now they live independently on the user profile, letting you:
+
+- Update user properties once, not with every event
+- Join profile data with any event during analysis
+- Keep user context and event data separate
+
+This gives you cleaner event logging and more flexible analysis since user properties are stored in one reliable place.
+
+For example, you could imagine a social network where each user has a friend count, but it might not make sense to send that friend count on every single event. In this example, you would update the information periodically as part of the user’s profile, and then be able to leverage that in analysis scenarios. With user profiles, you can easily analyze user data based on properties that aren't sent on every event.
+
+If you're using a client SDK, the user profile will be updated automatically through all initialize, updateUser, and updateUserAsync calls.
+If you're using one of our newer server-side SDKs (those with “Core” in the name), you can update the user profile using the identify method, which accepts a StatsigUser object.
+
+In both client and server core SDKs, Statsig will automatically update the user profile for the given unitID. New properties will be added, and existing properties will be updated as needed.
+
+Now, when you’re querying on Metrics Explorer, you’ll be able to take advantage of user profile properties through filters or group-bys. Because we join your events with the user profile table in the background, queries in Metrics Explorer may take slightly longer to process.
+
+You can also see all user profile properties on the Users Tab for a specific unit type + ID.
+
+This feature is currently in private beta. 

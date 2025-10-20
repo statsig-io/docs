@@ -1,0 +1,228 @@
+---
+title: C++ Server SDK
+sidebarTitle: C++
+description: Statsig's Server SDK for C++ applications
+icon: "c"
+---
+
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import LogEventFooter from '/snippets/server/logEventFooter.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import StatsigOptionsIntro from '/snippets/server/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server/shutdown.mdx'
+import LocalOverridesIntro from '/snippets/server/localOverrides.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+import InitializationFooter from '/snippets/server/initialization2.mdx'
+
+<Card title="GitHub Repository" icon="github" href="https://github.com/statsig-io/cpp-server-sdk">
+  View the C++ SDK source code and releases
+</Card>
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+
+If you are using CMake, add the following to a `.cmake` file
+
+```cmake
+FetchContent_Declare(statsig
+        GIT_REPOSITORY    https://github.com/statsig-io/cpp-server-sdk.git
+        GIT_TAG           v0.1.0
+)
+
+FetchContent_MakeAvailable(statsig)
+```
+
+And include the following in your `CMakeLists.txt` file
+
+```cmake
+cmake_minimum_required(VERSION 3.11)
+
+include(FetchContent)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/statsig.cmake)
+```
+
+Check out the latest versions on [https://github.com/statsig-io/cpp-server-sdk/releases/latest](https://github.com/statsig-io/cpp-server-sdk/releases/latest)
+
+</Step>
+<Step title="Initialize the SDK">
+<InitializationWarning/>
+
+```cpp
+#include <statsig.h>
+
+statsig::initialize('server-secret-key');
+
+// Or, if you want to initialize with certain options
+statsig::Options options;
+options.localMode = true
+statsig::initialize('server-secret-key', options)
+```
+
+<InitializationFooter/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+
+```cpp
+statsig::User user;
+user.userID = "some_user_id"
+if (statsig::checkGate(user, 'use_new_feature'))
+{
+  // Gate is on, enable new feature
+}
+else {
+  // Gate is off
+}
+```
+
+<GetDynamicConfigIntro/>
+
+```cpp
+statsig::DynamicConfig config = statsig::get_config(user, 'awesome_product_details')
+
+auto item_name = config.value['product_name'];
+auto price = config.value['price'];
+auto shouldDiscount = config.value['discount'];
+```
+
+<GetExperimentIntro/>
+
+```cpp
+// Values via getLayer
+
+statsig::Layer layer = statsig::getLayer(user, "user_promo_experiments")
+auto title = layer.get("title", "Welcome to Statsig!")
+auto discount = layer.get("discount")
+
+// or, via getExperiment
+
+statsig::DynamicConfig title_exp = statsig::getExperiment(user, "new_user_promo_title")
+statsig::DynamicConfig price_exp = statsig::getExperiment(user, "new_user_promo_price")
+
+title = title_exp.value["title"]
+discount = price_exp.value["discount"]
+
+...
+
+price = msrp * (1 - discount)
+
+
+```
+
+<LogEventIntro/>
+
+```cpp
+statsig::logEvent(user, 'add_to_cart')
+```
+
+<LogEventFooter/>
+
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>
+
+<StatsigOptionsIntro/>
+
+You can specify optional parameters with `options` when initializing.
+
+- **api** string, default `"https://statsigapi.net/v1"`
+  - The base url to use for network requests from the SDK
+- **rulesetsSyncIntervalMs**: int, default `10000`
+  - The interval to poll for changes to your gate and config definition changes
+- **loggingIntervalMs**: int, default `60000`
+  - The default interval to flush logs to Statsig servers
+- **loggingMaxBufferSize**: int, default `1000`, can be set lower but anything over 1000 will be dropped on the server
+  - The maximum number of events to batch before flushing logs to the server
+- **localMode**: bool, default `false`
+  - Restricts the SDK to not issue any network requests and only respond with default values (or local overrides)
+
+<Info>
+ID Lists are currently not supported in the C++ server SDK
+</Info>
+
+<ShutdownIntro/>
+
+```cpp
+statsig::shutdown()
+```
+
+<LocalOverridesIntro/>
+
+```cpp
+// Adding gate overrides
+statsig::overrideGate("a_gate_name", true)
+
+// Adding config overrides
+std::unordered_map<std::string, JSON::any> overrideValue = {
+    {"overridden key", "overridden field"},
+};
+statsig::overrideConfig("a_config_name", overrideValue)
+```
+
+## FAQ
+
+#### How do I run experiments for logged out users?
+
+See the guide on [device level experiments](/guides/first-device-level-experiment)
+
+## Reference
+
+### User
+
+```cpp
+struct User
+{
+  std::string userID;
+  std::string email;
+  std::string ipAddress;
+  std::string userAgent;
+  std::string country;
+  std::string locale;
+  std::string appVersion;
+  std::unordered_map<std::string, JSON::any> custom;
+  std::unordered_map<std::string, JSON::any> privateAttribute;
+  std::unordered_map<std::string, std::string> statsigEnvironment;
+  std::unordered_map<std::string, std::string> customIDs;
+};
+inline bool operator==(User const &a, User const &b)
+{
+  return a.userID == b.userID &&
+          a.email == b.email &&
+          a.ipAddress == b.ipAddress &&
+          a.userAgent == b.userAgent &&
+          a.country == b.country &&
+          a.locale == b.locale &&
+          a.appVersion == b.appVersion &&
+          a.custom == b.custom &&
+          a.privateAttribute == b.privateAttribute &&
+          a.statsigEnvironment == b.statsigEnvironment &&
+          a.customIDs == b.customIDs;
+};
+```
+
+### Options
+
+```cpp
+struct Options
+{
+  std::string api;
+  bool localMode;
+  int rulesetsSyncIntervalMs;
+  int loggingIntervalMs;
+  int loggingMaxBufferSize;
+  Options() : api("https://statsigapi.net"),
+              localMode(false),
+              rulesetsSyncIntervalMs(10 * 1000),
+              loggingIntervalMs(60 * 1000),
+              loggingMaxBufferSize(1000){};
+};
+```
+

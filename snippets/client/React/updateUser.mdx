@@ -1,0 +1,19 @@
+### Updating User Properties
+
+Switch identities when a user logs in or when you collect richer attributes.
+
+```tsx
+import { useGateValue, useStatsigUser } from '@statsig/react-bindings';
+
+export default function AccountBanner() {
+  const gateValue = useGateValue('check_user');
+  const { updateUserAsync } = useStatsigUser();
+
+  return (
+    <div>
+      <div>Gate is {gateValue ? 'passing' : 'failing'}.</div>
+      <button onClick={() => updateUserAsync({ userID: '2' })}>Login</button>
+    </div>
+  );
+}
+```

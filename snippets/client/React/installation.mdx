@@ -1,0 +1,79 @@
+<Info>
+If you need a starter project, follow the official <a href="https://react.dev/learn/build-a-react-app-from-scratch" target="_blank" rel="noreferrer">React quickstart</a>. Looking for Next.js instead? See the <a href="/client/Next" >Next.js SDK</a> docs.
+</Info>
+
+### AI-powered Setup
+
+<Accordion title="Wizard" defaultOpen>
+Run the guided install in your terminal.
+
+```bash
+npx @statsig/wizard@latest
+```
+</Accordion>
+
+<Accordion title="(Or) AI Prompt">
+Paste this prompt into your AI coding assistant to scaffold the integration.
+
+```text
+You are a frontend engineer integrating the Statsig SDK into a React app. Follow these instructions carefully:
+1. Install the required Statsig packages:
+     npm install @statsig/react-bindings @statsig/session-replay @statsig/web-analytics
+
+2. In the main component file (`App.jsx` or `App.tsx`):
+   - Import `StatsigProvider` and `useClientAsyncInit` from `@statsig/react-bindings`
+   - Import `StatsigAutoCapturePlugin` from `@statsig/web-analytics` and `StatsigSessionReplayPlugin` from `@statsig/session-replay`
+   - Initialize the SDK using your client key: 'YOUR-CLIENT-API-KEY'
+   - Use `userID` from an existing variable if it's already declared in the file; otherwise, default to `'a-user'`
+   - Wrap the existing app content inside `<StatsigProvider>`, using `<div>Loading...</div>` as the `loadingComponent`
+
+3. DO NOT remove any existing JSX content from the component. Just wrap it.
+
+4. Here is what the final file structure should look like:
+
+    import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+    import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+    import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+    import YourApp from './YourApp';
+
+    function App() {
+      const id = typeof userID !== 'undefined' ? userID : 'a-user';
+      const { client } = useClientAsyncInit(
+        'YOUR-CLIENT-API-KEY',
+        { userID: id },
+        { plugins: [new StatsigAutoCapturePlugin(), new StatsigSessionReplayPlugin()] }
+      );
+
+      return (
+        <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
+          <YourApp />
+        </StatsigProvider>
+      );
+    }
+
+5. Ask the user to provide their CLIENT-API-KEY and insert it where prompted above.
+```
+</Accordion>
+
+### Install Packages
+
+<Tabs>
+  <Tab title="npm">
+
+```bash
+npm install @statsig/react-bindings
+```
+
+  </Tab>
+  <Tab title="yarn">
+
+```bash
+yarn add @statsig/react-bindings
+```
+
+  </Tab>
+</Tabs>
+
+<Tip>
+Add `@statsig/session-replay` and `@statsig/web-analytics` if you plan to enable Session Replay or Auto Capture.
+</Tip>

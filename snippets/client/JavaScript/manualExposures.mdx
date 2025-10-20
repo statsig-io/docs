@@ -1,0 +1,39 @@
+<Tabs>
+<Tab title="Feature Gates">
+
+```tsx
+const result = client.checkGate('a_gate_name', { disableExposureLog: true });
+// ...
+client.checkGate('a_gate_name'); // later, when ready to log the exposure
+```
+
+</Tab>
+<Tab title="Dynamic Configs">
+
+```tsx
+const config = client.getConfig('a_dynamic_config_name', { disableExposureLog: true });
+client.getConfig('a_dynamic_config_name');
+```
+
+</Tab>
+<Tab title="Experiments">
+
+```tsx
+const experiment = client.getExperiment('an_experiment_name', { disableExposureLog: true });
+client.getExperiment('an_experiment_name');
+```
+
+</Tab>
+<Tab title="Layers">
+
+```tsx
+const layer = client.getLayer('a_layer_name', { disableExposureLog: true });
+const value = layer.get('param_name', 'fallback');
+
+// When ready to log
+const exposure = client.getLayer('a_layer_name');
+exposure.get('param_name', 'fallback');
+```
+
+</Tab>
+</Tabs>

@@ -1,0 +1,11 @@
+You can access the experiment variant and parameters for the user by getting the client with the `useStatsigClient` hook, and then calling `getExperiment`.
+
+```tsx
+const { client } = useStatsigClient();
+const experiment = client.getExperiment('headline_test');
+
+return (
+  <div>Headline Parameter: {experiment.get('headline', 'Default')}.</div>
+);
+```
+

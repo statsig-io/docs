@@ -1,0 +1,62 @@
+## Testing
+
+Mock Statsig hooks in Jest to isolate component logic.
+
+```tsx
+import { StatsigProvider, useFeatureGate, useExperiment } from '@statsig/react-bindings';
+
+function Content() {
+  const gate = useFeatureGate('a_gate');
+  const experiment = useExperiment('an_experiment');
+
+  return (
+    <div>
+      <div data-testid="gate_test">a_gate: {gate.value ? 'Pass' : 'Fail'}</div>
+      <div data-testid="exp_test">
+        an_experiment: {experiment.get('my_param', 'fallback')}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: 'a-user' }}
+      options={{
+        networkConfig: {
+          // Optional – disable network requests in tests
+          preventAllNetworkTraffic:
+            typeof process !== 'undefined' && process.env['NODE_ENV'] === 'test',
+        },
+      }}
+    >
+      <Content />
+    </StatsigProvider>
+  );
+}
+```
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import * as ReactBindings from '@statsig/react-bindings';
+
+jest.mock('@statsig/react-bindings', () => ({
+  ...jest.requireActual('@statsig/react-bindings'),
+  useFeatureGate: () => ({ value: true }),
+  useExperiment: () => ({ get: () => 'my_value' }),
+}));
+
+test('renders gate pass', async () => {
+  render(<App />);
+  const elem = await screen.findByTestId('gate_test');
+  expect(elem.textContent).toContain('Pass');
+});
+
+test('renders experiment value', async () => {
+  render(<App />);
+  const elem = await screen.findByTestId('exp_test');
+  expect(elem.textContent).toContain('my_value');
+});
+```

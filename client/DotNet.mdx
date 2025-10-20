@@ -1,0 +1,74 @@
+---
+title: .NET Client SDK
+sidebarTitle: .NET Client
+description: Statsig's SDK for Experimentation and Feature Flags in .NET applications.
+icon: "/images/dotnet-grey.svg"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import privateAttributes from '/snippets/client/privateAttributes.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+
+import DotNetInstallation from '/snippets/client/DotNet/installation.mdx'
+import DotNetInitialize from '/snippets/client/DotNet/initialize.mdx'
+import DotNetCheckGate from '/snippets/client/DotNet/checkGate.mdx'
+import DotNetGetConfig from '/snippets/client/DotNet/getConfig.mdx'
+import DotNetGetLayer from '/snippets/client/DotNet/getLayer.mdx'
+import DotNetLogEvent from '/snippets/client/DotNet/logEvent.mdx'
+import DotNetUpdateUser from '/snippets/client/DotNet/updateUser.mdx'
+import DotNetStatsigOptions from '/snippets/client/DotNet/statsigOptions.mdx'
+import DotNetShutdown from '/snippets/client/DotNet/shutdown.mdx'
+import DotNetFaqs from '/snippets/client/DotNet/faqs.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/dotnet-sdk" target="_blank" rel="noreferrer">statsig-io/dotnet-sdk</a>
+</Callout>
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+<DotNetInstallation/>
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+<DotNetInitialize/>
+</Step>
+</Steps>
+
+## Use the SDK
+
+<checkGate/>
+<DotNetCheckGate/>
+
+<getDynamicConfig/>
+<DotNetGetConfig/>
+
+<getExperimentLayer/>
+<DotNetGetLayer/>
+
+<logEvent/>
+<DotNetLogEvent/>
+
+<statsigUser/>
+<DotNetUpdateUser/>
+
+<privateAttributes/>
+
+<statsigOptions/>
+<DotNetStatsigOptions/>
+
+<shuttingDown/>
+<DotNetShutdown/>
+
+## FAQs
+
+<DotNetFaqs/>

@@ -1,0 +1,9 @@
+```javascript
+const gate = Statsig.getFeatureGate(user, 'new_homepage_design');
+console.log(gate.name); // 'new_homepage_design'
+console.log(gate.value); // true or false
+console.log(gate.ruleID); // rule ID that was evaluated
+console.log(gate.evaluationDetails); // evaluation metadata
+```
+
+

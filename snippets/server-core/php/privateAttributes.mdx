@@ -1,0 +1,14 @@
+## Private Attributes
+
+You can define which attributes are considered "private" and should not be forwarded to any third-party integrations like the data connectors by setting the `privateAttributes` parameter in the `StatsigUser` constructor. The `privateAttributes` parameter is a key-value dictionary where keys are attribute names and values are the private values. Note that in the example user object above, for the key `"email"`, we have values for the top-level `email` field AND for the private attributes field with `"email"` as the key. These are distinct; you can have a value in the top-level `email` field that is not `private`, and a value in `private_attributes` that is `private`, or vice versa.
+
+```php
+$user = new StatsigUser([
+    'userID' => 'a-user-id',
+    'email' => 'non_private@example.com',
+    'privateAttributes' => [
+        'email' => 'private@example.com'
+    ]
+]);
+```
+

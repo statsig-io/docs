@@ -1,0 +1,5 @@
+### Data Adapter
+
+`StatsigClient` uses an `EvaluationsDataAdapter` to manage caching and network fetches. The default implementation (`StatsigEvaluationsDataAdapter`) reads from local storage synchronously and refreshes values from Statsig asynchronously.
+
+See [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter) for full examples, including bootstrapping, prefetching, and custom adapters.

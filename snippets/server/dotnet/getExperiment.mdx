@@ -1,0 +1,14 @@
+```csharp
+// Values via GetLayer
+var layer = await StatsigServer.GetLayer(user, "user_promo_experiments");
+var title = layer.Get<string>("title", "Welcome to Statsig!");
+var discount = layer.Get<double>("discount", 0.1);
+
+// or, via GetExperiment
+var experiment = await StatsigServer.GetExperiment(user, "new_user_promo");
+var expTitle = experiment.Get<string>("title", "Welcome to Statsig!");
+var expDiscount = experiment.Get<double>("discount", 0.1);
+
+var price = msrp * (1 - discount);
+```
+

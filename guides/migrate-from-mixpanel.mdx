@@ -1,0 +1,126 @@
+---
+sidebarTitle: Migrate from Mixpanel
+title: Migrate your analytics data from Mixpanel
+---
+
+# Mixpanel Migration Guide
+
+Switching from Mixpanel to Statsig is a smart move for teams seeking a unified platform that combines analytics, experimentation, and feature flagging. This all-in-one approach empowers faster, more informed decisions without data silos.
+
+Migrating Mixpanel data into Statsig usually involves three steps: export, transform, and ingest. This guide provides the essentials. For anything beyond these basics, please contact us.
+
+**Note:** We will only cover importing raw events into Statsig. We don't support importing user/group profiles, dashboards, reports, etc. Once your raw events are in the Statsig project, you can re-create your critical dashboards here.
+
+## Step 1. Export your data from Mixpanel
+
+Mixpanel offers a few different export methods. Pick the one that matches your data size and setup:
+
+**1. CSV Export**
+
+Export small batches of events as CSV via the Events tab → query events → click "Export" button.
+
+**2. Export API**
+
+Use Mixpanel's [Raw Event Export API](https://developer.mixpanel.com/reference/raw-event-export) to pull JSONL data:
+- **Limit**: Export one day's data at a time for optimal performance
+- **Format**: JSONL where each line is a valid JSON object
+
+```bash
+curl --location --request GET 'https://data.mixpanel.com/api/2.0/export?from_date=2023-01-01&to_date=2023-01-01' \
+-u '{project_id}:{service_account_secret}'
+```
+
+**3. Data Pipelines (Bulk Export)**
+
+For large data volumes, use Mixpanel's [Data Pipelines](https://docs.mixpanel.com/docs/data-pipelines) feature to export to:
+- Cloud Storage (AWS S3, Google Cloud Storage, Azure Blob Storage)
+- Data Warehouse (BigQuery, Redshift, Snowflake)
+
+## Step 2. Transform your data
+
+Mixpanel and Statsig store events in slightly different formats. Map your Mixpanel data to Statsig's format:
+
+| Mixpanel field | Statsig field |
+|----------------|---------------|
+| `event` | `event` |
+| `properties.time` | `timestamp` (ms since epoch) |
+| `properties.distinct_id` or `properties.user_id` | `user.userID` |
+| `properties.device_id` | `user.stableID` |
+| `properties.*` (other fields) | `metadata` |
+
+**Before transform**
+
+```json
+// Mixpanel event
+{
+  "event": "Signed up",
+  "properties": {
+    "time": 1618716477,
+    "distinct_id": "user-123",
+    "device_id": "xyz",
+    "Referred_by": "Friend",
+    "URL": "website.com/signup"
+  }
+}
+```
+
+**After transform**
+
+```json
+// Statsig event
+{
+  "event": "Signed up",
+  "user": {
+    "userID": "user-123",
+    "stableID": "xyz"
+  },
+  "timestamp": 1618716477000,
+  "metadata": {
+    "Referred_by": "Friend",
+    "URL": "website.com/signup"
+  }
+}
+```
+
+## Step 3. Import into Statsig
+
+Once your data looks like Statsig events, you can start bringing them in:
+
+| If you exported from Mixpanel via... | Import into Statsig using... | Best when... |
+|--------------------------------------|------------------------------|--------------|
+| S3 export | [S3 ingestion](/data-warehouse-ingestion/s3) | You're backfilling large datasets |
+| Warehouse (Snowflake/BigQuery/Redshift) | [Warehouse ingestion](/data-warehouse-ingestion/introduction) | Your Mixpanel data already lives in a warehouse |
+| Export API | [Event Webhook](https://docs.statsig.com/http-api#post-event-webhook) | You're moving a few days/weeks of data programmatically |
+| CSV download | [Event Webhook](https://docs.statsig.com/http-api#post-event-webhook) | You're testing or moving a small slice of data |
+
+**Event Webhook (for API/CSV exports)**
+
+```bash
+curl -X POST https://api.statsig.com/v1/webhooks/event_webhook \
+-H "Content-Type: application/json" \
+-H "STATSIG-API-KEY: $STATSIG_SERVER_SECRET" \
+-d '{
+  "event": "Signed up",
+  "user": {
+    "userID": "user-123",
+    "stableID": "xyz"
+  },
+  "timestamp": 1618716477000,
+  "metadata": {
+    "Referred_by": "Friend",
+    "URL": "website.com/signup"
+  }
+}'
+```
+
+**Important notes:**
+- **S3 ingestion**: Shard your Mixpanel data into 1 day's data per directory for Statsig
+- **Scale gradually**: After small tests, backfill in chunks to manage loads
+- **Future tracking**: After historical import, switch Mixpanel code calls to Statsig SDKs
+
+## Not sure where to start or need help?
+
+If you're unsure how to approach Mixpanel migration, please reach out to our team. We have worked with other Mixpanel customers in the past to help them switch over to Statsig.
+
+We're always happy to discuss your team's individual needs or any other question you have - drop us a line at [support@statsig.com](mailto:support@statsig.com) or reach out on our [slack community](https://statsig.com/slack).
+

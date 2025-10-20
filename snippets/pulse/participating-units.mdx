@@ -1,0 +1,14 @@
+## Definition
+
+In Statsig, Participating Units (sometimes referred to as participating users) are a subset of an experiment's total exposed unit count relevant to a particular metric. They count the units with a non-zero denominator value for metric types that require a numerator and denominator value. These units are the ones actually used in statistical calculations for ratio-based metrics.
+
+<Frame>
+  <img src="/images/experiments/participating_units.png" alt="Participating units diagram showing subset of total exposed users" />
+</Frame>
+
+Ratio metrics are computed only for users that have a non-zero value in the denominator, e.g. the user must have triggered the denominator event on a given day to be included in the daily ratio. Users that don't trigger the denominator event during an experiment are not included in the test vs. control comparison of a ratio metric.
+
+## Example
+
+An example of this type of metric for an e-commerce company could be "Total Items Purchased per Order", measuring the average basket size. The numerator would be defined as the count of total items bought, and the denominator would be the total number of orders submitted. If an experiment were run on the checkout flow, only users who actually had at least one Order event would be included in the "Total Items Purchased per Order" ratio metric.
+

@@ -1,0 +1,29 @@
+You can specify optional parameters with `options` when initializing.
+
+<ResponseField name="environment" type="Option<HashMap<String, String>>">
+  A HashMap you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+  
+  The most common usage is to set the "tier" (string), and have feature gates pass/fail for specific environments.
+  
+  Example:
+  ```rust
+  let environment = Some(HashMap::from([("tier".to_string(), "staging".to_string())]));
+  StatsigOptions{environment, ..StatsigOptions::default()};
+  ```
+</ResponseField>
+
+<ResponseField name="api_override" type="String" default="https://statsigapi.net/v1">
+  The base url to use for network requests from the SDK.
+</ResponseField>
+
+<ResponseField name="rulesets_sync_interval_ms" type="u32" default="10000">
+  The interval to poll for changes to your gate and config definition changes (in milliseconds).
+</ResponseField>
+
+<ResponseField name="logger_flush_interval_ms" type="u32" default="60000">
+  The default interval to flush logs to Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="logger_max_queue_size" type="u32" default="500">
+  The maximum number of events to batch before flushing logs to the server. Can be set lower but anything over 1000 will be dropped on the server.
+</ResponseField>

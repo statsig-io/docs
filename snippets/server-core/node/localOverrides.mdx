@@ -1,0 +1,48 @@
+<Tabs>
+<Tab title="Feature Gates">
+```jsx
+// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", true);
+
+// Optional third parameter, overrides the gate only for a given ID
+Statsig.overrideGate("a_gate_name", true, "userID-123");
+```
+</Tab>
+
+<Tab title="Dynamic Configs">
+```jsx
+// Overrides the given dynamic config to the provided value
+Statsig.overrideDynamicConfig("a_config_name", { key: "value" });
+
+// Optional third parameter, overrides the dynamic config only for a given ID
+Statsig.overrideDynamicConfig("a_config_name", { key: "value" }, "userID-123");
+```
+</Tab>
+
+<Tab title="Experiments">
+```jsx
+// Overrides the given experiment to the provided value
+Statsig.overrideExperiment("an_experiment_name", { key: "value" });
+
+// Optional third parameter, overrides the experiment only for a given ID
+Statsig.overrideExperiment("an_experiment_name", { key: "value" }, "userID-123");
+
+// Overrides the given experiment to a particular groupname
+Statsig.overrideExperimentByGroupName("an_experiment_name", "a_group_name");
+
+// Alternatively, get the Experiment object for a given groupName
+const groupExp = statsig.getExperimentByGroupName("pricing_experiment", "premium_group");
+const premiumPrice = groupExp.getValue("price", 9.99);
+```
+</Tab>
+
+<Tab title="Layers">
+```jsx
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", { key: "value" });
+
+// Optional third parameter, overrides the layer only for a given ID
+Statsig.overrideLayer("a_layer_name", { key: "value" }, "userID-123");
+```
+</Tab>
+</Tabs>

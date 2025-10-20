@@ -1,0 +1,31 @@
+```go expandable
+import (
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
+)
+			
+options := statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
+s, err := statsig.NewStatsig("secret-key", *options)
+
+if err != nil {
+    // Initialize the SDK with the secret key and options
+    s.Initialize()
+}
+
+// Or if you want to initialize the Statsig client with more details
+details, err := s.InitializeWithDetails()
+
+json, err := json.MarshalIndent(details, "", " ")
+fmt.Println("Initialize With Details:", string(json))
+
+/*
+*** Sample Output ***
+Initialize With Details: {
+ "duration": 95,
+ "init_success": true,
+ "is_config_spec_ready": true,
+ "is_id_list_ready": null,
+ "source": "Network",
+ "failure_details": null
+}
+*/
+```

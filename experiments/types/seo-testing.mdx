@@ -1,0 +1,112 @@
+---
+title: "SEO Experimentation with Statsig"
+sidebarTitleitle: "SEO Experiments"
+description: "Learn how to run SEO experiments to test landing page designs and optimize organic traffic performance."
+---
+
+In late 2017, Airbnb's growth team faced a deceptively simple question:  
+
+> Would their new "Magic Carpet" landing page design drive more organic traffic than their existing search results page?  
+
+With over 100,000 unique URLs spanning different cities, any template change would cascade across their entire search footprint. Traditional A/B testing couldn’t solve this puzzle because Google’s crawlers needed consistent page versions, making user-level randomization impossible.  
+
+Every marketplace with thousands of templated pages faces the same dilemma: measuring how changes to your template actually impact how Google ranks your pages. This is true whether you’re dealing with physical goods at **Amazon** or **eBay**, or more virtual things at **ZipRecruiter** or **Eventbrite**.  
+
+Over the past few years at **Statsig**, I’ve helped different marketplaces navigate exactly this problem. What I’ve learned is that companies can ship the same rigorous framework Airbnb developed in **hours, not months**, and see results in the same dashboards they already use for product experiments.  
+
+---
+
+## 1. Select a Deterministic Page Bucket
+
+- Crawlers must see a consistent version of each URL during the test window, so we **can’t randomize by user**.  
+- Instead, we hash the **canonical URL** into buckets.  
+- In Statsig, you formalize this by adding `page_url` as a **Custom Unit ID**.  
+
+Steps:
+1. From **Project Settings**, navigate to **Custom Unit IDs**.  
+2. Provide a name and description (it then immediately becomes available to experiments, gates, and dynamic configs).  
+
+Statsig can now deterministically hash your pages into **Control vs Test** in experiments and keep this assignment stable across sessions.  
+
+> **Note:** Strip out `http` vs `https` and query params, leaving only the stable base URL, so that is what is hashed deterministically.  
+
+---
+
+## 2. Define Metrics Before Shipping
+
+Make sure the metrics you’ll want to measure are in your data warehouse, keyed on `page_url`.  
+Register these with Statsig’s **metric catalog**. Because the same pipeline powers feature experiments, your existing CUPED or stratified-sampling settings automatically apply.  
+
+### Example Metrics
+
+| Layer            | Metric Source                                   | Why it Matters                                  |
+|------------------|--------------------------------------------------|-------------------------------------------------|
+| Indexing lag     | Impressions, average position (Search Console)   | Early signal during re-crawling                 |
+| Primary KPI      | Organic sessions keyed by `page_url` (Statsig Events) | Measures traffic that actually lands            |
+| Quality guardrail| Conversion, bounce, read-depth, revenue          | Ensures traffic is useful                       |
+
+---
+
+## 3. Implement the Change Behind an Experiment
+
+- Create an experiment called `seo_title_test` in Statsig Docs.  
+- Target on the **Custom Unit ID `page_url`** with a 50/50 split across Control and Test.  
+- Expose the variant in the template renderer or CDN edge function.  
+
+---
+
+## 4. Ship, Monitor, Decide
+
+- Use **Power Analysis** to determine how long your experiment should run based on traffic volume.  
+- Expect first signals in 2–7 days; wait for re-indexing to plateau before things stabilize.  
+- Merge the winner into your template and archive the test; experiment summaries remain searchable forever.  
+
+### SEO-Specific Guardrails
+
+| Guardrail            | What to Watch                 | Why it Protects You |
+|----------------------|-------------------------------|---------------------|
+| Indexation Δ         | `indexed_pages` vs baseline   | A template tweak that blocks crawl (robots, canonicals, noindex) will show a sharp drop long before traffic falls |
+| Cannibalization ratio| Avg. URLs served per query    | Multiple pages newly ranking for the same query dilute CTR and can tank combined traffic |
+| HTTP response mix    | % 410 vs 301 vs 200           | A bulk 410 (gone) or mis-configured 301 can wipe out long-tail pages |
+| Core Web Vitals drift| LCP & CLS p75                 | Page-speed regressions may hurt rankings silently |
+| Crawl budget         | Avg. TTFB + bytes/page        | Slow/bloated pages decrease crawl rate |
+
+---
+
+## 5. Concrete Page-Level Changes Worth A/B Testing
+
+| Theme                 | Why It Might Move Organic Traffic | Typical Implementation Knob |
+|-----------------------|-----------------------------------|-----------------------------|
+| Title & meta variants | Query-matching, CTR uplift        | Add/remove brand suffix, noun → verb phrasing, insert dynamic price |
+| Structured data       | Rich-result eligibility           | Inject FAQ, HowTo, Breadcrumb, or Product schema blocks |
+| Internal-link blocks  | Crawl priority & PageRank flow    | Swap “related articles” widget ordering; test link count caps |
+| Content snippets      | Relevance & long-tail keywords    | Auto-generate 50-word intro vs. none; expand FAQ length |
+| Canonical/hreflang tags | Duplicate-content handling      | Toggle self-canonical vs. cluster canonical; add `hreflang="x-default"` |
+| Media handling        | CLS/LCP scores influence rankings | Defer off-screen images; inline critical hero image; switch to AVIF |
+| Pagination model      | Crawl depth & index coverage      | Classic `?page=` URLs vs. `rel="next/prev"` vs. load-more buttons |
+| Performance budgets   | Core Web Vitals ranking factor    | 200 ms JS chunk split vs. baseline; CSS purge + inline critical-CSS |
+| Ad layout             | CLS penalties, user engagement    | Reserve fixed ad slots vs. dynamic; lazy-load below first viewport |
+| Schema position       | Parser friendliness               | Move JSON-LD block to `&lt;head&gt;` vs. end of `&lt;body&gt;` |
+
+---
+
+## 6. Is SEO Experimentation Right for You?
+
+| Great Fit                                                                 | Maybe Not Yet                                                |
+|---------------------------------------------------------------------------|--------------------------------------------------------------|
+| Large page surface (10k+ URLs): marketplaces, docs, publishers            | Marketing sites with &lt;1k pages or sporadic organic traffic |
+| Teams already shipping **weekly** and want proof before rollouts          | Heavy paid-ads model where SEO is &lt;5% of acquisition       |
+| Companies with engineering bandwidth to template page changes             | Sites on locked-down CMSs that forbid code/tag edits         |
+
+---
+
+## 7. Key Takeaways
+
+- **Segment by page, not user.** Use a Statsig Custom ID for deterministic hashing into Control/Test.  
+- **Measure beyond clicks.** Pair Search Console data with product analytics for full-funnel insight.  
+- **Move fast, break nothing.** Statsig’s sequential engine and guardrails catch bad bets early.  
+- **One platform for every test.** Product, pricing, UX, and SEO experiments in a single, trusted workflow.  
+
+---
+
+> **Note:** Statsig also supports other experiment types such as **switchback testing** and **geo-testing**. Geo-testing is particularly useful for measuring the **incrementality of ad spend**, which is hard to measure with traditional experiments due to privacy requirements.

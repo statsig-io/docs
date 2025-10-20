@@ -1,0 +1,12 @@
+<CodeGroup>
+```erlang Erlang
+Config = statsig:get_config(User, <<"config_name">>),
+Value = statsig_config:get(Config, <<"param">>, <<"default">>).
+```
+
+```elixir Elixir
+config = Statsig.get_config(user, "config_name")
+value = StatsigConfig.get(config, "param", "default")
+```
+</CodeGroup>
+

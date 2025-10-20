@@ -1,0 +1,67 @@
+Persistent storage allows the SDK to cache feature specifications locally, enabling faster initialization and offline operation.
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+class MyPersistentStorage implements PersistentStorage {
+    @Override
+    public void save(String key, String data) {
+        // Save data to your persistent storage (e.g., file, database)
+        // Example: Files.write(Paths.get(key), data.getBytes());
+    }
+
+    @Override
+    public String load(String key) {
+        // Load data from your persistent storage
+        // Example: return new String(Files.readAllBytes(Paths.get(key)));
+        return null;
+    }
+
+    @Override
+    public void delete(String key) {
+        // Delete data from your persistent storage
+        // Example: Files.deleteIfExists(Paths.get(key));
+    }
+}
+
+// Use persistent storage
+StatsigOptions options = new StatsigOptions.Builder()
+    .setPersistentStorage(new MyPersistentStorage())
+    .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+class MyPersistentStorage : PersistentStorage {
+    override fun save(key: String, data: String) {
+        // Save data to your persistent storage (e.g., file, database)
+        // Example: File(key).writeText(data)
+    }
+
+    override fun load(key: String): String? {
+        // Load data from your persistent storage
+        // Example: return File(key).readText()
+        return null
+    }
+
+    override fun delete(key: String) {
+        // Delete data from your persistent storage
+        // Example: File(key).delete()
+    }
+}
+
+// Use persistent storage
+val options = StatsigOptions.Builder()
+    .setPersistentStorage(MyPersistentStorage())
+    .build()
+
+val statsig = Statsig("secret-key", options)
+statsig.initialize().get()
+```
+</CodeGroup>
+

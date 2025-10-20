@@ -1,0 +1,87 @@
+```typescript expandable PersistentStorageInterface.ts
+export interface PersistentStorage {
+  load: (key: string) => UserPersistedValues | null;
+  save: (key: string, config_name: string, data: StickyValues) => void;
+  delete: (key: string, config_name: string) => void;
+}
+
+export interface StickyValues {
+  value: boolean;
+  json_value: Record<string, unknown>;
+  rule_id: string;
+  group_name: string | null;
+  secondary_exposures: SecondaryExposure[];
+  undelegated_secondary_exposures: SecondaryExposure[];
+  config_delegate: string | null;
+  explicit_parameters: string[] | null;
+  time: number;
+  configVersion?: number | undefined;
+}
+
+export type UserPersistedValues = Record<string, StickyValues>;
+
+export interface SecondaryExposure {
+  gate: string;
+  gateValue: string;
+  ruleId: string;
+}
+```
+
+### Usage Example
+
+```typescript expandable PersistentStorageUsage.ts
+import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
+
+class MyPersistentStorage implements PersistentStorage {
+  private storage = new Map<string, UserPersistedValues>();
+  constructor() {
+      this.load = this.load.bind(this);
+      this.save = this.save.bind(this);
+      this.delete = this.delete.bind(this);
+  }
+
+  load(key: string): UserPersistedValues | null {
+    return this.storage.get(key) || null;
+  }
+
+  save(key: string, config_name: string, data: StickyValues): void {
+    const existing = this.storage.get(key) || {};
+    existing[config_name] = data;
+    this.storage.set(key, existing);
+  }
+
+  delete(key: string, config_name: string): void {
+    const existing = this.storage.get(key);
+    if (existing) {
+      delete existing[config_name];
+      this.storage.set(key, existing);
+    }
+  }
+  
+  getUserPersistedValue(user: StatsigUser, idType: string): UserPersistedValues | null {
+    const storageKey = this.getStorageKey(user, idType);
+    if (storageKey !== null) {
+      return this.load(storageKey);
+    }
+    return null;
+  }
+
+  private getStorageKey(user: StatsigUser, idType: string): string | null {
+    const lowerCaseIdType = idType.toLowerCase();
+
+    if (lowerCaseIdType === "user_id" || lowerCaseIdType === "userid") {
+      const id = user.userID;
+      return id ? `${id}:userID` : null;
+    } else if (user.customIDs) {
+      const id = user.customIDs[idType];
+      return id ? `${id}:${idType}` : null;
+    }
+
+    return null;
+  }
+
+}
+```
+
+<Note>Persistent storage support was added in version 0.6.1 of the Node.js SDK.</Note>
+

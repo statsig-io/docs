@@ -1,0 +1,14 @@
+```tsx
+import { useExperiment, useStatsigClient } from '@statsig/react-bindings';
+
+const experiment = useExperiment('my_experiment');
+const { getExperiment } = useStatsigClient();
+
+return (
+  <div>
+    <p>Group: {getExperiment('my_experiment').groupName}</p>
+    <p>Value: {experiment.get('a_value', 'fallback_value')}</p>
+  </div>
+);
+```
+

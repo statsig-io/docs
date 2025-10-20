@@ -1,0 +1,61 @@
+Observability client allows you to monitor SDK performance and emit custom metrics.
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+class MyObservabilityClient implements ObservabilityClient {
+    @Override
+    public void emitMetric(String metricName, double value, Map<String, String> tags) {
+        // Send metric to your monitoring system
+        System.out.println("Metric: " + metricName + " = " + value + ", tags: " + tags);
+    }
+
+    @Override
+    public void startTimer(String operationName) {
+        // Start timing an operation
+    }
+
+    @Override
+    public void endTimer(String operationName, Map<String, String> tags) {
+        // End timing and emit duration metric
+    }
+}
+
+// Use observability client
+StatsigOptions options = new StatsigOptions.Builder()
+    .setObservabilityClient(new MyObservabilityClient())
+    .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+class MyObservabilityClient : ObservabilityClient {
+    override fun emitMetric(metricName: String, value: Double, tags: Map<String, String>) {
+        // Send metric to your monitoring system
+        println("Metric: $metricName = $value, tags: $tags")
+    }
+
+    override fun startTimer(operationName: String) {
+        // Start timing an operation
+    }
+
+    override fun endTimer(operationName: String, tags: Map<String, String>) {
+        // End timing and emit duration metric
+    }
+}
+
+// Use observability client
+val options = StatsigOptions.Builder()
+    .setObservabilityClient(MyObservabilityClient())
+    .build()
+
+val statsig = Statsig("secret-key", options)
+statsig.initialize().get()
+```
+</CodeGroup>
+

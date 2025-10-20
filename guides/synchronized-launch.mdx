@@ -1,0 +1,38 @@
+---
+sidebarTitle: Synchronized Launches
+title: Synchronizing Multiple Feature Launches
+---
+
+As you get used to developing with feature flags, you will start to include them from the beginning of your feature development, changing the audience of your features as you go.  As this takes hold across your team/organization/company, you will want to be able to tie features together and launch them simultaneously, as part of a broader release.
+
+Fortunately, the ability to tie gates together is built in to Feature Gates, and does not require you to change your code or even your development workflows. Let’s see how.
+
+## Launching Features 1 and 2 as part of Release A
+
+Say you are working on Features 1 and 2.  As an engineer works on these features, they created Feature Gates for each one, so we have Feature 1, and Feature 2.  Each of these features are rolled out only to internal stakeholders as the implementation is ongoing.
+
+![Screen Shot 2021-12-03 at 2 29 30 PM](https://user-images.githubusercontent.com/74584483/144681310-f63c20fb-0864-432e-9146-faec21fe4971.png)
+
+Later, you decide that you want these two features to launch at the same time as part of Release A.
+
+First, create your release gate - Release A. Since we aren’t launching yet, lets leave it as returning false for everyone.
+
+![Screen Shot 2021-12-03 at 2 29 22 PM](https://user-images.githubusercontent.com/74584483/144681358-110f1639-a292-460f-a013-5fc37cfcb500.png)
+
+Next, lets make Feature 1 and Feature 2 gates depend on this with a “Passes Target Gate” condition at the top. “Passes target gate” means if the listed gate passes, also pass for this gate. Anyone that passes the release gate should pass each of these feature gates, so be sure to set the pass percentage to 100.  Don’t worry - the release gate still fails, so your features will not be available to anyone outside of your existing gating conditions.
+
+![Screen Shot 2021-12-03 at 2 31 09 PM](https://user-images.githubusercontent.com/74584483/144681452-39f9d777-c1d6-475c-b035-0f6eba8f38d6.png)
+
+Now that you have done that for both gates, you can continue developing until you are ready to launch.
+
+When you are ready to launch, each of your features now depends on the “Release A” gate.  All you need to do is change that gate to pass for the percentage rollout you want.
+
+For example, if you want to roll this out to 10% of your user base and check on the pulse metrics associated with it, you can just create an “Everyone, 10%” rollout.  Notice that the release gate warns you at the top that it is being used in Feature 1 and Feature 2.
+
+![Screen Shot 2021-12-03 at 2 34 18 PM](https://user-images.githubusercontent.com/74584483/144681755-fcf60e34-6208-40a6-bcde-ca02cf4935f1.png)
+
+Now, checks in code for Feature Gate A and Feature Gate B will pass 10% of the time, and you can measure the combined impact of these changes together in the pulse view for the Release A gate.  
+
+### Advanced Rollout with Pulse
+
+If you want to measure the impact of these features independently, you can even add a partial rollout on Feature Gate A, Feature Gate B, and the release gate!  In this way, you can compare Feature 1 vs Control, Feature 2 vs control, and Feature 1 & 2 vs control.  You cannot, however, compare Feature 1 vs Feature 2, nor can you enforce mutual exclusion between Features 1 and 2 - for these types of comparisons, or for mutual exclusivity, check out [Experiments](/experiments-plus).

@@ -1,0 +1,141 @@
+---
+title: Unity SDK
+sidebarTitle: Unity
+description: Statsig's SDK for Experimentation and Feature Flags in Unity applications.
+icon: "unity"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import privateAttributes from '/snippets/client/privateAttributes.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import unityStatsigOptions from '/snippets/client/Unity/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+import unityFaqs from '/snippets/client/Unity/faqs.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/unity-sdk" target="_blank" rel="noreferrer">statsig-io/unity-sdk</a>
+</Callout>
+
+## Setup the SDK
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+
+The project is on [GitHub](https://github.com/statsig-io/unity-sdk). You can add the package to your Unity project via "Package Manager" -> "add package from Git URL" -> enter https://github.com/statsig-io/unity-sdk.git (be sure to include the `.git` part in the URL)
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+
+It is important to **make sure API calls to `Statsig` are made from the main thread** to ensure everything functions correctly. Operations that take longer like network requests are made asynchronously so they will not block the main thread.
+
+```csharp
+using StatsigUnity;
+
+await Statsig.Initialize(
+    "client-sdk-key",
+    new StatsigUser { UserID = "some_user_id", Email = "user@email.com" },
+    new StatsigOptions // optional parameters to customize your Statsig client, see "Statsig Options" section below to see details on available options
+    {
+        EnvironmentTier = EnvironmentTier.Development,
+        InitializeTimeoutMs = 5000,
+    }
+);
+```
+</Step>
+</Steps>
+
+## Use the SDK
+
+<checkGate/>
+
+```csharp
+if (Statsig.CheckGate("show_new_loading_screen"))
+{
+  // Gate is on, show new loading screen
+}
+else
+{
+  // Gate is off, show old loading screen
+}
+```
+
+<getDynamicConfig/>
+
+```csharp
+var config = Statsig.GetConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+string itemName = config.Get<string>("product_name", "Awesome Product v1");
+double price = config.Get<double>("price", 10.0);
+bool shouldDiscount = config.Get<bool>("discount", false);
+```
+
+<getExperimentLayer/>
+
+```csharp
+// Values via getLayer
+
+var layer = Statsig.GetLayer("user_promo_experiments");
+var promoTitle = layer.Get("title", "Welcome to Statsig!");
+var discount = layer.Get("discount", 0.1);
+
+// or, via getExperiment
+
+var titleExperiment = Statsig.GetExperiment("new_user_promo_title");
+var priceExperiment = Statsig.GetExperiment("new_user_promo_price");
+
+var promoTitle = titleExperiment.Get("title", "Welcome to Statsig!");
+var discount = priceExperiment.Get("discount", 0.1);
+
+...
+
+double price = msrp * (1 - discount);
+```
+
+<logEvent/>
+
+```csharp
+Statsig.LogEvent(
+  "purchase",
+  "new_player_pack",
+  new Dictionary<string, string>() {
+    { "price", "9.99" }
+  }
+);
+```
+
+<statsigUser/>
+
+```csharp
+// if you want to update the existing user, or change to a different user, call UpdateUser.
+// The API makes a network request to fetch values for the new user.
+
+await Statsig.UpdateUser(
+    new StatsigUser { UserID = "new_user_id", Email = "new_user@email.com" },
+);
+```
+
+<privateAttributes/>
+
+<statsigOptions/>
+<unityStatsigOptions/>
+
+<shuttingDown/>
+
+```csharp
+// This function is async, and you can choose to await for it so that we make sure all the
+// events that are yet to be flushed get flushed
+await Statsig.Shutdown();
+```
+
+## FAQs
+
+<unityFaqs/>
