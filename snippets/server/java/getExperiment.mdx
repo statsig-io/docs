@@ -1,0 +1,26 @@
+<CodeGroup>
+```java Java
+// Values via getLayer
+Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
+String title = layer.getString("title", "Welcome to Statsig!");
+double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo");
+String expTitle = experiment.getString("title", "Welcome to Statsig!");
+double expDiscount = experiment.getDouble("discount", 0.1);
+```
+
+```kotlin Kotlin
+// Values via getLayer
+val layer = Statsig.getLayerSync(user, "user_promo_experiments")
+val title = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+val experiment = Statsig.getExperimentSync(user, "new_user_promo")
+val expTitle = experiment.getString("title", "Welcome to Statsig!")
+val expDiscount = experiment.getDouble("discount", 0.1)
+```
+</CodeGroup>
+

@@ -1,0 +1,355 @@
+---
+title: Android Client SDK
+sidebarTitle: Android
+description: Statsig's SDK for Experimentation and Feature Flags in Java & Kotlin Android applications.
+icon: "Android"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import paramStores from '/snippets/client/paramStores.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import privateAttributes from '/snippets/client/privateAttributes.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import androidStatsigOptions from '/snippets/client/Android/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+import localOverrides from '/snippets/client/localOverrides.mdx'
+import manualExposures from '/snippets/client/manualExposures.mdx'
+import androidManualExposures from '/snippets/client/Android/manualExposures.mdx'
+import stableID from '/snippets/client/stableID.mdx'
+import multiInstance from '/snippets/client/multiInstance.mdx'
+import initResponse from '/snippets/client/initResponse.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/android-sdk" target="_blank" rel="noreferrer">statsig-io/android-sdk</a>
+</Callout>
+
+## Setup the SDK
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+
+v4.37.1 and higher are published to only [Maven Central](https://central.sonatype.com/artifact/com.statsig/android-sdk). To install the SDK, set the Maven Central repository in your build.gradle. 
+```java
+dependencies {
+    implementation "com.statsig:android-sdk:4.37.1"
+}
+```
+Legacy versions (\<=V4.37.0) can be installed with [Jitpack](https://jitpack.io/#statsig-io/android-sdk).
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+
+<CodeGroup dropdown>
+```java MainActivity.java
+import com.statsig.androidsdk.*;
+...
+
+public class MainActivity extends AppCompatActivity implements IStatsigCallback {
+
+    ...
+    StatsigOptions options = new StatsigOptions();
+    options.setTier(Tier.PRODUCTION);
+    StatsigUser user = new StatsigUser("UUID");
+    Statsig.initializeAsync(app, "client-key", user, this, options);
+    ...
+    // SDK is usable, but values will be from the cache or defaults (false for gates, {} for configs)
+    // Once onStatsigInitialize fires, then
+
+
+    @Override
+    public void onStatsigInitialize() {
+        // SDK is initialized and has the most up to date values
+    }
+
+    @Override
+    public void onStatsigUpdateUser() {
+        // User has been updated and values have been refetched for the new user
+    }
+
+}
+```
+
+
+```kotlin MainActivity.kt
+import com.statsig.androidsdk.*
+
+...
+
+async {
+    Statsig.initialize(
+        this.application,
+        "my_client_sdk_key",
+        StatsigUser("user_id"),
+    )
+}.await()
+```
+</CodeGroup>
+</Step>
+</Steps>
+## Use the SDK
+
+<checkGate/>
+<CodeGroup>
+```java Java
+DynamicConfig config = Statsig.getConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+String itemName = config.getString("product_name", "Awesome Product v1");
+Double price = config.getDouble("price", 10.0);
+Boolean shouldDiscount = config.getBoolean("discount", false);
+```
+
+```kotlin Kotlin
+val config = Statsig.getConfig("awesome_product_details")
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+val shouldDiscount = config.getBoolean("discount", false)
+```
+</CodeGroup>
+
+
+<getDynamicConfig/>
+<CodeGroup>
+```java Java
+if (Statsig.checkGate("new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+```kotlin Kotlin
+if (Statsig.checkGate("new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+</CodeGroup>
+
+
+
+<getExperimentLayer/>
+
+<CodeGroup>
+```java Java
+// Values via getLayer
+
+Layer layer = Statsig.getLayer("user_promo_experiments")
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+DynamicConfig titleExperiment = Statsig.getExperiment("new_user_promo_title");
+DynamicConfig priceExperiment = Statsig.getExperiment("new_user_promo_price");
+
+String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+Double discount = priceExperiment.getDouble("discount", 0.1);
+
+...
+
+Double price = msrp * (1 - discount);
+```
+
+```kotlin Kotlin
+// Values via getLayer
+
+val layer = Statsig.getLayer("user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+
+val titleExperiment = Statsig.getExperiment("new_user_promo_title")
+val priceExperiment = Statsig.getExperiment("new_user_promo_price")
+
+val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+val discount = priceExperiment.getDouble("discount", 0.1)
+
+...
+
+val price = msrp * (1 - discount);
+```
+</CodeGroup>
+<logEvent/>
+
+<CodeGroup>
+```java Java
+Statsig.logEvent("purchase", 2.99, Map.of("item_name", "remove_ads"));
+```
+
+```kotlin Kotlin
+Statsig.logEvent("purchase", 2.99, Map.of("item_name" to "remove_ads"))
+```
+</CodeGroup>
+
+<paramStores/>
+
+### Getting a Parameter Store
+
+To fetch a set of parameters, use the following api:
+<CodeGroup>
+```java Java
+ParameterStore homepageStore = Statsig.getParameterStore("homepage");
+```
+
+```kotlin Kotlin
+val homepageStore = Statsig.getParameterStore("homepage")
+```
+</CodeGroup>
+
+### Getting a parameter
+
+You can then access parameters like this:
+<CodeGroup>
+```java Java
+String title = homepageStore.getString(
+    "title", //parameter name
+    "Welcome" // default value
+);
+
+boolean shouldShowUpsell = homePageStore.getBoolean("upsell_upgrade_now", false);
+```
+
+```kotlin Kotlin
+val title = homepageStore.getString(
+  "title",   // parameter name
+  "Welcome", // default value
+)
+
+val shouldShowUpsell = homepageStore.getBoolean("upsell_upgrade_now", false)
+```
+</CodeGroup>
+
+<statsigUser/>
+<CodeGroup>
+```java Java
+StatsigUser newUser = new StatsigUser("new_user_id");
+Statsig.updateUserAsync(newUser, this); // this must implement IStatsigCallback
+
+...
+
+@Override
+public void onStatsigUpdateUser() {
+    // User has been updated and values have been refetched for the new user
+}
+```
+
+```kotlin Kotlin
+Statsig.updateUser(StatsigUser("new_user_id"))
+```
+</CodeGroup>
+
+<privateAttributes/>
+
+<statsigOptions/>
+<androidStatsigOptions/>
+
+<shuttingDown/>
+
+<CodeGroup>
+```java Java
+Statsig.shutdown();
+```
+
+```kotlin Kotlin
+Statsig.shutdown()
+```
+</CodeGroup>
+
+
+## Using Persistent Evaluations
+
+If you want to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting, you can use persistent storage. The Android SDK supports a minimal implementation using the keepDeviceValues flag, see the [Client Persistent Assignment Doc](/client/concepts/persistent_assignment#support-in-ios-and-android-sdks) for more info.
+
+<localOverrides/>
+
+```kotlin
+// Overrides the given gate to the specified value
+overrideGate(gateName: String, value: Boolean)
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+overrideConfig(configName: String, value: Map<String, Any>)
+
+// Removes any overrides associated with the provided gate/config/experiment name
+removeOverride(name: String)
+
+// Removes all overrides
+removeAllOverrides()
+
+// Returns the set of gate and config overrides currently in place on the client
+getAllOverrides(): StatsigOverrides
+
+class StatsigOverrides(
+    @SerializedName("gates")
+    val gates: MutableMap<String, Boolean>,
+
+    @SerializedName("configs")
+    val configs: MutableMap<String, Map<String, Any>>
+    ) {}
+```
+
+<manualExposures addedIn="4.9.0" />
+<androidManualExposures/>
+<stableID/>
+
+```kotlin
+// Retrieve the StableID
+Statsig.getStableID(); 
+
+// Override the StableID before initializing, if you have something you'd prefer to use instead
+val opts = StatsigOptions(overrideStableID = "my_stable_id")
+Statsig.initialize(app, "client-xyx", options = opts)
+```
+
+<multiInstance/>
+
+<CodeGroup>
+```java Java
+StatsigClient client = new StatsigClient();
+client.initializeAsync(application, sdkKey, user, callback, options);
+```
+
+```kotlin Kotlin
+var client: StatsigClient = StatsigClient()
+client.initialize(application, sdkKey, user, options)
+```
+</CodeGroup>
+
+<initResponse/>
+
+<CodeGroup>
+```java Java
+// Get the raw values that the SDK is using internally to provide gate/config/layer results
+ExternalInitializeResponse response = Statsig.getInitializeResponseJson();
+
+// Get the JSON string representation of the initialize response
+String jsonValues = response.getInitializeResponseJSON();
+
+// Get the evaluation details
+EvaluationDetails details = response.getEvaluationDetails();
+```
+
+```kotlin Kotlin
+// Get the raw values that the SDK is using internally to provide gate/config/layer results
+val response = Statsig.getInitializeResponseJson()
+
+// Get the JSON string representation of the initialize response
+val jsonValues = response.getInitializeResponseJSON()
+
+// Get the evaluation details
+val details = response.getEvaluationDetails()
+```
+</CodeGroup>

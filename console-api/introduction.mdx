@@ -1,0 +1,25 @@
+---
+title: Console API Overview
+sidebarTitle: "Overview"
+---
+
+The "Console API" is the CRUD API for performing the actions offered on console.statsig.com without needing to go through the web UI.
+
+If you have any feature requests, drop on in to our [slack channel](https://www.statsig.com/slack) and let us know.
+
+## Base URL
+`https://statsigapi.net`
+
+## Authorization
+
+All requests must include the **STATSIG-API-KEY** field in the header. The value should be a **Console API Key** which can be created in the Project Settings on [console.statsig.com/api_keys](https://console.statsig.com/api_keys)
+
+## Rate Limiting
+
+Mutation requests (POST/PATCH/PUT/DELETE) to the Console API are limited to ~ 100 requests / 10 seconds and ~ 900 requests / 15 minutes, per project.
+
+## API Version
+
+The Console API is versioned. Each version is guaranteed to not break existing usage; each new version introduces breaking changes. There is currently only one version: `20240601`. The [OpenAPI spec](https://api.statsig.com/openapi/20240601.json) for this API version is kept up-to-date.
+
+Pass the version in the **STATSIG-API-VERSION** field in the header. For now, this is optional; in the future, this will be required.

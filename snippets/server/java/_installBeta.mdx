@@ -1,0 +1,20 @@
+To install the **Beta** SDK Version with Forward Proxy Support, you will need to install a **separate** test project
+```kotlin
+repositories {
+    mavenCentral()
+}
+```
+
+Then add the dependency:
+
+```kotlin
+implementation 'com.statsig:serversdk-test:0.24.0' // 0.24.0 is the only version with proxy config support
+```
+
+If you are using shadowJar, include below lines in your build file
+```
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    mergeServiceFiles()
+}
+```
+

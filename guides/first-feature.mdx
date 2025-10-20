@@ -1,0 +1,140 @@
+---
+title: Build Your First Feature
+description: Walk through creating a feature gate, targeting audiences, and rolling out your first feature with the JavaScript SDK.
+slug: /guides/first-feature
+---
+
+<Info title="Feature gates vs feature flags">
+Statsig refers to feature flags as <em>feature gates</em> across the console and SDKs. The terms are interchangeable throughout this guide.
+</Info>
+
+Once your Statsig account is ready, follow the steps below to create and test-drive a new feature gate.
+
+<Steps>
+  <Step title="Create a feature gate">
+    Navigate to the [Feature Gates page](https://console.statsig.com/gates) and click <strong>Get Started</strong> (or <strong>Create</strong> if you already have gates).
+
+    <Frame>
+      <img src="/images/guides/first-feature/feature-gates-page.png" alt="Feature Gates page with Create button" />
+    </Frame>
+
+    Give the gate a clear name and description—for example, <code>Mobile Registration</code> with a note about the new mobile sign-up flow.
+  </Step>
+
+  <Step title="Target mobile platforms">
+    New gates default to returning <code>false</code> until you add targeting. Click <strong>Add New Rule</strong>, choose <strong>Operating System → Any of</strong>, and select <strong>Android</strong> and <strong>iOS</strong>. Set the pass percentage to 100% and click <strong>Add Rule</strong>, then <strong>Save</strong>.
+
+    <Frame>
+      <img src="/images/guides/first-feature/add-rule.png" alt="Adding a mobile targeting rule" />
+    </Frame>
+  </Step>
+
+  <Step title="Add an internal testing rule">
+    Layer on a second rule for your team—for example <strong>Email → Contains any of</strong> with your company domain—so employees can exercise the feature regardless of device.
+
+    <Frame>
+      <img src="/images/guides/first-feature/gate-rules.png" alt="Gate with mobile and email rules" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate a client API key">
+    Head to [Project Settings → API Keys](https://console.statsig.com/api_keys) and copy the <strong>Client API key</strong>. Keep server secret keys on backends only, and use console API keys for programmatic configuration work.
+  </Step>
+
+  <Step title="Load the JavaScript SDK">
+    <Tip title="Prefer a different SDK?">
+    Statsig supports many platforms—see [Client SDK options](/) for alternatives. This walkthrough uses the browser SDK so you can experiment directly in DevTools.
+    </Tip>
+
+    Paste the snippet below into the browser console on any site to fetch the SDK from jsDelivr:
+
+    ```js
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js';
+    document.head.appendChild(script);
+    ```
+
+    <Frame>
+      <img src="/images/guides/first-feature/add-sdk-script.png" alt="Injecting the SDK via DevTools" />
+    </Frame>
+  </Step>
+
+  <Step title="Initialize and check the gate">
+    Replace <code>YOUR_SDK_KEY</code> with the client key from Step&nbsp;4 and run:
+
+    ```js
+    const client = new window.Statsig.StatsigClient('YOUR_SDK_KEY', {});
+    await client.initializeAsync();
+    ```
+
+    Then call:
+
+    ```js
+    client.checkGate('mobile_registration');
+    ```
+
+    You should see <code>false</code> because the current session is not mobile and doesn’t use the employee email domain.
+  </Step>
+
+  <Step title="Simulate a mobile environment">
+    Enable the mobile device toolbar in Chrome DevTools.
+
+    <Frame>
+      <img src="/images/guides/first-feature/devtools-mobile-toolbar.png" alt="Chrome DevTools mobile device toolbar icon" />
+    </Frame>
+
+    Re-evaluate the user to pick up the new environment and re-check the gate:
+
+    ```js
+    await client.updateUserAsync({});
+    client.checkGate('mobile_registration');
+    ```
+
+    The gate should now return <code>true</code> for the mobile profile.
+
+    <Frame>
+      <img src="/images/guides/first-feature/mobile-rule-true.png" alt="Gate returning true for mobile rule" />
+    </Frame>
+  </Step>
+
+  <Step title="Test the employee backdoor">
+    Switch DevTools back to the desktop view and update the user with a company email:
+
+    ```js
+    await client.updateUserAsync({ email: 'teammate@statsig.com' });
+    client.checkGate('mobile_registration');
+    ```
+
+    The gate passes again thanks to the email rule.
+
+    <Frame>
+      <img src="/images/guides/first-feature/email-rule-true.png" alt="Gate returning true via email rule" />
+    </Frame>
+  </Step>
+
+  <Step title="Flush exposures and inspect diagnostics">
+    ```js
+    client.flush();
+    ```
+
+    Open the gate’s <strong>Diagnostics</strong> tab to confirm each exposure, including the failing desktop check, mobile pass, and employee pass.
+
+    <Frame>
+      <img src="/images/guides/first-feature/diagnostics-stream.png" alt="Diagnostics exposure stream showing recent checks" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Use the gate in production
+
+Wrap feature logic in a gate check so only targeted users see the experience:
+
+```js
+if (client.checkGate('mobile_registration')) {
+  show(mobileRegistrationPage);
+} else {
+  show(oldRegistrationPage);
+}
+```
+
+Happy feature gating!

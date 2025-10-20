@@ -1,0 +1,6 @@
+<!--
+  tags: ["analytics","data","metrics","status"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M14.15 6.058a.625.625 0 1 0-.884.885l2.432 2.432h-12.7a.625.625 0 1 0 0 1.25h12.7l-2.432 2.433a.626.626 0 0 0 .885.884l3.146-3.146a1.127 1.127 0 0 0 0-1.592L14.15 6.058Z" clip-rule="evenodd"/>
+</svg>

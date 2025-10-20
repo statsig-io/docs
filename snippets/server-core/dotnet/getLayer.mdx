@@ -1,0 +1,18 @@
+```csharp
+var user = new StatsigUserBuilder()
+    .SetUserID("user_123")
+    .Build();
+
+var layer = statsig.GetLayer(user, "user_prefs_layer");
+
+var theme = layer.Get<string>("theme", "light");
+var language = layer.Get<string>("language", "en");
+var notifications = layer.Get<bool>("notifications_enabled", true);
+
+Console.WriteLine($"Layer Name: {layer.Name}");
+Console.WriteLine($"Allocated Experiment: {layer.AllocatedExperimentName}");
+Console.WriteLine($"Group Name: {layer.GroupName}");
+Console.WriteLine($"Rule ID: {layer.RuleID}");
+```
+
+Note: Layer parameter access automatically logs exposure events unless disabled with `EvaluationOptions`.

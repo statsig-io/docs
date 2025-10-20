@@ -1,0 +1,23 @@
+<CodeGroup>
+
+```swift Swift
+Statsig.shared.shutdown { err in
+    if let err = err {
+        print("An error occurred during Statsig shutdown: \(err)")
+    } else {
+        print("Statsig shutdown successfully")
+    }
+}
+```
+
+```objective-c Objective C
+[[Statsig sharedInstance] shutdownWithCompletion:^(NSError * _Nullable error) {
+    if (error != nil) {
+        NSLog(@"An error occurred during Statsig shutdown: %@", error);
+    } else {
+        NSLog(@"Statsig shutdown successfully");
+    }
+}];
+```
+
+</CodeGroup>

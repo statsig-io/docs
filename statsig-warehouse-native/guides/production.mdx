@@ -1,0 +1,90 @@
+---
+sidebar_label: POC to Production
+title: Moving from POC to Production
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-09-18
+---
+
+This guide introduces the steps for transitioning from a proof of concept (POC) or limited test on Statsig to a full-scale production deployment.
+
+## 1. Check Project Name/Structure
+
+1. **Rename the project if needed**: Most teams continue using the project created during the trial, but it's a good time to rename it if necessary.
+2. **Decide if you need multiple projects**: Tools like tags and granular permissions allow you to manage multiple teams within a single project. Create a new project only if you're working on a completely separate product where the definition of a user (and DAU) is distinct, and no metrics need to be shared across projects. To avoid accidental creation of projects, you can restrict this to Admins.
+   
+![Project access restriction settings](https://user-images.githubusercontent.com/31516123/184998486-094beff1-f41f-417c-bd36-89700b0c014c.png)
+
+3. **Seed your project**: Set up tags to use consistently across feature gates, experiments, and metrics.
+4. **Create Segments**: Identify internal employees or testers by creating [Segments](/segments) so you can easily override them into feature rollouts and experiments.
+
+## 2. Set Up SSO for Easy Onboarding
+
+To streamline user onboarding and deactivation, set up [Single Sign-On (SSO)](/access-management/introduction) with your identity provider. Statsig supports OIDC, a modern protocol compatible with most identity providers. Once SSO is set up, employees verified by your identity provider will automatically have Statsig accounts created upon their first login.
+
+You can also make your project **Open** so that new users verified by SSO automatically gain access, or keep it **Closed** and manually approve new access requests.
+
+![SSO project access configuration](https://user-images.githubusercontent.com/31516123/175362892-862d0cf5-012f-484a-8e39-22489011029e.png)
+
+## 3. Define Change Management Policies for Production
+
+To ensure safe production changes, Statsig allows you to [require reviews](/guides/setting-up-reviews) before implementing changes. This is similar to requiring code reviews for software development. You can create [Review Groups](/guides/setting-up-reviews#creating-review-groups) to notify key stakeholders and set up granular permissions for specific feature gates and experiments.
+
+For non-production environments like dev or staging, follow our [recommended approach](https://blog.statsig.com/environments-on-statsig-6a818805b3c2) to manage environments effectively.
+
+![Environment management configuration](https://user-images.githubusercontent.com/31516123/179292011-5a6bcb75-9bb7-47d4-b876-28c2510315fe.png)
+![Review groups setup interface](https://user-images.githubusercontent.com/31516123/179292033-d6e10544-08f6-418a-9fdb-32156487e6da.png)
+
+## 4. Set Up Key Metrics and Dimensions
+
+Before starting experiments, ensure that the [metrics](/metrics) and dimensions you want to experiment on are correctly set up.
+
+Consider the following:
+- **[Custom Metrics](/metrics/create)**: Build custom metrics from existing ones (e.g., aggregations, ratios).
+- **User Dimensions**: Enable slicing results by Geo, User, etc.
+- **[Metric Dimensions](/metrics#metric-dimensions)**: For example, analyzing "add-to-cart" events by Product Category.
+- **[Funnels](/metrics/create-user-funnels)**: Create funnels to track user journeys.
+- **[Tag Metrics](/metrics/create-metric-tags)**: Group frequently used metrics for easy experiment integration.
+
+Also, decide whether to [export data from Statsig](/integrations/data-exports/overview) back into your systems and if you want to [customize the DAU definition](/metrics/user#definition-of-a-daily-active-user) to better reflect your business needs (e.g., only counting meaningful events).
+
+![Metrics and dimensions setup dashboard](https://user-images.githubusercontent.com/31516123/178082121-bb258851-29e5-4732-bd2a-af87833f7570.png)
+
+## 5. Determine IDs for Experimentation
+
+Most Statsig experiments and feature rollouts target users by **userID**, but Statsig also allows experimentation using other "units of assignment."
+
+Here are your options:
+1. **userID**: Identifies individual users.
+2. **stableID**: A Statsig SDK-managed ID, typically used to experiment on anonymous users (e.g., unique to devices).
+3. **Custom IDs**: You can create arbitrary IDs based on your use case, such as:
+   - **organizationID** for B2B customers
+   - **vehicleID** for controlling features in vehicles
+   - **creatorID** for two-sided marketplaces, controlling features for creators vs. consumers
+
+For more, see [Experiment on Custom ID Types](/guides/experiment-on-custom-id-types).
+
+## 6. Set Up Integrations
+
+If you haven't already, explore the [integrations](/integrations/introduction) available to bring data into Statsig. Additionally, consider setting up these integrations:
+- **Data Warehouse Export**: Export assignment data from Statsig to your data warehouse.
+- **Change History Exports**: Export change history to Slack, Teams, or Datadog to overlay with operational dashboards.
+
+## 7. Best Practices, Forums, and Training
+
+Create a repository for **best practices** and a forum for experimenters to share insights, get feedback, and seek help. Provide guidance to your teams on when to use Feature Gates versus Experiments.
+
+If you're on Statsig’s **Enterprise Support**, consider organizing specific training for subject matter experts (SMEs):
+- Start with **train-the-trainer** sessions, allowing SMEs to drill into key topics.
+- Use these sessions to create tailored guidelines for your teams.
+- Switch to using the **Slack Support** channel with an SLA for faster assistance.
+
+Some useful topics for engaging teams:
+![Team training topics overview](https://user-images.githubusercontent.com/31516123/180329958-315e2719-5951-4698-82c1-0221353ead95.png)
+
+## 8. Plan Your Migration Strategy (If Applicable)
+
+If you're migrating from another experimentation platform, decide on a migration strategy. Set a date after which new experiments and gates are created on Statsig. Let any ongoing experiments or ephemeral gates on legacy systems conclude there, and migrate only gates expected to persist long-term.
+
+---

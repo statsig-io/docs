@@ -1,0 +1,135 @@
+---
+title: "Creating Custom Metrics"
+description: "Learn how to create custom metrics from raw events using Statsig's metric types including event count, user count, and more."
+---
+
+Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to **Metrics** from the left-hand navigation panel, then to the **Metrics Catalog** tab. Tap on the **Create** button.
+
+<Frame>
+  <img src="/images/create-metric.png" alt="Create custom metrics interface" />
+</Frame>
+
+Statsig supports five types of custom metrics:
+
+| Metric Type    | Description                                                                                                           | Examples                                                    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------  | ----------------------------------------------------------- |
+| Event Count    | **Total count of events** filtered by the _Value_, _Metadata_, or _User Object_ properties of an event type           | **Add to Cart** event filtered by category type             |
+| User Count     | **Number of unique users** that trigger events filtered by the _Value_, _Metadata_, or _User Object_ of an event type | **Active Users** based on their views of a product category |
+| Aggregation    | **Sum or Average** of the _Value_, _Metadata_, and _User Object_ property of an event type                            | **Total Revenue**                                           |
+| Ratio          | **Rates** (e.g. cart conversion rate, purchase rate), **Normalized Values** (e.g. sessions per user, items per cart)  | **Cart Conversion Rate**, **Sessions per User**             |
+| Funnel         | **Funnels**- funnel of multiple events with conversion tracking                                                       | **Sign-up Funnel**, **Checkout Funnel**                     |
+| Count Distinct | **Count Distinct**- Number of unique values for a given field, often approximated with sketches                       | **Unique Songs** listened per user                          |
+
+Statsig computes custom metrics on a per day basis for your **Metrics** dashboard, and rolled up for the duration of the experiment in your **Pulse Results** delivered with your Feature Gates and Experiments. After you create a custom metric, it will not populate until the next day (and will not backfill to previous days). Statsig will only calculate it moving forward from the creation date.
+
+Statsig offers a feature allowing users to set a daily **max cap** for specific metrics. With this capability, users can define maximum caps for various unit types associated with a metric. Any value surpassing the set cap will automatically be adjusted to match it. For instance, if you determine that purchases greater than $10,000 per day on your E-commerce platform should not skew analysis, any transaction exceeding this threshold will be adjusted downward to this limit, ensuring the integrity of your experiment analysis. Capped metrics are available for event count and aggregation (sum) metric types.
+
+When creating your custom metric, you can preview a given custom metric's value at the bottom of the page. To view metric preview, tap **View Output Preview** to see what your metric would have looked like based on its components’ values over the last 7 days, in both chart and table form.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/0869e1bf-8fea-407e-8a5f-8b97860b3867" alt="Screen Shot 2023-09-13 at 10 30 58 AM" />
+</Frame>
+
+## Examples
+
+### 1. Event Count Metrics
+
+Here's an example of setting up a custom event metric to count the **number of add_to_cart events** filtered by a metadata property called _value_, which carries the price of the item added to the cart. As this example specifies the ID Type as _userID_, Statsig will compute this metric as part of the test group that the corresponding user is assigned to in an experiment.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/95489e9b-36f2-4704-9970-da675a8a3d2e" alt="Screen Shot 2023-09-12 at 1 11 23 PM" />
+</Frame>
+
+If you select the ID Type as _stableID_, Statsig will compute this metric in the test group that the corresponding device is assigned to in an experiment. When you select more than ID Type, Statsig will compute this metric for each type of ID Type that you specify.
+
+### 2. User Count Metrics
+
+The example below creates a metric to count the **number of unique users** who viewed a product in the _toys_ category that was priced under $10.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/ae270d11-d3de-4f34-85e5-a67ad9c7cd9e" alt="Screen Shot 2023-09-12 at 1 16 11 PM" />
+</Frame>
+
+**Time Window**
+
+Two time window options are available for user count metrics
+
+- Daily Participation Rate: It counts the total number of days that a user has the selected event, divided by the number of days the user is in the experiment. The result is a metric value between 0 and 1, which represents the probably of a user having the event on a daily basis. It works best for events that are expected to occur repeatedly for a given user.
+- One Time Event: This checks if a user has the selected event at least once during their time in the experiment. The result is a binary metric with value 0 or 1 for each user. This is ideal for events that are only expected once per user, such as sign up events.
+- Custom Attribution Window: Allows you to define a custom window after exposure to count an event towards a metric calculation.
+
+### 3. Aggregation Metrics
+
+The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/f0d4d21b-08ae-405d-a156-4d29f96ab298" alt="Screen Shot 2023-09-12 at 1 24 49 PM" />
+</Frame>
+
+**[In Beta] Currency Sum**
+
+eCommerce customers can span multiple currency types and typically log payments in the currency and amounts the user actually pays. Currency sums allow for payments that are recorded in different currencies to be converted to one common currency. You will need to log two pieces of metadata in your event - a currency code and a value. Example metadata - `_{"currency_code": "USD", "currency_value": 123.45}_`
+
+Statsig supports currency sums upon request. Please ask in [Slack](https://statsig.com/slack). 
+
+### 4. Ratio Metrics
+
+The example below shows the creation of a **Cart Conversion Rate** metric. Here we use the unique users who triggered the _purchase event_ as the numerator and the unique users who triggered the _add to cart_ event in the denominator. Note that when calculating the numerator, we filter to only include users who also had the denominator event in the same day. So in the case of this metric, a user who only has _purchase event_ on a given day without an _add to cart_ on that same day will not count towards the numerator.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/9f8a671e-ac1f-4e2f-92cb-d154e0daecac" alt="Screen Shot 2023-09-12 at 1 29 15 PM" />
+</Frame>
+
+This pattern also applies to **click through rates (CTR)** in any part of a step-wise product journey (aka funnels). Statsig recommends using unique users in both the numerator and denominator for defining these kinds of metrics. As an example, when a user reloads a page multiple times but clicks only once, this corresponds to a 100% CTR (1 out of 1). Similarly, a user who loads a page once but clicks multiple times on a button should only count as 1 out of 1. This also solves for cases where users see an important button such as "Sign-up" multiple times a day, and we would still consider it a success if they click just once.
+
+The example below shows creating a metric for **Items per Cart**. You can track the number of unique items added to a cart if you log an _add_to_cart_ event for each item. For the numerator, select total event count. For the denominator, select unique users. As this metric is computed daily and only for users with a non-zero denominator, this metric can generate ratios such as 1/1, 2/1, 2/1, and 5/1 for individual users. When aggregated, this translates to 10/4 = 2.5 items per cart on average per day.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/cf6e6777-a154-4eeb-9a2d-81893810a31d" alt="Screen Shot 2023-09-12 at 1 30 28 PM" />
+</Frame>
+
+<Info>**A Word of Caution**: In experimentation, ratio metrics are a frequent source of misleading information. It's possible to see an increase in **click through rate** alongside a net _decrease_ in total clicks (the opposite may also happen). This situation can occur if the number of unique users viewing a button (denominator) decreases. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio indicator. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result. In addition, for the numerator in ratios, we exclude units which don't have a denominator value.</Info>
+
+### 5. Funnel Metrics
+
+You can create a custom funnel metric, from either the Custom Metrics Creation wizard in the Metrics Catalog or via the **Charts** tab.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/101903926/86914826-b8ce-4b4b-9514-39f31d05687a" alt="Screen Shot 2023-09-12 at 1 33 10 PM" />
+</Frame>
+
+<Info>**Important Note**: Statsig handles funnel metrics differently between our Cloud and Warehouse Native platforms. Funnel metrics using our Cloud platform are *always* unordered, meaning that funnel steps can be completed in any order, and they have a time window of *one day*. This means that for the metric to record a completion, all steps must be triggered by a user within 24 hours. In contrast, funnel metrics on Warehouse Native have the option to be set with strict ordering and custom time windows.</Info>
+
+### Components of Funnel Metrics
+
+Funnel metrics have a few components:
+
+1. **Lineage**: Surfaces the events used to generate the funnel
+2. **Metric Value**: Metric value represents the overall funnel conversion rate, or the percentage of users who complete a funnel (trigger the end event) relative to all users who start the funnel (trigger the starting event)
+3. **Conversion rate between stages**: This set of metrics track the percentage of users who triggered an event N relative to all users that triggered event N-1 in the funnel
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/172446711-5511e394-b353-4d38-97f1-1b681b67042b.png" alt="Screen Shot 2022-06-07 at 10 34 58 AM" />
+</Frame>
+
+After funnels are created and populated, you can view your funnel metric much like any other metric in Pulse. Additionally, you can expand the funnel metric to view Pulse performance at each step in the funnel.
+
+In the example below, the **Square** variant shows a lift in the **overall funnel conversion rate**. Expanding the metrics to examine the entire funnel reveals two key insights:
+
+- Both the **Square** and **Circle** variants show a lift in top-of-funnel DAU (_Land Page View Start DAU_). However, only the **Square** variant shows statistically significant increase in end-of-funnel DAU (_Purchase Event End DAU_).
+- The overall funnel conversion rate improvement for **Square** is primarily due to the higher conversion from _Checkout Event_ to _Purchase Event_ stages in the funnel.
+
+<Frame>
+  <img src="https://user-images.githubusercontent.com/90343952/148440643-8e8a24bd-934d-4100-a15a-abcbcc4bb11c.png" alt="Funnel experiment results showing Square variant performance" />
+</Frame>
+
+### 6 Count Distinct Metrics
+
+<Warning>**Beta Feature**: Sketch-based count distinct metrics are not live yet.</Warning>
+
+- **What it is:** A high-performance way to estimate the number of distinct values using compact sketch data structures. Example use cases include trying to determine unique songs per user or unique products purchased by user.
+- **Benefit:** Delivers much faster computation and uses significantly less memory compared to full exact distinct counting, especially at high cardinality.
+
+### Custom Metrics & Dimensions
+
+For Custom Metrics that are composed of a single event (event count/ event dau, aggregation, etc.), the dimensions of the source event will be automatically pulled through into the Custom Metric and be exposed as dimensions of that Custom Metric. However, if your Custom Metric is composed of 2+ different events, any associated dimension(s) of the source input events will _not_ be pulled through as dimensions of the Custom Metric and are also not queryable today via the "Explore" tab in Pulse Results.

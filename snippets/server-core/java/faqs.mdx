@@ -1,0 +1,51 @@
+## FAQ
+
+<AccordionGroup>
+<Accordion title="What Java versions are supported?">
+The Java Core SDK supports Java 8 and higher. Java 8 support was added in version 0.4.3.
+</Accordion>
+
+<Accordion title="Which platforms are supported?">
+The SDK supports:
+- Linux (x86_64, arm64, musl variants)
+- macOS (x86_64, arm64)
+- Windows (x86_64)
+
+See the Tested Platforms section for verified Docker images.
+</Accordion>
+
+<Accordion title="Should I use the uber JAR or platform-specific JARs?">
+The uber JAR is recommended for most use cases as it includes native libraries for all popular platforms and simplifies deployment. Use platform-specific JARs only if you need to minimize JAR size or have specific dependency requirements.
+</Accordion>
+
+<Accordion title="How do I use this with Alpine Linux?">
+For Alpine Linux (musl-based systems), install compatibility packages:
+```dockerfile
+RUN apk add --no-cache libgcc gcompat
+```
+The SDK will automatically use musl-compatible native libraries.
+</Accordion>
+
+<Accordion title="How do I handle initialization in production?">
+The SDK initialization is asynchronous. Use `.get()` on the CompletableFuture to wait for initialization:
+```java
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get(); // Blocks until initialized
+```
+Always call `shutdown()` when your application terminates to flush pending events.
+</Accordion>
+
+<Accordion title="Can I use multiple Statsig instances?">
+Yes, you can create multiple Statsig instances with different configurations. You can also use the global singleton with `Statsig.getGlobalSingleton()` for convenience.
+</Accordion>
+
+<Accordion title="How do I debug SDK issues?">
+Set the output logger level to DEBUG to see detailed logs:
+```java
+StatsigOptions options = new StatsigOptions.Builder()
+    .setOutputLoggerLevel(OutputLogger.LogLevel.DEBUG)
+    .build();
+```
+</Accordion>
+</AccordionGroup>
+

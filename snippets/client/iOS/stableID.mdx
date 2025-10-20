@@ -1,0 +1,13 @@
+
+<CodeGroup>
+```swift Swift
+let options = StatsigOptions(overrideStableID: "my_stable_id")
+Statsig.initialize(sdkKey: "client-xyz", options: options)
+```
+
+```objective-c Objective C
+StatsigOptions *options = [[StatsigOptions alloc] init];
+options.overrideStableID = @"my_stable_id";
+[Statsig initializeWithSDKKey:@"client-xyz" user:nil options:options completion:nil];
+```
+</CodeGroup>

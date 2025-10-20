@@ -1,0 +1,1098 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Statsig SDK HTTP API",
+      "version": "1.0.0",
+      "description": "HTTP API for Statsig SDK operations including feature gates, dynamic configs, experiments, layers, and event logging.\n\n**⚠️ Important:** We strongly recommend using official SDKs instead of direct HTTP calls when possible. SDKs provide better performance, automatic error handling, and type safety.\n\n## Authentication\n\nAll requests require the `statsig-api-key` header with either:\n- **Server Secret Key** - for server-side use only, never expose in client code\n- **Client SDK Key** - safe for use in client-side applications\n\n## Rate Limiting\n\nRequests are rate limited. The rate limit increments vary by endpoint (typically 2 per request).\n\n## Base URLs\n\n- SDK API operations: `https://api.statsig.com`\n- Event logging: `https://events.statsigapi.net`",
+      "contact": {
+        "name": "Statsig Support",
+        "url": "https://www.statsig.com/slack"
+      }
+    },
+    "servers": [
+      {
+        "url": "https://api.statsig.com",
+        "description": "SDK API Server"
+      },
+      {
+        "url": "https://events.statsigapi.net",
+        "description": "Events API Server"
+      }
+    ],
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
+    "tags": [
+      {
+        "name": "Feature Gates",
+        "description": "Check feature gate evaluations"
+      },
+      {
+        "name": "Dynamic Configs",
+        "description": "Fetch dynamic configuration values"
+      },
+      {
+        "name": "Experiments",
+        "description": "Get experiment assignments and configurations"
+      },
+      {
+        "name": "Layers",
+        "description": "Retrieve layer parameter values"
+      },
+      {
+        "name": "Autotune",
+        "description": "Get ranked lists for contextual multi-armed bandits"
+      },
+      {
+        "name": "Events",
+        "description": "Log custom events and exposures"
+      }
+    ],
+    "paths": {
+      "/v1/check_gate": {
+        "post": {
+          "summary": "Check Feature Gate(s)",
+          "description": "Evaluates one or more feature gates for a user and returns pass/fail results. Automatically logs exposure events for analytics.",
+          "operationId": "checkGate",
+          "tags": ["Feature Gates"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckGateRequest"
+                },
+                "examples": {
+                  "single_gate": {
+                    "summary": "Check single gate",
+                    "value": {
+                      "gateName": "new_user_onboarding",
+                      "user": {
+                        "userID": "user-123",
+                        "email": "user@example.com"
+                      }
+                    }
+                  },
+                  "multiple_gates": {
+                    "summary": "Check multiple gates",
+                    "value": {
+                      "gateNames": ["feature_a", "feature_b", "feature_c"],
+                      "user": {
+                        "userID": "user-123",
+                        "custom": {
+                          "tier": "premium"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Gate evaluation result(s)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/CheckGateResponse"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/CheckGateResponse"
+                        },
+                        "description": "Map of gate names to their evaluation results (when checking multiple gates)"
+                      }
+                    ]
+                  },
+                  "examples": {
+                    "single_gate_pass": {
+                      "summary": "Single gate passing",
+                      "value": {
+                        "name": "new_user_onboarding",
+                        "value": true,
+                        "rule_id": "2RamGsERWbWMIMnSfOlQuX",
+                        "group_name": "Test Group"
+                      }
+                    },
+                    "single_gate_fail": {
+                      "summary": "Single gate failing",
+                      "value": {
+                        "name": "new_user_onboarding",
+                        "value": false,
+                        "rule_id": null,
+                        "group_name": null
+                      }
+                    },
+                    "multiple_gates": {
+                      "summary": "Multiple gates response",
+                      "value": {
+                        "feature_a": {
+                          "name": "feature_a",
+                          "value": true,
+                          "rule_id": "rule_123",
+                          "group_name": "Enabled"
+                        },
+                        "feature_b": {
+                          "name": "feature_b",
+                          "value": false,
+                          "rule_id": null,
+                          "group_name": null
+                        },
+                        "feature_c": {
+                          "name": "feature_c",
+                          "value": true,
+                          "rule_id": "rule_456",
+                          "group_name": "Control"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/get_config": {
+        "post": {
+          "summary": "Get Dynamic Config or Experiment",
+          "description": "Fetches configuration values for a dynamic config or experiment. Works for both types - the system automatically determines which type based on the name. Automatically logs exposure events.",
+          "operationId": "getConfig",
+          "tags": ["Dynamic Configs", "Experiments"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetConfigRequest"
+                },
+                "examples": {
+                  "dynamic_config": {
+                    "summary": "Get dynamic config",
+                    "value": {
+                      "configName": "homepage_config",
+                      "user": {
+                        "userID": "user-123"
+                      }
+                    }
+                  },
+                  "experiment": {
+                    "summary": "Get experiment config",
+                    "value": {
+                      "configName": "checkout_flow_test",
+                      "user": {
+                        "userID": "user-123",
+                        "country": "US",
+                        "custom": {
+                          "subscription_plan": "pro"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Configuration values",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GetConfigResponse"
+                  },
+                  "examples": {
+                    "config_found": {
+                      "summary": "Config with values",
+                      "value": {
+                        "name": "homepage_config",
+                        "value": {
+                          "header_text": "Welcome!",
+                          "show_banner": true,
+                          "button_color": "#FF5733"
+                        },
+                        "group": "2RamGsERWbWMIMnSfOlQuX",
+                        "rule_id": "2RamGsERWbWMIMnSfOlQuX",
+                        "group_name": "Power Users"
+                      }
+                    },
+                    "config_not_found": {
+                      "summary": "Config not found",
+                      "value": {
+                        "name": "unknown_config",
+                        "value": {},
+                        "group": "",
+                        "rule_id": null,
+                        "group_name": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/get_layer": {
+        "post": {
+          "summary": "Get Layer Parameters",
+          "description": "Fetches parameter values from a layer. Layers allow you to share parameters across multiple experiments. Automatically logs exposure events.",
+          "operationId": "getLayer",
+          "tags": ["Layers"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetLayerRequest"
+                },
+                "example": {
+                  "layerName": "product_page_layer",
+                  "user": {
+                    "userID": "user-123"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Layer parameter values",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GetLayerResponse"
+                  },
+                  "examples": {
+                    "layer_with_experiment": {
+                      "summary": "Layer allocated to experiment",
+                      "value": {
+                        "name": "product_page_layer",
+                        "value": {
+                          "add_to_cart_color": "blue",
+                          "price_format": "compact",
+                          "show_reviews": true
+                        },
+                        "ruleID": "rule_abc123",
+                        "allocatedExperimentName": "add_to_cart_experiment"
+                      }
+                    },
+                    "layer_no_experiment": {
+                      "summary": "Layer without experiment allocation",
+                      "value": {
+                        "name": "product_page_layer",
+                        "value": {
+                          "add_to_cart_color": "green",
+                          "price_format": "detailed"
+                        },
+                        "ruleID": "default",
+                        "allocatedExperimentName": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Layer not found"
+            }
+          }
+        }
+      },
+      "/v1/get_ranked_list": {
+        "post": {
+          "summary": "Get Ranked List for Contextual Bandit",
+          "description": "Returns a ranked list of variants for a contextual multi-armed bandit (autotune) experiment. The ranking is based on predicted performance.",
+          "operationId": "getRankedList",
+          "tags": ["Autotune"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRankedListRequest"
+                },
+                "example": {
+                  "configName": "product_recommendation_bandit",
+                  "user": {
+                    "userID": "user-123"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Ranked list of variants",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GetRankedListResponse"
+                  },
+                  "example": [
+                    {
+                      "name": "variant_a",
+                      "value": {
+                        "recommendation_algorithm": "collaborative_filtering"
+                      },
+                      "rule_id": "rule_123",
+                      "score": 0.85
+                    },
+                    {
+                      "name": "variant_b",
+                      "value": {
+                        "recommendation_algorithm": "content_based"
+                      },
+                      "rule_id": "rule_124",
+                      "score": 0.72
+                    }
+                  ]
+                }
+              }
+            },
+            "404": {
+              "description": "Config not found or not a contextual bandit"
+            }
+          }
+        }
+      },
+      "/v1/log_event": {
+        "post": {
+          "summary": "Log Custom Events",
+          "description": "Logs one or more custom events for analytics and metric calculation. Events are used to measure experiment outcomes and user behavior.",
+          "operationId": "logEvent",
+          "tags": ["Events"],
+          "parameters": [
+            {
+              "name": "STATSIG-CLIENT-TIME",
+              "in": "header",
+              "required": false,
+              "description": "Client timestamp in milliseconds. Used to normalize event timestamps against server time and account for client clock drift.",
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "example": 1616826986211
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogEventRequest"
+                },
+                "examples": {
+                  "single_event": {
+                    "summary": "Log single event",
+                    "value": {
+                      "events": [
+                        {
+                          "eventName": "add_to_cart",
+                          "value": 29.99,
+                          "time": 1616826986211,
+                          "user": {
+                            "userID": "user-123"
+                          },
+                          "metadata": {
+                            "product_id": "prod_456",
+                            "category": "electronics"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "multiple_events": {
+                    "summary": "Log multiple events",
+                    "value": {
+                      "events": [
+                        {
+                          "eventName": "page_view",
+                          "time": 1616826986211,
+                          "user": {
+                            "userID": "user-123"
+                          },
+                          "metadata": {
+                            "page": "/product/123"
+                          }
+                        },
+                        {
+                          "eventName": "button_click",
+                          "value": "add_to_cart",
+                          "time": 1616826987211,
+                          "user": {
+                            "userID": "user-123"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "202": {
+              "description": "Events accepted for processing",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LogEventResponse"
+                  },
+                  "example": {
+                    "success": true
+                  }
+                }
+              }
+            },
+            "503": {
+              "description": "Service unavailable",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LogEventResponse"
+                  },
+                  "example": {
+                    "success": false
+                  }
+                }
+              }
+            }
+          },
+          "servers": [
+            {
+              "url": "https://events.statsigapi.net",
+              "description": "Events API Server"
+            }
+          ]
+        }
+      },
+      "/v1/log_custom_exposure": {
+        "post": {
+          "summary": "Log Custom Exposure Events",
+          "description": "Manually logs exposure events for experiments or feature gates. Useful for analytics-only experiments, delayed exposure logging, or when automatic exposure logging is disabled.",
+          "operationId": "logCustomExposure",
+          "tags": ["Events"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogCustomExposureRequest"
+                },
+                "examples": {
+                  "experiment_exposure": {
+                    "summary": "Log experiment exposure",
+                    "value": {
+                      "exposures": [
+                        {
+                          "user": {
+                            "userID": "user-123"
+                          },
+                          "experimentName": "checkout_flow_v2",
+                          "group": "Test Group",
+                          "ruleID": "rule_abc123",
+                          "secondaryExposures": [
+                            {
+                              "gate": "is_employee",
+                              "gateValue": "false",
+                              "ruleID": "default"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "gate_exposure": {
+                    "summary": "Log gate exposure",
+                    "value": {
+                      "exposures": [
+                        {
+                          "user": {
+                            "userID": "user-123"
+                          },
+                          "gateName": "premium_features",
+                          "passes": true,
+                          "ruleID": "premium_rule"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "202": {
+              "description": "Exposures accepted for processing",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LogEventResponse"
+                  },
+                  "example": {
+                    "success": true
+                  }
+                }
+              }
+            }
+          },
+          "servers": [
+            {
+              "url": "https://events.statsigapi.net",
+              "description": "Events API Server"
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "ApiKeyAuth": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "statsig-api-key",
+          "description": "SDK API key (Server Secret or Client SDK Key)"
+        }
+      },
+      "schemas": {
+        "StatsigUser": {
+          "type": "object",
+          "description": "User object containing identification and attributes for evaluation. At minimum, provide at least one identifier.",
+          "properties": {
+            "userID": {
+              "type": "string",
+              "description": "Primary user identifier",
+              "example": "user-123"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "User email address",
+              "example": "user@example.com"
+            },
+            "ip": {
+              "type": "string",
+              "description": "User IP address for geo-targeting",
+              "example": "192.168.1.1"
+            },
+            "userAgent": {
+              "type": "string",
+              "description": "User agent string for device/browser targeting",
+              "example": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            },
+            "country": {
+              "type": "string",
+              "description": "2-letter country code (ISO 3166-1 alpha-2)",
+              "example": "US"
+            },
+            "locale": {
+              "type": "string",
+              "description": "Locale/language code",
+              "example": "en_US"
+            },
+            "appVersion": {
+              "type": "string",
+              "description": "Application version",
+              "example": "1.2.3"
+            },
+            "custom": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Custom user attributes for targeting (string, number, boolean, or array of strings)",
+              "example": {
+                "subscription_plan": "premium",
+                "account_age_days": 45,
+                "is_beta_tester": true
+              }
+            },
+            "privateAttributes": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Private attributes used for evaluation but not logged to analytics",
+              "example": {
+                "internal_user_id": "12345"
+              }
+            },
+            "customIDs": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Additional custom identifier mappings",
+              "example": {
+                "companyID": "company-456",
+                "deviceID": "device-789"
+              }
+            },
+            "statsigEnvironment": {
+              "type": "object",
+              "description": "Environment tier for targeting",
+              "properties": {
+                "tier": {
+                  "type": "string",
+                  "enum": ["production", "staging", "development"],
+                  "description": "Environment tier"
+                }
+              }
+            }
+          }
+        },
+        "StatsigMetadata": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "SDK metadata for tracking SDK type, version, and other diagnostic information",
+          "example": {
+            "sdkType": "js-client",
+            "sdkVersion": "4.20.0"
+          }
+        },
+        "ExposureEventMetadata": {
+          "type": "object",
+          "required": ["gate", "gateValue", "ruleID"],
+          "properties": {
+            "gate": {
+              "type": "string",
+              "description": "Name of the gate"
+            },
+            "gateValue": {
+              "type": "string",
+              "description": "Gate value as string ('true' or 'false')"
+            },
+            "ruleID": {
+              "type": "string",
+              "description": "Rule ID that was evaluated"
+            }
+          },
+          "description": "Secondary exposure tracking for gates checked during evaluation"
+        },
+        "CheckGateRequest": {
+          "type": "object",
+          "properties": {
+            "gateName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 100,
+              "pattern": "^[a-zA-Z0-9_\\-. ]+$",
+              "description": "Single gate name to check (use this OR gateNames, not both)"
+            },
+            "gateNames": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 100,
+                "pattern": "^[a-zA-Z0-9_\\-. ]+$"
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "description": "Array of gate names to check (use this OR gateName, not both)"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          },
+          "oneOf": [
+            {
+              "required": ["gateName"]
+            },
+            {
+              "required": ["gateNames"]
+            }
+          ]
+        },
+        "CheckGateResponse": {
+          "type": "object",
+          "required": ["name", "value", "rule_id", "group_name"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Gate name"
+            },
+            "value": {
+              "type": "boolean",
+              "description": "Whether the gate passes for this user"
+            },
+            "rule_id": {
+              "type": "string",
+              "nullable": true,
+              "description": "ID of the rule that matched (null if gate failed)"
+            },
+            "group_name": {
+              "type": "string",
+              "nullable": true,
+              "description": "Name of the matching group (null if gate failed)"
+            }
+          }
+        },
+        "GetConfigRequest": {
+          "type": "object",
+          "required": ["configName"],
+          "properties": {
+            "configName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 100,
+              "pattern": "^[a-zA-Z0-9_\\-. ]+$",
+              "description": "Name of the dynamic config or experiment"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "GetConfigResponse": {
+          "type": "object",
+          "required": ["name", "value", "rule_id", "group_name"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Config name"
+            },
+            "value": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Configuration parameter values as key-value pairs"
+            },
+            "group": {
+              "type": "string",
+              "description": "Rule ID (deprecated, use rule_id instead)"
+            },
+            "rule_id": {
+              "type": "string",
+              "nullable": true,
+              "description": "ID of the rule that matched"
+            },
+            "group_name": {
+              "type": "string",
+              "nullable": true,
+              "description": "Name of the matching group"
+            }
+          }
+        },
+        "GetLayerRequest": {
+          "type": "object",
+          "required": ["layerName"],
+          "properties": {
+            "layerName": {
+              "type": "string",
+              "description": "Name of the layer"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "GetLayerResponse": {
+          "type": "object",
+          "required": ["name", "value"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Layer name"
+            },
+            "value": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Layer parameter values"
+            },
+            "ruleID": {
+              "type": "string",
+              "description": "ID of the rule that was evaluated"
+            },
+            "allocatedExperimentName": {
+              "type": "string",
+              "description": "Name of the experiment this layer is allocated to (if any)"
+            }
+          }
+        },
+        "GetRankedListRequest": {
+          "type": "object",
+          "required": ["configName"],
+          "properties": {
+            "configName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 100,
+              "pattern": "^[a-zA-Z0-9_\\- ]+$",
+              "description": "Name of the contextual bandit (autotune) experiment"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "GetRankedListResponse": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CMABVariant"
+          },
+          "description": "Array of variants ranked by predicted performance"
+        },
+        "CMABVariant": {
+          "type": "object",
+          "required": ["name", "value", "rule_id", "score"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Variant name"
+            },
+            "value": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Variant parameter values"
+            },
+            "rule_id": {
+              "type": "string",
+              "nullable": true,
+              "description": "Rule ID for this variant"
+            },
+            "score": {
+              "type": "number",
+              "format": "double",
+              "description": "Predicted performance score for this variant"
+            }
+          }
+        },
+        "LogEventRequest": {
+          "type": "object",
+          "required": ["events"],
+          "properties": {
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/StatsigEvent"
+              },
+              "minItems": 1,
+              "description": "Array of events to log"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser",
+              "description": "Shared user object for all events (can be overridden per event)"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "StatsigEvent": {
+          "type": "object",
+          "required": ["eventName"],
+          "properties": {
+            "eventName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Name of the event"
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "description": "Optional event value (string or number)"
+            },
+            "time": {
+              "description": "Event timestamp (unix timestamp in milliseconds or ISO date string)",
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              ]
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser",
+              "description": "User object for this specific event (overrides request-level user)"
+            },
+            "metadata": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Additional event metadata as key-value pairs"
+            },
+            "secondaryExposures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ExposureEventMetadata"
+              },
+              "description": "Secondary exposures for this event"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "LogCustomExposureRequest": {
+          "type": "object",
+          "required": ["exposures"],
+          "properties": {
+            "exposures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ExposureEvent"
+              },
+              "minItems": 1,
+              "description": "Array of exposure events to log"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser",
+              "description": "Shared user object for all exposures"
+            },
+            "statsigMetadata": {
+              "$ref": "#/components/schemas/StatsigMetadata"
+            }
+          }
+        },
+        "ExposureEvent": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ExperimentExposure"
+            },
+            {
+              "$ref": "#/components/schemas/GateExposure"
+            }
+          ]
+        },
+        "ExperimentExposure": {
+          "type": "object",
+          "required": ["experimentName"],
+          "properties": {
+            "experimentName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Name of the experiment or dynamic config"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "group": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Group name (use this OR ruleID)"
+            },
+            "ruleID": {
+              "type": "string",
+              "description": "Rule ID (use this OR group)"
+            },
+            "time": {
+              "description": "Exposure timestamp",
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "secondaryExposures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ExposureEventMetadata"
+              }
+            }
+          },
+          "oneOf": [
+            {
+              "required": ["experimentName", "group"]
+            },
+            {
+              "required": ["experimentName", "ruleID"]
+            }
+          ]
+        },
+        "GateExposure": {
+          "type": "object",
+          "required": ["gateName", "passes"],
+          "properties": {
+            "gateName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Name of the feature gate"
+            },
+            "passes": {
+              "type": "boolean",
+              "description": "Whether the gate passed"
+            },
+            "user": {
+              "$ref": "#/components/schemas/StatsigUser"
+            },
+            "group": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Group name (use this OR ruleID)"
+            },
+            "ruleID": {
+              "type": "string",
+              "description": "Rule ID (use this OR group)"
+            },
+            "time": {
+              "description": "Exposure timestamp",
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "secondaryExposures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ExposureEventMetadata"
+              }
+            }
+          },
+          "oneOf": [
+            {
+              "required": ["gateName", "passes", "group"]
+            },
+            {
+              "required": ["gateName", "passes", "ruleID"]
+            }
+          ]
+        },
+        "LogEventResponse": {
+          "type": "object",
+          "required": ["success"],
+          "properties": {
+            "success": {
+              "type": "boolean",
+              "description": "Whether the request was successful"
+            }
+          }
+        }
+      }
+    }
+  }

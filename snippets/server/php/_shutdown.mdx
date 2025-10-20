@@ -1,0 +1,9 @@
+## Shutting Statsig Down
+
+Because we batch and periodically flush events, some events may still be in memory when your app/server shuts down.
+
+To make sure all logged events are properly flushed, you should tell Statsig to `flush` when your app/server is closing:
+
+```jsx
+$this->statsig->flush();
+```

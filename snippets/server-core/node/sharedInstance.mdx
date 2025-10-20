@@ -1,0 +1,32 @@
+
+```jsx
+// Create a shared instance that can be accessed globally
+const statsig = Statsig.newShared("secret-key");
+await statsig.initialize();
+
+// Access the shared instance from anywhere in your code
+const sharedStatsig = Statsig.shared();
+const isFeatureEnabled = sharedStatsig.checkGate(user, "feature_name");
+
+// Check if a shared instance exists
+if (Statsig.hasSharedInstance()) {
+  // Use the shared instance
+}
+
+// Remove the shared instance when no longer needed
+Statsig.removeShared();
+```
+
+The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance.
+
+- `Statsig.newShared(sdkKey, options)`: Creates a new shared instance of Statsig that can be accessed globally
+- `Statsig.shared()`: Returns the shared instance
+- `Statsig.hasSharedInstance()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
+- `Statsig.removeShared()`: Removes the shared instance (useful when you want to switch to a new shared instance)
+
+<Note>
+`hasSharedInstance()` and `removeShared()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
+
+Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
+</Note>
+

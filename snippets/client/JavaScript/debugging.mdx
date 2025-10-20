@@ -1,0 +1,45 @@
+## Debugging
+
+When results look unexpected, use these tools to inspect what the SDK is doing.
+
+### Enable Verbose Logging
+
+```ts
+import { LogLevel, StatsigClient } from '@statsig/js-client';
+
+const client = new StatsigClient('client-xyz', { userID: 'a-user' }, {
+  logLevel: LogLevel.Debug,
+});
+```
+
+### Inspect the `__STATSIG__` Global
+
+Open your browser console and run `__STATSIG__` to inspect the current client instance. Useful properties include `_logger._queue` for pending events.
+
+<Frame>
+  <img src="/images/client/statsig-global.png" alt="Statsig Global" />
+</Frame>
+
+### Review Network Traffic
+
+Filter network requests by `client-` to see initialization and logging calls.
+
+<Frame>
+  <img src="/images/client/network-logs.png" alt="Network Logs" />
+</Frame>
+
+### Check Evaluation Reasons
+
+```ts
+const gate = client.getFeatureGate('a_gate');
+console.log(gate.details.reason);
+```
+
+Common reasons:
+- `Network` | `NetworkNotModified` — latest values from the API.
+- `Cache` — loaded from local storage.
+- `NoValues` — no cached values and network failed.
+- `Bootstrap` — values provided via `dataAdapter.setData`.
+- `Prefetch` — values from `dataAdapter.prefetchData`.
+
+See [`/sdk/debugging`](/sdk/debugging#reasons) for full details.

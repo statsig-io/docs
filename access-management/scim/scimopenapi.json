@@ -1,0 +1,541 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/scim/ServiceProviderConfig": {
+            "get": {
+                "operationId": "ScimSettingsController_getServiceProviderConfig",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Settings"
+                ]
+            }
+        },
+        "/scim/ResourceTypes": {
+            "get": {
+                "operationId": "ScimSettingsController_getResourceTypes",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Settings"
+                ]
+            }
+        },
+        "/scim/Schemas": {
+            "get": {
+                "operationId": "ScimSettingsController_getSchemas",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Settings"
+                ]
+            }
+        },
+        "/scim/Users": {
+            "get": {
+                "operationId": "UserController_genListUsers",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startIndex",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "count",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Users"
+                ]
+            },
+            "post": {
+                "operationId": "UserController_genCreateUser",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScimCreateUserDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Users"
+                ]
+            }
+        },
+        "/scim/Users/{id}": {
+            "get": {
+                "operationId": "UserController_genUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Users"
+                ]
+            },
+            "put": {
+                "operationId": "UserController_genFullUpdateUser",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScimCreateUserDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Users"
+                ]
+            },
+            "patch": {
+                "operationId": "UserController_genPartialUpdateUser",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScimPartialUpdateUserDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Users"
+                ]
+            }
+        },
+        "/scim/Groups": {
+            "get": {
+                "operationId": "GroupsController_genListGroups",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startIndex",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "count",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            },
+            "post": {
+                "operationId": "GroupsController_genCreateGroup",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            }
+        },
+        "/scim/Groups/{id}": {
+            "get": {
+                "operationId": "GroupsController_genGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            },
+            "put": {
+                "operationId": "GroupsController_genFullUpdateGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            },
+            "patch": {
+                "operationId": "GroupsController_genPatchGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScimPartialUpdateGroupDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            },
+            "delete": {
+                "operationId": "GroupsController_genDeleteGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "SCIM Groups"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "SCIM API",
+        "description": "\n      APIs for SCIM compliance.\n      ",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [
+        {
+            "url": "https://statsigapi.net"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "Authorization": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "ScimCreateUserDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "object",
+                        "properties": {
+                            "givenName": {
+                                "type": "string"
+                            },
+                            "middleName": {
+                                "type": "string"
+                            },
+                            "familyName": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "givenName",
+                            "familyName"
+                        ]
+                    },
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "primary": {
+                                    "type": "boolean"
+                                },
+                                "value": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "value"
+                            ]
+                        }
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "statsigOrgRole": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "userName",
+                    "name",
+                    "emails"
+                ]
+            },
+            "ScimPartialUpdateUserDto": {
+                "type": "object",
+                "properties": {
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "Operations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "op": {
+                                    "type": "string",
+                                    "enum": [
+                                        "replace",
+                                        "add",
+                                        "remove"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "object",
+                                    "properties": {
+                                        "active": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "op",
+                                "value"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "Operations"
+                ]
+            },
+            "ScimPartialUpdateGroupDto": {
+                "type": "object",
+                "properties": {
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "Operations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "op": {
+                                    "type": "string",
+                                    "enum": [
+                                        "replace",
+                                        "add",
+                                        "remove"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value": {
+                                                "type": "string"
+                                            },
+                                            "display": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "value",
+                                            "display"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "op",
+                                "path",
+                                "value"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "Operations"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+### StatsigUser
+
+```erlang
+% A map of string keys and string or numeric values with known set of keys
+% NOTE: atoms will not work in place of strings
+
+#{
+  <<"userID">> => <<"321">>,
+  <<"email">> => <<"12345@gmail.com">>,
+  <<"appVersion">> => <<"4.0.21">>,
+  <<"locale">> => <<"en_US">>,
+  <<"privateAttributes">> => #{<<"my_private_field">> => <<"abc">>},
+  <<"custom">> => #{<<"my_custom_field">> => <<"abc">>},
+  <<"customIDs">> => #{<<"companyID">> => <<"123">>},
+}
+
+% the erlang SDK does not support IP/UA lookups for country codes, or browser/os information
+```

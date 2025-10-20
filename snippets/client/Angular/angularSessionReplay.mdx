@@ -1,0 +1,33 @@
+## Session Replay
+
+By including the [`@statsig/session-replay`](https://www.npmjs.com/package/@statsig/session-replay) package in your project, you can automatically capture and log user sessions as videos. 
+This feature is useful for debugging and understanding user behavior. Read more about [Session Replay](/session-replay/overview).
+
+```ts
+import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+import { StatsigSessionReplayPlugin } from '@statsig/session-replay';
+
+const StatsigConfig = {
+        sdkKey: "client-KEY",
+        user: { userID: 'a-user' },
+        options: { plugins: [ new StatsigSessionReplayPlugin() ] }
+}
+```
+
+
+## Web Analytics / Auto Capture
+
+By including the [`@statsig/web-analytics`](https://www.npmjs.com/package/@statsig/web-analytics) package in your project, you can automatically capture common web events like clicks and page views. 
+Read more about [Web Analytics](/webanalytics/overview).
+
+```ts
+import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+const StatsigConfig = {
+        sdkKey: "client-KEY",
+        user: { userID: 'a-user' },
+        options: { plugins: [ new StatsigAutoCapturePlugin() ] }
+}
+```
+

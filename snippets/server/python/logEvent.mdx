@@ -1,0 +1,10 @@
+```python
+from statsig.statsig_user import StatsigUser
+from statsig.statsig_event import StatsigEvent
+
+statsig.log_event(StatsigEvent(StatsigUser("user-id"), "event-name"))
+```
+
+Python supports `retry_queue_size`, which allows you to adjust the memory allocated for handling retries. 
+While service outages are rare, increasing the retry_queue_size can help minimize event loss by providing additional memory to buffer events during such occurrences. 
+This option is generally not needed for typical use but offers added flexibility in exceptional situations.

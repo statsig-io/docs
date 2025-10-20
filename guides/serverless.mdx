@@ -1,0 +1,101 @@
+---
+sidebarTitle: Serverless
+title: Using Statsig in Serverless Environments
+keywords:
+  - owner:brock
+last_update:
+  date: 2025-09-18
+---
+
+In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the `statsig-node` SDK in a Google Cloud Function.
+These details shouldn't matter - but you may have to adjust your implementation based on your cloud provider of choice.
+
+### Usage
+
+Statsig server SDKs can be used in serverless environments.  If you are unable to `initialize` Statsig outside of a serverless function, you will incur a server round trip to Statsig servers to initialize the SDK in every function.
+
+After this point, all checks should be locally evaluated in the function.
+
+Finally, you'll need to ensure any enqueued events (exposure and custom events) are flushed to Statsig prior to the function exiting. You'll need to call `statsig.flush()` as demonstrated [here](/server/nodejsServerSDK#flushing-events-) using the Cloudflare flavor. 
+
+### Example
+
+The following example has some debugging information built in to show the cost of initializing the SDK in a cloud function.  In our experience, the `initialize` call takes less than a second, and subsequent function invocations should proceed without this startup cost.
+
+```javascript
+const statsig = require('statsig-node');
+
+let requestsHandled = 0;
+const initStart = Date.now();
+let initEnd = 0;
+let initialized = false;
+
+const initializationPromise = statsig.initialize(process.env.sdkKey).then(() => {
+  initEnd = Date.now();
+  initialized = true;
+});
+
+exports.statsig = async (req, res) => {
+  const functionStart = Date.now();
+  requestsHandled++;
+
+  if (!initialized) {
+    await initializationPromise;
+  }
+
+  const alwaysOnGateValue = await statsig.checkGate({userID: 'gcp'}, 'always_on_gate');
+  const functionEnd = Date.now();
+
+  res.status(200).send({
+    initStart,
+    initEnd,
+    functionStart,
+    functionEnd,
+    requestsHandled,
+    initializeTime: initEnd - initStart,
+    functionTime: functionEnd - functionStart,
+    alwaysOnGateValue: alwaysOnGateValue,
+  });
+};
+```
+
+
+### Alternatives
+
+If this doesn't work for you, a custom integration may help but would require additional setup.
+
+For example, you could create a background function which fetches your definitions from Statsig servers periodically, and stores them in your database.
+Then, when initializing a Statsig server SDK, you can fetch the values from your database, rather than issuing a request to Statsig servers.
+
+[Reach out to us in Slack](https://www.statsig.com/slack) if you want to talk through how to make Statsig play nicely with your architecture and requirements!
+
+### Fastly Implementation
+
+Depending on your Fastly account settings, you may have an extra layer of security enabled which requires a custom `fetch` method to be implemented for any network requests that need to be made to 3rd party domains. You must implement a custom `fetch` method that uses Fastly's required [backend parameter](https://js-compute-reference-docs.edgecompute.app/docs/globals/fetch).
+
+To solve for this, first define a module in its own file that implements a global override of `fetch`:
+
+```javascript
+export { };
+
+const ogFetch = fetch.bind(fetch.prototype);
+
+globalThis.fetch = (input, init) => {
+  const backend: string = input instanceof URL ? input.hostname :
+    input instanceof Request ? new URL(input.url).hostname :
+    new URL(input).hostname;
+
+  const initWithBackend: typeof init = { ...init, backend };
+
+  return ogFetch(input, initWithBackend);
+}
+
+(globalThis as any).EdgeRuntime = "fastly";
+```
+
+Next, in the main function entrypoint, simply import the fetch override module prior to importing the Statsig SDK:
+
+```javascript
+import "./providers/utils/fastly-fetch-setup";
+import Statsig from "statsig-node";
+```

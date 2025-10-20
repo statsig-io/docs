@@ -1,0 +1,111 @@
+---
+title: Node SDK v5.x.x to v6.0.0 Upgrade Guide
+---
+
+### Summary 
+
+Node.js SDK V6.0.0 introduced breaking changes on 
+- [Removed async version of core APIs (checkGate, getConfig..)](#synchronous-core-apis)
+- [Changed DataAdapter cache keys SDK used to read and write from](#dataadapter-cache-key-changes)
+- [Changed default hashing algorithm used for getClientInitializeResponse() which is being used for bootstrapping client sdk.](#hash-algorithm-change-on-getclientinitializeresponse)
+- [If no environment tier is being set for SDK, we will default environment to be `production` when evaluating.](#default-environment-is-production-if-no-environment-is-being-set-when-sdk-is-initialized) 
+- [Changed how you should disable exposure logging](#deprecate-functions)
+
+#### Synchronous Core APIs
+**Changes**
+Changed all core apis to be synchronous functions 
+```javascript
+// All removed
+async getFeatureGate(): Promise<FeatureGate> // Removed
+getFeatureGate(): FeatureGate // New API
+
+async checkGate(): Promise<bool> // Removed
+checkGate(): bool // New API
+
+async getConfig(): Promise<DynamicConfig>
+getConfig(): DynamicConfig // New API
+
+async getExperiment(): Promise<DynamicConfig>
+getExperiment(): DynamicConfig // New API
+
+```
+
+**Context**
+The initial design of async APIs are ensuring every evaluation can be done properly even when the SDK is not compatible by requesting evaluation from Statsig Server. 
+However, as SDK and evaluation rules become more stable, we rarely see such cases. For the performance of core apis, we make all apis synchronous functions.
+
+**Migration Guide**
+If you are using gate as following way, and you are using **javascript runtime error** will be reported, please audit and update the usage
+If you are using typescript, compile error will be reported.
+Meanwhile, we deprecated functions `*Sync()` for example `checkGateSync()`, please use checkGate() 
+
+```javascript
+Statsig.checkGate(user, "gate").then(() => {
+  // do somethig
+}).catch() // Compile error if you are using typescript. If you are using javascript, there will be runtime error please audit and 
+```
+If you are using as following ways, still recommend to remove await, but there won't affect usage.
+``` javascript
+const gate = await Statsig.checkGate(user, "gate")
+```
+
+#### DataAdapter Cache Key Changes
+**Context**
+To better support using multiple Statsig Instances in one runtime, and also better support over different responses format, for example download_config_spec_v1 vs download_config_spec_v2 (we are in the process of introducing dcs v2), we updated the cache keys SDK read and write from to avoid cache key collision. 
+We also embedded the compress encoding format we are using, right now we are only storing plain_text no-compressed version within Cache. We plan to support set compressing version for perf improvements.
+
+**Changes**
+- Change cache key for config_specs from `statsig.cache` to 
+
+ `statsig|/v1/download_config_specs|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+
+- Change cache key for get_id_list_sources from `statsig.id_lists` to be:
+
+`statsig|/v1/get_id_lists|{compressEncoding // plain text for now}|{SHA256HashedBase64(secretkey)}`
+
+- Change cache key for individual id list to be 
+
+`statsig|id_list::${String(idListName)}|{compressEncoding // plain text for now}|${SHA256HashedBase64(secretKey)}`
+
+**Migration Guide**
+<Warning>
+If you are using one of our Edge DataAdapter, please don't upgrade yet, we are adding support for this
+</Warning>
+1. Update your DataAdapter if you are customizing the key and get and read logic 
+2. If you are writing to cache in other places (instead of relying on SDK setting the cache), update the call-site to use the new key
+3. If you are ok with cache miss with the first request, then you don’t need to do anything, SDK will write to cache with new key.
+4. If you don’t want cold cache, please write with the new key before push to production
+
+#### Hash Algorithm Change on getClientInitializeResponse() 
+**Context**
+For faster evaluation (in both client side and server side) and to reduce payload size, we changed default hash algorithm being used for all config names to be djb2 instead of SHA256. 
+
+**Changes**
+Config (gate / experiment / layers) names are now hashed with djb2 algorithm instead of SHA256 by default. If you are specifying what hash algorithm to use, this should not have affect on you. 
+
+**Migration Guide**
+If you are using latest (or relatively new client sdk), client side should automatically supported, no actions needed from you. 
+If you need SHA256 for specific reasons, set `ClientInitializeResponseOptions.hash = 'sha256'`
+
+#### Default environment is production if no environment is being set when SDK is initialized
+**Context**
+We have seen many confusions over environment tier 
+**Changes**
+If no environment tier is being set, e.g `StatsigOptions.environment.tier`, SDK now has a default value assigned to it. Default value will be your sdk key if it's being set. Otherwise default to production
+
+**Migration**
+Notes: If you have call-site which does not set environment tier, for rules which have non-production env tier, it will be failing now.
+It will not affect call-site which has environment tier. Or rules don't set environment or includes production tier. 
+
+#### Deprecate functions
+WithExposureLoggingDisabled functions are deprecated
+```javascript
+checkGateWithExposureLoggingDisabled()  // DO NOT USE
+getFeatureGateWithExposureLoggingDisabled() // DO NOT USE
+```
+use core apis with options instead
+
+```javascript
+Statsig.checkGate(user, gate_name, {disableExposureLogging: true})  // Use
+Statsig.getFeatureGate(user, gate_name, {disableExposureLogging: true})  // USE
+```

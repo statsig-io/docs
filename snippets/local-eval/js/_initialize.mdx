@@ -1,0 +1,15 @@
+```typescript
+import { StatsigOnDeviceEvalClient } from '@statsig/js-on-device-eval-client';
+
+const myStatsigClient = new StatsigOnDeviceEvalClient(
+  YOUR_CLIENT_KEY, 
+  { environment: {tier: 'development'} }
+);
+
+// initialize and wait for the latest values
+await myStatsigClient.initializeAsync();
+```
+
+<Note>
+In advanced use cases, you may want to Prefetch or Bootstrap (Provide) values for initialization. See [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter) to learn how this can be achieved.
+</Note>

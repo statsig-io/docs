@@ -1,0 +1,14 @@
+You can install the PHP SDK using composer.
+
+```bash
+composer require statsig/statsigsdk
+```
+
+The SDK is also [open source and hosted on github](https://github.com/statsig-io/php-sdk). The package is published to [packagist](https://packagist.org/packages/statsig/statsigsdk).
+
+To successfully use the PHP SDK, you need to:
+1. Install it
+2. Provide a storage adapter to cache config and event logs (easy default exists)
+3. Schedule a Cron job to poll for config changes and flush event logs to Statsig
+4. Initialize and use the SDK
+

@@ -1,0 +1,29 @@
+## Multiple Client Instances
+
+In some cases, it might be useful to have multiple instances of the Statsig client running.
+
+<Warning>
+You must use **two different SDK keys** for this to work. Various functionality of the Statsig client is keyed on the SDK key being used. Using the same key will lead to collisions.
+</Warning>
+
+```typescript
+import { StatsigOnDeviceEvalClient } from '@statsig/js-on-device-eval-client';
+
+// Create two clients with different SDK keys
+const clientA = new StatsigOnDeviceEvalClient('client-sdk-key-a');
+const clientB = new StatsigOnDeviceEvalClient('client-sdk-key-b');
+
+// Initialize both clients
+await Promise.all([
+  clientA.initializeAsync(),
+  clientB.initializeAsync(),
+]);
+
+// Use each client independently
+const gateA = clientA.checkGate('feature_a', myUser);
+const gateB = clientB.checkGate('feature_b', myUser);
+```
+
+<Tip>
+View a full example on [GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-multi-instance.tsx)
+</Tip>

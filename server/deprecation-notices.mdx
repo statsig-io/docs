@@ -1,0 +1,60 @@
+---
+title: Deprecation Notices
+---
+
+## Direct Initialization API Access for Server SDKs, October 31, 2025
+
+#### What's changing?
+Until mid-2024, Statsig's Server SDKs downloaded configuration values directly from Statsig servers upon startup. Since then, we've transitioned to hosting these configuration files on a secure CDN, which greatly reduces initialization time and increases reliability (we use Cloudflare, which has near-zero downtime.) As we've transitioned to this approach, we've made the decision to deprecate direct API access, which is only available in long outdated SDK versions. We're asking all customers to discontinue using these SDK versions, and upgrade to a newer version.
+
+#### Change required
+The only change required is a minor SDK version bump, no code changes are needed. You'll need to bump your SDK to at least: 
+- **go-sdk** 1.30.3
+- **java-server** 1.9.0
+- **py-server** 0.28.0
+- **ruby-server** 1.29.0
+- **statsig-node** 5.25.0
+- **.NET** 1.29.0
+- **Node-lite** 0.5.0
+
+We're asking all customers to make this change by October 31st, 2025. 
+
+## New Method for Country Resolution
+
+Starting December 9th, 2024, Statsig will **switch to a method of resolving IP Addresses to country codes in our client SDKs with greatly improved accuracy**, which may result in different gate behavior for some users. Statsig currently depends on a [homegrown package](https://github.com/statsig-io/ip3country) for country resolution on both Client and Server SDKs, which lacks IPV6 support. To resolve countries without bloating our SDK sizes, we'll begin to rely on our cloud provider's country resolution when serving requests to the /initialize endpoint.
+
+### Potential Changes in Client Evaluations
+This may result in different evaluations for some client-side checks, which will be significantly more accurate and complete than the previous method. You may see a greater number of users passing country rules, as this new method will begin to resolve countries for IPV6 users, which now represent a large share of many customers' user base. 
+
+### Conflicts with Server-Side Checks
+If you check some configs on both the Client and Server side, it is possible that a small number of users may pass targeting on the client side and fail on the server, or vice versa, as we'll continue to rely on [IP3Country](https://github.com/statsig-io/ip3country) for server-side country resolution when a country is not explicitly provided on the `StatsigUser` object. We recommend using your cloud provider's country resolution (often available in a load balancer) and setting that as the "country" field on the `StatsigUser` object.  This applies to any evaluations for gates/configs/experiments/layers, and also for `getClientInitializeResponse` if you are generating the payload for your client sdk.
+
+## Async Evaluation Functions
+
+#### Reason
+Server SDKs were originally designed for maximum backwards compatibility. 
+This meant that if a Server SDK did not contain support for an operator or configuration, 
+it would fallback to hitting Statsig's servers, ensuring a valid result would be returned. 
+This is why all top level evaluation related functions were asynchronous.
+
+In practice however, this is seldom required, so we no longer feel the trade off 
+for sync vs async functions is worth it and will be removing the asynchronous functions in newer releases.
+
+#### Example
+
+```java
+var result = await Statsig.checkGate("my_gate"); // Bad
+// For node v6.0.0
+var result = Statsig.checkGate("my_gate") // Good
+// For .Net and Java
+var result = Statsig.checkGateSync("my_gate"); // Good
+
+```
+
+#### SDKs
+
+.NET Server - [v1.20.0](https://github.com/statsig-io/dotnet-sdk/releases/tag/v1.20.0)
+
+NodeJS Server - [v5.10.0](https://github.com/statsig-io/node-js-server-sdk/releases/tag/v5.10.0)
+
+Java/Kotlin Server - [v1.12.0](https://github.com/statsig-io/java-server-sdk/releases/tag/v1.12.0)

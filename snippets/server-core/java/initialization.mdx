@@ -1,0 +1,30 @@
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+StatsigOptions options = new StatsigOptions.Builder()
+                    .setSpecsSyncIntervalMs(10000)
+                    .setEventLoggingFlushIntervalMs(10000)
+                    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+                    .build();
+
+Statsig myStatsigServer = new Statsig(SECRET_KEY, options);
+myStatsigServer.initialize().get();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+val options = StatsigOptions.Builder()
+    .setSpecsSyncIntervalMs(10000)
+    .setEventLoggingFlushIntervalMs(10000)
+    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+    .build()
+
+val myStatsigServer = Statsig(SECRET_KEY, options)
+myStatsigServer.initialize().get()
+```
+</CodeGroup>
+

@@ -1,0 +1,6 @@
+### Working with IDs
+
+To ensure that the server SDK evaluates each config accurately, they need access to all user attributes that the client SDK leverages. We recommend passing all of these attributes to the server SDK - using tools like Cookies if needed to ensure they're attached on first requests. If the user objects on the client and server aren't identical, modern SDKs will throw an InvalidBootstrap warning.
+
+Client SDKs also auto-generate a StableID, and its important to manage the lifecycle of this ID to be sure that it is consistent on client and server side. Managing this with a cookie is often easiest, see [Keeping StableID Consistent](/client/javascript-sdk-stable-id#keeping-stableid-consistent). If StableID differs between Client and Server, you'll see a BootstrapStableIDMismatch warning, and checks with this warning won't contribute to your experiment analyses.
+

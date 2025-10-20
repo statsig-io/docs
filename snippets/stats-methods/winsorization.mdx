@@ -1,0 +1,27 @@
+Winsorization is a common technique for removing noise in experiment results, specifically from outliers.
+
+Winsorization refers to the practice of measuring the percentile Px of a metric and setting all values over Px to Px.
+
+Statsig computes the Px value using all non-zero and non-null unit-level values of the metric; metrics are aggregated from rows or events, and then the Px'th unit's value is used as the threshold to adjust other units' values.
+
+<Tabs>
+  <Tab title="Statsig Cloud">
+At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors.
+
+Winsorization is applied to to sum and event count metrics, including imported metrics. Winsorization will not be applied to Mean, Ratio, Funnel, Participation, or User Accounting metrics.
+  </Tab>
+  <Tab title="Warehouse Native">
+Statsig Warehouse Native lets you configure this per metric - and choose explicitly the upper and/or lower bounds to apply.
+
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/31516123/6d058842-27f7-4b6b-9bd8-245a5f894f90" alt="Winsorization configuration interface" />
+</Frame>
+
+Winsorization is applied to to sum, event count, mean and ratio metrics.
+  </Tab>
+</Tabs>
+
+## Metric Capping
+This is a very simple, but  effective technique to handle outliers. With this capability, you can define max values for a metric for whatever unit type(s) are configured for this metric. Any value surpassing the set cap will automatically be adjusted downward to match it.
+
+For instance, if you determine that purchases greater than $10,000 per day on your E-commerce platform should not skew analysis, any transaction exceeding this threshold will be adjusted downward to this limit, ensuring the integrity of your experiment analysis. Capped metrics are available for Event Count and Aggregation (sum) metric types.  

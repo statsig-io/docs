@@ -1,0 +1,74 @@
+### Class: StatsigUser
+
+```java
+class StatsigUser
+{
+    static function withUserID(string $user_id): StatsigUser
+
+    static function withCustomIDs(array $custom_ids): StatsigUser
+
+    function setUserID(?string $user_id): StatsigUser
+
+    function setEmail(?string $email): StatsigUser
+
+    function setIP(?string $ip): StatsigUser
+
+    function setUserAgent(?string $user_agent): StatsigUser
+
+    function setLocale(?string $locale): StatsigUser
+
+    function setCountry(?string $country): StatsigUser
+
+    function setAppVersion(?string $app_version): StatsigUser
+
+    function setCustom(?array $custom): StatsigUser
+
+    function setPrivateAttributes(?array $private): StatsigUser
+
+    function setCustomIDs(?array $custom_ids): StatsigUser
+}
+```
+
+### Class: StatsigOptions
+
+```java
+class StatsigOptions
+{
+    function __construct(IDataAdapter $data_adapter, ?ILoggingAdapter $logging_adapter = null, ?IOutputLogger $output_logger = null)
+
+    function getConfigAdapter(): IConfigAdapter
+
+    function getLoggingAdapter(): ?ILoggingAdapter
+
+    /**
+     * Configure an output logger for additional debugging information
+     */
+    function getOutputLogger(): ?IOutputLogger
+
+    function setEnvironmentTier(?string $tier)
+    /**
+     * @throws Exception - Given size cannot be less than 10 or greater than 1000
+     */
+    function setEventQueueSize(int $size)
+}
+```
+
+### Interface: IDataAdapter
+
+```java
+interface IDataAdapter
+{
+    function get(string $key): ?string;
+    function set(string $key, ?string $value);
+}
+```
+
+### Interface: ILoggingAdapter
+
+```java
+interface ILoggingAdapter
+{
+    public function enqueueEvents(array $events);
+    public function getQueuedEvents(): array;
+}
+```

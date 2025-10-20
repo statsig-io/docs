@@ -1,0 +1,8 @@
+```tsx
+import { useStatsigClient } from '@statsig/react-bindings';
+
+const { logEvent } = useStatsigClient();
+
+return <button onClick={() => logEvent('my_event')}>Click Me</button>;
+```
+

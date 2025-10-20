@@ -1,0 +1,64 @@
+Custom output logger allows you to redirect SDK logs to your own logging system.
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+class MyOutputLogger implements OutputLogger {
+    @Override
+    public void log(LogLevel level, String message) {
+        // Route SDK logs to your logging system
+        switch (level) {
+            case ERROR:
+                System.err.println("[ERROR] " + message);
+                break;
+            case WARN:
+                System.out.println("[WARN] " + message);
+                break;
+            case INFO:
+                System.out.println("[INFO] " + message);
+                break;
+            case DEBUG:
+                System.out.println("[DEBUG] " + message);
+                break;
+        }
+    }
+}
+
+// Use custom output logger
+StatsigOptions options = new StatsigOptions.Builder()
+    .setOutputLogger(new MyOutputLogger())
+    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+    .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+class MyOutputLogger : OutputLogger {
+    override fun log(level: OutputLogger.LogLevel, message: String) {
+        // Route SDK logs to your logging system
+        when (level) {
+            OutputLogger.LogLevel.ERROR -> println("[ERROR] $message")
+            OutputLogger.LogLevel.WARN -> println("[WARN] $message")
+            OutputLogger.LogLevel.INFO -> println("[INFO] $message")
+            OutputLogger.LogLevel.DEBUG -> println("[DEBUG] $message")
+            else -> {}
+        }
+    }
+}
+
+// Use custom output logger
+val options = StatsigOptions.Builder()
+    .setOutputLogger(MyOutputLogger())
+    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+    .build()
+
+val statsig = Statsig("secret-key", options)
+statsig.initialize().get()
+```
+</CodeGroup>
+

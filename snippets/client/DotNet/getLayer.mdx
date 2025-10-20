@@ -1,0 +1,20 @@
+```csharp
+// Values via getLayer
+
+Layer layer = StatsigClient.GetLayer("user_promo_experiments");
+var promoTitle = layer.Get("title", "Welcome to Statsig!");
+var discount = layer.Get("discount", 0.1);
+
+// or, via getExperiment
+
+DynamicConfig  titleExperiment = StatsigClient.GetExperiment("new_user_promo_title");
+DynamicConfig  priceExperiment = StatsigClient.GetExperiment("new_user_promo_price");
+
+var promoTitle = titleExperiment.Get("title", "Welcome to Statsig!");
+var discount = priceExperiment.Get("discount", 0.1);
+
+...
+
+double price = msrp * (1 - discount);
+```
+

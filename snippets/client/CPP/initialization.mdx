@@ -1,0 +1,64 @@
+```cpp
+#include <statsig/statsig.h>
+
+using namespace statsig;
+
+StatsigUser user;
+user.user_id = "a-user";
+user.custom_ids = {
+    {"employeeID", "an-employee"}
+};
+
+// Create your own instance
+StatsigClient client;
+
+// Initialize synchronously using cached values from the previous session
+client.InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
+
+// or, Initialize asynchronously from network
+client.InitializeAsync(
+    "client-{YOUR_CLIENT_SDK_KEY}",
+    [](StatsigResultCode result) {
+        // completion callback
+    },
+    user
+);
+```
+
+**Synchronous** initialization will leverage cache (if available), returning immediately.
+Data for subsequent sessions will then be fetched in the background.
+
+**Asynchronous** initialization, on the other hand provides a callback, allowing you to wait for the most
+current data to be fetched.
+
+For convenience, there is also a singleton instance that can be accessed via `StatsigClient::Shared()`.
+
+```cpp
+// Initialize synchronously using cached values from the previous session
+StatsigClient::Shared().InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
+
+// or, Initialize asynchronously from network
+StatsigClient::Shared().InitializeAsync(
+    "client-{YOUR_CLIENT_SDK_KEY}",
+    [](StatsigResultCode result) {
+        // completion callback
+    },
+    user
+);
+```
+
+**Optional** - Configuration via StatsigOptions
+
+It is possible to adjust certain aspects of how the SDK works via a [StatsigOptions](#statsig-options) struct.
+Just pass in a StatsigOptions struct during initialization.
+
+```cpp
+StatsigOptions options;
+options.environment = StatsigEnvironment{"staging"};
+
+client.InitializeSync(..., options);
+
+// or
+
+client.InitializeAsync(..., options);
+```

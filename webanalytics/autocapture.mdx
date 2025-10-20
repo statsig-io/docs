@@ -1,0 +1,179 @@
+---
+title: Autocapture Metrics
+description: Comprehensive guide to Statsig's autocapture functionality for web analytics, including automatically captured events, metadata attributes, and configuration options.
+---
+
+The JavaScript, React, and Angular SDKs support autocapture, which automatically captures events and their attributes without requiring you to manually instrument your code.
+
+## Attributes Captured
+
+### Common Metadata (on all events)
+
+Statsig automatically captures comprehensive metadata with each autocapture event to provide rich context for analysis:
+
+- To filter events, you can use the `eventFilterFunc` option when initializing the Statsig client.
+- To sanitize events and its metadata, you can use listen for the `pre_logs_flushed` client event and modify the event object before it is sent to Statsig. (See [Client Event Emitter](/client/javascript-sdk#client-event-emitter) for more details.)
+
+#### Page and Environment Metadata:
+
+| Property | Description |
+| --- | --- |
+| `metadata.title` | Page title from `<title>` tag |
+| `metadata.current_url` | Full current URL |
+| `metadata.hostname` | Domain name of the current page |
+| `metadata.pathname` | Path portion of the URL |
+| `metadata.user_agent` | Browser user agent string (truncated to 200 chars) |
+| `metadata.locale` | Browser language setting |
+| `metadata.timezone` | User's timezone |
+| `metadata.timezone_offset` | Timezone offset in minutes |
+| `metadata.timestamp` | Event timestamp in milliseconds |
+
+#### Screen and Viewport Data:
+
+| Property | Description |
+| --- | --- |
+| `metadata.screen_width` | Screen width in pixels |
+| `metadata.screen_height` | Screen height in pixels |
+| `metadata.viewport_width` | Browser viewport width in pixels |
+| `metadata.viewport_height` | Browser viewport height in pixels |
+
+#### Network Information:
+
+| Property | Description |
+| --- | --- |
+| `metadata.effective_connection_type` | Connection speed estimate |
+| `metadata.rtt_ms` | Round-trip time in milliseconds |
+| `metadata.downlink_mbps` | Download speed in Mbps |
+| `metadata.save_data` | Whether user has data saver enabled |
+
+#### Referrer and Traffic Source Data:
+
+| Property | Description |
+| --- | --- |
+| `metadata.referrer` | Full referrer URL |
+| `metadata.referrer_domain` | Domain of the referrer |
+| `metadata.referrer_path` | Path of the referrer URL |
+| `metadata.searchEngine` | Detected search engine |
+| `metadata.searchQuery` | Search query from referrer |
+
+#### Campaign and Marketing Attribution:
+
+Statsig automatically captures 25+ marketing attribution parameters including:
+
+| Property | Description |
+| --- | --- |
+| `metadata.utm_source` | UTM source parameter |
+| `metadata.utm_medium` | UTM medium parameter |
+| `metadata.utm_campaign` | UTM campaign parameter |
+| `metadata.utm_term` | UTM term parameter |
+| `metadata.utm_content` | UTM content parameter |
+| `metadata.utm_id` | UTM ID parameter |
+| `metadata.gclid` | Google Click ID |
+| `metadata.fbclid` | Facebook Click ID |
+| `metadata.msclkid` | Microsoft Bing Click ID |
+| `metadata.ttclid` | TikTok Click ID |
+| `metadata.li_fat_id` | LinkedIn Click ID |
+| `metadata.epik` | Pinterest Click ID |
+
+**Additional Platform IDs Captured:**
+- `gclsrc`, `wbraid`, `gad_source` (Google)
+- `dclid` (DoubleClick)
+- `irclid` (Impact)
+- `igshid` (Instagram)
+- `_kx` (Klaviyo)
+- `mc_cid`, `mc_eid` (Mailchimp)
+- `qclid` (Quora)
+- `rdt_cid` (Reddit)
+- `sccid` (Snapchat)
+- `ttc`, `ttc_id` (TikTok)
+- `twclid` (Twitter)
+
+### Action Events (Click, Form Submit, etc.)
+
+| Property | Description |
+| --- | --- |
+| `tagName` | The HTML tag of the clicked element |
+| `classList` | The list of CSS classes on the clicked element |
+| `class` | The class attribute of the clicked element |
+| `id` | The ID attribute of the clicked element |
+| `ariaLabel` | The aria-label attribute of the clicked element |
+| `selector` | A CSS selector that uniquely identifies the clicked element |
+
+depending on the event element, the following properties may be captured:
+- `action`
+- `method`
+- `formName`
+- `formId`
+- `href`
+- `content`
+- `inputName` 
+- `textContent`
+- `selectedText`
+...and more
+
+### Page View Events
+
+PageViewStart:
+
+| Property | Description |
+| --- | --- |
+| `last_page_view_url` | The URL of the last page view |
+
+PageViewEnd:
+
+| Property | Description |
+| --- | --- |
+| `page_view_length` | The length of the page view in milliseconds |
+| `lastScrollY` | The last scroll position in pixels |
+| `maxScrollY` | The maximum scroll position reached during the page view in pixels |
+| `lastScrollPercentage` | The last scroll percentage (0-100) of the page |
+| `maxScrollPercentage` | The maximum scroll percentage reached during the page view (0-100) |
+| `scrollDepth` | The scroll depth percentage (0-100) - deprecated, use maxScrollPercentage instead |
+| `dueToInactivity` | Whether the page view ended due to inactivity |
+
+### Dead Click Events
+
+| Property | Description |
+| --- | --- |
+| `scrollTimeout` | Boolean indicating if a scroll timeout occurred |
+| `selectionChangeTimeout` | Boolean indicating if a selection change timeout occurred |
+| `mutationTimeout` | Boolean indicating if a mutation timeout occurred |
+| `absoluteTimeout` | Boolean indicating if an absolute timeout occurred |
+| `scrollDelayMs` | The number of milliseconds to wait before considering a scroll event as a dead click |
+| `selectionChangeDelayMs` | The number of milliseconds to wait before considering a selection change event as a dead click |
+| `mutationDelayMs` | The number of milliseconds to wait before considering a mutation event as a dead click |
+| `absoluteDelayMs` | The number of milliseconds to wait before considering an absolute timeout event as a dead click |
+
+### Rage Click Events
+
+| Property | Description |
+| --- | --- |
+| `x` | The x-coordinate of the rage click |
+| `y` | The y-coordinate of the rage click |
+| `timestamp` | The timestamp of the rage click in milliseconds |
+
+
+### Web Vitals Events
+
+| Property | Description |
+| --- | --- |
+| `name` | The name of the web vital ('CLS', 'FCP', 'LCP', 'TTFB') |
+| `value` | The current measurement value (e.g., milliseconds for LCP, FCP, etc.; a numeric score for CLS) |
+| `delta` | The change from the previously reported value—used to calculate cumulative values over time |
+| `id` | The ID of the web vital event|
+
+### Console Log Events
+
+| Property | Description |
+| --- | --- |
+| `status` | The status of the console log ('debug', 'info', 'warn', 'error') |
+| `log_level` | The level of the console log ('debug', 'info', 'log', 'warn', 'error') |
+| `payload` | The payload of the console log (array of strings) |
+| `timestamp` | The timestamp of the console log in milliseconds (epoch time) |
+| `trace` | 	A stack trace (if available) showing where in the code the console log was triggered (array of strings) |
+| `source` | The source of the console log ('js-auto-capture') |
+
+
+#### Query Parameters:
+
+All URL query parameters are automatically captured as individual metadata fields with their parameter names as keys.

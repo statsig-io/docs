@@ -1,0 +1,82 @@
+---
+sidebar_label: Reusable Targeting (Segments)
+title: Reusable Targeting with User Segments
+displayed_sidebar: cloud
+keywords:
+  - owner:shubham
+last_update:
+  date: 2025-09-18
+---
+
+User Segments allow you to predefine targeting groups for re-use in Feature Gates and Dynamic Configs. Think of it as a reusable macro for a set of users.
+Need an easy way to roll things out to just your team/org/company? Create a segment, and use a "User is in Segment" or "User is not in Segment" condition
+in a Feature Gate or Dynamic Config. Let's go through an example. This guide will walk through creating an example segment to identify our internal users, and then using that segment in a new feature we are building.
+
+## Step 1: Creating a Segment
+
+Start by navigating to the "Segments" tab in the console:
+
+![Screen Shot 2022-06-27 at 8 39 00 AM](https://user-images.githubusercontent.com/74584483/175979144-57bbb812-5ea0-429b-b57f-1634b16c5e32.png)
+
+Then click "Create New." Lets call it "Internal Stakeholders:"
+
+![Screen Shot 2022-06-27 at 8 42 18 AM](https://user-images.githubusercontent.com/74584483/175979762-f19a7a10-87ae-47c2-bddd-eaef26137385.png)
+
+There are two types of segments:
+- "Conditional Segments" which operate on a similar set of conditions as Feature Gates and Dynamic Configs
+- ID Lists, which allow you to predetermine larger lists of userIDs or a particular customID to pass the segment.
+
+For now, lets create a conditional segment, and click "Create."
+
+We will start by adding a condition to target people on our internal environments:
+
+![Screen Shot 2022-06-27 at 8 44 36 AM](https://user-images.githubusercontent.com/74584483/175980491-beb329d2-2bbe-4e39-b493-0f59cdb9a66d.png)
+
+Notice that unlike a Feature Gate, you cannot configure the pass percentage for a rule.  Segments are meant to represent all of the users matching a certain set of rules, but when you create a Feature Gate rule based on a segment, you can configure the pass percentage there.  We will get there in a moment.
+
+Next, lets add another condition to that same rule. Click "Add more conditions", and then use an "email" "contains any of" condition to target internal employees:
+
+![Screen Shot 2022-06-27 at 8 57 15 AM](https://user-images.githubusercontent.com/74584483/175982618-13336e7f-9e72-4c73-9e58-81f86a7fa6a9.png)
+
+:::note
+Adding an additional condition to the same rule enforces that both pass - the conditions are evaluated as an AND operation.  
+If you wish to create multiple conditions where any of them can pass as an OR operation, you can add a new rule.
+:::
+
+Don't forget to "Save Changes" after adding those! Your Segment should look like this:
+
+![Screen Shot 2022-06-27 at 8 55 37 AM](https://user-images.githubusercontent.com/74584483/175982596-1ed7ea2f-40b5-4773-be7f-4765e889c3d0.png)
+
+## Step 2: Using a segment
+
+Now, lets make a gate for our new feature, "Landing Page Redesign". Navigate to "Feature Gates" and click "Create New"
+
+![Screen Shot 2022-06-27 at 8 53 04 AM](https://user-images.githubusercontent.com/74584483/175983618-973a9f36-e1c0-4fd6-9b4a-b97fe658156f.png)
+
+Since this feature isn't ready for the public, lets gate it to our internal stakeholders using the Segment we just created.
+
+Click "Add New Rule"
+
+![Screen Shot 2022-06-27 at 8 53 33 AM](https://user-images.githubusercontent.com/74584483/175983743-cfe46147-2934-4393-b4aa-3335e55c3502.png)
+
+Again, remember to "Save Changes"
+
+![Screen Shot 2022-06-27 at 8 53 44 AM](https://user-images.githubusercontent.com/74584483/175983838-e40b4284-af26-4e40-83fc-f2350d9d6fb1.png)
+
+## Step 3: Test it!
+
+Fill in the test gate console with any random user input. You won't be able to get this gate to pass until you pass in a user with an email ending
+in `statsig.com` or `statsig.io` AND a `development` or `staging` environment like this. If you remove either of those, you should see it fail.
+
+```
+{
+  email: 'tore@statsig.com',
+  statsigEnvironment: {
+    tier: "development"
+  }
+}
+```
+
+![Screen Shot 2021-07-30 at 1 01 21 PM](https://user-images.githubusercontent.com/74584483/127705951-6813bb6e-0ae7-44a2-8db3-421e11e54c5c.png)
+
+Now you can reuse this Segment in as many Feature Gates or Dynamic Configs as you want to gate your internal features while they are under development.

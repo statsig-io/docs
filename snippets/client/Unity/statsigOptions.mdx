@@ -1,0 +1,19 @@
+`Initialize()` takes an optional parameter `options` in addition to `clientKey` and `user` that you can provide to customize the Statsig client.
+
+<ResponseField name="EnvironmentTier" type="EnvironmentTier" default="null">
+  Set the environment tier for the user. Values: `Production | Development | Staging`.
+  Users with `null` or `Production` tier are included in Pulse metrics by default.
+</ResponseField>
+
+<ResponseField name="InitializeTimeoutMs" type="int" default="5000">
+  Maximum milliseconds `Statsig.Initialize()` will wait before proceeding with cached/default values.
+</ResponseField>
+
+<ResponseField name="LoggingIntervalMs" type="int" default="60000">
+  Interval for periodically flushing logging events to the Statsig backend.
+</ResponseField>
+
+<ResponseField name="LoggingBufferMaxSize" type="int" default="100">
+  Maximum number of events the logger batches before flushing.
+</ResponseField>
+

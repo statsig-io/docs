@@ -1,0 +1,11 @@
+You can access layers and layer parameters for the user by getting the client with the `useStatsigClient` hook, and then calling `getLayer`.
+
+```tsx
+const { client } = useStatsigClient();
+const layer = client.getLayer('homepage_layer');
+
+return (
+  <div>Headline Parameter: {layer.get('hero_text', 'Welcome')}.</div>
+);
+```
+

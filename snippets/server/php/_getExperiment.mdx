@@ -1,0 +1,18 @@
+```java
+// Values via getLayer
+
+$layer = $this->statsig->getLayer($user, "user_promo_experiments");
+$title = $layer->get("title", "Welcome to Statsig!");
+$discount = $layer->get("discount", 0.1);
+
+// or, via getExperiment
+
+$title_experiment = $this->statsig->getExperiment($user, "new_user_promo_title");
+$price_experiment = $this->statsig->getExperiment($user, "new_user_promo_price");
+$title = $title_experiment->get("title", "Welcome to Statsig!")
+$discount = $price_experiment->get("discount", 0.1)
+
+...
+
+$price = $msrp * (1 - $discount)
+```

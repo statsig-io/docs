@@ -1,0 +1,46 @@
+## Listening for changes
+
+In v1.14.0+, you can listen for SDK changes using `StatsigListening`.
+
+<CodeGroup>
+```swift Swift
+class MyViewController: UIViewController, StatsigListening {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if Statsig.isInitialized() {
+            render()
+        } else {
+            Statsig.addListener(self)
+            renderLoading()
+        }
+    }
+
+    private func render() {
+        let showNewUI = Statsig.checkGate("new_ui_enabled")
+        if showNewUI {
+            // Render the new UI
+        } else {
+            // Render the old UI
+        }
+    }
+
+    private func renderLoading() { /* loading UI */ }
+    private func renderError(error: StatsigClientError) { /* error UI */ }
+
+    // StatsigListening
+    func onInitializedWithResult(_ error: StatsigClientError?) {
+        if let error = error {
+            renderError(error)
+            return
+        }
+        render()
+    }
+
+    func onUserUpdatedWithResult(_ error: StatsigClientError?) { /* optional rerender */ }
+}
+```
+</CodeGroup>
+
+

@@ -1,0 +1,40 @@
+## React Native + React Specific Setup
+
+The setup for a ReactNative environment is very similar to a plain [React environment](/client/React).
+The only difference is that you need to use the ReactNative specific `StatsigProviderRN`.
+This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
+
+```tsx
+import {
+  StatsigProviderRN,
+  useFeatureGate,
+} from "@statsig/react-native-bindings";
+
+function Content() {
+  const gate = useFeatureGate("a_gate");
+
+  // Reason: Network or NetworkNotModified
+  return (
+    <View>
+      <Text>Value: {gate.value ? "Pass" : "Fail"}</Text>
+      <Text>Reason: {gate.details.reason}</Text>
+    </View>
+  );
+}
+
+function App() {
+  return (
+    <StatsigProviderRN
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      loadingComponent={<Text>Loading...</Text>}
+    >
+      <Content />
+    </StatsigProviderRN>
+  );
+}
+```
+
+<Warning>
+**Avoid iOS 18.4 on Simulator**: Apple introduced a networking bug in iOS 18.4 that causes requests to fail when running in the Simulator. For more details, see [this thread on Apple's forums](https://developer.apple.com/forums/thread/777999).
+</Warning>

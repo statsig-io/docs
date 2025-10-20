@@ -1,0 +1,11 @@
+```rust
+use statsig_rust::{Statsig, StatsigUserBuilder};
+
+let user = StatsigUserBuilder::new_with_user_id("a-user".to_string()).build();
+
+if statsig.check_gate(&user, "a_gate") {
+    // Gate is on, enable new feature
+} else {
+    // Gate is off
+}
+```

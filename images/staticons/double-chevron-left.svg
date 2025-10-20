@@ -1,0 +1,6 @@
+<!--
+  tags: ["navigation","collapse","previous","UI"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M13.951 14.834a.625.625 0 1 0 .848-.919L10.559 10l4.24-3.916a.625.625 0 0 0-.848-.918l-4.34 4.008a1.125 1.125 0 0 0 0 1.653l4.34 4.008Zm-4.25 0a.625.625 0 0 0 .848-.918L6.31 10l4.24-3.916a.625.625 0 1 0-.848-.919l-4.34 4.008a1.125 1.125 0 0 0 0 1.653l4.34 4.008Z" clip-rule="evenodd"/>
+</svg>

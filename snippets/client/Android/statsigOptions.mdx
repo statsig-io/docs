@@ -1,0 +1,68 @@
+You can pass in an optional parameter `options` in addition to `sdkKey` and `user` during initialization to customize the Statsig client.
+
+<ResponseField name="api" type="String" default="https://api.statsig.com/v1/">
+  Default endpoint for all SDK network requests. Do not override unless you implement the Statsig API elsewhere.
+</ResponseField>
+
+<ResponseField name="disableCurrentActivityLogging" type="Boolean" default="false">
+  Include the current top-level activity on logged events by default. Set to `true` to disable.
+</ResponseField>
+
+<ResponseField name="disableDiagnosticsLogging" type="Boolean" default="false" deprecated post={["deprecated"]}>
+  Deprecated. Previously prevented the SDK from sending diagnostic information.
+</ResponseField>
+
+<ResponseField name="initTimeoutMs" type="Long" default="3000">
+  Milliseconds to wait for the initial request before completing. Set to `0` to wait indefinitely.
+</ResponseField>
+
+<ResponseField name="enableAutoValueUpdate" type="Boolean" default="false">
+  Periodically fetch updated values for the current user when enabled.
+</ResponseField>
+
+<ResponseField name="autoValueUpdateIntervalMinutes" type="Double" default="1.0">
+  Frequency (in minutes) for auto value refresh. Minimum is `1` minute.
+</ResponseField>
+
+<ResponseField name="overrideStableID" type="String?" default="null">
+  Override the SDK-generated `stableID` for the user.
+</ResponseField>
+
+<ResponseField name="loadCacheAsync" type="Boolean" default="false">
+  Whether the SDK should block on loading saved values from disk.
+</ResponseField>
+
+<ResponseField name="initializeValues" type="Map<String, Any>?" default="null">
+  Provide the initialize response directly to bootstrap the client synchronously. See NodeJS Server SDK for generating values and the Bootstrap docs.
+</ResponseField>
+
+<ResponseField name="disableHashing" type="Boolean?" default="false">
+  When `true`, gate/config/experiment names are not hashed and remain readable. Requires special authorization from Statsig.
+</ResponseField>
+
+<ResponseField name="customCacheKey" type="((sdkKey: String, user: StatsigUser) -> String)">
+  Override how the cache key is generated for stored values when the default does not fit your needs.
+</ResponseField>
+
+<ResponseField name="evaluationCallback" type="((config: BaseConfig) -> Unit)">
+  Callback invoked whenever a gate, config, experiment, or layer is checked. Receives the evaluated `BaseConfig`.
+</ResponseField>
+
+#### Methods
+
+- **setTier | setEnvironmentParameter | getEnvironment**
+   - used to signal the environment tier the user is currently in. 
+   - `setTier` can be PRODUCTION, STAGING or DEVELOPMENT. e.g. passing in a value of `Tier.STAGING` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+   - `setEnvironmentParameter` can be used for custom tiers, eg `options.setEnvironmentParameter("tier", "test")`
+
+#### Runtime Options
+Starting in `V4.43.0`, a subset of options can be set during initialization and later updated while the Statsig client is running.
+
+These options are defined in `StatsigRuntimeMutableOptions` (which `StatsigOptions` extends) and are detailed below.
+
+Call `Statsig.updateRuntimeOptions(runtimeMutableOptions: StatsigRuntimeMutableOptions)` or the corresponding method in `StatsigClient` to update the Statsig client with new values.
+
+- **loggingEnabled**: `Boolean`, default `true`
+   - Setting this value to `false` will prevent the Statsig client from sending logging events over the network or saving events to its on-disk cache. The 1000 most recent events will be queued in memory. They can be logged to network (or cached) if `loggingEnabled` is set to `true` later during that session.
+   - Calling `Statsig.flush()` after setting `loggingEnabled` to `true` will immediately clear the queue and minimize loss of older log events
+   - This can be useful for cases where it is necessary for users to grant permission before events should be logged, or in any other cases where logging should not be enabled

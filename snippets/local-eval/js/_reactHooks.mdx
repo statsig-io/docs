@@ -1,0 +1,64 @@
+
+
+## React Hooks
+
+
+### useGateValue or useFeatureGate
+
+```typescript
+import { useGateValue } from '@statsig/react-native-bindings-on-device-eval';
+
+const gateValue = useGateValue('a_gate', { userID: "a-user" }); // <-- Returns the boolean value
+if (gateValue) {
+  // 
+}
+```
+
+```typescript
+import { useFeatureGate } from '@statsig/react-native-bindings-on-device-eval';
+
+const gate = useFeatureGate('a_gate', { userID: "a-user" }); // <-- Returns the FeatureGate object
+if (gate.value) {
+  // 
+}
+```
+
+### useDynamicConfig
+
+```typescript
+import { useDynamicConfig } from '@statsig/react-native-bindings-on-device-eval';
+
+function MyComponent() {
+  const config = useDynamicConfig('a_config', { userID: 'a-user' }); // <-- Returns the DynamicConfig object
+  const bgColor = config.value['bg_color'] as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```
+
+### useExperiment
+
+```typescript
+import { useExperiment } from '@statsig/react-native-bindings-on-device-eval';
+
+function MyComponent() {
+  const experiment = useExperiment('an_experiment', { userID: 'a-user' }); // <-- Returns the Experiment object
+  const bgColor = experiment.value['bg_color'] as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```
+
+
+### useLayer
+
+```typescript
+import { useLayer } from '@statsig/react-native-bindings-on-device-eval';
+
+function MyComponent() {
+  const layer = useLayer('a_layer', { userID: 'a-user' }); // <-- Returns the Layer object
+  const bgColor = layer.getValue('bg_color') as string;
+
+  return <View style={{backgroundColor: bgColor}}></View>;
+}
+```

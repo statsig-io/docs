@@ -1,0 +1,60 @@
+<CodeGroup>
+```java Java
+import java.util.HashMap;
+import java.util.Map;
+
+String userID = "user_id";
+String eventName = "my_custom_event";
+
+// Simple event
+statsig.logEvent(userID, eventName);
+
+// Event with value
+statsig.logEvent(userID, eventName, 10.5);
+
+// Event with metadata
+Map<String, String> metadata = new HashMap<>();
+metadata.put("key1", "value1");
+metadata.put("key2", "value2");
+statsig.logEvent(userID, eventName, metadata);
+
+// Event with value and metadata
+statsig.logEvent(userID, eventName, 10.5, metadata);
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+statsig.logEvent(user, eventName, 10.5, metadata);
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val eventName = "my_custom_event"
+
+// Simple event
+statsig.logEvent(userID, eventName)
+
+// Event with value
+statsig.logEvent(userID, eventName, 10.5)
+
+// Event with metadata
+val metadata = mapOf(
+    "key1" to "value1",
+    "key2" to "value2"
+)
+statsig.logEvent(userID, eventName, metadata)
+
+// Event with value and metadata
+statsig.logEvent(userID, eventName, 10.5, metadata)
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+statsig.logEvent(user, eventName, 10.5, metadata)
+```
+</CodeGroup>
+

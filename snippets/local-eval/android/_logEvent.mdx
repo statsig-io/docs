@@ -1,0 +1,15 @@
+<CodeGroup>
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+StatsigClient client = Statsig.INSTANCE.getClient();
+
+client.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
+```
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+Statsig.client.logEvent(user, "purchase", 2.99, mapOf("item_name" to "remove_ads"))
+```
+
+</CodeGroup>

@@ -1,0 +1,82 @@
+---
+title: "Getting the Group"
+description: "Learn why using experiment parameters is better than checking group names in code."
+---
+
+One common misconception when working with experiments on Statsig is trying to check the experiment group in code.  Checking the experiment group _in code_ is actually an anti-pattern.  It's not necessary with Statsig, and it will limit your ability to quickly test different variants.
+
+Experiment groups are very useful for understanding what a set of parameters represents in the Statsig console.  Comparing "Sorted Long List" vs "Default Search Results"
+is easier to discuss than trying to understand what the `sorted = true, length = 10` parameters represent.
+
+That being said, in code, its much more powerful to directly check parameters and their values. It's also simpler to reason about: rather than hard 
+coding in a particular value, your variable is dynamically evaluated by Statsig.  In this way, parameters are the building blocks of your experiments when coding, rather than group names.
+
+### Example: Group Names vs Parameters
+Hard coding experiment group names would be both very fragile and very limiting.  Let's see why.
+
+In code, if you tried to use experiment groups, your function might end up looking like this:
+
+```ts
+async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
+    const results = index.get(searchTerm);
+    const experiment = statsig.getExperimentSync(user, 'search_results');
+    // NOTE - these APIs don't actually exist - this is for the sake of an example
+    if (experiment.groupName === 'Sorted Long List') {
+      return results.sort().slice(10);
+    } else if (experiment.groupName === 'Sorted Short List') {
+      return results.sort().slice(3);
+    } else {
+      return results;
+    }
+}
+```
+
+There are a few problems with this code:
+
+1. Its very fragile.  If the group name in code does not match the name in the Statsig console, you won't return the correct experience
+2. Its static.  I can't easily add another experiment group without changing the code.  I cant add an "Unsorted long list" without a code change.
+
+So instead, this is what the code would look like using experiment parameters directly:
+
+```ts
+async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
+    let results = index.get(searchTerm);
+    const experiment = statsig.getExperimentSync(user, 'search_results');
+    results = experiment.get("sorted", false) ? results.sort() : results;
+    const numItems = experiment.get("length", 0);
+    return numItems > 0 ? results.slice(numItems) : results;
+}
+```
+
+Now, your code is completely decoupled from the names of experiment groups in the statsig console.  You are left with a set of dynamic parameters.
+You can create whichever experiment groups you want out of these building blocks, and the same code will work.  Want to test an unsorted list of 5 items
+against a sorted list of 20 items?  Just set it up in the Statsig console (and name it whatever you want).
+
+If you were trying to check group names, you would have to go back and add conditions like:
+
+```ts
+} else if (experiment.groupName === 'Unsorted Short List') {
+  return results.slice(5);
+} else if (experiment.groupName === 'XL Sorted List') {
+  return results.sort().slice(20);
+}
+```
+
+As you can see, using parameters directly when you are coding is much simpler and more flexible.  It makes your code dynamic and offloads experimentation setup to the Statsig console.  The group names you configure to describe each set of parameters will make it easy to compare one group against the other when it's time to analyze the results of your experiment.
+
+## Rules
+
+The diagnostics stream is meant to be used for debugging your integration, and understanding which groups a user is being bucketed into.  The following defines the different Rules you will see, and what they mean.
+
+
+| **Rule**                      | **Meaning**                                                                                             |
+|-------------------------------|---------------------------------------------------------------------------------------------------------|
+| Not started                   | The experiment has not been started, so the allocation groups are not determined yet                    |
+| Holdout                       | The user is in a holdout that this experiment references, so they are not in the experiment             |
+| Layer Assignment              | The user is not allocated to this experiment because they are bucketed to a different part of the Layer |
+| Targeting Gate                | The user does not meet the requirements for the targeting gate                                          |
+| Not Allocated                 | The user is not allocated to this experiment because they do not meet the rollout %                     |
+| `{group name}{override name}`   | The user was forcefully bucketed into a given group by an experiment override                           |
+| `{group name}`                  | The user was bucketed into this experiment group                                                        |
+| Abandoned                     | "Make Decision" selected the control group. This experiment has been abandoned.                        |
+| `{group name}` (Launched)       | "Make Decision" selected this group as the launch group, so the user is seeing the launched experience. |

@@ -1,0 +1,99 @@
+---
+title: React Native On-Device Evaluation
+sidebarTitle: React Native Support
+description: Statsig's React Native SDK for on-device evaluation with React Native applications.
+icon: "react"
+---
+
+import OnDeviceEvalProsAndCons from '/snippets/local-eval/onDeviceEvalProsAndCons.mdx'
+import DCSScope from '/snippets/local-eval/dcsScope.mdx'
+import { StatsigUserNotes } from '/snippets/local-eval/statsigUserNotes.mdx'
+
+import ReactNativeInstall from '/snippets/local-eval/js/_reactNativeInstall.mdx'
+import ReactNativeSetup from '/snippets/local-eval/js/_reactNativeSetup.mdx'
+import ReactHooks from '/snippets/local-eval/js/_reactHooks.mdx'
+import JSCreateUser from '/snippets/local-eval/js/_createUserObject.mdx'
+import JSOptions from '/snippets/local-eval/js/_options.mdx'
+import JSShutdown from '/snippets/local-eval/js/_shutdown.mdx'
+import JSManualExposures from '/snippets/local-eval/js/_manualExposures.mdx'
+import JSDataAdapter from '/snippets/local-eval/js/_dataAdapter.mdx'
+import JSClientEventEmitting from '/snippets/local-eval/js/_clientEventEmitting.mdx'
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import statsigUserIntro from '/snippets/client/statsigUser.mdx'
+import statsigOptionsIntro from '/snippets/client/statsigOptions.mdx'
+import manualExposuresIntro from '/snippets/client/manualExposures.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+
+<Callout icon="lightbulb">
+**Tip:** Get started quickly with one of our [sample apps](https://github.com/statsig-io/js-client-monorepo/tree/main/samples)!
+</Callout>
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="_blank" rel="noreferrer">statsig-io/js-client-monorepo</a>
+</Callout>
+
+<OnDeviceEvalProsAndCons sdkName="@statsig/react-native-bindings-on-device-eval"  />
+
+<Note>
+Since `@statsig/react-native-bindings-on-device-eval` works in conjunction with `@statsig/js-on-device-eval-client`, documentation on the [JavaScript On-Device Evaluation SDK](/client/jsOnDeviceEvaluationSDK) is also relevant for React Native implementations.
+</Note>
+
+## Set Up the SDK
+
+<Steps>
+  <Step title="Install the SDK">
+    <Installation />
+    
+    <ReactNativeInstall />
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization />
+    
+    <DCSScope />
+
+    <ReactNativeSetup />
+  </Step>
+</Steps>
+
+## Working with the SDK
+
+<JSCreateUser />
+
+<ReactHooks />
+
+### Code Examples
+
+Working sample apps are available in the repository:
+
+- [React Native Examples](https://github.com/statsig-io/js-client-monorepo/tree/main/samples)
+
+<statsigUserIntro />
+
+<StatsigUserNotes sdkName="React Native" />
+
+<JSClientEventEmitting />
+
+<statsigOptionsIntro />
+
+<JSOptions />
+
+<manualExposuresIntro />
+
+<JSManualExposures />
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown />
+<JSShutdown />
+
+<JSDataAdapter />
+
+## Additional Resources
+
+- [On-Device Evaluation SDK Overview](/client/onDevice)
+- [JavaScript On-Device Evaluation SDK](/client/jsOnDeviceEvaluationSDK)
+- [Client Keys with Server Permissions](/sdk-keys/api-keys/#client-keys-with-server-permissions)
+- [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter)
+- [Debugging SDK Evaluations](/sdk/debugging)

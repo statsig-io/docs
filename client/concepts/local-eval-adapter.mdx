@@ -1,0 +1,91 @@
+---
+title: Local Eval Adapter
+---
+
+## Local Eval Adapter
+
+A common limitation of experimentation systems is the **dependence on an upfront network requests to fetch experiment configurations**. While concepts like [Bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) and [Synchronous Initialization](/client/concepts/initialize#4-synchronous-initialization) can provide alternatives, both have caveats that are sometimes prohibitive: Bootstrapping still requires an upfront request (though it can be made synchronous with other requests), and Synchronous Initialization Strategies can result in out-of-date configs (by one session).
+
+The Local Eval Adapter solves this by enabling you to ship your experiment configurations inline with your application, meaning you can run experiments before initialization completes. The adapter expects a ruleset explaining your experiments, similar to Statsig's Server SDKs - see the [Example Ruleset below](#example-ruleset-config-spec).
+
+## Limitations
+
+Shipping with a ruleset presents security concerns, but given that the experiment set can be scoped to only an experiment or two occurring before any network requests, those concerns are often minimal. However, we expect users to take caution shipping a ruleset in their production code, vetting the contents are correct and safe.
+
+## Usage & Functionality
+
+The Local Eval Adapter, with proper attention to security, and maintenance of the ruleset in your application, **addresses the downsides of other experiment-at-launch strategies**. 
+
+<Info>
+The local evaluation adapter is for Enterprise and Pro Tier companies only.  If you are trying to follow these instructions but do not meet that criteria, some of the setup steps may not work.
+</Info>
+
+The Adapter manifests as a StatsigOptions object seeded with a ruleset payload:
+<Tabs>
+  <Tab title="iOS">
+```swift
+    Statsig.initialize(
+        sdkKey: "client-sdkkey",
+        user: user,
+        options: StatsigOptions(
+            overrideAdapter: OnDeviceEvalAdapter(stringPayload: onDeviceEvalAdapterRulesetPayload)
+        )
+    ) { err in
+        // Initialization completed. `err` is `nil` if it was successful
+    }
+``` 
+  </Tab>
+  <Tab title="Android">
+```kotlin
+    val adapter = OnDeviceEvalAdapter("...") // dcs payload as string
+    val user = StatsigUser("a-user")
+    
+    Statsig.initializeAsync(application, "client-sdk", user, object : IStatsigCallback {
+      override fun onStatsigInitialize() {
+        println(adapter.getGate(Statsig.getFeatureGate("a_gate"), user)?.details?.reason) // [OnDevice] Bootstrap:Recognized
+        println(Statsig.getFeatureGate("a_gate").details.reason) // Network:Recognized
+      }
+    })
+```
+  </Tab>
+  <Tab title="JavaScript">
+```js
+    const adapter = new OnDeviceEvalAdapter();
+    adapter.setData('...'); // dcs payload as string
+
+    const client = new StatsigClient(
+      'client-...',
+      { userID: 'a-user' },
+      {
+        overrideAdapter: adapter,
+      },
+    );
+
+    // purposely not awaiting this, will use local specs until network is resolved
+    const isReady = client.initializeAsync();
+
+    const localEvalGate = client.getFeatureGate('a_gate');
+    console.log(localEvalGate.details.reason); // [OnDevice] Bootstrap:Recognized
+
+    await isReady;
+
+    const networkEvalGate = client.getFeatureGate('a_gate');
+    console.log(networkEvalGate.details.reason); // Network:Recognized
+```
+  </Tab>
+</Tabs>
+
+
+### Example Ruleset "Config Spec"
+
+The ruleset is a JSON object that contains the following fields:
+
+```json
+{
+  "feature_gates": [],
+  "dynamic_configs": [],
+  "layer_configs": [],
+  "time": 1735718400000
+}
+```
+Your ruleset can be retrieved by API, and we recommend using target apps to scope the ruleset to only the experiments and feature gates you need on startup. If you need help, reach out to us in your Slack Channel or our [community Slack](https://statsig.com/slack).

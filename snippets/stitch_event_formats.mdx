@@ -1,0 +1,132 @@
+### Event Format
+
+Events will be sent in batches in a JSON format. The structure of a Statsig Event sent will look like the following:
+
+| Field           | Type   | Description                                                                                      |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------ |
+| event           | String | Name of the event provided                                                                       |
+| user            | JSON   | [Statsig User Object](/concepts/user)                             |
+| userId          | String | User ID provided                                                                                 |
+| stableId        | String | Stable ID                                                                                        |
+| timestamp       | Number | Timestamp in MS of the event                                                                     |
+| value           | String | Value of the event provided                                                                      |
+| metadata        | JSON   | Both custom metadata provided and metadata related to the logging of this event added by Statsig |
+
+#### Custom Event Formatting - logEvent
+
+>
+
+```json
+{
+  "userId": "a_user",
+  "stableId": "123",
+  "timestamp": 1655231253265,
+  "event": "my_custom_event",
+  "context": {
+    "user": {
+      "userID": "a_user",
+      "email": "a.user@email.com"
+    },
+    "value": "a_custom_value",
+    "metadata": {
+
+    },
+    "library": {
+      "name": "statsig",
+      "version": "1.0"
+    }
+  }
+}
+```
+
+#### Feature Gate Exposure Formatting - checkGate
+
+>
+
+```json
+{
+  "userId": "a_user",
+  "stableId": "123",
+  "timestamp": 1655231253265,
+  "event": "statsig::gate_exposure",
+  "context": {
+    "user": {
+      "userID": "a_user",
+      "email": "a.user@email.com"
+    },
+    "value": "",
+    "metadata": {
+      "gate": "a_gate",
+      "gateValue": "false",
+      "ruleID": "default",
+      "reason": "Network",
+      "time": "1655231249644"
+    },
+    "library": {
+      "name": "statsig",
+      "version": "1.0"
+    }
+  }
+}
+```
+
+#### Dynamic Config Exposure Formatting - getConfig
+
+>
+
+```json
+{
+  "userId": "a_user",
+  "stableId": "123",
+  "timestamp": 1655231253265,
+  "event": "statsig::config_exposure",
+  "context": {
+    "user": {
+      "userID": "a_user",
+      "email": "a.user@email.com"
+    },
+    "value": "",
+    "metadata": {
+      "config": "a_config",
+      "ruleID": "default",
+      "reason": "Network",
+      "time": "1655231249644"
+    },
+    "library": {
+      "name": "statsig",
+      "version": "1.0"
+    }
+  }
+}
+```
+
+#### Experiment Exposure Formatting - getExperiment
+
+>
+
+```json
+{
+  "userId": "a_user",
+  "stableId": "123",
+  "timestamp": 1655231253265,
+  "event": "statsig::experiment_exposure",
+  "context": {
+    "user": {
+      "userID": "a_user",
+      "email": "a.user@email.com"
+    },
+    "value": "",
+    "metadata": {
+      "config": "an_experiment",
+      "ruleID": "4SauZJcM1T7zNvh1igBjwE",
+      "reason": "Network",
+      "time": "1655231249644",
+      "experimentGroupName": "Control"
+    },
+    "library": {
+      "name": "statsig",
+      "version": "1.0"
+    }
+  }
+}
+```

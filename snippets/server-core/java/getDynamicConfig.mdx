@@ -1,0 +1,32 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+DynamicConfig config = statsig.getConfig(userID, "my_config");
+
+String name = config.getString("name", "");
+int size = config.getInt("size", 10);
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+DynamicConfig dynamicConfig = statsig.getConfig(user, "my_config");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val config = statsig.getConfig(userID, "my_config")
+
+val name = config.getString("name", "")
+val size = config.getInt("size", 10)
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+val dynamicConfig = statsig.getConfig(user, "my_config")
+```
+</CodeGroup>
+

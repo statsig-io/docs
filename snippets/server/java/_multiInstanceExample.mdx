@@ -1,0 +1,19 @@
+<Tabs>
+  <Tab title="Java">
+
+```java
+StatsigServer sdkInstance = new StatsigServer();
+Future initFuture = sdkInstance.initializeAsync(serverSecret, options);
+initFuture.get();
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```kotlin
+val statsigServer = StatsigServer.create()
+async { statsigServer.initialize(serverSecret, options) }.await()
+```
+
+  </Tab>
+</Tabs>

@@ -1,0 +1,89 @@
+<Tabs>
+<Tab title="Feature Gates">
+<CodeGroup>
+
+
+```swift Swift
+// Swift - Check without logging exposure
+let result = Statsig.checkGateWithExposureLoggingDisabled("a_gate_name")
+// ...
+// Later, when ready to log the exposure
+Statsig.manuallyLogGateExposure("a_gate_name")
+```
+
+```objc Objective-C
+// Objective C - Check without logging exposure
+bool result = [Statsig checkGateWithExposureLoggingDisabled:@"a_gate_name"];
+// ...
+// Later, when ready to log the exposure
+[Statsig manuallyLogGateExposure:@"a_gate_name"];
+```
+</CodeGroup>
+
+</Tab>
+<Tab title="Dynamic Configs">
+<CodeGroup>
+
+```swift Swift
+// Swift - Get config without logging exposure
+let config = Statsig.getConfigWithExposureLoggingDisabled("a_config_name")
+// ...
+// Later, when ready to log the exposure
+Statsig.manuallyLogConfigExposure("a_config_name")
+```
+
+```objc Objective-C
+// Objective C - Get config without logging exposure
+DynamicConfig *config = [Statsig getConfigWithExposureLoggingDisabled:@"a_config_name"];
+// ...
+// Later, when ready to log the exposure
+[Statsig manuallyLogConfigExposure:@"a_config_name"];
+```
+</CodeGroup>
+
+</Tab>
+<Tab title="Experiments">
+<CodeGroup>
+
+```swift Swift
+// Swift - Get experiment without logging exposure
+let experiment = Statsig.getExperimentWithExposureLoggingDisabled("an_experiment_name")
+// ...
+// Later, when ready to log the exposure
+Statsig.manuallyLogExperimentExposure("an_experiment_name")
+```
+
+```objc Objective-C
+// Objective C - Get experiment without logging exposure
+DynamicConfig *experiment = [Statsig getExperimentWithExposureLoggingDisabled:@"an_experiment_name"];
+// ...
+// Later, when ready to log the exposure
+[Statsig manuallyLogExperimentExposure:@"an_experiment_name"];
+```
+</CodeGroup>
+
+</Tab>
+<Tab title="Layers">
+<CodeGroup>
+
+```swift Swift
+// Swift - Get layer without logging exposure
+let layer = Statsig.getLayerWithExposureLoggingDisabled("a_layer_name")
+let result = layer.getValue(forKey: "a_parameter_name", defaultValue: "fallback")
+// ...
+// Later, when ready to log the exposure
+Statsig.manuallyLogLayerParameterExposure("a_layer_name", "a_parameter_name")
+```
+
+```objc Objective-C
+// Objective C - Get layer without logging exposure
+Layer *layer = [Statsig getLayerWithExposureLoggingDisabled:@"a_layer_name"];
+NSString *result = [layer getStringForKey:@"a_parameter_name" defaultValue:@"fallback"];
+// ...
+// Later, when ready to log the exposure
+[Statsig manuallyLogLayerParameterExposure:@"a_layer_name" parameterName:@"a_parameter_name"];
+```
+</CodeGroup>
+
+</Tab>
+</Tabs>

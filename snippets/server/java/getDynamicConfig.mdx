@@ -1,0 +1,14 @@
+<CodeGroup>
+```java Java
+DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
+String itemName = config.getString("product_name", "Awesome Product v1");
+double price = config.getDouble("price", 10.0);
+```
+
+```kotlin Kotlin
+val config = Statsig.getConfigSync(user, "awesome_product_details")
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+```
+</CodeGroup>
+

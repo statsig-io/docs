@@ -1,0 +1,82 @@
+Create a `StatsigOptions` class to pass in with the following available parameters:
+
+(unit of measure for time related options is seconds)
+
+<ResponseField name="tier" type="StatsigEnvironmentTier | str" default="None">
+  Sets the environment tier (for gates to evaluate differently in development and production)
+
+  You can set an environment tier with the `StatsigEnvironmentTier` enum or just as a `str`
+</ResponseField>
+
+<ResponseField name="timeout" type="int" default="None">
+  Enforces a minimum timeout on network requests from the SDK
+</ResponseField>
+
+<ResponseField name="init_timeout" type="int" default="None">
+  Sets the maximum timeout on download config specs and id lists network requests for initialization
+</ResponseField>
+
+<ResponseField name="rulesets_sync_interval" type="int" default="10">
+  How often the SDK updates rulesets from Statsig servers
+</ResponseField>
+
+<ResponseField name="idlists_sync_interval" type="int" default="60">
+  How often the SDK updates idlists from Statsig servers
+</ResponseField>
+
+<ResponseField name="local_mode" type="bool" default="False">
+  Disables all network requests. SDK returns default values and will not log events. Useful in combination with overrides to mock behavior for tests
+</ResponseField>
+
+<ResponseField name="bootstrap_values" type="str" default="null">
+  a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+</ResponseField>
+
+<ResponseField name="rules_updated_callback" type="typing.Callable" default="None">
+  a callback function that's called whenever we have an update for the rules; it's called with a logical timestamp and a JSON string (used as is for bootstrapValues mentioned above). Note that as of v0.6.0, this will be called from a background thread that the SDK uses to update config values.
+</ResponseField>
+
+<ResponseField name="event_queue_size" type="int" default="500">
+  The number of events to batch before flushing the queue to the network. Default 500.
+
+  Note that events are also batched every minute by a background thread
+</ResponseField>
+
+<ResponseField name="data_store" type="IDataStore" default="None">
+  A data store with custom storage behavior for config specs. Can be used to bootstrap Statsig server (takes priority over `bootstrap_values`).
+</ResponseField>
+
+<ResponseField name="proxy_configs" type="Optional[Dict[NetworkEndpoint, ProxyConfig]]" default="None">
+  Configuration network for each endpoint, for example, download_config_spec, get_id_lists
+</ResponseField>
+
+<ResponseField name="fallback_to_statsig_api" type="Optional[bool]" default="False">
+  Fallback to Statsig CDN for download config specs and get id lists if the overridden api failed.
+</ResponseField>
+
+<ResponseField name="initialize_sources" type="Optional[List[DataSource]]" default="None">
+  List of sources SDK tries to get download_config_specs from when initialize. The list is ordered, SDK tries to get source from first element, and stops when getting dcs successfully
+</ResponseField>
+
+<ResponseField name="config_sync_sources" type="Optional[List[DataSource]]" default="None">
+  List of sources SDK tries to get download_config_specs from when downloading. The list is ordered, SDK tries to get source from first element, and stops when getting dcs successfully
+</ResponseField>
+
+Example:
+
+```python
+from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
+
+options = StatsigOptions(None, StatsigEnvironmentTier.development)
+statsig.initialize("secret-key", options).wait()
+```
+
+You can also use the `set_environment_parameter` function, but that takes in string values only:
+
+```python
+from statsig import statsig, StatsigEnvironmentTier, StatsigOptions
+
+options = StatsigOptions()
+options.set_environment_parameter("tier", StatsigEnvironmentTier.development.value)
+statsig.initialize("secret-key", options).wait()
+```

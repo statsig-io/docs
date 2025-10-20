@@ -1,0 +1,14 @@
+```cpp
+DynamicConfig config = client.GetDynamicConfig("a_config");
+
+// or, use the shared instance
+
+DynamicConfig config = StatsigClient::Shared().GetDynamicConfig("a_config");
+
+// then access the params
+std::cout << config.GetValue()["a_string_param"] << std::endl;
+```
+
+<Info>
+DynamicConfig.GetValue returns JsonObj which is an unordered map of string to `nlohmann/json`. See https://github.com/nlohmann/json
+</Info>

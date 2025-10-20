@@ -1,0 +1,15 @@
+```dart
+// Values via getLayer
+
+var layer = Statsig.getLayer("user_promo_experiments");
+var promoTitle = layer.getString("title", "Welcome to Statsig!");
+var discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+var titleExperiment = Statsig.getExperiment("new_user_promo_title");
+var priceExperiment = Statsig.getExperiment("new_user_promo_price");
+
+var promoTitle = titleExperiment.get("title", "Welcome to Statsig!");
+var discount = priceExperiment.get("discount", 0.1);
+```

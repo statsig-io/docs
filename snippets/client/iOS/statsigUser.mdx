@@ -1,0 +1,39 @@
+
+<CodeGroup>
+```swift Swift
+let user = StatsigUser(
+  userID: "a-user-id",
+  email: "user@example.com",
+  ip: "192.168.1.1",
+  userAgent: "Mozilla/5.0",
+  country: "US",
+  locale: "en_US",
+  appVersion: "1.0.0",
+  custom: [
+    "plan": "premium",
+    "age": 25
+  ],
+  customIDs: [
+    "stableID": "stable-id-123"
+  ],
+  privateAttributes: [
+    "email": "private@example.com"
+  ]
+)
+```
+
+```objective-c Objective C
+StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"a-user-id"];
+user.email = @"user@example.com";
+user.ip = @"192.168.1.1";
+user.userAgent = @"Mozilla/5.0";
+user.country = @"US";
+user.locale = @"en_US";
+user.appVersion = @"1.0.0";
+user.custom = @{ @"plan": @"premium", @"age": @25 };
+user.customIDs = @{ @"stableID": @"stable-id-123" };
+user.privateAttributes = @{ @"email": @"private@example.com" };
+```
+</CodeGroup>
+
+

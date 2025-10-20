@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Brock's local from migration
+old_docs_urls.csv
+check_urls.py
+
+# Dependencies
+node_modules/
+
+# Mintlify local cache/build
+.mintlify/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build output
+.next/
+out/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Deployment (Vercel)
+.vercel/

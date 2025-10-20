@@ -1,0 +1,49 @@
+## Loading State
+
+Wait for the latest values during initialization with either the provider or the async hook.
+
+<Tabs>
+  <Tab title="StatsigProvider">
+
+```tsx
+import { StatsigProvider } from '@statsig/react-bindings';
+
+export function App() {
+  return (
+    <StatsigProvider
+      sdkKey="client-KEY"
+      user={{ userID: 'a-user' }}
+      loadingComponent={<div>Loading...</div>}
+    >
+      <YourComponent />
+    </StatsigProvider>
+  );
+}
+```
+
+  </Tab>
+  <Tab title="useClientAsyncInit">
+
+```tsx
+import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
+
+export function App() {
+  const { client, isLoading } = useClientAsyncInit(
+    'client-KEY',
+    { userID: 'a-user' },
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <StatsigProvider client={client}>
+      <YourComponent />
+    </StatsigProvider>
+  );
+}
+```
+
+  </Tab>
+</Tabs>

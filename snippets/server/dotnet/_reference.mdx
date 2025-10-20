@@ -1,0 +1,53 @@
+### Type StatsigUser
+
+```csharp
+public class StatsigUser
+{
+    public string? UserID
+    public string? Email
+    public string? IPAddress
+    public string? UserAgent
+    public string? Country
+    public string? Locale
+    public string? AppVersion
+
+    public StatsigUser()
+
+    public void AddCustomProperty(string key, object value)
+
+    public void AddPrivateAttribute(string key, object value)
+
+    public void AddCustomID(string idType, string value)
+}
+```
+
+### Type StatsigOptions
+
+```csharp
+// Shared with the .NET Client SDK
+public class StatsigOptions
+{
+    public string ApiUrlBase { get; }
+    public StatsigEnvironment StatsigEnvironment { get; }
+    public string? PersistentStorageFolder { get; set; }
+    public double RulesetsSyncInterval = 60;
+    public double IDListsSyncInterval = 60;
+    public int ClientRequestTimeoutMs = 0;
+
+    private Dictionary<string, string> _additionalHeaders;
+    private Func<IIDStore>? _idStoreFactory = null;
+
+    public StatsigOptions(string? apiUrlBase = null, StatsigEnvironment? environment = null)
+}
+
+// Server-specific options
+public class StatsigServerOptions : StatsigOptions
+{
+    public bool LocalMode;
+
+    public IDataStore DataStore;
+
+    public StatsigServerOptions(string? apiUrlBase = null, StatsigEnvironment? environment = null) : base(
+        apiUrlBase, environment)
+}
+```

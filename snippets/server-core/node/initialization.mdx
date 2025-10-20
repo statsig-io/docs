@@ -1,0 +1,14 @@
+```jsx
+// Basic initialization
+import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
+//Or, in common JS, const { Statsig, StatsigUser } = require('@statsig/statsig-node-core');
+
+const statsig = new Statsig("secret-key");
+await statsig.initialize();
+
+// or with StatsigOptions
+const options: StatsigOptions = { environment: "staging" };
+
+const statsigWithOptions = new Statsig("secret-key", options);
+await statsigWithOptions.initialize();
+```

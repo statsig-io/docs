@@ -1,0 +1,36 @@
+### Partial User Matching
+
+Use `customUserCacheKeyFunc` with `updateUserSync` when you need to enrich a user locally without triggering a full network refresh.
+
+```tsx
+const originalUser = {
+  customIDs: {
+    analyticsID: 'analytics-123',
+  },
+};
+
+const customKey = (sdkKey: string, user: StatsigUser) => {
+  const analyticsID = user.customIDs?.analyticsID ?? 'anonymous';
+  return `sdkKey:${sdkKey}:analyticsID:${analyticsID}`;
+};
+
+const client = new StatsigClient('client-xyz', originalUser, {
+  customUserCacheKeyFunc: customKey,
+});
+
+await client.initializeAsync();
+
+someAsyncFunction().then((newData) => {
+  const enrichedUser = {
+    ...originalUser,
+    userID: newData.userID,
+    email: newData.email,
+  };
+
+  client.updateUserSync(enrichedUser);
+});
+```
+
+<Warning>
+Custom cache keys can produce stale or incorrect evaluations if multiple users map to the same key. Await `updateUserAsync` when you need guaranteed fresh values per user.
+</Warning>

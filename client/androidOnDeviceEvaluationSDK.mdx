@@ -1,0 +1,113 @@
+---
+title: Android On Device Evaluation SDK
+sidebarTitle: Android
+description: Statsig's Android SDK for on-device evaluation.
+icon: "android"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGateIntro from '/snippets/client/checkGate.mdx'
+import getDynamicConfigIntro from '/snippets/client/getDynamicConfig.mdx'
+import getExperimentLayerIntro from '/snippets/client/getExperimentLayer.mdx'
+import logEventIntro from '/snippets/client/logEvent.mdx'
+import statsigUserIntro from '/snippets/client/statsigUser.mdx'
+import statsigOptionsIntro from '/snippets/client/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+
+import OnDeviceEvalProsAndCons from '/snippets/local-eval/onDeviceEvalProsAndCons.mdx'
+import DCSScope from '/snippets/local-eval/dcsScope.mdx'
+import { StatsigUserNotes } from '/snippets/local-eval/statsigUserNotes.mdx'
+
+import AndroidInstallation from '/snippets/local-eval/android/_install.mdx'
+import AndroidInitialize from '/snippets/local-eval/android/_initialize.mdx'
+import AndroidCheckGate from '/snippets/local-eval/android/_checkGate.mdx'
+import AndroidGetConfig from '/snippets/local-eval/android/_getConfig.mdx'
+import AndroidGetExperiment from '/snippets/local-eval/android/_getExperiment.mdx'
+import AndroidLogEvent from '/snippets/local-eval/android/_logEvent.mdx'
+import AndroidOptions from '/snippets/local-eval/android/_options.mdx'
+import AndroidShutdown from '/snippets/local-eval/android/_shutdown.mdx'
+import AndroidPostInitSyncing from '/snippets/local-eval/android/_postInitSyncing.mdx'
+import AndroidGlobalUser from '/snippets/local-eval/android/_globalUser.mdx'
+import AndroidUsingPersistentValues from '/snippets/local-eval/android/_usingPersistentValues.mdx'
+import AndroidLocalOverrides from '/snippets/local-eval/android/_localOverrides.mdx'
+import AndroidFaqs from '/snippets/local-eval/android/_faqs.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/android-local-eval" target="_blank" rel="noreferrer">statsig-io/android-local-eval</a>
+</Callout>
+
+<OnDeviceEvalProsAndCons sdkName="AndroidOnDeviceEvaluations" />
+
+## Set Up the SDK
+
+<Steps>
+  <Step title="Install the SDK">
+    <Installation />
+    <AndroidInstallation />
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization />
+    
+    <DCSScope />
+
+    <AndroidInitialize />
+  </Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGateIntro />
+<AndroidCheckGate />
+
+<getDynamicConfigIntro />
+<AndroidGetConfig />
+
+<getExperimentLayerIntro />
+<AndroidGetExperiment />
+
+<logEventIntro />
+<AndroidLogEvent />
+
+### Code Examples
+
+Working sample apps are available in the repository:
+
+- [Java & Kotlin Examples](https://github.com/statsig-io/android-local-eval/tree/main/samples)
+
+<statsigUserIntro />
+
+<StatsigUserNotes sdkName="Android" />
+
+<AndroidGlobalUser />
+
+<statsigOptionsIntro />
+
+<AndroidOptions />
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown />
+<AndroidShutdown />
+
+<AndroidPostInitSyncing />
+
+<AndroidUsingPersistentValues />
+
+<AndroidLocalOverrides />
+
+## FAQs
+
+<AndroidFaqs />
+
+<AccordionGroup>
+  <Accordion title="How do I run experiments for logged out users?">
+    See the guide on [device level experiments](/guides/first-device-level-experiment).
+  </Accordion>
+</AccordionGroup>
+
+## Additional Resources
+
+- [On-Device Evaluation SDK Overview](/client/onDevice)
+- [Client Keys with Server Permissions](/sdk-keys/api-keys/#client-keys-with-server-permissions)
+- [Debugging SDK Evaluations](/sdk/debugging)

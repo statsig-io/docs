@@ -1,0 +1,30 @@
+#### How can I mock Statsig for testing?
+
+First, there is a `StatsigOptions` parameter called `localMode`.
+Setting `localMode` to true will cause the SDK to never hit the network,
+and only return default values. This is perfect for dummy environments or
+test environments that should not access the network.
+
+Next, there are the `overrideGate` and `overrideConfig` APIs on the global `Statsig` interface, see [Local Overrides](#local-overrides).
+
+These can be used to set a gate or config value to be be returned for the given name.
+
+We suggest you enable `localMode` and then override gates/configs to specific values to test the various code flows you are building.
+
+You can view [LocalOverridesTest](https://github.com/statsig-io/java-server-sdk/blob/main/src/test/java/com/statsig/sdk/LocalOverridesTest.kt) to see overrides being used in test.
+
+#### How can I bootstrap an on-device evaluation sdk?
+
+If you are using a client on-device evaluation SDK, it consumes the same payload as Statsig server SDKs to do local evaluation.
+
+The Java Server SDK [v1.31.0+](https://github.com/statsig-io/java-server-sdk/releases/tag/1.31.0) exposes this payload via:
+
+```
+getOnDeviceEvalInitializeResponse(clientSDKKey: String? = null): Map<String, Any>
+```
+
+The method returns a map which is the JSON payload that a client SDK will need to initialize synchronously.
+
+You can use the `clientSDKKey` parameter to get the initialize response for a specific client key.  This enables you to use [Target Apps](/sdk-keys/target-apps) to filter down the list of gates/configs/experiments/layers accessible by that client key.  If not specified, the entire payload the server is operating with will be returned.
+
+You can then use the synchronous initialization method on the client SDK to initialize with this payload.

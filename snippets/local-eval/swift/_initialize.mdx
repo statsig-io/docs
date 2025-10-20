@@ -1,0 +1,79 @@
+<CodeGroup>
+
+```swift Async (Swift)
+import StatsigOnDeviceEvaluations
+
+// (optional) Configure the SDK if needed
+let opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+Statsig.shared.initialize("client-sdk-key", options: opts) { err in
+    if let err = err {
+        print("Error \(err)")
+    }
+}
+
+// or, create your own instance
+
+let myStatsigInstance = Statsig()
+myStatsigInstance.initialize("client-sdk-key", options: opts) { err in
+    if let err = err {
+        print("Error \(err)")
+    }
+}
+```
+
+```objective-c Objective C
+StatsigOptions *options = [StatsigOptions new];
+
+StatsigEnvironment *env = [StatsigEnvironment new];
+env.tier = @"staging";
+options.environment = env;
+
+[[Statsig sharedInstance] 
+  initializeWithSDKKey:@"client-sdk-key"
+  options:options
+  completion:^(NSError * _Nullable error) {
+    if (error != nil) {
+        NSLog(@"Error %@", error);
+    }
+}];
+```
+
+```swift Synchronous (Swift)
+import StatsigOnDeviceEvaluations
+
+// (optional) Configure the SDK if needed
+let opts = StatsigOptions()
+opts.environment.tier = "staging"
+
+let specs: NSString = "..." // JSON string of your configurations
+
+let error = client.initializeSync("client-sdk-key", initialSpecs: specs)
+if let err = error {
+    print("Error \(err)")
+}
+```
+
+</CodeGroup>
+
+It is possible to configure the SDK to use cached values if they are newer than the local file. 
+This can be useful if you ship your app with a local file, but would like it to only be used for the first session. 
+In the following example, the SDK will only use initialSpecs if there is no cache or if the cache is older than initialSpecs.
+
+```swift
+let options = StatsigOptions()
+options.useNewerCacheValuesOverProvidedValues = true
+
+client.initializeSync(
+  "client-sdk-key", 
+  initialSpecs: specs,
+  options: options
+)
+```
+
+<Note>
+You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
+</Note>
+
+

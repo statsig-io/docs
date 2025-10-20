@@ -1,0 +1,12 @@
+<CodeGroup>
+```erlang Erlang
+User = #{<<"userID">> => <<"user-id">>},
+GateValue = statsig:check_gate(User, <<"gate_name">>).
+```
+
+```elixir Elixir
+user = %{"userID" => "user-id"}
+gate_value = Statsig.check_gate(user, "gate_name")
+```
+</CodeGroup>
+

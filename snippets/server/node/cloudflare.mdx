@@ -1,0 +1,31 @@
+## Cloudflare Workers Setup
+
+### Polling for updates
+
+The SDK cannot poll for updates across requests since Cloudflare does not allow for timers. 
+
+To solve for this, a manual sync API is available for independently updating the SDK internal store.
+
+```javascript
+if (env.lastSyncTime < Date.now() - env.syncInterval) {
+  env.lastSyncTime = Date.now();
+  context.waitUntil(Statsig.syncConfigSpecs());
+}
+```
+
+### Flushing events
+
+The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling `flush` using [`context.waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#contextwaituntil).
+This will keep the request handler alive until events are flushed without blocking the response.
+
+```javascript
+context.waitUntil(Statsig.flush());
+```
+
+### Node.JS Compatibility
+
+Many native JavaScript API and Node standard libraries can be accessed in Cloudflare via the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+
+The SDK is now compatible with `nodejs_compat` (since v5.16.0). In older versions, manual polyfilling is required.
+
+

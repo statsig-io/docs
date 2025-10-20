@@ -1,0 +1,101 @@
+import LocalModeSnippet from '/snippets/server/localModeSnippet.mdx'
+
+You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client.
+
+<ResponseField name="initTimeoutMs" type="double" default="3000">
+  Milliseconds to wait for the initial network request before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes. Set to `0` to wait indefinitely for the latest values.
+</ResponseField>
+
+<ResponseField name="environment tier" type="string" default="null">
+  Used to signal the environment tier the user is currently in. E.g. passing in a value of `"staging"` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+  
+  Example:
+  ```kotlin
+  val options = StatsigOptions()
+  options.setTier("staging")
+  ```
+</ResponseField>
+
+<ResponseField name="bootstrapValues" type="string?" default="null">
+  A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+</ResponseField>
+
+<ResponseField name="rulesUpdatedCallback" type="((rules: String) -> Unit)?" default="null">
+  A callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp.
+</ResponseField>
+
+<ResponseField name="localMode" type="boolean" default="false">
+  <LocalModeSnippet />
+</ResponseField>
+
+<ResponseField name="api" type="String?" default="null">
+  The API endpoint to use for initialization and logging. Defaults to `STATSIG_API_URL_BASE`.
+</ResponseField>
+
+<ResponseField name="rulesetsSyncIntervalMs" type="Long" default="10000">
+  How often the SDK updates rulesets from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="idListsSyncIntervalMs" type="Long" default="60000">
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="dataStore" type="IDataStore">
+  A data store with custom storage behavior for config specs. See [Data Store/Adapter Concept](/server/concepts/data_store).
+</ResponseField>
+
+<ResponseField name="userPersistentStorage" type="IUserPersistentStorage" default="null">
+  A persistent storage adapter for running sticky experiments. See [Persistent Assignment](/server/concepts/persistent_assignment).
+</ResponseField>
+
+<ResponseField name="customLogger" type="LoggerInterface">
+  Custom logger implementation for SDK logging.
+</ResponseField>
+
+<ResponseField name="disableAllLogging" type="Boolean" default="false">
+  Disable all event logging.
+</ResponseField>
+
+<ResponseField name="fallbackToStatsigAPI" type="Boolean" default="false">
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters fail to load configurations.
+</ResponseField>
+
+<ResponseField name="proxyConfig" type="ProxyConfig">
+  Configuration for a proxy server.
+</ResponseField>
+  
+  ```kotlin
+    /**
+    * Represents configuration for a proxy.
+    *
+    * @property proxyHost The hostname or IP address of the proxy server.
+    * @property proxyPort The port number of the proxy server.
+    * @property proxyAuth Optional: Authentication credentials for the proxy server. 
+    *                     Pass in `Credentials.basic("username", "password")`.
+    * @property proxySchema The protocol scheme used by the proxy server. Defaults to "https".
+    */
+    data class ProxyConfig @JvmOverloads constructor(
+        var proxyHost: String,
+        var proxyPort: Int,
+        var proxyAuth: String? = null,
+        val proxySchema: String = "https"
+    )
+  
+  ```
+
+**Example Usage**
+
+```java
+import okhttp3.Credentials;
+
+// Create a ProxyConfig object With Auth
+ProxyConfig proxyConfigWithAuth = new ProxyConfig("localhost", 8080, Credentials.basic("username", "password"), "https");
+
+// Create a ProxyConfig object Without Auth
+ProxyConfig proxyConfig = new ProxyConfig("localhost", 8080);
+
+StatsigOptions options = new StatsigOptions();
+options.setProxyConfig(proxyConfig);
+Future initFuture = Statsig.initializeAsync(apiKey, options);
+initFuture.get();
+```

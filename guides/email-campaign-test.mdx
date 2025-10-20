@@ -1,0 +1,26 @@
+---
+sidebarTitle: A/B Test Email Campaigns
+title: A/B Test Email Campaigns
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-09-18
+---
+
+A/B Testing an email campaign and getting experiment results on downstream product metrics (in addition to top level email interaction metrics), is a common use case for Statsig customers. Email marketing tools often have native A/B testing capabilities, but are limited to measuring email open rates or link click rates. 
+Note: these generic patterns can be used across almost any email marketing tool (Braze, Customer.io, Sendgrid and Salesforce Marketing Cloud). In some cases, we have more specific integrations that simplify this workflow like with [Customer.io](https://docs.statsig.com/guides/customer-io-email-abtest/). 
+
+
+Two common patterns used on Statsig are:
+
+#### 1. Do assignments in the marketing automation tool, do analysis in Statsig (requires Statsig WHN)
+Use Case: The marketing automation tools only measures email open/click through rates; but what is useful to measure is impact on product usage.\
+Solution: Use the email automation tool to bucket users into Control/Test. Write these assignments into a table in your warehouse. Statsig Warehouse Native can use this table as the list of assignments for the experiment and can analyze experiment impact using the full catalog of business/product metrics configured on Statsig.
+
+Visit [this guide](/statsig-warehouse-native/guides/email-experiments) for more best practices with Email Experimentation using Warehouse Native.
+
+#### 2. Do assignments and analysis using Statsig
+Use Case: Want email campaigns to be coordinated with in-app messaging/promotions (like access to a certain promotion).\
+Solution: Call the Statsig SDK to assign each user into Control/Test and use that in the email marketing system (e.g. Salesforce Marketing Cloud lets you create a custom extension to do this). You can either perform a bulk evaluation for a list of email addresses selected for a campaign (using a Python script + Statsig Python SDK) or call the SDK one by one. This works both on Statsig Warehouse Native and Statsig Cloud.
+
+If you're using a script to call the Python SDK, this is very performant. Remember to either `flush()` or `shutdown()` the SDK before exiting the script so the exposures get logged to Statsig. You can verify these were flushed on the Diagnostics page of your experiment.

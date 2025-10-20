@@ -1,0 +1,9 @@
+:::info
+The Erlang SDK currently only supports get_experiment. If you need the get_layer, please let us know
+:::
+
+```erlang
+User = #{<<"userID">> => UserID},
+Experiment = statsig:get_experiment(User, ExperimentName),
+EnableFeature = maps:get(<<"feature_enabled">>, Experiment, false),
+```

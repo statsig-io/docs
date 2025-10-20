@@ -1,0 +1,158 @@
+## Requirements
+
+- Java 8 or higher (Java 8 support added in version 0.4.3)
+- Compatible with all platforms listed in the Supported OS and Architecture Combinations section, including:
+  - macOS (x86_64, arm64)
+  - Windows (x86_64)
+  - Amazon Linux 2 and 2023 (x86_64, arm64)
+
+## Overview
+
+The Statsig Java SDK can be installed in two ways:
+
+**Recommended: Single JAR installation** (since version 0.4.0)
+- Use the "uber" JAR which contains both the core library and popular platform-specific native libraries in a single package
+- Simplifies dependency management and deployment across different environments
+
+**Advanced: Two-part installation**
+1. The platform-independent core library
+2. An OS/architecture-specific native library for your specific platform
+
+## Installation Steps
+
+### Recommended: Using the Uber JAR (All-in-One)
+
+Since version 0.4.0, Statsig provides an "uber" JAR that contains both the core library and native libraries for popular supported platforms in a single package. This is the recommended approach for most users.
+
+<CodeGroup>
+```groovy Gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X:uber' // Uber JAR with all native libraries
+}
+```
+
+```xml Maven
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>uber</classifier>
+    </dependency>
+</dependencies>
+```
+</CodeGroup>
+
+You can find the latest version on [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore).
+
+The uber JAR includes native libraries for:
+- Linux (x86_64, arm64)
+- macOS (x86_64, arm64)
+- Windows (x86_64)
+
+This approach eliminates the need to specify the exact platform and simplifies deployment across different environments.
+
+### Advanced: Platform-Specific Installation
+
+If you need more control over dependencies or want to minimize the JAR size for a specific platform, you can use the platform-specific installation approach.
+
+<Steps>
+<Step title="Install Core Library">
+<CodeGroup>
+```groovy Gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X'  // Replace X.X.X with the latest version
+}
+```
+
+```xml Maven
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>  <!-- Replace X.X.X with the latest version -->
+    </dependency>
+</dependencies>
+```
+</CodeGroup>
+
+You can find the latest version on [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore).
+</Step>
+
+<Step title="Install Platform-Specific Library">
+You need to add the appropriate OS/architecture-specific dependency. Choose one of the following methods:
+
+**Method 1: Automatic Detection**
+
+Run the following code to detect your system and get the appropriate dependency:
+
+```java
+import com.statsig.*;
+
+// All StatsigOptions are optional, feel free to adjust them as needed
+StatsigOptions options = new StatsigOptions.Builder().build();
+
+Statsig statsig = new Statsig("your-secret-key", options);
+```
+
+You'll receive output similar to:
+
+```
+For Linux with arm64 architecture, add the following to build.gradle:
+  implementation 'com.statsig:javacore:<version>:aarch64-unknown-linux-gnu'
+
+For Linux with x86_64 architecture, add the following to build.gradle:
+  implementation 'com.statsig:javacore:<version>:x86_64-unknown-linux-gnu'
+```
+
+**Method 2: Manual Configuration**
+
+<CodeGroup>
+```groovy Gradle
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X'  // Core SDK (from Step 1)
+    implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE' // OS/architecture-specific dependency
+}
+```
+
+```xml Maven
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+    </dependency>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>YOUR-OS-ARCHITECTURE</classifier>
+    </dependency>
+</dependencies>
+```
+</CodeGroup>
+
+Replace `YOUR-OS-ARCHITECTURE` with one of the supported combinations from the Supported OS and Architecture Combinations section.
+</Step>
+</Steps>
+
+<Warning>
+**Docker Considerations for Alpine Linux**
+
+When using Alpine Linux or other musl-based Docker containers, you need to install additional compatibility packages for the native libraries to work properly. Add the following to your Dockerfile:
+
+```dockerfile
+RUN apk add --no-cache libgcc gcompat
+```
+
+The Statsig Java Core SDK automatically detects musl-based systems and will use the appropriate musl-compatible native libraries (e.g., `x86_64-unknown-linux-musl`, `aarch64-unknown-linux-musl`).
+</Warning>
+

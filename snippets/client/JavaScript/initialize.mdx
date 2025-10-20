@@ -1,0 +1,15 @@
+```tsx
+import { StatsigClient } from '@statsig/js-client';
+
+const client = new StatsigClient(
+  'client-xyz',
+  { userID: 'a-user' },
+  {
+    environment: { tier: 'development' },
+  },
+);
+
+await client.initializeAsync();
+```
+
+Use `initializeAsync` when you need to await the latest values. For a non-blocking approach, you can call `initializeAsync()` without awaiting and rely on cached values until the promise resolves.

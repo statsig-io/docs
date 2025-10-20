@@ -1,0 +1,31 @@
+<CodeGroup>
+
+```swift Swift
+let user = StatsigUser(
+    userID: "a-user",
+    customIDs: ["EmployeeID": "an-employee"],
+    email: "user@statsig.io",
+    ip: "58.84.239.246",
+    userAgent: "Mozilla/5.0 (iPad; CPU OS 13_4_1....",
+    country: "NZ",
+    locale: "en_NZ",
+    appVersion: "3.2.1",
+    custom: ["Level": "9001"],
+    privateAttributes: ["SensitiveInfo": "shhh"]
+)
+```
+
+```objective-c Objective C
+StatsigUser *user = [StatsigUser userWithUserID:@"a-user"];
+user.customIDs = @{ @"EmployeeID": @"an-employee" };
+user.email = @"user@statsig.io";
+user.ip = @"58.84.239.246";
+user.userAgent = @"Mozilla/5.0 (iPad; CPU OS 13_4_1....";
+user.country = @"NZ";
+user.locale = @"en_NZ";
+user.appVersion = @"3.2.1";
+[user.custom setString:@"9001" forKey:@"Level"];
+[user.privateAttributes setString:@"shhh" forKey:@"SensitiveInfo"];
+```
+
+</CodeGroup>

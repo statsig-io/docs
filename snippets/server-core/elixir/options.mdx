@@ -1,0 +1,84 @@
+<Accordion title="StatsigOptions">
+
+<ResponseField name="environment" type="string">
+  The environment you're operating in (e.g., Production)
+</ResponseField>
+
+<ResponseField name="output_log_level" type="string">
+  The type of logs you'd like exposed. (e.g., Debug)
+</ResponseField>
+
+<ResponseField name="init_timeout_ms" type="number">
+  How long it should take for initialization to time out.
+</ResponseField>
+
+<ResponseField name="event_logging_flush_interval_ms" type="number">
+  How often events should flush to the Statsig servers.
+</ResponseField>
+
+<ResponseField name="event_logging_max_queue_size" type="number">
+  How many events should be buffered before flushing to the Statsig servers.
+</ResponseField>
+
+<ResponseField name="log_event_url" type="string">
+  The URL events should be logged to
+</ResponseField>
+
+<ResponseField name="specs_sync_interval_ms" type="number">
+  How often specs should sync from the Statsig servers
+</ResponseField>
+
+<ResponseField name="specs_url" type="string">
+  The URL Statsig should download specs from
+</ResponseField>
+
+<ResponseField name="enable_id_lists" type="boolean" default="false">
+  Enable ID list download. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+</ResponseField>
+
+<ResponseField name="id_lists_url" type="string">
+  The URL ID lists should be downloaded from
+</ResponseField>
+
+<ResponseField name="id_lists_sync_interval_ms" type="number">
+  How often ID lists should be synced.
+</ResponseField>
+
+<ResponseField name="wait_for_country_lookup_init" type="boolean" default="false">
+  Block initialization call until country lookup is initialized
+</ResponseField>
+
+<ResponseField name="wait_for_user_agent_init" type="boolean" default="false">
+  Block initialization call until user_agent is initialized
+</ResponseField>
+
+<ResponseField name="disable_all_logging" type="boolean" default="false">
+  When `true`, disables all event logging.
+</ResponseField>
+
+<ResponseField name="disable_country_lookup" type="boolean" default="false">
+  To improve memory usage, disable using country lookup.
+</ResponseField>
+
+<ResponseField name="disable_network" type="boolean" default="false">
+  Turn off all network requests including get_dcs and log_events
+</ResponseField>
+
+<ResponseField name="disable_user_agent_parsing" type="boolean" default="false">
+  To improve memory usage, disable using user agent parsing.
+</ResponseField>
+
+---
+
+```elixir
+# Initialize StatsigOptions with custom parameters
+statsig_options = %StatsigOptions{
+  enable_id_lists: true
+}
+
+# Pass the options object into statsig.initialize()
+{:ok, _} = Statsig.start_link(sdk_key, statsig_options)
+Statsig.initialize()
+```
+
+</Accordion>

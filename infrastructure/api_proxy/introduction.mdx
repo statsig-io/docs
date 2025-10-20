@@ -1,0 +1,34 @@
+---
+title: API Proxy
+keywords:
+  - owner:eric
+last_update:
+  date: 2025-09-18
+---
+
+This section provides documentation on the various API proxy options supported when using Statsig.
+
+## Why Use an API Proxy?
+
+There are several compelling reasons to implement an API proxy for Statsig network requests:
+
+1. **Mitigate Tracking Blocker Impact**: Reduce the effect of tracking blockers on Statsig API usage.
+2. **Meet Security Requirements**: Comply with internal network security and topology standards.
+3. **Enhance API Availability**: Improve API availability guarantees within your internal network boundary.
+
+## API Proxy Deployment Options
+
+API proxies can be deployed in various forms, each with its own advantages and considerations. The choice between a managed service and a self-hosted solution, or deploying outside versus inside your network, depends on your specific needs.
+
+We offer documentation on the following options.
+
+For both server SDKs and client SDKs:
+
+- [Custom Proxy](/custom_proxy): A fully customizable proxy that you own and operate in your environment.
+- [Managed Proxy](/infrastructure/managed-proxy): A lightweight, Statsig-owned proxy that provides out-of-the-box functionality.
+
+For server SDKs only:
+
+- [Forward Proxy](/server/concepts/forward_proxy): A Statsig-built proxy designed for deployment within your own environment.
+
+Choose the option that best aligns with your infrastructure requirements and operational preferences. If you have any questions/concerns, drop on in to our [slack channel](https://www.statsig.com/slack) and let us know.

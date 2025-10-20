@@ -1,0 +1,15 @@
+```tsx
+// Reading values via getLayer
+const layer = client.getLayer('user_promo_experiments');
+const promoTitle = layer.get('title', 'Welcome to Statsig!');
+const discount = layer.get('discount', 0.1);
+```
+
+```tsx
+// Reading values via getExperiment
+const titleExperiment = client.getExperiment('new_user_promo_title');
+const priceExperiment = client.getExperiment('new_user_promo_price');
+
+const experimentTitle = titleExperiment.value.title ?? 'Welcome to Statsig!';
+const experimentDiscount = priceExperiment.value.discount ?? 0.1;
+```

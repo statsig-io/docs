@@ -1,0 +1,14 @@
+### Typed Getters
+
+`Layer`, `Experiment`, and `DynamicConfig` objects support a typed `get` method. Using a fallback that matches the expected type helps avoid returning unintended values.
+
+```tsx
+// config value: { "my_value": 1 }
+const dynamicConfig = client.getDynamicConfig('a_config');
+
+const fallbackString = dynamicConfig.get('my_value', 'fallback'); // returns 'fallback'
+const fallbackNumber = dynamicConfig.get('my_value', 0); // returns 1
+const rawValue = dynamicConfig.get('my_value'); // returns 1
+```
+
+Passing a fallback of the wrong type returns that fallback. When type safety is not needed, omit the fallback to receive the raw value.

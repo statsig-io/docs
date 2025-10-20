@@ -1,0 +1,6 @@
+<!--
+  tags: ["add","create","action","UI"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M10.625 3.625a.625.625 0 1 0-1.25 0v5.75h-5.75a.625.625 0 1 0 0 1.25h5.75v5.75a.625.625 0 1 0 1.25 0v-5.75h5.75a.625.625 0 1 0 0-1.25h-5.75v-5.75Z"/>
+</svg>

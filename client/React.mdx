@@ -1,0 +1,90 @@
+---
+title: React Client SDK
+sidebarTitle: React
+description: Use Statsig in React apps with hooks, providers, and optional plugins for session replay and auto capture.
+icon: "react"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGateIntro from '/snippets/client/checkGate.mdx'
+import getDynamicConfigIntro from '/snippets/client/getDynamicConfig.mdx'
+import getExperimentLayerIntro from '/snippets/client/getExperimentLayer.mdx'
+import logEventIntro from '/snippets/client/logEvent.mdx'
+
+import ReactInstallation from '/snippets/client/React/installation.mdx'
+import ReactSetup from '/snippets/client/React/setup.mdx'
+import ReactGettingClient from '/snippets/client/React/gettingClient.mdx'
+import ReactCheckGate from '/snippets/client/React/checkGate.mdx'
+import ReactGetConfig from '/snippets/client/React/getDynamicConfig.mdx'
+import ReactGetExperiment from '/snippets/client/React/getExperiment.mdx'
+import ReactGetLayer from '/snippets/client/React/getLayer.mdx'
+import ReactLogEvent from '/snippets/client/React/logEvent.mdx'
+import ReactUpdateUser from '/snippets/client/React/updateUser.mdx'
+import ReactLoadingState from '/snippets/client/React/loadingState.mdx'
+import ReactHooks from '/snippets/client/React/hooks.mdx'
+import ReactTesting from '/snippets/client/React/testing.mdx'
+import ReactSessionReplay from '/snippets/client/React/sessionReplay.mdx'
+import ReactPersistentValues from '/snippets/client/React/persistentValues.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import JSStatsigOptions from '/snippets/client/JavaScript/statsigOptions.mdx'
+import paramStores from '/snippets/client/paramStores.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="_blank" rel="noreferrer">statsig-io/js-client-monorepo</a>
+</Callout>
+
+## Set Up the SDK
+
+<Steps>
+  <Step title="Install the SDK">
+    <Installation />
+    <ReactInstallation />
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization />
+    <ReactSetup />
+  </Step>
+</Steps>
+
+## Use the SDK
+
+<ReactGettingClient />
+
+<checkGateIntro />
+<ReactCheckGate />
+
+<getDynamicConfigIntro />
+<ReactGetConfig />
+
+<getExperimentLayerIntro />
+<ReactGetExperiment />
+<ReactGetLayer />
+
+<logEventIntro />
+<ReactLogEvent />
+
+<paramStores />
+
+## Manage Users
+
+<ReactUpdateUser />
+
+<ReactLoadingState />
+
+<ReactHooks />
+
+<statsigOptions />
+<JSStatsigOptions />
+
+<ReactTesting />
+
+<ReactSessionReplay />
+
+<ReactPersistentValues />
+
+## Additional Resources
+
+- [Initialization Concepts](/client/concepts/initialize)
+- [JavaScript Client SDK](/client/javascript-sdk)
+- [Persistent Assignment](/client/concepts/persistent_assignment)

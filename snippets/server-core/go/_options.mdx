@@ -1,0 +1,87 @@
+### Parameters
+
+<ResponseField name="SpecsUrl" type="string">
+  Custom URL for fetching feature specifications.
+</ResponseField>
+
+<ResponseField name="LogEventUrl" type="string">
+  Custom URL for logging events.
+</ResponseField>
+
+<ResponseField name="Environment" type="string">
+  Environment parameter for evaluation.
+</ResponseField>
+
+<ResponseField name="EventLoggingFlushIntervalMs" type="number">
+  How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="EventLoggingMaxQueueSize" type="number">
+  Maximum number of events to queue before forcing a flush.
+</ResponseField>
+
+<ResponseField name="SpecsSyncIntervalMs" type="number">
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="OutputLogLevel" type="string">
+  Controls the verbosity of SDK logs.
+</ResponseField>
+
+<ResponseField name="DisableCountryLookup" type="boolean">
+  Disables country lookup based on IP address. Set to `true` to improve performance if country-based targeting is not needed.
+</ResponseField>
+
+<ResponseField name="DisableUserAgentParsing" type="boolean">
+  Disables user agent parsing. Set to `true` to improve performance if device/browser-based targeting is not needed.
+</ResponseField>
+
+<ResponseField name="WaitForCountryLookupInit" type="boolean" default="false">
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time.
+</ResponseField>
+
+<ResponseField name="WaitForUserAgentInit" type="boolean" default="false">
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+</ResponseField>
+
+<ResponseField name="DisableAllLogging" type="boolean" default="false">
+  When set to true, the SDK will not log any events or exposures.
+</ResponseField>
+
+<ResponseField name="InitTimeoutMs" type="number" default="3000">
+  Maximum time in milliseconds to wait for SDK initialization to complete. If initialization takes longer than this timeout, the SDK will continue to operate but may return default values until initialization completes.
+</ResponseField>
+
+<ResponseField name="FallbackToStatsigApi" type="boolean" default="false">
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
+</ResponseField>
+
+---
+
+### Example Options Usage
+
+```go expandable
+import (
+    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
+)
+
+// Initialize StatsigOptions with custom parameters
+options := statsig.NewStatsigOptionsBuilder().
+		WithSpecsUrl("https://example.com/specsUrl").
+		WithLogEventUrl("https://example.com/logUrl").
+		WithEnvironment("production").
+		WithEventLoggingFlushIntervalMs(2000).
+		WithEventLoggingMaxQueueSize(5000).
+		WithSpecsSyncIntervalMs(1000).
+		WithOutputLogLevel("DEBUG").
+		WithDisableCountryLookup(true).
+		WithDisableUserAgentParsing(true).
+		WithWaitForCountryLookupInit(false).
+		WithInitTimeoutMs(3000).
+		WithFallbackToStatsigApi(false).
+		Build()
+
+// Pass the options object when initializing the Statsig client
+s, err := statsig.NewStatsig("secret-key", *options)
+s.Initialize()
+```

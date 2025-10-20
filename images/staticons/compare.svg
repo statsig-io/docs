@@ -1,0 +1,6 @@
+<!--
+  tags: ["experimentation","analysis","metrics","A/B-testing"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M12.184 9.252a.63.63 0 0 1-.891 0L8.266 6.225a.63.63 0 0 1 0-.891l3.027-3.027a.63.63 0 0 1 .891.89L10.233 5.15h6.51a.63.63 0 1 1 0 1.26h-6.51l1.951 1.951a.63.63 0 0 1 0 .892ZM7.816 10.74a.63.63 0 0 1 .892 0l3.027 3.027a.63.63 0 0 1 0 .89l-3.027 3.028a.63.63 0 0 1-.892-.892l1.952-1.95h-6.51a.63.63 0 1 1 0-1.261h6.51l-1.952-1.951a.63.63 0 0 1 0-.891Z" clip-rule="evenodd"/>
+</svg>

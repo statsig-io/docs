@@ -1,0 +1,24 @@
+```ts
+// layer.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  standalone: true,
+  selector: 'app-layer',
+  imports: [CommonModule],
+  template: `<div *ngIf="layerValue">Layer Value: {{ layerValue }}</div>`,
+})
+export class LayerComponent implements OnInit {
+  layerValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const layer = this.statsigService.getLayer('layer_name');
+    this.layerValue = layer.get('layer_key', 'default_layer_value');
+  }
+}
+```
+

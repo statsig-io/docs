@@ -1,0 +1,6 @@
+```csharp
+var config = await StatsigServer.GetConfig(user, "awesome_product_details");
+var itemName = config.Get<string>("product_name", "Awesome Product v1");
+var price = config.Get<double>("price", 10.0);
+```
+

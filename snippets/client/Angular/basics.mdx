@@ -1,0 +1,16 @@
+Once you have provided the statsig config token, you can now inject the service into a component or another service and use it.
+
+```ts
+// example.component.ts
+import { Component } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-example',
+  template: `...`,
+})
+export class ExampleComponent {
+  constructor(private statsigService: StatsigService) {}
+}
+```
+

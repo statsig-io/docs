@@ -1,0 +1,43 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+export default function App({ children }: { children: React.ReactNode }) {
+  return (
+    <StatsigProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      user={{ userID: 'a-user' }}
+      options={{ plugins: [new StatsigAutoCapturePlugin()] }}
+    >
+      {children}
+    </StatsigProvider>
+  );
+}
+```
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
+
+export default function App({ Component, pageProps }) {
+  return (
+    <StatsigProvider
+      sdkKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!}
+      user={{ userID: 'a-user' }}
+      options={{ plugins: [new StatsigAutoCapturePlugin()] }}
+    >
+      <Component {...pageProps} />
+    </StatsigProvider>
+  );
+}
+```
+</Tab>
+</Tabs>
+
+

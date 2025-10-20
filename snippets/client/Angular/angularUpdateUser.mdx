@@ -1,0 +1,35 @@
+## Updating user properties (e.g., Login)
+
+Sometimes you'll need to update user properties, say when the user logs in and a userID is assigned, or a set of new properties have been identified. This would require Statsig to go fetch new values for all the gates, experiments and config evaluations. This is achieved by the calling `updateUserAsync` from the service:
+
+```ts
+import { Component } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-user-update',
+  template: `
+    <button (click)="updateUser()">Update User</button>
+  `,
+})
+export class UserUpdateComponent {
+  constructor(private statsigService: StatsigService) {}
+
+  updateUser(): void {
+    const user = {
+      userID: 'user-1234',
+      email: 'user@example.com',
+      // Add other user properties here
+    };
+
+    this.statsigService.updateUserAsync(user)
+      .then(() => {
+        console.log('User updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating user:', error);
+      });
+  }
+}
+```
+

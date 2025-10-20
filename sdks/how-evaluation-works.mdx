@@ -1,0 +1,41 @@
+---
+title: "How Evaluation Works"
+---
+
+## Evaluation's importance
+The essential function of the Statsig SDKs is reliable, consistent, incredibly performant allocation of users to the correct bucket in your experiment or feature gate. Understanding how we accomplish this can help you answer questions like:
+- Why do I have to pass every user attribute, every time?
+- Why do I have to wait for initialization to complete?
+- When do you decide each users' bucket?
+
+## How Evaluation Works
+Evaluation in Statsig is deterministic. Given the same user object and the same state of the experiment or feature gate, Statsig always returns the same result, even when evaluated on different platforms (client or server). Here's how it works:
+
+1. **Salt Creation**: Each experiment or feature gate rule generates a unique salt.
+2. **Hashing**: The user identifier (e.g., userId, organizationId) is passed through a SHA256 hashing function, combined with the salt, which produces a large integer.
+3. **Bucket Assignment**: The large integer is then subjected to a modulus operation with 10000 (or 1000 for layers), assigning the user to a bucket.
+4. **Bucket Determination**: The result defines the specific bucket out of 10000 (or 1000 for layers) where the user is placed.
+
+This process ensures a randomized but deterministic bucketing of users across different experiments or feature gates. The unique salt per-experiment or feature gate rule ensures that the same user can be assigned to different buckets in different experiments. This also means that if you rollout a feature gate rule to 50% - then back to 0% - then back to 50%, the same 50% of users will be re-exposed, **so long as you reuse the same rule** - and not create a new one. See [here](/faq/#when-i-change-the-rollout-percentage-of-a-rule-on-a-feature-gate-will-users-who-passed-continue-to-pass).
+
+For more details, check our open-source SDKs [here](https://github.com/statsig-io/node-js-server-sdk/blob/main/src/Evaluator.ts).
+
+This is not generally recommended, but for advanced use cases - e.g. a series of related experiments that needs to reuse the control and test buckets, we now expose the ability to copy and set the salts used for deterministic hashing. This is meant to be used with care and is only available to Project Administrators. It is available in the Overflow (...) menu in Experiments.
+
+## When Evaluation Happens
+Evaluation happens when the gate or experiment is checked on Server SDKs. To be able to do this, Server SDKs hold the entire ruleset of your project in memory - a representation of each gate or experiment in JSON. On client SDKs, we evaluate all of the gates/experiments when you call initialize - on our servers.
+
+All of the above logic holds true for both SDKs. In both, the user's assignment bucket is not sent to Statsig until you call the getExperiment/checkGate method in the SDK.
+
+## What this means:
+* **Performant Evaluation:** no evaluations require a network request, and we focus on evaluation performance, meaning that checks take \<1ms after evaluation.
+* **The SDKs don't "remember" user attributes, or previous evaluations:** we rely on you to pass all of the necessary user attributes consistently - and we promise if you do, we'll provide the same value.
+
+A common assumption is that Statsig tracks of a list of all ids and what group they were assigned to for experiments/gates. While our data pipelines track users exposed to each variant to compute experiment results, we do not cache previous evaluations and maintain distributed evaluation state across client and server SDKs. That won't scale - we've even talked to customers doing this in the past, and were paying more for Redis to maintain that state than they ended up paying for Statsig.
+
+* **Server SDKs can handle multiple users:** because they hold the ruleset in memory, Server SDKs can evaluate any user. Without a network request. This means you'll have to pass a user object into the getExperiment method on Server SDKs, whereas on client SDKs you pass it into initialize().
+* **We ensure each user receives the same bucket:** our ID-based hashing assignment guarantees consistency. If you make a change in console that could affect user bucketing on an experiment, we'll provide warning.
+
+## Evaluation of null/empty unitIDs
+
+Note, we do not apply any filtering/ business logic before we assign an individual userID. This means that even a null or empty unitID will be bucketed depending on the salt.

@@ -1,0 +1,101 @@
+---
+title: Creating Your First Experiment
+description: Learn how to create and configure A/B experiments using Sidecar without writing code or deploying to production.
+---
+
+Sidecar allows you to create and run A/B experiments easily without having to write code or push code to production.  Here we'll see how you can create one such experiment and get results 
+
+<Info>
+This guide assumes you have followed the previous steps of installing side-car, creating a statsig account and setting up the API Keys correctly.  Check out [Setup](/guides/sidecar-experiments/setup) for those instructions.
+</Info>
+
+### Step 1: Navigate to the web page
+
+Navigate to the web page you want to experiment on.
+
+<Frame>
+  <img src="/images/sidecarfull.png" alt="Sidecar experiment interface showing the main dashboard" />
+</Frame>
+
+### Step 2: New experiment
+
+Hit the *New Experiment* button and fill out the details.  This will create a local experiment which hasn't been published yet. This allows you to configure all the details, verify that everything works and then you can publish it.
+
+<Frame>
+  <img src="https://github.com/statsig-io/.github/assets/74588208/d8cfc8bb-43e9-4a64-8ca8-002c579e7fff" alt="New experiment creation form" />
+</Frame>
+
+### Step 3 (Optional): Add url filter
+
+You have the option to select what pages the experiment will run on. <br />This will be evaluated prior to any targeting rules you configure on the experiment within Statsig console.
+
+_You can configure URL targeting using the following methods:_
+* All Pages - anywhere Sidecar client is installed
+* Contains - The page URL must contain the value as a substring
+* Exact Match - The page URL must match the exact value specified here. 
+* Regex - Regular expressions, for example `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/pricing`, and will activate this experiment on those pages.
+
+<Frame>
+  <img src="/images/sidecarurls.png" alt="URL targeting configuration interface with filter options" />
+</Frame>
+
+
+### Step 4: Add actions
+
+Click the *Add Action* button and you'll see a list of actions you can perform with this experiment. Let's try one of them here.
+
+Go ahead and choose *Change content of an element*.  This will set you up to run an A/B test changing the content of an HTML element - like Headlines, descriptions, CTA, etc.
+
+<Frame>
+  <img src="/images/sidecaraddaction.png" alt="Add action selection menu with available experiment actions" />
+</Frame>
+
+#### 💡 Use Redirect Action for running Landing Page and Split URL experiments
+
+For running Landing Page and Split URL experiments, you can quickly add the "Redirect to another page" for any of your test groups and indicate the destination url as desired. Any query string parameters will be preserved and passed to the destination URL.
+
+<Frame>
+  <img src="/images/sidecarredirect.png" alt="Redirect action configuration for landing page experiments" />
+</Frame>
+
+### Step 5: Select an element
+
+In order to run a content change experiment, you will need two things: 1. the element that you want to test with, 2. the content you want to change.
+
+Click on the yellow *Target element path* text-box.  This will activate an element selector mode. 
+
+Now as you move your mouse over your web page you'll see a red selection rectangle.  Choose the element you want by clicking on it.  In this example, we're choosing the main Headline.
+
+<Frame>
+  <img src="/images/sidecarselect.png" alt="Element selection with red highlight showing target element" />
+</Frame>
+
+Sidecar will now reflect the path of the element that was selected.
+
+<Frame>
+  <img src="/images/sidecarpath.png" alt="Selected element path display in the configuration panel" />
+</Frame>
+
+
+### Step 6: Update content
+
+Now, you can choose the two different text content you want to A/B test.  In the *Control content* text box, add your control text ("Build Better Products") and in the *Test content* text box, add your test variant ("Experiment Like a Pro").
+
+You can validate these changes in realtime by clicking on the &#x25B6; button above the text box for each variant.  This will immediately change the element's content so you can visually inspect how things look before publishing.
+
+<Frame>
+  <img src="/images/sidecarupdatelt.png" alt="Content update interface with preview functionality" />
+</Frame>
+
+### Step 7: Add more actions
+
+Feel free to add more actions within the same experiment and play with the capabilities of the tool
+
+<Frame>
+  <img src="/images/sidecar2ndaction.png" alt="Adding additional experiment actions to the same test" />
+</Frame>
+
+#### Congratulations!  You have created your first no-code experiment
+
+## Next up: [Measuring Experiments](/guides/sidecar-experiments/measuring-experiments)
+

@@ -1,0 +1,34 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+FeatureGate gate = statsig.getFeatureGate(userID, "my_feature_gate");
+
+System.out.println("Gate name: " + gate.name);
+System.out.println("Gate value: " + gate.value);
+System.out.println("Rule ID: " + gate.ruleID);
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+FeatureGate gateWithUser = statsig.getFeatureGate(user, "my_feature_gate");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val gate = statsig.getFeatureGate(userID, "my_feature_gate")
+
+println("Gate name: ${gate.name}")
+println("Gate value: ${gate.value}")
+println("Rule ID: ${gate.ruleID}")
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+val gateWithUser = statsig.getFeatureGate(user, "my_feature_gate")
+```
+</CodeGroup>
+

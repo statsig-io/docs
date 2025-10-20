@@ -1,0 +1,36 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+ParameterStore store = statsig.getParameterStore(userID, "my_param_store");
+
+String stringValue = store.getString("string_param", "default");
+int intValue = store.getInt("int_param", 0);
+boolean boolValue = store.getBoolean("bool_param", false);
+double doubleValue = store.getDouble("double_param", 0.0);
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+ParameterStore storeWithUser = statsig.getParameterStore(user, "my_param_store");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val store = statsig.getParameterStore(userID, "my_param_store")
+
+val stringValue = store.getString("string_param", "default")
+val intValue = store.getInt("int_param", 0)
+val boolValue = store.getBoolean("bool_param", false)
+val doubleValue = store.getDouble("double_param", 0.0)
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+val storeWithUser = statsig.getParameterStore(user, "my_param_store")
+```
+</CodeGroup>
+

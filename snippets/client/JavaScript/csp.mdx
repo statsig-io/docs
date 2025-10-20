@@ -1,0 +1,26 @@
+## Content Security Policy
+
+Add Statsig endpoints to your CSP `connect-src` directive when running the web SDK.
+
+```js
+const cspConfig = {
+  directives: {
+    'connect-src': [
+      'api.statsig.com',
+      'featuregates.org',
+      'statsigapi.net',
+      'events.statsigapi.net',
+      'api.statsigcdn.com',
+      'featureassets.org',
+      'assetsconfigcdn.org',
+      'prodregistryv2.org',
+      'cloudflare-dns.com',
+      'beyondwickedmapping.org',
+    ],
+  },
+};
+```
+
+<Info>
+Statsig occasionally updates its network domains. Verify the latest list in [Statsig Domains](/infrastructure/statsig_domains).
+</Info>

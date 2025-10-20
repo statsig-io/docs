@@ -1,0 +1,12 @@
+These can be used to set an override for a specific user, or for all users (by not providing a specific user ID). Experiments/Autotune are overridden with the `overrideConfig` API.
+
+```csharp
+# Adding gate overrides
+StatsigServer.OverrideGate("a_gate_name", true, "a_user_id")
+
+# Adding config overrides
+StatsigServer.OverrideConfig("a_config_name", {"key" => "value"}, "a_user_id")
+
+# Adding layer overrides
+StatsigServer.OverrideLayer("a_layer_name", {"key" => "value"}, "a_user_id")
+```

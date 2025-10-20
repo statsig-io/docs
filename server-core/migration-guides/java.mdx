@@ -1,0 +1,438 @@
+---
+title: Migrating from Legacy Java/Kotlin SDK to Java Core
+description: Learn how to migrate from the legacy Java/Kotlin Server SDK to the new Java Core SDK with improved performance and new features
+---
+
+This guide will help you migrate from the legacy Java/Kotlin Server SDK to the new Java Core SDK. The Java Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.
+
+## Why Migrate?
+
+- **Performance**: Java Core achieves faster evaluation times and lower CPU consumption, making it more efficient than the legacy SDK.
+- **New Features**: Access to Parameter Stores, CMAB (Contextual Multi-Armed Bandits), observabilityClient, and more
+- **Future Support**: All new features and improvements will only be available in Java Core
+- **Maintenance**: The legacy Java SDK is in maintenance mode and will only receive critical bug fixes
+
+## Installation Differences
+
+### Legacy Java/Kotlin SDK
+
+<CodeGroup>
+
+```groovy gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:serversdk:X.X.X'
+}
+```
+
+```xml maven
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>serversdk</artifactId>
+        <version>X.X.X</version>
+    </dependency>
+</dependencies>
+```
+
+</CodeGroup>
+
+
+### Java Core SDK
+
+Java Core requires both the core library and a platform-specific native library:
+
+<CodeGroup>
+
+```groovy gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Core library (required)
+    implementation 'com.statsig:javacore:X.X.X'
+    
+    // Platform-specific library (required)
+    implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'
+}
+```
+
+
+```xml maven
+<dependencies>
+    <!-- Core library (required) -->
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+    </dependency>
+    
+    <!-- Platform-specific library (required) -->
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>YOUR-OS-ARCHITECTURE</classifier>
+    </dependency>
+</dependencies>
+```
+
+</CodeGroup>
+
+
+To determine the correct platform-specific dependency, you can run this code:
+
+```java
+import com.statsig.*;
+
+StatsigOptions options = new StatsigOptions.Builder().build();
+Statsig statsig = new Statsig("your-secret-key", options);
+```
+
+This will output the appropriate dependency for your system.
+
+## API Differences
+
+### Key Package and Class Changes
+
+| Feature | Legacy Java SDK | Java Core SDK |
+|---------|----------------|---------------|
+| Package | `com.statsig.sdk.*` | `com.statsig.*` |
+| Main Class | `Statsig` (static methods) | `Statsig` (instance methods) |
+| Options | `StatsigOptions` | `StatsigOptions.Builder()` |
+| User | `StatsigUser` | `StatsigUser.Builder()` |
+| Check Gate | `Statsig.checkGateSync()` | `statsig.checkGate()` |
+| Get Config | `Statsig.getConfigSync()` | `statsig.getDynamicConfig()` |
+| Get Experiment | `Statsig.getExperimentSync()` | `statsig.getExperiment()` |
+| Get Layer | `Statsig.getLayerSync()` | `statsig.getLayer()` |
+| Log Event | `Statsig.logEvent()` | `statsig.logEvent()` |
+
+### Initialization
+
+<CodeGroup>
+
+```java Legacy Java SDK
+import com.statsig.sdk.Statsig;
+
+StatsigOptions options = new StatsigOptions();
+// Customize options as needed
+// options.initTimeoutMs = 9999;
+Future initFuture = Statsig.initializeAsync("server-secret-key", options);
+initFuture.get();
+```
+
+```kotlin Legacy Kotlin SDK
+import com.statsig.sdk.Statsig
+
+val options = StatsigOptions().apply {
+    // Customize options as needed
+    initTimeoutMs = 9999
+}
+async { Statsig.initialize("server-secret-key", options) }.await()
+```
+
+```java Java Core SDK
+import com.statsig.*;
+
+// All StatsigOptions are optional
+StatsigOptions options = new StatsigOptions.Builder()
+                    .setSpecsSyncIntervalMs(10000)
+                    .setEventLoggingFlushIntervalMs(10000)
+                    .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
+                    .build();
+
+Statsig statsig = new Statsig("server-secret-key", options);
+statsig.initialize().get();
+```
+
+</CodeGroup>
+
+### Checking Gates
+
+<CodeGroup>
+
+```java Legacy Java SDK
+StatsigUser user = new StatsigUser("user_id");
+Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
+
+if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+```kotlin Legacy Kotlin SDK
+val user = StatsigUser("user_id")
+val featureOn = Statsig.checkGateSync(user, "use_new_feature")
+
+if (featureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+```java Java Core SDK
+StatsigUser user = new StatsigUser.Builder().setUserID("user_id").build();
+boolean isFeatureOn = statsig.checkGate(user, "use_new_feature");
+
+if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+</CodeGroup>
+
+### Getting Configs
+
+<CodeGroup>
+
+```java Legacy Java SDK
+DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
+
+String itemName = config.getString("product_name", "Awesome Product v1");
+Double price = config.getDouble("price", 10.0);
+Boolean shouldDiscount = config.getBoolean("discount", false);
+```
+
+```kotlin Legacy Kotlin SDK
+val config = Statsig.getConfigSync(user, "awesome_product_details")
+
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+val shouldDiscount = config.getBoolean("discount", false)
+```
+
+```java Java Core SDK
+DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details");
+
+String itemName = config.getString("product_name", "Awesome Product v1");
+Double price = config.getDouble("price", 10.0);
+Boolean shouldDiscount = config.getBoolean("discount", false);
+```
+
+</CodeGroup>
+
+### Getting Experiments
+
+<CodeGroup>
+
+```java Legacy Java SDK
+DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo_title");
+
+String promoTitle = experiment.getString("title", "Welcome to Statsig!");
+Double discount = experiment.getDouble("discount", 0.1);
+```
+
+```kotlin Legacy Kotlin SDK
+val experiment = Statsig.getExperimentSync(user, "new_user_promo_title")
+
+val promoTitle = experiment.getString("title", "Welcome to Statsig!")
+val discount = experiment.getDouble("discount", 0.1)
+```
+
+```java Java Core SDK
+Experiment experiment = statsig.getExperiment(user, "new_user_promo_title");
+
+String promoTitle = experiment.getString("title", "Welcome to Statsig!");
+Double discount = experiment.getDouble("discount", 0.1);
+```
+
+</CodeGroup>
+
+### Getting Layers
+
+<CodeGroup>
+
+```java Legacy Java SDK
+Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
+
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+```
+
+```kotlin Legacy Kotlin SDK
+val layer = Statsig.getLayerSync(user, "user_promo_experiments")
+
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+```
+
+```java Java Core SDK
+Layer layer = statsig.getLayer(user, "user_promo_experiments");
+
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+```
+
+</CodeGroup>
+
+### Logging Events
+
+<CodeGroup>
+
+```java Legacy Java SDK
+Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
+```
+
+```kotlin Legacy Kotlin SDK
+Statsig.logEvent(user, "purchase", 2.99, mapOf("item_name" to "remove_ads"))
+```
+
+```java Java Core SDK
+Map<String, String> metadata = new HashMap<>();
+metadata.put("item_name", "remove_ads");
+
+statsig.logEvent(user, "purchase", "2.99", metadata);
+```
+
+</CodeGroup>
+
+## Configuration Options Differences
+
+<CodeGroup>
+
+```java Legacy Java SDK
+StatsigOptions options = new StatsigOptions();
+options.setInitTimeoutMs(3000);
+options.setTier("staging");
+options.setLocalMode(false);
+options.setApi("https://api.statsig.com/v1");
+options.setRulesetsSyncIntervalMs(10 * 1000);
+options.setIdListsSyncIntervalMs(60 * 1000);
+options.setDisableAllLogging(false);
+```
+
+```kotlin Legacy Kotlin SDK
+val options = StatsigOptions().apply {
+    initTimeoutMs(3000)
+    disableAllLogging(false)
+}
+```
+
+```java Java Core SDK
+StatsigOptions options = new StatsigOptions.Builder()
+    .setInitTimeoutMs(3000)
+    .setEnvironment("staging")
+    .setDisableNetwork(false) // Replaces localMode
+    .setSpecsUrl("https://api.statsig.com/v1")
+    .setSpecsSyncIntervalMs(10 * 1000)
+    .setIdListsSyncIntervalMs(60 * 1000)
+    .setDisableAllLogging(false)
+    .build();
+```
+
+</CodeGroup>
+
+## Migration Steps
+
+<AccordionGroup>
+
+<Accordion title="Java Migration Steps">
+
+1. **Update Dependencies**
+   - Replace `com.statsig:serversdk` with `com.statsig:javacore`
+   - Add the platform-specific dependency
+
+2. **Update Imports**
+   - Replace `import com.statsig.sdk.*` with `import com.statsig.*`
+
+3. **Update Initialization**
+   - Change from static methods to instance methods
+   - Use the builder pattern for options and StatsigUser
+   - Replace `new StatsigUser("user_id")` with `new StatsigUser.Builder().setUserID("user_id").build()`
+   - Initialize with `new Statsig(key, options)` and call `initialize()`
+
+4. **Update User Creation**
+   - Use the builder pattern: `new StatsigUser.Builder().setUserID("user_id").build()`
+
+5. **Update Method Calls**
+   - Replace static methods with instance methods
+   - Remove `Sync` suffix from method names
+   - Update method signatures as needed
+
+6. **Test Thoroughly**
+   - Verify all feature gates, experiments, and configs work as expected
+   - Check that event logging is functioning correctly
+
+</Accordion>
+
+<Accordion title="Kotlin Migration Steps">
+
+1. **Update Dependencies**
+   - Replace `com.statsig:serversdk` with `com.statsig:javacore`
+   - Add the platform-specific dependency
+
+2. **Update Imports**
+   - Replace `import com.statsig.sdk.*` with `import com.statsig.*`
+
+3. **Update Initialization**
+   - Change from static methods to instance methods
+   - Replace `.apply {}` blocks with the builder pattern
+   - Replace `val user = StatsigUser("user_id")` with `val user = StatsigUser.Builder().setUserID("user_id").build()`
+   - Initialize with `val statsig = Statsig("key", options)` and call `initialize()`
+
+4. **Update User Creation**
+   - Use the builder pattern: `val user = StatsigUser.Builder().setUserID("user_id").build()`
+
+5. **Update Method Calls**
+   - Replace static methods with instance methods
+   - Remove `Sync` suffix from method names
+   - Update method signatures as needed
+   - Replace `mapOf("key" to "value")` with appropriate map creation methods
+
+6. **Test Thoroughly**
+   - Verify all feature gates, experiments, and configs work as expected
+   - Check that event logging is functioning correctly
+
+</Accordion>
+
+</AccordionGroup>
+
+## New Features in Java Core
+
+### Parameter Stores
+
+Java Core introduces Parameter Stores, which allow you to manage parameters across multiple feature gates, experiments, and dynamic configs:
+
+```java
+ParameterStore parameterStore = statsig.getParameterStore(user, "my_parameter_store");
+String value = parameterStore.getString("parameter_name", "default_value");
+```
+
+### Improved Performance
+
+Java Core offers significantly better performance:
+- Faster evaluation times
+- More efficient network usage
+- Reduced CPU usage
+- Better memory management
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Missing Platform-Specific Dependency**
+   - Error: `java.lang.UnsatisfiedLinkError: no statsig_jni in java.library.path`
+   - Solution: Add the correct platform-specific dependency
+
+2. **Incompatible Method Calls**
+   - Error: `java.lang.NoSuchMethodError`
+   - Solution: Update method calls to match the new API
+
+3. **Configuration Differences**
+   - Issue: Features not evaluating as expected
+   - Solution: Verify options are correctly configured in the new format
+
+## Need Help?
+
+If you encounter any issues during migration, please reach out to us:
+- [Statsig Slack Community](https://statsig.com/slack)
+- [GitHub Issues](https://github.com/statsig-io/statsig-server-core/issues)

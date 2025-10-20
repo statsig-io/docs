@@ -1,0 +1,216 @@
+## Custom Adapters
+
+### SpecsAdapterBase - Custom Configuration Sources
+
+The `SpecsAdapterBase` allows you to fetch Statsig configurations from custom sources instead of (or in addition to) Statsig's servers. This is useful when you want to:
+
+- Store configurations in your own database or cache (e.g., Redis, Memcached)
+- Implement custom caching strategies
+- Use Statsig in environments with restricted network access
+- Reduce latency by serving configs from a local source
+
+#### Implementation
+
+To create a custom specs adapter, extend the `SpecsAdapterBase` class and implement the required methods:
+
+```php
+<?php
+
+use Statsig\SpecsAdapterBase;
+use Statsig\SpecsUpdateListener;
+
+class RedisSpecsAdapter extends SpecsAdapterBase
+{
+    private $redis;
+    private $listener;
+
+    public function __construct($redis)
+    {
+        parent::__construct();
+        $this->redis = $redis;
+    }
+
+    public function setup(SpecsUpdateListener $listener): void
+    {
+        $this->listener = $listener;
+    }
+
+    public function start(): void
+    {
+        // Fetch initial specs when SDK starts
+        $this->refreshSpecsFromRedis();
+        
+        // Optionally, trigger a background job or set up a timer
+        $this->refreshSpecsFromRedis();
+    }
+
+    private function fetchSpecsFromRedis()
+    {
+        try {
+            $specs = $this->redis->get('statsig_config_specs');
+            return $specs ?: null;
+        } catch (Exception $e) {
+            error_log("Failed to fetch specs from Redis: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    private function refreshSpecsFromRedis()
+    {
+        $specs = $this->fetchSpecsFromRedis();
+        if ($specs && $this->listener) {
+            $timestamp = intval(microtime(true) * 1000);
+            $this->listener->didReceiveSpecsUpdate($specs, "Redis", $timestamp);
+        }
+    }
+}
+```
+
+#### Usage
+
+```php
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
+$specsAdapter = new RedisSpecsAdapter($redis);
+
+$options = new StatsigOptions(
+    specs_adapter: $specsAdapter
+);
+
+$statsig = new Statsig('your-server-secret-key', $options);
+$statsig->initialize();
+```
+
+#### Key Methods
+
+- **`setup(SpecsUpdateListener $listener)`**: Called during initialization to provide the listener for spec updates
+- **`start()`**: Called when the SDK starts. Fetch and provide initial configuration specs
+- **`shutdown()`**: Called when the SDK shuts down. Clean up resources
+- **`scheduleBackgroundSync()`**: Called to schedule periodic updates of configuration specs
+
+The `SpecsUpdateListener` provides:
+
+- **`didReceiveSpecsUpdate(string $specs, string $source, int $timestamp)`**: Notify the SDK of new specs
+- **`getCurrentSpecsInfo()`**: Get information about current specs
+
+---
+
+### EventLoggingAdapterBase - Custom Event Destinations
+
+The `EventLoggingAdapterBase` allows you to send events to custom destinations instead of or in addition to Statsig's servers. This is useful when you want to:
+
+- Send events to your existing analytics platform
+- Store events in a database for custom analysis
+- Forward events to multiple destinations
+- Implement custom batching or retry logic
+
+#### Implementation
+
+To create a custom event logging adapter, extend the `EventLoggingAdapterBase` class and implement the required methods:
+
+```php
+<?php
+
+use Statsig\EventLoggingAdapterBase;
+use Statsig\LogEventRequest;
+
+class AnalyticsEventAdapter extends EventLoggingAdapterBase
+{
+    private $analyticsClient;
+    private $isStarted = false;
+
+    public function __construct($analyticsClient)
+    {
+        parent::__construct();
+        $this->analyticsClient = $analyticsClient;
+    }
+
+    public function start(): void
+    {
+        $this->isStarted = true;
+        // Initialize analytics client connection if needed
+        $this->analyticsClient->connect();
+    }
+
+    public function logEvents(LogEventRequest $request): bool
+    {
+        if (!$this->isStarted) {
+            return false;
+        }
+
+        try {
+            $events = $request->payload->events;
+            $metadata = $request->payload->statsig_metadata;
+
+            foreach ($events as $event) {
+                // Transform Statsig event to analytics platform format
+                $analyticsEvent = [
+                    'event_name' => $event['eventName'],
+                    'user_id' => $event['user']['userID'] ?? null,
+                    'timestamp' => $event['time'],
+                    'properties' => array_merge(
+                        $event['metadata'] ?? [],
+                        ['statsig_metadata' => $metadata]
+                    )
+                ];
+
+                // Send to analytics platform
+                $this->analyticsClient->track($analyticsEvent);
+            }
+
+            return true;
+        } catch (Exception $e) {
+            error_log("Failed to log events to analytics platform: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function shutdown(): void
+    {
+        $this->isStarted = false;
+        // Clean up analytics client connection
+        $this->analyticsClient->disconnect();
+    }
+}
+```
+
+#### Usage
+
+```php
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+
+$analyticsClient = new MyAnalyticsClient('api-key');
+$eventAdapter = new AnalyticsEventAdapter($analyticsClient);
+
+$options = new StatsigOptions(
+    event_logging_adapter: $eventAdapter
+);
+
+$statsig = new Statsig('your-server-secret-key', $options);
+$statsig->initialize();
+
+// Events will now be sent to your custom analytics platform
+$statsig->logEvent($user, 'button_clicked', ['button_id' => 'signup']);
+```
+
+#### Key Methods
+
+- **`start()`**: Called when the SDK starts. Initialize connections or resources
+- **`logEvents(LogEventRequest $request): bool`**: Process and send events. Return true on success, false on failure
+- **`shutdown()`**: Called when the SDK shuts down. Clean up resources
+
+The `LogEventRequest` contains:
+
+- **`event_count`**: Number of events in the request
+- **`retries`**: Number of retry attempts for this request
+- **`payload`**: `LogEventPayload` with events and metadata
+
+The `LogEventPayload` contains:
+
+- **`events`**: Array of event objects with user data, event names, and metadata
+- **`statsig_metadata`**: SDK metadata including version and environment information
+

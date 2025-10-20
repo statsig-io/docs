@@ -1,0 +1,42 @@
+## Loading State
+
+Dependent on your setup, you may want to wait for the latest values before checking a gate or experiment.
+If you are using the `StatsigProviderRN`, you can pass in a `loadingComponent` prop to display a loading state while the SDK is initializing.
+If you are using the `useClientAsyncInitRN` hook, you can check the `isLoading` prop to determine if the SDK is still loading.
+
+<Tabs>
+<Tab title="StatsigProviderRN">
+```tsx
+export function App() {
+  const loadingComponent = <div>Loading...</div>;
+
+  return (
+    <StatsigProviderRN
+      ...
+      loadingComponent={loadingComponent} // <- Pass in the loading component
+    >
+        <YourComponent />
+    </StatsigProviderRN>
+  );
+}
+```
+</Tab>
+
+<Tab title="useClientAsyncInitRN">
+```tsx
+export function App() {
+  const { client, isLoading } = useClientAsyncInitRN(...);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <StatsigProviderRN client={client}>
+      <YourComponent />
+    </StatsigProviderRN>
+  );
+}
+```
+</Tab>
+</Tabs>

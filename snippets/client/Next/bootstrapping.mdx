@@ -1,0 +1,107 @@
+<Tabs>
+<Tab title="App Router">
+```ts app/api/statsig-bootstrap/route.ts
+import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
+
+export async function POST(request: Request): Promise<Response> {
+  const body = await request.json();
+  const user = new StatsigUser(body?.user ?? {});
+
+  // Ensure server SDK is initialized at startup
+  // await Statsig.initialize(process.env.STATSIG_SERVER_KEY!);
+
+  const values = Statsig.getClientInitializeResponse(user, {
+    hashAlgorithm: 'djb2',
+  });
+  return new Response(JSON.stringify(values), { status: 200 });
+}
+```
+
+```tsx app/layout.tsx
+import { StatsigBootstrapProvider } from '@statsig/next';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const user = { userID: 'user-123' };
+  return (
+    <html lang="en">
+      <body>
+        <StatsigBootstrapProvider
+          user={user}
+          clientKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY}
+          serverKey={process.env.STATSIG_SERVER_KEY}
+        >
+          {children}
+        </StatsigBootstrapProvider>
+      </body>
+    </html>
+  );
+}
+```
+</Tab>
+
+<Tab title="Page Router">
+```ts pages/api/statsig-bootstrap.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { Statsig, StatsigUser } from 'statsig-node'; // legacy Node SDK for pages router
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>,
+) {
+  if (req.method !== 'POST') {
+    res.status(400).send('/statsig-bootstrap only supports POST');
+    return;
+  }
+
+  // Ensure server SDK is initialized at startup
+  // await Statsig.initialize(process.env.STATSIG_SERVER_KEY!);
+
+  const { user } = JSON.parse(req.body) as { user: StatsigUser };
+  const values = Statsig.getClientInitializeResponse(user, { hash: 'djb2' });
+  res.status(200).send(JSON.stringify(values));
+}
+```
+
+```tsx pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { StatsigProvider } from '@statsig/react-bindings';
+import { StatsigClient } from '@statsig/js-client';
+import { useEffect, useMemo, useState } from 'react';
+
+export default function App({ Component, pageProps }: AppProps) {
+  const user = useMemo(() => ({ userID: 'a-user' }), []);
+  const [client, setClient] = useState<StatsigClient | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('/api/statsig-bootstrap', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ user }),
+      });
+      const initializeValues = await res.json();
+      const inst = new StatsigClient(
+        process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY!,
+        user,
+        { initializeValues },
+      );
+      await inst.initializeAsync();
+      setClient(inst);
+    })();
+  }, [user]);
+
+  if (!client) {
+    return null;
+  }
+
+  return (
+    <StatsigProvider client={client}>
+      <Component {...pageProps} />
+    </StatsigProvider>
+  );
+}
+```
+</Tab>
+</Tabs>
+
+

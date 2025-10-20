@@ -1,0 +1,17 @@
+```typescript
+export interface DataStore {
+  initialize?: () => Promise<void>;
+  shutdown?: () => Promise<void>;
+  get?: (key: string) => Promise<DataStoreResponse>;
+  set?: (key: string, value: string, time?: number) => Promise<void>;
+  supportPollingUpdatesFor?: (key: string) => Promise<boolean>;
+}
+
+export interface DataStoreResponse {
+  result?: string;
+  time?: number;
+}
+```
+
+For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+

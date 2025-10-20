@@ -1,0 +1,43 @@
+All of the main SDK functions (`check_gate`, `get_dynamic_config`, `get_experiment`, `get_layer`) accept an options parameter with a `disable_exposure_logging` field. When this is set to `true`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
+```rust
+result = statsig.check_gate_with_options(&user, 'a_gate_name', FeatureGateEvaluationOptions {disable_exposure_logging: true});
+```
+
+```rust
+statsig.manually_log_gate_exposure(&user, 'a_gate_name')
+```
+</Tab>
+
+<Tab title="Dynamic Configs">
+```rust
+config = statsig.get_dynamic_config_with_options(&user, 'a_dynamic_config_name', DynamicConfigEvaluationOptions {disable_exposure_logging: true});
+```
+
+```rust
+statsig.manually_log_dynamic_config_exposure(&user, 'a_dynamic_config_name')
+```
+</Tab>
+
+<Tab title="Experiments">
+```rust
+experiment = statsig.get_experiment_with_options(&user, 'an_experiment_name', ExperimentEvaluationOptions {disable_exposure_logging: true});
+```
+
+```rust
+statsig.manually_log_experiment_exposure(&user, 'an_experiment_name')
+```
+</Tab>
+
+<Tab title="Layers">
+```rust
+layer = statsig.get_layer_with_options(&user, 'a_layer_name',  LayerEvaluationOptions {disable_exposure_logging: true});
+paramValue = layer.get('a_param_name', 'fallback_value')
+```
+
+```rust
+statsig.manually_log_layer_parameter_exposure(&user, 'a_layer_name', 'a_param_name')
+```
+</Tab>
+</Tabs>

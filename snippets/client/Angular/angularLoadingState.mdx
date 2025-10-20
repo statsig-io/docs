@@ -1,0 +1,33 @@
+## Loading State
+
+Dependent on your setup, you may want to wait for the latest values before checking a gate or experiment. 
+You can use the `isLoading` observable to determine if the SDK is still loading and display a loading state.
+
+```ts
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  selector: 'app-loading-state',
+  imports: [CommonModule],
+  template: `
+    <div *ngIf="isLoading | async; else content">
+      <p>Loading...</p>
+    </div>
+    <ng-template #content>
+      <p>Content loaded successfully!</p>
+    </ng-template>
+  `,
+})
+export class LoadingStateComponent implements OnInit {
+  isLoading = this.statsigService.isLoading$;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    // other initialization logic here
+  }
+}
+```
+

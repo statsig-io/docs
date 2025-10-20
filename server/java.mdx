@@ -1,0 +1,74 @@
+---
+title: Legacy Java/Kotlin Server SDK
+sidebarTitle: Java/Kotlin
+description: Statsig's Legacy Server SDK for Java and Kotlin applications
+icon: "java"
+---
+
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import LogEventFooter from '/snippets/server/logEventFooter.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import ShutdownIntro from '/snippets/server/shutdown.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+import InitializationFooter from '/snippets/server/initialization2.mdx'
+
+import installation from '/snippets/server/java/installation.mdx'
+import initialization from '/snippets/server/java/initialization.mdx'
+import checkGate from '/snippets/server/java/checkGate.mdx'
+import getDynamicConfig from '/snippets/server/java/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server/java/getExperiment.mdx'
+import logEvent from '/snippets/server/java/logEvent.mdx'
+import getFeatureGate from '/snippets/server/java/getFeatureGate.mdx'
+import shutdown from '/snippets/server/java/shutdown.mdx'
+
+<Note> 
+These docs are for using our Java/Kotlin SDK in a multi-user, server side context. For client side android applications, check out our [Android SDK](/client/Android) or one of the other client SDKs for your client side applications.
+</Note>
+
+This SDK is written in Kotlin, but exposes methods and overrides to Java based applications.
+
+[Github Repository](https://github.com/statsig-io/java-server-sdk)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<InitializationWarning/>
+<initialization/>
+<InitializationFooter/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getDynamicConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<LogEventIntro/>
+<logEvent/>
+<LogEventFooter/>
+
+## Retrieving Feature Gate Metadata
+
+In certain scenarios, you may need more information about a gate evaluation than just a boolean value. For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
+
+<getFeatureGate/>
+
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>
+
+<ShutdownIntro/>
+<shutdown/>

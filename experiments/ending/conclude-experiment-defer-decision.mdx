@@ -1,0 +1,49 @@
+---
+title: "Conclude Experiment & Defer Decision"
+description: "Learn how to conclude an experiment while deferring the decision to ship changes."
+---
+
+## Conclude the Experiment now and Defer Analysis for later
+
+### Overview
+
+The "Conclude Experiment and Defer Decision" feature allows you to effectively conclude an ongoing experiment which means stopping any further user allocation and data collection. This feature is particularly beneficial when you want to decouple running an experiment from making a ship decision.
+
+### Benefits
+
+- **Focused Decision Making**: Decoupling running experiment from making decision allows you to take the necessary time to evaluate results, weigh options, and review findings with stakeholders across teams.
+- **Flexibility in Outcomes**: Decide whether to ship the control, implement the test, or abandon/restart the experiment based on comprehensive insights.
+
+<Frame>
+  <img
+    src="/images/experiments/conclude_experiment.png"
+    alt="Conclude Experiment"
+  />
+</Frame>
+
+### Enabling this Option
+
+The "Conclude Experiment and Defer Decision" option must first be enabled in Project Settings to show as an option in the Make Decision modal. To enable this option, head to **Settings** --> **Project Info** and toggle on the **Enable Conclude Experiment and Defer Decision** setting.
+
+<img
+  width="692"
+  alt="Screen Shot 2024-12-04 at 12 10 28 PM"
+  src="https://github.com/user-attachments/assets/26ce509b-aed8-4bcb-8c4e-f2f03518d3be"
+/>
+
+### Key Details
+
+Things you should keep in mind when concluding an experiment:
+
+- Once you conclude the experiment, no new users will be enrolled in the experiment.
+- All the already exposed users will start receiving the default experience.
+- Statsig will stop further data collection on the experiment and conclude results.
+- After concluding the experiment, you can still decide to ship control vs test variant, reset, or abandon the experiment.
+
+### Reloads After Experiment Conclusion
+
+You may notice slight changes in exposure and metric data if you trigger another reload after an experiment has been concluded. This does not mean new users are still being exposed. Rather, depending on the timestamp of when the experiment was concluded versus when the latest exposure data landed in your warehouse in the previous reload, additional exposures that occurred during that time window may appear in the refreshed data.
+
+### Conclusion
+
+Utilizing the "Conclude Experiment and Defer Decision" feature enhances your ability to make data-driven decisions without the risk of diluting results by continuously adding new participants or new data from existing participants. This structured approach ensures that all stakeholders are aligned before moving forward.

@@ -1,0 +1,20 @@
+#### Environments
+
+By default, all events are treated as "production" events, but you can also differentiate your event traffic by specifying the environment that the events are coming from.
+This allows you to avoid non-production data making it into your production metrics.
+
+If you would like to include the environment tier, you can add it to the properties object of your event.
+The required format is below:
+
+```json
+{
+  ...
+  "properties": {
+   "statsigEnvironment": {
+        "tier": "staging"
+    }
+  }
+}
+```
+
+To learn more about environments see [Using Environment](/guides/using-environments).

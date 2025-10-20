@@ -1,0 +1,43 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  return (
+    <div>
+      <button onClick={() => client.logEvent("my_custom_event")}>
+        Click Me
+      </button>
+    </div>
+  );
+}
+```
+
+<Note>
+In an App Router app, you need to use the [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+</Note>
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  return (
+    <div>
+      <button onClick={() => client.logEvent("my_custom_event")}>
+        Click Me
+      </button>
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>

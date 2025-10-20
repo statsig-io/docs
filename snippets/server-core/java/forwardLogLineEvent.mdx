@@ -1,0 +1,42 @@
+<CodeGroup>
+```java Java
+import java.util.HashMap;
+import java.util.Map;
+
+String userID = "user_id";
+
+Map<String, Object> payload = new HashMap<>();
+payload.put("log_level", "error");
+payload.put("message", "Something went wrong");
+payload.put("timestamp", System.currentTimeMillis());
+
+statsig.forwardLogLineEvent(userID, payload);
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+statsig.forwardLogLineEvent(user, payload);
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+
+val payload = mapOf(
+    "log_level" to "error",
+    "message" to "Something went wrong",
+    "timestamp" to System.currentTimeMillis()
+)
+
+statsig.forwardLogLineEvent(userID, payload)
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+statsig.forwardLogLineEvent(user, payload)
+```
+</CodeGroup>
+

@@ -1,0 +1,21 @@
+#### I want to customize the initialization logic, can I do that?
+
+Yes, you can remove the client API key from the url and see the [Javascript SDK Getting Started Guide](https://docs.statsig.com/client/javascript-sdk#getting-started) for more information.  The HTML snippet is just our javascript SDK - providing an api key in the url will auto initialize an instance for you, but if you don't want that, you can use it just like the javascript SDK.
+
+You will need to create your own instance differently than if you were installing the sdk via npm:
+
+```js
+const { StatsigClient, runStatsigAutoCapture, runStatsigSessionReplay } = window.Statsig;
+    
+const client = new StatsigClient(
+    '<CLIENT-SDK-KEY>', 
+    { userID: 'a-user' }
+);
+
+runStatsigSessionReplay(client);
+runStatsigAutoCapture(client);
+
+await client.initializeAsync();
+
+// check gates, configs, experiments, or log events
+```

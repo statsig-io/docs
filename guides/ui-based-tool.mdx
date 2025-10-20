@@ -1,0 +1,41 @@
+---
+title: UI-Based Tool
+---
+You can follow this guide to use Statsig's built in LaunchDarkly migration tool. Please note that this UI-based tool only imports the "production" environment at the moment.
+
+## What you need
+
+Review the full checklist in the [LaunchDarkly Migration Guide](/guides/migrate-from-launchdarkly#what-you-need), then gather:
+
+1. You will need your project key. Projects in LaunchDarkly have a Name (e.g. "My Mobile App") and a Key (e.g.my_mobile_app).
+2. You'll need a read-only access token for this project. You can create one in LaunchDarkly -> Account Settings -> Authorization and limit scope to be read-only.
+3. A Statsig project to use. We recommend trying this in a test project first.
+
+## How it works
+
+These screens mirror the [console walkthrough](/guides/migrate-from-launchdarkly#how-it-works):
+
+1. You will be prompted to Import Feature Gates if you don't have any feature gates in your project.
+<Frame>
+  <img src="/images/tutorials/migration-launchdarkly/ui-tool/ui-based-tool1.png" alt="Import Feature Gates prompt" />
+</Frame>
+
+2. Select LaunchDarkly as the platform you want to migrate from.
+<Frame>
+  <img src="/images/tutorials/migration-launchdarkly/ui-tool/ui-based-tool2.png" alt="Platform selection interface" />
+</Frame>
+
+3. Enter your LaunchDarkly Project Key and API Key/access token.
+<Frame>
+  <img src="/images/tutorials/migration-launchdarkly/ui-tool/ui-based-tool3.png" alt="LaunchDarkly credentials input form" />
+</Frame>
+
+4. Preview the migration summary. We'll highlight what gates we can and can't migrate. Gates we don't migrate include gates with segments (coming soon) and gates with non-Boolean flags.
+<Frame>
+  <img src="/images/tutorials/migration-launchdarkly/ui-tool/ui-based-tool4.png" alt="Migration summary preview screen" />
+</Frame>
+
+5. Finish migration of the gates. All your migrated gates will be tagged "Migrated" so you can identify them.
+<Frame>
+  <img src="/images/tutorials/migration-launchdarkly/ui-tool/ui-based-tool5.png" alt="Migration completion confirmation" />
+</Frame>

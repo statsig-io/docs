@@ -1,0 +1,10 @@
+```typescript
+const values = Statsig.getClientInitializeResponse(user); // Record<string, unknown> | null
+
+if (values != null) {
+  // Bootstrap the Statsig React Client SDK
+  return <StatsigSynchronousProvider initializeValues={values} ... />;
+}
+```
+
+

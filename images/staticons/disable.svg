@@ -1,0 +1,6 @@
+<!--
+  tags: ["feature-flags","off","status"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M16.75 10a6.75 6.75 0 0 1-11.06 5.194l9.504-9.505A6.722 6.722 0 0 1 16.75 10ZM4.805 14.31l9.505-9.505a6.75 6.75 0 0 0-9.505 9.505ZM18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" clip-rule="evenodd"/>
+</svg>

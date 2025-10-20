@@ -1,0 +1,30 @@
+`v1.X.X+` of the SDK is now published only to Maven Central.
+
+To install the SDK, set the Maven Central repository in your `build.gradle`. You probably already have this for other dependencies.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+```
+
+Then add the dependency:
+
+```groovy
+implementation 'com.statsig:serversdk:1.X.X' // replace with the most up to date version
+// For >v1.24.0 If you are not using streaming and want to reduce the package size you can:
+implementation 'com.statsig:serversdk:1.X.X' {
+    exclude(group = "io.grpc", module = "*") 
+}
+```
+
+You can find the versions in the github releases of the [open source sdk repository](https://github.com/statsig-io/java-server-sdk/releases), or from the [maven central repository](https://mvnrepository.com/artifact/com.statsig/serversdk).
+
+### Jitpack Deprecation
+
+`v0.X.X` versions of the SDK are available from jitpack, but newer versions will not be published to jitpack.
+
+<Note>
+If you update Statsig to be pulled from Maven Central instead of jitpack, you can remove `maven { url 'https://jitpack.io' }` if Statsig was the only library you got from jitpack and you previously relied on v0.X.X of the SDK.
+</Note>
+

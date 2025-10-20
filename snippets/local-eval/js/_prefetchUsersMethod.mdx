@@ -1,0 +1,23 @@
+<CodeGroup>
+
+```typescript TypeScript
+import type { StatsigUser } from "statsig-js";
+
+const prefetchUsers: StatsigUser[] = [
+  { userID: "user_a", customIDs: { groupID: "group_a" } },
+  { userID: "user_b", customIDs: { groupID: "group_a" } },
+];
+
+await Statsig.prefetchUsers(prefetchUsers);
+```
+
+```javascript JavaScript
+const prefetchUsers = [
+  { userID: "user_a", customIDs: { groupID: "group_a" } },
+  { userID: "user_b", customIDs: { groupID: "group_a" } },
+];
+
+await Statsig.prefetchUsers(prefetchUsers);
+```
+
+</CodeGroup>

@@ -1,0 +1,70 @@
+## Using Persistent Evaluations
+
+If you want to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting, you can implement the `UserPersistentStorageInterface` and set it in `StatsigOptions` when you initialize the SDK.
+
+#### Synchronous Persistent Evaluations
+The `UserPersistentStorageInterface` exposes two methods for synchronous persistent storage, which will be called by default when evaluating an experiment.
+
+```
+interface UserPersistentStorageInterface {
+    suspend fun load(key: String): PersistedValues
+    fun save(key: String, experimentName: String, data: String)
+    fun delete(key: String, experiment: String)
+    ...
+}
+```
+
+The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:stableID" which the SDK will construct and call `get` and `set` on by default
+
+You can use this interface to persist evaluations synchronously to local storage.  If you need an async interface, read on.
+
+#### Asynchronous Persistent Evaluations
+The `UserPersistentStorageInterface` exposes two methods for asynchronous persistent evaluations. Because the `getExperiment` call is synchronous, you must load the value first, and pass it in as `userPersistedValues`
+
+```kotlin
+interface UserPersistentStorageInterface {
+    fun loadAsync(key: String, callback: IPersistentStorageCallback)
+    fun save(key: String, experimentName: String, data: String)
+    fun delete(key: String, experiment: String)
+    ...
+}
+interface IPersistentStorageCallback {
+    fun onLoaded(values: PersistedValues)
+}
+```
+
+For your convenience, we've created a top level method to load the value for a given user and ID Type:
+
+```kotlin
+// Asynchronous load values
+val userPersistedValues = Statsig.client.loadUserPersistedValuesAsync(
+  user: StatsigUser,
+  idType: string, // userID, stableID, customIDxyz, etc
+  callback: IPersistentStorageCallback
+);
+
+// Synchronous load values 
+val userPersistedvalues = Statsig.client.loadUserPersistedValues(
+    user: StatsigUser,
+  idType: string, // userID, stableID, customIDxyz, etc
+)
+```
+
+Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your call site will look like this:
+```kotlin 
+// Asynchronous 
+val callback = object: IPersistentStorageCallback {
+    @override
+    fun onLoaded(values: PersistedValues) {
+        Statsig.getExperiment(user, "sample_experiment", GetExperimentOptions(userPersistedValues = values))
+    }
+}
+val userValues = Statsig.client.loadUserPersistedValuesAsync(user, "userID", callback)
+
+// Synchronous
+val user = StatsigUser(userID = "user123")
+val userValues = Statsig.client.loadUserPersistedValues(user, 'userID');
+const experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userValues });
+```
+If you are using java, you can only override loadAsync function and ignore load function as empty. 
+

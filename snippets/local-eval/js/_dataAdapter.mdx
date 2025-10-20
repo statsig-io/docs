@@ -1,0 +1,6 @@
+## Data Adapter
+
+The `EvaluationsDataAdapter` type outlines how the `StatsigClient` should fetch and cache data during initialize and update operations.
+By default, the `StatsigClient` uses `StatsigEvaluationsDataAdapter`, a Statsig provided implementor of the `EvaluationsDataAdapter` type. `StatsigEvaluationsDataAdapter`
+provides ways to fetch data synchronously from Local Storage and asynchronously from Statsig's servers.
+See [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter) to learn more and see example usage.

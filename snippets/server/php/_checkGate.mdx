@@ -1,0 +1,8 @@
+```java
+use Statsig\StatsigUser;
+
+$user = StatsigUser::withUserID("123");
+$user->setEmail("testuser@statsig.com");
+
+$this->statsig->checkGate($user, "<gate_name>");
+```

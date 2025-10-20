@@ -1,0 +1,101 @@
+
+## Introduction
+
+The Experiment Quality Score is a metric designed to get a quick understanding of the quality - and trustworthiness - of an experiment configured within Statsig.
+
+This helps experimenters and their peers across an organization quickly identify potential issues in experiment setup, execution, and data collection, ensuring more
+confident decision-making.
+
+Measuring this score over all experiments can help teams to discover systematic issues in their program, and point out opportunities to mature
+their experimentation program over time.
+
+## Configuration
+
+Experimentation quality score can be enabled in the project settings under Settings -> Experimentation -> Experiment Quality Score.
+
+There is a list of pre-defined assessment criteria used. The weights of each criteria can be customized based on an organization's needs,
+though Statsig provides default values.
+
+<Frame>
+  <img src="https://github.com/user-attachments/assets/91fea3df-0dae-4d0a-ada8-1c1c9313e60e" alt="Experiment quality score configuration interface" />
+</Frame>
+
+## Advanced Configuration
+
+For more sophisticated customers there may be additional checks desired, different product teams with different needs,
+or it may be the case that the default thresholds aren't correct
+for their use case. For example, maybe hypotheses should be at least 200 characters, AND contain a link to an external planning doc.
+
+This can be managed easily through the Statsig console API. By running a POST or PATCH on the `console/v1/experiments` endpoint,
+one can update the individual scores on any given experiment. Targeting the existing set of scores allows overriding weights
+(usually to 0), meaning the list can be just the custom set desired.
+
+For example, running patch on an experiment with this payload:
+
+```
+{
+    "manualQualityScores": [
+        {
+            "criteriaName": "HYPOTHESIS_LENGTH",
+            "criteriaDescription": "Check passed",
+            "status": "PASSED",
+            "score": 0,
+            "weight": 0
+        },
+        {
+            "criteriaName": "MyCompany\'s Hypothesis Check",
+            "criteriaDescription": "Has Internal URL and > 200 Chars",
+            "status": "PASSED",
+            "score": 100,
+            "weight": 100
+        },
+        {
+            "criteriaName": "Naming",
+            "criteriaDescription": "Experiment prefixed with team name",
+            "status": "FAILED",
+            "score": 0,
+            "weight": 100
+        }
+    ]
+}
+```
+
+Would:
+
+- Drop the original HYPOTHESIS_LENGTH check
+- Keep the other original checks, with their weights
+- Add a new check, `MyCompany's Hypothesis Check`, for custom logic on the hypothesis
+- Add a new check, `Naming`, for custom logic on the name
+
+Note that the other weights would be normalized. If the original HYPOTHESIS_LENGTH had a weight of 10, the total weight would
+now be 290 and scores normalized accordingly. If all of the non-custom checks were passing, the score would be 190/290 or ~66%
+
+The general flow for using this approach is to:
+
+- Use Console API's `experiments/get` to pull all experiments
+- For Each Experiment
+  - Run custom logic
+  - Patch results
+
+## Calculation Notes
+
+Checks which are in an unready state will be skipped during evaluation, and the other weights will be renormalized to 100%. For example, if the experiment has not started,
+the `Balanced Exposures` component will be in an unready state and ignored.
+
+Checks with a weight of 0 will be omitted entirely from the card.
+
+## Viewing Quality Scores
+
+When enabled, Quality Scores will show up in the details tab of an experiment. Applicable checks will be evaluated and contribute to the number shown.
+
+The score will be color-coded based on the % threshold it is at.
+
+- \>= 85% corresponds to passing/green
+- \>= 50% corresponds to warning/yellow
+- \< 50% corresponds to error/red.
+
+<Frame>
+  <img src="https://github.com/user-attachments/assets/d7483b96-8077-419d-9e23-a3e648b7e066" alt="Experiment quality score display with color-coded status" />
+</Frame>
+
+Quality scores are also available through the console API. This allows bulk scrapes of the data for easy analysis.

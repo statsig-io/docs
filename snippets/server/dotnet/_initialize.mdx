@@ -1,0 +1,12 @@
+```csharp
+using Statsig;
+using Statsig.Server;
+
+await StatsigServer.Initialize(
+    "server-secret-key",
+    // optionally customize the SDKs configuration via StatsigOptions
+    new StatsigOptions(
+        environment: new StatsigEnvironment(EnvironmentTier.Development)
+    )
+);
+```

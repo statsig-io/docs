@@ -1,0 +1,14 @@
+```javascript
+const proxyAddress = "0.0.0.0:50051"
+const options = {
+      proxyConfigs: {
+        'download_config_specs': {
+          "proxyAddress": proxyAddress,
+          "protocol": "grpc_websocket" as NetworkProtocol
+        }
+      }
+    }
+await Statsig.initialize(secretKey, options)
+```
+
+

@@ -1,0 +1,21 @@
+### Example Implementation
+
+```typescript
+class UserPersistentStorageExample implements IUserPersistentStorage {
+  public store: Record<string, UserPersistedValues> = {};
+  load(key: string): UserPersistedValues {
+    return this.store[key];
+  }
+  save(key: string, configName: string, data: StickyValues): void {
+    if (!(key in this.store)) {
+      this.store[key] = {};
+    }
+    this.store[key][configName] = data;
+  }
+  delete(key: string, configName: string): void {
+    delete this.store[key][configName];
+  }
+}
+```
+
+

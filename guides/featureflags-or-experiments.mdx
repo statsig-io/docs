@@ -1,0 +1,80 @@
+---
+title: When to Use Feature Gates vs. Experiments?
+description: Decide whether to ship with a feature gate or run an experiment, and understand how the two work together.
+slug: /guides/featureflags-or-experiments
+---
+
+<Info>
+In Statsig, feature flags are called <strong>feature gates</strong>. The terminology is interchangeable throughout this guide.
+</Info>
+
+Both feature gates and experiments create control/test groups. Use this guide to pick the right tool for your launch and measurement goals.
+
+---
+
+## Quick Guidance
+
+- **Choose a feature gate** when you want to roll out a feature gradually or monitor impact as you ramp.
+- **Choose an experiment** when you need to compare multiple variants and quantify the lift across metrics.
+
+---
+
+## Key Differences
+
+### Variants
+- **Feature gate** → Two experiences only: pass vs. fail.
+- **Experiment** → Any number of variants.
+
+When viewing gate exposures you’ll see three buckets: <em>Pass</em>, <em>Fail</em>, and <em>Fail – Not in Analysis</em>. Only the balanced subset of the fail group is used for metric comparisons. Learn more in the [gate exposure methodology](/feature-flags/view-exposures#gate-exposures).
+
+### Return Values
+- **Feature gate** → Boolean (`true`/`false`) so your application toggles code paths.
+- **Experiment** → JSON config that describes the variant (colors, copy, thresholds, etc.).
+
+### Ramping knobs
+- **Feature gate** → Adjust <strong>Pass %</strong> to send more traffic to the new experience. You can go beyond 50/50 (e.g. 99% vs 1%).
+- **Experiment** → Adjust <strong>Allocation %</strong> to enroll more users, but splits cap at 50/50.
+
+Once a user is assigned, neither control reshuffles existing users—you can safely ramp without re-bucketing.
+
+<Frame>
+  <img src="/images/guides/featureflags-or-experiments/pass-vs-allocation.png" alt="Pass% versus Allocation% controls" />
+</Frame>
+
+---
+
+## When Experiments Shine
+
+Use experiments when you need:
+1. **Multiple variants or personalization** – compare more than two options or tailor experiences via contextual bandits/layers.
+2. **Stable identifiers and custom IDs** – analyze behavior before signup with stable IDs, or use custom IDs for sessions, workspaces, or geography.
+3. **Isolated universes** – run parallel experiments safely by placing them in their own layers.
+
+---
+
+## When Feature Gates Shine
+
+Feature gates are great for:
+- **Safe rollouts** – gradually increase exposure while observing metrics.
+- **Targeting audiences** – use gates as pre-filters before enrolling users in an experiment.
+
+In experiment setups, gates often act as targeting criteria. The flow looks like this:
+
+1. **Targeting gate** picks the eligible audience.
+2. **Allocation %** (experiment) decides how much of that audience participates.
+3. **Split %** distributes participants across variants.
+
+Once you choose a winner, you can lift the targeting gate and let the winning variant reach everyone.
+
+---
+
+## Putting It Together
+
+- Start with a **feature gate** if you have a single variant to launch carefully.
+- Reach for **experiments** when you need quantitative comparisons across variants.
+- Combine both when you want precise audience control plus rigorous measurement.
+
+Need more depth? Check out:
+- [Feature gate exposures](/feature-flags/view-exposures)
+- [Experiments overview](/experiments-plus)
+- [Layers for mutual exclusion](/layers)

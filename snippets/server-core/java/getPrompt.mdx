@@ -1,0 +1,26 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+Prompt prompt = statsig.getPrompt(userID, "my_prompt");
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+Prompt promptWithUser = statsig.getPrompt(user, "my_prompt");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val prompt = statsig.getPrompt(userID, "my_prompt")
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+val promptWithUser = statsig.getPrompt(user, "my_prompt")
+```
+</CodeGroup>
+

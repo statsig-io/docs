@@ -1,0 +1,20 @@
+Vercel's Static Site Generation renders HTML at build time. Because static HTML can't be responsive to per-user values, experimenting on SSG content requires one of these patterns:
+
+- Use Vercel Edge Middleware with Statsig's Edge Config Adapter for zero-latency redirects.
+- Isolate Statsig usage to hydrated client components only.
+
+```tsx
+// Create a single client and share it across multiple StatsigProviders
+const myStatsigClient = new StatsigClient(YOUR_SDK_KEY, user, options);
+await myStatsigClient.initializeAsync();
+
+<StatsigProvider client={myStatsigClient}>
+  <YourComponent />
+</StatsigProvider>
+
+<StatsigProvider client={myStatsigClient}>
+  <AnotherComponent />
+</StatsigProvider>
+```
+
+
