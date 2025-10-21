@@ -36,6 +36,9 @@
       "tagId": "GTM-NRDCWNF"
     }
   },
+  "scripts": [
+    "/scripts/search-ask-ai.js"
+  ],
   "navigation": {
     "tabs": [
       {
