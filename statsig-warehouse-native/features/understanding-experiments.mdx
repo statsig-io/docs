@@ -29,10 +29,12 @@ There's a few exceptions:
 
 A given experimental unit (e.g. user)'s data is only included _after_ they trigger the experiment. For example, if you're testing a new notification, metric data from before a given user ever sees the notification should NOT be included in the experimental analysis.
 
-The only exception is if a metric is configured to be measured with the timestamp as a day. In this case, there is a setting on the metric's metric source to either:
+However, there’s an exception: if a metric source uses a date column as its timestamp, then metric data from the day of exposure will not be included in the calculation. This happens because a timestamp cast from a date defaults to the first second of that date (00:00:00), which falls before the exposure time.
 
-- include day-0 data
-- exclude day-0 data
+To address this, the metric source has a setting called “Treat timestamp as date”:
+- If checked: Statsig will include day-0 data by converting the join condition to use the casted date (ignoring time).
+
+- If unchecked: The join between exposure and metric will exclude day-0 data for the reason described above.
 
 depending on the desired analysis. Generally Statsig recommends including day-0 data (checking `measure timestamp as day`) if data has been preprocessed at a daily grain.
 
