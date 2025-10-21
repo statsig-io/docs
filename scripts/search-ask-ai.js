@@ -57,33 +57,31 @@
   
   function monitorSearchInput(searchDialog) {
     let currentQuery = '';
-    let askAiElement = null;
+    let monitoringActive = true;
     
-    const inputObserver = new MutationObserver(() => {
-      const searchInput = searchDialog.querySelector('input[type="text"]');
+    const checkInput = () => {
+      if (!monitoringActive) return;
       
+      const searchInput = searchDialog.querySelector('input[type="text"]');
       if (searchInput) {
         const query = searchInput.value.trim();
         
         if (query && query !== currentQuery) {
           currentQuery = query;
-          setTimeout(() => injectAskAiCTA(searchDialog, query), 200);
+          injectAskAiCTA(searchDialog, query);
         } else if (!query && currentQuery) {
           currentQuery = '';
-          if (askAiElement && askAiElement.parentNode) {
-            askAiElement.remove();
-            askAiElement = null;
+          const existingCTA = searchDialog.querySelector('.mintlify-ask-ai-cta');
+          if (existingCTA) {
+            existingCTA.remove();
           }
         }
       }
-    });
-    
-    inputObserver.observe(searchDialog, {
-      childList: true,
-      subtree: true,
-      characterData: true,
-      attributes: true
-    });
+      
+      if (monitoringActive) {
+        requestAnimationFrame(checkInput);
+      }
+    };
     
     searchDialog.addEventListener('input', (e) => {
       if (e.target.matches('input[type="text"]')) {
@@ -91,16 +89,37 @@
         
         if (query && query !== currentQuery) {
           currentQuery = query;
-          setTimeout(() => injectAskAiCTA(searchDialog, query), 200);
+          injectAskAiCTA(searchDialog, query);
         } else if (!query && currentQuery) {
           currentQuery = '';
-          if (askAiElement && askAiElement.parentNode) {
-            askAiElement.remove();
-            askAiElement = null;
+          const existingCTA = searchDialog.querySelector('.mintlify-ask-ai-cta');
+          if (existingCTA) {
+            existingCTA.remove();
           }
         }
       }
     }, true);
+    
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.removedNodes) {
+          for (const node of mutation.removedNodes) {
+            if (node === searchDialog || node.contains?.(searchDialog)) {
+              monitoringActive = false;
+              observer.disconnect();
+              return;
+            }
+          }
+        }
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    checkInput();
   }
   
   function injectAskAiCTA(searchDialog, query) {
