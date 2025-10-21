@@ -1042,18 +1042,8 @@
             "icon": "server",
             "pages": [
               "infrastructure/introduction",
-              {
-                "group": "Open Telemetry",
-                "pages": [
-                  "/infra-analytics/getting-started"
-                ]
-              },
-              {
-                "group": "Cloudflare",
-                "pages": [
-                  "server/concepts/cloudflare"
-                ]
-              },
+              "/infra-analytics/getting-started",
+              "server/concepts/cloudflare",
               {
                 "group": "Domains & IP",
                 "pages": [
