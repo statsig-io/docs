@@ -10,8 +10,7 @@
     const checkInterval = setInterval(() => {
       const kapaReady = typeof window.Kapa === 'function';
       const searchReady = document.querySelector('[data-search-trigger]') || 
-                         document.querySelector('button[aria-label*="Search"]') ||
-                         document.querySelector('[cmdk-root]');
+                         document.querySelector('button[aria-label*="Search"]');
       
       if (kapaReady && searchReady) {
         clearInterval(checkInterval);
@@ -27,14 +26,18 @@
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
           if (node.nodeType === 1) { // Element node
-            const searchDialog = node.querySelector?.('[cmdk-root]') || 
-                               (node.hasAttribute?.('cmdk-root') ? node : null) ||
-                               node.querySelector?.('[role="dialog"][aria-label*="Search"]') ||
-                               (node.getAttribute?.('role') === 'dialog' && 
-                                node.getAttribute?.('aria-label')?.includes('Search') ? node : null);
+            const isSearchDialog = (node.getAttribute?.('aria-modal') === 'true' && 
+                                   node.querySelector?.('input[type="text"]')) ||
+                                  (node.getAttribute?.('role') === 'dialog' && 
+                                   node.querySelector?.('input[type="text"]'));
             
-            if (searchDialog) {
-              monitorSearchInput(searchDialog);
+            if (isSearchDialog) {
+              monitorSearchInput(node);
+            } else {
+              const searchDialog = node.querySelector?.('[aria-modal="true"]');
+              if (searchDialog && searchDialog.querySelector('input[type="text"]')) {
+                monitorSearchInput(searchDialog);
+              }
             }
           }
         });
@@ -46,9 +49,8 @@
       subtree: true
     });
     
-    const existingDialog = document.querySelector('[cmdk-root]') || 
-                          document.querySelector('[role="dialog"][aria-label*="Search"]');
-    if (existingDialog) {
+    const existingDialog = document.querySelector('[aria-modal="true"]');
+    if (existingDialog && existingDialog.querySelector('input[type="text"]')) {
       monitorSearchInput(existingDialog);
     }
   }
@@ -58,8 +60,7 @@
     let askAiElement = null;
     
     const inputObserver = new MutationObserver(() => {
-      const searchInput = searchDialog.querySelector('input[type="text"]') ||
-                         searchDialog.querySelector('[cmdk-input]');
+      const searchInput = searchDialog.querySelector('input[type="text"]');
       
       if (searchInput) {
         const query = searchInput.value.trim();
@@ -85,7 +86,7 @@
     });
     
     searchDialog.addEventListener('input', (e) => {
-      if (e.target.matches('input[type="text"]') || e.target.hasAttribute('cmdk-input')) {
+      if (e.target.matches('input[type="text"]')) {
         const query = e.target.value.trim();
         
         if (query && query !== currentQuery) {
@@ -103,9 +104,7 @@
   }
   
   function injectAskAiCTA(searchDialog, query) {
-    const resultsContainer = searchDialog.querySelector('[cmdk-list]') ||
-                            searchDialog.querySelector('[role="listbox"]') ||
-                            searchDialog.querySelector('[cmdk-group]')?.parentElement;
+    const resultsContainer = searchDialog.querySelector('[role="listbox"]');
     
     if (!resultsContainer) return;
     
@@ -169,7 +168,7 @@
       e.stopPropagation();
       
       const closeButton = searchDialog.querySelector('button[aria-label*="Close"]') ||
-                         searchDialog.querySelector('[cmdk-dialog-close]');
+                         searchDialog.querySelector('button[aria-label*="close"]');
       if (closeButton) {
         closeButton.click();
       }
