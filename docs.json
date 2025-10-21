@@ -1019,18 +1019,8 @@
                       "access-management/org-admin/gates_policy"
                     ]
                   },
-                  {
-                    "group": "Templates",
-                    "pages": [
-                      "experiments/templates/templates"
-                    ]
-                  },
-                  {
-                    "group": "Decision Framework",
-                    "pages": [
-                      "experiments/templates/decision-framework"
-                    ]
-                  }
+                  "experiments/templates/templates",
+                  "experiments/templates/decision-framework"
                 ]
               },
               "access-management/discussions",
