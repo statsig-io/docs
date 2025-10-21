@@ -1714,7 +1714,7 @@
     },
     {
       "source": "/templates/templates",
-      "destination": "/exp-templates/templates"
+      "destination": "/experiments/templates/templates"
     },
     {
       "source": "/experiments-plus/disable-group",
