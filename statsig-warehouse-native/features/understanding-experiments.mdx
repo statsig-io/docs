@@ -31,12 +31,13 @@ A given experimental unit (e.g. user)'s data is only included _after_ they trigg
 
 However, there’s an exception: if a metric source uses a date column as its timestamp, then metric data from the day of exposure will not be included in the calculation. This happens because a timestamp cast from a date defaults to the first second of that date (00:00:00), which falls before the exposure time.
 
-To address this, the metric source has a setting called “Treat timestamp as date”:
+To address this, the metric source has a setting called `Treat timestamp as date`:
+
 - If checked: Statsig will include day-0 data by converting the join condition to use the casted date (ignoring time).
 
 - If unchecked: The join between exposure and metric will exclude day-0 data for the reason described above.
 
-depending on the desired analysis. Generally Statsig recommends including day-0 data (checking `measure timestamp as day`) if data has been preprocessed at a daily grain.
+Generally Statsig recommends including day-0 data (checking `measure timestamp as day`) if data has been preprocessed at a daily grain.
 
 ### Explore Query Dates
 
