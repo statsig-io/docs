@@ -1042,7 +1042,12 @@
             "icon": "server",
             "pages": [
               "infrastructure/introduction",
-              "/infra-analytics/getting-started",
+              {
+                "group": "Open Telemetry",
+                "pages": [
+                  "/infra-analytics/getting-started"
+                ]
+              },
               "server/concepts/cloudflare",
               {
                 "group": "Domains & IP",
