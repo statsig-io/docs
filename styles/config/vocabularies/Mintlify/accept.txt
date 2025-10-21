@@ -308,6 +308,7 @@ DM
 DMAs
 DMing
 DNS
+docker_stats
 Dockerfile
 Dockerhub
 docsRevamp
