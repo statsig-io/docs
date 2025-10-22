@@ -913,10 +913,7 @@
                   }
                 ]
               },
-              {
-                "group": "Data Exports",
-                "pages": ["integrations/data-exports/overview"]
-              },
+              "integrations/data-exports",
               {
                 "group": "Serverless & Edge",
                 "pages": [
@@ -1007,14 +1004,8 @@
                       "access-management/org-admin/gates_policy"
                     ]
                   },
-                  {
-                    "group": "Templates",
-                    "pages": ["experiments/templates/templates"]
-                  },
-                  {
-                    "group": "Decision Framework",
-                    "pages": ["experiments/templates/decision-framework"]
-                  }
+                  "experiments/templates/templates",
+                  "experiments/templates/decision-framework"
                 ]
               },
               "access-management/discussions",
@@ -1040,10 +1031,7 @@
                 "group": "Open Telemetry",
                 "pages": ["/infra-analytics/getting-started"]
               },
-              {
-                "group": "Cloudflare",
-                "pages": ["server/concepts/cloudflare"]
-              },
+              "server/concepts/cloudflare",
               {
                 "group": "Domains & IP",
                 "pages": [
@@ -1714,7 +1702,7 @@
     },
     {
       "source": "/templates/templates",
-      "destination": "/exp-templates/templates"
+      "destination": "/experiments/templates/templates"
     },
     {
       "source": "/experiments-plus/disable-group",
@@ -1784,6 +1772,10 @@
     {
       "source": "/stats-engine/methodologies/one-sided-test",
       "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/integrations/data-exports/overview",
+      "destination": "/integrations/data-exports"
     }
   ],
   "logo": {
