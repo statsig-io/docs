@@ -61,6 +61,46 @@
   Advanced settings to fetch from different sources (e.g., [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store) or to use different network protocols (HTTP vs gRPC streaming).
 </ResponseField>
 
+<Accordion title="SpecAdapterConfig">
+<ResponseField name="adapterType" type="'data_store' | 'network_grpc_websocket' | 'network_http'" required>
+  Type of adapter to use for fetching specifications. Options:
+  - `network_http`: Standard HTTP polling (default)
+  - `network_grpc_websocket`: gRPC streaming for real-time updates
+  - `data_store`: Fetch from a custom data store
+</ResponseField>
+
+<ResponseField name="initTimeoutMs" type="number" required>
+  Maximum time (in milliseconds) to wait for initialization to complete.
+</ResponseField>
+
+<ResponseField name="specsUrl" type="string">
+  Custom URL for fetching feature specifications. Use this to point to your own proxy server or custom endpoint.
+</ResponseField>
+
+<ResponseField name="authenticationMode" type="'none' | 'tls' | 'mtls'">
+  Authentication mode for secure connections (primarily for gRPC):
+  - `none`: No authentication
+  - `tls`: Transport Layer Security
+  - `mtls`: Mutual TLS (client and server authentication)
+</ResponseField>
+
+<ResponseField name="caCertPath" type="string">
+  Path to the Certificate Authority (CA) certificate file for TLS/mTLS authentication.
+</ResponseField>
+
+<ResponseField name="clientCertPath" type="string">
+  Path to the client certificate file for mTLS authentication.
+</ResponseField>
+
+<ResponseField name="clientKeyPath" type="string">
+  Path to the client private key file for mTLS authentication.
+</ResponseField>
+
+<ResponseField name="domainName" type="string">
+  Domain name for the server (used for certificate validation in TLS/mTLS).
+</ResponseField>
+</Accordion>
+
 <ResponseField name="observabilityClient" type="ObservabilityClient">
   Interface to integrate observability metrics exposed by the SDK (e.g., config propagation delay, initialization time). See [details](#observability-client).
 </ResponseField>
