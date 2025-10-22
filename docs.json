@@ -9,7 +9,7 @@
   },
   "seo": {
     "metatags": {
-        "og:image": "/images/OG_Docs_100725.jpg"
+      "og:image": "/images/OG_Docs_100725.jpg"
     }
   },
   "background": {
@@ -23,14 +23,11 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "chatgpt"
-    ]
+    "options": ["copy", "chatgpt"]
   },
   "integrations": {
     "ga4": {
-        "measurementId": "G-EM5RHE1RHW"
+      "measurementId": "G-EM5RHE1RHW"
     },
     "gtm": {
       "tagId": "GTM-NRDCWNF"
@@ -44,10 +41,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": [
-              "welcome",
-              "understanding-platform"
-            ]
+            "pages": ["welcome", "understanding-platform"]
           },
           {
             "group": "Experiments",
@@ -261,7 +255,6 @@
                     "pages": [
                       "product-analytics/users-tab",
                       "product-analytics/user-profiles"
-    
                     ]
                   }
                 ]
@@ -292,10 +285,7 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": [
-                  "webanalytics/overview",
-                  "webanalytics/autocapture"
-                ]
+                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
               }
             ]
           },
@@ -313,7 +303,6 @@
             "group": "Other Features",
             "icon": "bolt",
             "pages": [
-              
               {
                 "group": "Low-Code Experiments",
                 "pages": [
@@ -562,6 +551,7 @@
                   "statsig-warehouse-native/features/differential-impact",
                   "statsig-warehouse-native/features/targeting",
                   "statsig-warehouse-native/features/id-resolution",
+                  "statsig-warehouse-native/features/id-resolution (legacy)",
                   "statsig-warehouse-native/features/filtering-exposures",
                   "statsig-warehouse-native/metrics/normalized-metrics",
                   "statsig-warehouse-native/features/quality-score"
@@ -925,9 +915,7 @@
               },
               {
                 "group": "Data Exports",
-                "pages": [
-                  "integrations/data-exports/overview"
-                ]
+                "pages": ["integrations/data-exports/overview"]
               },
               {
                 "group": "Serverless & Edge",
@@ -1044,9 +1032,7 @@
               "infrastructure/introduction",
               {
                 "group": "Open Telemetry",
-                "pages": [
-                  "/infra-analytics/getting-started"
-                ]
+                "pages": ["/infra-analytics/getting-started"]
               },
               "server/concepts/cloudflare",
               {
@@ -1210,7 +1196,7 @@
       "destination": "/statsig-warehouse-native/features/statistics/variance-reduction"
     },
     {
-      "source":"/statsig-warehouse-native/features/other-features",
+      "source": "/statsig-warehouse-native/features/other-features",
       "destination": "/statsig-warehouse-native/features/other-useful-features"
     },
     {
@@ -1769,7 +1755,7 @@
       "source": "/developer-guides/feature-flags-in-react",
       "destination": "/client/React"
     },
-  
+
     {
       "source": "/experiments-plus/geotests/methodology",
       "destination": "/statsig-warehouse-native/geotests/methodology"

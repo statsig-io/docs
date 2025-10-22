@@ -1,6 +1,6 @@
 ---
 title: ID Resolution (ID Stitching)
-sidebarTitle: ID Resolution
+sidebarTitle: ID Resolution (legacy)
 description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
 keywords:
   - owner:vm
@@ -8,31 +8,7 @@ last_update:
   date: 2025-10-21
 ---
 
-Statsig warehouse native natively supports resolving multiple IDs to one identified user, allowing you to easily expose an experiment on one identifier and analyze data coming from one to many mapped identities associated with that experimental unit.
-
-Common scenarios where this is used are:
-
-- Exposing logged out users and analyzing logged-in metrics like revenue or a funnel going from logged-out marketing page landing -> to a logged-in subscription purchase.
-- Utilizing one:many relationships, e.g. a single user owns multiple accounts. ID resolution lets you aggregate metric from the user's mapped accounts. Note that you lose power when using this approach but it is statistically sound.
-
-ID resolution is a common need in experimentation; generally the responsibility for this mapping is put onto data users or PMs running experiment analysis, which leads to inconsistent results and expensive query logic. Using Advanced ID Resolution streamlines the process, making it consistent and performant and allowing all users to point to trusted identity tables.
-
-## The Identity Challenge
-
-A common problem in experimentation is trying to connect different user identifiers before or after some event boundary, most frequently signups.
-
-In these scenarios, the experimenter will have a logged-out identifier (e.g. a cookie or a Statsig stableID) as well as - for those who do sign up - a userID generated after the user signs up. Because business metrics are generally calculated at the grain of userID, it's common to want to run an experiment where the unit of analysis is a logged out identifier, but the evaluation criteria for the experiment is a logged-in metric (e.g. purchase revenue, or estimated Lifetime Value).
-
-Many platforms handle this in an ad-hoc way, which requires the user to do pre-processing to join and deduplicate exposures, or tagging userID metrics with an associated logged-out identifier. This is tractable, but leads to you having to manage and debug fairly complex queries resolving identifiers across timestamps and joining mapping tables to your source-of-truth fact tables..
-
-Statsig Warehouse Native offers an automatic, no-code solution for connecting identifiers across this boundary in a centralized and reproducible way.
-
-<Frame>
-  <img
-    src="https://github.com/user-attachments/assets/05cb4f49-14a2-4b51-a0e0-63f127838ce4"
-    alt="Docs_IDresolution_TheProblem_111224b"
-  />
-</Frame>
+At the earliest, Statsig will update its ID resolution methodology to reflect mixed population on November 15th.
 
 ## Mapping Modes
 
@@ -57,29 +33,13 @@ Data is attributed to the group of the first associated primary ID seen in the e
 
 Primary ID records that are associated with another Primary ID, but are not the first observed records, are dropped from the analysis. If a user is exposed twice on different primary IDs that resolve to the same secondary IDs, only the primary ID metrics from the first-exposed user will be kept in the analysis.
 
-### Last Touch Mapping (beta)
+### Last Touch Mapping
 
 Same as first touch but data is attributed to the most recent primary ID.
 
-### Explanation of Methodology
+### Note on ID stitching
 
-1. Primary IDs are preferred over secondary IDs if present in the data.
-
-As the best practice, the unit type of analysis should match that of randomization. Statsig will always prefer the primary ID if present in the data. If the primary ID is not present, Statsig will use the most recent secondary ID.
-
-2. Secondary IDs are only used to join metrics to exposures, but the unit of analysis is still the primary ID.
-
-The unit counts of each metric's results are calculated using the primary ID.
-
-3. Many (primary) to one (secondary) mapping is handled through attributing the secondary ID to **ONE** primary ID.
-
-4. One (primary) to many (secondary) mapping is implicitly handled by treating all secondary IDs as the same unit.
-
-e.g. The metric value will be added in a sum metric or counted in a count metric.
-
-5. Statsig supports a mixture of primary and secondary IDs in the same experiment.
-
-You can use both primary and secondary IDs in the same experiment. For example, when you run a signup experiment, you can measure the session level metrics for the primary ID and the user level metrics for the secondary ID. To do this, Statsig maintains two populations - one for the primary ID and one for the secondary ID. Th primary ID population is the same as if you had only used the primary ID.
+Multiple secondary IDs attached to one primary ID still count as "one" experimental primary ID; the metric values will be merged across records from the different secondary IDs - e.g. added in a sum metric or counted in a count metric.
 
 <Info>
   We are interested in supporting more complex 1-to-many relationships of
