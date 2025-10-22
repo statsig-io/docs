@@ -1772,6 +1772,10 @@
     {
       "source": "/stats-engine/methodologies/one-sided-test",
       "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/integrations/data-exports/overview",
+      "destination": "/integrations/data-exports"
     }
   ],
   "logo": {
