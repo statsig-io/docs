@@ -1,0 +1,13 @@
+```js
+statsig = new Statsig('YOUR_SERVER_SECRET_KEY');
+await statsig.initialize();
+
+wrappedOpenAI = wrapOpenAI(new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  }) as OpenAILike);
+
+const response = await wrappedOpenAI.chat.completions.create({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: 'Hello, world!' }],
+    });
+```

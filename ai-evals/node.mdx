@@ -1,0 +1,52 @@
+---
+title: Node SDK
+sidebarTitle: Node SDK
+description: Statsig's Node SDK for AI Application Configuration & Telemetry
+---
+
+import Installation from '/snippets/ai-sdks/node/installation.mdx'
+import Initialization from '/snippets/ai-sdks/node/initialization.mdx'
+import WrapOpenAI from '/snippets/ai-sdks/node/wrapOpenAI.mdx'
+import LogEvalResult from '/snippets/ai-sdks/node/logEvalResult.mdx'
+import GetPrompt from '/snippets/ai-sdks/node/getPrompt.mdx'
+
+
+import InitializationPreamble from '/snippets/ai-sdks/initialization.mdx'
+import WrapOpenAIPreamble from '/snippets/ai-sdks/wrapOpenAI.mdx'
+import LogEvalResultPreamble from '/snippets/ai-sdks/logEvalResult.mdx'
+import GetPromptPreamble from '/snippets/ai-sdks/getPrompt.mdx'
+
+
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-ai-node" target="_blank" rel="noreferrer">Node AI SDK on Github</a>, 
+<a href="https://www.npmjs.com/package/@statsig/statsig-ai-node" target="_blank" rel="noreferrer">NPM Package</a>
+</Callout>
+
+## Overview 
+
+The Statsig Node AI SDK lets you manage your prompts, online and offline evals, and debug your LLM applications in production. It depends upon the [Statsig Node Server SDK](/server-core/node-core), but provides convenient hooks for AI-specific functionality.
+
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+</Step>
+<Step title="Initialize the SDK">
+<InitializationPreamble/>
+<Initialization/>
+</Step>
+</Steps>
+
+## Using the SDK
+
+<WrapOpenAIPreamble/>
+<WrapOpenAI/>
+
+<LogEvalResultPreamble/>
+<LogEvalResult/>
+
+<GetPromptPreamble/>
+<GetPrompt/>
+
+Todo: 
+- explain how it works with the Statsig SDK and the Otel SDK - how to insert your own
+- Figure out if we need to document getAgentConfig. or getPromptWithOptions. Also Shutdown? 
