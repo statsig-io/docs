@@ -30,7 +30,8 @@ Both require setting up chron job to fetch configs and flush events
 
 <CodeGroup>
 ```bash PHP Core
-*/10 * * * * /usr/bin/php /var/www/example.com/bin/StatsigSyncConfig.php 1>> /dev/null 2>&1
+# Setup chron job / scheduled job to sync config and flush events
+*/1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigSyncConfig.php 1>> /dev/null 2>&1
 */1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigFlushEvents.php 1>> /dev/null 2>&1
 ```
 
