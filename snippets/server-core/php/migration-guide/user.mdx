@@ -1,0 +1,14 @@
+<CodeGroup>
+```php Php Core
+// We introduced the user builder pattern
+$user_builder = StatsigUserBuilder::withUserID('my_user');
+$user_builder->withEmail("example@abc.com");
+$user = $user_builder->build()
+```
+
+```Php Php Legacy
+$user = StatsigUser::withUserID("my_user");
+$user = user->setEmail("example@abc.com");
+```
+</CodeGroup>
+

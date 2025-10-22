@@ -1,0 +1,17 @@
+### Key Package and Class Changes
+
+| Feature        | Php Core SDK                                    | Legacy Php SDK             | Status                   |
+| -------------- | ----------------------------------------------- | -------------------------- | ------------------------ |
+| Package        | `statsig/statsig-php-core`                      | `statsig`                  | ⚠️ Renamed               |
+| Import         | `use Statsig/Statsig`                           | `use Statsig/Statsig`      | Same                     |
+| Options        | `StatsigOptions`                                | `StatsigOptions`           | ✓ Same                   |
+| User           | `StatsigUser (With StatsigUserBuilder pattern)` | `StatsigUser`              | Construction api changed |
+| Initialize     | `statsig->initialize()`                         | `statsig->initialize()`    | ✓ Same                   |
+| Check Gate     | `statsig->checkGate()`                          | `statsig->checkGate()`     | ✓ Same                   |
+| Get Config     | `statsig->getDynamicConfig()`                   | `statsig->getConfig()`     | ⚠️ Naming change                  |
+| Get Experiment | `statsig->getExperiment()`                      | `statsig->getExperiment()` | ✓ Same                   |
+| Get Layer      | `statsig->getLayer()`                           | `statsig->getLayer()`      | ✓ Same                   |
+| Log Event      | `statsig->logEvent()`                           | `statsig->logEvent()`      | ✓ Same                   |
+| Shutdown       | `statsig->shutdown()`                           | `statsig->shutdown()`      | Same                     |
+
+For more details on the new API, see [Php Core SDK documentation](/server-core/php-core).
