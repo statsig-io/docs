@@ -25,3 +25,52 @@ await sharedStatsig.Initialize();
 
 var statsig = Statsig.Shared();
 ```
+
+### Dependency Injection (v0.10.2+)
+
+You can register Statsig with .NET's dependency injection container:
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using Statsig;
+
+var services = new ServiceCollection();
+
+// Register Statsig as a singleton
+services.AddSingleton<IStatsig>(sp =>
+{
+    var options = new StatsigOptionsBuilder()
+        .SetSpecsSyncIntervalMs(10000)
+        .Build();
+    
+    var statsig = new Statsig("server-secret-key", options);
+    statsig.Initialize().Wait();
+    return statsig;
+});
+
+var serviceProvider = services.BuildServiceProvider();
+var statsig = serviceProvider.GetRequiredService<IStatsig>();
+```
+
+In ASP.NET Core applications:
+
+```csharp
+// Program.cs or Startup.cs
+builder.Services.AddSingleton<IStatsig>(sp =>
+{
+    var statsig = new Statsig("server-secret-key");
+    statsig.Initialize().Wait();
+    return statsig;
+});
+
+// Then inject into your controllers or services
+public class MyController : ControllerBase
+{
+    private readonly IStatsig _statsig;
+    
+    public MyController(IStatsig statsig)
+    {
+        _statsig = statsig;
+    }
+}
+```
