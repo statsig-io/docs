@@ -41,7 +41,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform"]
+            "pages": ["welcome", "understanding-platform", "sample-apps"]
           },
           {
             "group": "Experiments",
