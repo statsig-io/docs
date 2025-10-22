@@ -1,0 +1,18 @@
+### Key Package and Class Changes
+
+| Feature | Node Core SDK | Legacy Node SDK | Status |
+|---------|---------------|----------------|--------|
+| Package | `@statsig/statsig-node-core` | `statsig-node` | ⚠️ Renamed |
+| Import | `import {Statsig} from '@statsig/statsig-node-core'` |`const Statsig = require("statsig-node");` | ⚠️ Change |
+| Options | `StatsigOptions` | `StatsigOptions` | ✓ Same |
+| User | `StatsigUser` | `StatsigUser` | ⚠️ Changed from type to class |
+| Initialize | `await statsig.initialize()` | `await statsig.initialize()` | ✓ Same  |
+| Check Gate | `statsig.checkGate()` | `statsig.checkGate()` | ✓ Same |
+| Get Config | `statsig.getDynamicConfig()` | `statsig.getConfig()` | ⚠️ Renamed |
+| Get Experiment | `statsig.getExperiment()` | `statsig.getExperiment()` | ✓ Same |
+| Get Layer | `statsig.getLayer()` | `statsig.getLayer()` | ✓ Same |
+| Log Event | `statsig.logEvent()` | `statsig.logEvent()` | ✓ Same |
+| Shutdown | `await statsig.shutdown()` | `await statsig.shutdown()` | ✓ Same |
+
+For more details on the new API, see [Node Core SDK documentation](/server-core/node-core).
+

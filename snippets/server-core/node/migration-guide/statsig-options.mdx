@@ -1,0 +1,18 @@
+| Old Option                                                                                | New / Notes                                                                                |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `api`                                                                                     | Deprecated                                                                                 |
+| `idlists_thread_limit`, `logging_interval`, `enable_debug_logs`, `events_flushed_callback` | Deprecated                                                                                 |
+| `timeout`                                                                                 | Deprecated (was only for network)                                                          |
+| `apiForDownloadConfigSpecs`                                                               | `specsUrl` – must complete with endpoint                                                   |
+| `apiForIdLists`                                                                           | `idListsUrl` – must complete with endpoint                                                 |
+| `apiForLogEvent`                                                                          | `logEventUrl` – must complete with endpoint                                                |
+| `initTimeoutMs`                                                                           | `initTimeoutMs` – applies to overall initialization (suggest adding +1000 ms if enabling UA) |
+| `rulesetsSyncIntervalMs`                                                                  | `specsSyncIntervalMs` (unit: milliseconds)                                                 |
+| `idListsSyncIntervalMs`                                                                   | `idListsSyncIntervalMs` (unit: milliseconds)                                               |
+| `loggingIntervalMs`                                                                       | `eventLoggingFlushIntervalMs`                                                              |
+| `loggingMaxBufferSize`                                                                    | `eventLoggingMaxQueuesize`                                                                 |
+| `dataAdapter`                                                                             | Still supported but interface changed                                                      |
+| `observability_client`, `sdk_error_callback`                                              | Now within `observability_client` interface                                                |
+| `logger`                                                                                  | Now `OutputLoggerProvider` interface                                                       |
+| `bootstrap_values`, `evaluation_callback`, `rules_updated_callback`                       | Not yet supported                                                                          |
+
