@@ -23,7 +23,10 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": ["copy", "chatgpt"]
+    "options": [
+      "copy",
+      "chatgpt"
+    ]
   },
   "integrations": {
     "ga4": {
@@ -41,7 +44,10 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform"]
+            "pages": [
+              "welcome",
+              "understanding-platform"
+            ]
           },
           {
             "group": "Experiments",
@@ -285,7 +291,10 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
+                ]
               }
             ]
           },
@@ -380,8 +389,7 @@
                       "metrics/301",
                       "metrics/create-user-funnels",
                       "metrics/create-user-flows",
-                      "metrics/count-distinct",
-                      "metrics/hierarchical-id"
+                      "metrics/count-distinct"
                     ]
                   }
                 ]
@@ -1029,7 +1037,9 @@
               "infrastructure/introduction",
               {
                 "group": "Open Telemetry",
-                "pages": ["/infra-analytics/getting-started"]
+                "pages": [
+                  "/infra-analytics/getting-started"
+                ]
               },
               "server/concepts/cloudflare",
               {
@@ -1756,7 +1766,6 @@
       "source": "/developer-guides/feature-flags-in-react",
       "destination": "/client/React"
     },
-
     {
       "source": "/experiments-plus/geotests/methodology",
       "destination": "/statsig-warehouse-native/geotests/methodology"
