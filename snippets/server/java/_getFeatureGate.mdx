@@ -1,0 +1,40 @@
+<Tabs>
+  <Tab title="Java">
+
+```java
+APIFeatureGate featureGate = Statsig.getFeatureGate(user, "a_gate");
+System.out.println("Feature Gate: " + featureGate.getName() + ", Is Enabled?: " + featureGate.getValue());
+
+String reason = featureGate.getReason() != null ? featureGate.getReason().toString() : "No specific reason";
+System.out.println("Evaluation Reason: " + reason);
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```kotlin
+val featureGate = Statsig.getFeatureGate(user, "a_gate");
+println("Feature Gate: ${featureGate.name}, Is Enabled?: ${featureGate.value}")
+
+val reason = featureGate.reason?.toString() ?: "No specific reason"
+println("Evaluation Reason: $reason")
+```
+
+  </Tab>
+</Tabs>
+
+The `APIFeatureGate` data class encapsulates the evaluation result of a feature gate for a specific user. It's mostly about getting metadata about the gate.
+
+### Properties
+
+- **`name`** ( `String` ): name of the feature gate.
+
+- **`value`** ( `Boolean` ): Indicates the feature gate's status for the user.
+
+- **`ruleID`** ( `String?` ): The identifier of the rule applied to determine the feature gate's status. It can be `null` if the evaluation falls back to a default status or if no specific rule was matched.
+
+- **`secondaryExposures`** ( `ArrayList<Map<String, String>>` ): A collection of secondary exposures encountered during the feature gate's evaluation.
+
+- **`reason`** ( `EvaluationReason?` ): The reason behind the feature gate's evaluation result.
+
+

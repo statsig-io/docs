@@ -1,0 +1,30 @@
+
+<CodeGroup>
+```swift Swift
+let client = StatsigClient(
+    sdkKey: "client-xyz",
+    user: StatsigUser(userID: "user-1"),
+    options: StatsigOptions(environment: StatsigEnvironment(tier: .Production))
+) { error in
+  // ready
+}
+
+let gateOn = client.checkGate("some_gate")
+```
+
+```objective-c Objective C
+StatsigOptions *options = [[StatsigOptions alloc] initWithEnvironment:[[StatsigEnvironment alloc] initWithTier:StatsigEnvironmentTierProduction]];
+StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"user-1"];
+StatsigClient *client = [[StatsigClient alloc] initWithSdkKey:@"client-xyz" user:user options:options completion:^(StatsigClientError * error) {
+  // ready
+}];
+
+BOOL gateOn = [client checkGate:@"some_gate"];
+```
+</CodeGroup>
+
+<Warning>
+Use a unique SDK key per instance to avoid collisions.
+</Warning>
+
+

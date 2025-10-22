@@ -1,0 +1,111 @@
+<Tabs>
+<Tab title="App Router">
+```ts app/statsig-proxy/initialize/route.ts
+import { generateBootstrapValues } from './statsig-backend';
+
+export async function POST(request: Request): Promise<Response> {
+  const json = await request.json();
+  if (!json || typeof json !== 'object') {
+    return new Response(null, { status: 400 });
+  }
+  const data = await generateBootstrapValues();
+  return new Response(data);
+}
+```
+
+```ts app/statsig-proxy/log_event/route.ts
+type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
+
+export async function POST(request: Request): Promise<Response> {
+  const tail = request.url.split('?').pop();
+  const logEventUrl = `https://events.statsigapi.net/v1/log_event?${tail}`;
+  const fetchOptions: ExtendedRequestInit = {
+    method: 'POST',
+    body: request.body,
+    headers: request.headers,
+    duplex: 'half',
+  };
+  return fetch(logEventUrl, fetchOptions);
+}
+```
+</Tab>
+
+<Tab title="Page Router">
+```ts pages/api/statsig-proxy/initialize.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { StatsigUser } from 'statsig-node';
+import { getStatsigValues } from '@/pages/statsig-backend';
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>,
+) {
+  if (req.method !== 'POST') {
+    res.status(400).send('/initialize only supports POST');
+    return;
+  }
+  const { user } = JSON.parse(req.body) as { user: StatsigUser };
+  const values = await getStatsigValues(user);
+  res.status(200).send(values);
+}
+```
+
+```ts pages/api/statsig-proxy/log_event.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<string>,
+): Promise<void> {
+  if (req.method !== 'POST') {
+    res.status(400).send('/log_event only supports POST');
+    return;
+  }
+
+  let logEventUrl = `https://events.statsigapi.net/v1/log_event`;
+  const queryParams = [] as string[];
+  for (const [key, value] of Object.entries(req.query)) {
+    queryParams.push(`${key}=${value}`);
+  }
+  if (queryParams.length > 0) {
+    logEventUrl += '?' + queryParams.join('&');
+  }
+
+  const fetchOptions: ExtendedRequestInit = {
+    method: 'POST',
+    body: req.body as BodyInit,
+    headers: req.headers as HeadersInit,
+    duplex: 'half',
+  };
+
+  try {
+    const response = await fetch(logEventUrl, fetchOptions);
+    if (!response.ok) {
+      res.status(500).send('Failed to log event');
+      return;
+    }
+    const body = await response.text();
+    res.status(response.status).send(body);
+  } catch (err) {
+    res.status(500).send('Failed to log event: ' + err);
+  }
+}
+```
+</Tab>
+</Tabs>
+
+```ts
+// Assign URLs when creating the client
+const inst = new StatsigClient(clientSdkKey, user, {
+  networkConfig: {
+    logEventUrl: '/statsig-proxy/log_event',
+    initializeUrl: '/statsig-proxy/initialize',
+  },
+  disableCompression: true,
+  disableStatsigEncoding: true,
+});
+```
+
+

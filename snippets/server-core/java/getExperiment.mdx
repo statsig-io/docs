@@ -1,0 +1,44 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+
+// Getting an Experiment
+Experiment experiment = statsig.getExperiment(userID, "my_experiment");
+String expName = experiment.getString("experiment_param", "");
+
+// Getting a Layer
+Layer layer = statsig.getLayer(userID, "my_layer");
+String layerValue = layer.getString("layer_param", "default");
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+    
+Experiment experimentWithUser = statsig.getExperiment(user, "my_experiment");
+Layer layerWithUser = statsig.getLayer(user, "my_layer");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+
+// Getting an Experiment
+val experiment = statsig.getExperiment(userID, "my_experiment")
+val expName = experiment.getString("experiment_param", "")
+
+// Getting a Layer
+val layer = statsig.getLayer(userID, "my_layer")
+val layerValue = layer.getString("layer_param", "default")
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+    
+val experimentWithUser = statsig.getExperiment(user, "my_experiment")
+val layerWithUser = statsig.getLayer(user, "my_layer")
+```
+</CodeGroup>
+

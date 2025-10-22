@@ -1,0 +1,96 @@
+---
+title: "Run your first A/B test"
+---
+
+In this guide, you will create and implement your first experiment in Statsig from end to end. There are many types of experiments you can set up in Statsig, but this guide will walk through the most common one: an A/B test.
+
+By the end of this tutorial, you will have:
+* Created a new user-level **Experiment** in the Statsig console, with **parameters** set for a Control and Experiment group
+* **Checked the experiment** in your application code using the **Statsig Client SDK** `getExperiment` function
+
+## Prerequisites
+1. You already have a [Statsig account](https://console.statsig.com/sign_up)
+2. You already [installed the Statsig Client SDK](/sdks/quickstart) in an existing application
+
+## Step 1: In the Statsig console
+
+### Create an experiment
+1. Log in to the Statsig console at https://console.statsig.com/ and navigate to Experiments in the left-hand navigation panel.
+2. Click on the **Create** button and enter the name `Quickstart Experiment` and enter a brief hypothesis. For example, "A new homepage banner will improve engagement."
+3. Click **Create**.
+
+### Setup scorecards
+Next, in the Experiment Setup tab, we will fill out scorecards for the metrics you are interested in watching. For the purposes of this SDK tutorial, we'll leave most of the settings to default.
+
+1. In the **Hypothesis** card, enter a hypothesis for what you are testing: "Showing a homepage banner will increase user engagement, measured by daily_stickiness."
+2. In the **Primary Metrics** card, add a new metric called `daily_stickiness`.
+3. We will leave the **Secondary Metrics** and **Duration** settings to their default values. For more details on experiment setup, see the product docs on [Creating an experiment](/experiments-plus/create-new).
+
+### Configure groups and parameters
+Next, we're going to configure the experiment. By default, the experiment is set up to run on 100% of users; 50% of those users are assigned to a Control group and 50% are assigned to an Experiment group.
+
+1. In the **Groups and Parameters** card, create a parameter called `enable_banner` and select the type as `Boolean`.
+2. Set `enable_banner` to `false` for the Control group and `true` for the Experiment group.
+3. Click **Save**.
+4. Hit **Save** in the bottom right to finalize this experiment setup.
+6. This experiment is not live yet. To launch it, click **Start** at the top of the page. This will make production traffic eligible for the experiment.
+
+<Note>
+Experiment parameters and groups cannot be configured after launching an experiment. If you want to test in a staging environment, check out our docs on [using environments](/guides/using-environments/#configuring-environments).
+</Note>
+
+## Step 2: In your application code
+
+### Check the experiment
+
+<Note>
+This tutorial assumes you have already [installed the Statsig Client SDK](/sdks/quickstart) in an existing application.
+</Note>
+
+Next, we'll use a Statsig Client SDK to check a user's assigned experiment group and parameters in real-time. This will change the user's experience according to the variant they are assigned to. In this case, we fetch the value of the `enable_banner` parameter that we had created earlier.
+
+<CodeGroup>
+
+```tsx Check Experiment
+const quickstartExperiment = myStatsigClient.getExperiment(user, "quickstart_experiment");
+
+// the second parameter is the default fallback value if the experiment is not found
+if (quickstartExperiment.get("enable_banner", false)) {
+  showBanner();
+}
+```
+
+</CodeGroup>
+
+In this snippet, if this user is assigned to the Experiment group, they will be shown the banner. If they are assigned to the Control group, the banner will not be shown.
+
+Notice that we never actually have to [hardcode the experiment group name](/experiments-plus/getting-group/) ("Control" or "Experiment") in the code. This is because the Statsig SDK will automatically fetch the experiment configuration from the Statsig server and return the correct value based on the user's variant.
+
+## Step 3: Monitor experiment diagnostics
+Now, if you run your code, the `showBanner()` function is called for users in the Test group. If you navigate to your experiment in the Statsig console and select the **Diagnostics** tab, you can see a live log stream of checks and events related to this experiment from your application.
+
+You can read more about the Diagnostics tab [here](/experiments-plus/getting-group/#rules).
+
+<Frame>
+  <img src="https://github.com/user-attachments/assets/b0ab8c0e-4f13-4b2b-bf58-1f8a09d8d4a7" alt="Experiment Diagnostics" />
+</Frame>
+
+## Step 4: Read experiment results
+Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Results** tab in the Statsig console, and how they have impacted the various scorecard metrics you set up in the **Setup** panel.
+
+Here's a sample of what that looks like:
+
+<Frame>
+  <img src="https://github.com/user-attachments/assets/7e203d73-dbf9-4f27-87fb-b05269dd4173" alt="Example experiment results" />
+</Frame>
+
+## Next steps
+In this tutorial, we used `daily_stickiness` as the primary metric. This metric is automatically logged to Statsig for you, so you don't need to log it explicitly.
+
+If you want to measure other events or custom metrics that happen downstream after checking the experiment, you'll need to log them to Statsig. Continue to the next tutorial to learn how to log custom events and metrics with the Statsig SDK.
+
+### Related tutorials
+* [Initialization techniques for Statsig SDKs](/client/concepts/initialize)
+* [Run a device-level experiment](/guides/first-device-level-experiment)
+* [Run an experiment on custom unit ID types](/guides/experiment-on-custom-id-types)
+* [Configure the Statsig SDK for staging environments](/guides/using-environments)

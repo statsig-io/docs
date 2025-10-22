@@ -1,0 +1,11 @@
+You can get a DynamicConfig value by getting the client with the `useStatsigClient` hook, and then calling `getConfig`
+
+```tsx
+const { client } = useStatsigClient();
+const config = client.getConfig('app_properties');
+
+return (
+  <div>{config.get('title', 'Default Title')}</div>
+);
+```
+

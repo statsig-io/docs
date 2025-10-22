@@ -1,0 +1,6 @@
+```dart
+var homepageStore = Statsig.getParameterStore("homepage");
+
+var title = homepageStore.get("title", "Welcome");
+var shouldShowUpsell = homepageStore.get("upsell_upgrade_now", false);
+```

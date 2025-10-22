@@ -1,0 +1,60 @@
+---
+title: Commands in Statsig CLI
+sidebarTitle: Commands
+---
+
+## Getting Help
+
+Running `siggy` with no arguments will invoke help which will print out the usage and currently supported commands and options
+
+``` bash
+$ siggy
+
+# Response
+Usage: siggy [options] [command]
+
+Statsig CLI
+For information on schema, see /console-api/introduction
+
+Options:
+  -V, --version     output the version number
+  -h, --help        display help for command
+
+Commands:
+  config [options]  view/edit configuration settings
+  gates             create/list/edit gates
+  dyncon            create/list/edit dynamic configs
+  segments          create/list/edit segments
+  experiments       create/list/edit experiments
+  help [command]    display help for command
+```
+
+Calling each command with `--help` option will print out the corresponding help content for that specific command.
+
+``` bash
+$ siggy gates --help
+
+# Response
+Usage: siggy gates [options] [command]
+
+create/list/edit gates
+
+Options:
+  -h, --help                               display help for command
+
+Commands:
+  create <gate-name>                       create a new feature gate
+  get <gate-id>                            retrieve gate details
+  list [options]                           list all gates
+  update <gate-id> <gate-properties-json>  update a gate
+  delete [options] <gate-id>               delete a gate
+  check [options] <gate-id>                check if the current state of the gate for a user
+  help [command]                           display help for command
+```
+
+## Other commands
+
+You can list, create, update, delete entities like Gates, Experiments, Dynamic Configs, Segments and more.  The help content is kept up to date in code and you will get the most relevant help by running the CLI tool with the help option.
+
+For those commands that require a JSON body, the schema is defined here: [Console API](/console-api/introduction)
+

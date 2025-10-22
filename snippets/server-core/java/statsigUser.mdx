@@ -1,0 +1,89 @@
+The `StatsigUser` object represents a user in your application and contains fields used for feature evaluation.
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+import java.util.HashMap;
+import java.util.Map;
+
+// Build a user with various fields
+Map<String, Object> customFields = new HashMap<>();
+customFields.put("plan", "premium");
+customFields.put("age", 25);
+
+Map<String, String> privateAttributes = new HashMap<>();
+privateAttributes.put("internal_id", "123456");
+
+StatsigUser user = StatsigUser.builder()
+    .userID("user_123")
+    .email("user@example.com")
+    .ip("192.168.1.1")
+    .userAgent("Mozilla/5.0...")
+    .country("US")
+    .locale("en_US")
+    .appVersion("1.2.3")
+    .custom(customFields)
+    .privateAttributes(privateAttributes)
+    .build();
+
+// Use the user for evaluation
+boolean result = statsig.checkGate(user, "my_feature_gate");
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+// Build a user with various fields
+val customFields = mapOf(
+    "plan" to "premium",
+    "age" to 25
+)
+
+val privateAttributes = mapOf(
+    "internal_id" to "123456"
+)
+
+val user = StatsigUser.builder()
+    .userID("user_123")
+    .email("user@example.com")
+    .ip("192.168.1.1")
+    .userAgent("Mozilla/5.0...")
+    .country("US")
+    .locale("en_US")
+    .appVersion("1.2.3")
+    .custom(customFields)
+    .privateAttributes(privateAttributes)
+    .build()
+
+// Use the user for evaluation
+val result = statsig.checkGate(user, "my_feature_gate")
+```
+</CodeGroup>
+
+## Private Attributes
+
+Private attributes are fields that will be used for evaluation but will not be logged in events sent to Statsig servers.
+
+<CodeGroup>
+```java Java
+Map<String, String> privateAttributes = new HashMap<>();
+privateAttributes.put("sensitive_field", "sensitive_value");
+
+StatsigUser user = StatsigUser.builder()
+    .userID("user_123")
+    .privateAttributes(privateAttributes)
+    .build();
+```
+
+```kotlin Kotlin
+val privateAttributes = mapOf(
+    "sensitive_field" to "sensitive_value"
+)
+
+val user = StatsigUser.builder()
+    .userID("user_123")
+    .privateAttributes(privateAttributes)
+    .build()
+```
+</CodeGroup>
+

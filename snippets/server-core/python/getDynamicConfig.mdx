@@ -1,0 +1,26 @@
+```python
+# Get a dynamic config for a specific user
+config = statsig.get_dynamic_config(StatsigUser("my_user"), "a_config")
+
+# Access config values with type-safe getters and fallback values
+product_name = config.get_string("product_name", "Awesome Product v1")  # returns String
+price = config.get_float("price", 10.0)  # returns float
+should_discount = config.get_bool("discount", False)  # returns bool
+quantity = config.get_integer("quantity", 1)  # returns int64
+
+# Advanced Usage:
+# You can disable exposure logging for this specific check
+options = DynamicConfigEvaluationOptions(disable_exposure_logging=True)
+config = statsig.get_dynamic_config(user, "a_config", options)
+
+# The config object also provides metadata about the evaluation
+print(config.rule_id)  # The ID of the rule that served this config
+print(config.id_type)  # The type of the evaluation (experiment, config, etc)
+```
+
+The `get_dynamic_config()` method returns a DynamicConfig object that allows you to:
+- Fetch typed values with fallback defaults using `get_string()`, `get_float()`, `get_boolean()`, and `get_integer()`
+- Access evaluation metadata through properties like `rule_id` and `id_type`
+- Configure evaluation behavior using `DynamicConfigEvaluationOptions`
+
+By default, Statsig logs exposures automatically when configs are evaluated. You can disable this for specific checks using the evaluation options.

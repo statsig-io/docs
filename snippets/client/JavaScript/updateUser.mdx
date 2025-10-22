@@ -1,0 +1,10 @@
+### Updating Users
+
+Call `updateUserAsync` when the signed-in user changes to fetch fresh values for that identity.
+
+```tsx
+const user = { userID: 'a-user' };
+await client.updateUserAsync(user);
+```
+
+For advanced flows—such as bootstrapping or prefetching users—see [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter).

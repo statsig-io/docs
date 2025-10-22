@@ -1,0 +1,37 @@
+#### Does the SDK use local storage or cookies?
+
+Statsig's web SDK does not set cookies. It stores gate/config values and unsent events in `localStorage` so features keep working when offline.
+
+#### Can I access the SDK instance globally?
+
+```tsx
+window.Statsig.instance().logEvent('test_event');
+```
+
+```ts
+import { StatsigClient } from '@statsig/js-client';
+StatsigClient.instance().logEvent('test_event');
+```
+
+<Info>
+With multiple instances, pass the SDK key: `Statsig.instance('client-YOUR_KEY')`.
+</Info>
+
+#### How do I handle consent or GDPR flows?
+
+Start with logging disabled and storage blocked, then enable them after consent.
+
+```tsx
+const client = new StatsigClient('client-xyz', {}, {
+  loggingEnabled: 'disabled',
+  disableStorage: true,
+});
+await client.initializeAsync();
+
+client.updateRuntimeOptions({
+  loggingEnabled: 'browser-only',
+  disableStorage: false,
+});
+```
+
+The SDK buffers up to 500 events in memory and flushes them once logging is re-enabled.

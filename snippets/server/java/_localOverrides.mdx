@@ -1,0 +1,48 @@
+<Tabs>
+  <Tab title="Java">
+
+```swift
+// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", true);
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+Statsig.overrideConfig("a_config_or_experiment_name", Map.of("key", "value"));
+
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", Map.of("key", "value"));
+
+// Removing gate overrides
+Statsig.removeGateOverride("a_gate_name");
+
+// Removing config/experiment overrides
+Statsig.removeConfigOverride("a_config_or_experiment_name");
+
+// Removing layer overrides
+Statsig.removeLayerOverride("a_layer_name");
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```swift
+// Overrides the given gate to the specified value
+Statsig.overrideGate("a_gate_name", true)
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+Statsig.overrideConfig("a_config_or_experiment_name", mapOf("key" to "value"))
+
+// Overrides the given layer to the provided value
+Statsig.overrideLayer("a_layer_name", mapOf("key" to "value"))
+
+// Removing gate overrides
+Statsig.removeGateOverride("a_gate_name")
+
+// Removing config/experiment overrides
+Statsig.removeConfigOverride("a_config_or_experiment_name")
+
+// Removing layer overrides
+Statsig.removeLayerOverride("a_layer_name")
+```
+
+  </Tab>
+</Tabs>

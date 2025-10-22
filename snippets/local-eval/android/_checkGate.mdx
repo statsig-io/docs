@@ -1,0 +1,24 @@
+<CodeGroup>
+
+```java Java
+StatsigUser user = new StatsigUser("a-user");
+StatsigClient client = Statsig.INSTANCE.getClient();
+
+if (client.checkGate(user, "new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+
+if (Statsig.client.checkGate(user, "new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+</CodeGroup>

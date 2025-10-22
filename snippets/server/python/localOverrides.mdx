@@ -1,0 +1,23 @@
+```python
+# Adding/Removing gate overrides
+statsig.override_gate("a_gate_name", true, "a_user_id")
+statsig.remove_gate_override("a_gate_name", "a_user_id")
+
+# Adding/Removing config overrides
+statsig.override_config("a_config_name", {"key": "value"}, "a_user_id")
+statsig.remove_config_override("a_config_name", "a_user_id")
+
+# Adding/Removing experiment overrides
+statsig.override_experiment("an_experiment_name", {"key": "value"}, "a_user_id")
+statsig.remove_experiment_override("an_experiment_name", "a_user_id")
+
+# Remove All Overrides
+statsig.remove_all_overrides()
+
+# You can also override with custom ids
+custom_id_user = StatsigUser("a_user_id", custom_ids={"statsigId": "a_statsig_id"})
+statsig.override_gate("a_gate_name", true, "a_statsig_id")
+
+# Local overrides will prioritize override with userId, then look up the custom id to override. 
+# To prevent clashing overrides, it is recommended to not use the same value for userId and customIds for different users. 
+```

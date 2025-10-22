@@ -1,0 +1,7 @@
+You can get the client with the `useStatsigClient` hook, and then call `logEvent`
+
+```tsx
+const { client } = useStatsigClient();
+return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
+```
+

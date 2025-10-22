@@ -1,0 +1,130 @@
+---
+title: JavaScript Client SDK (Web)
+sidebarTitle: Javascript (Web)
+description: Statsig's JavaScript SDK for browser and React applications.
+icon: "js"
+---
+
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import paramStores from '/snippets/client/paramStores.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import manualExposures from '/snippets/client/manualExposures.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+import StableIDIntro from '/snippets/client/stableID.mdx'
+import MultiInstanceIntro from '/snippets/client/multiInstance.mdx'
+
+import JSInstallation from '/snippets/client/JavaScript/installation.mdx'
+import JSInitialize from '/snippets/client/JavaScript/initialize.mdx'
+import JSCheckGate from '/snippets/client/JavaScript/checkGate.mdx'
+import JSGetConfig from '/snippets/client/JavaScript/getConfig.mdx'
+import JSGetLayer from '/snippets/client/JavaScript/getLayer.mdx'
+import JSLogEvent from '/snippets/client/JavaScript/logEvent.mdx'
+import JSTypedGetters from '/snippets/client/JavaScript/typedGetters.mdx'
+import JSEvaluationDetails from '/snippets/client/JavaScript/evaluationDetails.mdx'
+import JSCodeExamples from '/snippets/client/JavaScript/codeExamples.mdx'
+import JSParameterStore from '/snippets/client/JavaScript/parameterStore.mdx'
+import JSUpdateUser from '/snippets/client/JavaScript/updateUser.mdx'
+import JSPrefetchUsers from '/snippets/client/JavaScript/prefetchUsers.mdx'
+import JSStatsigOptions from '/snippets/client/JavaScript/statsigOptions.mdx'
+import JSManualExposures from '/snippets/client/JavaScript/manualExposures.mdx'
+import JSShutdown from '/snippets/client/JavaScript/shutdown.mdx'
+import JSStableID from '/snippets/client/JavaScript/stableID.mdx'
+import JSOverrideAdapter from '/snippets/client/JavaScript/overrideAdapter.mdx'
+import JSPersistentValues from '/snippets/client/JavaScript/persistentValues.mdx'
+import JSTesting from '/snippets/client/JavaScript/testing.mdx'
+import JSSessionReplay from '/snippets/client/JavaScript/sessionReplayAutoCapture.mdx'
+import JSCsp from '/snippets/client/JavaScript/csp.mdx'
+import JSAsyncTimeouts from '/snippets/client/JavaScript/asyncTimeouts.mdx'
+import JSDataAdapter from '/snippets/client/JavaScript/dataAdapter.mdx'
+import JSClientEvents from '/snippets/client/JavaScript/clientEvents.mdx'
+import JSMultiInstanceCode from '/snippets/client/JavaScript/multiInstance.mdx'
+import JSLogOnlyData from '/snippets/client/JavaScript/logOnlyData.mdx'
+import JSDebugging from '/snippets/client/JavaScript/debugging.mdx'
+import JSFaqs from '/snippets/client/JavaScript/faqs.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="_blank" rel="noreferrer">statsig-io/js-client-monorepo</a>
+</Callout>
+## Set Up the SDK
+
+<Steps>
+  <Step title="Install the SDK">
+    <JSInstallation />
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization />
+    <JSInitialize />
+  </Step>
+</Steps>
+
+## Use the SDK
+
+<checkGate />
+<JSCheckGate />
+
+<getDynamicConfig />
+<JSGetConfig />
+
+<getExperimentLayer />
+<JSGetLayer />
+
+<logEvent />
+<JSLogEvent />
+
+<JSTypedGetters />
+<JSEvaluationDetails />
+<JSCodeExamples />
+
+<paramStores />
+<JSParameterStore />
+
+<statsigUser />
+<JSUpdateUser />
+<JSPrefetchUsers />
+
+<statsigOptions />
+<JSStatsigOptions />
+
+<manualExposures />
+<JSManualExposures />
+
+<JSSessionReplay />
+<JSCsp />
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown />
+<JSShutdown />
+
+<StableIDIntro />
+<JSStableID />
+
+<MultiInstanceIntro />
+<JSMultiInstanceCode />
+
+<JSOverrideAdapter />
+<JSPersistentValues />
+<JSAsyncTimeouts />
+<JSDataAdapter />
+<JSLogOnlyData />
+<JSClientEvents />
+
+## Quality & Troubleshooting
+
+<JSTesting />
+<JSDebugging />
+
+## FAQs
+
+<JSFaqs />
+
+## Additional Resources
+
+- [Client Persistent Assignment](/client/concepts/persistent_assignment)
+- [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter)
+- [Debugging SDK Evaluations](/sdk/debugging)

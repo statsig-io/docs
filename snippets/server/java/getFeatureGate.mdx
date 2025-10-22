@@ -1,0 +1,16 @@
+<CodeGroup>
+```java Java
+FeatureGate gate = Statsig.getFeatureGateSync(user, "use_new_feature");
+boolean value = gate.getValue();
+String ruleId = gate.getRuleID();
+EvaluationDetails details = gate.getEvaluationDetails();
+```
+
+```kotlin Kotlin
+val gate = Statsig.getFeatureGateSync(user, "use_new_feature")
+val value = gate.getValue()
+val ruleId = gate.getRuleID()
+val details = gate.getEvaluationDetails()
+```
+</CodeGroup>
+

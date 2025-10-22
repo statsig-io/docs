@@ -1,0 +1,4 @@
+### Working with IP or UserAgent Values
+
+The server SDK will not automatically use the `ip`, or `userAgent` for gate evaluation as Statsig servers would, since we don't have access to the request headers. If you'd like to use the attributes we derive from these properties, like Browser Name/Version, OS Name/Version & Country, you must manually set the `ip` and `userAgent` fields on the user object when calling `GetClientInitializeResponse`.
+

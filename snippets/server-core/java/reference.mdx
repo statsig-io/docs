@@ -1,0 +1,133 @@
+## Reference
+
+### FeatureGate Class
+
+```java
+class FeatureGate {
+    String name;                      // Gate name
+    boolean value;                    // Evaluation boolean result
+    String ruleID;                    // Rule ID for this gate
+    EvaluationDetails evaluationDetails; // Evaluation details
+    String rawJson;                   // Raw JSON string representation
+}
+```
+
+### Experiment Class
+
+```java
+class Experiment {
+    String name;                      // Name of the experiment
+    String ruleID;                    // ID of the rule used in the experiment
+    Map<String, JsonElement> value;   // Configuration values specific to the experiment
+    String groupName;                 // The group name the user falls into
+    EvaluationDetails evaluationDetails; // Details about how the experiment was evaluated
+    String rawJson;                   // Raw JSON representation of the experiment
+}
+```
+
+**Methods for Experiment:**
+
+```java
+public String getString(String key, String fallbackValue)
+public boolean getBoolean(String key, Boolean fallbackValue)
+public double getDouble(String key, double fallbackValue)
+public int getInt(String key, int fallbackValue)
+public long getLong(String key, long fallbackValue)
+public Object[] getArray(String key, Object[] fallbackValue)
+public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
+```
+
+### DynamicConfig Class
+
+```java
+class DynamicConfig {
+    String name;                      // Name of the config
+    String ruleID;                    // ID of the rule used
+    Map<String, JsonElement> value;   // Configuration values
+    EvaluationDetails evaluationDetails; // Details about how the config was evaluated
+    String rawJson;                   // Raw JSON representation
+}
+```
+
+**Methods for DynamicConfig:**
+
+```java
+public String getString(String key, String fallbackValue)
+public boolean getBoolean(String key, Boolean fallbackValue)
+public double getDouble(String key, double fallbackValue)
+public int getInt(String key, int fallbackValue)
+public long getLong(String key, long fallbackValue)
+public Object[] getArray(String key, Object[] fallbackValue)
+public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
+```
+
+### Layer Class
+
+```java
+class Layer {
+    String name;                      // Layer name
+    String ruleID;                    // Rule ID for this layer
+    String groupName;                 // Group name
+    Map<String, JsonElement> value;   // Layer values
+    String allocatedExperimentName;   // Allocated experiment name
+    EvaluationDetails evaluationDetails; // Evaluation details
+    String rawJson;                   // Raw JSON string representation
+}
+```
+
+**Methods for Layer:**
+
+```java
+public String getString(String key, String fallbackValue)
+public boolean getBoolean(String key, Boolean fallbackValue)
+public double getDouble(String key, double fallbackValue)
+public int getInt(String key, int fallbackValue)
+public long getLong(String key, long fallbackValue)
+public Object[] getArray(String key, Object[] fallbackValue)
+public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
+```
+
+### Fields Needed Methods (Enterprise Only)
+
+<Info>
+This is available for Enterprise contracts. Please reach out to our support team, your sales contact, or via our slack channel if you want this enabled.
+</Info>
+
+These methods allow you to retrieve a list of user fields that are used in the targeting rules for gates, configs, experiments, and layers.
+
+```java
+// Get user fields needed for a gate evaluation
+List<String> getFieldsNeededForGate(String gateName)
+
+// Get user fields needed for a dynamic config evaluation
+List<String> getFieldsNeededForDynamicConfig(String configName)
+
+// Get user fields needed for an experiment evaluation
+List<String> getFieldsNeededForExperiment(String experimentName)
+
+// Get user fields needed for a layer evaluation
+List<String> getFieldsNeededForLayer(String layerName)
+```
+
+**Field Mapping**
+
+The fields returned by these methods correspond to the following user properties:
+
+```java
+// Field mapping between user properties and internal field names
+userID -> "u"
+email -> "e"
+ip -> "i"
+userAgent -> "ua"
+country -> "c"
+locale -> "l"
+appVersion -> "a"
+time -> "t"
+stableID -> "s"
+environment -> "en"
+targetApp -> "ta"
+
+// Custom fields are prefixed with "cf:"
+// Example: "cf:plan", "cf:age"
+```
+

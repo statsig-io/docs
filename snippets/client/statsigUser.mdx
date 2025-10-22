@@ -1,0 +1,15 @@
+## Statsig User
+
+You need to provide a StatsigUser object to check/get your configurations. You should pass as much 
+information as possible in order to take advantage of advanced gate and config conditions.
+
+Most of the time, the `userID` field is needed in order to provide a consistent experience for a given 
+user (see [logged-out experiments](/guides/first-device-level-experiment) to understand how to correctly run experiments for logged-out 
+users). 
+
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on 
+StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to 
+create targeting based on them.
+
+Once the user logs in or has an update/changed, make sure to call `updateUser`
+with the updated `userID` and/or any other updated user attributes:

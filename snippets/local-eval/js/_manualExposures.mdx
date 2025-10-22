@@ -1,0 +1,41 @@
+### Gates
+
+```typescript
+// Check gate with exposure disabled
+const result = myStatsigClient.checkGate('a_gate_name', { user, disableExposureLog: true });
+
+// Manually log the exposure
+myStatsigClient.checkGate('a_gate_name', { user });
+```
+
+### Configs
+
+```typescript
+// Get config with exposure disabled
+const config = myStatsigClient.getConfig('a_dynamic_config_name', { user, disableExposureLog: true });
+
+// Manually log the exposure
+myStatsigClient.getConfig('a_dynamic_config_name', { user });
+```
+
+### Experiments
+
+```typescript
+// Get experiment with exposure disabled
+const experiment = myStatsigClient.getExperiment('an_experiment_name', { user, disableExposureLog: true });
+
+// Manually log the exposure
+myStatsigClient.getExperiment('an_experiment_name', { user });
+```
+
+### Layers
+
+```typescript
+// Get layer with exposure disabled
+const layer = myStatsigClient.getLayer('a_layer_name', { user, disableExposureLog: true });
+const paramValue = layer.get('a_param_name', 'fallback_value');
+
+// Manually log the exposure
+const layer = myStatsigClient.getLayer('a_layer_name', { user });
+const paramValue = layer.get('a_param_name', 'fallback_value');
+```

@@ -1,0 +1,164 @@
+## Client Initialize Response
+
+The Python Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
+
+```python
+import json
+from statsig_python_core import Statsig, StatsigUser
+
+# Get client initialize response for a user
+response_data = statsig.get_client_initialize_response(user)
+response = json.loads(response_data)
+
+# Pass response to a client SDK to initialize without a network request
+```
+
+<AccordionGroup>
+<Accordion title = "Initialize Response Parameters">
+
+The `get_client_initialize_response` method accepts the following parameters:
+
+```python
+def get_client_initialize_response(
+    user: StatsigUser,
+    hash: Optional[str] = None,
+    client_sdk_key: Optional[str] = None,
+    include_local_overrides: Optional[bool] = None
+) -> str:
+```
+
+- **`user`**: `StatsigUser` - The user to generate the initialize response for
+- **`hash`**: `Optional[str]` - Algorithm used for hashing gate/experiment names (default: 'djb2')
+- **`client_sdk_key`**: `Optional[str]` - Client SDK key to use for initialization
+- **`include_local_overrides`**: `Optional[bool]` - Whether to include local overrides in the response
+
+</Accordion>
+<Accordion title = "Hash Algorithm">
+
+The `hash` parameter specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'djb2'` for better performance and smaller payload size.
+
+Available options:
+- `'djb2'` (default) - DJB2 hashing algorithm for better performance
+- `'sha256'` - SHA-256 hashing algorithm
+- `'none'` - No hashing applied
+
+```python
+# Use djb2 hashing algorithm (default)
+response_data = statsig.get_client_initialize_response(user, hash='djb2')
+
+# Use SHA-256 hashing algorithm
+response_data = statsig.get_client_initialize_response(user, hash='sha256')
+
+# Disable hashing
+response_data = statsig.get_client_initialize_response(user, hash='none')
+```
+
+</Accordion>
+<Accordion title = "Client SDK Key">
+
+The `client_sdk_key` parameter lets you filter the response to only the specific feature gates, experiments, dynamic configs, layers, or parameter stores that a particular client key has access to - effectively letting you apply [target apps](/sdk-keys/target-apps/).
+
+```python
+# Specify a client SDK key
+response_data = statsig.get_client_initialize_response(
+    user, 
+    client_sdk_key='client-key'
+)
+```
+
+</Accordion>
+<Accordion title = "Local Overrides">
+
+The `include_local_overrides` parameter determines whether to consider [local overrides](#local-overrides) you've set when evaluating each config in the response.
+
+```python
+# Include local overrides in the response
+response_data = statsig.get_client_initialize_response(
+    user, 
+    include_local_overrides=True
+)
+```
+
+</Accordion>
+<Accordion title = "Full Code Example">
+
+Below is a complete example of using the client initialize response to bootstrap a client SDK. Note that you may choose to parallelize or inline the initialize response data with other requests to your server, to eliminate additional requests and latency.
+
+```python
+# Server-side code
+import json
+from statsig_python_core import Statsig, StatsigUser, StatsigOptions
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Initialize the server SDK
+options = StatsigOptions()
+statsig = Statsig('server-secret-key', options)
+statsig.initialize().wait()
+
+# In your API endpoint handler
+@app.route('/statsig-bootstrap')
+def statsig_bootstrap():
+    # Create a user object from the request
+    user = StatsigUser(
+        user_id=request.args.get('userID', ''),
+        email=request.args.get('email'),
+        ip=request.remote_addr,
+        user_agent=request.headers.get('User-Agent')
+    )
+    
+    # Generate the client initialize response
+    response_data = statsig.get_client_initialize_response(
+        user,
+        hash='djb2',
+        client_sdk_key='client-sdk-key'
+    )
+    
+    # Parse the JSON response
+    statsig_values = json.loads(response_data)
+    
+    # Return the values to the client
+    return jsonify({'statsigValues': statsig_values})
+```
+
+```javascript
+// Client-side code using @statsig/js-client
+import { Statsig } from '@statsig/js-client';
+
+// Fetch bootstrap values from your API
+const response = await fetch('/statsig-bootstrap');
+const { statsigValues } = await response.json();
+
+// Initialize the client SDK with the bootstrap values
+await Statsig.initialize({
+  sdkKey: 'client-sdk-key',
+  initializeValues: statsigValues,
+});
+```
+
+</Accordion>
+<Accordion title = "Response Format">
+
+The method returns a JSON string containing the client initialize response. You'll need to parse this string to access the data:
+
+```python
+response_data = statsig.get_client_initialize_response(user)
+response = json.loads(response_data)
+
+# Access different parts of the response
+feature_gates = response.get('feature_gates', {})
+dynamic_configs = response.get('dynamic_configs', {})
+layer_configs = response.get('layer_configs', {})
+```
+
+The response includes:
+- `feature_gates`: Feature gate evaluations for the user
+- `dynamic_configs`: Dynamic config and experiment evaluations
+- `layer_configs`: Layer evaluations
+- `has_updates`: Boolean indicating if there are updates
+- `time`: Timestamp of the response
+
+</Accordion>
+
+</AccordionGroup>

@@ -1,0 +1,19 @@
+### Evaluation Details
+
+Each gate, config, experiment, and layer exposes `details` describing how the value was resolved.
+
+- `reason` explains the source (e.g., `Network:Recognized`, `Cache:Unrecognized`).
+- `lcut` is the last time any configuration changed in your project.
+- `receivedAt` marks when this response was received, useful for judging cache staleness.
+
+```tsx
+const gate = client.getFeatureGate('a_gate');
+console.log(gate.details);
+// { reason: 'Cache:Recognized', lcut: 1713837126636, receivedAt: 1713838137598 }
+
+const config = client.getDynamicConfig('a_config');
+console.log(config.details);
+// { reason: 'Cache:Unrecognized', lcut: 1713837126636, receivedAt: 1713838137598 }
+```
+
+See [`/sdk/debugging`](/sdk/debugging) for the full list of `reason` values.

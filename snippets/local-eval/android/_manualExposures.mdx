@@ -1,0 +1,139 @@
+## Manual Exposures
+
+Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature checks that don't result in the user actually experiencing the feature.
+
+### Gates
+
+Check a gate without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+val result = Statsig.checkGate(user, "a_gate_name", CheckGateOption(disableExposureLogging = true))
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+CheckGateOption option = new CheckGateOption(true);
+boolean result = Statsig.checkGate(user, "a_gate_name", option);
+```
+
+</CodeGroup>
+
+Manually log the gate exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+Statsig.logGateExposure(user, "a_gate_name")
+```
+
+```java Java
+Statsig.logGateExposure(user, "a_gate_name");
+```
+
+</CodeGroup>
+
+### Dynamic Configs
+
+Get a config without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+val config = Statsig.getConfig(user, "a_config_name", GetConfigOption(disableExposureLogging = true))
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetConfigOption(true);
+DynamicConfig config = Statsig.getConfig(user, "a_config_name", option);
+```
+
+</CodeGroup>
+
+Manually log the config exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+Statsig.logConfigExposure(user, "a_config_name")
+```
+
+```java Java
+Statsig.logConfigExposure(user, "a_config_name");
+```
+
+</CodeGroup>
+
+### Experiments
+
+Get an experiment without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+val option = GetExperimentOption(true)
+val experiment = Statsig.getExperiment(user, "an_experiment_name", option)
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetExperimentOption(true);
+DynamicConfig experiment = Statsig.getExperiment(user, "an_experiment_name", option);
+```
+
+</CodeGroup>
+
+Manually log the experiment exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+Statsig.logExperimentExposure(user, "an_experiment_name")
+```
+
+```java Java
+Statsig.logExperimentExposure(user, "an_experiment_name");
+```
+
+</CodeGroup>
+
+### Layers
+
+Get a layer without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+val option = GetExperimentOption(true)
+val layer = Statsig.getLayer(user, "a_layer_name", option)
+val results = layer.getString("a_parameter_name", "fallback")
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetExperimentOption(true);
+Layer layer = Statsig.getLayer(user, "a_layer_name", option);
+String result = layer.getString("a_parameter_name", "fallback");
+```
+
+</CodeGroup>
+
+Manually log the layer parameter exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
+Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name")
+```
+
+```java Java
+Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name");
+```
+
+</CodeGroup>

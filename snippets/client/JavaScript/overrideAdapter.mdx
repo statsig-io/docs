@@ -1,0 +1,25 @@
+## Override Adapter
+
+Use the `LocalOverrideAdapter` to define local overrides for gates, configs, experiments, or layers.
+
+```tsx
+import { LocalOverrideAdapter } from '@statsig/js-local-overrides';
+import { StatsigClient, LogLevel } from '@statsig/js-client';
+
+const overrideAdapter = new LocalOverrideAdapter();
+overrideAdapter.overrideGate('gate_a', false);
+overrideAdapter.overrideGate('gate_b', true);
+
+const client = new StatsigClient('client-xyz', { userID: 'a-user' }, {
+  logLevel: LogLevel.Debug,
+  overrideAdapter,
+});
+```
+
+### Persisting Overrides
+
+Pass your client SDK key to the adapter to persist overrides between sessions when using multi-instance setups.
+
+```tsx
+const overrideAdapter = new LocalOverrideAdapter('client-xyz');
+```

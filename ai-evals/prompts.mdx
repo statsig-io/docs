@@ -1,0 +1,42 @@
+---
+title: Prompts & Graders
+sidebarTitle: Prompts & Graders
+---
+
+## What is a Prompt in Statsig?
+A Prompt is a way to represent an LLM prompt or a task in Statsig, with it's config. Prompts are similar to Dynamic Configs, and allow you to evaluate and roll out prompts in production without deploying code. You can use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app at runtime and use it. 
+
+With Prompts, you can 
+- Manage your prompt configuration outside of your application code. You can update model, configuration or prompt at runtime. 
+- Team mates who have access to Statsig can collaborate and iterate on prompts, while benefitting from Statsig's production change control processes and versioning. 
+- Add configuration for a new model, model provider and progressively shift production traffic to this while comparing costs, user satisfaction or any metric of interest. 
+- Support advanced use cases such as
+   - retrieval-augmented generation (RAG) and
+   - evaluation in production.
+<Frame caption = "Creating a prompt">
+<img alt="image" src="https://github.com/user-attachments/assets/77256d12-0d3f-4caa-8fa7-3719517af4eb" />
+</Frame>
+
+<Frame caption = "Code snippet to retrieve the Live version of the prompt">
+<img alt="image" src="https://github.com/user-attachments/assets/66e3b7f6-4613-4d7c-84c7-0fd84f890a29" />
+</Frame>
+
+<Frame caption = "Looking at the scores for a prompt version">
+<img alt="image" src="https://github.com/user-attachments/assets/546c4974-b01d-4d13-85a1-4f2a6bfbb6c1" />
+</Frame>
+
+
+## What is a Grader?
+A grader is the evaluation component that scores or judges the output of an AI system against a desired standard.
+
+Think of it as the core evaluation unit in the workflow:
+Inputs: The grader takes in the AI model’s response (and sometimes the “ideal” or ground-truth answer if one exists).
+Process: It applies a scoring method. This could be: Rule-based (exact string match, regex check, cosine similarity) or LLM-as-a-Judge (using another model to evaluate correctness, relevance, style, or safety).
+
+Outputs: It produces a score - ideally 0 (Fail) or Pass (1). This score feeds into the overall Statsig experiment or eval framework to determine performance across datasets, experiments, or model versions.
+
+## What is a Critical Grader?
+A critical grader is a must-pass evaluation in Statsig AI Evals: if the AI output fails this grader, the entire run is marked as failed. It enforces non-negotiable requirements, acting as a hard gate before results are considered valid. When it does not fail, it acts like a normal grader.
+
+Use Case
+For example, in a financial support chatbot, a critical grader could check that the model never fabricates account balances. Even if the answer is otherwise helpful, a single failure here blocks the model from being promoted.

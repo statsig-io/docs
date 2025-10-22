@@ -1,0 +1,8 @@
+## Initialize Response
+
+The SDK provides a method to access the raw values that are used internally for gate, config, and layer value. This can be useful for debugging or for advanced use cases where you need to access the underlying data. For example, you can use these values to bootstrap another SDK, like the javascript SDK when you open an in-app browser.
+
+The `getInitializeResponseJson` method returns an `ExternalInitializeResponse` object that contains:
+
+1. A JSON string representation of the initialize response values
+2. Evaluation details that provide metadata about how the values were obtained (network, cache, etc.)

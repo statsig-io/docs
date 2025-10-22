@@ -1,0 +1,58 @@
+## Output Logger
+
+The Output Logger Provider interface allows you to customize how the SDK logs internal messages.
+
+```python
+class OutputLoggerProvider(OutputLoggerProviderBase):
+    def init(self):
+        """
+        Initialize the logger. Called when the Statsig client initializes.
+        """
+        pass
+
+    def debug(self, tag: str, msg: str):
+        """
+        Log a debug message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def info(self, tag: str, msg: str):
+        """
+        Log an info message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def warn(self, tag: str, msg: str):
+        """
+        Log a warning message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def error(self, tag: str, msg: str):
+        """
+        Log an error message.
+        
+        Args:
+            tag: Category/component tag for the message
+            msg: The message to log
+        """
+        pass
+
+    def shutdown(self):
+        """
+        Clean up resources when the Statsig client shuts down.
+        """
+        pass
+```

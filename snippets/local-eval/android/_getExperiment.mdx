@@ -1,0 +1,44 @@
+<CodeGroup>
+
+```java Java
+StatsigUser user = new StatsigUser("a-user");
+StatsigClient client = Statsig.INSTANCE.getClient();
+
+// Values via getLayer
+Layer layer = client.getLayer(user, "user_promo_experiments")
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+DynamicConfig titleExperiment = client.getExperiment(user, "new_user_promo_title");
+DynamicConfig priceExperiment = client.getExperiment(user, "new_user_promo_price");
+
+String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+Double discount = priceExperiment.getDouble("discount", 0.1);
+
+...
+
+Double price = msrp * (1 - discount);
+```
+
+```kotlin Kotlin
+val user = StatsigUser("user_id")
+
+// Values via getLayer
+val layer = Statsig.client.getLayer(user, "user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+val titleExperiment = Statsig.client.getExperiment(user, "new_user_promo_title")
+val priceExperiment = Statsig.client.getExperiment(user, "new_user_promo_price")
+
+val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+val discount = priceExperiment.getDouble("discount", 0.1)
+
+...
+
+val price = msrp * (1 - discount);
+```
+
+</CodeGroup>

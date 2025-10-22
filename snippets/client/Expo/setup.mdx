@@ -1,0 +1,30 @@
+The setup for an Expo environment is very similar to a plain [React environment](/client/React).
+The only difference is that you need to use the Expo specific `StatsigProviderExpo`.
+This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
+
+```tsx
+import { StatsigProviderExpo, useFeatureGate } from "@statsig/expo-bindings";
+
+function Content() {
+  const gate = useFeatureGate("a_gate");
+
+  return <Text>Reason: {gate.details.reason}</Text>; // Reason: Network or NetworkNotModified
+}
+
+function App() {
+  return (
+    <StatsigProviderExpo
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      options={{ environment: { tier: "development" } }} // (Optional)
+      loadingComponent={<Text>Loading...</Text>}
+    >
+      <Content />
+    </StatsigProviderExpo>
+  );
+}
+```
+
+<Warning>
+**Avoid iOS 18.4 on Simulator**: Apple introduced a networking bug in iOS 18.4 that causes requests to fail when running in the Simulator. For more details, see [this thread on Apple's forums](https://developer.apple.com/forums/thread/777999).
+</Warning>

@@ -1,0 +1,35 @@
+## Statsig User
+
+<CodeGroup>
+```python "Python Core"
+from statsig_python_core import *
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)
+```
+
+```python "Python Legacy"
+from statsig import StatsigUser
+
+user = StatsigUser(
+    user_id="user_123",
+    email="user@example.com",
+    ip="192.168.0.1",
+    user_agent="Mozilla/5.0",
+    country="US",
+    custom={
+        "subscription_level": "premium"
+    }
+)
+```
+
+</CodeGroup>
+

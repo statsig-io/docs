@@ -1,0 +1,12 @@
+<CodeGroup>
+```erlang Erlang
+Layer = statsig:get_layer(User, <<"layer_name">>),
+ParamValue = statsig_layer:get(Layer, <<"param">>, <<"default">>).
+```
+
+```elixir Elixir
+layer = Statsig.get_layer(user, "layer_name")
+param_value = StatsigLayer.get(layer, "param", "default")
+```
+</CodeGroup>
+

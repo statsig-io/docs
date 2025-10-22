@@ -1,0 +1,46 @@
+---
+title: 'Users Tab'
+sidebarTitle: 'Users Tab'
+description: 'An event-by-event level understanding of how users are leveraging your product'
+---
+
+## Overview
+
+The Users section of Statsig gives you an event-by-event level understanding of how users (and other Unit IDs) are leveraging your product. This allows you to diagnose issues and understand user behavior at an extremely granular level with event logs, session streams, and session replays. It is also a singular place to manage feature rollout and experiment overrides. 
+
+## Exploring the Users Tab
+
+When you enter the Users tab, you need to input a specific ID. Be sure to also select the matching Unit ID type to the ID you are looking for. There are also many context specific entry points to the Users Tab within Statsig.
+
+A Users Tab query surfaces the following information:
+
+- **Properties-** Additional context around this ID including email, country, OS, and Browser. For customers with user profiles, you can see all of the user profile properties we have for a given ID. 
+- **Log History & Event Details-** History of events and exposures for this ID, limited to 5000 rows. These can be viewed as an event log stream or a session stream
+- **Overrides-** The ability to manually override an ID into a given feature gate or experiment variant
+- **Session Replays-** A sample of session replays the user has triggered
+
+## Events
+
+### Log Streams
+
+Under the Events tab, you can see into the events and exposures this user triggered by seeing their event log stream. Here, you can diagnose what features this user was most interested in or what experiment group they were in.
+
+<Frame>
+  <img width="1374" alt="Event log stream interface" src="https://github.com/user-attachments/assets/1ff4af6a-c467-4dc1-8b9e-fb58818cb67b" />
+</Frame>
+
+### Session Streams
+
+You can also switch to a session-centric view of users events by switching from "**Log Stream**" to "**Session Stream**" to get an in-depth look at all events the user has triggered during each of their sessions. You can dive further into these two explorations by changing the time window, hiding noisy or uninteresting events, and filtering to view only events or experiment / gate exposures. 
+
+<Frame>
+  <img alt="Session stream interface showing user events grouped by session" src="https://github.com/user-attachments/assets/7ac4a9f8-a3d4-485b-9a8a-8ce972ba6cda" />
+</Frame>
+
+## Overrides
+
+Under the Overrides tab, you have the ability to override an ID into a given experiment variant or feature gate rollout. If there is already an active override for an ID on a particular entity, this will be surfaced within this section (and can be modified inline). Any overrides set in the Users Tab will be synced to the "Overrides" section of the entity in question (and can be edited/ removed from this interface as well).
+
+## Session Replays
+
+Under Session Replays, you can quickly jump to a sample of session replays the particular user has triggered to get even more insight into their behavior. To learn more, check out our documentation on [Session Replays](/session-replay/overview).

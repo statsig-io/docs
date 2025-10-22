@@ -1,0 +1,46 @@
+Manual exposures allow you to control when exposure events are logged. This is useful when you want to delay exposure logging until certain conditions are met.
+
+<CodeGroup>
+```java Java
+String userID = "user_id";
+
+// Check gate without logging exposure
+boolean result = statsig.checkGateWithExposureLoggingDisabled(userID, "my_feature_gate");
+
+// Manually log the exposure when ready
+statsig.manuallyLogGateExposure(userID, "my_feature_gate");
+
+// Works with configs too
+DynamicConfig config = statsig.getConfigWithExposureLoggingDisabled(userID, "my_config");
+statsig.manuallyLogConfigExposure(userID, "my_config");
+
+// And with experiments/layers
+Experiment experiment = statsig.getExperimentWithExposureLoggingDisabled(userID, "my_experiment");
+statsig.manuallyLogExperimentExposure(userID, "my_experiment");
+
+Layer layer = statsig.getLayerWithExposureLoggingDisabled(userID, "my_layer");
+statsig.manuallyLogLayerParameterExposure(userID, "my_layer", "parameter_name");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+
+// Check gate without logging exposure
+val result = statsig.checkGateWithExposureLoggingDisabled(userID, "my_feature_gate")
+
+// Manually log the exposure when ready
+statsig.manuallyLogGateExposure(userID, "my_feature_gate")
+
+// Works with configs too
+val config = statsig.getConfigWithExposureLoggingDisabled(userID, "my_config")
+statsig.manuallyLogConfigExposure(userID, "my_config")
+
+// And with experiments/layers
+val experiment = statsig.getExperimentWithExposureLoggingDisabled(userID, "my_experiment")
+statsig.manuallyLogExperimentExposure(userID, "my_experiment")
+
+val layer = statsig.getLayerWithExposureLoggingDisabled(userID, "my_layer")
+statsig.manuallyLogLayerParameterExposure(userID, "my_layer", "parameter_name")
+```
+</CodeGroup>
+

@@ -1,0 +1,9 @@
+`StatsigClient::Initialize`, in addition to `sdk_key` and `user`, takes an optional parameter `options` that you can provide to customize the StatsigClient. Here are the current options and we are always adding more to the list:
+
+<ResponseField name="api" type="std::string" default="https://statsigapi.net">
+  The API to use for all SDK network requests. You should not need to override this unless you have another API that implements the Statsig API endpoints.
+</ResponseField>
+
+<ResponseField name="providers" type="EvaluationsDataProvider" default="LocalFileCache then Network">
+  Array of EvaluationsDataProvider, used to customize the initialization and update behavior.
+</ResponseField>

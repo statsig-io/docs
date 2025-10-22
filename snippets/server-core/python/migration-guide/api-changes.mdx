@@ -1,0 +1,17 @@
+### Key Package and Class Changes
+
+| Feature | Python Core SDK | Legacy Python SDK | Status |
+|---------|---------------|----------------|--------|
+| Package | `statsig_python_core` | `statsig` | ⚠️ Renamed |
+| Import | `from statsig_python_core import *` | `from statsig import Statsig` | ⚠️ Change |
+| Options | `StatsigOptions` | `StatsigOptions` | ✓ Same |
+| User | `StatsigUser` | `StatsigUser` | ✓ Same |
+| Initialize | `statsig.initialize().wait()` | `statsig.initialize()` | ⚠️ Added .wait() |
+| Check Gate | `statsig.check_gate()` | `statsig.check_gate()` | ✓ Same |
+| Get Config | `statsig.get_dynamic_config()` | `statsig.get_config()` | ⚠️ Renamed |
+| Get Experiment | `statsig.get_experiment()` | `statsig.get_experiment()` | ✓ Same |
+| Get Layer | `statsig.get_layer()` | `statsig.get_layer()` | ✓ Same |
+| Log Event | `statsig.log_event()` | `statsig.log_event()` | ✓ Same |
+| Shutdown | `statsig.shutdown().wait()` | `statsig.shutdown()` | ⚠️ Added .wait() |
+
+For more details on the new API, see [Python Core SDK documentation](/server-core/python-core).

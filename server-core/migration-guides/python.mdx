@@ -1,0 +1,52 @@
+---
+title: Python Core SDK Migration Guide
+sidebarTitle: Python Migration
+description: Migrate from the legacy Python Server SDK to the new Python Core SDK
+---
+
+import Intro from '/snippets/server-core/migration-guides/_Intro.mdx'
+import Installation from '/snippets/server-core/migration-guides/_Installation.mdx'
+import GlobalChanges from '/snippets/server-core/migration-guides/_GlobalChanges.mdx'
+import MigrationHelp from '/snippets/server-core/migration-guides/_MigrationHelp.mdx'
+import NeedHelp from '/snippets/server-core/migration-guides/_NeedHelp.mdx'
+
+import PyUserCreation from '/snippets/server-core/python/migration-guide/user-creation.mdx'
+import PyInstallation from '/snippets/server-core/python/migration-guide/installation.mdx'
+import PyAPIChanges from '/snippets/server-core/python/migration-guide/api-changes.mdx'
+import PyStatsigOptions from '/snippets/server-core/python/migration-guide/statsig-options.mdx'
+
+<Intro sdkType="Python" />
+
+<PyInstallation />
+
+## StatsigUser
+
+<PyUserCreation />
+
+## API Changes
+
+<PyAPIChanges />
+
+<GlobalChanges 
+  waitForUserAgentInit="wait_for_user_agent_init"
+  waitForCountryLookupInit="wait_for_country_lookup_init"
+  disableUserAgentParsing="disable_user_agent_parsing"
+  disableCountryLookup="disable_country_lookup"
+  enableIdLists="enable_id_lists"
+/>
+
+## StatsigOptions Changes
+
+The table below shows the mapping between legacy SDK options and Server Core SDK options:
+
+<PyStatsigOptions />
+
+<MigrationHelp />
+
+### Additional Option - Gradual Migration Using Adapter
+
+- Use a migration adapter to wrap the new SDK with the old interface.
+- This allows for incremental migration without updating all call sites at once.
+- [Python Core Migration Adapter](https://github.com/statsig-io/statsig-server-core-migration-adapters/blob/main/python_core_migration_adapter.py)
+
+<NeedHelp />

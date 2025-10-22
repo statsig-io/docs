@@ -1,0 +1,14 @@
+```php
+use Statsig\Statsig;
+
+// Initialize the shared instance
+Statsig::initializeShared('your-server-secret-key', $options);
+
+// Access the shared instance from anywhere in your code
+$user = StatsigUserBuilder::withUserID('my_user')->build();
+$gate = Statsig::shared()->checkGate($user, 'my_gate');
+
+// Shutdown the shared instance when your application closes
+Statsig::shared()->shutdown();
+```
+

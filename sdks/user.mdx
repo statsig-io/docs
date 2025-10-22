@@ -1,0 +1,138 @@
+---
+title: "User (StatsigUser) Object"
+---
+
+## Introduction to the StatsigUser object
+
+The user(StatsigUser) object is the sole input you provide to SDKs to target gates and assign users to experiments. If you'd like to target on an attribute, you'll need to add it to your user object, so assembling the data is an important part of SDK setup. **We recommend providing as much info as practical,** as every additional field can enrich your analyses and expand targeting possibilities. Statsig also infers some information about each user based on other traits (for example, we resolve IP Addresses into countries), read on for more details.
+
+## Usage Example in Node:
+
+<CodeGroup>
+
+```jsx Node.js Example
+//Create a user object
+const user = new StatsigUser({ userID: "12345", email: "vincent@statsig.com"});
+//Use it in getExperiment()
+const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any attribute you pass, you can target on
+```
+
+</CodeGroup>
+
+### I passed that attribute before - why do I need to pass it again?
+
+If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/users/profiles).
+
+However, you cannot use a user's historical attributes for targeting or gate/experiment evaluation at runtime. Statsig evaluates gates and experiment buckets based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than querying previous data, or storing massive amounts of historical data in memory.
+
+## User Attributes
+
+<Tabs>
+<Tab title="Client SDKs">
+
+All user attributes can be explicitly supplied, and some can be inferred from a user's device or connection. Supplying one will always override an inferred value.
+
+| Key                 | Description                                                                                                                                                                                                                                                                                  | Example                                                                                                                    | Client SDK Support | Auto-infer |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|--------------------|------------|
+| `userID`            | ID representing a unique user. This ID will be used to guarantee consistency of targeting for Feature Gates and Experiments and will be used to evaluate experiment results. If `User ID` doesn't exist yet, leave this empty; a `Stable ID` persisted locally will be used for evaluations. | `your_user_id`                                                                                                             | All                |            |
+| `email`             | Email of the user.                                                                                                                                                                                                                                                                           | `marcos@statsig.com`                                                                                                       | All                |            |
+| `userAgent`         | User agent of the browser. This will be decoded to determine the Browser and Operating System of the user's context. Will be inferred if not provided.                                                                                                                                       | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.40 Safari/537.36` | Web                | ✔          |
+| `ip`                | IP address of the user. Inferred from the request to /initialize if not provided                                                                                                                                         | `192.168.1.101`                                                                                                            | All                | ✔          |
+| `country`           | 2-letter country code of the user. This can be supplied or inferred, and we can target based on the country code in both cases. When inferred, the country code follows ISO-3166.                                                                                                            | `US`                                                                                                                       | All                | ✔          |
+| `locale`            | Locale of the user. When using the Android or iOS SDK, this will be inferred if not provided.                                                                                                                                                                                                | `en_US`                                                                                                                    | Mobile             | ✔          |
+| `appVersion`        | Version of the app the user is using. When using the Android or iOS SDK, this will be inferred if not provided.                                                                                                                                                                              | `1.0.1`                                                                                                                    | Mobile             | ✔          |
+| `systemName`        | When using our Android/iOS SDKs, this will be automatically assigned, but you can also provide an explicit operating system to override.                                                                                                                                                     | `Android`                                                                                                                  | All                | ✔          |
+| `systemVersion`     | When using our Android/iOS SDKs, this will be automatically assigned, but you can also provide an explicit OS version to override.                                                                                                                                                           | `15.4`                                                                                                                     | All                | ✔          |
+| `browserName`       | When using our Web SDK, this will be automatically assigned, but you can also provide an explicit Browser Name to override.                                                                                                                                                                  | `Chrome`                                                                                                                   | Web                | ✔          |
+| `browserVersion`    | When using our Web SDK, this will be automatically assigned, but you can also provide an explicit Browser Version to override.                                                                                                                                                               | `45.0`                                                                                                                     | Web                | ✔          |
+| `custom`            | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting.                                                                                                                        | `{subscriber: "yes", ...}`                                                                                         | All                |            |
+| `privateAttributes` | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will **not** be stored after being used for targeting and will be removed from any `log_event` calls.                                                                | `{sensitive_field: "sensitive_information", ...}`                                                                          | All                |            |
+| `customIDs`         | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID`.                                                                                                                                      | `{account_id: "23456555", company_id: "company_xyz"}`                                                                      | All                |            |
+
+</Tab>
+<Tab title="Server SDKs">
+
+All user attributes can be explicitly supplied, and some can be inferred from a provided IP Address or User Agent. Supplying one will always override an inferred value.
+
+| Attributes          | Description                                                                                                                                                                                                          | Example                                                                                                                    | Auto Infer |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |------------|
+| `userID`            | ID representing a unique user. This ID will be used to guarantee consistency of targeting for Feature Gates and Experiments and will be used to evaluate experiment results.                                         | `your_user_id`                                                                                                             |            |
+| `email`             | Email of the user                                                                                                                                                                                                    | `marcos@statsig.com`                                                                                                       |            |
+| `userAgent`         | User agent of the browser. This will be decoded to determine the Browser and Operating System of the user's context                                                                                                  | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.40 Safari/537.36` |            |
+| `ip`                | IP address of the user                                                                                                                                                                                               | `192.168.1.101`                                                                                                            |            |
+| `country`           | 2 letter country code of the user                                                                                                                                                                                    | `US`                                                                                                                       | ✔, from IP |
+| `locale`            | Locale of the user                                                                                                                                                                                                   | `en_US`                                                                                                                    | ✔, from IP |
+| `appVersion`        | Version of the app the user is using                                                                                                                                                                                 | `1.0.1`                                                                                                                    |
+| `custom`            | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting                                                 | `{skill_level: "5", is_subscriber:"false" ...}`                                                                                         |
+| `privateAttributes` | Dictionary that can contain key/value pairs that can be used to evaluate feature gate conditions and segment conditions. The content of this dictionary will **not** be stored after used for targeting and will be removed from any log_event calls | `{sensitive_field: "sensitive_information", ...}`                                                                          |
+| `customIDs`         | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID`                                                               | `{account_id: "23456555", company_id: "company_xyz"}`                                                                      |
+
+### How to override "Operating System" and "Browser" explicitly
+
+Operating system and Browser are two default targeting options on Statsig, and if you set the userAgent field, server SDKs will parse out the OS/Browser information to evaluate them. If you prefer to explicitly setup this, you can in two places: either top-level in the user object (which typing may not allow in languages), or in the "custom" object. You need to provide this information under the following keys:
+
+- Operating System: os_name
+- OS Version: os_version
+- Browser Name: browser_name
+- Browser Version: browser_version
+
+As an example, you could set this either of these two ways in the user object:
+
+<CodeGroup>
+
+```json Example
+{
+  "userID": "uuid",
+  "os_name": "Android", // top level
+  "custom": {
+    "os_name": "iOS"
+  }
+}
+```
+
+</CodeGroup>
+
+If either of these fields is explicitly set, it will take precedence over inferring the value from the `userAgent` field.
+
+</Tab>
+</Tabs>
+
+### Have sensitive user PII data that should not be logged?
+
+On the StatsigUser object, there is a field called privateAttributes, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in privateAttributes will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
+
+For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to privateAttributes on the user and that's it!
+
+### Time-based conditions
+
+All SDKs (both server and client-side) support unix timestamps in milliseconds to evaluate time based conditions (After time, before time). Without knowing all possible variations of DateTime formats, we have to normalize on something, so its best to convert your DateTime field into a standard format for evaluation.
+
+We have added support for ISO timestamps to some server SDKs.
+- The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
+- The `go` sdk, as of `v1.12.1` supports [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
+- The `python` sdk supports the usage of epoch time in seconds. using `time.time()` may include sub-second components so you should use round the value to an integer
+
+We have added support for ISO timestamps to server SDKs supported by server core (Java, Python, PHP, Rust, Node).
+- [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
+- [DateTime fields in the format of `RFC3339`](https://pkg.go.dev/time#pkg-constants)
+
+### Why is an ID always required for server SDKs?
+
+In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. In short, its *always* better to pass the user ID if it's available: users will get a stable experience, and any events will be attributed to the correct users so you can accurately measure downstream metrics.
+
+Still don't want to pass an ID? Here are our suggestions for different use cases:
+
+1. If you plan to only use one/off feature gates, or non-percent-based rules (like countries)
+While you're still losing functionality, you can pass any non-empty identifier, hard coded string, or **a random ID less than 100 if you do not have the actual user ID.** Don't pass a purely random ID - as we won't be able to dedupe your events, you'll explode your event usage, and your Statsig bill.
+
+2. If you want to rollout a feature partially, check for regressions, then roll out to everyone, you must pass an ID in your checkGate/getConfig/getExperiment calls, as well as any logEvent calls you make. Otherwise, we're not able to attribute the events you log to the correct users who saw or didn't see your new feature, or calculate metrics correctly to help you see any regressions.
+
+3. If you want to run an A/B experiment to decide whether to ship a new feature, you should also **pass the persistent user IDs**, for the same reason mentioned in 2, above.
+
+4. If you want to pass a userID for the above reasons, but don't have a logged in user (e.g. you are optimizing the login flow), set a stable identifier (we provide one in client SDKs!) as a cookie or in local storage and use that with each call to Statsig.
+
+We hope this is helpful. If you have a use case that is not covered in these scenarios, or have any question at all, feel free to join our [Slack community](https://statsig.com/slack) and drop a question/comment there!
+
+### Pass all IDs when you have them
+
+A common mistake is to accidentally expose users without a userID to a user-ID based experiment. All of them will be bucketed into one group (whichever the "null" userID goes to), polluting your results. If you run experiments on multiple ID types (or you might one day), its best to pass every identifier available.

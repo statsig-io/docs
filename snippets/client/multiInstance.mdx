@@ -1,0 +1,7 @@
+## Using multiple instances of the SDK
+
+Up to this point, we've used the SDK's singleton. We also support creating multiples instances of the SDK - the `Statsig` singleton wraps a single instance of the SDK (typically called a `StatsigClient`) that you can instantiate.
+
+<Note> You must use a different SDK key for each sdk instance you create for this to work. Various functionality of the Statsig client is keyed on the SDK key being used. Using the same key will lead to collisions. </Note> 
+
+All top level static methods from the singleton carry over as instance methods.  To create an instance of the Statsig sdk:

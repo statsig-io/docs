@@ -1,0 +1,293 @@
+---
+title: Legacy Python Server SDK
+sidebarTitle: Python
+description: Statsig's Legacy Server SDK for Python applications
+icon: "python"
+---
+
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import GetFeatureGateIntro from '/snippets/server/getFeatureGate.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import StatsigOptionsIntro from '/snippets/server/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server/shutdown.mdx'
+import ClientInitResponseIntro from '/snippets/server/clientInitResponse.mdx'
+import LocalOverridesIntro from '/snippets/server/localOverrides.mdx'
+import MultiInstanceIntro from '/snippets/server/multiInstance.mdx'
+import ForwardProxyIntro from '/snippets/server/forwardProxy.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+import InitializationFooter from '/snippets/server/initialization2.mdx'
+
+import installation from '/snippets/server/python/installation.mdx'
+import initialization from '/snippets/server/python/initialization.mdx'
+import checkGate from '/snippets/server/python/checkGate.mdx'
+import getDynamicConfig from '/snippets/server/python/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server/python/getExperiment.mdx'
+import logEvent from '/snippets/server/python/logEvent.mdx'
+import getFeatureGate from '/snippets/server/python/getFeatureGate.mdx'
+import statsigOptions from '/snippets/server/python/statsigOptions.mdx'
+import shutdown from '/snippets/server/python/shutdown.mdx'
+import clientInitResponse from '/snippets/server/python/clientInitResponse.mdx'
+import localOverrides from '/snippets/server/python/localOverrides.mdx'
+import multiInstance from '/snippets/server/python/multiInstance.mdx'
+import forwardProxy from '/snippets/server/python/forwardProxy.mdx'
+import faqs from '/snippets/server/python/faqs.mdx'
+
+[Github Repository](https://github.com/statsig-io/python-sdk)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<InitializationWarning/>
+<initialization/>
+<InitializationFooter/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getDynamicConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
+<LogEventIntro/>
+<logEvent/>
+
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>
+
+<StatsigOptionsIntro/>
+<statsigOptions/>
+
+<ShutdownIntro/>
+<shutdown/>
+
+<ClientInitResponseIntro/>
+<clientInitResponse/>
+
+<LocalOverridesIntro/>
+<localOverrides/>
+
+<MultiInstanceIntro/>
+<multiInstance/>
+
+<ForwardProxyIntro/>
+<forwardProxy/>
+
+<faqs/>
+
+## Reference
+
+### StatsigUser
+
+```python
+@dataclass
+class StatsigUser:
+    """An object of properties relating to the current user
+    user_id or at least a custom ID is required: learn more https://docs.statsig.com/concepts/user#why-is-an-id-always-required-for-server-sdks
+    Provide as many as possible to take advantage of advanced conditions in the statsig console
+    A dictionary of additional fields can be provided under the custom field
+    Set private_attributes for any user property you need for gate evaluation but prefer stripped from logs/metrics
+    """
+    user_id: Optional[str] = None
+    email: Optional[str] = None
+    ip: Optional[str] = None
+    user_agent: Optional[str] = None
+    country: Optional[str] = None
+    locale: Optional[str] = None
+    app_version: Optional[str] = None 
+    custom: Optional[dict] = None # key: string, value: string
+    private_attributes: Optional[dict] = None # key: string, value: string
+    custom_ids: Optional[dict] = None # key: string, value: string
+```
+
+### StatsigOptions
+
+```python
+class StatsigOptions:
+    """An object of properties for initializing the sdk with additional parameters"""
+
+    def __init__(
+        self,
+        api: Optional[str] = None,
+        api_for_download_config_specs: Optional[str] = None,
+        api_for_get_id_lists: Optional[str] = None,
+        api_for_log_event: Optional[str] = None,
+        tier: Union[str, StatsigEnvironmentTier, None] = None,
+        init_timeout: Optional[int] = None,
+        timeout: Optional[int] = None,
+        rulesets_sync_interval: int = DEFAULT_RULESET_SYNC_INTERVAL,
+        idlists_sync_interval: int = DEFAULT_IDLIST_SYNC_INTERVAL,
+        local_mode: bool = False,
+        bootstrap_values: Optional[str] = None,
+        rules_updated_callback: Optional[Callable] = None,
+        event_queue_size: Optional[int] = DEFAULT_EVENT_QUEUE_SIZE,
+        data_store: Optional[IDataStore] = None,
+        idlists_thread_limit: int = DEFAULT_IDLISTS_THREAD_LIMIT,
+        logging_interval: int = DEFAULT_LOGGING_INTERVAL, #deprecated
+        disable_diagnostics: bool = False,
+        custom_logger: Optional[OutputLogger] = None,
+        enable_debug_logs = False,
+        disable_all_logging = False,
+        evaluation_callback: Optional[Callable[[Union[Layer, DynamicConfig, FeatureGate]], None]] = None,
+        retry_queue_size: int = DEFAULT_RETRY_QUEUE_SIZE,
+        proxy_configs: Optional[Dict[NetworkEndpoint, ProxyConfig]] = None,
+        fallback_to_statsig_api: Optional[bool] = False,
+        initialize_sources: Optional[List[DataSource]] = None,
+        config_sync_sources: Optional[List[DataSource]] = None,
+    ):
+```
+
+### FeatureGate
+
+```python
+class FeatureGate:
+
+    def get_value(self):
+        """Returns the underlying value of this FeatureGate"""
+
+    def get_name(self):
+        """Returns the name of this FeatureGate"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this FeatureGate"""
+```
+
+### DynamicConfig
+
+```python
+class DynamicConfig:
+    def get(self, key, default=None):
+        """Returns the value of the config at the given key
+        or the provided default if the key is not found
+        """
+
+    def get_typed(self, key, default=None):
+        """Returns the value of the config at the given key
+        iff the type matches the type of the provided default.
+        Otherwise, returns the default value
+        """
+
+    def get_value(self):
+        """Returns the underlying value of this DynamicConfig"""
+
+    def get_name(self):
+        """Returns the name of this DynamicConfig"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this DynamicConfig"""
+```
+
+### Layer
+
+```python
+class Layer:
+    def get(self, key, default=None):
+        """Returns the value of the layer at the given key
+        or the provided default if the key is not found
+        """
+
+    def get_typed(self, key, default=None):
+        """Returns the value of the layer at the given key
+        iff the type matches the type of the provided default.
+        Otherwise, returns the default value
+        """
+
+    def get_name(self):
+        """Returns the name of this Layer"""
+
+    def get_values(self):
+        """Returns all the values in this Layer but does not trigger an exposure log"""
+
+    def get_evaluation_details(self):
+        """Returns the evaluation detail of this Layer"""
+```
+
+### EvaluationDetails
+
+```python
+class EvaluationDetails:
+    reason: EvaluationReason
+    config_sync_time: int
+    init_time: int
+    server_time: int
+
+class EvaluationReason(str, Enum):
+    network = "Network"
+    local_override = "LocalOverride"
+    unrecognized = "Unrecognized"
+    uninitialized = "Uninitialized"
+    bootstrap = "Bootstrap"
+    data_adapter = "DataAdapter"
+    unsupported = "Unsupported"
+    error = "error"
+```
+
+### DataStore
+
+```python
+class IDataStore:
+    def get(self, key: str) -> Optional[str]:
+        return None
+
+    def set(self, key: str, value: str):
+        pass
+
+    def shutdown(self):
+        pass
+
+    def should_be_used_for_querying_updates(self, key: str) -> bool:
+        return False
+```
+
+### ForwardProxy - ProxyConfig
+```python
+class NetworkProtocol(Enum):
+    HTTP = "http"
+    GRPC = "grpc"
+    GRPC_WEBSOCKET = "grpc_websocket"
+
+
+class NetworkEndpoint(Enum):
+    LOG_EVENT = "log_event"
+    DOWNLOAD_CONFIG_SPECS = "download_config_specs"
+    GET_ID_LISTS = "get_id_lists"
+    ALL = "all"
+
+class ProxyConfig:
+    def __init__(
+        self,
+        protocol: NetworkProtocol,
+        proxy_address: str,
+        # Websocket worker failover config
+        max_retry_attempt: Optional[int] = None, # default is 10
+        retry_backoff_multiplier: Optional[int] = None, # default is # default is 5
+        retry_backoff_base_ms: Optional[int] = None, # default is 10,000 ms
+        # Push worker failback to polling threshold, fallback immediate set 0,
+        # n means fallback after n retry failed
+        push_worker_failover_threshold: Optional[int] = None, # default is 4, about 30 minutes
+    ):
+        self.proxy_address = proxy_address
+        self.protocol = protocol
+        self.max_retry_attempt = max_retry_attempt
+        self.retry_backoff_multiplier = retry_backoff_multiplier
+        self.retry_backoff_base_ms = retry_backoff_base_ms
+        self.push_worker_failover_threshold = push_worker_failover_threshold
+```
+
+

@@ -1,0 +1,40 @@
+To use the SDK in your project, you must add Statsig as a dependency.
+
+<CodeGroup>
+
+```swift Swift Package Manager
+// In your Xcode, select File > Swift Packages > Add Package Dependency
+// and enter the URL https://github.com/statsig-io/swift-on-device-evaluations-sdk.git.
+//
+// You can also include it directly in your project's Package.swift. 
+// Find out the latest release version on our GitHub page:
+// https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases
+
+dependencies: [
+    // see the latest version on https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases
+    .package(url: "https://github.com/statsig-io/swift-on-device-evaluations-sdk.git", .upToNextMinor("X.Y.Z")),
+],
+//...
+targets: [
+    .target(
+        name: "YOUR_TARGET",
+        dependencies: ["StatsigOnDeviceEvaluations"]
+    )
+],
+```
+
+```ruby CocoaPods
+# If you are using CocoaPods, our pod name is 'StatsigOnDeviceEvaluations', 
+# and you can include the following line to your Podfile:
+
+use_frameworks!
+target 'TargetName' do
+  //...
+  pod 'StatsigOnDeviceEvaluations', '~> X.Y.Z'
+end
+
+# Find the latest versions by searching cocoapods.org or on Github:
+# https://github.com/statsig-io/swift-on-device-evaluations-sdk/releases
+```
+
+</CodeGroup>

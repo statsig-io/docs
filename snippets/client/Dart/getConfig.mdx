@@ -1,0 +1,10 @@
+```dart
+var config = Statsig.getConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+var itemName = config.get("product_name", "Awesome Product v1");
+var price = config.get("price", 10.0);
+var shouldDiscount = config.get("discount", false);
+```

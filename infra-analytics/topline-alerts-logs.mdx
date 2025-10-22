@@ -1,0 +1,90 @@
+---
+title: 'Topline Alerts with Logs'
+description: 'Detect infrastructure regressions by evaluating logs in real time'
+---
+
+By combining log filters with [Topline Alerts](/product-analytics/topline-alerts), you will know immediately when things start failing without writing custom scripts or dashboards. 
+
+
+### When to Use Log-based Alerts
+
+- **Monitoring success rates** - Catch regressions before they impact SLOs.
+- **Detecting error spikes** - Trigger when 5xx or other errors rise above baseline.
+- **Isolate by segment** - Identify failures concentrated in by region, client, or device type
+
+
+
+## Create a Log-based Topline Alert (Statsig Cloud)
+In this example, we're going to create a monitor for the success rate of a GET request.
+
+<Steps>
+  <Step title="Navigate to Topline Alerts">
+    <ul>
+    <li>Go to <strong>Analytics → Topline Alerts</strong> in the product menu.</li>
+    <li>Click <strong>+Create</strong>.</li>
+    <li>Enter a name for your alert.</li>
+
+    </ul>
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-1.png" alt="Alert setup step 1" />
+    </Frame>
+  </Step>
+
+  <Step title="Define Alert Criteria">
+    <ul>
+    <li>Select <code>statsig::log_line</code> as your event.</li>
+    <li>Apply filters to define what constitutes success and failure.</li>
+    </ul>
+     If you're unsure which fields to filter on, open the <a href="/infra-analytics/logs-explorer">Logs Explorer</a> and inspect the log body.
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-2.png" alt="Alert setup step 2" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Up Evaluation Formula">
+    <li>Define the formula for calculating your success rate.</li>
+    <li> (Optional) Add a group-by dimension.</li>
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-3.png" alt="Alert setup step 3" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Alert Thresholds">
+    <li>Set thresholds and the evaluation window.</li>
+    <p title="Example">
+      In this example, we will trigger a warning when success rate drops below 99.5%. We will trigger an alert when success rate drops below 99.0%.
+    </p>
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-4.png" alt="Alert setup step 4" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Notifications">
+    <ul>
+      <li>Add the alert title and description for context.</li>
+      <li>Include diagnostic hints (e.g. "Check version X" or "Android requests timing out").</li>
+      <li>Add subscribers.</li>
+      <li>Set priority.</li>
+
+    </ul>
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-5.png" alt="Alert setup step 5" />
+    </Frame>
+  </Step>
+
+  <Step title="Save the Alert">
+    <li>Click <strong>Save</strong>. </li>
+    <li>Once your alert is set up, you can visit the <strong>Diagnostics</strong> tab to see a history of alert triggers.</li>
+    <Frame>
+      <img src="/images/infra-analytics/loglinealert-6.png" alt="Alert setup step 6" />
+    </Frame>
+  </Step>
+</Steps>
+
+---
+
+## Best Practices
+- Set up [Slack notifications](/integrations/slack) for team visibility
+- Keep formulas simple (ratios & percentages are easiest to scan)
+- Add group-by dimensions (like country or app version) to pinpoint where issues occur
+- Write clear notification text that explains what the alert means

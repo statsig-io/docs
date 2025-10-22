@@ -1,0 +1,44 @@
+### Wrap Your App With `StatsigProvider`
+
+Provide your client SDK key and initial user when you render the provider.
+
+```tsx
+import { StatsigProvider } from '@statsig/react-bindings';
+
+function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY" user={{ userID: '1234', email: 'example@statsig.com' }}>
+      <div>Hello world</div>
+    </StatsigProvider>
+  );
+}
+```
+
+### Typical Project Structure
+
+Most projects render a root component inside the provider.
+
+```tsx
+// App.tsx
+import RootPage from './RootPage';
+import { StatsigProvider } from '@statsig/react-bindings';
+
+export default function App() {
+  return (
+    <StatsigProvider sdkKey="client-KEY" user={{ userID: '1234' }}>
+      <RootPage />
+    </StatsigProvider>
+  );
+}
+```
+
+```tsx
+// RootPage.tsx
+export default function RootPage() {
+  return <div>Hello World</div>;
+}
+```
+
+<Info>
+Need to balance startup speed with freshness? Review <a href="/client/concepts/initialize" >Initialization Strategies</a> for bootstrap and async options.
+</Info>

@@ -1,0 +1,24 @@
+<Tabs>
+  <Tab title="Java">
+
+```java
+String address = "0.0.0.0:50051";
+Map<NetworkEndpoint, ForwardProxyConfig> proxyConfigs = new HashMap();
+proxyConfigs.put(NetworkEndpoint.DOWNLOAD_CONFIG_SPECS, new ForwardProxyConfig(address, NetworkProtocol.GRPC_WEBSOCKET));
+StatsigOptions options = new StatsigOptions();
+options.setEndpointProxyConfigs(proxyConfigs);
+Statsig.initializeAsync(secret_key, options).join();
+```
+
+  </Tab>
+  <Tab title="Kotlin">
+
+```kotlin
+val proxyAddress = "0.0.0.0:50051"  // local address for Statsig Forward Proxy, change to your proxy address
+val endpointProxyConfigs = mapOf(NetworkEndpoint.DOWNLOAD_CONFIG_SPECS to ForwardProxyConfig(proxyAddress, NetworkProtocol.GRPC_WEBSOCKET))
+val opts = StatsigOptions(endpointProxyConfigs = endpointProxyConfigs)
+Statsig.initialize(opts);
+```
+
+  </Tab>
+</Tabs>

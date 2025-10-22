@@ -1,0 +1,79 @@
+## Advanced
+
+### StatsigClient Outside the Component Tree
+
+In some scenarios, you may need to use the `StatsigClient` when you are not in the React component tree. Things like background tasks or handling notifications. For these, you can use the RN-specific `StatsigClientRN`.
+
+```tsx
+import { StatsigClientRN } from '@statsig/react-native-bindings';
+
+const myClient = new StatsigClientRN(
+  YOUR_CLIENT_KEY,
+  { userID: "a-user" }
+);
+
+await myClient.initializeAsync();
+
+if (myClient.checkGate("my_gate")) {
+  // do something cool
+}
+```
+
+If you would like to access the StatsigClient instance that was created by the StatsigProvider outside of the component tree, you can use the `StatsigClientRN.instance()` method. This will return the first StatsigClient instance that was created. If you have multiple instances, you can pass in the SDK key to get a specific instance.
+
+```tsx
+// Inside the component tree
+function App() {
+  return <StatsigProviderRN sdkKey={YOUR_CLIENT_KEY} user={{ userID: "a-user" }}>
+    <Text>...</Text>
+  </StatsigProviderRN>
+}
+
+// Outside the component tree
+const client = StatsigClientRN.instance(); // get the first created instance
+
+const client = StatsigClientRN.instance(YOUR_CLIENT_KEY); // get a specific instance by SDK key
+```
+
+### Synchronous Storage with MMKV
+
+Due to the lack of LocalStorage in ReactNative environments, by default the SDK will prefetch all Statsig cache entries during initialization.
+
+If you are utilizing MMKV in your project, and would prefer to use that instead of the default (AsyncStorage). You can provide you own `StorageProvider` via `StatsigOptions`.
+
+Something like:
+
+```tsx
+import { MMKV } from "react-native-mmkv";
+import { StorageProvider } from "@statsig/client-core";
+import { StatsigProviderRN } from '@statsig/react-native-bindings';
+
+function App() {
+    const [storageProvider] = useState<StorageProvider>(() => {
+      const mmkv = new MMKV();
+
+      return {
+        isReady: () => true,
+        isReadyResolver: () => null,
+        getProviderName: () => "MMKV",
+        getAllKeys: () => mmkv.getAllKeys(),
+        getItem: (key: string) => mmkv.getString(key) ?? null,
+        setItem: (key: string, value: string) => mmkv.set(key, value),
+        removeItem: (key: string) => mmkv.delete(key),
+      };
+    });
+
+   return (
+    <StatsigProviderRN
+      sdkKey={YOUR_CLIENT_KEY}
+      user={{ userID: "a-user" }}
+      options={{
+        storageProvider, // <- Passed into StatsigOptions
+      }}
+    >
+      <Text>...</Text>
+    </StatsigProviderRN>
+   );
+}
+```
+

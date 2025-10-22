@@ -1,0 +1,42 @@
+You can disable the automatic logging like this:
+
+### Gates
+```javascript
+const result = Statsig.checkGate(aUser, 'a_gate_name', {disableExposureLogging: true});
+```
+
+Then, to manually log the exposure:
+```javascript
+Statsig.manuallyLogGateExposure(aUser, 'a_gate_name');
+```
+
+### Dynamic Configs
+```javascript
+const config = Statsig.getConfigWithExposureLoggingDisabledSync(aUser, 'a_dynamic_config_name');
+```
+
+Then, to manually log the exposure:
+```javascript
+Statsig.manuallyLogConfigExposure(aUser, 'a_dynamic_config_name');
+```
+
+### Experiments
+```javascript
+const experiment = Statsig.getExperimentWithExposureLoggingDisabledSync(aUser, 'an_experiment_name');
+```
+
+Then, to manually log the exposure:
+```javascript
+Statsig.manuallyLogExperimentExposure(aUser, 'an_experiment_name');
+```
+
+### Layers
+```javascript
+const layer = Statsig.getLayerWithExposureLoggingDisabledSync(aUser, 'a_layer_name');
+const paramValue = layer.get('a_param_name', 'fallback_value');
+```
+
+Then, to manually log the layer parameter exposure:
+```javascript
+Statsig.manuallyLogLayerParameterExposure(aUser, 'a_layer_name', 'a_param_name');
+```

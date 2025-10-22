@@ -1,0 +1,13 @@
+To use the SDK, add the following to your `mix.exs`:
+
+```elixir
+{:statsig_elixir, "~> 0.8.0"},
+```
+
+SDK is written using `rustler_precompiled`, which will download precompiled binary by default. But there is also an option to build Rust code within your project by cloning [statsig-server-core](https://github.com/statsig-io/statsig-server-core)
+
+```bash
+cd statsig-server-core/statsig-elixir/ 
+# set the environment variable 
+FORCE_STATSIG_NATIVE_BUILD="true" mix compile
+```

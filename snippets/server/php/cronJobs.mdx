@@ -1,0 +1,60 @@
+## Cron Jobs
+
+To keep your configurations up to date, and send event data to Statsig, you can create two jobs. Here, we document them as cron jobs, but you can use any out of band
+process to run them. If you are using Laravel, for example, you can use Commands to run them locally and on a schedule.
+
+### Sync
+
+The first job runs `sync.php` to download the latest definition of gates/configs/experiments from Statsig, and save it to a config file locally.
+If you do not update this file, your gate/config/experiment values may be stale and will be refetched during a request, which may lead to slower response times.
+
+```bash
+# Run once
+php sync.php --secret <STATSIG_SECRET_KEY>
+```
+
+```bash
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigsync php /my/path/to/statsig/sync.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigsync
+sudo service cron reload    # reload the cron daemon
+```
+
+You should provide your own custom adapter that implements Statsig\Adapters\IDataAdapter
+
+```bash
+php send.php --secret <STATSIG_SECRET_KEY> \
+    --adapter-class Namespace\For\MyConfigAdapter \
+    --adapter-path /path/to/MyConfigAdapter.php \
+    --adapter-arg an_argument_for_my_adapter \
+    --adapter-arg another_argument
+```
+
+By default, sync.php will use the Statsig LocalFileDataAdapter which writes to /tmp/statsig.configs
+
+### Send
+
+The second runs `send.php` to send the exposure data and log events to statsig. Without this data, your events will need to be logged during the lifetime of the request, which may lead to slower response times.
+
+```bash
+# Run once
+php send.php --secret <STATSIG_SECRET_KEY>
+```
+
+```bash
+# Create a cron job that runs as statsigdata every minute
+echo '*/1 * * * * statsigdata php /my/path/to/statsig/send.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigdata
+sudo service cron reload    # reload the cron daemon
+```
+
+You should provide your own custom adapter that implements Statsig\Adapters\ILoggingAdapter
+
+```bash
+php send.php --secret <STATSIG_SECRET_KEY> \
+     --adapter-class Namespace\For\MyLoggingAdapter \
+     --adapter-path /path/to/MyLoggingAdapter.php \
+     --adapter-arg an_argument_for_my_adapter \
+     --adapter-arg another_argument
+```
+
+By default, send.php will use the Statsig LocalFileDataAdapter which writes to /tmp/statsig.logs
+

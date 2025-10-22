@@ -1,0 +1,6 @@
+<!--
+  tags: ["sync","update","reload","status"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M15.062 6.126A6.375 6.375 0 1 0 16.374 10v-.199a.625.625 0 1 1 1.25-.038c.002.061 0 .135 0 .19V10a7.624 7.624 0 1 1-1.702-4.803V3.001a.625.625 0 0 1 1.25 0v3.6a.775.775 0 0 1-.775.775h-3.6a.625.625 0 1 1 0-1.25h2.265Z" clip-rule="evenodd"/>
+</svg>

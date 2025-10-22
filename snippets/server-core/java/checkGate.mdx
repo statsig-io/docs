@@ -1,0 +1,26 @@
+<CodeGroup>
+```java Java
+String userID = "user_id";
+boolean result = statsig.checkGate(userID, "my_feature_gate");
+
+// with StatsigUser
+StatsigUser user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build();
+boolean gateResult = statsig.checkGate(user, "my_feature_gate");
+```
+
+```kotlin Kotlin
+val userID = "user_id"
+val result = statsig.checkGate(userID, "my_feature_gate")
+
+// with StatsigUser
+val user = StatsigUser.builder()
+    .userID("user_id")
+    .email("my_user@example.com")
+    .build()
+val gateResult = statsig.checkGate(user, "my_feature_gate")
+```
+</CodeGroup>
+

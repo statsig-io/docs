@@ -1,0 +1,24 @@
+```ts
+// experiment.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  standalone: true,
+  selector: 'app-experiment',
+  imports: [CommonModule],
+  template: `<div *ngIf="experimentValue">Experiment Value: {{ experimentValue }}</div>`,
+})
+export class ExperimentComponent implements OnInit {
+  experimentValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const experiment = this.statsigService.getExperiment('experiment_name');
+    this.experimentValue = experiment.get('experiment_key', 'default');
+  }
+}
+```
+

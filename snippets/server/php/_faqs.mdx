@@ -1,0 +1,110 @@
+#### Can I use ID Lists with the PHP SDK?
+
+Yes, since version `2.0.0`, ID Lists are now supported by the PHP SDK. Any SDK version less than v2.0.0 will not work with ID Lists.
+
+#### Do I need the SDK, can I just use the HTTP API?
+
+If you want a simple snippet for using the HTTP API in PHP without the full SDK, you can use the following helper functions. These expose functions to `checkGate`, `getConfig`, `getExperiment`, and `logEvent`.
+
+Note that the `user` parameter to each of these functions follows the [Statsig User](/concepts/user) definition for Server SDKs.
+
+```php
+<?php
+
+// Simple PHP wrapper for Statsig HTTP API
+// Replace with your actual server secret key
+define('STATSIG_SERVER_SECRET', 'secret-YOUR_KEY');
+define('STATSIG_API_URL', 'https://statsigapi.net/v1');
+
+function statsig_check_gate($user, $gate_name) {
+    $response = statsig_post('/check_gate', [
+        'gateName' => $gate_name,
+        'user' => $user
+    ]);
+    return $response['value'] ?? false;
+}
+
+function statsig_get_config($user, $config_name) {
+    $response = statsig_post('/get_config', [
+        'configName' => $config_name,
+        'user' => $user
+    ]);
+    return $response['value'] ?? [];
+}
+
+function statsig_get_experiment($user, $experiment_name) {
+    $response = statsig_post('/get_experiment', [
+        'experimentName' => $experiment_name,
+        'user' => $user
+    ]);
+    return $response['value'] ?? [];
+}
+
+function statsig_log_event($user, $event_name, $value = null, $metadata = null) {
+    $event = [
+        'user' => $user,
+        'eventName' => $event_name,
+        'time' => time() * 1000
+    ];
+    
+    if ($value !== null) {
+        $event['value'] = $value;
+    }
+    
+    if ($metadata !== null) {
+        $event['metadata'] = $metadata;
+    }
+    
+    return statsig_post('/log_event', ['events' => [$event]]);
+}
+
+// Helper function to make POST requests to Statsig API
+function statsig_post($endpoint, $data) {
+    $url = STATSIG_API_URL . $endpoint;
+    
+    $options = [
+        'http' => [
+            'header'  => [
+                'Content-Type: application/json',
+                'STATSIG-API-KEY: ' . STATSIG_SERVER_SECRET,
+                'STATSIG-SDK-TYPE: php-custom',
+                'STATSIG-SDK-VERSION: 1.0.0'
+            ],
+            'method'  => 'POST',
+            'content' => json_encode($data)
+        ]
+    ];
+    
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    
+    if ($result === false) {
+        return null;
+    }
+    
+    return json_decode($result, true);
+}
+
+// Example usage:
+$user = [
+    'userID' => '123',
+    'email' => 'user@example.com',
+    'country' => 'US'
+];
+
+// Check a feature gate
+$is_enabled = statsig_check_gate($user, 'new_feature');
+
+// Get a dynamic config
+$config = statsig_get_config($user, 'product_config');
+
+// Get an experiment
+$experiment = statsig_get_experiment($user, 'button_color_test');
+
+// Log an event
+statsig_log_event($user, 'purchase', '9.99', ['item' => 'premium_plan']);
+```
+
+<Note>
+View the original gist on [GitHub](https://gist.github.com/tore-statsig/c27fb9de65c7a1d1591d161570ae807a)
+</Note>

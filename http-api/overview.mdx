@@ -1,0 +1,38 @@
+---
+title: HTTP API
+---
+
+<Warning>
+While this HTTP API is available for direct use, we strongly recommend using one of our official SDKs for your programming language whenever possible. SDKs offer better performance, automatic error handling, and type safety. They also provide a more idiomatic integration with your codebase. Only use this HTTP API directly if there isn't an SDK available for your language or if you have a specific use case that requires direct API access.
+</Warning>
+
+Before you can start calling the server APIs, you need to take care of the following steps:
+
+<Steps>
+  <Step title="Create a free account on Statsig">
+    Create a free account on the [Statsig sign-up page](https://statsig.com).
+    
+    An account will let you use the Statsig Console, where you can manage all of your Feature Gates, Dynamic Configs, and Experiments. Note that you will also be able to invite others to collaborate on your Statsig Projects, so they can interact with your gates and configs.
+  </Step>
+
+  <Step title="Get an API key from the Statsig Console">
+    An API key is required in every API request. There are two types of API keys you can use with the HTTP API:
+
+    - **Server-side secret Key**: Used only from secure servers and should never be exposed in client-side code.
+    - **Client-SDK Key**: Safe to embed in mobile apps and front-end web apps.
+
+    <Tip>
+      If you're working with server-side logic or sensitive data, use the Server-side secret Key. If you're in doubt or working with public-facing code, use the Client-SDK Key.
+    </Tip>
+  </Step>
+
+  <Step title="Issue API requests">
+    Our API is built on top of HTTPS, and you can authenticate via the `statsig-api-key` header. All API requests use the POST method, and parameters are set by passing a JSON object in the request body.
+
+    <Tip>
+      **Why POST?** Even for fetching data, we use POST to ensure secure and flexible transmission of user-specific data (e.g., configurations or experiment results).
+    </Tip>
+
+    Statsig automatically logs exposure events whenever you call the APIs. These exposure events help attribute downstream events to experiments or feature gates, which are used to calculate metrics like analytics lift.
+  </Step>
+</Steps>

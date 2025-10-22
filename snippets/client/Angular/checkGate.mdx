@@ -1,0 +1,23 @@
+```ts
+// feature-gate.component.ts
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  standalone: true,
+  selector: 'app-feature-gate',
+  imports: [CommonModule],
+  template: `<div *ngIf="isFeatureEnabled">Feature is enabled!</div>`,
+})
+export class FeatureGateComponent implements OnInit {
+  isFeatureEnabled = false;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    this.isFeatureEnabled = this.statsigService.checkGate('feature_gate_name');
+  }
+}
+```
+

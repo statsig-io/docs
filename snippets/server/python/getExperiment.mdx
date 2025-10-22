@@ -1,0 +1,21 @@
+```python
+# Values via getLayer
+
+layer = statsig.get_layer(user, "user_promo_experiments")
+title = layer.get("title", "Welcome to Statsig!")
+discount = layer.get("discount", 0.1)
+
+# or, via getExperiment
+
+title_exp = statsig.get_experiment(user, "new_user_promo_title")
+price_exp = statsig.get_experiment(user, "new_user_promo_price")
+
+title = title_exp.get("title", "Welcome to Statsig!")
+discount = price_exp.get("discount", 0.1)
+
+...
+
+price = msrp * (1 - discount)
+```
+
+

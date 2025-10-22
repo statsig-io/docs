@@ -1,0 +1,9 @@
+```rust
+let layer = Statsig::get_layer(&user, "a_layer").ok().unwrap();
+let param_value = layer.get_string("a_parameter", "default_value");
+
+// or via get_experiment
+let experiment = Statsig::get_experiment(&user, "an_experiment").ok().unwrap();
+let exp_value = experiment.get_string("a_parameter", "default_value");
+```
+

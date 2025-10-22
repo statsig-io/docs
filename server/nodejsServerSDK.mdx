@@ -1,0 +1,281 @@
+---
+title: Legacy Node.js Server SDK
+sidebarTitle: Node.js
+description: Statsig's Legacy Server SDK for Node.js applications
+icon: "node-js"
+---
+
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import LogEventFooter from '/snippets/server/logEventFooter.mdx'
+import GetFeatureGateIntro from '/snippets/server/getFeatureGate.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import StatsigOptionsIntro from '/snippets/server/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server/shutdown.mdx'
+import FlushIntro from '/snippets/server/flush.mdx'
+import ClientInitResponseIntro from '/snippets/server/clientInitResponse.mdx'
+import ManualExposuresIntro from '/snippets/server/manualExposures.mdx'
+import LocalOverridesIntro from '/snippets/server/localOverrides.mdx'
+import PersistentStorageIntro from '/snippets/server/persistentStorage.mdx'
+import MultiInstanceIntro from '/snippets/server/multiInstance.mdx'
+import ForwardProxyIntro from '/snippets/server/forwardProxy.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+import InitializationFooter from '/snippets/server/initialization2.mdx'
+
+import installation from '/snippets/server/node/installation.mdx'
+import initialization from '/snippets/server/node/initialization.mdx'
+import checkGate from '/snippets/server/node/checkGate.mdx'
+import getDynamicConfig from '/snippets/server/node/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server/node/getExperiment.mdx'
+import logEvent from '/snippets/server/node/logEvent.mdx'
+import getFeatureGate from '/snippets/server/node/getFeatureGate.mdx'
+import statsigOptions from '/snippets/server/node/statsigOptions.mdx'
+import shutdown from '/snippets/server/node/shutdown.mdx'
+import flush from '/snippets/server/node/flush.mdx'
+import clientInitResponse from '/snippets/server/node/clientInitResponse.mdx'
+import manualExposures from '/snippets/server/node/manualExposures.mdx'
+import localOverrides from '/snippets/server/node/localOverrides.mdx'
+import persistentStorageInterface from '/snippets/server/node/persistentStorageInterface.mdx'
+import persistentStorageExample from '/snippets/server/node/persistentStorageExample.mdx'
+import multiInstance from '/snippets/server/node/multiInstance.mdx'
+import forwardProxy from '/snippets/server/node/forwardProxy.mdx'
+import cloudflare from '/snippets/server/node/cloudflare.mdx'
+import faqs from '/snippets/server/node/faqs.mdx'
+
+[Github Repository](https://github.com/statsig-io/node-js-server-sdk)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<InitializationWarning/>
+<initialization/>
+<InitializationFooter/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getDynamicConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
+<LogEventIntro/>
+<logEvent/>
+<LogEventFooter/>
+
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>
+
+<StatsigOptionsIntro/>
+<statsigOptions/>
+
+<ShutdownIntro/>
+<shutdown/>
+
+<FlushIntro/>
+<flush/>
+
+<ClientInitResponseIntro/>
+<clientInitResponse/>
+
+<LocalOverridesIntro/>
+<localOverrides/>
+
+<ManualExposuresIntro/>
+<manualExposures/>
+
+<cloudflare/>
+
+<PersistentStorageIntro/>
+<persistentStorageInterface/>
+<persistentStorageExample/>
+
+<MultiInstanceIntro/>
+<multiInstance/>
+
+<ForwardProxyIntro/>
+<forwardProxy/>
+
+<faqs/>
+
+## Reference
+
+### Type StatsigUser
+
+```typescript
+export type StatsigUser =
+  // at least one of userID or customIDs must be provided
+  ({ userID: string } | { customIDs: Record<string, string> }) & {
+    userID?: string;
+    customIDs?: Record<string, string>;
+    email?: string;
+    ip?: string;
+    userAgent?: string;
+    country?: string;
+    locale?: string;
+    appVersion?: string;
+    custom?: Record<
+      string,
+      string | number | boolean | Array<string> | undefined
+    >;
+    privateAttributes?: Record<
+      string,
+      string | number | boolean | Array<string> | undefined
+    > | null;
+    statsigEnvironment?: StatsigEnvironment;
+  }
+```
+
+### Type StatsigOptions
+
+```typescript
+export type StatsigOptions = {
+  api: string;
+  apiForDownloadConfigSpecs: string;
+  apiForGetIdLists: string;
+  bootstrapValues: string | null;
+  environment: StatsigEnvironment | null;
+  rulesUpdatedCallback: RulesUpdatedCallback | null;
+  logger: LoggerInterface;
+  localMode: boolean;
+  initTimeoutMs: number;
+  dataAdapter: IDataAdapter | null;
+  rulesetsSyncIntervalMs: number;
+  idListsSyncIntervalMs: number;
+  loggingIntervalMs: number;
+  loggingMaxBufferSize: number;
+  disableDiagnostics: boolean;
+  initStrategyForIP3Country: InitStrategy;
+  initStrategyForIDLists: InitStrategy;
+  postLogsRetryLimit: number;
+  postLogsRetryBackoff: RetryBackoffFunc | number;
+  disableRulesetsSync: boolean;
+  disableIdListsSync: boolean;
+  disableAllLogging: boolean;
+};
+
+export type RulesUpdatedCallback = (rulesJSON: string, time: number) => void;
+export type RetryBackoffFunc = (retriesRemaining: number) => number;
+
+export type StatsigEnvironment = {
+  tier?: 'production' | 'staging' | 'development' | string;
+  [key: string]: string | undefined;
+};
+
+export type InitStrategy = 'await' | 'lazy' | 'none';
+
+export interface LoggerInterface {
+  debug?(message?: any, ...optionalParams: any[]): void;
+  info?(message?: any, ...optionalParams: any[]): void;
+  warn(message?: any, ...optionalParams: any[]): void;
+  error(message?: any, ...optionalParams: any[]): void;
+  logLevel: 'none' | 'debug' | 'info' | 'warn' | 'error';
+}
+```
+
+### Type FeatureGate
+
+```typescript
+export type FeatureGate = {
+  readonly name: string;
+  readonly ruleID: string;
+  readonly idType: string | null;
+  readonly value: boolean;
+  readonly evaluationDetails: EvaluationDetails | null;
+  readonly groupName: null; // deprecated
+};
+```
+
+### Type DynamicConfig
+
+```typescript
+export default class DynamicConfig {
+  name: string;
+  value: Record<string, unknown>;
+  get<T>(
+    key: string,
+    defaultValue: T,
+    typeGuard: ((value: unknown) => value is T | null) | null = null,
+  ): T;
+  getValue(
+    key: string,
+    defaultValue?: boolean | number | string | object | Array<any> | null,
+  ): unknown | null;
+  getRuleID(): string;
+  getGroupName(): string | null;
+  getIDType(): string | null;
+  getEvaluationDetails(): EvaluationDetails | null;
+```
+
+### Type Layer
+
+```typescript
+export default class Layer {
+  name: string;
+  public get<T>(
+    key: string,
+    defaultValue: T,
+    typeGuard: ((value: unknown) => value is T) | null = null,
+  ): T;
+  getValue(
+    key: string,
+    defaultValue?: boolean | number | string | object | Array<any> | null,
+  ): unknown | null;
+  getRuleID(): string;
+  getGroupName(): string | null;
+  getAllocatedExperimentName(): string | null;
+  getEvaluationDetails(): EvaluationDetails | null;
+```
+
+### DataAdapter
+
+```typescript
+export interface IDataAdapter {
+  get(key: string): Promise<AdapterResponse>;
+  set(key: string, value: string, time?: number): Promise<void>;
+  initialize(): Promise<void>;
+  shutdown(): Promise<void>;
+  supportsPollingUpdatesFor(key: DataAdapterKey): boolean;
+}
+```
+
+### EvaluationDetails
+
+```typescript
+export class EvaluationDetails {
+  readonly configSyncTime: number;
+  readonly initTime: number;
+  readonly serverTime: number;
+  readonly reason: EvaluationReason;
+}
+```
+
+### EvaluationReason
+
+```typescript
+export type EvaluationReason =
+  | 'Network'
+  | 'LocalOverride'
+  | 'Unrecognized'
+  | 'Uninitialized'
+  | 'Bootstrap'
+  | 'DataAdapter'
+  | 'Unsupported';
+```
+
+

@@ -1,0 +1,31 @@
+## Common Targeting Use Cases
+
+Capture cookies or URL parameters and pass them through `StatsigUser.custom` for targeting rules.
+
+```tsx
+const user = {
+  custom: {
+    isLoggedIn: cookieLib.get('isLoggedIn'),
+    utm: new URL(window.location.href).searchParams.get('utm'),
+  },
+};
+
+const client = new StatsigClient('client-xyz', user, options);
+```
+
+<Frame>
+  <img src="/images/client/js-common-targeting.png" alt="Targeting in Console" />
+</Frame>
+
+## Async Timeouts
+
+Limit how long `initializeAsync` and `updateUserAsync` wait for network responses before falling back to cached values.
+
+```tsx
+await client.initializeAsync({ timeoutMs: 1000 });
+
+await client.updateUserAsync(
+  { userID: 'a-user' },
+  { timeoutMs: 1000 },
+);
+```

@@ -1,0 +1,6 @@
+<!--
+  tags: ["text","formatting","styling","UI"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M7.179 4.376c0-.345.28-.625.625-.625h7.32a.625.625 0 1 1 0 1.25h-3.177l-2.603 9.997h2.852a.625.625 0 0 1 0 1.25H4.875a.625.625 0 1 1 0-1.25h3.177l2.604-9.997H7.804a.625.625 0 0 1-.625-.625Z" clip-rule="evenodd"/>
+</svg>

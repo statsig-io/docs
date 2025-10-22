@@ -1,0 +1,28 @@
+```shell
+npm i @statsig/statsig-node-core
+```
+
+The Node SDK is pre-built and compiled for different OSs & CPU architectures. Package managers will resolve the correct version automatically.
+
+<AccordionGroup>
+<Accordion title="Frozen Lockfile Setup">
+If your service has locked dependencies with package-lock.json or pnpm-lock.yml, you'll need to include all versions you need. For example, if you develop locally on macOS, and deploy to linux, then you have to include:
+
+```
+dependencies {
+    "@statsig/statsig-node-core-darwin-arm64": "0.1.0" // for macOS
+    "@statsig/statsig-node-core-linux-x64-gnu": "0.1.0" // for linux x64 machines
+}
+```
+</Accordion>
+<Accordion title="Usage with Next.js">
+
+statsig-node-core works well with Next but can't be packaged with webpack. To prevent errors, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
+```jsx
+const nextConfig = {
+  serverExternalPackages: ['@statsig/statsig-node-core'],
+}
+```
+</Accordion>
+</AccordionGroup>
+

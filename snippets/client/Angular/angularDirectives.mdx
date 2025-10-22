@@ -1,0 +1,41 @@
+## Angular Directives
+
+### Statsig Module
+
+To use the directives, you need to import the `StatsigModule` in your Angular module.
+
+```ts
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+import { StatsigModule } from '@statsig/angular-bindings';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, StatsigModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+### Check gate directive
+
+The stgCheckGate directive allows you to conditionally display content in your Angular templates based on the evaluation of a Feature Gate from Statsig. It listens for updates to the feature gate's value and dynamically adds or removes content based on whether the gate is enabled or not.
+
+```ts
+// feature-demo.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-feature-demo',
+  template: `
+    <div *stgCheckGate="'new_feature_gate'">
+      <p>This content will only show if the 'new_feature_gate' is enabled.</p>
+    </div>
+  `,
+})
+export class FeatureDemoComponent {}
+```
+

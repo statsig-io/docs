@@ -1,0 +1,20 @@
+```javascript
+// Values via getLayer
+
+const layer = Statsig.getLayer(user, "user_promo_experiments");
+const promoTitle = layer.get("title", "Welcome to Statsig!");
+const discount = layer.get("discount", 0.1);
+
+// or, via getExperiment
+
+const promoExperiment = Statsig.getExperiment(user, "new_user_promo");
+
+const promoTitle = promoExperiment.get("title", "Welcome to Statsig!");
+const discount = promoExperiment.get("discount", 0.1);
+
+...
+
+const price = msrp * (1 - discount);
+```
+
+

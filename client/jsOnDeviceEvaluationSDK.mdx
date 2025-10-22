@@ -1,0 +1,123 @@
+---
+title: JavaScript On-Device Evaluation Client SDK
+sidebarTitle: JavaScript
+description: Statsig's JavaScript SDK for on-device evaluation with browser and Node.js applications.
+icon: "js"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGateIntro from '/snippets/client/checkGate.mdx'
+import getDynamicConfigIntro from '/snippets/client/getDynamicConfig.mdx'
+import getExperimentLayerIntro from '/snippets/client/getExperimentLayer.mdx'
+import logEventIntro from '/snippets/client/logEvent.mdx'
+import statsigUserIntro from '/snippets/client/statsigUser.mdx'
+import statsigOptionsIntro from '/snippets/client/statsigOptions.mdx'
+import manualExposuresIntro from '/snippets/client/manualExposures.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+
+import OnDeviceEvalProsAndCons from '/snippets/local-eval/onDeviceEvalProsAndCons.mdx'
+import DCSScope from '/snippets/local-eval/dcsScope.mdx'
+import { StatsigUserNotes } from '/snippets/local-eval/statsigUserNotes.mdx'
+
+import JSInstallation from '/snippets/local-eval/js/_install.mdx'
+import JSInitialize from '/snippets/local-eval/js/_initialize.mdx'
+import JSCheckGate from '/snippets/local-eval/js/_checkGate.mdx'
+import JSGetConfig from '/snippets/local-eval/js/_getConfig.mdx'
+import JSGetExperiment from '/snippets/local-eval/js/_getExperiment.mdx'
+import JSLogEvent from '/snippets/local-eval/js/_logEvent.mdx'
+import JSCreateUser from '/snippets/local-eval/js/_createUserObject.mdx'
+import JSOptions from '/snippets/local-eval/js/_options.mdx'
+import JSShutdown from '/snippets/local-eval/js/_shutdown.mdx'
+import JSManualExposures from '/snippets/local-eval/js/_manualExposures.mdx'
+import JSDataAdapter from '/snippets/local-eval/js/_dataAdapter.mdx'
+import JSClientEventEmitting from '/snippets/local-eval/js/_clientEventEmitting.mdx'
+import JSFaqs from '/snippets/local-eval/js/_faqs.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="_blank" rel="noreferrer">statsig-io/js-client-monorepo</a>
+</Callout>
+
+<OnDeviceEvalProsAndCons sdkName="@statsig/js-on-device-eval-client" />
+
+## Set Up the SDK
+
+<Steps>
+  <Step title="Install the SDK">
+    <Installation />
+    <JSInstallation />
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization />
+    
+    <DCSScope />
+
+    <JSInitialize />
+  </Step>
+</Steps>
+
+## Working with the SDK
+
+<JSCreateUser />
+
+<checkGateIntro />
+<JSCheckGate />
+
+<getDynamicConfigIntro />
+<JSGetConfig />
+
+<getExperimentLayerIntro />
+<JSGetExperiment />
+
+<logEventIntro />
+<JSLogEvent />
+
+### Code Examples
+
+Working sample apps are available in the repository:
+
+- [JavaScript & TypeScript Examples](https://github.com/statsig-io/js-client-monorepo/tree/main/samples)
+
+<statsigUserIntro />
+
+<StatsigUserNotes sdkName="JavaScript" />
+
+<JSClientEventEmitting />
+
+<statsigOptionsIntro />
+
+<JSOptions />
+
+<manualExposuresIntro />
+
+<JSManualExposures />
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown />
+<JSShutdown />
+
+<JSDataAdapter />
+
+## FAQs
+
+<JSFaqs />
+
+<AccordionGroup>
+  <Accordion title="Does the SDK use the browser local storage or cookies? If so, for what purposes?">
+    The SDK does not use any cookies.
+    
+    It does use the local storage for feature targeting and experimentation purposes only. Values for feature gates, dynamic configs and experiments are cached in the local storage, which are used as a backup in the event that your website/app cannot reach the Statsig server to fetch the latest values. If any events were logged but could not be sent to Statsig server due to issues like network failure, we also save them in the local storage to be sent again when network restores.
+  </Accordion>
+  <Accordion title="How do I run experiments for logged out users?">
+    See the guide on [device level experiments](/guides/first-device-level-experiment).
+  </Accordion>
+</AccordionGroup>
+
+## Additional Resources
+
+- [On-Device Evaluation SDK Overview](/client/onDevice)
+- [Client Keys with Server Permissions](/sdk-keys/api-keys/#client-keys-with-server-permissions)
+- [Using EvaluationsDataAdapter](/client/javascript/using-evaluations-data-adapter)
+- [Debugging SDK Evaluations](/sdk/debugging)
+

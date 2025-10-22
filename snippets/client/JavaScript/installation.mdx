@@ -1,0 +1,24 @@
+To install the Statsig Web SDK, add the package via your preferred package manager. Include optional packages if you plan to enable Session Replay or Auto Capture.
+
+<Tabs>
+<Tab title="npm">
+
+```bash
+npm install @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+</Tab>
+<Tab title="yarn">
+
+```bash
+yarn add @statsig/js-client @statsig/session-replay @statsig/web-analytics
+```
+
+</Tab>
+</Tabs>
+
+<Info>
+If you don't need Session Replay or Auto Capture, omit the `@statsig/session-replay` and `@statsig/web-analytics` packages.
+</Info>
+
+After installation, configure the SDK in your app entry point before rendering your UI.

@@ -1,0 +1,43 @@
+All of the main SDK functions (`check_gate`, `get_dynamic_config`, `get_experiment`, `get_layer`) accept an optional `disable_exposure_logging` parameter. When this is set to `True`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
+```python
+result = statsig.check_gate(aUser, 'a_gate_name', FeatureGateEvaluationOptions(disable_exposure_logging=True))
+```
+
+```python
+statsig.manually_log_gate_exposure(aUser, 'a_gate_name')
+```
+</Tab>
+
+<Tab title="Dynamic Configs">
+```python
+config = statsig.get_dynamic_config(aUser, 'a_dynamic_config_name', DynamicConfigEvaluationOptions(disable_exposure_logging=True))
+```
+
+```python
+statsig.manually_log_dynamic_config_exposure(aUser, 'a_dynamic_config_name')
+```
+</Tab>
+
+<Tab title="Experiments">
+```python
+experiment = statsig.get_experiment(aUser, 'an_experiment_name', ExperimentEvaluationOptions(disable_exposure_logging=True))
+```
+
+```python
+statsig.manually_log_experiment_exposure(aUser, 'an_experiment_name')
+```
+</Tab>
+
+<Tab title="Layers">
+```python
+layer = statsig.get_layer(aUser, 'a_layer_name',  LayerEvaluationOptions(disable_exposure_logging=True))
+paramValue = layer.get('a_param_name', 'fallback_value')
+```
+
+```python
+statsig.manually_log_layer_parameter_exposure(aUser, 'a_layer_name', 'a_param_name')
+```
+</Tab>
+</Tabs>

@@ -1,0 +1,6 @@
+<!--
+  tags: ["input","selection","indeterminate","form"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M2.501 15.375c0 1.174.952 2.125 2.125 2.125h10.748a2.125 2.125 0 0 0 2.125-2.125V4.625A2.125 2.125 0 0 0 15.374 2.5H4.626a2.125 2.125 0 0 0-2.125 2.125v10.75Zm11.948-4.75a.625.625 0 1 0 0-1.25H5.551a.625.625 0 1 0 0 1.25h8.898Z" clip-rule="evenodd"/>
+</svg>

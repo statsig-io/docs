@@ -1,0 +1,15 @@
+`Initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client.
+
+<ResponseField name="environment" type="StatsigEnvironment" default="null">
+  Set environment variables that apply to all users in the session for targeting purposes.
+  Commonly used to set the environment tier, e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`.
+</ResponseField>
+
+<ResponseField name="ClientRequestTimeoutMs" type="int" default="0">
+  Maximum milliseconds to wait for `/initialize` before proceeding with cached/default values.
+</ResponseField>
+
+<ResponseField name="PersistentStorageFolder" type="string" default="null">
+  Directory path for persistent storage of cached values and logs.
+</ResponseField>
+

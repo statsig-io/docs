@@ -1,0 +1,236 @@
+---
+title: SDK Debugging
+description: Troubleshoot Statsig SDK evaluations using diagnostics, evaluation reasons, and targeted logging.
+---
+
+## Debugging Tools
+
+When a user sees an unexpected value, start with the tooling built into the Statsig console and SDKs. The sections below outline where to look and what each signal means.
+
+### Diagnostics & Log Stream
+
+Every gate, config, experiment, and layer has both a **Setup** and **Diagnostics** tab. The diagnostics view highlights pass/fail rates and bucketing counts so you can spot anomalies over time.
+
+<Frame>
+  <img src="/images/sdks/debugging/diagnostics-overview.png" alt="Diagnostics tab showing pass and fail counts" />
+</Frame>
+
+Scroll to the log stream to inspect individual evaluations. Entries arrive within seconds for both production and non-production environments.
+
+<Frame>
+  <img src="/images/sdks/debugging/log-stream.png" alt="Log stream showing recent exposures" />
+</Frame>
+
+<Note>
+Enable **Show non-production logs** in the diagnostics view to surface checks coming from test keys and development builds.
+</Note>
+
+### Logging Levels and Expected Information
+
+Statsig SDKs emit runtime logs across four verbosity levels:
+
+- `Debug` – deep tracing meant for onboarding or issue triage.
+  - Missing gate/config warnings when a definition is unavailable.
+  - Step-by-step messages that follow SDK initialization and evaluations.
+- `Info` – healthy lifecycle events for day-to-day operation.
+  - Initialization summaries with source and SDK version details.
+  - Notifications when the configuration store is populated.
+- `Warning` – recoverable issues that might affect functionality.
+  - Non-critical errors automatically handled by the SDK.
+  - gRPC reconnection attempts or similar transient network events.
+- `Error` – critical failures that block expected behavior.
+  - Initialization timeouts or outright failures.
+  - Fallback notices that indicate gRPC is unavailable or misconfigured.
+
+## Evaluation Details
+
+Click any exposure in the log stream to drill into the precise rule, user attributes, evaluation reason, SDK metadata, and server timestamps. That detail is often enough to pinpoint why a user received a specific value.
+
+<Frame>
+  <img src="/images/sdks/debugging/evaluation-details.png" alt="Evaluation details modal with rule match information" />
+</Frame>
+
+### Evaluation Reasons
+
+Evaluation reasons answer two questions: where the SDK sourced its definitions and why a particular value was returned. Use them to distinguish between healthy results, overrides, and error states.
+
+<Frame>
+  <img src="/images/sdks/debugging/evaluation-reason.png" alt="Evaluation reason popover showing source and reason" />
+</Frame>
+
+<Tabs>
+  <Tab title="Client SDKs">
+
+#### Data Source
+
+| Source | Description | Type | Debugging Suggestions |
+| --- | --- | --- | --- |
+| `Network` | Values fetched during initialization from Statsig servers. | Normal | — |
+| `Bootstrap` | Supplied during bootstrap (often from a server SDK). | Normal | — |
+| `Prefetch` | Loaded via the `prefetchUsers` API (JS only). | Normal | — |
+| `NetworkNotModified` | Network request succeeded but cached values were already current. | Normal | — |
+| `Sticky` (legacy) | Persisted from a sticky evaluation. | Normal | — |
+| `LocalOverride` (legacy) | Set locally via override APIs. | Normal | — |
+| `Cache` | Served from local cache because network values were unavailable. | Warning | Ensure `initialize()` has completed before checks run. |
+| `InvalidBootstrap` / `BootstrapPartialUserMatch` | Bootstrap values were generated for a different user profile. | Error | See [Fixing InvalidBootstrap](#invalid-bootstrap). |
+| `BootstrapStableIDMismatch` | StableID differed between bootstrap and runtime user. | Error | See [BootstrapStableIDMismatch](#bootstrapstableidmismatch). |
+| `Error` | A generic evaluation failure that was logged to Statsig. | Error | Ask for help in [Slack](https://statsig.com/slack). |
+| `Error:NoClient` (JS) | No Statsig client was found in context. | Error | Wrap checks in `<StatsigProvider>` or equivalent. |
+| `Unrecognized` (legacy) | The definition was missing from the initialize payload. | Error | Confirm the config exists and the correct API key is used. |
+| `NoValues` | Initialization ran but failed to retrieve values. | Error | Verify client key and network connectivity. |
+| `Loading` | Initialization is still in progress. | Error | Await `initializeAsync()` or guard checks until ready. |
+| `Uninitialized` | Initialization never started. | Error | Call `initializeAsync()`/`initializeSync()` explicitly. |
+| `UAParserNotLoaded` | UA parsing was disabled while targeting relies on it. | Error | Remove UA-based targeting or re-enable parsing. |
+| `CountryLookupNotLoaded` | Country lookups were disabled while targeting relies on them. | Error | Avoid IP-based targeting or re-enable lookups. |
+
+#### Reason (new SDKs only)
+
+| Reason | Description | Type | Debugging Suggestions |
+| --- | --- | --- | --- |
+| `Recognized` | The definition was present and matched the current values. | Normal | — |
+| `Sticky` | Result persisted because `keepDeviceValue` was set. | Normal | — |
+| `LocalOverride` | Value came from a developer override. | Normal | — |
+| `Unrecognized` | Definition missing from the payload. | Error | Confirm targeting and [Target Apps](/sdk-keys/target-apps). |
+| `Filtered` | Definition filtered from `/initialize` because the default value was `false`. | Error | Check [client bootstrapping](/client/concepts/initialize#bootstrapping-overview) or targeting.
+
+  </Tab>
+  <Tab title="Server SDKs">
+
+#### Data Source
+
+| Source | Description | Type | Debugging Suggestions |
+| --- | --- | --- | --- |
+| `Network` | Configurations loaded from Statsig servers at initialization. | Normal | — |
+| `Bootstrap` | Server SDK bootstrapped with precomputed values. | Normal | — |
+| `DataAdapter` | Values retrieved from a data adapter or external store. | Normal | Review your [data adapter setup](https://docs.statsig.com/server/concepts/data_store/#dataadapter-or-datastore). |
+| `LocalOverride` (legacy) | Value supplied via server-side override APIs. | Normal | — |
+| `StatsigNetwork` | Proxy/streaming fell back to Statsig APIs directly. | Fallback | Revisit your [proxy configuration](/server/concepts/forward_proxy/). |
+| `Uninitialized` | SDK has not completed initialization. | Error | Ensure initialization succeeds before evaluations. |
+| `Unrecognized` (legacy) | Definition missing from the cached payload. | Error | Confirm configuration exists and the API key is correct. |
+
+#### Reason (new SDKs only)
+
+| Reason | Description | Type | Debugging Suggestions |
+| --- | --- | --- | --- |
+| `LocalOverride` | Result supplied by a developer override. | Normal | — |
+| _None_ | Successful evaluation with the expected payload. | Normal | — |
+| `Unrecognized` | Definition missing from the payload. | Error | Confirm configuration exists and the API key is correct. |
+| `Unsupported` | SDK lacks support for a condition/operator. | Error | Upgrade to the latest SDK version. |
+| `Error` | Generic evaluation failure captured by the SDK. | Error | Ask for help in [Slack](https://statsig.com/slack). |
+
+  </Tab>
+</Tabs>
+
+### Evaluation Times
+
+Evaluation timestamps reveal whether an SDK is serving fresh definitions. An up-to-date LCUT (Last Config Updated Time) indicates the SDK has the latest changes. If LCUT lags far behind, users may be seeing stale values—either because a browser tab stayed open or because a server integration is unable to sync.
+
+<Tabs>
+  <Tab title="Client SDKs">
+
+| Time Field | Description | SDKs |
+| --- | --- | --- |
+| `LCUT` | Time of the most recent config change reflected in the SDK. | JavaScript (incl. React & RN), iOS, Dart |
+| `receivedAt` | Timestamp when the client obtained the current values. | JavaScript (incl. React & RN), iOS, Dart |
+
+  </Tab>
+  <Tab title="Server SDKs">
+
+| Time Field | Description | SDKs |
+| --- | --- | --- |
+| `initTime` | LCUT captured when the server SDK initialized. | All server SDKs except Rust |
+| `configSyncTime` | Latest LCUT received from the network or data adapter. | All server SDKs except Rust |
+| `serverTime` | Current server clock time when the evaluation was made. | All server SDKs except Rust |
+
+  </Tab>
+</Tabs>
+
+### Mocking Statsig / Local Mode
+
+Use the following tools to validate code paths without hitting the network:
+
+- **Local mode:** Set `localMode` to `true` so the SDK skips network calls and returns default values—ideal for tests and offline environments.
+- **Override APIs:** Call `overrideGate` and `overrideConfig` to force specific values for an individual user or globally.
+
+Combine both techniques to exercise each branch of your application safely before shipping.
+
+### Client SDK Debugger
+
+Inspect the exact values a client SDK is using by opening the Client SDK Debugger. It exposes the active user object and every gate/config tied to that client.
+
+- **JavaScript / React:** Use the [Chrome extension](https://github.com/statsig-io/statsig-sdk-debugger-chrome-extension).
+- **iOS:** Call `Statsig.openDebugView()` in [v1.26.0](https://github.com/statsig-io/statsig-kit/releases/tag/v1.26.0) or later.
+- **Android:** Call `Statsig.openDebugView()` in [v4.29.0](https://github.com/statsig-io/android-sdk/releases/tag/4.29.0) or later.
+
+<Note>
+Accounts that sign in to the Statsig console via Google SSO are currently unsupported by the Chrome extension.
+</Note>
+
+| Landing | Gates List | Gate Details | Experiment Details |
+| --- | --- | --- | --- |
+| ![Client debugger landing view](/images/sdks/debugging/client-debugger-landing.png) | ![Client debugger gates list](/images/sdks/debugging/client-debugger-gates.png) | ![Client debugger gate details](/images/sdks/debugging/client-debugger-gate-details.png) | ![Client debugger experiment details](/images/sdks/debugging/client-debugger-experiment.png) |
+
+## FAQs
+
+For SDK-specific edge cases, check each SDK’s FAQ or contact us in the [Statsig Slack community](https://statsig.com/slack).
+
+### Invalid Bootstrap
+
+`InvalidBootstrap` occurs when a client SDK is bootstrapped with values generated for a different user profile. Always ensure the bootstrap user exactly matches the runtime user.
+
+```js
+// Server side
+const userA = { userID: 'user-a' };
+const bootstrapValues = Statsig.getClientInitializeResponse(userA);
+
+// Client side
+const bootstrapValues = await fetchStatsigValuesFromMyServers();
+const userB = { userID: 'user-b' }; // <-- Different from userA
+await Statsig.initialize('client-key', userB, { initializeValues: bootstrapValues });
+```
+
+Even subtle differences count as a mismatch—adding `customIDs` or other attributes results in a distinct user object.
+
+```js
+const userA = { userID: 'user-a' };
+const userAExt = { userID: 'user-a', customIDs: { employeeID: 'employee-a' } };
+```
+
+### BootstrapStableIDMismatch
+
+`BootstrapStableIDMismatch` is similar but focuses on `stableID`. Client SDKs generate a stable ID automatically when one is not provided, so mixing empty user objects between server and client code can cause drift.
+
+```js
+// Server side
+const userA = {};
+const bootstrapValues = Statsig.getClientInitializeResponse(userA);
+
+// Client side
+const bootstrapValues = await fetchStatsigValuesFromMyServers();
+const userB = { stableID: '12345' }; // <-- Server user lacked a stableID
+await Statsig.initialize('client-key', userB, { initializeValues: bootstrapValues });
+```
+
+Even if both sides start with `{}`, the client-generated stable ID may not match the server’s, leading to the same warning.
+
+```js
+const userC = {}; // Client SDK auto-generates a stableID
+await Statsig.initialize('client-key', userC, { initializeValues: bootstrapValues });
+```
+
+### Environments
+
+SDKs inherit their environment from initialization options. If none is provided, the SDK defaults to production. To verify which environment a user evaluated under, open the diagnostics log stream and inspect the `statsigEnvironment` property attached to the exposure.
+
+### Maximizing Event Throughput
+
+<Info>
+Python SDK v0.45.0+ introduces tunables that help handle high event volume without drops.
+</Info>
+
+The SDK batches events and retries failures in the background. When throughput spikes, adjust these options to reduce the chance of dropped events:
+
+- **`eventQueueSize`** – Number of events flushed per batch. Larger batches increase throughput but use more memory; keep the value under ~3000 to avoid oversized payloads.
+- **`retryQueueSize`** – Number of batches kept for retrying. The default is 10; raise it to retain more data at the cost of memory.
+
+Tune both settings to match your traffic profile and keep pipelines healthy.

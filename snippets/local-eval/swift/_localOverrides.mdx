@@ -1,0 +1,66 @@
+## Local Overrides
+
+It is possible to override the values returned by the Statsig SDK. This can be useful in unit testing or for enabling features for local development.
+
+To get setup with local overrides, you can pass an instance of `LocalOverrideAdapter` to the SDK via the `StatsigOptions` object.
+
+<Note>
+It is possible to write your own override adapter. You can implement the [`OverrideAdapter`](https://github.com/statsig-io/swift-on-device-evaluations-sdk/blob/main/Sources/StatsigOnDeviceEvaluations/OverrideAdapter.swift) protocol and pass that in instead.
+</Note>
+
+<CodeGroup>
+
+```swift Swift
+let user = StatsigUser(userID: "a-user")
+
+let overrides = LocalOverrideAdapter()
+
+// Override a gate
+overrides.setGate(user, FeatureGate.create("local_override_gate", true))
+
+// Override a dynamic config (Similar for Layer and Experiment)
+overrides.setDynamicConfig(user, DynamicConfig.create("local_override_dynamic_config", ["foo": "bar"]))
+
+let opts = StatsigOptions()
+opts.overrideAdapter = overrides
+
+Statsig.shared.initialize(YOUR_SDK_KEY, options: opts) { _ in
+    let gate = Statsig.shared.getFeatureGate("local_override_gate", user)
+    print("Result: \(gate.value) (\(gate.evaluationDetails.reason))")
+}
+```
+
+```objective-c Objective C
+StatsigUser *user = [StatsigUser userWithUserID:@"a-user"];
+
+LocalOverrideAdapter *overrides = [LocalOverrideAdapter new];
+
+// Override a gate
+[overrides
+    setGateForUser:user
+    gate:[FeatureGate createWithName:@"local_override_gate" andValue:true]];
+
+// Override a dynamic config (Similar for Layer and Experiment)
+[_overrides
+    setDynamicConfigForUser:user
+    config:[DynamicConfig
+            createWithName:@"local_override_dynamic_config"
+            andValue:@{@"foo": @"bar"}]];
+
+StatsigOptions *options = [StatsigOptions new];
+options.overrideAdapter = overrides;
+
+[[Statsig sharedInstance] 
+    initializeWithSDKKey:YOUR_SDK_KEY
+    options:options
+    completion:^(NSError * _Nullable error) {
+
+    FeatureGate *gate = [[Statsig sharedInstance] getFeatureGate:@"local_override_gate" forUser:user options:nil];
+    NSLog(@"Result: %d (%@)", gate.value, gate.evaluationDetails.reason);
+
+}];
+```
+
+</CodeGroup>
+
+

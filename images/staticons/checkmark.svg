@@ -1,0 +1,6 @@
+<!--
+  tags: ["confirmation","success","complete","status"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M17.442 4.889a.625.625 0 0 1 0 .883L8.53 14.67c-.44.438-1.15.438-1.59 0l-4.382-4.375a.625.625 0 1 1 .884-.884l4.293 4.286 8.823-8.808a.625.625 0 0 1 .884 0Z"/>
+</svg>

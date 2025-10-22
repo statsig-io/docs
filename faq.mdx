@@ -1,0 +1,155 @@
+---
+title: "FAQ"
+description: "Answers to common questions about Statsig’s SDKs, experiments, gates, billing, and platform usage."
+---
+
+## SDKs and APIs
+
+### How does bucketing in the Statsig SDKs work?
+
+See [How Evaluation Works](/sdks/how-evaluation-works).
+
+---
+
+### Can I add a layer to a running experiment?
+
+No. Layers are fixed once an experiment starts to preserve the integrity of results. We may support editing layers in the future.
+
+---
+
+### Can I rename an experiment or gate after creating it?
+
+No. Renaming configs that are already referenced in code risks breaking user experiences. If you need a new name, create a new config. (Metrics are the exception—they have display names only.)
+
+---
+
+### Why define parameters instead of just reading the experiment group?
+
+Parameters let you iterate quickly without code changes and support richer experiment setups. For example:
+
+```js
+// Group-based approach — requires code changes for each variant
+if (otherEngine.getExperiment('button_color_test').getGroup() === 'Control') {
+  color = 'BLACK';
+} else if (otherEngine.getExperiment('button_color_test').getGroup() === 'Blue') {
+  color = 'BLUE';
+}
+
+// Statsig parameter approach — variants can be changed from the console
+const color = statsig.getExperiment('button_color_test').getString('button_color', 'BLACK');
+```
+
+---
+
+### Why aren’t exposures or custom events showing up?
+
+In short-lived environments (scripts, edge workers), the process may exit before events flush. Call `statsig.flush()` before shutdown. Details live in the [Node.js server SDK docs](/server/nodejsServerSDK#flushing-events).
+
+---
+
+### My language isn’t listed. Can I still use Statsig?
+
+Likely yes. Let us know in the [Statsig Slack community](https://statsig.com/slack) and we’ll discuss options.
+
+---
+
+### How do I retrieve all exposures for a user?
+
+The [Users tab](https://console.statsig.com/users) shows historical exposures. For hypothetical assignments (e.g., to bootstrap clients) you can call `getClientInitializeResponse` on the server. Pass `{ hash: 'none' }` if you need readable keys:
+
+```js
+const assignments = statsig.getClientInitializeResponse(user, 'client-key', { hash: 'none' });
+```
+
+---
+
+### What happens if I check a config that doesn’t exist?
+
+The SDK returns defaults—`false` for gates and the supplied fallback for experiments/layers. You’ll see the evaluation reason `Unrecognized`; learn more in [SDK debugging](/sdk/debugging#evaluation-reason). This applies to deleted, archived, or unseen configs (e.g., filtered by [target apps](/sdk-keys/target-apps/)).
+
+---
+
+## Feature Gates
+
+### If I change the rollout percentage, do existing users keep their result?
+
+Yes. Increasing the pass percentage (e.g., 10% → 20%) keeps the original 10% and adds new traffic until you reach the new percentage. Decreasing it removes the newest slice first. To reshuffle everyone, you must resalt the gate. (Experiments behave differently—use targeting gates for deterministic control.)
+
+---
+
+## Statistics
+
+### What statistical tests does Statsig use?
+
+We use a two-sample Z-test for most experiments and [Welch’s t-test](/stats-engine/p-value#welchs-t-test) when sample sizes are small or variances differ.
+
+---
+
+### How does Statsig handle low sample sizes?
+
+We fall back to [Welch’s t-test](/stats-engine/p-value#welchs-t-test) and offer CUPED/winsorization to boost power.
+
+---
+
+### When should I use one-sided vs. two-sided tests?
+
+Use one-sided when you only care about movement in a single direction; it increases power but hides movement in the opposite direction.
+
+---
+
+## Experimentation
+
+### How do I get started with an A/B test?
+
+If the feature isn’t live yet, wrap it in a [feature gate](/guides/first-feature) and roll out. If it’s already in production, create an [experiment](/guides/abn-tests). Results appear in the Pulse view.
+
+---
+
+### Can I target experiments to specific users (e.g., iOS only)?
+
+Yes. Use a feature gate with targeting rules as a pre-filter for your experiment.
+
+<Frame>
+  ![Targeting iOS users in an experiment setup](/images/experiments/power-analysis/navigation.png)
+</Frame>
+
+---
+
+## Billing
+
+### What counts as a [billable event](https://statsig.com/pricing#faq)?
+
+Any gate/experiment check or event logged via the SDK or APIs. Pre-computed metrics and custom metrics based on existing data also count.
+
+---
+
+### How do I monitor and manage billable volume?
+
+1. Export usage from the **Usage and Billing** tab.
+2. Pivot by event to identify heavy hitters.
+3. Admins receive alerts at 25/50/75/100% of contract.
+
+<Frame>
+  ![Usage dashboard showing event volume](/images/guides/first-feature/diagnostics-stream.png)
+</Frame>
+
+---
+
+### How many projects come with a Pro subscription?
+
+Each Pro plan unlocks one project with pro features and 5M events. Additional projects require their own upgrade. Enterprise plans can cover multiple projects—[contact us](https://statsig.com/contact/demo) to discuss.
+
+---
+
+## Platform Usability
+
+### When should I create a new project?
+Projects have distinct boundaries. If you're using the same userIDs and metrics across surfaces, apps or environments, put them in the same project. Create a new project when you're managing a separate product with unique user IDs and metrics. 
+
+For example, if you have a marketing website (anonymous users) and a product (signed-in users), you may want to separate them. However, if you want to track success across both you should manage them in the same project. (e.g. from user signup on the marketing website to user engagement within the product)
+
+Some reasons to NOT create a new project
+- to segregate by environment. Statsig has rich support for environments - you can even customize these. You can turn features or experiments on and off by environment.
+- to segregate by platform. If you have an iOS app and Web app - it's helpful to have both collect data in the same project and capture metadata on platform. This lets you look at data by platform, but also understand if you've increased the overall metric - or just cannibalized users (pushed the same users from platform to the other platform).
+
+---

@@ -1,0 +1,38 @@
+## Reference
+
+<Accordion title="All API Methods">
+
+- `checkGate(user: StatsigUser, gateName: string, options?: EvaluationOptions): boolean`
+- `getDynamicConfig(user: StatsigUser, configName: string, options?: EvaluationOptions): DynamicConfig`
+- `getExperiment(user: StatsigUser, experimentName: string, options?: EvaluationOptions): DynamicConfig`
+- `getLayer(user: StatsigUser, layerName: string, options?: EvaluationOptions): Layer`
+- `getFeatureGate(user: StatsigUser, gateName: string, options?: EvaluationOptions): FeatureGate`
+- `getParameterStore(user: StatsigUser, parameterStoreName: string, options?: EvaluationOptions): ParameterStore`
+- `getPrompt(user: StatsigUser, promptName: string, options?: EvaluationOptions): Prompt`
+- `getPromptSet(user: StatsigUser, promptSetName: string, options?: EvaluationOptions): PromptSet`
+- `logEvent(user: StatsigUser, eventName: string, value?: string | number | null, metadata?: Record<string, string>): void`
+- `forwardLogLineEvent(user: StatsigUser, level: string, message: string, metadata?: Record<string, string>): void`
+- `manuallyLogGateExposure(user: StatsigUser, gateName: string): void`
+- `manuallyLogDynamicConfigExposure(user: StatsigUser, configName: string): void`
+- `manuallyLogExperimentExposure(user: StatsigUser, experimentName: string): void`
+- `manuallyLogLayerParameterExposure(user: StatsigUser, layerName: string, parameterName: string): void`
+- `getClientInitializeResponse(user: StatsigUser, options?: ClientInitializeResponseOptions): ClientInitializeResponse`
+- `shutdown(): Promise<void>`
+
+</Accordion>
+
+<Accordion title="Fields Needed Methods">
+
+The following methods return information about which user fields are needed for evaluation:
+
+- `getGateFieldsNeeded(gateName: string): string[]`
+- `getDynamicConfigFieldsNeeded(configName: string): string[]`
+- `getExperimentFieldsNeeded(experimentName: string): string[]`
+- `getLayerFieldsNeeded(layerName: string): string[]`
+
+These methods return an array of strings representing the user fields that are required to properly evaluate the specified gate, config, experiment, or layer. This can be useful for:
+- Optimizing user object creation by only including necessary fields
+- Understanding which user attributes affect a particular feature
+- Debugging evaluation issues
+
+</Accordion>

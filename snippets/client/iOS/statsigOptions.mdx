@@ -1,0 +1,35 @@
+
+<CodeGroup>
+```swift Swift
+// Commonly used options
+let options = StatsigOptions(
+    environment: StatsigEnvironment(tier: .Staging),
+    overrideStableID: "my_stable_id"
+)
+
+Statsig.initialize(
+    sdkKey: "my_client_sdk_key",
+    user: StatsigUser(userID: "my_user_id"),
+    options: options
+) { error in
+  // Initialized
+}
+```
+
+```objective-c Objective C
+StatsigEnvironment *env = [[StatsigEnvironment alloc] initWithTier:StatsigEnvironmentTierStaging];
+StatsigOptions *options = [[StatsigOptions alloc] initWithEnvironment:env];
+options.overrideStableID = @"my_stable_id";
+
+StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
+[Statsig initializeWithSDKKey:@"my_client_sdk_key" user:user options:options completion:^(StatsigClientError * error) {
+  // Initialized
+}];
+```
+</CodeGroup>
+
+<Callout>
+Use `overrideStableID` to set a deterministic device identifier when needed.
+</Callout>
+
+

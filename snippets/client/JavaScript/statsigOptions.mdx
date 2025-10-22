@@ -1,0 +1,109 @@
+
+<ResponseField name="loggingEnabled" type="LoggingEnabledOption" default="browser-only">
+  Controls logging behavior.
+  - `browser-only` (default): log events from browser environments.
+  - `disabled`: never send events.
+  - `always`: log in every environment, including non-browser contexts.
+</ResponseField>
+
+<ResponseField name="disableLogging" type="boolean" deprecated post={["deprecated"]}>
+  Use `loggingEnabled: 'disabled'` instead.
+</ResponseField>
+
+<ResponseField name="disableStableID" type="boolean" default="false">
+  Skip generating a device-level Stable ID.
+</ResponseField>
+
+<ResponseField name="disableEvaluationMemoization" type="boolean" default="false">
+  Recompute every evaluation instead of using the memoized result.
+</ResponseField>
+
+<ResponseField name="initialSessionID" type="string">
+  Override the generated session ID.
+</ResponseField>
+
+<ResponseField name="enableCookies" type="boolean" default="false">
+  Persist Stable ID in cookies for cross-domain tracking.
+</ResponseField>
+
+<ResponseField name="disableStorage" type="boolean">
+  Prevent any local storage writes (disables caching).
+</ResponseField>
+
+<ResponseField name="networkConfig" type="NetworkConfig">
+  Override network endpoints per request type.
+</ResponseField>
+
+<ResponseField name="environment" type="StatsigEnvironment">
+  Set environment-wide defaults (for example `{ tier: 'staging' }`).
+</ResponseField>
+
+<ResponseField name="logLevel" type="LogLevel" default="Warn">
+  Console verbosity.
+</ResponseField>
+
+<ResponseField name="loggingBufferMaxSize" type="number" default="50">
+  Max events per log batch.
+</ResponseField>
+
+<ResponseField name="loggingIntervalMs" type="number" default="10_000">
+  Interval between automatic flushes.
+</ResponseField>
+
+<ResponseField name="overrideAdapter" type="OverrideAdapter">
+  Modify evaluations before returning them.
+</ResponseField>
+
+<ResponseField name="includeCurrentPageUrlWithEvents" type="boolean" default="true">
+  Attach the current page URL to logged events.
+</ResponseField>
+
+<ResponseField name="disableStatsigEncoding" type="boolean" default="false">
+  Send requests without Statsig-specific encoding.
+</ResponseField>
+
+<ResponseField name="logEventCompressionMode" type="LogEventCompressionMode" default="Enabled">
+  Control compression for batched events.
+</ResponseField>
+
+<ResponseField name="disableCompression" type="boolean" deprecated post={["deprecated"]}>
+  Use `logEventCompressionMode` instead.
+</ResponseField>
+
+<ResponseField name="dataAdapter" type="EvaluationsDataAdapter">
+  Provide a custom data adapter to control caching/fetching.
+</ResponseField>
+
+<ResponseField name="customUserCacheKeyFunc" type="CustomCacheKeyGenerator">
+  Override cache key generation for stored evaluations.
+</ResponseField>
+
+<Accordion title="Network Config Options">
+<ResponseField name="api" type="string" default="https://api.statsig.com">
+  Base URL for all requests (append `/v1`).
+</ResponseField>
+
+<ResponseField name="logEventUrl" type="string" default="https://prodregistryv2.org/v1/rgstr">
+  Endpoint for event uploads.
+</ResponseField>
+
+<ResponseField name="logEventFallbackUrls" type="string[]">
+  Fallback endpoints for event uploads.
+</ResponseField>
+
+<ResponseField name="networkTimeoutMs" type="number" default="10000">
+  Request timeout in milliseconds.
+</ResponseField>
+
+<ResponseField name="preventAllNetworkTraffic" type="boolean">
+  Disable all outbound requests; combine with `loggingEnabled: 'disabled'` to silence log warnings.
+</ResponseField>
+
+<ResponseField name="networkOverrideFunc" type="function">
+  Provide custom transport (e.g., Axios).
+</ResponseField>
+
+<ResponseField name="initializeUrl" type="string" default="https://featureassets.org/v1/initialize">
+  Endpoint for initialization requests.
+</ResponseField>
+</Accordion>

@@ -1,0 +1,6 @@
+<!--
+  tags: ["error","dismiss","close","failure"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M5.442 4.558a.625.625 0 1 0-.884.884L9.116 10l-4.558 4.558a.625.625 0 0 0 .884.884L10 10.884l4.558 4.558a.625.625 0 1 0 .884-.884L10.884 10l4.558-4.558a.625.625 0 1 0-.884-.884L10 9.116 5.442 4.558Z" clip-rule="evenodd"/>
+</svg>

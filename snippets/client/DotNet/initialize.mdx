@@ -1,0 +1,11 @@
+```csharp
+using Statsig;
+using Statsig.Client;
+
+await StatsigClient.Initialize(
+    "client-sdk-key",
+    new StatsigUser { UserID = "some_user_id", Email = "user@email.com" },
+    new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
+);
+```
+

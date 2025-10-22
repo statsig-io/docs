@@ -1,0 +1,8 @@
+<!--
+  tags: ["analytics","metrics","value","data"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M4.125 6.571a2.445 2.445 0 1 1 4.89 0 2.445 2.445 0 0 1-4.89 0ZM6.57 5.377a1.194 1.194 0 1 0 0 2.388 1.194 1.194 0 0 0 0-2.388Z" clip-rule="evenodd"/>
+  <path d="M4.581 15.704a.626.626 0 0 1-.022-.885l9.976-10.495a.625.625 0 0 1 .907.862L5.465 15.68a.625.625 0 0 1-.884.023Z"/>
+  <path fill-rule="evenodd" d="M13.43 10.98a2.445 2.445 0 1 0 0 4.89 2.445 2.445 0 0 0 0-4.89Zm-1.194 2.445a1.194 1.194 0 1 1 2.388 0 1.194 1.194 0 0 1-2.388 0Z" clip-rule="evenodd"/>
+</svg>

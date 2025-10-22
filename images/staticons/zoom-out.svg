@@ -1,0 +1,6 @@
+<!--
+  tags: ["view","UI","focus","reduce"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path fill-rule="evenodd" d="M9.662 3.249a5.912 5.912 0 1 0 0 11.824 5.912 5.912 0 0 0 0-11.824ZM2.5 9.161a7.162 7.162 0 1 1 12.167 5.123l2.65 2.65a.625.625 0 0 1-.884.883l-2.737-2.737A7.162 7.162 0 0 1 2.5 9.16Zm3.537-.576a.625.625 0 0 0 0 1.25h7.25a.625.625 0 1 0 0-1.25h-7.25Z" clip-rule="evenodd"/>
+</svg>

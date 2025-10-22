@@ -1,0 +1,34 @@
+The Java SDK supports using a shared instance for convenience:
+
+<CodeGroup>
+```java Java
+import com.statsig.*;
+
+// Initialize the shared instance
+StatsigOptions options = new StatsigOptions.Builder().build();
+Statsig.initializeGlobalSingleton("secret-key", options);
+Statsig.getGlobalSingleton().initialize().get();
+
+// Use the shared instance
+boolean result = Statsig.getGlobalSingleton().checkGate("user_id", "my_feature_gate");
+
+// Shutdown the shared instance when done
+Statsig.getGlobalSingleton().shutdown();
+```
+
+```kotlin Kotlin
+import com.statsig.*
+
+// Initialize the shared instance
+val options = StatsigOptions.Builder().build()
+Statsig.initializeGlobalSingleton("secret-key", options)
+Statsig.getGlobalSingleton().initialize().get()
+
+// Use the shared instance
+val result = Statsig.getGlobalSingleton().checkGate("user_id", "my_feature_gate")
+
+// Shutdown the shared instance when done
+Statsig.getGlobalSingleton().shutdown()
+```
+</CodeGroup>
+

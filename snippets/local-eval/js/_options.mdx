@@ -1,0 +1,49 @@
+You can configure certain aspects of the SDKs behavior by passing a StatsigOptions object during initialization.
+
+<ResponseField name="api" type="string">
+  The API to use for all SDK network requests. You should not need to override this unless you have another API that implements the Statsig API endpoints.
+</ResponseField>
+
+<ResponseField name="logEventUrl" type="string">
+  The URL used to flush queued events via a POST request. Takes precedence over `StatsigOptions.api`.
+</ResponseField>
+
+<ResponseField name="logEventBeaconUrl" type="string">
+  The URL used to flush queued events via `window.navigator.sendBeacon` (web only). Takes precedence over `StatsigOptions.api`.
+</ResponseField>
+
+<ResponseField name="downloadConfigSpecsUrl" type="string" default="https://api.statsigcdn.com/v1/download_config_specs">
+  The URL used to fetch your latest Statsig specifications. Takes precedence over `StatsigOptions.api`.
+</ResponseField>
+
+<ResponseField name="environment" type="StatsigEnvironment">
+  An object you can use to set environment variables that apply to all of your users in the same session.
+</ResponseField>
+
+<ResponseField name="overrideStableID" type="string">
+  Overrides the auto-generated stableID that is set for the device.
+</ResponseField>
+
+<ResponseField name="logLevel" type="LogLevel" default="LogLevel.Warn">
+  How much information is allowed to be printed to the console.
+</ResponseField>
+
+<ResponseField name="dataAdapter" type="SpecsDataAdapter" default="StatsigSpecsDataAdapter">
+  Implementing this type allows customization of the initialization. See [Using SpecsDataAdapter](/client/js-on-device-eval-client/using-evaluations-data-adapter) to learn more.
+</ResponseField>
+
+<ResponseField name="networkTimeoutMs" type="number" default="10,000">
+  The maximum amount of time (in milliseconds) that any network request can take before timing out.
+</ResponseField>
+
+<ResponseField name="loggingBufferMaxSize" type="number" default="50">
+  The maximum number of events to batch before flushing logs to Statsig.
+</ResponseField>
+
+<ResponseField name="loggingIntervalMs" type="number" default="10,000">
+  How often (in milliseconds) to flush logs to Statsig.
+</ResponseField>
+
+<ResponseField name="overrideAdapter" type="OverrideAdapter">
+  An implementor of `OverrideAdapter`, used to alter evaluations before its returned to the caller of a check api (checkGate/getExperiment etc).
+</ResponseField>

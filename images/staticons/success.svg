@@ -1,0 +1,7 @@
+<!--
+  tags: ["status","confirmation","system","positive"]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M14.251 8.462a.625.625 0 1 0-.884-.884l-4.669 4.67-2.375-2.375a.625.625 0 1 0-.884.884l2.71 2.709a.777.777 0 0 0 1.099 0l5.003-5.004Z"/>
+  <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-1.25 0a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Z" clip-rule="evenodd"/>
+</svg>

@@ -1,0 +1,36 @@
+You can pass in an optional parameter `options` in addition to `sdkKey` and `user` during initialization to customize the Statsig client.
+
+<ResponseField name="configSpecAPI" type="String" default="https://api.statsigcdn.com/v1/download_config_specs/">
+  The endpoint to use for downloading config spec network requests. You should not need to override this (unless you have another API that implements the Statsig API endpoints).
+</ResponseField>
+
+<ResponseField name="eventLoggingAPI" type="String" default="https://events.statsigapi.net/v1/rgstr">
+  The endpoint to use for log events. You should not need to override this (unless you have another API that implements the Statsig API endpoints).
+</ResponseField>
+
+<ResponseField name="initTimeoutMs" type="Long" default="3000">
+  Milliseconds to wait for the initial network request before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes. Set to `0` to wait indefinitely for the latest values.
+</ResponseField>
+
+<ResponseField name="overrideStableID" type="String?" default="null">
+  Overrides the `stableID` in the SDK that is set for the user.
+</ResponseField>
+
+<ResponseField name="loadCacheAsync" type="Boolean" default="false">
+  Whether or not the SDK should block on loading saved values from disk.
+</ResponseField>
+
+<ResponseField name="initializeValues" type="Map<String, Any>?" default="null">
+  Provide the `download_config_specs` response values directly to the Android SDK to synchronously initialize the client. You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
+</ResponseField>
+
+<ResponseField name="disableDiagnosticsLogging" type="Boolean" default="false">
+  Prevent the SDK from sending useful debug information to Statsig.
+</ResponseField>
+
+#### Methods
+
+- **setTier | setEnvironmentParameter | getEnvironment**
+  - Used to signal the environment tier the user is currently in.
+  - `setTier` can be PRODUCTION, STAGING or DEVELOPMENT. e.g. passing in a value of `Tier.STAGING` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+  - `setEnvironmentParameter` can be used for custom tiers, eg `options.setEnvironmentParameter("tier", "test")`

@@ -1,0 +1,56 @@
+The Statsig Angular bindings package provides a `StatsigService` that can be injected into your components. The way you provide and inject this service can vary depending on how you structure your app.
+
+```ts
+import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+
+const StatsigConfig = {
+        sdkKey: "client-KEY",
+        user: {}, // initial user object
+        options: {...} // optional
+}
+```
+
+### using app config
+```ts
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { STATSIG_INIT_CONFIG } from '@statsig/angular-bindings';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    {
+      provide: STATSIG_INIT_CONFIG,
+      useValue: StatsigConfig,
+    },
+  ],
+};
+
+//main.ts
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig).catch((err) =>
+  console.error(err),
+);
+```
+
+### using app module
+```ts
+// app.module.ts
+import { StatsigService } from '@statsig/angular-bindings';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [],
+  providers: [
+    {
+      provide: STATSIG_INIT_CONFIG,
+      useValue: StatsigConfig,
+    },
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+

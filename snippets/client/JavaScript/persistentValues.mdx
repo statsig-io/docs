@@ -1,0 +1,37 @@
+## Using Persistent Evaluations
+
+Persist experiment assignments so users keep the same variant even if targeting rules change.
+
+```tsx
+import { StatsigClient } from '@statsig/js-client';
+import { UserPersistentOverrideAdapter } from '@statsig/js-user-persisted-storage';
+
+class LocalStorageUserPersistedStorage {
+  load(key: string) {
+    return JSON.parse(localStorage.getItem(key) ?? '{}');
+  }
+
+  save(key: string, experiment: string, data: string) {
+    const values = JSON.parse(localStorage.getItem(key) ?? '{}');
+    values[experiment] = JSON.parse(data);
+    localStorage.setItem(key, JSON.stringify(values));
+  }
+
+  delete(key: string, experiment: string) {
+    const data = JSON.parse(localStorage.getItem(key) ?? '{}');
+    delete data[experiment];
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+}
+
+const storage = new LocalStorageUserPersistedStorage();
+const adapter = new UserPersistentOverrideAdapter(storage);
+const client = new StatsigClient('client-xyz', { overrideAdapter: adapter });
+
+await client.initializeAsync({ userID: '123' });
+
+const userPersistedValues = adapter.loadUserPersistedValues({ userID: '123' }, 'userID');
+const experiment = client.getExperiment('active_experiment', { userPersistedValues });
+```
+
+See [Client Persistent Assignment](/client/concepts/persistent_assignment) for additional patterns and storage options.

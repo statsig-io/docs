@@ -1,0 +1,24 @@
+<CodeGroup>
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
+
+if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+```kotlin Kotlin
+val user = StatsigUser("user_id");
+val featureOn = Statsig.checkGateSync(user, "use_new_feature")
+
+if (featureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+</CodeGroup>
+

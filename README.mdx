@@ -1,0 +1,50 @@
+## Welcome to the Statsig Docs
+
+<h1 align="center">
+	<a href="https://statsig.com/?ref=gh_docs">
+		<img width="300px" src="/images/Statsig_Favicon_Dark.png" />
+	</a>
+    <div />
+	<a href="https://statsig.com/?ref=gh_docs">Statsig</a>
+</h1>
+
+Statsig empowers you to ship, measure, and learn from your releases using the same tools as the best tech companies in the world. With Statsig, you can run thousands of A/B tests, safely rollout features, and dive deep on core business metrics and user behavior—all on a single, unified platform. To get started with Statsig, visit our [website](https://statsig.com?ref=gh_docs) or [sign up](https://console.statsig.com/sign_up?ref=gh_docs).
+
+This repository is hosted at https://docs.statsig.com. 
+
+## Contributing to docs
+
+Community contributions are welcome. Statsig's docs run on [Mintlify](https://www.mintlify.com/). Open a PR and request a review in our [Slack channel](https://statsig.com/slack) to merge your change in.
+
+There are two ways to contribute: 
+1. Open a Pull Request on Github (via local dev, or by editing in the Github UI)
+2. Use the Mintlify Visual Editor (Statsig Employees Only)
+
+If you're used to docs-as-code or our old docusaurus setup, #1 is probably the right path - see below for local development instructions. If you'd prefer a snazzy visual interface, message Brock on slack to get setup with a Visual Editor account. 
+
+### Local development:
+
+```
+npm i -g mintlify
+mintlify dev
+```
+
+## Differences from Docusaurus
+
+Mintlify's overall structure will feel very similar to Statsig's old Docusaurus docs - Its still docs-as-code with .mdx files and similar title/description formatting (frontmatter) as before. You can also still import reusable snippets, with the one wrinkle that they have to be in the /snippets folder. 
+
+### Component differences: 
+You'll notice minor component syntax differences in Mintlify:
+1. The format of [Callouts](https://www.mintlify.com/docs/components/callouts#callouts) has changed. Where you used to write :::Note Insert my note text :::, you now wrap your text in \<Note\> and \</Note\>.
+2. The format of a lot of other components has had minor changes. For example, what was \<Tabs\> \<TabItem\> \</TabItem\> \</Tabs\> is now \<Tabs\> \<Tab\> \</Tab\> \</Tabs\> in Mintlify. You should scan the [Mintlify docs](https://www.mintlify.com/docs) to see all of the cool elements they have.
+3. [Code groups](https://www.mintlify.com/docs/components/code-groups) are a lot snazzier, and we've migrated a lot of our old Tab usage to Code groups.
+4. You can't use quite as much React-like syntax as Docusaurus, you won't want to do things like have named exports.
+
+### Spellcheck
+
+You can find the allowlist of non-dictionary words in styles/config/vocabularies/Mintlify/accept.txt. Add words here as needed, similar to cspell.json in old docs.
+
+#### Troubleshooting
+
+- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
+- Page loads as a 404 - Make sure you are running in a folder with `docs.json`

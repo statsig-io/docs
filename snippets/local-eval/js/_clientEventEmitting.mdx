@@ -1,0 +1,32 @@
+## Client Event Emitter
+
+It is possible to subscribe to StatsigClientEvents (Not to be confused with [StatsigEvent](#logging-an-event)). These events occur at various stages while using the Statsig client.
+You can subscribe to specific events by specifying the StatsigClientEvent name, or, all events by using the wildcard token `'*'`.
+
+```typescript
+import type {
+  AnyStatsigClientEvent,
+  StatsigClientEvent,
+  StatsigClientEventCallback,
+} from '@statsig/client-core';
+
+const onAnyClientEvent = (event: AnyStatsigClientEvent) => {
+  console.log("Any Client Event", event);
+};
+
+const onLogsFlushed = (event: StatsigClientEvent<'logs_flushed'>) => {
+  console.log("Logs", event.events);
+};
+
+// subscribe to an individual StatsigClientEvent
+myStatsigClient.on('logs_flushed', onLogsFlushed);
+
+// or, subscribe to all StatsigClientEvents
+myStatsigClient.on('*', onAnyClientEvent);
+
+// then later, unsubscribe from the events
+myStatsigClient.off('logs_flushed', onLogsFlushed);
+myStatsigClient.off('*', onAnyClientEvent);
+```
+
+The full list of events and descriptions can be found [here](https://github.com/statsig-io/js-client-monorepo/blob/main/packages/client-core/src/StatsigClientEventEmitter.ts).

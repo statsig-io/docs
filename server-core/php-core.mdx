@@ -1,0 +1,149 @@
+---
+title: PHP Server SDK
+sidebarTitle: PHP
+description: Statsig's Next-gen PHP Server SDK built in our [Server Core](/server-core) framework
+icon: "php"
+---
+
+import Installation from '/snippets/server-core/installation.mdx'
+import Initialization from '/snippets/server-core/initialization.mdx'
+import Initialization2 from '/snippets/server-core/initialization2.mdx'
+import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
+import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
+import LogEventIntro from '/snippets/server-core/logEvent.mdx'
+import ForwardLogLineEventIntro from '/snippets/server-core/forwardLogLineEvent.mdx'
+import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
+import SharedInstanceIntro from '/snippets/server-core/sharedInstance.mdx'
+import StatsigUserIntro from '/snippets/server-core/statsigUser.mdx'
+import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server-core/shutdown.mdx'
+import PersistentStorageIntro from '/snippets/server-core/persistentStorage.mdx'
+import DataStoreIntro from '/snippets/server-core/dataStore.mdx'
+import OutputLoggerIntro from '/snippets/server-core/outputLogger.mdx'
+import ObservabilityClientIntro from '/snippets/server-core/observabilityClient.mdx'
+
+import installation from '/snippets/server-core/php/install.mdx'
+import initialization from '/snippets/server-core/php/initialize.mdx'
+import checkGate from '/snippets/server-core/php/checkGate.mdx'
+import getConfig from '/snippets/server-core/php/getConfig.mdx'
+import getExperiment from '/snippets/server-core/php/getExperiment.mdx'
+import paramStores from '/snippets/server-core/php/paramStores.mdx'
+import logEvent from '/snippets/server-core/php/logEvent.mdx'
+import forwardLogLineEvent from '/snippets/server-core/php/forwardLogLineEvent.mdx'
+import getFeatureGate from '/snippets/server-core/php/getFeatureGate.mdx'
+import sharedInstance from '/snippets/server-core/php/sharedInstance.mdx'
+import statsigOptions from '/snippets/server-core/php/options.mdx'
+import flush from '/snippets/server-core/php/flush.mdx'
+import shutdown from '/snippets/server-core/php/shutdown.mdx'
+import privateAttributes from '/snippets/server-core/php/privateAttributes.mdx'
+import customAdapters from '/snippets/server-core/php/customAdapters.mdx'
+import persistentStorage from '/snippets/server-core/php/persistentStorage.mdx'
+import dataStore from '/snippets/server-core/php/dataStore.mdx'
+import outputLogger from '/snippets/server-core/php/outputLogger.mdx'
+import observabilityClient from '/snippets/server-core/php/observabilityClient.mdx'
+import faqs from '/snippets/server-core/php/faqs.mdx'
+import notes from '/snippets/server-core/php/notes.mdx'
+
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-php" target="_blank" rel="noreferrer">PHP Core on Github</a>, 
+<a href="https://packagist.org/packages/statsig/statsig-php-core" target="_blank" rel="noreferrer">Packagist Package</a>
+</Callout>
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+<initialization/>
+<Initialization2/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
+<ParamStoresIntro/>
+<paramStores/>
+
+<LogEventIntro/>
+<logEvent/>
+
+<ForwardLogLineEventIntro/>
+<forwardLogLineEvent/>
+
+<SharedInstanceIntro/>
+<sharedInstance/>
+
+<StatsigUserIntro/>
+
+```php
+use Statsig\StatsigUser;
+
+$user = new StatsigUser([
+    'userID' => 'a-user-id',
+    'email' => 'user@example.com',
+    'ip' => '192.168.1.1',
+    'userAgent' => 'Mozilla/5.0...',
+    'country' => 'US',
+    'locale' => 'en_US',
+    'appVersion' => '1.0.0',
+    'custom' => [
+        // Custom fields
+        'plan' => 'premium',
+        'age' => 25
+    ],
+    'customIDs' => [
+        // Custom ID types
+        'stableID' => 'stable-id-123'
+    ],
+    'privateAttributes' => [
+        // Private attributes not forwarded to integrations
+        'email' => 'private@example.com'
+    ]
+]);
+```
+
+<privateAttributes/>
+
+<StatsigOptionsIntro/>
+<statsigOptions/>
+
+<customAdapters/>
+
+<ShutdownIntro/>
+<shutdown/>
+
+<flush/>
+
+<PersistentStorageIntro/>
+<persistentStorage/>
+
+<DataStoreIntro/>
+<dataStore/>
+
+<OutputLoggerIntro/>
+<outputLogger/>
+
+<ObservabilityClientIntro/>
+<observabilityClient/>
+
+<notes/>
+
+<faqs/>

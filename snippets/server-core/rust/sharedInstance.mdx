@@ -1,0 +1,30 @@
+```rust
+// Create a shared instance that can be accessed globally
+let statsig = Statsig::new_shared("server-secret-key", None).unwrap();
+statsig.initialize().await?;
+
+// Access the shared instance from anywhere in your code
+let shared_statsig = Statsig::shared();
+let is_feature_enabled = shared_statsig.check_gate(&user, "feature_name");
+
+// Check if a shared instance exists
+if Statsig::has_shared_instance() {
+    // Use the shared instance
+}
+
+// Remove the shared instance when no longer needed
+Statsig::remove_shared();
+```
+
+The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance.
+
+- `Statsig::new_shared(sdk_key, options)`: Creates a new shared instance of Statsig that can be accessed globally
+- `Statsig::shared()`: Returns the shared instance
+- `Statsig::has_shared_instance()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
+- `Statsig::remove_shared()`: Removes the shared instance (useful when you want to switch to a new shared instance)
+
+<Note>
+`has_shared_instance()` and `remove_shared()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
+
+Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
+</Note>

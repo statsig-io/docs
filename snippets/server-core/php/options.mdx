@@ -1,0 +1,111 @@
+<Accordion title="StatsigOptions">
+
+<ResponseField name="specs_url" type="string">
+  Custom URL for fetching feature specifications.
+</ResponseField>
+
+<ResponseField name="log_event_url" type="string">
+  Custom URL for logging events.
+</ResponseField>
+
+<ResponseField name="specs_adapter" type="StatsigSpecsAdapter">
+  An adapter with custom storage behavior for config specs. For example, use `StatsigLocalFileSpecsAdapter` to store configs in the local filesystem.
+</ResponseField>
+
+<ResponseField name="event_logging_adapter" type="StatsigEventLoggingAdapter">
+  An adapter with custom event logging behavior. For example, use `StatsigLocalFileEventLoggingAdapter` to store events in the local filesystem.
+</ResponseField>
+
+<ResponseField name="environment" type="string">
+  Environment parameter for evaluation.
+</ResponseField>
+
+<ResponseField name="event_logging_flush_interval_ms" type="int">
+  How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="event_logging_max_queue_size" type="int">
+  Maximum number of events to queue before forcing a flush.
+</ResponseField>
+
+<ResponseField name="specs_sync_interval_ms" type="int">
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="output_log_level" type="string">
+  Controls the verbosity of SDK logs.
+</ResponseField>
+
+<ResponseField name="disable_country_lookup" type="bool">
+  Disables country lookup based on IP address. Set to `true` to improve performance if country-based targeting is not needed.
+</ResponseField>
+
+<ResponseField name="disable_user_agent_parsing" type="bool">
+  Disables user agent parsing. Set to `true` to improve performance if device/browser-based targeting is not needed.
+</ResponseField>
+
+<ResponseField name="init_timeout_ms" type="int" default="3000">
+  Maximum time in milliseconds to wait for SDK initialization to complete. If initialization takes longer than this timeout, the SDK will continue to operate but may return default values until initialization completes.
+</ResponseField>
+
+<ResponseField name="fallback_to_statsig_api" type="bool" default="false">
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
+</ResponseField>
+
+<ResponseField name="enable_id_lists" type="bool">
+  Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+</ResponseField>
+
+---
+
+### Performance Recommendations
+
+If you are experiencing performance issues, particularly with long initialization times, you can disable user agent parsing and country lookup to improve performance:
+
+- Set `disable_user_agent_parsing: true` if you don't need device or browser-based targeting
+- Set `disable_country_lookup: true` if you don't need country-based targeting
+
+These optimizations were added in response to performance issues identified in [PR #1119](https://github.com/statsig-io/private-statsig-server-core/pull/1119).
+
+---
+
+### Example Usage
+
+```php
+use Statsig\Statsig;
+use Statsig\StatsigOptions;
+use Statsig\StatsigLocalFileSpecsAdapter;
+use Statsig\StatsigLocalFileEventLoggingAdapter;
+
+// Initialize StatsigOptions with custom parameters
+$options = new StatsigOptions(
+    null, // specs_url
+    null, // log_event_url
+    new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"), // specs_adapter
+    new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp"), // event_logging_adapter
+    "development", // environment
+    60000, // event_logging_flush_interval_ms
+    1000, // event_logging_max_queue_size
+    600000, // specs_sync_interval_ms
+    "INFO", // output_log_level
+    true, // disable_country_lookup (for better performance)
+    true, // disable_user_agent_parsing (for better performance)
+    false, // wait_for_country_lookup_init
+    false, // wait_for_user_agent_init
+    false, // disable_network
+    false, // disable_all_logging
+    3000, // init_timeout_ms
+    false  // fallback_to_statsig_api
+);
+
+// Pass the options object into Statsig constructor
+$statsig = new Statsig($sdk_key, $options);
+$statsig->initialize();
+```
+
+<Callout type="warning">
+When using `StatsigLocalFile` Adapters, ensure your cron job has run at least one time before using Statsig.
+See [Add Scripts & Cron Job](#2-add-scripts--cron-job)
+</Callout>
+
+</Accordion>

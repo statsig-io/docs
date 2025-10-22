@@ -1,0 +1,39 @@
+### Client Event Emitter
+
+Subscribe to Statsig client lifecycle events to respond to initialization, logging, or evaluation changes.
+
+```tsx
+import type {
+  AnyStatsigClientEvent,
+  StatsigClientEvent,
+} from '@statsig/client-core';
+
+const onAnyEvent = (event: AnyStatsigClientEvent) => {
+  console.log('Statsig event', event);
+};
+
+const onLogsFlushed = (event: StatsigClientEvent<'logs_flushed'>) => {
+  console.log('Logs', event.events);
+};
+
+client.on('logs_flushed', onLogsFlushed);
+client.on('*', onAnyEvent);
+
+client.off('logs_flushed', onLogsFlushed);
+client.off('*', onAnyEvent);
+```
+
+| Event | Payload | Description |
+| --- | --- | --- |
+| `values_updated` | `{ status, values }` | Fired when initialize/update refreshes cached values. |
+| `session_expired` | `{}` | Fired when the current session expires. |
+| `error` | `{ error, tag }` | Unexpected client errors. |
+| `pre_logs_flushed` | `{ events }` | Before a batch of events is sent. |
+| `logs_flushed` | `{ events }` | After events are sent. |
+| `pre_shutdown` | `{}` | Before the SDK shuts down. |
+| `initialization_failure` | `{}` | Initialization failed. |
+| `gate_evaluation` | `{ gate }` | When a gate is evaluated. |
+| `dynamic_config_evaluation` | `{ dynamicConfig }` | When a config is evaluated. |
+| `experiment_evaluation` | `{ experiment }` | When an experiment is evaluated. |
+| `layer_evaluation` | `{ layer }` | When a layer is evaluated. |
+| `log_event_called` | `{ event }` | When `logEvent` is called. |

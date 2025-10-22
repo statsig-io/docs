@@ -1,0 +1,135 @@
+## Stable ID
+
+Stable ID provides a consistent device identifier. It lets you run [logged-out experiments](/guides/first-device-level-experiment) and target gates at the device level.
+
+### How Stable ID Works
+
+- On first initialization the SDK generates a Stable ID and stores it in `localStorage` under `statsig.stable_id.<SDK_KEY_HASH>`.
+- Subsequent sessions reuse the stored value. Each client SDK key has its own Stable ID entry.
+- Local storage is scoped per domain, so cross-domain usage requires sharing the value manually (see below).
+
+### Reading the Stable ID
+
+<Tabs>
+<Tab title="JavaScript">
+
+```tsx
+const context = client.getContext();
+console.log('Statsig StableID:', context.stableID);
+```
+
+</Tab>
+<Tab title="React">
+
+```tsx
+import { useStatsigClient } from '@statsig/react-bindings';
+
+function MyComponent() {
+  const { client } = useStatsigClient();
+  const context = client.getContext();
+
+  return <div>{context.stableID}</div>;
+}
+```
+
+</Tab>
+</Tabs>
+
+### Overriding the Stable ID
+
+Provide a custom Stable ID through `StatsigUser.customIDs.stableID` if you already manage a durable device identifier.
+
+<Tabs>
+<Tab title="JavaScript">
+
+```tsx
+import { StatsigClient, StatsigUser } from '@statsig/js-client';
+
+const userWithStableID: StatsigUser = {
+  customIDs: {
+    stableID: 'my-custom-stable-id',
+  },
+};
+
+const client = new StatsigClient('client-xyz', userWithStableID);
+await client.updateUserAsync(userWithStableID);
+```
+
+</Tab>
+<Tab title="React">
+
+```tsx
+import { StatsigProvider, useStatsigClient } from '@statsig/react-bindings';
+
+function App() {
+  return (
+    <StatsigProvider
+      sdkKey="client-xyz"
+      user={{
+        customIDs: { stableID: 'my-custom-stable-id' },
+      }}
+    >
+      <div>Your App</div>
+    </StatsigProvider>
+  );
+}
+
+function MyComponent() {
+  const { client } = useStatsigClient();
+  useEffect(() => {
+    client.updateUserAsync({
+      customIDs: { stableID: 'my-custom-stable-id' },
+    });
+  }, [client]);
+}
+```
+
+</Tab>
+</Tabs>
+
+<Note>
+When you override the Stable ID it is persisted to local storage, so subsequent sessions reuse your custom value.
+</Note>
+
+### Sharing Stable ID Across Subdomains
+
+Add this helper script before initializing the SDK and then copy the stored value onto your user object.
+
+```html
+<!-- cross domain id script -->
+<script>!function(){let t="STATSIG_LOCAL_STORAGE_STABLE_ID";function e(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();let t=()=>Math.floor(65536*Math.random()).toString(16).padStart(4,"0");return`${t()}${t()}-${t()}-4${t().substring(1)}-${t()}-${t()}${t()}${t()}`}let i=null,n=localStorage.getItem(t)||null;if(document.cookie.match(/statsiguuid=([\w-]+);?/)&&([,i]=document.cookie.match(/statsiguuid=([\w-]+);?/)),i&&n&&i===n);else if(i&&n&&i!==n)localStorage.setItem(t,i);else if(i&&!n)localStorage.setItem(t,i);else{let o=e();localStorage.setItem(t,o),function t(i){let n=new Date;n.setMonth(n.getMonth()+12);let o=window.location.host.split(".");o.length>2&&o.shift();let s=`.${o.join(".")}`;document.cookie=`statsiguuid=${i||e()};Expires=${n};Domain=${s};Path=/`}(o)}}();</script>
+
+<!-- Manually attach stableID to user object -->
+<script>
+const userObj = {};
+if (localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
+  userObj.customIDs = {
+    stableID: localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID'),
+  };
+}
+const client = new Statsig.StatsigClient('<client-sdk-key>', userObj);
+</script>
+```
+
+<small>(Use this script at your discretion and test thoroughly.)</small>
+
+### Aligning Stable ID Between Client and Server
+
+To share Stable ID with a backend Statsig SDK, send the value with requests and persist it server-side when missing. The server can bootstrap the client with the same Stable ID.
+
+```tsx
+// Server: ensure Stable ID exists, then return initialize response for the client
+const values = Statsig.getClientInitializeResponse(user, YOUR_CLIENT_KEY, {
+  hash: 'djb2',
+});
+
+// Client: apply the server-provided values and initialize synchronously
+const { values, user: verifiedUser } = await fetch('/init-statsig-client', {
+  method: 'POST',
+  body: loadUserData(),
+}).then((res) => res.json());
+
+const myClient = new StatsigClient(YOUR_CLIENT_KEY, verifiedUser);
+myClient.dataAdapter.setData(values);
+myClient.initializeSync();
+```

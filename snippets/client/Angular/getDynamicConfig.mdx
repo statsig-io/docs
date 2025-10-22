@@ -1,0 +1,24 @@
+```ts
+// dynamic-config.component.ts
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  standalone: true,
+  selector: 'app-dynamic-config',
+  imports: [CommonModule],
+  template: `<div *ngIf="configValue">Config Value: {{ configValue }}</div>`,
+})
+export class DynamicConfigComponent implements OnInit {
+  configValue: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnInit(): void {
+    const dynamicConfig = this.statsigService.getDynamicConfig('config_name');
+    this.configValue = dynamicConfig.get('key', 'default_value');
+  }
+}
+```
+

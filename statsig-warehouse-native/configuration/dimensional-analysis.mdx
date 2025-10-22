@@ -1,0 +1,48 @@
+---
+title: Dimension Analysis
+sidebarTitle: Dimension Analysis
+description: A powerful way to understand who or what is causing a metric movement, dimension analysis lets you break down an experiment result by unit or action.
+keywords:
+  - owner:vm
+last_update:
+  date: 2025-09-18
+---
+
+<Frame>
+  <img src="https://github.com/user-attachments/assets/550ac5d6-5e83-42aa-9db7-8618c200beef" alt="dimension example" />
+</Frame>
+
+You can also configure [Differential Impact Detection](/experiments-plus/differential-impact-detection) to help Statsig automatically flag when different classes of users are responding differently to your experiments.
+
+To see the Pulse result breakdowns for all categories within a metric, click on the (+) sign next to the metric.
+
+# Unit Dimensions
+
+Unit dimensions refer to unit-level attributes that are either part of the user object you log to Statsig, provide as part of your [assignment data](), or provide via an [Entity Property](). Examples of these attributes are operating system, country, region, or user segments.
+
+Using [explore queries](/pulse/custom-queries), you can filter to specific unit dimensions or group results by a dimension. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
+
+The dimension will be chosen based on the last available record at or before exposure. In other words, information from AFTER the unit is exposed to a given experiment will _not_ be used in the experiment analysis, since that could potentially lead to data leakage and imbalanced comparisons.
+
+# Metric Dimensions
+
+Metric Dimensions break down a metric's results based on the values in columns from your [metric source]() for a given metric. You configure these breakdowns per-metric, after which they'll be calculated for that metric across all pulse results.
+
+Note that, unlike Unit Dimensions, these dimensions are not mutually exclusive. For example, a with a user dimension a user can only be from one country for the purpose of pulse analysis, but a user on an e-commerce website could buy all of "clothes", "books", and "snacks" within a "total purchases" metric and contribute to each of those dimensions as well as the overall value.
+
+# Details
+
+By default, dimensional analysis:
+
+- only considers dimensions with at least 100 units in the experiment that participated (had a non-zero value)
+- chooses the top 10 dimensions by total value, and puts all others into an "OTHER" bucket.
+
+This is to avoid extreme results and cases where assumptions of centrality do not hold due to low sample on a specific dimension, and to avoid excessive multiple-comparisons on the tail-end of dimensional breakdown. This is configurable, but controlled due to the potential for error - reach out to Statsig support to see if your use case makes sense.
+
+## Loading Timing
+
+For precomputed user dimensions that are configured and run on a schedule, dimension data is processed asynchronously and may take a few minutes to become available after the main experiment results load. You may temporarily see "No dimensions available for this time range" messages while the data is being processed, especially after the first reload of the day. This is expected behavior - simply wait a few minutes and refresh the page to see the dimensional breakdowns.
+
+<Note>
+This timing behavior only affects precomputed user dimensions. User-triggered dimensional analysis does not experience this delay.
+</Note>

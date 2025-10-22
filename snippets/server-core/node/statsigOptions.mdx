@@ -1,0 +1,112 @@
+<Accordion title="StatsigOptions">
+### Parameters
+
+<ResponseField name="environment" type="string">
+  Environment parameter for evaluation.
+</ResponseField>
+
+<ResponseField name="specsUrl" type="string">
+  Custom URL for fetching feature specifications.
+</ResponseField>
+
+<ResponseField name="specsSyncIntervalMs" type="number">
+  How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="fallbackToStatsig" type="boolean" default="false">
+  Turn this on if you are proxying `download_config_specs` / `get_id_lists` and want to fall back to the default Statsig endpoint to increase reliability.
+</ResponseField>
+
+<ResponseField name="logEventUrl" type="string">
+  Custom URL for logging events.
+</ResponseField>
+
+<ResponseField name="disableAllLogging" type="boolean" default="false">
+  If true, the SDK will not collect any logging within the session, including custom events and config check exposure events.
+</ResponseField>
+
+<ResponseField name="enableIDLists" type="boolean" default="false">
+  Required to be `true` when using segments with more than 1000 IDs. See [ID List segments](/segments/add-id-list).
+</ResponseField>
+
+<ResponseField name="disableUserAgentParsing" type="boolean" default="false">
+  If true, the SDK will not parse User-Agent strings into `browserName`, `browserVersion`, `systemName`, `systemVersion`, and `appVersion` when needed for evaluation.
+</ResponseField>
+
+<ResponseField name="waitForUserAgentInit" type="boolean" default="false">
+  When true, the SDK waits until user agent parsing data is fully loaded during initialization (~1 second), ensuring parsing is ready before any evaluations.
+</ResponseField>
+
+<ResponseField name="disableUserCountryLookup" type="boolean" default="false">
+  If true, the SDK will not parse IP addresses (from `user.ip`) into country codes when needed for evaluation.
+</ResponseField>
+
+<ResponseField name="waitForCountryLookupInit" type="boolean" default="false">
+  When true, the SDK waits for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization (~1 second), ensuring IP-to-country parsing is ready at evaluation time.
+</ResponseField>
+
+<ResponseField name="eventLoggingFlushIntervalMs" type="number">
+  How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="eventLoggingMaxQueueSize" type="number">
+  Maximum number of events to queue before forcing a flush.
+</ResponseField>
+
+<ResponseField name="dataStore" type="DataStore">
+  An adapter with custom storage behavior for config specs. Can also continuously fetch updates in place of the Statsig network. See [Data Stores](#data-store). For example, see our 1P Redis implementation [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+</ResponseField>
+
+<ResponseField name="specsAdapterConfig" type="SpecAdapterConfig">
+  Advanced settings to fetch from different sources (e.g., [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store) or to use different network protocols (HTTP vs gRPC streaming).
+</ResponseField>
+
+<ResponseField name="observabilityClient" type="ObservabilityClient">
+  Interface to integrate observability metrics exposed by the SDK (e.g., config propagation delay, initialization time). See [details](#observability-client).
+</ResponseField>
+
+<ResponseField name="persistentStorage" type="PersistentStorage">
+  Interface to use persistent storage within the SDK. See [details](#persistent-storage).
+</ResponseField>
+
+<ResponseField name="proxyConfig" type="ProxyConfig">
+  Configuration for connecting through a proxy server.
+</ResponseField>
+
+<Accordion title="ProxyConfig">
+<ResponseField name="proxyHost" type="string">
+  Proxy server host.
+</ResponseField>
+
+<ResponseField name="proxyPort" type="number">
+  Proxy server port.
+</ResponseField>
+
+<ResponseField name="proxyAuth" type="string">
+  Proxy authentication in the form "username:password".
+</ResponseField>
+
+<ResponseField name="proxyProtocol" type="string">
+  Protocol (e.g., "http", "https").
+</ResponseField>
+</Accordion>
+
+---
+
+```typescript
+// Example usage:
+const options = new StatsigOptions();
+options.environment = "staging";
+options.initTimeoutMs = 3000;
+options.proxyConfig = {
+  proxyHost: "proxy.example.com",
+  proxyPort: 8080,
+  // proxyAuth can be set if authentication is required
+  proxyProtocol: "https"
+};
+
+const statsig = new Statsig("secret-key", options);
+await statsig.initialize();
+```
+
+</Accordion>

@@ -1,0 +1,69 @@
+## Local Overrides
+
+It is possible to override the values returned by the Statsig SDK. This can be useful in unit testing or for enabling features for local development.
+
+To get setup with local overrides, you can pass an instance of `LocalOverrideAdapter` to the SDK via the `StatsigOptions` object.
+
+<Note>
+It is possible to write your own override adapter. You can implement the [`IOverrideAdapter`](https://github.com/statsig-io/android-local-eval/blob/main/src/main/java/com/statsig/androidlocalevalsdk/IOverrideAdapter.kt) interface and pass that in instead.
+</Note>
+
+<CodeGroup>
+
+```kotlin Kotlin
+val user = StatsigUser("user-a")
+
+val overrides = LocalOverrideAdapter()
+
+// Override a gate
+overrides.setGate(user, "local_override_gate", true)
+
+// Override a dynamic config (Similar for Layer and Experiment)
+val config = DynamicConfig("local_override_dynamic_config", mapOf("key" to "val"))
+overrides.setConfig(user, config)
+
+val opts = StatsigOptions()
+opts.overrideAdapter = overrides
+
+Statsig.client.initializeAsync(
+  app, 
+  YOUR_SDK_KEY, 
+  callback, 
+  opts // <- Pass in StatsigOptions
+)
+```
+
+```java Java
+StatsigUser user = new StatsigUser("a-user");
+
+LocalOverrideAdapter overrides = new LocalOverrideAdapter();
+
+// Override a gate
+overrides.setGate(user, "local_override_gate", true);
+
+// Override a dynamic config (Similar for Layer and Experiment)
+HashMap<String, Object> configValue = new HashMap<String, Object>() {};
+DynamicConfig config = new DynamicConfig(
+  "local_override_dynamic_config",
+  configValue,
+  "local_override",
+  null,
+  new ArrayList<Map<String, String>>(),
+  null
+);
+overrides.setConfig(user, config);
+
+StatsigOptions opts = new StatsigOptions();
+opts.setOverrideAdapter(overrides);
+
+StatsigClient client = Statsig.INSTANCE.getClient();
+client.initializeAsync(
+  app,
+  YOUR_SDK_KEY,
+  callback,
+  opts // <- Pass in StatsigOptions
+);
+```
+
+</CodeGroup>
+

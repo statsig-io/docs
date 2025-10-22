@@ -1,0 +1,9 @@
+You can evaluate a gate by getting the client with the `useStatsigClient` hook, and then calling `checkGate`
+
+```tsx
+const { client } = useStatsigClient();
+return (
+  <div>Gate is {client.checkGate('check_user') ? 'passing' : 'failing'}.</div>
+);
+```
+

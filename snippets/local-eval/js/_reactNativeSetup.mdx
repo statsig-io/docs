@@ -1,0 +1,27 @@
+## React Native Specific Setup
+
+To get setup with Statsig in a React Native component tree, you should use the RN specific `StatsigProviderOnDeviceEvalRN`. This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).
+
+```tsx
+import {
+  StatsigProviderOnDeviceEvalRN,
+  useFeatureGate,
+} from '@statsig/react-native-bindings-on-device-eval';
+
+function Content() {
+  const gate = useFeatureGate('a_gate');
+
+  return <div>Reason: {gate.details.reason}</div>; // Reason: Network or NetworkNotModified
+}
+
+function App() {
+  return (
+    <StatsigProviderOnDeviceEvalRN
+      sdkKey={YOUR_CLIENT_KEY}
+      loadingComponent={<Text>...</Text>}
+    >
+      <Content />
+    </StatsigProviderOnDeviceEvalRN>
+  );
+}
+```

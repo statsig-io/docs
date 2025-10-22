@@ -1,0 +1,14 @@
+```tsx
+import { useLayer, useStatsigClient } from '@statsig/react-bindings';
+
+const layer = useLayer('my_layer');
+const { getLayer } = useStatsigClient();
+
+return (
+  <div>
+    <p>Group: {getLayer('my_layer').groupName}</p>
+    <p>Value: {layer.get('a_value', 'fallback_value')}</p>
+  </div>
+);
+```
+

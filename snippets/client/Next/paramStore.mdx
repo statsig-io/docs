@@ -1,0 +1,39 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { useParameterStore} from "@statsig/react-bindings";
+
+export default function Home() {
+  const store = useParameterStore("my_param_store");
+
+  return (
+    <div>
+      Title: {store.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+
+<Note>
+In an App Router app, you need to use the [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+</Note>
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { useParameterStore} from "@statsig/react-bindings";
+
+export default function Home() {
+  const store = useParameterStore("my_param_store");
+
+  return (
+    <div>
+      Title: {store.get('title', 'Fallback Title')}
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>

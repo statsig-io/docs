@@ -1,0 +1,72 @@
+<AccordionGroup>
+<Accordion title="Logger Interface">
+```typescript
+interface OutputLoggerProvider {
+  initialize?: () => void;
+  debug?: (tag: string, message: string) => void;
+  info?: (tag: string, message: string) => void;
+  warn?: (tag: string, message: string) => void;
+  error?: (tag: string, message: string) => void;
+  shutdown?: () => void;
+}
+```
+</Accordion>
+<Accordion title="Implementation Example">
+
+### Implementation Example
+
+```typescript
+import { OutputLoggerProvider } from '@statsig/statsig-node-core';
+
+class CustomOutputLogger implements OutputLoggerProvider {
+  initialize = () => {
+    console.log('Logger initialized');
+  };
+
+  debug = (tag: string, message: string) => {
+    console.debug(`[${tag}] ${message}`);
+  };
+
+  info = (tag: string, message: string) => {
+    console.info(`[${tag}] ${message}`);
+  };
+
+  warn = (tag: string, message: string) => {
+    console.warn(`[${tag}] ${message}`);
+  };
+
+  error = (tag: string, message: string) => {
+    console.error(`[${tag}] ${message}`);
+  };
+
+  shutdown = () => {
+    console.log('Logger shutdown');
+  };
+}
+```
+</Accordion>
+<Accordion title="Usage with StatsigOptions">
+
+```typescript
+import { Statsig, StatsigOptions } from '@statsig/statsig-node-core';
+
+const customLogger = new CustomOutputLogger();
+
+const options: StatsigOptions = {
+  outputLoggerProvider: customLogger,
+  outputLogLevel: 'info', // 'none' | 'debug' | 'info' | 'warn' | 'error'
+};
+
+const statsig = new Statsig('secret-key', options);
+await statsig.initialize();
+```
+
+</Accordion>
+<Accordion title="Notes">
+
+- All methods in the `OutputLoggerProvider` interface are optional
+- The `tag` parameter indicates the SDK component or category generating the log message
+- Use `outputLogLevel` in StatsigOptions to control which log levels are actually called
+- The logger is automatically initialized when the Statsig client initializes and shut down when the client shuts down
+</Accordion>
+</AccordionGroup>
