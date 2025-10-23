@@ -1083,6 +1083,10 @@
   },
   "redirects": [
     {
+      "source": "/pulse",
+      "destination": "/experiments/interpreting-results/read-pulse"
+    },
+    {
       "source": "/experiments/stratified-sampling-whn",
       "destination": "/statsig-warehouse-native/features/stratified-sampling"
     },
