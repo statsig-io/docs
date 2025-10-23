@@ -1,35 +1,109 @@
 
-<CodeGroup>
-```swift Swift
-// Commonly used options
-let options = StatsigOptions(
-    environment: StatsigEnvironment(tier: .Staging),
-    overrideStableID: "my_stable_id"
-)
+`Statsig.initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
-Statsig.initialize(
-    sdkKey: "my_client_sdk_key",
-    user: StatsigUser(userID: "my_user_id"),
-    options: options
-) { error in
-  // Initialized
-}
-```
+- **initTimeout**: Double, default `3.0`
+   - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
+   - If you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
 
-```objective-c Objective C
-StatsigEnvironment *env = [[StatsigEnvironment alloc] initWithTier:StatsigEnvironmentTierStaging];
-StatsigOptions *options = [[StatsigOptions alloc] initWithEnvironment:env];
-options.overrideStableID = @"my_stable_id";
+-  **disableCurrentVCLogging**: Bool, default `false`
+   - by default, any custom event your application logs with `Statsig.logEvent()` includes the current root View Controller. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
 
-StatsigUser *user = [[StatsigUser alloc] initWithUserID:@"my_user_id"];
-[Statsig initializeWithSDKKey:@"my_client_sdk_key" user:user options:options completion:^(StatsigClientError * error) {
-  // Initialized
-}];
-```
-</CodeGroup>
+- **printHandler**: ((String) -> Void)?, default `nil`
+   - a handler for log messages from the SDK. If not provided, logs will be printed to the console.
+   - the handler receives the message string that would otherwise be printed to the console.
+   - useful for redirecting logs to your own logging system, suppressing unnecessary console output, or debugging issues with the SDK.
 
-<Callout>
-Use `overrideStableID` to set a deterministic device identifier when needed.
-</Callout>
+-  **environment**: StatsigEnvironment, default `nil`
+   - StatsigEnvironment is a class for you to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
+   - e.g. passing in a value of `StatsigEnvironment(tier: .Staging)` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
 
+- **evaluationCallback**: EvaluationCallbackData, default `nil`
+  - EvaluationCallback provides a callback when an evaluation is made against one of your configurations
+  (gate, dynamic config, experiment, layer and parameter stores). This is useful when you want to trigger specific actions or log evaluations based on the results received from Statsig.
+  - To use the EvaluationCallback, you need to provide a callback function during the SDK initialization via the StatsigOptions. The callback is invoked every time an evaluation occurs for feature gates, dynamic configs, experiments, layers, or parameter stores.
+  - The EvaluationCallbackData enum defines the different types of data that can be returned in the evaluationCallback when the Statsig iOS SDK evaluates feature gates, dynamic configs, experiments, layers, or parameter stores.
 
+   Here is the structure of the enum:
+   ```swift
+      public enum EvaluationCallbackData {
+         case gate (FeatureGate)
+         case config (DynamicConfig)
+         case experiment (DynamicConfig)
+         case layer (Layer)
+         case parameterStore (ParameterStore)
+      }
+   ```
+   Here's an example of how to set up an evaluation callback:
+  ```swift
+      func callback(data: StatsigOptions.EvaluationCallbackData) {
+         switch data {
+         case .gate(let gate):
+            // Handle gate evaluation
+         case .config(let config):
+            // Handle dynamic config evaluation
+         case .experiment(let experiment):
+            // Handle experiment evaluation
+         case .layer(let layer):
+            // Handle layer evaluation
+         case .parameterStore(let paramStore):
+            // Handle parameter store evaluation
+         }
+      }
+
+      let opts = StatsigOptions(evaluationCallback: callback)
+      Statsig.initialize(sdkKey: "client-key", options: opts)
+   ```
+
+- **storageProvider**: StorageProvider, default `nil`
+  - Allows users to implement their own caching strategy by passing an
+object that conforms to the `StorageProvider` protocol.
+
+  - Default cache key: `com.statsig.cache`
+
+   ```swift
+      @objc public protocol StorageProvider {
+         @objc func read(_ key: String) -> Data?
+         @objc func write(_ value: Data, _ key: String)
+         @objc func remove(_ key: String)
+      }
+   ```
+   
+-  **overrideStableID**: String, default `nil`
+   - Overrides the auto generated StableID that is set for the device.
+
+-  **enableCacheByFile**: Bool, default `false`
+   - Use file caching instead of UserDefaults. Useful if you are running into size limits with UserDefaults (ie tvOS).
+
+-  **eventLoggingEnabled**: Bool, default `true`
+   - Controls whether the SDK sends events over the network. Useful when user consent is needed before sending events.
+
+-  **initializeValues**: [String: Any], default `nil`
+   - Provide a Dictionary representing the "initialize response" required  to synchronously initialize the SDK.
+     This value can be obtained from a Statsig server SDK and used to [Bootstrap](/client/concepts/initialize/#2-bootstrap-initialization) the SDK when initializing.
+
+-  **disableDiagnostics**: Bool, default `false`
+   - Prevent the SDK from sending useful debug information to Statsig.
+
+-  **disableHashing**: Bool, default `false`
+   - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
+   :::note
+   This requires special authorization from Statsig. Reach out to our support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
+   :::
+
+-  **shutdownOnBackground**: Bool, default `true`
+   - The SDK automatically shuts down when an app is put into the background.
+     If you need to use the SDK while your app is in the background, set this to false.
+
+-  **initializationURL**: URL, default `nil`
+   - Override the URL used to initialize the SDK. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(initializationURL: URL(string: "https://example.com/setup"))
+      ```
+
+-  **eventLoggingURL**: URL, default `nil`
+   - Override the URL used to log events. Learn more at https://docs.statsig.com/custom_proxy
+
+      ```swift
+         StatsigOptions(eventLoggingURL: URL(string: "https://example.com/info"))
+      ```
