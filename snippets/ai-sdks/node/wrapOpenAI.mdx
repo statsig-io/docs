@@ -3,13 +3,13 @@
 statsig = new Statsig("YOUR_SERVER_SECRET_KEY");
 await statsig.initialize();
 
-wrappedOpenAI = wrapOpenAI(
+const client = wrapOpenAI(
   new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   })
 );
 
-const response = await wrappedOpenAI.chat.completions.create({
+const response = await client.chat.completions.create({
   model: "gpt-4",
   messages: [{ role: "user", content: "Hello, world!" }],
 });
