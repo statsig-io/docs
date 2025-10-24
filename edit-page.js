@@ -2,6 +2,8 @@
   'use strict';
 
   let lastProcessedPath = '';
+  let retryCount = 0;
+  const MAX_RETRIES = 10;
 
   function addEditPageLink() {
     const currentPath = window.location.pathname;
@@ -11,6 +13,7 @@
     }
     
     lastProcessedPath = currentPath;
+    retryCount = 0;
 
     let cleanPath = currentPath.replace(/^\//, '').replace(/\/$/, '');
     
@@ -22,7 +25,10 @@
     
     const footer = document.querySelector('footer');
     if (!footer) {
-      setTimeout(addEditPageLink, 500);
+      if (retryCount < MAX_RETRIES) {
+        retryCount++;
+        setTimeout(addEditPageLink, 500);
+      }
       return;
     }
 
