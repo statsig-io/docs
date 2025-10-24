@@ -25,7 +25,9 @@
   "contextual": {
     "options": [
       "copy",
-      "chatgpt"
+      "chatgpt",
+      "cursor",
+      "vscode"
     ]
   },
   "integrations": {
