@@ -10,17 +10,19 @@ import WrapOpenAI from '/snippets/ai-sdks/node/wrapOpenAI.mdx'
 import LogEvalResult from '/snippets/ai-sdks/node/logEvalResult.mdx'
 import GetPrompt from '/snippets/ai-sdks/node/getPrompt.mdx'
 
-
 import InitializationPreamble from '/snippets/ai-sdks/initialization.mdx'
 import WrapOpenAIPreamble from '/snippets/ai-sdks/wrapOpenAI.mdx'
 import LogEvalResultPreamble from '/snippets/ai-sdks/logEvalResult.mdx'
 import GetPromptPreamble from '/snippets/ai-sdks/getPrompt.mdx'
 
-
 <Callout icon="github">
 <a href="https://github.com/statsig-io/statsig-ai-node" target="_blank" rel="noreferrer">Node AI SDK on Github</a>, 
 <a href="https://www.npmjs.com/package/@statsig/statsig-ai-node" target="_blank" rel="noreferrer">NPM Package</a>
 </Callout>
+
+<Warning>
+This SDK is available in an open beta, and its methods may change. We encourage you to reach out on [Slack](https://statsig.com/slack) for help getting setup, and so we can communicate changes. 
+</Warning>
 
 ## Overview 
 
@@ -38,7 +40,7 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 
 ## Using the SDK
 
-<WrapOpenAIPreamble/>
+<WrapOpenAIPreamble/>s
 <WrapOpenAI/>
 
 <LogEvalResultPreamble/>
@@ -47,6 +49,13 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 <GetPromptPreamble/>
 <GetPrompt/>
 
-Todo: 
-- explain how it works with the Statsig SDK and the Otel SDK - how to insert your own
-- Figure out if we need to document getAgentConfig. or getPromptWithOptions. Also Shutdown? 
+## Using other SDK methods
+
+
+```javascript
+const myStatsigInstance = StatsigAI.getStatsig()
+
+const gateValue = myStatsigInstance.checkGate('my_prompt_name');
+```
+
+Refer to the [Statsig Node SDK](/server-core/node-core) docs for more information on how to use the Core Statsig SDK methods, plus information on advanced setup + singleton usage.
