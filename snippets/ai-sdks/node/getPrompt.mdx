@@ -3,7 +3,7 @@
 const user = new StatsigUser({ userID: "a-user" });
 
 // Get the prompt
-const myPrompt = statsig.getPrompt(user, "my_prompt");
+const myPrompt = statsigAI.getPrompt(user, "my_prompt");
 
 // Use the live version of the prompt
 const liveVersion = myPrompt.getLive();
