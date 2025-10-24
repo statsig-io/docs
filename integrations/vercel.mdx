@@ -249,7 +249,7 @@ Note that the marketplace app sets all required environment variables for the Fl
 ### Polling for updates v5.13.0+
 
 The SDK cannot poll for updates across requests since Vercel Edge Functions do not allow for timers outside of the request handler.
-To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Statsig Vercel client.
+To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagated to your Edge Config and will be reflected the next time you initialize the Statsig client.
 
 
 ### Flushing events v4.16.0+
