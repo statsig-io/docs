@@ -3,7 +3,7 @@ script.src = "https://widget.kapa.ai/kapa-widget.bundle.js";
 script.async = true;
 script.setAttribute("data-website-id", "418990dd-0615-4ba7-b52f-3ab8c1af4e79");
 script.setAttribute("data-project-name", "Statsig");
-script.setAttribute("data-project-color", "#1963d2");
+script.setAttribute("data-project-color", "#202020");
 script.setAttribute("data-project-logo", "https://statsig.com/images/sections/multi-products-v2/menu-statsig.svg");
 script.setAttribute("data-modal-image", "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg");
 script.setAttribute("data-modal-lock-scroll", "false");
