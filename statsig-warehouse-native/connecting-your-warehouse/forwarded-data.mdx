@@ -35,6 +35,10 @@ These fast-forwarded exposures are not deduplicated, and will have some fields (
 
 Each day, a deduplicated digest will be exported to your warehouse to ensure consistency. This will be deduplicated with the above as part of the standard Pulse Pipeline.
 
+## Note on Duplicates
+
+Because Statsig only holds onto exposure data for 30 days, it cannot dedupe beyond that time on its servers. This means that after 30 days, the "deduplicated" data from Statsig will start to re-send exposures from units who were first exposed over 30 days ago, and were re-exposed on that day. These will be correctly deduplicated during analysis in your warehouse, but it means that you should not expect the table to have unique user records, even after filtering out the fast-forwarded exposures (which can also have duplicate records). 
+
 <Info>
 For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel.
 </Info>
