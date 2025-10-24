@@ -21,19 +21,19 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
   </Step>
   <Step title="Wrap child components">
-    Next, update your app's default function so that the StatsigProvider wraps around all child components.
+    Next, update your app's default function (Usually App.tsx or Layout.tsx) so that the StatsigProvider wraps around all child components.
 
     ```tsx
-    import { StatsigProvider } from "@statsig/react-bindings";
+    import { StatsigProvider } from "@statsig/react-bindings"; // [!code ++]
 
     export default function RootLayout({ children }: { children: React.ReactNode }) {
       return (
-        <StatsigProvider 
-          sdkKey={"client-MY-STATSIG-CLIENT-KEY"} // 
-          user={{ userID: "quickstart-user" }}
-          loadingComponent={<div>Loading...</div>}>
+        <StatsigProvider // [!code ++]
+          sdkKey={"client-MY-STATSIG-CLIENT-KEY"} // [!code ++]
+          user={{ userID: "quickstart-user" }} // [!code ++]
+          loadingComponent={<div>Loading...</div>}> // [!code ++]
           {children}
-        </StatsigProvider>
+        </StatsigProvider> // [!code ++]
       );
     }
     ```
