@@ -9,7 +9,7 @@
   },
   "seo": {
     "metatags": {
-        "og:image": "/images/OG_Docs_100725.jpg"
+      "og:image": "/images/OG_Docs_100725.jpg"
     }
   },
   "background": {
@@ -25,12 +25,14 @@
   "contextual": {
     "options": [
       "copy",
-      "chatgpt"
+      "chatgpt",
+      "cursor",
+      "vscode"
     ]
   },
   "integrations": {
     "ga4": {
-        "measurementId": "G-EM5RHE1RHW"
+      "measurementId": "G-EM5RHE1RHW"
     },
     "gtm": {
       "tagId": "GTM-NRDCWNF"
@@ -261,7 +263,6 @@
                     "pages": [
                       "product-analytics/users-tab",
                       "product-analytics/user-profiles"
-    
                     ]
                   }
                 ]
@@ -313,7 +314,6 @@
             "group": "Other Features",
             "icon": "bolt",
             "pages": [
-              
               {
                 "group": "Low-Code Experiments",
                 "pages": [
@@ -391,8 +391,7 @@
                       "metrics/301",
                       "metrics/create-user-funnels",
                       "metrics/create-user-flows",
-                      "metrics/count-distinct",
-                      "metrics/hierarchical-id"
+                      "metrics/count-distinct"
                     ]
                   }
                 ]
@@ -562,6 +561,7 @@
                   "statsig-warehouse-native/features/differential-impact",
                   "statsig-warehouse-native/features/targeting",
                   "statsig-warehouse-native/features/id-resolution",
+                  "statsig-warehouse-native/features/id-resolution (legacy)",
                   "statsig-warehouse-native/features/filtering-exposures",
                   "statsig-warehouse-native/metrics/normalized-metrics",
                   "statsig-warehouse-native/features/quality-score"
@@ -923,12 +923,7 @@
                   }
                 ]
               },
-              {
-                "group": "Data Exports",
-                "pages": [
-                  "integrations/data-exports/overview"
-                ]
-              },
+              "integrations/data-exports",
               {
                 "group": "Serverless & Edge",
                 "pages": [
@@ -1019,18 +1014,8 @@
                       "access-management/org-admin/gates_policy"
                     ]
                   },
-                  {
-                    "group": "Templates",
-                    "pages": [
-                      "experiments/templates/templates"
-                    ]
-                  },
-                  {
-                    "group": "Decision Framework",
-                    "pages": [
-                      "experiments/templates/decision-framework"
-                    ]
-                  }
+                  "experiments/templates/templates",
+                  "experiments/templates/decision-framework"
                 ]
               },
               "access-management/discussions",
@@ -1058,12 +1043,7 @@
                   "/infra-analytics/getting-started"
                 ]
               },
-              {
-                "group": "Cloudflare",
-                "pages": [
-                  "server/concepts/cloudflare"
-                ]
-              },
+              "server/concepts/cloudflare",
               {
                 "group": "Domains & IP",
                 "pages": [
@@ -1104,6 +1084,10 @@
     }
   },
   "redirects": [
+    {
+      "source": "/pulse",
+      "destination": "/experiments/interpreting-results/read-pulse"
+    },
     {
       "source": "/experiments/stratified-sampling-whn",
       "destination": "/statsig-warehouse-native/features/stratified-sampling"
@@ -1225,7 +1209,7 @@
       "destination": "/statsig-warehouse-native/features/statistics/variance-reduction"
     },
     {
-      "source":"/statsig-warehouse-native/features/other-features",
+      "source": "/statsig-warehouse-native/features/other-features",
       "destination": "/statsig-warehouse-native/features/other-useful-features"
     },
     {
@@ -1319,6 +1303,10 @@
     {
       "source": "/server-core/java/migration",
       "destination": "/server-core/migration-guides/java"
+    },
+    {
+      "source": "/server-core/node/migration-guide",
+      "destination": "/server-core/migration-guides/node"
     },
     {
       "source": "/feature-flags/bots",
@@ -1734,7 +1722,7 @@
     },
     {
       "source": "/templates/templates",
-      "destination": "/exp-templates/templates"
+      "destination": "/experiments/templates/templates"
     },
     {
       "source": "/experiments-plus/disable-group",
@@ -1784,7 +1772,6 @@
       "source": "/developer-guides/feature-flags-in-react",
       "destination": "/client/React"
     },
-  
     {
       "source": "/experiments-plus/geotests/methodology",
       "destination": "/statsig-warehouse-native/geotests/methodology"
@@ -1804,6 +1791,10 @@
     {
       "source": "/stats-engine/methodologies/one-sided-test",
       "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/integrations/data-exports/overview",
+      "destination": "/integrations/data-exports"
     }
   ],
   "logo": {

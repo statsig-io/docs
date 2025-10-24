@@ -1,0 +1,34 @@
+In the Node Core SDK, `StatsigUser` is now a class instead of a type interface.
+
+<CodeGroup>
+```javascript Node Core
+import {StatsigUser} from "@statsig/statsig-node-core"
+
+const user = new StatsigUser({
+    userID: "user_123",
+    email: "user@example.com",
+    ip: "192.168.0.1",
+    userAgent: "Mozilla/5.0",
+    country: "US",
+    custom: {
+        "subscription_level": "premium"
+    }
+})
+```
+
+```javascript Node Legacy
+import type {StatsigUser} from "statsig-node"
+
+const user = {
+    userID: "user_123",
+    email: "user@example.com",
+    ip: "192.168.0.1",
+    userAgent: "Mozilla/5.0",
+    country: "US",
+    custom: {
+        "subscription_level": "premium"
+    }
+}
+```
+</CodeGroup>
+

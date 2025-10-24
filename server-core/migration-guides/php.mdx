@@ -1,0 +1,50 @@
+---
+title: Php Core SDK Migration Guide
+sidebarTitle: Php Migration
+description: Migrate from the legacy Php Server SDK to the new Php Core SDK
+---
+
+import Intro from '/snippets/server-core/migration-guides/_Intro.mdx'
+import Installation from '/snippets/server-core/migration-guides/_Installation.mdx'
+import GlobalChanges from '/snippets/server-core/migration-guides/_GlobalChanges.mdx'
+import MigrationHelp from '/snippets/server-core/migration-guides/_MigrationHelp.mdx'
+import NeedHelp from '/snippets/server-core/migration-guides/_NeedHelp.mdx'
+
+import PhpUserCreation from '/snippets/server-core/php/migration-guide/user.mdx'
+import PhpInstallation from '/snippets/server-core/php/migration-guide/installation.mdx'
+import PhpAPIChanges from '/snippets/server-core/php/migration-guide/api-changes.mdx'
+import PhpStatsigOptions from '/snippets/server-core/php/migration-guide/statsig-options.mdx'
+
+<Intro sdkType="Php" />
+
+<PhpInstallation />
+
+## StatsigUser
+
+<PhpUserCreation />
+
+<Info>For usage of big IDLists (>1000 items id list), contact us before using it in php-core </Info>
+
+## API Changes
+
+
+## API Changes
+
+<PhpAPIChanges />
+
+<GlobalChanges 
+  waitForUserAgentInit="wait_for_user_agent_init"
+  waitForCountryLookupInit="wait_for_country_lookup_init"
+  disableUserAgentParsing="disable_user_agent_parsing"
+  disableCountryLookup="disable_country_lookup"
+  enableIdLists="enable_id_lists"
+/>
+
+## StatsigOptions Changes
+
+The table below shows the mapping between legacy SDK options and Server Core SDK options:
+
+<PhpStatsigOptions />
+
+<MigrationHelp />
+<NeedHelp />

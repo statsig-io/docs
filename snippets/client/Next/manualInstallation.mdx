@@ -2,12 +2,17 @@ Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router
 
 <Tabs>
 <Tab title="App Router">
-First, add the keys to your .env.local file:
+<Steps>
+  <Step title="Set environment variables">
+Add the keys to your .env.local file:
 ```bash .env.local
 # the NEXT_PUBLIC_ prefix is required for this to be available on the client side
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
 STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY>
 ```
+
+</Step>
+<Step title="Install packages">
 
 For App Router, install the @statsig/next package:
 
@@ -24,6 +29,9 @@ yarn add @statsig/next
 pnpm add @statsig/next
 ```
 </CodeGroup>
+
+</Step>
+<Step title="Add the StatsigBootstrapProvider">
 
 The \<StatsigBootstrapProvider\> creates both a Statsig Client and Server instance under the hood, and ["bootstraps"](/client/concepts/initialize#2-bootstrap-initialization) the client so it can render each page without a blocking network request. this will keep your app speedy and is recommended for most users. If you need more control over your setup, our [Bootstrapping](#client-bootstrapping-recommended) and [React](/client/React) docs can provide more guidance.
 
@@ -56,16 +64,25 @@ export default function RootLayout({
   );
 }
 ```
+</Step>
+</Steps>
 </Tab>
 
 <Tab title="Page Router">
-First, add the keys to your .env.local file:
+
+
+<Steps>
+  <Step title="Set environment variables">
+Add the keys to your .env.local file:
 ```bash .env.local
 # the NEXT_PUBLIC_ prefix is required for this to be available on the client side
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
 ```
 
-Next, for Page Router, install the @statsig/react-bindings package:
+</Step>
+<Step title="Install packages">
+
+Install the @statsig/react-bindings package:
 
 <CodeGroup>
 ```bash NPM
@@ -80,6 +97,9 @@ yarn add @statsig/react-bindings @statsig/web-analytics
 pnpm add @statsig/react-bindings @statsig/web-analytics
 ```
 </CodeGroup>
+
+</Step>
+<Step title="Add StatsigProvider to _app.tsx">
 
 To integrate Statsig into your Page Router app you can add the `StatsigProvider` to your `_app.tsx` file.
 
@@ -107,6 +127,8 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 ```
+</Step>
+</Steps>
 </Tab>
 </Tabs>
 

@@ -1,0 +1,44 @@
+## Installation and Setup
+
+For PHP-core sdk you need to setup composer.json to **run post-install.php** file we provided
+<CodeGroup>
+```bash PHP Core
+composer require statsig/statsig-php-core
+
+// composer.json
+{
+  "name": "awesome-php-project",
+  ...
+  "scripts": {
+    ...
+    "post-install-cmd": [
+      "cd vendor/statsig/statsig-php-core && php post-install.php"
+    ],
+    "post-update-cmd": [
+      "cd vendor/statsig/statsig-php-core && php post-install.php"
+    ]
+  }
+}
+```
+
+```bash PHP Legacy
+composer require statsig/statsigsdk
+```
+</CodeGroup>
+
+Both require setting up chron job to fetch configs and flush events
+
+<CodeGroup>
+```bash PHP Core
+# Setup chron job / scheduled job to sync config and flush events
+*/1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigSyncConfig.php 1>> /dev/null 2>&1
+*/1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigFlushEvents.php 1>> /dev/null 2>&1
+```
+
+```bash Legacy Php
+# Create a cron job that runs as statsigsync every minute
+echo '*/1 * * * * statsigsync php /my/path/to/statsig/sync.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigsync
+echo '*/1 * * * * statsigdata php /my/path/to/statsig/send.php --secret <STATSIG_SECRET_KEY> > /dev/null' | sudo tee /etc/cron.d/statsigdata
+sudo service cron reload   
+```
+</CodeGroup>
