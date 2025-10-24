@@ -1,8 +1,5 @@
 ```js
-// don't need to initialize the Statsig instance here if you don't want to use it
-statsig = new Statsig("YOUR_SERVER_SECRET_KEY");
-await statsig.initialize();
-
+// initializing the statsigAI instance is optional
 const client = wrapOpenAI(
   new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
