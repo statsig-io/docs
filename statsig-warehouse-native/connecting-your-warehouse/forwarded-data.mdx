@@ -39,6 +39,12 @@ Each day, a deduplicated digest will be exported to your warehouse to ensure con
 For gates with 0% or 100% rollout, by default we don't forward exposure to your warehouse. If you need them, please contact our [support team](mailto:support@statsig.com), your sales contact, or via our slack channel.
 </Info>
 
+## Note on duplicates
+
+Fast-forwarded exposures will be copied sent without deduplication with respect to the table kept in your warehouse. Additionally, statsig only holds onto exposure data for 30 days for warehouse native projects for privacy reasons; this means Statsig's server-side deduplication will start re-counting users after 30 days since they are "new to Statsig". These will be correctly deduplicated during the analysis in your warehouse.
+
+This means that you should not expect statsig_forwarded_exposures to be unique or deduplicated for any pipeline use cases within your own data stack; you should deduplicate at the unit/experiment level. 
+
 ## Events
 
 If you're using our SDKs to capture custom events, we'll export these events to your warehouse hourly. You can see Pulse results on metrics derived from those events as fresh as ~1hour.
