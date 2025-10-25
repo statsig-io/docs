@@ -15,14 +15,30 @@ dependencies {
 }
 ```
 </Accordion>
-<Accordion title="Usage with Next.js">
+<Accordion title="Usage with Next.js/Webpack/esbuild">
 
-statsig-node-core works well with Next but can't be packaged with webpack. To prevent errors, designate @statsig/statsig-node-core as a serverExternalPackage in your next.config.js file:
+`statsig-node-core` uses native binary files that can't be packaged with webpack/esbuild. To prevent errors, take the following steps:
+
+<Tabs>
+<Tab title="Next.js">
+
+In your `next.config.js` file, add the `@statsig/statsig-node-core` package to the `serverExternalPackages` array:
+
 ```jsx
 const nextConfig = {
   serverExternalPackages: ['@statsig/statsig-node-core'],
 }
 ```
+
+</Tab>
+<Tab title="esbuild">
+Add the `--packages=external` flag to your build script:
+
+```shell
+esbuild --packages=external
+```
+</Tab>
+</Tabs>
 </Accordion>
 </AccordionGroup>
 
