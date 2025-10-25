@@ -1,0 +1,16 @@
+```js
+// don't need to initialize the Statsig instance here if you don't want to use it
+statsig = new Statsig("YOUR_SERVER_SECRET_KEY");
+await statsig.initialize();
+
+const client = wrapOpenAI(
+  new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+);
+
+const response = await client.chat.completions.create({
+  model: "gpt-4",
+  messages: [{ role: "user", content: "Hello, world!" }],
+});
+```
