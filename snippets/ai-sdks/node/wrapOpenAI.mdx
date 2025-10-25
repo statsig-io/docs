@@ -1,0 +1,13 @@
+```js
+// initializing the statsigAI instance is optional
+const client = wrapOpenAI(
+  new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+);
+
+const response = await client.chat.completions.create({
+  model: "gpt-4",
+  messages: [{ role: "user", content: "Hello, world!" }],
+});
+```
