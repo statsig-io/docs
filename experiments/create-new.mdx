@@ -9,7 +9,7 @@ Metrics and experiments behave differently in Warehouse Native. Read about [Conf
 
 This doc walks through the steps of creating a new experiment in the Statsig console. If you're looking for an end-to-end guide that includes integrating the Statsig SDK, see [Run your first experiment](/guides/abn-tests).
 
-### User-level Experiments
+## User-level Experiments
 
 To create a user-level experiment, follow these steps:
 
@@ -24,7 +24,7 @@ To create a user-level experiment, follow these steps:
   <img src="/images/experiments/create-modal.png" alt="Experiment creation modal interface" />
 </Frame>
 
-### Configure Your Scorecard
+## Configure Your Scorecard
 
 When running an experiment, it’s common to test a specific hypothesis using a set of key metrics. The **Scorecard** feature makes this easy by letting you enter your hypothesis and select both primary and secondary metrics.
 
@@ -39,11 +39,11 @@ For best practices on configuring your Scorecard, read more [here](/experiments/
   <img src="/images/experiments/scorecard.png" alt="Scorecard configuration modal" />
 </Frame>
 
-### Configure Allocation and Targeting
+## Configure Allocation and Targeting
 
 This is where most of your experiment configuration happens.
 
-#### Allocation
+### Allocation
 
 For **Allocation**, enter the percentage of users you want to assign to this experiment. You can allocate up to 100% of eligible users, but it’s good practice to start with a smaller percentage, verify the experiment’s stability, and then ramp up the allocation.
 
@@ -51,7 +51,7 @@ For **Allocation**, enter the percentage of users you want to assign to this exp
   <img src="/images/experiments/allocation.png" alt="Experiment allocation configuration interface" />
 </Frame>
 
-#### Targeting
+### Targeting
 
 To configure **Targeting** criteria, click to edit the **Targeting** section. You can either set new targeting criteria or use an existing **Feature Gate**. This will limit the experiment to only the users who meet the defined conditions.
 
@@ -64,7 +64,7 @@ To configure **Targeting** criteria, click to edit the **Targeting** section. Yo
 
 By default, no targeting criteria are set, so your experiment will include all allocated users within the defined **Layer** or exposed user base.
 
-### Configure Your Groups and Parameters
+## Configure Your Groups and Parameters
 
 When configuring **Groups and Parameters**, it’s a good idea to define your parameters first. These are the variables that control the behavior of the different experiment variants.
 
@@ -78,7 +78,7 @@ You can add additional groups by clicking the "+" next to the existing groups. T
 
 In addition, you can name, describe, and even add variant images for each group under the **Groups** section. However, only the parameters and values will affect what users see—group names and descriptions are not used in the experiment code.
 
-### Device-level and Custom ID Experiments
+## Device-level and Custom ID Experiments
 
 By default, experiments randomize users based on **User ID**. If you need to use a different ID type (e.g., device-level), follow steps 1–4 from the "User-level Experiments" section, then:
 
@@ -101,7 +101,7 @@ When running experiments, you may want to start with one ID type (like stableID 
 
 For advanced ID mapping requirements, consider using Statsig Warehouse Native.
 
-### Isolated Experiments
+## Isolated Experiments
 
 If you want to create an experiment that excludes users exposed to other experiments, follow steps 1–4 from the "User-level Experiments" section. Then:
 
@@ -115,7 +115,13 @@ If you want to create an experiment that excludes users exposed to other experim
 
 Now, complete the rest of the experiment setup as described above.
 
-### Significance Level Adjustments
+## Reusing Experiment Salts
+
+The Statsig SDKs use [deterministic hashing](/sdks/how-evaluation-works) to bucket users. This means that the same user being evaluated for the same experiment will be bucketed identically - no matter where that happens. Every experiment has it's own unique salt, so that each experiment's assignment is random.
+
+For advanced use cases - e.g. a series of related experiments that needs to reuse the control and test buckets, we now expose the ability to copy and set the salts used for deterministic hashing. This is meant to be used with care. and is only available to Project Administrators. It is available in the Overflow (...) menu in Experiments.
+
+## Significance Level Adjustments
 
 By default, Experiment Results display with 95% confidence intervals and without Bonferroni correction. This can be customized during experiment setup or later when viewing results in Experiment Results.
 
@@ -126,7 +132,7 @@ By default, Experiment Results display with 95% confidence intervals and without
   <img src="/images/experiments/significance-settings.png" alt="Significance level adjustment settings interface" />
 </Frame>
 
-### Target Duration
+## Target Duration
 
 Setting a target duration is optional, but it helps ensure that you wait long enough for the experiment to reach full power. You can set the target as either a specific number of days or a number of exposures, and use the [**Power Analysis Calculator**](/experiments-plus/power-analysis) to determine what target works best for your metrics.
 
@@ -144,7 +150,7 @@ Once set, you can track progress against the target duration/exposures in the ex
 
 ---
 
-### Hypothesis Advisor
+## Hypothesis Advisor
 
 Writing good experiment hypotheses is key to a strong experimentation culture. Statsig now gives instant feedback on experiment hypotheses—flagging what’s missing. Admins can set custom requirements, which Statsig uses to guide experimenters toward stronger, more complete hypotheses.
 
