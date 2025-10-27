@@ -5,7 +5,7 @@ After installation, initialize the SDK with a [Server Secret Key from the Statsi
   disable and recreate it in the Statsig console.
 </Warning>
 
-Quick note: anything that you can import from the node server core SDK, you can import from the AI SDK.
+*You can import everything available in the Node Server Core SDK directly from the AI SDK — no separate setup needed.*
 
 If you currently have an existing Statsig instance, you can use it to initialize the AI SDKs by passing in the `statsig` instance and `sdkKey`.
 This way of initializing the AI SDKs is recommended if you already manage your statsig lifecycle, in this case, statsigAI's lifecycle methods will not be responsible for initializing, flushing, or shutting down the Statsig instance.

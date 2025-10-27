@@ -48,17 +48,17 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 
 ## Using the SDK
 
-<WrapOpenAIPreamble/>
-<WrapOpenAI/>
+<GetPromptPreamble/>
+<GetPrompt/>
 
 <LogEvalResultPreamble/>
 <LogEvalResult/>
 
-<GetPromptPreamble/>
-<GetPrompt/>
-
 <OtelPreamble/>
 <Otel/>
+
+<WrapOpenAIPreamble/>
+<WrapOpenAI/>
 
 <AiOptionsPreamble/>
 <AiOptions/>
@@ -67,7 +67,7 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 
 
 ```javascript
-const myStatsigInstance = StatsigAI.getStatsig()
+const myStatsigInstance = statsigAI.getStatsig()
 
 const gateValue = myStatsigInstance.checkGate('my_prompt_name');
 ```
