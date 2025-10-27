@@ -52,7 +52,7 @@ const gate = await Statsig.checkGate(user, "gate")
 #### DataAdapter Cache Key Changes
 **Context**
 To better support using multiple Statsig Instances in one runtime, and also better support over different responses format, for example download_config_spec_v1 vs download_config_spec_v2 (we are in the process of introducing dcs v2), we updated the cache keys SDK read and write from to avoid cache key collision. 
-We also embedded the compress encoding format we are using, right now we are only storing plain_text no-compressed version within Cache. We plan to support set compressing version for perf improvements.
+We also embedded the compress encoding format we are using, right now we are only storing plain_text no-compressed version within Cache.
 
 **Changes**
 - Change cache key for config_specs from `statsig.cache` to 

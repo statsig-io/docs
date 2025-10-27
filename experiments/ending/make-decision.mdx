@@ -135,7 +135,9 @@ In other words, each group other than k is decreased (or increased, if Delta < 0
 2. Rolling out a group to 100% does not fully ship the experiment, meaning configurations such as experiment/layer allocation, targeting, overrides, and so on will not change. To fully ship the experiment go through the usual flow without specifying any rollouts.
 3. Groups can be rolled out and back, but the rollout % cannot be lower than the group's original size.
 
+<Info>
 This is currently a beta feature.
+</Info>
 
 ## Shipping with a Holdback
 
@@ -165,4 +167,6 @@ Some users currently in control will move to the shipped group to achieve the de
 
 By using shipping with holdback, you maintain a dedicated, stable control group alongside a representative test segment of the shipped experience, making it easy to measure ongoing performance and user behavior post-launch.
 
+<Info>
 This is currently a beta feature.
+</Info>

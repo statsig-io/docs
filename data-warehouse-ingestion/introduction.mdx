@@ -11,6 +11,8 @@ title: Data Warehouse Ingestion
 Statsig Cloud can directly ingest data from your Data Warehouse. This lets you send raw events and pre-computed metrics for tracking and experimental measurement.
 We currently support ingestion from the following providers:
 
+> **Warning:** We support you making multiple data connections to your project, but only support a single export connection. 
+
 1. [BigQuery](/data-warehouse-ingestion/bigquery)
 2. [Redshift](/data-warehouse-ingestion/redshift)
 3. [Snowflake](/data-warehouse-ingestion/snowflake)
@@ -63,7 +65,7 @@ After connecting and providing a SQL query, we ask you to map columns in your da
 <img src="https://user-images.githubusercontent.com/87334575/199855255-ebd683fb-bf3b-4825-9f2b-63913e1dda89.png" width="700"/>
 <img src="https://user-images.githubusercontent.com/87334575/199855270-a59ead1a-4fd7-4d99-bd1f-a511ca21750a.png" width="700"/>
 
-See [here](data-warehouse-ingestion/data_mapping) for more information.
+See [here](https://docs.statsig.com/data-warehouse-ingestion/data_mapping) for more information.
 
 ### Scheduling Ingestion & Backfilling
 
