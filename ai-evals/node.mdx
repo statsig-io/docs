@@ -7,6 +7,8 @@ description: Statsig's Node SDK for AI Application Configuration & Telemetry
 import Installation from '/snippets/ai-sdks/node/installation.mdx'
 import Initialization from '/snippets/ai-sdks/node/initialization.mdx'
 import InitializationManaged from '/snippets/ai-sdks/node/initializationManaged.mdx'
+import InitializationWOptions from '/snippets/ai-sdks/node/initializationWOptions.mdx'
+import InitializationManagedWOptions from '/snippets/ai-sdks/node/initializationManagedWOptions.mdx'
 import WrapOpenAI from '/snippets/ai-sdks/node/wrapOpenAI.mdx'
 import LogEvalResult from '/snippets/ai-sdks/node/logEvalResult.mdx'
 import GetPrompt from '/snippets/ai-sdks/node/getPrompt.mdx'
@@ -39,10 +41,23 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 <Installation/>
 </Step>
 <Step title="Initialize the SDK">
-<InitializationPreamble/>
-<Initialization/>
+If you already have a Statsig instance, you can pass it into the SDK. Otherwise, we'll create an instance for you internally.
+<Tabs> 
+<Tab title="Don't use Statsig">
 <InitializationManagedPreamble/>
 <InitializationManaged/>
+<Accordion title="Initializing With Options">
+<InitializationManagedWOptions/>
+</Accordion>
+</Tab>
+<Tab title="Already have Statsig instance">
+<InitializationPreamble/>
+<Initialization/>
+<Accordion title="Initializing With Options">
+<InitializationWOptions/>
+</Accordion>
+</Tab>
+</Tabs>
 </Step>
 </Steps>
 
@@ -64,12 +79,13 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 <AiOptions/>
 
 ## Using other SDK methods
-
-
+Whether you passed in a Statsig instance or not, you can access the Statsig instance from the statsigAI instance, and use its many methods: 
 ```javascript
+// Check a gate value
 const gate = statsigAI.getStatsig().checkGate(statsigUser, 'my_gate');
-statsigAI.getStatsig().logEvent(statsigUser, 'my_event', { value: 1 });
 
+// Log an event
+statsigAI.getStatsig().logEvent(statsigUser, 'my_event', { value: 1 });
 ```
 
 Refer to the [Statsig Node SDK](/server-core/node-core) docs for more information on how to use the Core Statsig SDK methods, plus information on advanced setup + singleton usage.
