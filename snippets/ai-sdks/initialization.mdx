@@ -1,6 +1,11 @@
 After installation, initialize the SDK with a [Server Secret Key from the Statsig console](https://console.statsig.com/api_keys).
 
 <Warning>
-Server Secret Keys should always be kept private. If you expose one, you can disable and recreate it in the Statsig console.
+  Server Secret Keys should always be kept private. If you expose one, you can
+  disable and recreate it in the Statsig console.
 </Warning>
 
+Quick note: anything that you can import from the node server core SDK, you can import from the AI SDK.
+
+If you currently have an existing Statsig instance, you can use it to initialize the AI SDKs by passing in the `statsig` instance and `sdkKey`.
+This way of initializing the AI SDKs is recommended if you already manage your statsig lifecycle, in this case, statsigAI's lifecycle methods will not be responsible for initializing, flushing, or shutting down the Statsig instance.

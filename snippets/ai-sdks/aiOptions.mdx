@@ -1,0 +1,13 @@
+### AI Options
+
+Options for configuring the AI SDK. The `StatsigAIOptions` interface allows you to configure OpenTelemetry tracing and instrumentation settings.
+
+#### Configuration Properties
+
+- **`enableDefaultOtel`** (boolean, optional): Enables Statsig's default OpenTelemetry setup for automatic tracing and instrumentation. Defaults to `false`.
+
+- **`statsigTracingConfig`** (StatsigTracingConfig, optional): Configuration object for tracing and instrumentation settings.
+
+  - **`serviceName`** (string, optional): Name of the service for tracing identification. Used in OpenTelemetry spans and traces.
+  
+  - **`enableAutoInstrumentation`** (boolean, optional): Enables automatic instrumentation of common libraries and frameworks for tracing. Defaults to `false`.

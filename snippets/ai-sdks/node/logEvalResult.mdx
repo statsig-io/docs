@@ -1,11 +1,15 @@
 ```js
+import { StatsigUser } from '@statsig/statsig-ai-node';
+
+const livePromptVersion = statsigAI.getPrompt(user, 'my_prompt').getLive();
 // Create a user object
-const user = new StatsigUser({ userID: "a-user" });
+const user = new StatsigUser({ userID: 'a-user' });
 
 // Log the results of the eval
-statsig.logEvalResult(user, "my_grader", "my_prompt", {
-  score: 0.5,
-  session_id: "1234567890",
-  version: "my_version",
+statsigAI.logEvalGrade(user, livePromptVersion, 0.5, 'my_grader', {
+  session_id: '1234567890',
 });
+
+// flush otel events or wait for the configured otel exporter flush interval
+await statsigAI.flush();
 ```

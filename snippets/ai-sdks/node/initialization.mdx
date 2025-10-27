@@ -1,6 +1,15 @@
 ```js
-import { Statsig } from "statsig-ai-node";
+import { Statsig } from '@statsig/statsig-server-core-node';
+import { StatsigAI, StatsigAIOptions } from '@statsig/statsig-ai-node';
 
-statsig = new Statsig("YOUR_SERVER_SECRET_KEY", { environment: "production" });
+const statsig = new Statsig('YOUR_SERVER_SECRET_KEY', {
+  environment: 'production',
+});
 await statsig.initialize();
+
+const statsigAIOptions: StatsigAIOptions = {
+  enableDefaultOtel: true,
+};
+const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY', statsig}, statsigAIOptions);
+await statsigAI.initialize();
 ```

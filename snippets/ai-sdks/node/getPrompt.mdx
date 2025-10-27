@@ -1,9 +1,10 @@
 ```js
+import { StatsigUser } from '@statsig/statsig-ai-node';
 // Create a user object
-const user = new StatsigUser({ userID: "a-user" });
+const user = new StatsigUser({ userID: 'a-user' });
 
 // Get the prompt
-const myPrompt = statsig.getPrompt(user, "my_prompt");
+const myPrompt = statsigAI.getPrompt(user, 'my_prompt');
 
 // Use the live version of the prompt
 const liveVersion = myPrompt.getLive();
@@ -13,9 +14,9 @@ const candidateVersions = myPrompt.getCandidates();
 
 // Use the live version of the prompt in a completion
 const response = await openai.chat.completions.create({
-  model: liveVersion.getModel(),
+  model: liveVersion.getModel({ fallback: 'gpt-4' }),
   temperature: liveVersion.getTemperature(),
   max_tokens: liveVersion.getMaxTokens(),
-  messages: [{ role: "user", content: "Your prompt here" }],
+  messages: [{ role: 'user', content: 'Your prompt here' }],
 });
 ```
