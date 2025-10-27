@@ -67,9 +67,9 @@ The Statsig Node AI SDK lets you manage your prompts, online and offline evals, 
 
 
 ```javascript
-const myStatsigInstance = statsigAI.getStatsig()
+const gate = statsigAI.getStatsig().checkGate(statsigUser, 'my_gate');
+statsigAI.getStatsig().logEvent(statsigUser, 'my_event', { value: 1 });
 
-const gateValue = myStatsigInstance.checkGate('my_prompt_name');
 ```
 
 Refer to the [Statsig Node SDK](/server-core/node-core) docs for more information on how to use the Core Statsig SDK methods, plus information on advanced setup + singleton usage.
