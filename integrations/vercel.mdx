@@ -225,25 +225,6 @@ export default async function handler(request) {
     );
 }
 ```
-</Accordion>
-
-If you want to check on the evaluations you are getting, you can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
-<Frame>
-  <img src="https://github.com/user-attachments/assets/2b690181-0103-43be-b791-7cf0a7db66eb" alt="Diagnostics Stream" />
-</Frame>
-
-If you want to check the events you logged, in the **Statsig Console**, go to **Data** -> **Events**
-<Frame>
-  <img src="../images/client/vercel_event.png"/>
-</Frame>
-
-And there you have it - a working Vercel Edge Config integration for Statsig.
-
-## Using Flags SDK in NextJS
-
-If you're using NextJS in your Vercel project, you can use Statsig through Flags SDK and take advantage of built in precompute patterns for improved performance. See the [Statsig Adapter for Flags SDK docs](https://flags-sdk.dev/docs/api-reference/adapters/statsig) for steps on how to get started.
-Note that the marketplace app sets all required environment variables for the Flags SDK by default for a quick setup process.
-
 ## Other Considerations
 
 ### Polling for updates v5.13.0+
@@ -267,6 +248,25 @@ Vercel Edge Config has maximum size limits that may prevent Statsig from pushing
 ### Unsupported Features
 
 Statsig ID Lists are not currently synced into Vercel Edge Config. If you rely on large (>1000) ID lists, you will not be able to check them in your Vercel edge functions. This is why we set `initStrategyForIDLists: 'none'` in the SDK initialization.
+
+</Accordion>
+
+If you want to check on the evaluations you are getting, you can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
+<Frame>
+  <img src="https://github.com/user-attachments/assets/2b690181-0103-43be-b791-7cf0a7db66eb" alt="Diagnostics Stream" />
+</Frame>
+
+If you want to check the events you logged, in the **Statsig Console**, go to **Data** -> **Events**
+<Frame>
+  <img src="../images/client/vercel_event.png"/>
+</Frame>
+
+And there you have it - a working Vercel Edge Config integration for Statsig.
+
+## Using Flags SDK in NextJS
+
+If you're using NextJS in your Vercel project, you can use Statsig through Flags SDK and take advantage of built in precompute patterns for improved performance. See the [Statsig Adapter for Flags SDK docs](https://flags-sdk.dev/docs/api-reference/adapters/statsig) for steps on how to get started.
+Note that the marketplace app sets all required environment variables for the Flags SDK by default for a quick setup process.
 
 ## Sending logs to Statsig
 
