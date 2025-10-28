@@ -105,7 +105,7 @@
 </ResponseField>
 
 <ResponseField name="specs_url" type="Option<String>">
-  Custom URL for fetching feature specifications. Use this to point to your own proxy server or custom endpoint.
+  Custom URL for fetching feature specifications. Use this to point to your own proxy server or custom endpoint. **Note:** When using gRPC (`NetworkGrpcWebsocket`), ensure the URL includes the `dns://` prefix (e.g., `dns://your-server.com:port`).
 </ResponseField>
 
 <ResponseField name="authentication_mode" type="Option<String>">
