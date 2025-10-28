@@ -72,7 +72,7 @@ By default if you have turned on "Reviews Required" for your Project, reviews wi
 If you prefer to leverage an internal approvals workflow or, for example, want to run proposed config changes through a suite of automated tests before they go live, you can leverage **Pre-commit Webhooks**. Pre-commit Webhooks enable you to listen for config changes on the Statsig side, route those changes through internal approval processes, test suites, etc. and then leverage Console API to send back either a review approval or rejection before final changes can be committed. 
 
 To enable the Pre-commit Webhook experience: 
-1. Configure change validations via Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
+1. Integrate your approval flow with the change validations Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
 2. Configure the experience for Statsig Console users via **Settings** -> **Product Configuration** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes.
 
 <Frame><img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="https://github.com/user-attachments/assets/49c408da-0910-4a90-9ee3-7d1e114c9013" /></Frame>
@@ -82,5 +82,23 @@ To enable the Pre-commit Webhook experience:
 
 Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
 
+Every payload will have these fields at a minimum:
+```
+review_id (will need to pass this to the change_validation API to accept/reject a change)
+submitter (email address)
+committer (email address)
+config_type (one of gate, dynamic_config, segment, or experiment)
+type (listed below)
+config_name / experiment_name
+```
 
-
+Currently, only changes to gates, dynamic configs, segments, and experiments trigger precommit webhooks, and only the following changes:
+- `rules`: Updating rules (for gates, dynamic configs, segments)
+  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. https://docs.statsig.com/api-reference/gates/read-gate for gates)
+- `update_target_apps`: Updating target applications
+- `update_allocation`: Changing the pass percentage of an ongoing experiment
+- `start_experiment`
+- `ship_experiment`
+- `abandon_experiment`
+- `update_experiment_settings`: Changing settings of an ongoing experiment
+  - will contain payloads `old_experiment` and `new_experiment` with the same format returned by the console API (https://docs.statsig.com/api-reference/experiments/get-experiment)
