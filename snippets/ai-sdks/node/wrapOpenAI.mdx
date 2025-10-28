@@ -1,8 +1,8 @@
 ```js
-import { wrapOpenAI, StatsigAI } from '@statsig/statsig-ai-node';
+import { wrapOpenAI, StatsigAI } from '@statsig/statsig-ai';
 import { OpenAI } from 'openai';
 
-// if you have your own otel, you do not need an statsigAI instance here. 
+// if you have your own otel, you do not need an statsigAI instance here.
 // But if you want to use the default Otel on statsigAI, you need to initialize the SDK.
 statsigAI = new StatsigAI({"YOUR_SERVER_SECRET_KEY"});
 await statsigAI.initialize();
