@@ -1,0 +1,31 @@
+```js
+import { StatsigAI, StatsigAIOptions } from '@statsig/statsig-ai-node';
+import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+
+
+const statsigAIOptions: StatsigAIOptions = {
+  enableDefaultOtel: true,
+};
+const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY'}, statsigAIOptions);
+await statsigAI.initialize();
+
+// flush otel events
+await statsigAI.flush();
+
+// or if you are using your own otel instance, you can setup the export to statsig with an OTLP exporter.
+const statsigExporter = new OTLPTraceExporter({
+  url: 'https://api.statsig.com/otlp/v1/traces',
+  headers: {
+    'statsig-api-key': 'YOUR_SERVER_SECRET_KEY',
+  },
+});
+
+const otel = new NodeSDK({
+    serviceName: 'my-service',
+    spanProcessors: [new BatchSpanProcessor(statsigExporter)],
+});
+otel.start();
+
+```

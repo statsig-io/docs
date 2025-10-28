@@ -759,6 +759,13 @@
             ]
           },
           {
+            "group": "AI SDKs",
+            "icon": "brain",
+            "pages": [
+              "ai-evals/node"
+            ]
+          },
+          {
             "group": "More SDK Methods",
             "icon": "list",
             "pages": [

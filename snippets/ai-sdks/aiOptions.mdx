@@ -1,0 +1,21 @@
+### AI Options
+
+Options for configuring the AI SDK. Pass these into the `StatsigAI` constructor. See [Initializing with Options](#initializing-with-options).
+
+#### Configuration Properties
+
+<ResponseField name="enableDefaultOtel" type="boolean" >
+  Enables Statsig's default OpenTelemetry setup for automatic tracing and instrumentation. Defaults to false.
+</ResponseField>
+
+<ResponseField name="statsigTracingConfig" type="StatsigTracingConfig" >
+  Configuration object for tracing and instrumentation settings.
+</ResponseField>
+
+<ResponseField name="serviceName" type="string" >
+  Name of the service for tracing identification. Used in OpenTelemetry spans and traces.
+</ResponseField>
+
+<ResponseField name="enableAutoInstrumentation" type="boolean">
+  Enables automatic instrumentation of common libraries and frameworks for tracing. Defaults to false.
+</ResponseField>
