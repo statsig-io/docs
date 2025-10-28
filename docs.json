@@ -41,7 +41,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform", "sample-apps"]
+            "pages": ["welcome", "understanding-platform"]
           },
           {
             "group": "Experiments",
@@ -392,6 +392,7 @@
             "group": "Tutorials",
             "icon": "file",
             "pages": [
+              "sample-apps",
               "client/concepts/parameter-stores",
               "guides/first-device-level-experiment",
               "guides/experiment-on-custom-id-types",
