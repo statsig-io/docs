@@ -800,6 +800,7 @@ post_logs_retry_limit
 power_user
 pre
 pre-calculate
+precompute
 precomputed
 Precomputing
 prefetch
