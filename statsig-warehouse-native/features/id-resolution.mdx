@@ -46,14 +46,22 @@ When using ID resolution, you can choose from one of three modes:
 
 ### Strict 1:1 Mapping
 
-![Enforced1to1Mapping](/images/whn/Docs_IDresolution_Enforced1to1Mapping_111324.gif)
+<img
+  src="/images/whn/Docs_IDresolution_Enforced1to1Mapping_111324.gif"
+  alt="Enforced1to1Mapping"
+  width="50%"
+/>
 
 All potential mappings between identifiers within the experiment date range, on the exposed population, are collected. If the primary ID has multiple secondary IDs, or vice versa, it is considered polluted and dropped from the analysis.
 Choosing this mode will change the exposures on the primary ID as it disqualifies any records outside of a 1:1 mapping.
 
 ### First Touch Mapping (Mixed Population)
 
-![FirstTouchAttribution](/images/whn/Docs_IDresolution_FirstTouchAttribution_111324.gif)
+<img
+  src="/images/whn/Docs_IDresolution_FirstTouchAttribution_111324.gif"
+  alt="Enforced1to1Mapping"
+  width="50%"
+/>
 
 The direction of first-touch mapping will be based on the experiment; all secondary IDs resolve to 1 primary ID, and a single primary ID can have multiple mapped secondary IDs.
 
@@ -65,13 +73,21 @@ If a user is exposed twice on different primary IDs that resolve to the same sec
 
 ### Last Touch Mapping (Mixed Population)
 
-![LastTouchAttribution](/images/whn/Docs_IDresolution_LastTouchAttribution.gif)
+<img
+  src="/images/whn/Docs_IDresolution_LastTouchAttribution.gif"
+  alt="LastTouchAttribution"
+  width="50%"
+/>
 
 Same as first touch but data is attributed to the most recent primary ID.
 
 ### What does Mixed Population mean?
 
-![MixedPopulation](/images/whn/Docs_IDresolution_Primary_Population.gif)
+<img
+  src="/images/whn/Docs_IDresolution_Primary_Population.gif"
+  alt="MixedPopulation"
+  width="50%"
+/>
 
 Both first-touch and last-touch mapping show pulse results based on mixed population. This means that each metric will be based on the corresponding population of the unit type of itself.
 For example, if you have an experiment that randomizes on Stable ID and the scorecard metrics are a mixture of Stable ID and User ID, for Stable ID metrics,
