@@ -402,6 +402,7 @@
             "group": "Tutorials",
             "icon": "file",
             "pages": [
+              "sample-apps",
               "client/concepts/parameter-stores",
               "guides/first-device-level-experiment",
               "guides/experiment-on-custom-id-types",
