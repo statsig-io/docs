@@ -102,6 +102,7 @@ const inst = new StatsigClient(clientSdkKey, user, {
   networkConfig: {
     logEventUrl: '/statsig-proxy/log_event',
     initializeUrl: '/statsig-proxy/initialize',
+    logEventCompressionMode: 'Forced',
   },
   disableCompression: true,
   disableStatsigEncoding: true,
