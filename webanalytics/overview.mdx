@@ -147,7 +147,31 @@ const client = new StatsigClient(
     new StatsigAutoCapturePlugin({
       consoleLogAutoCaptureSettings: {
         enabled: true,
-        logLevel: 'warn'
+      }
+    })
+  ]}
+);
+
+There are a few additional optional configuration settings available when capturing console logs:
+
+- **`logLevel`**: minimum level to capture (`debug` | `info` | `log` | `warn` | `error`)
+- **`sampleRate`**: fraction between 0 and 1 to sample captured logs
+- **`maxKeys`**: maximum number of keys to serialize from logged objects
+- **`maxDepth`**: maximum nesting depth when serializing objects
+- **`maxStringLength`**: maximum number of characters for stringified values
+
+const client = new StatsigClient(
+  'YOUR_CLIENT_KEY',
+  { userID: 'optional' },
+  { plugins: [
+    new StatsigAutoCapturePlugin({
+      consoleLogAutoCaptureSettings: {
+        enabled: true,
+        logLevel: 'warn',         // capture warn and error
+        sampleRate: 0.5,          // capture 50% of matched logs
+        maxKeys: 50,              // limit number of keys per object
+        maxDepth: 3,              // limit nested object depth
+        maxStringLength: 2000,    // truncate long strings
       }
     })
   ]}
@@ -203,6 +227,9 @@ The autocapture plugin or manual setup can take an optional `options` parameter 
 - **`enabled`**: `Optional[bool]` - A boolean to enable or disable console log capture.
 - **`logLevel`**: `Optional[str]` - A string to set the minimum log level for console log capture.
 - **`sampleRate`**: `Optional[float]` - A number to set the sample rate for console log capture. (0-1)
+ - **`maxKeys`**: `Optional[number]` - Maximum number of keys to serialize from logged objects.
+ - **`maxDepth`**: `Optional[number]` - Maximum nesting depth when serializing objects.
+ - **`maxStringLength`**: `Optional[number]` - Maximum number of characters for stringified values.
 
 **eventFilterFunc**:
 - **`event`**: `AutoCaptureEvent` - The event object that is being captured.
