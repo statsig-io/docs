@@ -35,7 +35,9 @@ export async function POST(request: Request): Promise<Response> {
 </Tab>
 
 <Tab title="Page Router">
-```ts pages/api/statsig-proxy/initialize.ts
+```ts pages/api/proxy/initialize.ts
+// Note: Using generic path names like "proxy" instead of "statsig-proxy"
+// to prevent ad blockers from blocking these requests
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { StatsigUser } from 'statsig-node';
 import { getStatsigValues } from '@/pages/statsig-backend';
