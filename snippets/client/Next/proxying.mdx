@@ -1,6 +1,8 @@
 <Tabs>
 <Tab title="App Router">
-```ts app/statsig-proxy/initialize/route.ts
+```ts app/proxy/initialize/route.ts
+// Note: Using generic path names like "proxy" instead of "statsig-proxy"
+// to prevent ad blockers from blocking these requests
 import { generateBootstrapValues } from './statsig-backend';
 
 export async function POST(request: Request): Promise<Response> {
@@ -13,7 +15,9 @@ export async function POST(request: Request): Promise<Response> {
 }
 ```
 
-```ts app/statsig-proxy/log_event/route.ts
+```ts app/proxy/search.ts
+// Note: Using generic path names like "search" instead of "log_event" or "events"
+// to prevent ad blockers from blocking these requests
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
 
 export async function POST(request: Request): Promise<Response> {
@@ -31,7 +35,9 @@ export async function POST(request: Request): Promise<Response> {
 </Tab>
 
 <Tab title="Page Router">
-```ts pages/api/statsig-proxy/initialize.ts
+```ts pages/api/proxy/initialize.ts
+// Note: Using generic path names like "proxy" instead of "statsig-proxy"
+// to prevent ad blockers from blocking these requests
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { StatsigUser } from 'statsig-node';
 import { getStatsigValues } from '@/pages/statsig-backend';
@@ -50,7 +56,9 @@ export default async function handler(
 }
 ```
 
-```ts pages/api/statsig-proxy/log_event.ts
+```ts pages/api/proxy/search.ts
+// Note: Using generic path names like "search" instead of "log_event" or "events"
+// to prevent ad blockers from blocking these requests
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
@@ -60,7 +68,7 @@ export default async function handler(
   res: NextApiResponse<string>,
 ): Promise<void> {
   if (req.method !== 'POST') {
-    res.status(400).send('/log_event only supports POST');
+    res.status(400).send('/search only supports POST');
     return;
   }
 
@@ -100,8 +108,9 @@ export default async function handler(
 // Assign URLs when creating the client
 const inst = new StatsigClient(clientSdkKey, user, {
   networkConfig: {
-    logEventUrl: '/statsig-proxy/log_event',
-    initializeUrl: '/statsig-proxy/initialize',
+    logEventUrl: '/api/proxy/search',
+    initializeUrl: '/api/proxy/initialize',
+    logEventCompressionMode: 'Forced',
   },
   disableCompression: true,
   disableStatsigEncoding: true,
