@@ -50,7 +50,7 @@ export default async function handler(
 }
 ```
 
-```ts pages/api/statsig-proxy/log_event.ts
+```ts pages/api/statsig-proxy/events.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
@@ -60,7 +60,7 @@ export default async function handler(
   res: NextApiResponse<string>,
 ): Promise<void> {
   if (req.method !== 'POST') {
-    res.status(400).send('/log_event only supports POST');
+    res.status(400).send('/events only supports POST');
     return;
   }
 
