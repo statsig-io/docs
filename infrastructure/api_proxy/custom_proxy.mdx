@@ -67,7 +67,7 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
     <img src="https://user-images.githubusercontent.com/7304774/178591897-a93a046a-c76f-4fc6-ab0c-86452de99be7.png" alt="Function associations section" />
   </Frame>
 
-You can use the following javascript code snippet in your Lambda@Edge function. This example rewrites a custom endpoint `/v1/my-product-analytics` to the Statsig endpoint `/v1/log_event`:
+You can use the following javascript code snippet in your Lambda@Edge function. This example rewrites a custom endpoint `/v1/my-product-data` to the Statsig endpoint `/v1/log_event`:
 
 ```javascript
 export const handler = async (event, context, callback) => {
@@ -75,9 +75,9 @@ export const handler = async (event, context, callback) => {
   request.headers.host[0].value = "api.statsig.com";
   
   // Rewrite custom endpoint to Statsig endpoint
-  // Replace 'my-product-analytics' with your custom endpoint name
-  if (request.uri.includes('/v1/my-product-analytics')) {
-    request.uri = request.uri.replace('/v1/my-product-analytics', '/v1/log_event');
+  // Replace 'my-product-data' with your custom endpoint name
+  if (request.uri.includes('/v1/my-product-data')) {
+    request.uri = request.uri.replace('/v1/my-product-data', '/v1/log_event');
   }
   
   return callback(null, request);
