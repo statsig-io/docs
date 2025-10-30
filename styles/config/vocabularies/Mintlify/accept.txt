@@ -652,6 +652,8 @@ mathrm
 MAU
 mau
 MAUs
+maxDepth
+maxKeys
 max_tokens
 Mbps
 MDE
@@ -898,6 +900,7 @@ rulesets_sync_interval
 runStatsigAutoCapture
 runtime
 runtimes
+sampleRate
 SaaS
 sandboxing
 sankey
