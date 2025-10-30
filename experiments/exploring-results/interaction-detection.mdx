@@ -35,7 +35,7 @@ See more examples in this [article](https://www.statsig.com/blog/interaction-eff
 
 ## Methodology
 
-Assume you have two experiments A & B, both have two experiment groups control & test. The interaction effect will calcuate the overlapping impact on users who are exposed in both experiment A & experiment B. 
+Assume you have two experiments A & B, both have two experiment groups control & test. The interaction effect will calcuate the overlapping impact on users who are exposed in both experiment A & experiment B.
 
 $$
 \Delta_{\text{treatment effect}} = (\overline{X_{testA \cdot testB}} - \overline{X_{testA \cdot controlB}}) - (\overline{X_{controlA \cdot testB}} - \overline{X_{controlA \cdot controlB}})
@@ -69,6 +69,20 @@ So:
 
 - **Satisitically Positive interaction** → B’s effect is **stronger** when A is also “on”
 - **Satisitically Negative interaction** → B’s effect is **weaker** (or reversed) when A is “on”
+
+### Magnitude
+
+The magnitude (absolute size) of the interaction effect indicates how much the combined impact deviates from simple additivity.
+
+For example:
+
+- Experiment A produces a **\+5%** lift on your metric of interest
+- Experiment B produces a **\+5%** lift on your metric
+- The interaction effect between A and B is **–3%**
+
+This means that when both experiments are rolled out together, their combined impact is expected to be **about 3% lower than the sum of their individual effects** — in other words, the features interfere with each other.
+
+To obtain the most accurate estimate of the true combined impact, it’s best to run a new experiment that includes both features together. Because experiments A and B may not have run over exactly the same time period or under identical conditions, differences in timing and seasonality can slightly influence the measured interaction magnitude.
 
 <Info>
   When an experiment includes more than two groups, interaction effects are evaluated **pairwise between groups**. You can view the interaction effect for specific group combinations by selecting the desired groups in the **“Select Comparison”** dropdown, as shown in the UI above.
