@@ -68,6 +68,14 @@ How often events are flushed to Statsig servers (in milliseconds).
 Maximum number of events to queue before forcing a flush.
 </ResponseField>
 
+<ResponseField name="eventLoggingMaxPendingBatchQueueSize" type="long">
+Maximum number of pending batches to queue before dropping events.
+</ResponseField>
+
+<ResponseField name="serviceName" type="string">
+Name of the service using the SDK. Used for observability and debugging.
+</ResponseField>
+
 <ResponseField name="dataStore" type="DataStore">
 An adapter with custom storage behavior for config specs. Can also continuously fetch updates in place of the Statsig network.
 </ResponseField>
