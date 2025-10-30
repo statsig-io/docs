@@ -88,6 +88,14 @@ Interface to use persistent storage within the SDK.
 Set the logging level for the SDK. Options: `NONE`, `ERROR`, `WARN`, `INFO`, `DEBUG`.
 </ResponseField>
 
+<ResponseField name="outputLoggerProvider" type="OutputLoggerProvider">
+Custom logger provider for SDK logging output.
+</ResponseField>
+
+<ResponseField name="proxyConfig" type="ProxyConfig">
+Configuration for using a proxy server for network requests.
+</ResponseField>
+
 <ResponseField name="observabilityClient" type="ObservabilityClient">
 Interface to integrate observability metrics exposed by the SDK.
 </ResponseField>
