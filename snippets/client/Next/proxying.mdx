@@ -109,7 +109,7 @@ export default async function handler(
 const inst = new StatsigClient(clientSdkKey, user, {
   networkConfig: {
     logEventUrl: '/api/proxy/search',
-    initializeUrl: '/api/statsig-proxy/initialize',
+    initializeUrl: '/api/proxy/initialize',
     logEventCompressionMode: 'Forced',
   },
   disableCompression: true,
