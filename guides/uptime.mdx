@@ -1,6 +1,6 @@
 ---
 sidebarTitle: Maximize uptime
-title: Paranoid about uptime? 9 things to do!
+title: Paranoid about uptime? 10 things to do!
 keywords:
   - owner:brock
 last_update:
@@ -11,7 +11,7 @@ Statsig serves billions of individual user interactions. Along the way, we desig
 
 Collected here are a set of best practices that help maximize your uptime - across potential issues including failed client connectivity (to your server), failed server connectivity to Statsig and buggy or deprecated code. You can also read more about how we [design for failure](https://statsig.com/blog/designing-for-failure).
 
-1. Feature Gates and Experiments have **default values** that are used in an evaluation . You can disable Feature Gates and set a default value for it; however if your SDK has no information this will default to false. For experiments you specify default values in code. Validate these work and don’t break the experience.
+1. Feature Gates and Experiments have **default values** that are used in an evaluation . You can disable Feature Gates and set a default value for it; however if your SDK has no information this will default to false. For experiments you specify default values in code. Validate these work and don't break the experience.
 
 2. **Test** your code with all the possible assignments in Experiments and Feature Gates. Use overrides to easily do this, along with the inline, real time diagnostics. Don't roll out your experiment and then find a variant (group) that crashes.
 
@@ -29,4 +29,6 @@ Collected here are a set of best practices that help maximize your uptime - acro
    1. Deploy the Statsig [Forward Proxy](https://docs.statsig.com/server/concepts/forward_proxy/) so your servers connect to this endpoint to download config, instead of from Statsig directly. This also reduces network traffic and improves consistency of configuration across your server fleet.
    2. Reduce connectivity related SDK initialization failures by providing config locally using a [dataAdapter](/server/concepts/data_store#dataadapter-or-datastore).
 
-9. **Test for failure conditions** explicitly (e.g. no Statsig client or server connectivity). Run a disaster simulation (e.g. break DNS routing to Statsig within your data center) and test client app behavior when Statsig is unreachable. Also understand and embrace the variety of capabilities we’ve built to support different kinds of [testing](/guides/testing). 
+9. **Test for failure conditions** explicitly (e.g. no Statsig client or server connectivity). Run a disaster simulation (e.g. break DNS routing to Statsig within your data center) and test client app behavior when Statsig is unreachable. Also understand and embrace the variety of capabilities we've built to support different kinds of [testing](/guides/testing).
+
+10. **Implement a custom proxy** to prevent adblockers from blocking events or initialization in client SDKs. Adblockers can interfere with Statsig's default endpoints, preventing your application from logging events or initializing properly. By setting up a [custom proxy](/infrastructure/api_proxy/custom_proxy) on your own domain with custom endpoint names, you can ensure that tracking blockers don't intercept your API calls and that you capture all necessary data.
