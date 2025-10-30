@@ -102,7 +102,7 @@ export default async function handler(
 // Assign URLs when creating the client
 const inst = new StatsigClient(clientSdkKey, user, {
   networkConfig: {
-    logEventUrl: '/statsig-proxy/events',
+    logEventUrl: '/proxy/search',
     initializeUrl: '/statsig-proxy/initialize',
     logEventCompressionMode: 'Forced',
   },
