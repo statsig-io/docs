@@ -61,18 +61,25 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
 
 - In Function associations section,
 
-  - Add a Lambda@Edge function to Origin request to rewrite the `Host` header to `api.statsig.com`. Please refer to [the AWS tutorial on creating a Lambda@Edge function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html).
+  - Add a Lambda@Edge function to Origin request to rewrite the `Host` header to `api.statsig.com` and rewrite custom endpoint paths to Statsig endpoints. Please refer to [the AWS tutorial on creating a Lambda@Edge function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html).
 
   <Frame>
     <img src="https://user-images.githubusercontent.com/7304774/178591897-a93a046a-c76f-4fc6-ab0c-86452de99be7.png" alt="Function associations section" />
   </Frame>
 
-You can use the following javascript code snippet in your Lambda@Edge function:
+You can use the following javascript code snippet in your Lambda@Edge function. This example rewrites a custom endpoint `/v1/my-product-analytics` to the Statsig endpoint `/v1/log_event`:
 
 ```javascript
 export const handler = async (event, context, callback) => {
   const request = event.Records[0].cf.request;
   request.headers.host[0].value = "api.statsig.com";
+  
+  // Rewrite custom endpoint to Statsig endpoint
+  // Replace 'my-product-analytics' with your custom endpoint name
+  if (request.uri.includes('/v1/my-product-analytics')) {
+    request.uri = request.uri.replace('/v1/my-product-analytics', '/v1/log_event');
+  }
+  
   return callback(null, request);
 };
 ```
