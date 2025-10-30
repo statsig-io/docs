@@ -14,7 +14,15 @@ Instead of sending API requests directly to Statsig, you can set up your own env
 There are many ways to set up custom proxies. We are showing instructions for a few common service providers here.
 
 <Warning>
-Regardless of implementation, your proxy should just passthrough and not try to deserialize the payload. This will improve robustness by reducing risk of integration issues from Server SDK -> Proxy -> Client SDK, as well as, improve efficiency of the proxy. For example, client SDKs may change encoding to compress payloads, which would break if your proxy does not accept the new format (e.g. gzip)
+**Important: Default Endpoints Are Blocked**
+
+The default Statsig endpoints (like `/v1/log_event`) are commonly blocked by tracking blockers. To ensure your proxy works effectively:
+
+1. **Use a custom endpoint name** specific to your product (e.g., `/v1/my-product-analytics` instead of `/v1/log_event`)
+2. **Rewrite the URL in your proxy** to map your custom endpoint to the actual Statsig endpoint (`log_event`)
+3. **Do not use passthrough** for the endpoint path - you must rewrite it
+
+Additionally, your proxy should not try to deserialize the payload body. This will improve robustness by reducing risk of integration issues from Server SDK -> Proxy -> Client SDK, as well as improve efficiency of the proxy. For example, client SDKs may change encoding to compress payloads, which would break if your proxy does not accept the new format (e.g. gzip).
 </Warning>
 
 ## Approaches
