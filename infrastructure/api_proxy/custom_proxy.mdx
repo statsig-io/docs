@@ -138,17 +138,24 @@ Once you are logged into Cloudflare. You can follow these steps:
       <img src="https://github.com/statsig-io/statsig-kit/assets/95646168/8c971a58-5bb7-4faa-a7ba-4574ab29f0ce" alt="3-cloudflare-edit-code" />
     </Frame>
 
-5.  Copy and paste the following snippet into the `worker.js` file, then hit "Deploy".
+5.  Copy and paste the following snippet into the `worker.js` file, then hit "Deploy". This example rewrites a custom endpoint `/v1/my-product-analytics` to the Statsig endpoint `/v1/log_event`:
 
     ```javascript
     export default {
       async fetch(request, _env, _ctx) {
         const url = new URL(request.url);
+        
+        // Rewrite custom endpoint to Statsig endpoint
+        // Replace 'my-product-analytics' with your custom endpoint name
+        let pathname = url.pathname;
+        if (pathname.includes('/v1/my-product-analytics')) {
+          pathname = pathname.replace('/v1/my-product-analytics', '/v1/log_event');
+        }
 
         const original = new Request(request);
         original.headers.delete("cookie");
         return fetch(
-          `https://statsigapi.net${url.pathname}${url.search}`,
+          `https://statsigapi.net${pathname}${url.search}`,
           original
         );
       },
