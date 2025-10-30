@@ -13,7 +13,7 @@ export async function POST(request: Request): Promise<Response> {
 }
 ```
 
-```ts app/statsig-proxy/log_event/route.ts
+```ts app/statsig-proxy/events/route.ts
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
 
 export async function POST(request: Request): Promise<Response> {
