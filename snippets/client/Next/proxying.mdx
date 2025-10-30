@@ -1,6 +1,8 @@
 <Tabs>
 <Tab title="App Router">
-```ts app/statsig-proxy/initialize/route.ts
+```ts app/proxy/initialize/route.ts
+// Note: Using generic path names like "proxy" instead of "statsig-proxy"
+// to prevent ad blockers from blocking these requests
 import { generateBootstrapValues } from './statsig-backend';
 
 export async function POST(request: Request): Promise<Response> {
