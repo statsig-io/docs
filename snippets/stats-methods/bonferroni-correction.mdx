@@ -13,12 +13,21 @@ You can choose to apply these based on one or both of the following:
   - Significance level of 0.05
   - 2 Primary Metrics and 4 Secondary Metrics
   - 60% of α applied to Primary Metrics
-  - Each Primary Metric is calculated with α = 0.6 * 0.05 / 2 = 0.015
-  - Each Secondary Metric is calculated with α = 0.4 * 0.05 / 4 = 0.005
+  - Each Primary Metric is calculated with α = 0.6 \* 0.05 / 2 = 0.015
+  - Each Secondary Metric is calculated with α = 0.4 \* 0.05 / 4 = 0.005
 - If both corrections are selected, they're applied on top of each other. In the example above, if we also wanted to correct for having 2 tests groups, we would further divide each α by 2.
 
 When analyzing dimensions, if correction for metrics is enabled, it's applied separately for the dimensional breakdown. We use the number of dimensions as the total metric count to correct for _in the dimensional analysis_, but it does not impact topline metrics.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/038d75eb-5745-4587-b180-86b88594ccb9" alt="Bonferroni correction configuration interface" />
+  <img
+    src="https://github.com/statsig-io/docs/assets/31516123/038d75eb-5745-4587-b180-86b88594ccb9"
+    alt="Bonferroni correction configuration interface"
+  />
 </Frame>
+
+## How do my experiment metrics look now?
+
+In the experiment scorecard section, confidence intervals will be derived from (1 - adjusted α) for applicable metrics. If you hover over a confidence interval, the adjusted α will be displayed alongside other relevant metric details.
+
+In the experiment explore section, if applicable to the selections you make, a new adjusted α will be calculated and these confidence intervals will use (1 - adjusted α).
