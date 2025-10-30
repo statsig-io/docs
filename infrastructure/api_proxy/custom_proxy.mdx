@@ -18,7 +18,7 @@ There are many ways to set up custom proxies. We are showing instructions for a 
 
 The default Statsig endpoints (like `/v1/log_event`) are commonly blocked by tracking blockers. To ensure your proxy works effectively:
 
-1. **Use a custom endpoint name** specific to your product (e.g., `/v1/my-product-analytics` instead of `/v1/log_event`)
+1. **Use a custom endpoint name** specific to your product (e.g., `/v1/my-product-data` instead of `/v1/log_event`)
 2. **Rewrite the URL in your proxy** to map your custom endpoint to the actual Statsig endpoint (`log_event`)
 3. **Do not use passthrough** for the endpoint path - you must rewrite it
 
