@@ -52,7 +52,9 @@ export default async function handler(
 }
 ```
 
-```ts pages/api/statsig-proxy/events.ts
+```ts pages/api/proxy/search.ts
+// Note: Using generic path names like "search" instead of "log_event" or "events"
+// to prevent ad blockers from blocking these requests
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
@@ -62,7 +64,7 @@ export default async function handler(
   res: NextApiResponse<string>,
 ): Promise<void> {
   if (req.method !== 'POST') {
-    res.status(400).send('/events only supports POST');
+    res.status(400).send('/search only supports POST');
     return;
   }
 
