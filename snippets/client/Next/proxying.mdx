@@ -13,7 +13,9 @@ export async function POST(request: Request): Promise<Response> {
 }
 ```
 
-```ts app/statsig-proxy/events/route.ts
+```ts app/proxy/search.ts
+// Note: Using generic path names like "search" instead of "log_event" or "events"
+// to prevent ad blockers from blocking these requests
 type ExtendedRequestInit = RequestInit & { duplex?: 'half' | 'full' };
 
 export async function POST(request: Request): Promise<Response> {
