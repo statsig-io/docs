@@ -1,54 +1,64 @@
 ---
 title: Online Evals
 ---
-## What are Online Evals
-Online evals let you grade your model output in production on real world use cases. You can run the "live" version of a prompt, but can also shadow run "candidate" versions of a prompt, without exposing users to them. Grading works directly on the model output, and has to work without a ground truth to compare against. 
 
-Steps to do this in Statsig - 
+## What are Online Evals
+
+Online evals let you grade your model output in production on real world use cases. You can run the "live" version of a prompt, but can also shadow run "candidate" versions of a prompt, without exposing users to them. Grading works directly on the model output, and has to work without a ground truth to compare against.
+
+Steps to do this in Statsig -
+
 1. Create a Prompt. This contains the prompt for your task (e.g. Summarize ticket content. Don't include email addresses or credit cards in the summary). Create a v2 prompt that improves on this.
-2. In your app, use and produce model output using the v1 and v2 prompts. The output from v1 is rendered to the user; the output from v1 and v2 are judged by an LLM-as-a-judge. 
-3. The grades from  v1 and v2 are logged back to Statsig and can be compared there. 
+2. In your app, use and produce model output using the v1 and v2 prompts. The output from v1 is rendered to the user; the output from v1 and v2 are judged by an LLM-as-a-judge.
+3. The grades from v1 and v2 are logged back to Statsig and can be compared there.
 
 Note: Online Evals is currently in beta. If you're interested in this feature, reach out to us on Slack!
 
-
 ## Create/analyze an online eval in 15 minutes
 
-<Note>
-(Coming soon: How to start an online eval in 15 minutes)
-</Note>
+<Note>(Coming soon: How to start an online eval in 15 minutes)</Note>
 
-**1. Identify your Prompt Set**
+**1. Identify the prompts you want to serve**
 
-In Prompts, there are three prompt types: Live, Candidate, and Archive. Before starting an online evaluation, it’s important to organize your prompt versions into these categories:
+In Prompts, there are four prompt types: Live, Candidate, Draft and Archive. Before starting an online evaluation, it’s important to organize your prompt versions into these categories:
 
 - **Live** prompt is the version actively served to users.
 
-- **Candidate** prompts are not shown to users but run in the background. The user’s input is still processed against them, and their outputs are logged and graded alongside the live version.
+- **Candidate** prompts are not shown to users but still served to your code. The user’s input is still processed against them, and their outputs are logged and graded alongside the live version.
 
-- **Archive** prompts are inactive versions that are not served and kept offline.
+- **Draft** prompts are the offline prompts you will iterate on in console, before deciding that you want to serve them. In order to start serving them, you should promote them to "Candidate" or "Live"
 
-Your prompt set will comprise of the Live version and Candidate versions.
+- **Archive** prompts are inactive versions that are not iterated on and kept offline.
+
+Prompts that you can access in code will comprise of the Live version and Candidate versions.
 
 ![Image](/images/ai/version-types.png)
 
-**2. Load your prompt set in code and run completions on user input**
+**2. Load your prompts in code and run completions on user input**
 
-In the example below, we demonstrate how to integrate your prompt set into an application using the Statsig SDKs. Any macros in your prompts will be replaced with the user input. The live version of the prompt is extracted and served to the user, with completions run on it. At the same time, completions are also run in the background on the shadow (candidate) prompts for evaluation and comparison.
+In the example below, we demonstrate how to integrate your prompts in your application using the [Statsig AI SDKs](/ai-evals/node). Once you grab your Live or Candidate prompts, pass in the approriate values to replace your macros in your prompt (\{\{input\}\} should be replaced by the user input).
+You can then run completions on each of these prompts.
 
 ```js
-const promptSet = statsig.getPromptSet("ai_config_name", userInput);
+const prompts = statsigAI.getPrompt(user, "ai_config_name");
 
 // get the live prompt
-const livePrompt = promptSet.getLive();
+const livePrompt = prompts.getLive();
 
-// get the shadow prompts
-const shadowPrompts = promptSet.getShadows();
+// get the candidate prompts
+const candidatePrompts = prompts.getCandidates();
+
+// get the live prompt messages
+const livePromptMessages = livePrompt.getPromptMessages({ input: userInput });
 
 // run completions on your live prompt and show the output to the user
-const liveOutput = client.completions.create(my_model, livePrompt);
+const liveOutput = client.completions.create(
+  my_model,
+  livePromptMessages,
+  (temperature = livePrompt.getTemperature())
+);
 
-// simulateneously run completions on the shadow prompts to get their output
+// simulateneously run completions on the candidate prompts to get their output
 ```
 
 **3. Score your output using graders**
@@ -60,16 +70,9 @@ Once you have a completion’s output, it should be evaluated using a grader—e
 You can log your scores as events in Statsig to see the results in your console
 
 ```js
-// log results for the live version
-Statsig.logEvent("<grader_name>", "<ai_config_name>", {
-  score: "<live_version_score> [0-1]",
-  version_name: "<version_name>",
-});
-
-// log results for all the shadow versions too
-Statsig.logEvent("<grader_name>", "<ai_config_name>", {
-  score: "<shadow_version_score>",
-  version_name: "<version_name>",
+// Log the results of the eval
+statsigAI.logEvalGrade(user, livePromptVersion, 0.5, "my_grader", {
+  session_id: "1234567890",
 });
 ```
 
