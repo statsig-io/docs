@@ -46,6 +46,14 @@
         environment: { tier: environment },
         custom: { "newDocs": true }
       },
+      {
+        disableCompression: true,
+        disableStatsigEncoding: true,
+        networkConfig: {
+          api: "https://docs-init-worker.brock-780.workers.dev/v1",
+          logEventUrl: "https://prodregistryv2.org/v1/rgstr"
+        }
+      }
     );
 
     runStatsigSessionReplay(client);
