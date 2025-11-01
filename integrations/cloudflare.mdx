@@ -191,7 +191,7 @@ For best practice:
 The following line initializes the client by loading feature gate and experiment configurations directly from your Cloudflare KV store.
 
 ```bash
-const initResult = await client.initializeFromKv(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
+const initResult = await client.initializeFromKV(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
 ```
 
 The client initialization takes two arguments:
