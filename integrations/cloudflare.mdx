@@ -304,7 +304,7 @@ And there you have it - a working Cloudflare KV integration for Statsig.
 
 ### Polling for updates
 The SDK cannot poll for updates across requests since [**Cloudflare does not allow for timers**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading).
-To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudlflare client.
+To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudflare client.
 
 ### Flushing events
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.

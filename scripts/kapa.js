@@ -8,6 +8,7 @@ script.setAttribute("data-project-logo", "https://statsig.com/images/sections/mu
 script.setAttribute("data-modal-image", "https://raw.githubusercontent.com/statsig-io/docs/f263b88116852d7c7174b82df1b528609a1ea073/static/img/favicon.svg");
 script.setAttribute("data-modal-lock-scroll", "false");
 script.setAttribute("data-modal-disclaimer", "Statsig Docs AI answers questions using documentations, API references, blogs, and videos. Responses are AI-generated, and we encourage you to rate them to let us know what you think!");
+script.setAttribute("data-uncertain-answer-callout", "Sorry, my knowledge isn't enough to give you a confident answer yet. Please reach out on [Statsig slack support](https://statsig.com/slack) if you need more help with this question.");
 script.setAttribute("data-answer-feedback-info-text", "All feedback is reviewed by the Statsig team.");
 script.setAttribute("data-modal-full-screen-on-mobile", "false");
 script.setAttribute("data-kapa-branding-text", "Powered by kapa.ai and Statsig");
