@@ -5,6 +5,6 @@ import { StatsigAI } from '@statsig/statsig-ai';
 const statsig = new Statsig('YOUR_SERVER_SECRET_KEY', { environment: 'production' });
 await statsig.initialize();
 
-const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY', statsig}, statsigAIOptions);
+const statsigAI = new StatsigAI({statsig});
 await statsigAI.initialize();
 ```

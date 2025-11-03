@@ -1,4 +1,4 @@
-Optionally, you can configure [StatsigOptions](/server-core/node-core#statsig-options) and [StatsigAI](#ai-options) options:
+Optionally, you can configure [StatsigOptions](/server-core/node-core#statsig-options) for your Statsig instance:
 
 ```js
 import { StatsigAI, StatsigAIOptions } from '@statsig/statsig-ai';
@@ -9,11 +9,7 @@ const statsigOptions: StatsigOptions = {
   environment: 'production',
 };
 
-// if you would like to configure any statsigAI options, this is optional:
-const statsigAIOptions: StatsigAIOptions = {
-  enableDefaultOtel: true,
-};
-const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY', statsigOptions}, statsigAIOptions);
+const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY', statsigOptions});
 await statsigAI.initialize();
 
 // if you would like to use any statsig methods, you can access the statsig instance from the statsigAI instance:
