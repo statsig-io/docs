@@ -28,15 +28,21 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 1. Follow the [Databricks documentation](https://docs.databricks.com/integrations/jdbc-odbc-bi.html#get-connection-details-for-a-cluster) to get the hostname and http path of the cluster you'll use to run your experimental analysis. You may want to create a specific cluster for this use case.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/102695539/242474157-e6329ea8-92ae-43af-95dc-7bce2a26a3e6.png" alt="credentials" />
+  <img
+    src="https://user-images.githubusercontent.com/102695539/242474157-e6329ea8-92ae-43af-95dc-7bce2a26a3e6.png"
+    alt="credentials"
+  />
 </Frame>
 
 <br />
 
-2. Follow [these instructions](https://docs.databricks.com/dev-tools/auth.html#databricks-personal-access-tokens) to get the personal access token that will be used to calculate experiment results on your warehouse. Alternatively, you can follow [these instructions](https://docs.databricks.com/en/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) to get a personal access token for a service principal. 
+2. Follow [these instructions](https://docs.databricks.com/dev-tools/auth.html#databricks-personal-access-tokens) to get the personal access token that will be used to calculate experiment results on your warehouse. Alternatively, you can follow [these instructions](https://docs.databricks.com/en/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) to get a personal access token for a service principal.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/188731186-ecdc0872-de06-4576-b387-fa08bdca447d.png" alt="databricks info" />
+  <img
+    src="https://user-images.githubusercontent.com/108023879/188731186-ecdc0872-de06-4576-b387-fa08bdca447d.png"
+    alt="databricks info"
+  />
 </Frame>
 
 3. Create or choose a database to use. For example, you could run this sql in a notebook:
@@ -45,6 +51,21 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 staging_database_name = '<my_name>'
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {staging_database_name}")
 ```
+
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+
+### Additional Setup for Warehouse Explorer
+
+Warehouse Explorer makes it easy to find and bring data from any table into Statsig for ad-hoc analysis.
+
+When Unity Catalog is enabled, Statsig will read from `<CATALOG_NAME>.information_schema.columns`. You can provide the catalog name in Data Connection settings, under the Advanced section.
+Also, you may need to provide read access to the catalog and the `information_schema` schema:
+
+```sql
+  GRANT USE CATALOG ON CATALOG <CATALOG_NAME> TO <STATSIG_USER>;
+  GRANT USE SCHEMA ON SCHEMA <CATALOG_NAME> .information_schema TO <STATSIG_USER>;
+```
+
+`<STATSIG_USER>` should be the user associated with the access token you have provided to Statsig above.

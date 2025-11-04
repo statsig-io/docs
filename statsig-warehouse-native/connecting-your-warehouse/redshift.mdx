@@ -17,20 +17,26 @@ To set up connection with Redshift, Statsig needs the following information
 - A staging schema that Statsig can write results to
 
 <Note>
-SHA256 passwords are not currently supported, please utilize MD5 to avoid issues.
+  SHA256 passwords are not currently supported, please utilize MD5 to avoid
+  issues.
 </Note>
 
 You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image). The service user should be able to read necessary experiment data, and be able to write to the Statsig staging schema you specify.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png" alt="Frame 1" />
+  <img
+    src="https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png"
+    alt="Frame 1"
+  />
 </Frame>
 
 When you save the connection, we will run a series of tiny commands to test permissions -- e.g. creating a temp table, running a select/delete statement on that table, and then dropping that table.
 
-
 <Note>
-The provided Service Account will require the following attributes: `enable_case_sensitive_identifier`, `enable_case_sensitive_super_attribute`. If these are not already set, Statsig will set them to TRUE upon setup completion.
+  The provided Service Account will require the following attributes:
+  `enable_case_sensitive_identifier`, `enable_case_sensitive_super_attribute`.
+  If these are not already set, Statsig will set them to TRUE upon setup
+  completion.
 </Note>
 
 ## SSH Tunneling
@@ -47,3 +53,16 @@ Statsig will use this information to generate an SSH key. Please add this genera
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+
+### Additional Setup for Warehouse Explorer
+
+Warehouse Explorer makes it easy to find and bring data from any table into Statsig for ad-hoc analysis.
+
+To enable the Warehouse Explorer analytics feature, you may need to provide Statsig with additional permission to query the `pg_table_def` metadata. Only schemas that Statsig has read access to will be included in query results. A superuser or admin can grant access to read additional relevant schemas and table metadata in `pg_table_def` by running
+
+```sql
+  GRANT USAGE ON SCHEMA <RELEVANT_SCHEMA> TO <STATSIG_USER>;
+  GRANT SELECT ON ALL TABLES IN SCHEMA <RELEVANT_SCHEMA> TO <STATSIG_USER>;
+```
+
+`<STATSIG_USER>` should be the service user username that you provided to Statsig above. `<RELEVANT_SCHEMA>` is the name of the schema you'd like to see included in Warehouse Explorer results
