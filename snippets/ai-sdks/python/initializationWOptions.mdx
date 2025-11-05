@@ -8,9 +8,9 @@ options = StatsigOptions()
 options.environment = 'production'
 
 statsig = Statsig('YOUR_SERVER_SECRET_KEY', options)
-statsig.initialize().wait()
+statsig.initialize()
 
 statsig_ai = StatsigAI(statsig_source=StatsigAttachConfig(statsig=statsig))
-statsig_ai.initialize().wait()
+statsig_ai.initialize()
 ```
 

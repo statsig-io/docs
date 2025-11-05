@@ -11,7 +11,7 @@ statsig_options.environment = 'production'
 statsig_ai_options.statsig_options = statsig_options
 
 statsig_ai = StatsigAI(statsig_source=StatsigCreateConfig(server_secret_key='YOUR_SERVER_SECRET_KEY', statsig_options=statsig_options))
-statsig_ai.initialize().wait()
+statsig_ai.initialize()
 
 # if you would like to use any statsig methods, you can access the statsig instance from the statsig_ai instance:
 gate = statsig_ai.get_statsig().check_gate(statsig_user, 'my_gate')
