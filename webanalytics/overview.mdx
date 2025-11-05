@@ -184,7 +184,7 @@ const client = new StatsigClient(
 
 Statsig automatically captures Core Web Vitals metrics that are essential for measuring user experience and SEO performance:
 
-### The Four Core Web Vitals
+### Core Web Vitals Metrics
 
 - **CLS (Cumulative Layout Shift)** - Measures visual stability by tracking unexpected layout shifts during page load. Lower scores indicate better user experience.
 
@@ -193,6 +193,8 @@ Statsig automatically captures Core Web Vitals metrics that are essential for me
 - **LCP (Largest Contentful Paint)** - Measures loading performance by tracking when the largest content element becomes visible. This metric correlates strongly with user-perceived load times.
 
 - **TTFB (Time to First Byte)** - Measures server response time by tracking how long it takes to receive the first byte of response from the server. This indicates server and network performance.
+
+- **INP (Interaction to Next Paint)** - Measures responsiveness by tracking the longest latency across user interactions. Lower values mean more consistent, responsive experiences.
 
 These metrics are automatically collected and sent as `auto_capture::web_vitals` events, providing insights into your website's performance and user experience quality.
 
@@ -236,4 +238,3 @@ The autocapture plugin or manual setup can take an optional `options` parameter 
 **eventFilterFunc**:
 - **`event`**: `AutoCaptureEvent` - The event object that is being captured.
 - **`return`**: `bool` - A boolean to return true to capture the event or false to ignore it.
-
