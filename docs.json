@@ -827,7 +827,8 @@
                 "pages": [
                   "access-management/organizations",
                   "access-management/projects",
-                  "access-management/teams"
+                  "access-management/teams",
+                  "access-management/guide"
                 ]
               },
               {
