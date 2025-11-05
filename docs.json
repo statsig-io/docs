@@ -1227,20 +1227,16 @@
       "destination": "/client/concepts/initialize#2-bootstrap-initialization"
     },
     {
-      "source": "/statsig-warehouse-native/features/statistics/confidence-intervals",
-      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals"
-    },
-    {
       "source": "/stats-engine/topline-impact-whn",
-      "destination": "statsig-warehouse-native/features/statistics/topline-impact"
+      "destination": "/statsig-warehouse-native/features/statistics/topline-impact"
     },
     {
       "source": "/stats-engine/methodologies/one-sided-test-whn",
-      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+      "destination": "/statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
     },
     {
       "source": "/stats-engine/metric-deltas-whn",
-      "destination": "statsig-warehouse-native/features/statistics/metric-deltas"
+      "destination": "/statsig-warehouse-native/features/statistics/metric-deltas"
     },
     {
       "source": "/client/iOS/repo-migration-guide",
