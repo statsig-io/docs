@@ -1,0 +1,20 @@
+Optionally, you can configure [StatsigOptions](/server-core/python-core#statsig-options) for your Statsig instance:
+
+```python
+from statsig_ai import StatsigAI, StatsigAIOptions
+from statsig_python_core import StatsigOptions
+
+# if you want to configure any statsig options, this is optional:
+statsig_options = StatsigOptions()
+statsig_options.environment = 'production'
+
+statsig_ai_options = StatsigAIOptions()
+statsig_ai_options.statsig_options = statsig_options
+
+statsig_ai = StatsigAI({'YOUR_SERVER_SECRET_KEY'}, statsig_ai_options)
+statsig_ai.initialize().wait()
+
+# if you would like to use any statsig methods, you can access the statsig instance from the statsig_ai instance:
+gate = statsig_ai.get_statsig().check_gate(statsig_user, 'my_gate')
+```
+

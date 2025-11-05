@@ -1,0 +1,29 @@
+```python
+from statsig_ai import StatsigAI, StatsigAIOptions
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry import trace
+
+statsig_ai_options = StatsigAIOptions()
+statsig_ai_options.enable_default_otel = True
+statsig_ai = StatsigAI({'YOUR_SERVER_SECRET_KEY'}, statsig_ai_options)
+statsig_ai.initialize().wait()
+
+# flush otel events
+statsig_ai.flush().wait()
+
+# or if you are using your own otel instance, you can setup the export to statsig with an OTLP exporter.
+statsig_exporter = OTLPSpanExporter(
+    endpoint='https://api.statsig.com/otlp/v1/traces',
+    headers={
+        'statsig-api-key': 'YOUR_SERVER_SECRET_KEY',
+    },
+)
+
+tracer_provider = TracerProvider()
+tracer_provider.add_span_processor(BatchSpanProcessor(statsig_exporter))
+trace.set_tracer_provider(tracer_provider)
+
+```
+

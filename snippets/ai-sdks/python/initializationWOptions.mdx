@@ -1,0 +1,16 @@
+Optionally, you can configure [StatsigOptions](/server-core/python-core#statsig-options):
+
+```python
+from statsig_python_core import Statsig, StatsigOptions
+from statsig_ai import StatsigAI
+
+options = StatsigOptions()
+options.environment = 'production'
+
+statsig = Statsig('YOUR_SERVER_SECRET_KEY', options)
+statsig.initialize().wait()
+
+statsig_ai = StatsigAI({'statsig': statsig})
+statsig_ai.initialize().wait()
+```
+

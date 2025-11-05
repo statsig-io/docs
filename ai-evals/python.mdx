@@ -1,0 +1,87 @@
+---
+title: Python AI SDK
+sidebarTitle: Python SDK
+description: Statsig's Python SDK for AI Application Configuration & Telemetry
+---
+
+import Installation from '/snippets/ai-sdks/python/installation.mdx'
+import Initialization from '/snippets/ai-sdks/python/initialization.mdx'
+import InitializationManaged from '/snippets/ai-sdks/python/initializationManaged.mdx'
+import InitializationWOptions from '/snippets/ai-sdks/python/initializationWOptions.mdx'
+import InitializationManagedWOptions from '/snippets/ai-sdks/python/initializationManagedWOptions.mdx'
+import WrapOpenAI from '/snippets/ai-sdks/python/wrapOpenAI.mdx'
+import LogEvalResult from '/snippets/ai-sdks/python/logEvalResult.mdx'
+import GetPrompt from '/snippets/ai-sdks/python/getPrompt.mdx'
+import Otel from '/snippets/ai-sdks/python/otel.mdx'
+
+import InitializationPreamble from '/snippets/ai-sdks/initialization.mdx'
+import InitializationManagedPreamble from '/snippets/ai-sdks/initializationManaged.mdx'
+import WrapOpenAIPreamble from '/snippets/ai-sdks/wrapOpenAI.mdx'
+import LogEvalResultPreamble from '/snippets/ai-sdks/logEvalResult.mdx'
+import GetPromptPreamble from '/snippets/ai-sdks/getPrompt.mdx'
+import OtelPreamble from '/snippets/ai-sdks/otel.mdx'
+
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-ai-python" target="_blank" rel="noreferrer">Python AI SDK on Github</a>, 
+<a href="https://pypi.org/project/statsig-ai" target="_blank" rel="noreferrer">PyPI Package</a>
+</Callout>
+
+<Warning>
+This SDK is available in an open beta, and its methods may change. We encourage you to reach out on [Slack](https://statsig.com/slack) for help getting setup, and so we can communicate changes. 
+</Warning>
+
+## Overview 
+
+The Statsig Python AI SDK lets you manage your prompts, online and offline evals, and debug your LLM applications in production. It depends upon the [Statsig Python Server SDK](/server-core/python-core), but provides convenient hooks for AI-specific functionality.
+
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+</Step>
+<Step title="Initialize the SDK">
+If you already have a Statsig instance, you can pass it into the SDK. Otherwise, we'll create an instance for you internally.
+<Tabs> 
+<Tab title="Don't use Statsig">
+<InitializationManagedPreamble/>
+<InitializationManaged/>
+<Accordion title="Initializing With Options">
+<InitializationManagedWOptions/>
+</Accordion>
+</Tab>
+<Tab title="Already have Statsig instance">
+<InitializationPreamble/>
+<Initialization/>
+<Accordion title="Initializing With Options">
+<InitializationWOptions/>
+</Accordion>
+</Tab>
+</Tabs>
+</Step>
+</Steps>
+
+## Using the SDK
+
+<GetPromptPreamble/>
+<GetPrompt/>
+
+<LogEvalResultPreamble/>
+<LogEvalResult/>
+
+<OtelPreamble/>
+<Otel/>
+
+<WrapOpenAIPreamble/>
+<WrapOpenAI/>
+
+## Using other SDK methods
+Whether you passed in a Statsig instance or not, you can access the Statsig instance from the statsig_ai instance, and use its many methods: 
+```python
+# Check a gate value
+gate = statsig_ai.get_statsig().check_gate(statsig_user, 'my_gate')
+
+# Log an event
+statsig_ai.get_statsig().log_event(statsig_user, 'my_event', value=1)
+```
+
+Refer to the [Statsig Python SDK](/server-core/python-core) docs for more information on how to use the Core Statsig SDK methods, plus information on advanced setup + singleton usage.
+

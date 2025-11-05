@@ -1,0 +1,11 @@
+```python
+from statsig_python_core import Statsig
+from statsig_ai import StatsigAI
+
+statsig = Statsig('YOUR_SERVER_SECRET_KEY', {'environment': 'production'})
+statsig.initialize().wait()
+
+statsig_ai = StatsigAI({'statsig': statsig})
+statsig_ai.initialize().wait()
+```
+

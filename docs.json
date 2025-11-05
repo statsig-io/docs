@@ -763,7 +763,8 @@
             "group": "AI SDKs",
             "icon": "brain",
             "pages": [
-              "ai-evals/node"
+              "ai-evals/node",
+              "ai-evals/python"
             ]
           },
           {
