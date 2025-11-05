@@ -10,6 +10,6 @@ statsigAI.logEvalGrade(user, livePromptVersion, 0.5, 'my_grader', {
   session_id: '1234567890',
 });
 
-// flush otel events or wait for the configured otel exporter flush interval
+// flush eval grade events to statsig
 await statsigAI.flush();
 ```
