@@ -193,3 +193,5 @@ Deduplicating records can lead to biased results, so Statsig preforms two extra 
 - Statsig will check your deduplication rate and warn you if it is unusually high. It's expected that some secondary IDs will have multiple logged-out IDs due to users
   using different devices or clearing browser history
 - Statsig will perform a chi-squared test evaluating if the deduplication rate is identical across arms of the experiment. In some cases, an experiment may cause more users to come back (for example an email resurrection campaign), in which case duplicates are expected to be more frequent in that arm and can be a positive outcome. In this case, you can perform first-touch attribution to maintain a common identifier
+
+Breakdowns of metric dimensions for experiment results is only supported on properties associated with primary ID types. Secondary ID type dimension breakdown for experiment results and custom queries is currently not supported.
