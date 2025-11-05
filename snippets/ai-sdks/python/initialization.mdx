@@ -1,11 +1,11 @@
 ```python
 from statsig_python_core import Statsig
-from statsig_ai import StatsigAI
+from statsig_ai import StatsigAI, StatsigAttachConfig
 
-statsig = Statsig('YOUR_SERVER_SECRET_KEY', {'environment': 'production'})
+statsig = Statsig('YOUR_SERVER_SECRET_KEY', StatsigOptions(environment='production'))
 statsig.initialize().wait()
 
-statsig_ai = StatsigAI({'statsig': statsig})
+statsig_ai = StatsigAI(statsig_source=StatsigAttachConfig(statsig=statsig))
 statsig_ai.initialize().wait()
 ```
 

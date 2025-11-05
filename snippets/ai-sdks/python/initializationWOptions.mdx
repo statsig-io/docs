@@ -2,7 +2,7 @@ Optionally, you can configure [StatsigOptions](/server-core/python-core#statsig-
 
 ```python
 from statsig_python_core import Statsig, StatsigOptions
-from statsig_ai import StatsigAI
+from statsig_ai import StatsigAI, StatsigAttachConfig
 
 options = StatsigOptions()
 options.environment = 'production'
@@ -10,7 +10,7 @@ options.environment = 'production'
 statsig = Statsig('YOUR_SERVER_SECRET_KEY', options)
 statsig.initialize().wait()
 
-statsig_ai = StatsigAI({'statsig': statsig})
+statsig_ai = StatsigAI(statsig_source=StatsigAttachConfig(statsig=statsig))
 statsig_ai.initialize().wait()
 ```
 

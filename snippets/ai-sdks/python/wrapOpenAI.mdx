@@ -1,21 +1,2 @@
-```python
-from statsig_ai import wrap_openai, StatsigAI
-import openai
-
-# if you have your own otel, you do not need an statsig_ai instance here.
-# But if you want to use the default Otel on statsig_ai, you need to initialize the SDK.
-statsig_ai = StatsigAI({'YOUR_SERVER_SECRET_KEY'})
-statsig_ai.initialize().wait()
-
-client = wrap_openai(
-    openai.OpenAI(
-        api_key='OPENAI_API_KEY',
-    )
-)
-
-response = client.chat.completions.create(
-    model='gpt-4',
-    messages=[{'role': 'user', 'content': 'Hello, world!'}],
-)
-```
+OpenAI wrapper is not supported in the Python AI SDK yet. Coming soon!
 
