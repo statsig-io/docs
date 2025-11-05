@@ -2,7 +2,7 @@
 import { Statsig } from '@statsig/statsig-server-core-node';
 import { StatsigAI } from '@statsig/statsig-ai';
 
-const statsig = new Statsig('YOUR_SERVER_SECRET_KEY', { environment: 'production' });
+const statsig = new Statsig('YOUR_SERVER_SECRET_KEY');
 await statsig.initialize();
 
 const statsigAI = new StatsigAI({statsig});
