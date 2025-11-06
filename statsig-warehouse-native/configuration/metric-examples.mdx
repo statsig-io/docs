@@ -11,7 +11,7 @@ For customers transitioning from other Warehouse Native Vendors, the format of m
 
 For customers migrating from in-house systems, there may be gaps in translation between how they think about experiment metrics and how Statsig handles them. This page is intended as a collection of common use cases and how they're handled in Statsig.
 
-## User Revenue from a Wide Table
+## Average User Revenue from a Wide Table
 
 In many cases, companies will have a primary source-of-truth table about user engagement with one row per user-day and many columns representing actions taken or other values. This is very easy to integrate with Statsig.
 
@@ -49,7 +49,7 @@ Statsig provides a description of this in-product for any user who wants to lear
 
 
 
-## Current Account Value
+## Average Current Account Value
 
 Often, you will want to understand if your experiment has altered the "state" of users. Let's say you care about the current account value today on users in test vs. control of your experiment - have you helped users grow their account?
 
@@ -81,7 +81,7 @@ Statsig provides a description of this in-product for any user who wants to lear
 
 
 
-## Users D7 Participation
+## Users' D7 Participation Rate
 
 A common metric in experimentation is measuring whether exposed users take specific actions within a defined time window.
 
