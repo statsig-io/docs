@@ -19,8 +19,7 @@ No. Layers are fixed once an experiment starts to preserve the integrity of resu
 
 ### Can I rename an experiment or gate after creating it?
 
-No. Renaming configs that are already referenced in code risks breaking user experiences. If you need a new name, create a new config. (Metrics are the exception—they have display names only.)
-
+You can rename an experiment or gate after it’s created. However, only the display name can be changed - the ID (which is referenced in your code) remains fixed to prevent breaking existing implementation. Note: Metrics are an exception since they use display names only.
 ---
 
 ### Why define parameters instead of just reading the experiment group?
