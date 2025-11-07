@@ -60,10 +60,9 @@ See the docs sidebar to find the documentation for the data warehouse of your ch
 
 ### Data Mapping
 
-After connecting and providing a SQL query, we ask you to map columns in your data output to fields Statsig expects and run a small sample query to make sure that there aren't any basic issues with data types.
+After connecting and providing a SQL query, you'll map columns in your data output to fields Statsig expects. We'll run a small sample query to ensure there are no basic issues with data types. To process data correctly, Statsig requires each ingestion to include columns for unit_id, event_name, timestamp, and metadata.
 
-<img src="https://user-images.githubusercontent.com/87334575/199855255-ebd683fb-bf3b-4825-9f2b-63913e1dda89.png" width="700"/>
-<img src="https://user-images.githubusercontent.com/87334575/199855270-a59ead1a-4fd7-4d99-bd1f-a511ca21750a.png" width="700"/>
+<img src="/images/ingestions-3.png" width="700"/>
 
 See [here](https://docs.statsig.com/data-warehouse-ingestion/data_mapping) for more information.
 
@@ -75,13 +74,15 @@ We will check the underlying source table for changes. For up to 3 days after in
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
-<img src="https://user-images.githubusercontent.com/87334575/199854289-dec60731-b54e-43d1-92a0-2fbd53f47087.png" width="400"/>
-
-Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
+To change your ingestion schedule or start a backfill, click the ellipses at the end of the data connection and navigate to these menus. Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
 
 <Note>
 Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
 </Note>
+
+### Troubleshooting Ingestions
+
+If any ingestion errors occur, Statsig will notify you in project and direct your to the Ingestions page. You can diagnose an error directly in Statsig by following the step-by-step triage flow. Common errors may include missing permissions and out-of-date credentials.
 
 ### API Triggered Ingestion (mark_data_ready)
 
