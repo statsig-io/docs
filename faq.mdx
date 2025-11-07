@@ -19,7 +19,8 @@ No. Layers are fixed once an experiment starts to preserve the integrity of resu
 
 ### Can I rename an experiment or gate after creating it?
 
-You can rename an experiment or gate after it’s created. However, only the display name can be changed - the ID (which is referenced in your code) remains fixed to prevent breaking existing implementation. Note: Metrics are an exception since they use display names only.
+Yes, you can rename experiments and gates after creating them. The display name can be changed at any time, but the ID (which is referenced in your code) remains immutable to prevent breaking existing implementations.
+
 ---
 
 ### Why define parameters instead of just reading the experiment group?
@@ -46,7 +47,7 @@ In short-lived environments (scripts, edge workers), the process may exit before
 
 ---
 
-### My language isn’t listed. Can I still use Statsig?
+### My SDK language isn’t listed. Can I still use Statsig?
 
 Likely yes. Let us know in the [Statsig Slack community](https://statsig.com/slack) and we’ll discuss options.
 
