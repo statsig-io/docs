@@ -1,21 +1,21 @@
 ---
-title: Data Exports
+title: Export Results
 ---
 ## Overview
-Your data is your data. Statsig makes it easy to export both the reports and the raw data your feature rollouts and experiments generate. Scenarios we enable include auditing/reproducing results or taking the raw data back into your warehouse for ad-hoc analysis (e.g. to study confounding data or join with a different dataset).
+Your data is your data. Statsig makes it easy to export both the reports and the raw data your feature rollouts and experiments generate.
 
 ## How to
-1. [Download Pulse results](/pulse/export#how-to-export-pulse-data) from the Console as a CSV file - including a summary view, exposures and the raw data. This is meant for one-off downloads/analysis. 
+1. [Download experiment results](/pulse/export#how-to-export-pulse-data) from the Console as a CSV file - including a summary view, exposures and the raw data. This is meant for one-off downloads/analysis. 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/31516123/179842166-0c8945ea-d93c-4aa6-96d9-4ea5a2e52437.png" alt="Pulse results export interface" />
+  <img src="/images/exports-events.png" alt="Pulse results export interface" />
 </Frame>
 
 2. [Programmatically export the data underlying Pulse](/console-api/daily-reports).
-3. For ongoing data exports we support [data integrations](/integrations/introduction) via customer data platforms like Segment, RudderStack and mParticle. There is also a [generic webhook](/integrations/event_webhook) if you want to build your own integration. 
+3. For ongoing data exports we support [data integrations](/integrations/introduction) via customer data platforms like Segment, RudderStack and mParticle. There is also a [generic webhook](/integrations/event_webhook) if you want to build your own integration. If you want to set up a daily export into your data warehouse, see [Data Warehouse Exports](/integration/data-exports/data_warehouse_exports).
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/31516123/179850016-3a31e479-5894-4e74-8f53-aaf1ea3d2b12.png" alt="Data integrations configuration interface" />
+  <img src="/images/exports-events.png" />
 </Frame>
 
 ## Validating data

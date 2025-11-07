@@ -933,7 +933,13 @@
                   }
                 ]
               },
-              "integrations/data-exports",
+              {
+                "group": "Data Exports",
+                "pages": [
+                  "integrations/data-exports/export_results",
+                  "integrations/data-exports/data_warehouse_exports"
+                ]
+              },
               {
                 "group": "Serverless & Edge",
                 "pages": [
