@@ -141,7 +141,7 @@ For best practice: store `sdkKey` in a Fastly [Secret Store](https://www.fastly.
 
 </Step>
 <Step>
-### 2. Client initialization
+### Client initialization
 
 The following line initializes the client by loading feature gate and experiment configurations directly from your Fastly KV or Config store.
 
@@ -163,7 +163,7 @@ For best practice: store `apiToken` in a Fastly [Secret Store](https://www.fastl
 
 </Step>
 <Step>
-#### 3. Checking a Gate
+#### Checking a Gate
 ```javascript
 const value = client.checkGate("pass_gate", user);
 ```
@@ -179,7 +179,7 @@ Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDev
 </Step>
 
 <Step>
-#### 4. Logging an event
+#### Logging an event
 ```javascript
 client.logEvent('fastly_gate_check', user, value.toString());
 ```
@@ -195,7 +195,7 @@ For more information on event logging, see [here](https://docs.statsig.com/clien
 </Step>
 
 <Step>
-#### 5. Flushing Events
+#### Flushing Events
 
 ```javascript
 event.waitUntil(client.flush());
