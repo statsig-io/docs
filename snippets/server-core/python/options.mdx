@@ -123,7 +123,7 @@ Each `SpecAdapterConfig` object has the following properties:
 ### Example Usage
 
 ```python
-from statsig_python_core import StatsigOptions
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
 
 # Define proxy configuration if needed
 proxy_config = {
@@ -141,6 +141,26 @@ options.disable_all_logging = False
 options.proxy_config = proxy_config
 
 # Pass the options object into statsig.initialize()
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+```
+
+### Using spec_adapter_configs
+
+```python
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
+
+# Configure custom spec adapters
+spec_adapter = SpecAdapterConfig(
+    adapter_type="http",
+    specs_url="https://custom-specs-endpoint.example.com/v1/download_config_specs",
+    init_timeout_ms=5000
+)
+
+options = StatsigOptions()
+options.spec_adapter_configs = [spec_adapter]
+options.environment = "production"
+
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 ```
