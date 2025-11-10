@@ -7,18 +7,18 @@ You can enable reviews for all Statsig resources such as feature gates, dynamic 
 As a Project Admin, you can configure your project to require reviews for any changes. To enable reviews for your project, navigate to the **Project Settings** page, switch to the Reviews tab and toggle this on.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/45a439b5-7cf7-4f32-82d0-596c089f2359" alt="Project settings reviews configuration interface" />
+  <img src="/images/guides/setting-up-reviews/45a439b5-7cf7-4f32-82d0-596c089f2359.png" alt="Project settings reviews configuration interface" />
 </Frame>
 
 - You can optionally allow different roles to bypass the review requirement and self-approve review requests by customizing the permissions available to user roles:
  
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/4b7db056-a6be-4a76-99c9-08f8dc053ed8" alt="User role permissions configuration screen" />
+  <img src="/images/guides/setting-up-reviews/4b7db056-a6be-4a76-99c9-08f8dc053ed8.png" alt="User role permissions configuration screen" />
 </Frame>
 
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
-<img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="https://user-images.githubusercontent.com/1315028/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
+<img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="/images/guides/setting-up-reviews/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
 
 - Reviewers will now see a notification on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
 
@@ -34,13 +34,13 @@ As a Project Admin, you can configure your project to require reviews for any ch
 ### Teams
 To create a predefined group of reviewers, you can create Teams
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/1b1c72a9-ac98-4590-8690-c39d2e68489a" alt="Teams creation interface" />
+  <img src="/images/guides/setting-up-reviews/1b1c72a9-ac98-4590-8690-c39d2e68489a.png" alt="Teams creation interface" />
 </Frame>
 
 You can now use these predefined **Teams** when you submit any changes for review.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/1315028/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png" alt="Team selection for review submission" />
+  <img src="/images/guides/setting-up-reviews/166684577-29598c7f-fcba-4c7e-848d-9a45b031bd79.png" alt="Team selection for review submission" />
 </Frame>
 
 ### Enforcing Team Reviews
@@ -48,9 +48,9 @@ You can restrict who can make changes to your Project by (a) turning on **Review
 
 For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Gate or Experiment, you can add designated **Teams** or **Reviewers** at any time as shown below. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently designated reviewers. 
 
-<img width="655" alt="image" src="https://user-images.githubusercontent.com/1315028/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
+<img width="655" alt="image" src="/images/guides/setting-up-reviews/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
 
-<img width="458" alt="Screen Shot 2022-05-04 at 5 14 57 AM" src="https://user-images.githubusercontent.com/1315028/166682177-d44411e6-c4ab-49fe-9250-c77b063621af.png"/>
+<img width="458" alt="Screen Shot 2022-05-04 at 5 14 57 AM" src="/images/guides/setting-up-reviews/166682177-d44411e6-c4ab-49fe-9250-c77b063621af.png"/>
 
 
 ### Configuring Review Settings for Different Environments 
@@ -61,11 +61,11 @@ You can also configure which environments require reviews via your **Project Set
 By default if you have turned on "Reviews Required" for your Project, reviews will be required for Production, but not non-Production (lower) environments. 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png" alt="Screen Shot 2023-04-11 at 9 47 12 AM" />
+  <img src="/images/guides/setting-up-reviews/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png" alt="Screen Shot 2023-04-11 at 9 47 12 AM" />
 </Frame>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png" alt="Screen Shot 2023-04-11 at 9 48 02 AM" />
+  <img src="/images/guides/setting-up-reviews/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png" alt="Screen Shot 2023-04-11 at 9 48 02 AM" />
 </Frame>
 
 ### Configuring Custom Approval Workflows (Pre-commit Webhooks)
@@ -75,9 +75,9 @@ To enable the Pre-commit Webhook experience:
 1. Integrate your approval flow with the change validations Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
 2. Configure the experience for Statsig Console users via **Settings** -> **Product Configuration** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes.
 
-<Frame><img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="https://github.com/user-attachments/assets/49c408da-0910-4a90-9ee3-7d1e114c9013" /></Frame>
+<Frame><img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="/images/guides/setting-up-reviews/49c408da-0910-4a90-9ee3-7d1e114c9013.png" /></Frame>
 
-<Frame><img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="https://github.com/user-attachments/assets/a01617b2-3bb0-4f20-a505-b9318dd220a7" /></Frame>
+<Frame><img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="/images/guides/setting-up-reviews/a01617b2-3bb0-4f20-a505-b9318dd220a7.png" /></Frame>
 
 
 Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  

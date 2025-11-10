@@ -23,7 +23,7 @@ We highly recommend using this metric type for any change aimed at increasing us
 Retention metrics are defined with a duration and a lookback window. The period is measured backwards from the end - so "Lookback = 7, Duration = 14" or L7D14 would measure the week ending 14 days after the start event
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/cce09282-0a9b-4218-b823-7416f03ef387" alt="Retention Setup" />
+  <img src="/images/statsig-warehouse-native/metrics/retention/cce09282-0a9b-4218-b823-7416f03ef387.png" alt="Retention Setup" />
 </Frame>
 
 This is a rolling calculation. Each day a user triggers the start event, they get a 1 in their metric denominator. If they are active in the corresponding completion window, their numerator will be 1 for that day.
@@ -33,7 +33,7 @@ Only days with completed windows will be included in pulse. For example if the d
 Using the `allow cohort metrics to mature after experiment end` setting in advanced experiment settings allows for post-experiment data to complete the analysis, meaning units exposed later in the analysis can be included. This is appropriate in cases where the treatment is one-time and doesn't need to be re-applied in order to impact users.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/2a9d8731-1c28-4c59-a0fe-3c1e7586c129" alt="Retention Explanation" />
+  <img src="/images/statsig-warehouse-native/metrics/retention/2a9d8731-1c28-4c59-a0fe-3c1e7586c129.gif" alt="Retention Explanation" />
 </Frame>
 
 ## Calculation

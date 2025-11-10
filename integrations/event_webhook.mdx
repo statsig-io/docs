@@ -50,7 +50,7 @@ STATSIG-API-KEY: {STATSIG_SERVER_SECRET}
 <div
   style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}
 >
-  <img src="https://user-images.githubusercontent.com/95646168/162286552-c257a736-4050-4d0a-8223-67097c731c0b.png" />
+  <img src="/images/integrations/event_webhook/162286552-c257a736-4050-4d0a-8223-67097c731c0b.png" />
 </div>
 
 If you are using a service that we don't have an official integration for, you can always use our Generic Webhook integration.
@@ -64,7 +64,7 @@ In your Project Settings, under the Integrations tab. Enable the Generic Webhook
 In the dialog that appears, enter the url of you destination webhook and then hit Enable to save the url and enable this integration.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png" alt="integration-dialog" />
+  <img src="/images/integrations/event_webhook/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png" alt="integration-dialog" />
 </Frame>
 
 You can then set which events you want forwarded to your webhook using the [Event Filtering](#filtering-events) dialog.
@@ -127,11 +127,11 @@ Once you've enabled outbound events to your webhook, you can select which catego
 There are 2 main types of events: *Exposures* (e.g. events logged via the SDK) and *Config Changes* (changelogs for Statsig Console)
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/95646168/162329973-6f229186-1126-4824-9e29-1ff029f6553e.png" alt="event-filter-button" />
+  <img src="/images/integrations/event_webhook/162329973-6f229186-1126-4824-9e29-1ff029f6553e.png" alt="event-filter-button" />
 </Frame>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/95646168/162329983-169703fc-c838-40a2-81dc-dd3c83886d00.png" alt="event-filter-dialog" />
+  <img src="/images/integrations/event_webhook/162329983-169703fc-c838-40a2-81dc-dd3c83886d00.png" alt="event-filter-dialog" />
 </Frame>
 
 ### Webhook Signature
@@ -142,7 +142,7 @@ Follow the following steps to verify the signature:
 
 1. Grab your webhook signing secret from your Webhook integration card
 
-<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="https://user-images.githubusercontent.com/87334575/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png"></img>
+<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="/images/integrations/event_webhook/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png"></img>
 
 2. Extract the request time header 'X-Statsig-Request-Timestamp' from the webhook request.
 3. Concatenate the version number ("v0"), the timestamp, and the request body together, using a colon (:) as a delimiter to create a signature basestring. Here's an example of a possible base string:
@@ -174,5 +174,5 @@ You can also use the **Debug** tool to
 2. Send example requests to the webhook using any recently logged event or exposure
 
 <Frame>
-  <img src="https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/ak7zkUsSoHh2VQAhtjtL/5e14e128-1fd4-46f9-8543-364f9b9819bb.png" alt="Debug Tool" />
+  <img src="/images/integrations/event_webhook/5e14e128-1fd4-46f9-8543-364f9b9819bb.png" alt="Debug Tool" />
 </Frame>
