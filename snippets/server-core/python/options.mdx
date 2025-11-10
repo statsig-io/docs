@@ -104,6 +104,19 @@ Configuration for connecting through a proxy server. The `ProxyConfig` object ha
 - `proxy_protocol`: Optional string specifying the protocol (e.g., "http", "https")
 </ResponseField>
 
+<ResponseField name="spec_adapter_configs" type="Optional[List[SpecAdapterConfig]]">
+Advanced configuration for customizing how the SDK fetches feature specifications. Allows you to configure multiple spec adapters with different priorities and settings.
+
+Each `SpecAdapterConfig` object has the following properties:
+- `adapter_type`: String specifying the adapter type (e.g., "http", "grpc")
+- `specs_url`: Optional custom URL for fetching specifications
+- `init_timeout_ms`: Optional timeout for initialization (in milliseconds)
+
+<Note>
+**Migration Note:** This parameter was previously named `init_resources` in earlier versions. If you're upgrading from an older version, replace `init_resources` with `spec_adapter_configs`.
+</Note>
+</ResponseField>
+
 
 ---
 
