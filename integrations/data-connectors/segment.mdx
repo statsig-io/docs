@@ -42,19 +42,19 @@ The easiest way to connect Statsig to Segment is via OAuth.
 2. Click “Configure Segment OAuth”
     
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/262495276-2fa7d870-0f02-44cf-aa29-9f04b0b12220.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/262495276-2fa7d870-0f02-44cf-aa29-9f04b0b12220.png" alt="" />
     </Frame>
     
 3. Select the workspace and source that will send data to Statsig. Click “Allow”:
     
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/262495274-71e8dbf3-590f-44bf-90bd-5723dd3c60ed.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/262495274-71e8dbf3-590f-44bf-90bd-5723dd3c60ed.png" alt="" />
     </Frame>
     
 4. After the integration has been enabled, you can configure event filtering and map additional identifiers. This is useful for mapping device level identifiers as well as `anonymousIds` generated from Segment. 
 We recommend creating a custom ID called `segmentAnonymousId` and mapping the `anonymousId` from Segment to it.
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
     </Frame>
 ### Manual Configuration
 
@@ -64,62 +64,62 @@ If you are unable to connect to Segment via OAuth, you can still manually connec
 2. Search for “**Statsig**” and select the destination
     
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/262495271-68b0959b-b1d8-4041-a413-e0b2c3802377.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/262495271-68b0959b-b1d8-4041-a413-e0b2c3802377.png" alt="" />
     </Frame>
     
 3. Select "Statsig" from the list of available integrations, and then select **sources** that will send data to Statsig.
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/262495270-832e8d93-1896-4c24-bf42-c56f627eecbc.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/262495270-832e8d93-1896-4c24-bf42-c56f627eecbc.png" alt="" />
     </Frame>
     
 4. You must provide a Statsig Server SDK key. You can copy an existing server key or create a new one from the [Statsig console settings](https://console.statsig.com/api_keys). 
     - Create or copy a server SDK key
 
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/262495269-88b47af6-7313-47e9-a767-e1eb12b4e47b.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/262495269-88b47af6-7313-47e9-a767-e1eb12b4e47b.png" alt="" />
         </Frame>
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/262504950-c5b21cc0-5b51-4a55-997a-74b8a45b2807.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/262504950-c5b21cc0-5b51-4a55-997a-74b8a45b2807.png" alt="" />
         </Frame>
         
     - Put your Server Secret Key in the “API Key” field in the Statsig Destination
 
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/262506044-77bef6e4-c79d-47b2-94cc-3f6b3dc06489.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/262506044-77bef6e4-c79d-47b2-94cc-3f6b3dc06489.png" alt="" />
         </Frame>
         
 5. In order to set up mappings you must enable the Segment Integration on the Statsig . Go to the Statsig Console > Project Settings > Integrations Tab > Segment > Click **Enable**:
     <Frame>
-      <img src="https://user-images.githubusercontent.com/125311112/262506930-12225ae2-a12e-4b0d-9efc-34c03a840f9f.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/262506930-12225ae2-a12e-4b0d-9efc-34c03a840f9f.png" alt="" />
     </Frame>
     
     - After the integration has been enabled, you can configure event filtering and map additional identifiers. This is useful for mapping device level identifiers as well as `anonymousIds` generated from Segment.
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
         </Frame>
         
 6. Now we can verify that events are being properly sent to Statsig using the [Segment Event Tester](https://segment.com/docs/connections/test-connections/).
     - In the event tester, send a test event that can verify any filtering and/or mapping you have set up:
         
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/262495256-5097e8a0-ca4f-4e1a-b2b6-3337d6fe7bff.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/262495256-5097e8a0-ca4f-4e1a-b2b6-3337d6fe7bff.png" alt="" />
         </Frame>
         
     - In the your [Statsig Console Events Explorer](https://console.statsig.com/metrics/events), click on the test event in the log stream and verify the event:
         
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/262501895-001d1179-510a-4171-9ab9-f14544c94374.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/262501895-001d1179-510a-4171-9ab9-f14544c94374.png" alt="" />
         </Frame>
         
     - Note: In this example the `anonymousId` is mapped to Statsig’s `segmentAnonymousId` based on the above mapping. The User ID is inferred from the Segment `userID` field
         
         <Frame>
-          <img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
+          <img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="" />
         </Frame>
         
 7. As your Segment events flow into Statsig, you'll see a live **Log Stream** in the [Metrics](/metrics) tab in the Statsig console. You can click one of these events to see the details that are logged as part of the event.
     <Frame>
-      <img src="https://user-images.githubusercontent.com/1315028/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png" alt="" />
+      <img src="/images/integrations/data-connectors/segment/150830169-17564060-816b-4c5c-ade9-10bf6274265a.png" alt="" />
     </Frame>
 
 ## Working with Users
@@ -151,7 +151,7 @@ This is particularly useful for working with the [Segment anonymous ID](https://
 
 :warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below:
 
-<img src="https://user-images.githubusercontent.com/125311112/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
+<img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
 
 #### Experimenting on anonymous traffic
 For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
@@ -186,7 +186,7 @@ It's important to note, that the Segment SDK may initialize after Statsig SDK, a
 Refer to the following diagram to help orient you to mapping `anonymousIds` in Segment to a custom ID representing anonymous users in Statsig:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/125311112/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png" alt="" />
+  <img src="/images/integrations/data-connectors/segment/283278011-3c22e6e8-ab36-4844-aee2-b6630ecda4de.png" alt="" />
 </Frame>
 
 1. Initialize the Statsig SDK with your [Statsig User](/concepts/user) which will contain an optional `userID` value and a `customID` that you've created in the Statsig UI - `segmentAnonymousId` in this example.
@@ -226,13 +226,13 @@ To export your Statsig events to Segment,
 1. In your Segment app, add a new source → search for Statsig → click **Next**
     
   <Frame>
-    <img src="https://user-images.githubusercontent.com/125311112/263066497-1856270d-adb9-4ca7-9349-1b4b393b1aa2.png" alt="" />
+    <img src="/images/integrations/data-connectors/segment/263066497-1856270d-adb9-4ca7-9349-1b4b393b1aa2.png" alt="" />
   </Frame>
     
 2. Name your source → Create Source → click **Done**:
 
   <Frame>
-    <img src="https://user-images.githubusercontent.com/125311112/263066506-cbe5beca-5971-4baf-ae41-571bd7c1ae52.png" alt="" />
+    <img src="/images/integrations/data-connectors/segment/263066506-cbe5beca-5971-4baf-ae41-571bd7c1ae52.png" alt="" />
   </Frame>
 
 3. Locate your **Write Key** and copy it.
@@ -240,7 +240,7 @@ To export your Statsig events to Segment,
 5. Click on the **Segment** card and switch to the **Outbound** tab, paste the **Write Key** into the **API Key** text box shown below, and click **Enable**.
 
   <Frame>
-    <img src="https://user-images.githubusercontent.com/1315028/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png" alt="Segment outbound integration configuration interface" />
+    <img src="/images/integrations/data-connectors/segment/150827399-333d9064-de1c-4f4e-bc33-51a46a83531d.png" alt="Segment outbound integration configuration interface" />
   </Frame>
 
 ### Outbound event schema
@@ -307,13 +307,13 @@ Segment events are prepended with `segment::` so they can be easily distinguishe
 </Note>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/125311112/263068916-a7bb398b-dd5f-4a0c-9c72-924f384a54b7.png" alt="" />
+  <img src="/images/integrations/data-connectors/segment/263068916-a7bb398b-dd5f-4a0c-9c72-924f384a54b7.png" alt="" />
 </Frame>
 
 These metrics will be reported in pulse results among other monitoring metrics:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/125311112/263068905-12265a7e-e13a-4350-8bda-76ecfb3a805c.png" alt="" />
+  <img src="/images/integrations/data-connectors/segment/263068905-12265a7e-e13a-4350-8bda-76ecfb3a805c.png" alt="" />
 </Frame>
 
 

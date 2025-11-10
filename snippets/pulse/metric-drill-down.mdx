@@ -3,7 +3,7 @@
 A tooltip with key statistics and deeper information is shown if you hover over a metric in Pulse.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/767a8861-6034-4a60-966b-6d3ad94b843b" alt="Pulse drill-down analysis interface" />
+  <img src="/images/snippets/pulse/metric-drill-down/767a8861-6034-4a60-966b-6d3ad94b843b.png" alt="Pulse drill-down analysis interface" />
 </Frame>
 
 - **Group**: The name of the group of users. For Feature Gates, the "Pass" group is considered the test group while the "Fail" group is the control. In Experiments, these will be the variant names.
@@ -41,19 +41,19 @@ In this view, select and drag as needed to zoom-in on different time ranges.  Th
 **Daily**: The metric impact on each calendar day without aggregating days together.  This is useful for assessing the variability of the metric day-over-day and the impact of specific events.  It's the recommended time series view for Holdouts, since it highlights the impact over time as new features are launched. 
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/f42453a6-e413-47d5-b176-bb3e9b49a915" alt="Daily metric impact visualization interface" />
+  <img src="/images/snippets/pulse/metric-drill-down/f42453a6-e413-47d5-b176-bb3e9b49a915.png" alt="Daily metric impact visualization interface" />
 </Frame>
 
 **Cumulative**: Shows the cumulative metric impact from the start of experiment over time.  This is a good way to observe trends and see how your confidence interval changes over time.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/b2e9aea9-98fb-4e29-bccf-abae356d0173" alt="Cumulative metric lift visualization interface" />
+  <img src="/images/snippets/pulse/metric-drill-down/b2e9aea9-98fb-4e29-bccf-abae356d0173.png" alt="Cumulative metric lift visualization interface" />
 </Frame>
  
 **Days Since Exposure**: Shows the metric impact based on how long a user has been in the experiment.  Daily data for each user is aligned by the day they entered the experiment (Day 0, Day 1, ...etc), not by calendar date.  This allows you to distinguish early (novelty) from long-term effects.  This view also shows pre-experiment data which identifies biases between groups before the experiment started.  This can happen due to random chance or by some issue in the random assignment process.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/17eeb054-43d8-424c-b43a-85c682bfcfb8" alt="Days since exposure metric visualization interface" />
+  <img src="/images/snippets/pulse/metric-drill-down/17eeb054-43d8-424c-b43a-85c682bfcfb8.png" alt="Days since exposure metric visualization interface" />
 </Frame>
 
 
@@ -64,7 +64,7 @@ This view shows the group level statistics needed to compute the metric deltas a
 ### Impact
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/90343952/171754168-624f740e-bdd6-46ea-a2e3-8d70e637ff75.png" alt="Experiment impact metrics interface" />
+  <img src="/images/snippets/pulse/metric-drill-down/171754168-624f740e-bdd6-46ea-a2e3-8d70e637ff75.png" alt="Experiment impact metrics interface" />
 </Frame>
 
 - **Experiment Delta (absolute)**: The absolute difference of the Mean between test groups i.e. Test Mean - Control Mean.

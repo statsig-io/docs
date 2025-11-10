@@ -18,7 +18,7 @@ This guide assumes you have an existing Statsig account.  Please go here to crea
 Start by creating a new Experiment on Statsig console. Put in a name and leave the rest of the fields empty/default.  For the purposes of this walkthrough, that should do.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74588208/210731384-8bbfc1e1-076c-4ae3-959a-ef1507801e71.png" alt="Experiment creation interface" />
+  <img src="/images/guides/sendgrid-email-abtest/210731384-8bbfc1e1-076c-4ae3-959a-ef1507801e71.png" alt="Experiment creation interface" />
 </Frame>
 
 ### Step 2: Start the experiment
@@ -26,23 +26,23 @@ Start by creating a new Experiment on Statsig console. Put in a name and leave t
 Since you can't start an experiment without a parameter, let's go ahead and add a dummy parameter.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74588208/210316935-99f13616-c412-47c1-b9ab-99b90462805e.png" alt="Experiment parameter configuration" />
+  <img src="/images/guides/sendgrid-email-abtest/210316935-99f13616-c412-47c1-b9ab-99b90462805e.png" alt="Experiment parameter configuration" />
 </Frame>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74588208/210731687-0883c356-5cef-458d-a6aa-bfde9ad36f8b.png" alt="Experiment setup completion" />
+  <img src="/images/guides/sendgrid-email-abtest/210731687-0883c356-5cef-458d-a6aa-bfde9ad36f8b.png" alt="Experiment setup completion" />
 </Frame>
 
 Save the experiment setup and **Start** it.  We're all set with the experiment set up.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74588208/210731969-decf481a-b6a2-41ee-b1c1-6b917bb18fab.png" alt="Experiment start confirmation" />
+  <img src="/images/guides/sendgrid-email-abtest/210731969-decf481a-b6a2-41ee-b1c1-6b917bb18fab.png" alt="Experiment start confirmation" />
 </Frame>
 
 While you're at it, copy the **Experiment Name**.  We'll use this in a bit.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74588208/210732298-34c0e1f4-6485-425b-af07-fa535ad86396.png" alt="Experiment name copy interface" />
+  <img src="/images/guides/sendgrid-email-abtest/210732298-34c0e1f4-6485-425b-af07-fa535ad86396.png" alt="Experiment name copy interface" />
 </Frame>
 
 ### Step 3: Set up Exposure Webhooks
@@ -50,13 +50,13 @@ While you're at it, copy the **Experiment Name**.  We'll use this in a bit.
 In your Customer.io campaign, create a **Random Cohort Branch** which a flow similar to the following:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/87334575/211873572-0966ae02-4a41-40a1-b55d-19378f1d0b98.png" alt="Customer.io random cohort branch setup" />
+  <img src="/images/guides/customer-io-email-abtest/211873572-0966ae02-4a41-40a1-b55d-19378f1d0b98.png" alt="Customer.io random cohort branch setup" />
 </Frame>
 
 In the Webhook actions, put in a post request similar to the following, with your api key and experiment name filled in:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/87334575/211873593-d48ed161-2a55-4099-8f06-7835ee82d011.png" alt="Webhook configuration for experiment exposure" />
+  <img src="/images/guides/customer-io-email-abtest/211873593-d48ed161-2a55-4099-8f06-7835ee82d011.png" alt="Webhook configuration for experiment exposure" />
 </Frame>
 
 Pass in any other custom IDs and user attributes inside the post body. 
@@ -64,7 +64,7 @@ Pass in any other custom IDs and user attributes inside the post body.
 For each webhook, make sure to expose the correct group that you'd like to attribute your branch to. In the above webhook, we are exposing the "Control" group.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/87334575/211873585-1b2da267-cd72-4c29-acde-d1888500ac36.png" alt="Experiment group exposure configuration" />
+  <img src="/images/guides/customer-io-email-abtest/211873585-1b2da267-cd72-4c29-acde-d1888500ac36.png" alt="Experiment group exposure configuration" />
 </Frame>
 
 In Statsig, you'll now have exposures for each of your experiment groups.
@@ -78,5 +78,5 @@ Where you call Customer.io's identify method, you could check a Statsig holdout 
 In your campaign, you'll be able to create a True/False branch to check whether a user is in the holdout.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/87334575/211888584-a164d8bf-0d78-4a6b-86ab-ea336fd2bc3a.png" alt="Customer.io holdout branch configuration" />
+  <img src="/images/guides/customer-io-email-abtest/211888584-a164d8bf-0d78-4a6b-86ab-ea336fd2bc3a.png" alt="Customer.io holdout branch configuration" />
 </Frame>

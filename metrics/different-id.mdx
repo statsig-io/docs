@@ -14,7 +14,7 @@ There are two common scenarios where the experiment assignment unit differs from
 We will explain how to set up the first scenario with Warehouse Native in this doc.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/139815787/0b75615f-2b66-44f4-b6e0-e0bd3e555199" alt="Screenshot 2024-04-29 at 3 45 28 PM" />
+  <img src="/images/metrics/different-id/0b75615f-2b66-44f4-b6e0-e0bd3e555199.png" alt="Screenshot 2024-04-29 at 3 45 28 PM" />
 </Frame>
 
 ## Example: Organizations and Users
@@ -31,13 +31,13 @@ Scenario:
 - In this table, each row of data should have both `org_id` and `user_id`.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/139815787/a99a4577-8be5-4001-ac4d-2297f3b2fff0" alt="1 metric source" />
+  <img src="/images/metrics/different-id/a99a4577-8be5-4001-ac4d-2297f3b2fff0.png" alt="1 metric source" />
 </Frame>
 
 ### 2. Choose your assignment source, where the unit of assignment is `org_id`.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/139815787/16472cd7-1aa1-44a2-9a6b-0f789ac5308e" alt="2 assignment" />
+  <img src="/images/metrics/different-id/16472cd7-1aa1-44a2-9a6b-0f789ac5308e.png" alt="2 assignment" />
 </Frame>
 
 ### 3. Define your metric of revenue per `user_id`.
@@ -45,13 +45,13 @@ Scenario:
 - Your denominator should be `count distinct user_id` instead of `unit count`, because the latter is equivalent to `count distinct org_id` in an `org_id` level experiment.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/139815787/ca4c9076-28e1-4cf8-8aa1-2127def7d771" alt="3a right" />
+  <img src="/images/metrics/different-id/ca4c9076-28e1-4cf8-8aa1-2127def7d771.png" alt="3a right" />
 </Frame>
 
 ### 4. Set up the experiment with `org_id`
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/139815787/02f9c6bb-0b32-4caf-a529-5bacc2a56d44" alt="4 experiment" />
+  <img src="/images/metrics/different-id/02f9c6bb-0b32-4caf-a529-5bacc2a56d44.png" alt="4 experiment" />
 </Frame>
 
 ## Statistics in the backend
