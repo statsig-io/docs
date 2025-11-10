@@ -145,20 +145,28 @@ statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 ```
 
-### Using spec_adapter_configs
+### Using spec_adapter_configs with Multiple Sources
 
 ```python
 from statsig_python_core import StatsigOptions, SpecAdapterConfig
 
-# Configure custom spec adapters
-spec_adapter = SpecAdapterConfig(
+# Configure multiple spec adapters with priority order
+# First source: Statsig CDN
+primary_adapter = SpecAdapterConfig(
     adapter_type="http",
-    specs_url="https://custom-specs-endpoint.example.com/v1/download_config_specs",
+    specs_url="https://api.statsigcdn.com/v2/download_config_specs",
+    init_timeout_ms=3000
+)
+
+# Second source: Data Store adapter
+# The SDK will try this source if the primary source fails
+data_store_adapter = SpecAdapterConfig(
+    adapter_type="dataAdapter",
     init_timeout_ms=5000
 )
 
 options = StatsigOptions()
-options.spec_adapter_configs = [spec_adapter]
+options.spec_adapter_configs = [primary_adapter, data_store_adapter]
 options.environment = "production"
 
 statsig = Statsig("secret-key", options)
