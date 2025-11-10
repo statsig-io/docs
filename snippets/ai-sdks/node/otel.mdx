@@ -35,14 +35,17 @@ const { processor } = initializeTracing({
   },
 });
 
+
 const sdk = new NodeSDK({
   // IMPORTANT: use the processor created by initializeTracing
   // to make sure that spans are exported to Statsig
   spanProcessors: [processor],
+  metricReader: new PeriodicExportingMetricReader({
     exporter: new ConsoleMetricExporter(),
   }),
   // ... other node sdk options like autoInstrumentations
 });
+
 
 sdk.start();
 export { sdk };
