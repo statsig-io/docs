@@ -18,12 +18,22 @@ document.head.appendChild(script);
 const KAPA_SHORTCUT_KEY = "i";
 const KAPA_OPEN_MAX_ATTEMPTS = 10;
 const KAPA_OPEN_RETRY_DELAY = 200;
+const KAPA_FILL_MAX_ATTEMPTS = 15;
+const KAPA_FILL_RETRY_DELAY = 200;
 const KAPA_BUTTON_SELECTORS = [
   "#kapa-button",
   "[data-kapa-button]",
   "[data-kapa-launcher]",
   "[class*='kapa-button']",
 ];
+const KAPA_INPUT_SELECTORS = [
+  "#kapa-ask-ai-input",
+  "[data-kapa-ask-ai-input]",
+  "textarea[id*='kapa']",
+  "textarea[placeholder*='Ask']",
+  "textarea[placeholder*='question']",
+];
+const KAPA_INPUT_SELECTOR = KAPA_INPUT_SELECTORS.join(", ");
 
 function isEditableElement(element) {
   if (!element) {
@@ -65,15 +75,58 @@ function triggerKapaWidget() {
   return false;
 }
 
-function openKapaWithRetry(remainingAttempts = KAPA_OPEN_MAX_ATTEMPTS) {
-  if (triggerKapaWidget() || remainingAttempts <= 0) {
+function fillKapaInputWithQuery(query, remainingAttempts = KAPA_FILL_MAX_ATTEMPTS) {
+  if (!query) {
+    return;
+  }
+
+  const input = document.querySelector(KAPA_INPUT_SELECTOR);
+
+  if (input) {
+    if (input.value !== query) {
+      input.value = query;
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    input.focus();
+    return;
+  }
+
+  if (remainingAttempts <= 0) {
     return;
   }
 
   setTimeout(
-    () => openKapaWithRetry(remainingAttempts - 1),
+    () => fillKapaInputWithQuery(query, remainingAttempts - 1),
+    KAPA_FILL_RETRY_DELAY
+  );
+}
+
+function openKapaWithRetry(options = {}, remainingAttempts = KAPA_OPEN_MAX_ATTEMPTS) {
+  if (triggerKapaWidget()) {
+    if (options.query) {
+      setTimeout(
+        () => fillKapaInputWithQuery(options.query),
+        KAPA_OPEN_RETRY_DELAY
+      );
+    } else if (typeof options.onOpen === "function") {
+      options.onOpen();
+    }
+    return;
+  }
+
+  if (remainingAttempts <= 0) {
+    return;
+  }
+
+  setTimeout(
+    () => openKapaWithRetry(options, remainingAttempts - 1),
     KAPA_OPEN_RETRY_DELAY
   );
+}
+
+function openKapa(options = {}) {
+  openKapaWithRetry(options);
 }
 
 window.addEventListener(
@@ -93,7 +146,13 @@ window.addEventListener(
     }
 
     event.preventDefault();
-    openKapaWithRetry();
+    openKapa();
   },
   true
 );
+
+window.StatsigDocs = window.StatsigDocs || {};
+window.StatsigDocs.openKapa = openKapa;
+if (!window.__statsigOpenKapa) {
+  window.__statsigOpenKapa = openKapa;
+}
