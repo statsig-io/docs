@@ -30,3 +30,13 @@ For example, if you have a dynamic config that returns settings for a site banne
 ```
 
 Now, each of your rules must return an object including title, description, and CTA.
+
+## Infer schema from current values
+
+You can also infer schema based on the current values in your targeting rule variations. This is useful as a quick starting point for validations or for documenting the expected shape of your config.
+
+![Infer schema from current values](/images/infer-schema.png)
+
+**Important - JSON5 output**
+
+Statsig emits the inferred schema in JSON5 (a super set of JSON). JSON5 allows **unquoted object keys** and trailing commas. This might fail other standard JSON Schema validators and typical unit-test tooling. Statsig accepts JSON5 in the Console and API, but if you want strict JSON for validators or tests you should convert the output.
