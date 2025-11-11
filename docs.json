@@ -524,7 +524,8 @@
                   "statsig-warehouse-native/configuration/tags-and-teams",
                   "statsig-warehouse-native/features/roles-and-access",
                   "metrics/verified",
-                  "statsig-warehouse-native/configuration/query-tools"
+                  "statsig-warehouse-native/configuration/query-tools",
+                  "metrics/metric-family"
                 ]
               },
               {
