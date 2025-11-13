@@ -16,7 +16,9 @@ WHN lets you access exposures and metric results across all experiments directly
 Exposures are automatically written to your warehouse to the table configured in your project setup. You can find the table's location by going to Settings > Data Connection. The table should be located at the `{Database Name}.{Schema Name}.{Exposures Forwarding Table Name}`, e.g. `experimentation.statsig.exposures`.
 
 ### Results
-With a SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded.
+With a SQL View, you have access to values that include experiment metadata like experiment team, experiment tags, target duration, and experiment settings like CUPED and Sequential testing, then each metric’s metadata like metric tags, and all of the metric lifts-same set of results you see on the Console copy. If you want to start using this feature, simply enable it in your project setting Project Settings > Data Connection > Export. Once you have this enabled, we will automatically handle the setup of SQL view in your warehouse as well as the metric source in your Statsig project. 
+
+We will then automatically export scorecard metric results to your data warehouse each time an experiment is loaded, generating a new copy. You can differentiate different result versions by using the ds column, which has the timestamp the data was written to your warehouse at.
 
 <Frame>
   <img src="/images/experiments/interpreting-results/access-whn/0355e284-7e3f-40db-b441-fa2a00ccf3ab.png" alt="Project settings data connection export interface" />
@@ -28,7 +30,7 @@ The default table name used is statsig_daily_results. When exports are enabled, 
 
 | Column | Type | Description |
 |-|-|-|
-| ds | date | The date when the data was recorded |
+| ds | timestamp | The time when the data was written at |
 | experimentName | string | Name of the experiment |
 | experimentCreator | string | Creator of the experiment |
 | experimentTeam | string | Team conducting the experiment |
@@ -36,8 +38,8 @@ The default table name used is statsig_daily_results. When exports are enabled, 
 | experimentStartTs | number | Start timestamp of the experiment, in milliseconds |
 | experimentEndTs | number | End timestamp of the experiment, in milliseconds |
 | targetExposures | number | The target number of exposures for the experiment |
-| targetDuration | number | The target duration  of the experiment |
-| actualDuration | number | The actual duration  the experiment ran |
+| targetDuration | number | The target duration of the experiment |
+| actualDuration | number | The actual duration the experiment ran, from Start Date to Decision Date. For analyze only experiments, this will be TODAY - Configured Start Date |
 | controlGroupName | string | Name of the control group in the experiment |
 | testGroupName | string | Name of the test group in the experiment |
 | useCUPED | boolean | Whether CUPED was applied in the experiment  |
