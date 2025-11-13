@@ -106,7 +106,7 @@ You can find Statsig ID Resolver under the Integrations tab within Project Setti
 
 ### Secure Your Webhook With an API Key (Optional, But Recommended)
 
-Statsig accepts an optional API key in the integration configuration. If you submit a string here, we will call your webhook with the HTTP Header "Authorization: Bearer <apiKey>."
+Statsig accepts an optional API key in the integration configuration. If you submit a string here, we will call your webhook with the HTTP Header "Authorization: Bearer \<apiKey\>."
 
 This can be any random string. Your server should reject any request that does not supply the same string you supplied when setting up the integration. One way to generate this is by running `openssl rand -hex 32`. Make sure to store and read this securely on your server.
 
