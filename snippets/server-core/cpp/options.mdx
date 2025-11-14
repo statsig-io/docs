@@ -1,0 +1,21 @@
+
+
+```cpp
+statsig_cpp_core::StatsigOptionsBuilder optionsBuilder;
+ptionsBuilder.environment = "development";
+ptionsBuilder.specs_url = api_v2 + "/download_config_specs";
+optionsBuilder.log_event_url = api + "/log_event";
+optionsBuilder.id_lists_url = api + "/get_id_lists";
+statsig_cpp_core::StatsigOptions options = optionsBuilder.build();
+## Available Options
+std::optional<std::string> specs_url;
+std::optional<std::string> id_lists_url;
+std::optional<std::string> log_event_url;
+std::optional<std::string> output_log_level;
+std::optional<std::string> environment;
+bool enable_id_lists = false;
+bool disable_all_logging = false;
+bool disable_country_lookup = false;
+bool disable_network = false;
+```
+
