@@ -1,0 +1,36 @@
+{
+  "id": "access-management/scim/scim-endpoints",
+  "title": "SCIM API",
+  "description": "",
+  "source": "@site/docs/access-management/scim/scim-endpoints.mdx",
+  "sourceDirName": "access-management/scim",
+  "slug": "/access-management/scim/scim-endpoints",
+  "permalink": "/access-management/scim/scim-endpoints",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "SCIM API",
+    "sidebar_label": "SCIM API",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Troubleshooting",
+    "permalink": "/access-management/scim/okta_scim_troubleshooting"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/integrations/introduction"
+  }
+}

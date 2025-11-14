@@ -1,0 +1,35 @@
+{
+  "id": "dynamic-config/working-with",
+  "title": "Working with dynamic config",
+  "description": "A dynamic config allows you to use configuration parameters to control the behavior of your application in near real-time.",
+  "source": "@site/docs/dynamic-config/working-with.md",
+  "sourceDirName": "dynamic-config",
+  "slug": "/dynamic-config/working-with",
+  "permalink": "/dynamic-config/working-with",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/dynamic-config/working-with.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Working with dynamic config",
+    "sidebar_label": "Working with",
+    "slug": "/dynamic-config/working-with",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/dynamic-config"
+  },
+  "next": {
+    "title": "Using a Schema",
+    "permalink": "/dynamic-config/enforce-schema"
+  }
+}

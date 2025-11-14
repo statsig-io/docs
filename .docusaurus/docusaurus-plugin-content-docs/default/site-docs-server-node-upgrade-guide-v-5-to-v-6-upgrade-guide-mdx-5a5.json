@@ -1,0 +1,27 @@
+{
+  "id": "server/node/upgrade_guide/v5ToV6UpgradeGuide",
+  "title": "Node SDK v5.x.x to v6.0.0 Upgrade Guide",
+  "description": "Summary",
+  "source": "@site/docs/server/node/upgrade_guide/v5ToV6UpgradeGuide.mdx",
+  "sourceDirName": "server/node/upgrade_guide",
+  "slug": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+  "permalink": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/node/upgrade_guide/v5ToV6UpgradeGuide.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "slug": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+    "title": "Node SDK v5.x.x to v6.0.0 Upgrade Guide",
+    "keywords": [
+      "owner:brock"
+    ],
+    "displayed_sidebar": "cloud",
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

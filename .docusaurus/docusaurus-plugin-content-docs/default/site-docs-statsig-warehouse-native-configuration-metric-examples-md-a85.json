@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/configuration/metric-examples",
+  "title": "Metric Examples",
+  "description": "For customers transitioning from other Warehouse Native Vendors, the format of metrics should be similar and generally customers have been able to use APIs to fetch remote configurations, translate them, and post them to Statsig without issue.",
+  "source": "@site/docs/statsig-warehouse-native/configuration/metric-examples.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/metric-examples",
+  "permalink": "/statsig-warehouse-native/configuration/metric-examples",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/metric-examples.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metric Examples",
+    "slug": "/statsig-warehouse-native/configuration/metric-examples",
+    "sidebar_label": "Metric Examples",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Max/Min",
+    "permalink": "/statsig-warehouse-native/metrics/max-min"
+  },
+  "next": {
+    "title": "Cohort Metrics",
+    "permalink": "/statsig-warehouse-native/features/cohort-metrics"
+  }
+}

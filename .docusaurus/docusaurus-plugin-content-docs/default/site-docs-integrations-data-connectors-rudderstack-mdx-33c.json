@@ -1,0 +1,33 @@
+{
+  "id": "integrations/data-connectors/rudderstack",
+  "title": "RudderStack",
+  "description": "Overview",
+  "source": "@site/docs/integrations/data-connectors/rudderstack.mdx",
+  "sourceDirName": "integrations/data-connectors",
+  "slug": "/integrations/data-connectors/rudderstack",
+  "permalink": "/integrations/data-connectors/rudderstack",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-connectors/rudderstack.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "RudderStack",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "RevenueCat",
+    "permalink": "/integrations/data-connectors/revenuecat"
+  },
+  "next": {
+    "title": "Segment",
+    "permalink": "/integrations/data-connectors/segment"
+  }
+}

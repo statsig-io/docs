@@ -1,0 +1,34 @@
+{
+  "id": "guides/email-campaign-test",
+  "title": "A/B Test Email Campaigns",
+  "description": "A/B Testing an email campaign and getting experiment results on downstream product metrics (in addition to top level email interaction metrics), is a common use case for Statsig customers. Email marketing tools often have native A/B testing capabilities, but are limited to measuring email open rates or link click rates.",
+  "source": "@site/docs/guides/email-campaign-test.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/email-campaign-test",
+  "permalink": "/guides/email-campaign-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/email-campaign-test.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758240000000,
+  "frontMatter": {
+    "sidebar_label": "A/B Test Email Campaigns",
+    "title": "A/B Test Email Campaigns",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-19T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Jira",
+    "permalink": "/integrations/jira"
+  },
+  "next": {
+    "title": "Contentful",
+    "permalink": "/guides/contentful"
+  }
+}

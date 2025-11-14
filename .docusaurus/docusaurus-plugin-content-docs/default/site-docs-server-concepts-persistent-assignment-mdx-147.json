@@ -1,0 +1,35 @@
+{
+  "id": "server/concepts/persistent_assignment",
+  "title": "Server Persistent Assignment",
+  "description": "Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.",
+  "source": "@site/docs/server/concepts/persistent_assignment.mdx",
+  "sourceDirName": "server/concepts",
+  "slug": "/server/concepts/persistent_assignment",
+  "permalink": "/server/concepts/persistent_assignment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/concepts/persistent_assignment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Server Persistent Assignment",
+    "sidebar_label": "Server Persistent Assignment",
+    "slug": "/server/concepts/persistent_assignment",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Client Persistent Assignment",
+    "permalink": "/client/concepts/persistent_assignment"
+  },
+  "next": {
+    "title": "Local Eval Adapter",
+    "permalink": "/client/concepts/local-eval-adapter"
+  }
+}

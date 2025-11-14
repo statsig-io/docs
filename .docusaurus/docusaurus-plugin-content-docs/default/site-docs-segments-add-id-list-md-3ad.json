@@ -1,0 +1,35 @@
+{
+  "id": "segments/add-id-list",
+  "title": "Adding ID Lists",
+  "description": "Adding ID Lists",
+  "source": "@site/docs/segments/add-id-list.md",
+  "sourceDirName": "segments",
+  "slug": "/segments/add-id-list",
+  "permalink": "/segments/add-id-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/segments/add-id-list.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Adding ID Lists",
+    "sidebar_label": "Add ID List",
+    "slug": "/segments/add-id-list",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Add rule",
+    "permalink": "/segments/add-rule"
+  },
+  "next": {
+    "title": "Usage",
+    "permalink": "/segments/implement"
+  }
+}

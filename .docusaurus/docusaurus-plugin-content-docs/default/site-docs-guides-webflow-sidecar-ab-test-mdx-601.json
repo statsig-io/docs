@@ -1,0 +1,34 @@
+{
+  "id": "guides/webflow-sidecar-ab-test",
+  "title": "A/B Testing with Webflow and Sidecar",
+  "description": "Use cases &amp; considerations",
+  "source": "@site/docs/guides/webflow-sidecar-ab-test.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/webflow-sidecar-ab-test",
+  "permalink": "/guides/webflow-sidecar-ab-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/webflow-sidecar-ab-test.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "A/B Testing with Webflow and Sidecar",
+    "title": "A/B Testing with Webflow and Sidecar",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Integrating Statsig with Framer",
+    "permalink": "/guides/framer-analytics"
+  },
+  "next": {
+    "title": "Datadog",
+    "permalink": "/integrations/datadog"
+  }
+}

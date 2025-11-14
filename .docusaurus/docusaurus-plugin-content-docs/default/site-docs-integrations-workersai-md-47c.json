@@ -1,0 +1,34 @@
+{
+  "id": "integrations/workersai",
+  "title": "Cloudflare Workers AI",
+  "description": "Statsig Cloudflare Workers AI Integration",
+  "source": "@site/docs/integrations/workersai.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/workersai",
+  "permalink": "/integrations/workersai",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/workersai.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1751500800000,
+  "frontMatter": {
+    "title": "Cloudflare Workers AI",
+    "sidebar_label": "Cloudflare Workers AI",
+    "keywords": [
+      "owner:tore"
+    ],
+    "last_update": {
+      "date": "2025-07-03T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Cloudflare KV",
+    "permalink": "/integrations/cloudflare"
+  },
+  "next": {
+    "title": "Fastly",
+    "permalink": "/integrations/fastly"
+  }
+}

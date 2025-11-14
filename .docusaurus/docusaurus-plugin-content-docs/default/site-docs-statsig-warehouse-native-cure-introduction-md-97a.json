@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/cure/introduction",
+  "title": "CURE",
+  "description": "CURE (variance Control Using Regression Estimates) is Statsig's extended implementation of CUPED, a technique which uses pre-experiment data for each experimental unit to control some of the data observed in an online experiment. CUPED can reduce variance moderately to significantly, and can correct for some amount of pre-existing differences between experiment groups at the time of the experiment.",
+  "source": "@site/docs/statsig-warehouse-native/cure/introduction.md",
+  "sourceDirName": "statsig-warehouse-native/cure",
+  "slug": "/experiments-plus/cure",
+  "permalink": "/experiments-plus/cure",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/cure/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759190400000,
+  "frontMatter": {
+    "title": "CURE",
+    "sidebar_label": "CURE (CUPED)",
+    "slug": "/experiments-plus/cure",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-30T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "One-Sided Tests",
+    "permalink": "/stats-engine/methodologies/one-sided-test-whn"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/experiments-plus/cure-setup"
+  }
+}

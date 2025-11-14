@@ -1,0 +1,34 @@
+{
+  "id": "guides/production",
+  "title": "Moving from POC to Production",
+  "description": "This guide introduces the steps for transitioning from a proof of concept (POC) or limited test on Statsig to a full-scale production deployment.",
+  "source": "@site/docs/guides/production.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/production",
+  "permalink": "/guides/production",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/production.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "POC to Production",
+    "title": "Moving from POC to Production",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Running a POC",
+    "permalink": "/guides/running-a-poc"
+  },
+  "next": {
+    "title": "Using Parameter Stores",
+    "permalink": "/client/concepts/parameter-stores"
+  }
+}

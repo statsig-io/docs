@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/metrics/unit-count-window",
+  "title": "Unit Count (Window) Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/unit-count-window.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/unit-count-window",
+  "permalink": "/statsig-warehouse-native/metrics/unit-count-window",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/unit-count-window.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Unit Count (Window) Metrics",
+    "slug": "/statsig-warehouse-native/metrics/unit-count-window",
+    "sidebar_label": "Unit Count (Window)",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Unit Count (One-Time Event)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-once"
+  },
+  "next": {
+    "title": "Unit Count (Latest Value)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-latest"
+  }
+}

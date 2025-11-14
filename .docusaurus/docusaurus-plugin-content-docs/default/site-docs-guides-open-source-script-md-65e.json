@@ -1,0 +1,34 @@
+{
+  "id": "guides/open-source-script",
+  "title": "Open Source Script",
+  "description": "This package is designed to help automate migration of feature flags from LaunchDarkly to Statsig. It fetches feature flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig.",
+  "source": "@site/docs/guides/open-source-script.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/open-source-script",
+  "permalink": "/guides/open-source-script",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/open-source-script.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755820800000,
+  "frontMatter": {
+    "sidebar_label": "Open Source Script",
+    "title": "Open Source Script",
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-08-22T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Migrate from LaunchDarkly",
+    "permalink": "/guides/migrate-from-launchdarkly"
+  },
+  "next": {
+    "title": "UI Based Tool",
+    "permalink": "/guides/ui-based-tool"
+  }
+}

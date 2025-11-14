@@ -1,0 +1,19 @@
+{
+  "id": "statsig-warehouse-native/guides/experiments",
+  "title": "This Page is Deprecated",
+  "description": "Please see Configuring Experiments",
+  "source": "@site/docs/statsig-warehouse-native/guides/experiments.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/experiments",
+  "permalink": "/statsig-warehouse-native/guides/experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/experiments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1722889001000,
+  "frontMatter": {
+    "displayed_sidebar": "cloud"
+  },
+  "sidebar": "cloud"
+}

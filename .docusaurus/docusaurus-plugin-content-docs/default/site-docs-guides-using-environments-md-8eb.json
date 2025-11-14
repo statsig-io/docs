@@ -1,0 +1,34 @@
+{
+  "id": "guides/using-environments",
+  "title": "Using Environments for Conditional Evaluation outside of Production",
+  "description": "Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and experiments differently in non-production environments like development or staging. All you need to do is configure the appropriate environment in your code and adjust feature rules in the Statsig Console.",
+  "source": "@site/docs/guides/using-environments.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/using-environments",
+  "permalink": "/guides/using-environments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/using-environments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Environments",
+    "title": "Using Environments for Conditional Evaluation outside of Production",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Custom ID Types",
+    "permalink": "/guides/experiment-on-custom-id-types"
+  },
+  "next": {
+    "title": "Open Telemetry Logs and Metrics",
+    "permalink": "/server/concepts/open_telemetry"
+  }
+}

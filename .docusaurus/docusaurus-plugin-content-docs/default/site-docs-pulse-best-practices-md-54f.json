@@ -1,0 +1,35 @@
+{
+  "id": "pulse/best-practices",
+  "title": "Best Practices and Avoiding False Positives",
+  "description": "We have some suggestions on how to interpret Pulse in a scientifically-sound way:",
+  "source": "@site/docs/pulse/best-practices.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/best-practices",
+  "permalink": "/pulse/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Best Practices and Avoiding False Positives",
+    "sidebar_label": "Best Practices",
+    "slug": "/pulse/best-practices",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Bot Traffic",
+    "permalink": "/feature-flags/bots"
+  },
+  "next": {
+    "title": "Read Results",
+    "permalink": "/pulse/read-pulse"
+  }
+}

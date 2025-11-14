@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/p-value",
+  "title": "p-Value Calculation",
+  "description": "In Null Hypothesis Significance Tests, the p-value is the probability of observing an effect larger than or equal to the measured metric delta, under the assumption that the null hypothesis is true. In practice, a p-value that's lower than your pre-defined Type I Error threshold ($\\Large\\alpha$) is treated as evidence for there being a true effect.",
+  "source": "@site/docs/stats-engine/p-value.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/p-value",
+  "permalink": "/stats-engine/p-value",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/p-value.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "p-Value Calculation",
+    "sidebar_label": "p-Values",
+    "slug": "/stats-engine/p-value",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Confidence Intervals",
+    "permalink": "/stats-engine/confidence-intervals"
+  },
+  "next": {
+    "title": "One-Sided Tests",
+    "permalink": "/stats-engine/one-sided-test"
+  }
+}

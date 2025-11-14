@@ -1,0 +1,33 @@
+{
+  "id": "integrations/vscode",
+  "title": "Visual Studio Code",
+  "description": "Overview",
+  "source": "@site/docs/integrations/vscode.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/vscode",
+  "permalink": "/integrations/vscode",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/vscode.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1753228800000,
+  "frontMatter": {
+    "title": "Visual Studio Code",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-07-23T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Jira",
+    "permalink": "/integrations/jira"
+  },
+  "next": {
+    "title": "A/B Test Email Campaigns",
+    "permalink": "/guides/email-campaign-test"
+  }
+}

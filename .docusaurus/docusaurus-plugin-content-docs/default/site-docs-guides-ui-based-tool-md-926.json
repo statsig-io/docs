@@ -1,0 +1,34 @@
+{
+  "id": "guides/ui-based-tool",
+  "title": "UI-Based Tool",
+  "description": "You can follow this guide to use Statsig's built in LaunchDarkly migration tool. Please note that this UI-based tool only imports the \"production\" environment at the moment.",
+  "source": "@site/docs/guides/ui-based-tool.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/ui-based-tool",
+  "permalink": "/guides/ui-based-tool",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/ui-based-tool.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "UI Based Tool",
+    "title": "UI-Based Tool",
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Open Source Script",
+    "permalink": "/guides/open-source-script"
+  },
+  "next": {
+    "title": "Metrics Overview",
+    "permalink": "/metrics/101"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "statsig-warehouse-native/guides/metric_sources",
+  "title": "This Page is Deprecated",
+  "description": "Please see Metric Sources",
+  "source": "@site/docs/statsig-warehouse-native/guides/metric_sources.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/metric_sources",
+  "permalink": "/statsig-warehouse-native/guides/metric_sources",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/metric_sources.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1718229232000,
+  "frontMatter": {}
+}

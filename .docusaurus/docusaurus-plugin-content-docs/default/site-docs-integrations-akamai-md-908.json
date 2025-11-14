@@ -1,0 +1,33 @@
+{
+  "id": "integrations/akamai",
+  "title": "Akamai Edge KV",
+  "description": "Overview",
+  "source": "@site/docs/integrations/akamai.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/akamai",
+  "permalink": "/integrations/akamai",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/akamai.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Akamai Edge KV",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Fastly",
+    "permalink": "/integrations/fastly"
+  },
+  "next": {
+    "title": "Github Code References",
+    "permalink": "/integrations/github_code_references"
+  }
+}

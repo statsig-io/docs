@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/create-new",
+  "title": "Create an experiment",
+  "description": "You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read about Configuring Experiments in Warehouse Native.",
+  "source": "@site/docs/experiments-plus/create-new.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/create-new",
+  "permalink": "/experiments-plus/create-new",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/create-new.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Create an experiment",
+    "sidebar_label": "Create",
+    "slug": "/experiments-plus/create-new",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Experiments Overview",
+    "permalink": "/experiments-plus"
+  },
+  "next": {
+    "title": "Overrides",
+    "permalink": "/experiments-plus/overrides"
+  }
+}

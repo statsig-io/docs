@@ -1,0 +1,34 @@
+{
+  "id": "server-core/dotnetCoreSDK",
+  "title": ".NET Core Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server-core/dotnetCoreSDK.mdx",
+  "sourceDirName": "server-core",
+  "slug": "/server-core/dotnetCoreSDK",
+  "permalink": "/server-core/dotnetCoreSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/dotnetCoreSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": ".NET",
+    "title": ".NET Core Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Migration Guide",
+    "permalink": "/server-core/java/migration"
+  },
+  "next": {
+    "title": "Ruby",
+    "permalink": "/server/rubySDK"
+  }
+}

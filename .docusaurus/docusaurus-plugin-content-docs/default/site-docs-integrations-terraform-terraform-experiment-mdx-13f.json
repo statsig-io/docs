@@ -1,0 +1,34 @@
+{
+  "id": "integrations/terraform/terraform_experiment",
+  "title": "Managing Experiments With Terraform",
+  "description": "You can create a .tf file (Terraform File) to configure your Statsig experiments. All features of console/v1/experiments are supported. The layout is very similar to the JSON body of a /experiments request.",
+  "source": "@site/docs/integrations/terraform/terraform_experiment.mdx",
+  "sourceDirName": "integrations/terraform",
+  "slug": "/integrations/terraform/terraform_experiment",
+  "permalink": "/integrations/terraform/terraform_experiment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/terraform/terraform_experiment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Managing Experiments With Terraform",
+    "sidebar_label": "Managing Experiments",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Managing Gates",
+    "permalink": "/integrations/terraform/terraform_gate"
+  },
+  "next": {
+    "title": "Pulumi",
+    "permalink": "/integrations/pulumi"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "data-warehouse-ingestion/s3",
+  "title": "S3",
+  "description": "Overview",
+  "source": "@site/docs/data-warehouse-ingestion/s3.mdx",
+  "sourceDirName": "data-warehouse-ingestion",
+  "slug": "/data-warehouse-ingestion/s3",
+  "permalink": "/data-warehouse-ingestion/s3",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/data-warehouse-ingestion/s3.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "S3",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Synapse",
+    "permalink": "/data-warehouse-ingestion/synapse"
+  },
+  "next": {
+    "title": "Athena",
+    "permalink": "/data-warehouse-ingestion/athena"
+  }
+}

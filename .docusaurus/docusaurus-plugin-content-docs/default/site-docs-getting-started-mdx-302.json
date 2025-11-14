@@ -1,0 +1,30 @@
+{
+  "id": "getting-started",
+  "title": "Getting Started",
+  "description": "Statsig empowers you to ship, measure, and learn from your releases using the same tools as the best tech companies in the world. With Statsig, you can run thousands of A/B tests, safely rollout features, and dive deep on core business metrics and user behavior—all on a single, unified platform.",
+  "source": "@site/docs/getting-started.mdx",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/getting-started.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "title": "Getting Started",
+    "slug": "/",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "next": {
+    "title": "Statsig Platform Overview",
+    "permalink": "/understanding-platform"
+  }
+}

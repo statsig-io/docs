@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/configuration/semantic-layer-sync",
+  "title": "Semantic Layer Sync",
+  "description": "If you have centrally defined metrics, Statsig offers the ability to sync its data sources and metrics as part of your data version management workflow. Using Statsig's Console API you can automatically sync changes you make to the matching definitions on Statsig, and you can optionally make the metrics read-only in the Statsig console.",
+  "source": "@site/docs/statsig-warehouse-native/configuration/semantic-layer-sync.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/semantic-layer-sync",
+  "permalink": "/statsig-warehouse-native/configuration/semantic-layer-sync",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/semantic-layer-sync.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Semantic Layer Sync",
+    "slug": "/statsig-warehouse-native/configuration/semantic-layer-sync",
+    "sidebar_label": "Semantic Layer Sync",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "WHN Console API",
+    "permalink": "/statsig-warehouse-native/configuration/console-api"
+  },
+  "next": {
+    "title": "Understanding Experiments",
+    "permalink": "/statsig-warehouse-native/features/understanding-experiments"
+  }
+}

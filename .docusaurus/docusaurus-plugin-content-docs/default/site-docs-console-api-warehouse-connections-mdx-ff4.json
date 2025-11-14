@@ -1,0 +1,38 @@
+{
+  "id": "console-api/warehouse-connections",
+  "title": "Warehouse Connections (Console API)",
+  "description": "Endpoints to update Data Warehouse connection configurations",
+  "source": "@site/docs/console-api/warehouse-connections.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/warehouse-connections",
+  "permalink": "/console-api/warehouse-connections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755043200000,
+  "frontMatter": {
+    "title": "Warehouse Connections (Console API)",
+    "sidebar_label": "Warehouse Connections",
+    "slug": "/console-api/warehouse-connections",
+    "description": "Endpoints to update Data Warehouse connection configurations",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-08-13T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Rules",
+    "permalink": "/console-api/rules"
+  },
+  "next": {
+    "title": "Change Validations",
+    "permalink": "/console-api/change-validation"
+  }
+}

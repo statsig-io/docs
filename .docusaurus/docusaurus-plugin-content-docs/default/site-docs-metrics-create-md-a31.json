@@ -1,0 +1,35 @@
+{
+  "id": "metrics/create",
+  "title": "Creating Custom Metrics",
+  "description": "Custom metrics are computed by Statsig from your raw events. To create custom metrics, navigate to Metrics from the left-hand navigation panel, then to the Metrics Catalog tab. Tap on the Create button.",
+  "source": "@site/docs/metrics/create.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/create",
+  "permalink": "/metrics/create",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/create.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Creating Custom Metrics",
+    "sidebar_label": "Creating Custom Metrics",
+    "slug": "/metrics/create",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Health",
+    "permalink": "/metrics/health-checks"
+  },
+  "next": {
+    "title": "Custom DAU Metric Creation",
+    "permalink": "/metrics/custom-dau"
+  }
+}

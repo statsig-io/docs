@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/logs-explorer",
+  "title": "Logs Explorer",
+  "description": "Logs Explorer provides a way for you to search and analyze all of your product’s logs in one place. It works for logs, traces, and ingested events, so you can use the same interface whether you’re debugging infra issues or investigating product event streams.",
+  "source": "@site/docs/infra-analytics/logs-explorer.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/logs-explorer",
+  "permalink": "/infra-analytics/logs-explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/logs-explorer.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Logs Explorer",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Logs Explorer",
+    "slug": "/infra-analytics/logs-explorer",
+    "keywords": [
+      "owner:laurel"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/infra-analytics/getting-started"
+  },
+  "next": {
+    "title": "Events Mode",
+    "permalink": "/infra-analytics/events-mode-logs-explorer"
+  }
+}

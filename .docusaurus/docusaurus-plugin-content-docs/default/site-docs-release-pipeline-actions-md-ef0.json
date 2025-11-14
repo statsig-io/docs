@@ -1,0 +1,35 @@
+{
+  "id": "release-pipeline/actions",
+  "title": "Manage an Ongoing Release Pipeline",
+  "description": "Once a Release Pipeline is triggered, you can control its progression using the following actions. These controls allow you to safely test, pause, fast-track, or halt propagation of feature gate and config changes across pipeline phases.",
+  "source": "@site/docs/release-pipeline/actions.md",
+  "sourceDirName": "release-pipeline",
+  "slug": "/release-pipeline/actions",
+  "permalink": "/release-pipeline/actions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/release-pipeline/actions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Manage an Ongoing Release Pipeline",
+    "sidebar_label": "Manage Actions",
+    "slug": "/release-pipeline/actions",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Trigger",
+    "permalink": "/release-pipeline/trigger"
+  },
+  "next": {
+    "title": "Experiments Overview",
+    "permalink": "/experiments-plus"
+  }
+}

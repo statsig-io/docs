@@ -1,0 +1,35 @@
+{
+  "id": "client/javascript-mono/ReactNativeUsage",
+  "title": "Statsig in React Native",
+  "description": "<FeaturePillList",
+  "source": "@site/docs/client/javascript-mono/ReactNativeUsage.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/react-native",
+  "permalink": "/client/javascript-sdk/react-native",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/ReactNativeUsage.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Statsig in React Native",
+    "sidebar_label": "React Native",
+    "slug": "/client/javascript-sdk/react-native",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Expo",
+    "permalink": "/client/javascript-sdk/expo"
+  },
+  "next": {
+    "title": "Angular",
+    "permalink": "/client/javascript-sdk/Angular"
+  }
+}

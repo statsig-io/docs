@@ -1,0 +1,44 @@
+{
+  "id": "webanalytics/overview",
+  "title": "Statsig Web Analytics Overview",
+  "description": "Web analytics lets you track and watch key measures for your website easily. It is different from product analytics because it's simpler and more direct, making it great for marketers, web site maintainers, or anyone familiar with tools like Google Analytics.",
+  "source": "@site/docs/webanalytics/overview.mdx",
+  "sourceDirName": "webanalytics",
+  "slug": "/webanalytics/overview",
+  "permalink": "/webanalytics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/webanalytics/overview.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statsig Web Analytics Overview",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Overview",
+    "slug": "/webanalytics/overview",
+    "keywords": [
+      "owner:skin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Topline Alerts with Logs",
+    "permalink": "/infra-analytics/topline-alerts-logs"
+  },
+  "next": {
+    "title": "Events and Metadata",
+    "permalink": "/webanalytics/autocapture"
+  }
+}

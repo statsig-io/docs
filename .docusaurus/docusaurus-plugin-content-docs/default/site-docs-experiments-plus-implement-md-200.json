@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/implement",
+  "title": "Implement an experiment",
+  "description": "To deploy an experiment, you'll need to:",
+  "source": "@site/docs/experiments-plus/implement.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/implement",
+  "permalink": "/experiments-plus/implement",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/implement.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Implement an experiment",
+    "sidebar_label": "Implement",
+    "slug": "/experiments-plus/implement",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Quality Score",
+    "permalink": "/experimentation/quality-score"
+  },
+  "next": {
+    "title": "Getting the Group",
+    "permalink": "/experiments-plus/getting-group"
+  }
+}

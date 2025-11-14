@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/fieller-intervals",
+  "title": "Fieller Intervals",
+  "description": "Fieller Intervals",
+  "source": "@site/docs/stats-engine/methodologies/fieller-intervals.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/fieller-intervals",
+  "permalink": "/stats-engine/methodologies/fieller-intervals",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/fieller-intervals.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Fieller Intervals",
+    "sidebar_label": "Fieller Intervals",
+    "keywords": [
+      "owner:liz"
+    ],
+    "slug": "/stats-engine/methodologies/fieller-intervals",
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Delta Method",
+    "permalink": "/stats-engine/methodologies/delta-method"
+  },
+  "next": {
+    "title": "Variance Reduction",
+    "permalink": "/stats-engine/variance_reduction"
+  }
+}

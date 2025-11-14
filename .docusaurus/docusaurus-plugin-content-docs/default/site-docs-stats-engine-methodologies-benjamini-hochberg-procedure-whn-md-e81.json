@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+  "title": "Benjamini–Hochberg Procedure",
+  "description": "",
+  "source": "@site/docs/stats-engine/methodologies/benjamini–hochberg-procedure-whn.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+  "permalink": "/stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/benjamini–hochberg-procedure-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Benjamini–Hochberg Procedure",
+    "sidebar_label": "Benjamini–Hochberg",
+    "slug": "/stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Bonferroni Correction",
+    "permalink": "/stats-engine/methodologies/bonferroni-correction-whn"
+  },
+  "next": {
+    "title": "CUPED",
+    "permalink": "/stats-engine/methodologies/cuped-whn"
+  }
+}

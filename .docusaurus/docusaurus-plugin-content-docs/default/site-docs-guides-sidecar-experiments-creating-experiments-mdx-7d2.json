@@ -1,0 +1,34 @@
+{
+  "id": "guides/sidecar-experiments/creating-experiments",
+  "title": "Creating your first experiment",
+  "description": "Sidecar allows you to create and run A/B experiments easily without having to write code or push code to production.  Here we'll see how you can create one such experiment and get results",
+  "source": "@site/docs/guides/sidecar-experiments/creating-experiments.mdx",
+  "sourceDirName": "guides/sidecar-experiments",
+  "slug": "/guides/sidecar-experiments/creating-experiments",
+  "permalink": "/guides/sidecar-experiments/creating-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/sidecar-experiments/creating-experiments.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Creating Experiments",
+    "title": "Creating your first experiment",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Sidecar Setup",
+    "permalink": "/guides/sidecar-experiments/setup"
+  },
+  "next": {
+    "title": "Advanced Configurations",
+    "permalink": "/guides/sidecar-experiments/advanced-configurations"
+  }
+}

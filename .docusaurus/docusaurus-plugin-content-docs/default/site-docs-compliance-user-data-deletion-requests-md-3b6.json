@@ -1,0 +1,34 @@
+{
+  "id": "compliance/user_data_deletion_requests",
+  "title": "User Data Deletion Requests API",
+  "description": "User data deletion requests are for Enterprise contracts only. Please reach out to our support team, your sales contact, or via our slack channel if you need to enable Enterprise features as you use Statsig.",
+  "source": "@site/docs/compliance/user_data_deletion_requests.md",
+  "sourceDirName": "compliance",
+  "slug": "/compliance/user_data_deletion_requests",
+  "permalink": "/compliance/user_data_deletion_requests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/compliance/user_data_deletion_requests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User Data Deletion Requests API",
+    "slug": "/compliance/user_data_deletion_requests",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/compliance/introduction"
+  },
+  "next": {
+    "title": "Private Attributes",
+    "permalink": "/guides/private-attributes"
+  }
+}

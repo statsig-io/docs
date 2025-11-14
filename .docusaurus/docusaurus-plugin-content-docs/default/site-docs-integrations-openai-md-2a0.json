@@ -1,0 +1,33 @@
+{
+  "id": "integrations/openai",
+  "title": "OpenAI",
+  "description": "Context",
+  "source": "@site/docs/integrations/openai.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/openai",
+  "permalink": "/integrations/openai",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/openai.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "OpenAI",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Event Webhook",
+    "permalink": "/integrations/event_webhook"
+  },
+  "next": {
+    "title": "Statsig Lite",
+    "permalink": "/experimentation/statsig-lite"
+  }
+}

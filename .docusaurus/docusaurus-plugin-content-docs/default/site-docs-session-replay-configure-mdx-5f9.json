@@ -1,0 +1,35 @@
+{
+  "id": "session-replay/configure",
+  "title": "Configure Statsig Session Replay",
+  "description": "Conditional Recording",
+  "source": "@site/docs/session-replay/configure.mdx",
+  "sourceDirName": "session-replay",
+  "slug": "/session-replay/configure",
+  "permalink": "/session-replay/configure",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/session-replay/configure.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Configure Statsig Session Replay",
+    "sidebar_label": "Configure",
+    "slug": "/session-replay/configure",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Install",
+    "permalink": "/session-replay/install"
+  },
+  "next": {
+    "title": "Watch",
+    "permalink": "/session-replay/watch"
+  }
+}

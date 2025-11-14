@@ -1,0 +1,35 @@
+{
+  "id": "metrics/count-distinct",
+  "title": "Count Distinct Metrics",
+  "description": "Purpose of count_distinct",
+  "source": "@site/docs/metrics/count-distinct.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/count_distinct_metric_type",
+  "permalink": "/metrics/count_distinct_metric_type",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/count-distinct.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Count Distinct Metrics",
+    "sidebar_label": "Count Distinct Metrics",
+    "slug": "/metrics/count_distinct_metric_type",
+    "keywords": [
+      "owner:Aamodit"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Funnel Metrics",
+    "permalink": "/metrics/create-user-funnels"
+  },
+  "next": {
+    "title": "Verified Metrics",
+    "permalink": "/metrics/verified"
+  }
+}

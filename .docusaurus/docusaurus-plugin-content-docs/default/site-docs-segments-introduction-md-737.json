@@ -1,0 +1,35 @@
+{
+  "id": "segments/introduction",
+  "title": "Segments",
+  "description": "What is a segment?",
+  "source": "@site/docs/segments/introduction.md",
+  "sourceDirName": "segments",
+  "slug": "/segments",
+  "permalink": "/segments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/segments/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Segments",
+    "sidebar_label": "Overview",
+    "slug": "/segments",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Guided Tutorial",
+    "permalink": "/guides/first-dynamic-config"
+  },
+  "next": {
+    "title": "Create",
+    "permalink": "/segments/create-new"
+  }
+}

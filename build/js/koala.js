@@ -1,0 +1,1 @@
+function setupKoala(){window.ko=window.ko||[],["identify","track","removeListeners","open","on","off","qualify","ready"].forEach((function(o){ko[o]=function(){var n=[].slice.call(arguments);return n.unshift(o),ko.push(n),ko}}))}setupKoala();

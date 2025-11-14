@@ -1,0 +1,35 @@
+{
+  "id": "metrics/archiving-metrics",
+  "title": "Archiving and Deleting Metrics",
+  "description": "Statsig offers two ways to manage the end-of-life for your metrics.",
+  "source": "@site/docs/metrics/archiving-metrics.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/archiving-metrics",
+  "permalink": "/metrics/archiving-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/archiving-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759449600000,
+  "frontMatter": {
+    "title": "Archiving and Deleting Metrics",
+    "sidebar_label": "Archiving and Deleting Metrics",
+    "slug": "/metrics/archiving-metrics",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-10-03T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Custom DAU Metric Creation",
+    "permalink": "/metrics/custom-dau"
+  },
+  "next": {
+    "title": "Creating Metric Tags",
+    "permalink": "/metrics/create-metric-tags"
+  }
+}

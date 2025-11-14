@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/variance-whn",
+  "title": "Standard Error & Mean Variance",
+  "description": "",
+  "source": "@site/docs/stats-engine/variance-whn.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/variance-whn",
+  "permalink": "/stats-engine/variance-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/variance-whn.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Standard Error & Mean Variance",
+    "sidebar_label": "Standard Error & Mean Variance",
+    "slug": "/stats-engine/variance-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Metric Deltas",
+    "permalink": "/stats-engine/metric-deltas-whn"
+  },
+  "next": {
+    "title": "Confidence Intervals",
+    "permalink": "/stats-engine/confidence-intervals-whn"
+  }
+}

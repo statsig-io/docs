@@ -1,0 +1,34 @@
+{
+  "id": "client/jsLocalEvaluationSDK",
+  "title": "(deprecated) JavaScript On Device Evaluation",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/jsLocalEvaluationSDK.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/jsLocalEvaluationSDK",
+  "permalink": "/client/jsLocalEvaluationSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/jsLocalEvaluationSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "On Device Evaluation",
+    "title": "(deprecated) JavaScript On Device Evaluation",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "(deprecated) statsig-react-native-expo",
+    "permalink": "/client/deprecated/reactNativeExpoSDK"
+  },
+  "next": {
+    "title": "Migrating to @statsig/js-client",
+    "permalink": "/client/javascript-sdk/migrating-from-statsig-js"
+  }
+}

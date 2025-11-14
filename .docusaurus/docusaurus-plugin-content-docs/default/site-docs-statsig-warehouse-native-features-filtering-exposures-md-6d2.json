@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/filtering-exposures",
+  "title": "Filter Exposures",
+  "description": "Filter Exposures by Qualifying Event",
+  "source": "@site/docs/statsig-warehouse-native/features/filtering-exposures.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/filtering-exposures",
+  "permalink": "/statsig-warehouse-native/features/filtering-exposures",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/filtering-exposures.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Filter Exposures",
+    "slug": "/statsig-warehouse-native/features/filtering-exposures",
+    "sidebar_label": "Filter Exposures",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Advanced ID Resolution",
+    "permalink": "/statsig-warehouse-native/features/id-resolution"
+  },
+  "next": {
+    "title": "Normalized Metrics",
+    "permalink": "/statsig-warehouse-native/metrics/normalized-metrics"
+  }
+}

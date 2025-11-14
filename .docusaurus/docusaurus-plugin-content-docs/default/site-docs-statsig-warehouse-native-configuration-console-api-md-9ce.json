@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/configuration/console-api",
+  "title": "WHN Console API",
+  "description": "Statsig's console API allows you to programmatically perform CRUD operations on all of the configuration objects above. This means you can do bulk, programmatic edits, or use the API to sync your definitions into Statsig as a triggered or scheduled job.",
+  "source": "@site/docs/statsig-warehouse-native/configuration/console-api.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/console-api",
+  "permalink": "/statsig-warehouse-native/configuration/console-api",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/console-api.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "WHN Console API",
+    "slug": "/statsig-warehouse-native/configuration/console-api",
+    "sidebar_label": "WHN Console API",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Macros",
+    "permalink": "/statsig-warehouse-native/configuration/query-tools"
+  },
+  "next": {
+    "title": "Semantic Layer Sync",
+    "permalink": "/statsig-warehouse-native/configuration/semantic-layer-sync"
+  }
+}

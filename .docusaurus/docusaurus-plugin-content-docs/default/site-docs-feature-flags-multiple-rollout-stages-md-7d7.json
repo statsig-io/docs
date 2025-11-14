@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/multiple-rollout-stages",
+  "title": "Measuring multiple rollout stages",
+  "description": "Continuous Analysis",
+  "source": "@site/docs/feature-flags/multiple-rollout-stages.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/multiple-rollout-stages",
+  "permalink": "/feature-flags/multiple-rollout-stages",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/multiple-rollout-stages.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1750809600000,
+  "frontMatter": {
+    "title": "Measuring multiple rollout stages",
+    "sidebar_label": "Multi-stage rollouts",
+    "slug": "/feature-flags/multiple-rollout-stages",
+    "keywords": [
+      "owner:liz"
+    ],
+    "last_update": {
+      "date": "2025-06-25T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Pre-Post Results",
+    "permalink": "/feature-flags/pre-post-results"
+  },
+  "next": {
+    "title": "Scheduled Rollouts",
+    "permalink": "/feature-flags/scheduled-rollouts"
+  }
+}

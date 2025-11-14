@@ -1,0 +1,35 @@
+{
+  "id": "metrics/precomputed-metrics",
+  "title": "Precomputed Metrics",
+  "description": "Importing Precomputed Metrics",
+  "source": "@site/docs/metrics/precomputed-metrics.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/precomputed-metrics",
+  "permalink": "/metrics/precomputed-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/precomputed-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Precomputed Metrics",
+    "sidebar_label": "Precomputed Metrics",
+    "slug": "/metrics/precomputed-metrics",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Custom Metrics",
+    "permalink": "/metrics/custom-metrics"
+  },
+  "next": {
+    "title": "User Property",
+    "permalink": "/metrics/user-property"
+  }
+}

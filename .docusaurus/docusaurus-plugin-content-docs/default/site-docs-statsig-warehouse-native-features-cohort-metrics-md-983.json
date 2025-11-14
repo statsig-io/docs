@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/features/cohort-metrics",
+  "title": "Cohort Metrics",
+  "description": "Analyzing Cohorts with Statsig",
+  "source": "@site/docs/statsig-warehouse-native/features/cohort-metrics.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/cohort-metrics",
+  "permalink": "/statsig-warehouse-native/features/cohort-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/cohort-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Cohort Metrics",
+    "slug": "/statsig-warehouse-native/features/cohort-metrics",
+    "sidebar_label": "Cohort Metrics",
+    "description": "Analyzing Cohorts with Statsig",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Metric Examples",
+    "permalink": "/statsig-warehouse-native/configuration/metric-examples"
+  },
+  "next": {
+    "title": "Dimension Analysis",
+    "permalink": "/statsig-warehouse-native/configuration/dimensional-analysis"
+  }
+}

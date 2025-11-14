@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/interaction-detection",
+  "title": "Interaction Detection",
+  "description": "What is Interaction Detection",
+  "source": "@site/docs/experiments-plus/interaction-detection.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/interaction-detection",
+  "permalink": "/experiments-plus/interaction-detection",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/interaction-detection.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Interaction Detection",
+    "sidebar_label": "Interaction Detection",
+    "slug": "/experiments-plus/interaction-detection",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Differential Impact",
+    "permalink": "/experiments-plus/differential-impact-detection"
+  },
+  "next": {
+    "title": "Ending an Experiment",
+    "permalink": "/experiments-plus/ending-experiment"
+  }
+}

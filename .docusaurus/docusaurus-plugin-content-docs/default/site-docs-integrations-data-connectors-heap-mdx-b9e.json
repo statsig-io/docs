@@ -1,0 +1,33 @@
+{
+  "id": "integrations/data-connectors/heap",
+  "title": "Heap",
+  "description": "Overview",
+  "source": "@site/docs/integrations/data-connectors/heap.mdx",
+  "sourceDirName": "integrations/data-connectors",
+  "slug": "/integrations/data-connectors/heap",
+  "permalink": "/integrations/data-connectors/heap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-connectors/heap.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Heap",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Google Analytics",
+    "permalink": "/integrations/data-connectors/google-analytics"
+  },
+  "next": {
+    "title": "Hightouch",
+    "permalink": "/integrations/data-connectors/hightouch"
+  }
+}

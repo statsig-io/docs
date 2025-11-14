@@ -1,0 +1,36 @@
+{
+  "id": "experiments-plus/sprt",
+  "title": "Sequential Probability Ratio Tests",
+  "description": "What is SPRT?",
+  "source": "@site/docs/experiments-plus/sprt.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/sprt",
+  "permalink": "/experiments-plus/sprt",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/sprt.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Sequential Probability Ratio Tests",
+    "sidebar_label": "SPRT",
+    "slug": "/experiments-plus/sprt",
+    "keywords": [
+      "owner:makris",
+      "sequential"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Bayesian",
+    "permalink": "/experiments-plus/bayesian"
+  },
+  "next": {
+    "title": "Stratified Sampling",
+    "permalink": "/experiments-plus/stratified-sampling"
+  }
+}

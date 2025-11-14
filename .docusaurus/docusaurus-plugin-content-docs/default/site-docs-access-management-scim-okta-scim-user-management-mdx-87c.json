@@ -1,0 +1,34 @@
+{
+  "id": "access-management/scim/okta_scim_user_management",
+  "title": "Okta SCIM User and Project/Role Management",
+  "description": "Import Existing Statsig Users and Groups",
+  "source": "@site/docs/access-management/scim/okta_scim_user_management.mdx",
+  "sourceDirName": "access-management/scim",
+  "slug": "/access-management/scim/okta_scim_user_management",
+  "permalink": "/access-management/scim/okta_scim_user_management",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/scim/okta_scim_user_management.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "User and Project/Role Management",
+    "title": "Okta SCIM User and Project/Role Management",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/access-management/scim/okta_scim_setup"
+  },
+  "next": {
+    "title": "Org Roles",
+    "permalink": "/access-management/scim/okta_scim_org_roles"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "ai-evals/overview",
+  "title": "AI Evals Overview",
+  "description": "AI Evals are currently in beta; Reach out in Slack to get access. For a quick overview with screenshots - see here",
+  "source": "@site/docs/ai-evals/overview.mdx",
+  "sourceDirName": "ai-evals",
+  "slug": "/ai-evals/overview",
+  "permalink": "/ai-evals/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-evals/overview.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "AI Evals Overview",
+    "sidebar_label": "Overview",
+    "slug": "/ai-evals/overview",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "MCP Server",
+    "permalink": "/integrations/mcp"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/ai-evals/getting-started"
+  }
+}

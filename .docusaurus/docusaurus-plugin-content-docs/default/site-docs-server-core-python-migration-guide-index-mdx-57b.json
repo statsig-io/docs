@@ -1,0 +1,20 @@
+{
+  "id": "server-core/python/migration-guide/index",
+  "title": "Python Core SDK Migration Guide",
+  "description": "[",
+  "source": "@site/docs/server-core/python/migration-guide/index.mdx",
+  "sourceDirName": "server-core/python/migration-guide",
+  "slug": "/server-core/python/migration-guide/",
+  "permalink": "/server-core/python/migration-guide/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/python/migration-guide/index.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1747954370000,
+  "frontMatter": {
+    "title": "Python Core SDK Migration Guide",
+    "displayed_sidebar": "api"
+  },
+  "sidebar": "api"
+}

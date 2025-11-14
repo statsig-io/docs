@@ -1,0 +1,34 @@
+{
+  "id": "guides/experimentation-program",
+  "title": "Bootstrapping Your Experimentation Program",
+  "description": "In this guide, we'll outline a straightforward and successful approach to starting an experimentation program using Statsig at your company. Best of all, you can get started completely free with Statsig’s free tier, which includes up to 5M events per month and no limit on the number of team members.",
+  "source": "@site/docs/guides/experimentation-program.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/experimentation-program",
+  "permalink": "/guides/experimentation-program",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/experimentation-program.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Bootstrapping Your Experimentation Program",
+    "title": "Bootstrapping Your Experimentation Program",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Choosing Flags or Experiments",
+    "permalink": "/guides/featureflags-or-experiments"
+  },
+  "next": {
+    "title": "Running a POC",
+    "permalink": "/guides/running-a-poc"
+  }
+}

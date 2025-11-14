@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/overview",
+  "title": "Statsig Infra Analytics Overview",
+  "description": "Infra Analytics helps you monitor and debug the health of your services directly inside Statsig. It pulls in logs, metrics, and alerts so you get system-level observability in the same place you analyze product outcomes.",
+  "source": "@site/docs/infra-analytics/overview.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/overview",
+  "permalink": "/infra-analytics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/overview.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Statsig Infra Analytics Overview",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Overview",
+    "slug": "/infra-analytics/overview",
+    "keywords": [
+      "owner:laurel"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Rollout Alerts",
+    "permalink": "/product-analytics/alerts/rollout_alerts"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/infra-analytics/getting-started"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "console-api/gates",
+  "title": "Gates (Console API)",
+  "description": "Create feature gates via HTTP requests.",
+  "source": "@site/docs/console-api/gates.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/gates",
+  "permalink": "/console-api/gates",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Gates (Console API)",
+    "sidebar_label": "Gates",
+    "slug": "/console-api/gates",
+    "description": "Create feature gates via HTTP requests.",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "OpenAPI Specification",
+    "permalink": "/console-api/all-endpoints-generated"
+  },
+  "next": {
+    "title": "Segments",
+    "permalink": "/console-api/segments"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "sdk-keys/target-apps",
+  "title": "Target Apps",
+  "description": "Target Apps are an Enterprise-only feature. Reach out to our support team, your sales contact, or via our slack channel if you want this enabled.",
+  "source": "@site/docs/sdk-keys/target-apps.mdx",
+  "sourceDirName": "sdk-keys",
+  "slug": "/sdk-keys/target-apps",
+  "permalink": "/sdk-keys/target-apps",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdk-keys/target-apps.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Target Apps",
+    "sidebar_label": "Target Apps",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Server Data Stores",
+    "permalink": "/server/concepts/data_store"
+  },
+  "next": {
+    "title": "ExpressJS Feature Flags",
+    "permalink": "/guides/node-express-feature-flags"
+  }
+}

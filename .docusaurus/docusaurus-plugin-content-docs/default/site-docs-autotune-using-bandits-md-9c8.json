@@ -1,0 +1,35 @@
+{
+  "id": "autotune/using-bandits",
+  "title": "Advanced Usage",
+  "description": "Both contextual and non-contextual bandits are managed on Statsig's console, or through Statsig's console API for programmatic creation. Both bandit types use a common, streamlined API, making it easy to explore either use case without significant changes from using experiments.",
+  "source": "@site/docs/autotune/using-bandits.md",
+  "sourceDirName": "autotune",
+  "slug": "/using-bandits",
+  "permalink": "/using-bandits",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/using-bandits.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Advanced Usage",
+    "sidebar_label": "Advanced Usage",
+    "slug": "/using-bandits",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/autotune/bandit-faq"
+  },
+  "next": {
+    "title": "Power Analysis",
+    "permalink": "/experiments-plus/power-analysis"
+  }
+}

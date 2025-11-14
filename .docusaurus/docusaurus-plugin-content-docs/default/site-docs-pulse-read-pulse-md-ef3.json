@@ -1,0 +1,35 @@
+{
+  "id": "pulse/read-pulse",
+  "title": "How to Read Experiment Results (Formerly \"Pulse\")",
+  "description": "Read Experiment Results",
+  "source": "@site/docs/pulse/read-pulse.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/read-pulse",
+  "permalink": "/pulse/read-pulse",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/read-pulse.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How to Read Experiment Results (Formerly \"Pulse\")",
+    "sidebar_label": "Read Results",
+    "slug": "/pulse/read-pulse",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Best Practices",
+    "permalink": "/pulse/best-practices"
+  },
+  "next": {
+    "title": "User Properties",
+    "permalink": "/pulse/user-properties"
+  }
+}

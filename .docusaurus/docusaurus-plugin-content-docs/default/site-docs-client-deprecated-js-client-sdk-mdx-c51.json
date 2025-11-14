@@ -1,0 +1,35 @@
+{
+  "id": "client/deprecated/jsClientSDK",
+  "title": "(deprecated) statsig-js client sdk",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/deprecated/jsClientSDK.mdx",
+  "sourceDirName": "client/deprecated",
+  "slug": "/client/deprecated/jsClientSDK",
+  "permalink": "/client/deprecated/jsClientSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/deprecated/jsClientSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "(deprecated) statsig-js",
+    "title": "(deprecated) statsig-js client sdk",
+    "slug": "/client/deprecated/jsClientSDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Android",
+    "permalink": "/client/androidOnDeviceEvaluationSDK"
+  },
+  "next": {
+    "title": "(deprecated) statsig-react",
+    "permalink": "/client/deprecated/reactSDK"
+  }
+}

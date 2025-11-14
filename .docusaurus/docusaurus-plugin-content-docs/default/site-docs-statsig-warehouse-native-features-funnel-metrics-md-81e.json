@@ -1,0 +1,29 @@
+{
+  "id": "statsig-warehouse-native/features/funnel-metrics",
+  "title": "Funnel Metrics",
+  "description": "Use funnel metrics to understand user journeys",
+  "source": "@site/docs/statsig-warehouse-native/features/funnel-metrics.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/funnel-metrics",
+  "permalink": "/statsig-warehouse-native/features/funnel-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/funnel-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Funnel Metrics",
+    "slug": "/statsig-warehouse-native/features/funnel-metrics",
+    "sidebar_label": "Funnel Metrics",
+    "description": "Use funnel metrics to understand user journeys",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

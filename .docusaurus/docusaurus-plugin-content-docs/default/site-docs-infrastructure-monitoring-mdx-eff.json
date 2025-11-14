@@ -1,0 +1,31 @@
+{
+  "id": "infrastructure/monitoring",
+  "title": "Monitoring the SDK",
+  "description": "This latest release of structured logging and metrics, is currently only available by the Python SDK. Want it in another? Reach out in our Support Slack.",
+  "source": "@site/docs/infrastructure/monitoring.mdx",
+  "sourceDirName": "infrastructure",
+  "slug": "/sdk_monitoring",
+  "permalink": "/sdk_monitoring",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/monitoring.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Monitoring the SDK",
+    "sidebar_label": "SDK Monitoring Integrations",
+    "slug": "/sdk_monitoring",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Maximize uptime",
+    "permalink": "/guides/uptime"
+  }
+}

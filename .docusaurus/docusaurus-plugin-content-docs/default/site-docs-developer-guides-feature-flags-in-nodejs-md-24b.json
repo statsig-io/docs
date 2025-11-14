@@ -1,0 +1,28 @@
+{
+  "id": "developer-guides/feature-flags-in-nodejs",
+  "title": "How to set up Feature Flags in Node.js",
+  "description": "Integrating feature flags into a new Node.js application using Statsig is a straightforward process that involves setting up your Node.js environment, integrating the Statsig SDK, and managing your feature flags through the Statsig console. Here's a step-by-step guide:",
+  "source": "@site/docs/developer-guides/feature-flags-in-nodejs.md",
+  "sourceDirName": "developer-guides",
+  "slug": "/developer-guides/feature-flags-in-nodejs",
+  "permalink": "/developer-guides/feature-flags-in-nodejs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/developer-guides/feature-flags-in-nodejs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How to set up Feature Flags in Node.js",
+    "sidebar_label": "Feature Flags in Node.js",
+    "slug": "/developer-guides/feature-flags-in-nodejs",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

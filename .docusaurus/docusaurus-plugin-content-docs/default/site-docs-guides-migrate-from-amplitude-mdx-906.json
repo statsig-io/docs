@@ -1,0 +1,34 @@
+{
+  "id": "guides/migrate-from-amplitude",
+  "title": "Migrate your analytics data from Amplitude",
+  "description": "Migrating from Amplitude to Statsig is a strategic choice. Statsig is an all-in-one platform that offers analytics, experimentation, and feature flagging under one umbrella. Using all these products in a single tool is much more powerful.",
+  "source": "@site/docs/guides/migrate-from-amplitude.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/migrate-from-amplitude",
+  "permalink": "/guides/migrate-from-amplitude",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/migrate-from-amplitude.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Migrate from Amplitude",
+    "title": "Migrate your analytics data from Amplitude",
+    "keywords": [
+      "owner:Shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Migration Overview",
+    "permalink": "/guides/migration-overview"
+  },
+  "next": {
+    "title": "Migrate from Mixpanel",
+    "permalink": "/guides/migrate-from-mixpanel"
+  }
+}

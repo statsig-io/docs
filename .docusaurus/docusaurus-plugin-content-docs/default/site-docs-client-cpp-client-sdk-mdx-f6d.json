@@ -1,0 +1,34 @@
+{
+  "id": "client/cpp-client-sdk",
+  "title": "C++ Client SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/cpp-client-sdk.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/cpp-client-sdk",
+  "permalink": "/client/cpp-client-sdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/cpp-client-sdk.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "C++ Client",
+    "title": "C++ Client SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "iOS/tvOS/macOS",
+    "permalink": "/client/iosClientSDK"
+  },
+  "next": {
+    "title": "Dart/Flutter",
+    "permalink": "/client/dartSDK"
+  }
+}

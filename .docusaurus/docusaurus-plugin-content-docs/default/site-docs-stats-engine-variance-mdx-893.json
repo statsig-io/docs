@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/variance",
+  "title": "Standard Error & Mean Variance",
+  "description": "The standard error (sometimes denoted \"SE\" or \"std err\") of the mean of each group is required for computing the confidence interval and p-value of a metric delta between those groups. The standard error of the mean can be obtained by dividing the sample standard deviation of $X$ by the square root of the number of users in the group.",
+  "source": "@site/docs/stats-engine/variance.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/variance",
+  "permalink": "/stats-engine/variance",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/variance.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Standard Error & Mean Variance",
+    "sidebar_label": "Standard Error & Mean Variance",
+    "slug": "/stats-engine/variance",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Metric Deltas",
+    "permalink": "/stats-engine/metric-deltas"
+  },
+  "next": {
+    "title": "Delta Method",
+    "permalink": "/stats-engine/methodologies/delta-method"
+  }
+}

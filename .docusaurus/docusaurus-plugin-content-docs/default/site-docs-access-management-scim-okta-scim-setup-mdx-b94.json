@@ -1,0 +1,34 @@
+{
+  "id": "access-management/scim/okta_scim_setup",
+  "title": "Okta SCIM Setup",
+  "description": "This guide outlines the process for setting up SCIM (System for Cross-domain Identity",
+  "source": "@site/docs/access-management/scim/okta_scim_setup.mdx",
+  "sourceDirName": "access-management/scim",
+  "slug": "/access-management/scim/okta_scim_setup",
+  "permalink": "/access-management/scim/okta_scim_setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/scim/okta_scim_setup.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Setup",
+    "title": "Okta SCIM Setup",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Concepts",
+    "permalink": "/access-management/scim/concepts"
+  },
+  "next": {
+    "title": "User and Project/Role Management",
+    "permalink": "/access-management/scim/okta_scim_user_management"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "integrations/data-connectors/segment",
+  "title": "Segment",
+  "description": "Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.",
+  "source": "@site/docs/integrations/data-connectors/segment.mdx",
+  "sourceDirName": "integrations/data-connectors",
+  "slug": "/integrations/data-connectors/segment",
+  "permalink": "/integrations/data-connectors/segment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-connectors/segment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Segment",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "RudderStack",
+    "permalink": "/integrations/data-connectors/rudderstack"
+  },
+  "next": {
+    "title": "Stitch",
+    "permalink": "/integrations/data-connectors/stitch"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/incremental-reloads",
+  "title": "Incremental Reloads",
+  "description": "Incremental reloads save state from the last load, and load from the latest data read with a small buffer to ensure completeness. This job wipes data since the last load, plus that buffer, and then appends all new data to the staging datasets before calculating results for changed days.",
+  "source": "@site/docs/statsig-warehouse-native/features/incremental-reloads.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/incremental-reloads",
+  "permalink": "/statsig-warehouse-native/features/incremental-reloads",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/incremental-reloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Incremental Reloads",
+    "slug": "/statsig-warehouse-native/features/incremental-reloads",
+    "sidebar": "Incremental Reloads",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Full Reloads",
+    "permalink": "/statsig-warehouse-native/features/full-reloads"
+  },
+  "next": {
+    "title": "Metric Reloads",
+    "permalink": "/statsig-warehouse-native/features/metric-reloads"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/logs-explorer-queries",
+  "title": "Query Syntax",
+  "description": "Use queries to filter, combine, and visualize logs with precision. This page covers common syntax you can use in day-to-day investigations, plus a few ready-to-edit examples.",
+  "source": "@site/docs/infra-analytics/logs-explorer-queries.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/logs-explorer-queries",
+  "permalink": "/infra-analytics/logs-explorer-queries",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/logs-explorer-queries.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Query Syntax",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Query Syntax",
+    "slug": "/infra-analytics/logs-explorer-queries",
+    "keywords": [
+      "owner:laurel"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Events Mode",
+    "permalink": "/infra-analytics/events-mode-logs-explorer"
+  },
+  "next": {
+    "title": "Topline Alerts with Logs",
+    "permalink": "/infra-analytics/topline-alerts-logs"
+  }
+}

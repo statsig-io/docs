@@ -1,0 +1,34 @@
+{
+  "id": "guides/migrate-from-launchdarkly",
+  "title": "LaunchDarkly Migration Guide",
+  "description": "Overview",
+  "source": "@site/docs/guides/migrate-from-launchdarkly.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/migrate-from-launchdarkly",
+  "permalink": "/guides/migrate-from-launchdarkly",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/migrate-from-launchdarkly.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Migrate from LaunchDarkly",
+    "title": "LaunchDarkly Migration Guide",
+    "keywords": [
+      "owner:Shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Migrate from Mixpanel",
+    "permalink": "/guides/migrate-from-mixpanel"
+  },
+  "next": {
+    "title": "Open Source Script",
+    "permalink": "/guides/open-source-script"
+  }
+}

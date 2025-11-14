@@ -1,0 +1,34 @@
+{
+  "id": "access-management/scim/overview",
+  "title": "SCIM User Provisioning",
+  "description": "Introduction",
+  "source": "@site/docs/access-management/scim/overview.mdx",
+  "sourceDirName": "access-management/scim",
+  "slug": "/access-management/scim/overview",
+  "permalink": "/access-management/scim/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/scim/overview.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Overview",
+    "title": "SCIM User Provisioning",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "SSO with Google",
+    "permalink": "/access-management/sso/google"
+  },
+  "next": {
+    "title": "Concepts",
+    "permalink": "/access-management/scim/concepts"
+  }
+}

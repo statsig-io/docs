@@ -1,0 +1,34 @@
+{
+  "id": "compliance/data_privacy_for_mobile",
+  "title": "Data Privacy for Mobile",
+  "description": "Learn about Statsig's frequently asked questions regarding data privacy for mobile apps.",
+  "source": "@site/docs/compliance/data_privacy_for_mobile.md",
+  "sourceDirName": "compliance",
+  "slug": "/compliance/data_privacy_for_mobile",
+  "permalink": "/compliance/data_privacy_for_mobile",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/compliance/data_privacy_for_mobile.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1747785600000,
+  "frontMatter": {
+    "title": "Data Privacy for Mobile",
+    "slug": "/compliance/data_privacy_for_mobile",
+    "keywords": [
+      "owner:tore"
+    ],
+    "last_update": {
+      "date": "2025-05-21T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Client vs Server SDKs",
+    "permalink": "/sdks/client-vs-server"
+  },
+  "next": {
+    "title": "HTML Snippet",
+    "permalink": "/client/html-snippet"
+  }
+}

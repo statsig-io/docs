@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/safeguards-overview",
+  "title": "Safeguards",
+  "description": "Safeguards help you ship with confidence by continuously monitoring critical metrics and automatically intervening with a configured rollback/pause/complete action in your Feature Gate rollouts when risk thresholds are exceeded. This ensures faster recovery from issues, eliminating the need for constant manual checks, and protects your users from unintended impact.",
+  "source": "@site/docs/feature-flags/safeguards-overview.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/safeguards/overview",
+  "permalink": "/safeguards/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/safeguards-overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759190400000,
+  "frontMatter": {
+    "title": "Safeguards",
+    "sidebar_label": "Overview",
+    "slug": "/safeguards/overview",
+    "keywords": [
+      "owner:Shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-30T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Scheduled Rollouts",
+    "permalink": "/feature-flags/scheduled-rollouts"
+  },
+  "next": {
+    "title": "Create a Safeguard",
+    "permalink": "/safeguards/create"
+  }
+}

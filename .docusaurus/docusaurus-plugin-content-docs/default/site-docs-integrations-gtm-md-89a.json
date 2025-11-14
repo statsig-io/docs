@@ -1,0 +1,33 @@
+{
+  "id": "integrations/gtm",
+  "title": "Google Tag Manager (GTM)",
+  "description": "Inbound Integration (Events flow from GTM dataLayer to Statsig)",
+  "source": "@site/docs/integrations/gtm.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/gtm",
+  "permalink": "/integrations/gtm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/gtm.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Google Tag Manager (GTM)",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Data Mapping",
+    "permalink": "/data-warehouse-ingestion/data_mapping"
+  },
+  "next": {
+    "title": "Event Filtering",
+    "permalink": "/integrations/event_filtering"
+  }
+}

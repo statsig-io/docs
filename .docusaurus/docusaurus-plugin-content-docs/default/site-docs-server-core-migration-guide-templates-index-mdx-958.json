@@ -1,0 +1,16 @@
+{
+  "id": "server-core/MigrationGuideTemplates/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/server-core/MigrationGuideTemplates/index.mdx",
+  "sourceDirName": "server-core/MigrationGuideTemplates",
+  "slug": "/server-core/MigrationGuideTemplates/",
+  "permalink": "/server-core/MigrationGuideTemplates/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/MigrationGuideTemplates/index.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1747954370000,
+  "frontMatter": {}
+}

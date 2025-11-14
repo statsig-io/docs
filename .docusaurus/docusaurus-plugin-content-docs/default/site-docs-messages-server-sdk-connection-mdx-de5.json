@@ -1,0 +1,27 @@
+{
+  "id": "messages/serverSDKConnection",
+  "title": "How do server SDKs handle a failure to connect with Statsig?",
+  "description": "Error Initializing",
+  "source": "@site/docs/messages/serverSDKConnection.mdx",
+  "sourceDirName": "messages",
+  "slug": "/messages/serverSDKConnection",
+  "permalink": "/messages/serverSDKConnection",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/messages/serverSDKConnection.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How do server SDKs handle a failure to connect with Statsig?",
+    "sidebar_label": "Sync failure",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

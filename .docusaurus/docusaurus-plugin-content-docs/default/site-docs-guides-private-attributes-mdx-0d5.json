@@ -1,0 +1,34 @@
+{
+  "id": "guides/private-attributes",
+  "title": "Using Private Attributes",
+  "description": "Evaluating feature gates, dynamic configs, segments, and experiments without logging user data to Statsig",
+  "source": "@site/docs/guides/private-attributes.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/private-attributes",
+  "permalink": "/guides/private-attributes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/private-attributes.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Private Attributes",
+    "title": "Using Private Attributes",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "User Data Deletion Requests API",
+    "permalink": "/compliance/user_data_deletion_requests"
+  },
+  "next": {
+    "title": "Infrastructure Operations",
+    "permalink": "/infrastructure/introduction"
+  }
+}

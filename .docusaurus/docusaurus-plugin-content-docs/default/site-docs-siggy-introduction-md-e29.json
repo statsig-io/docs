@@ -1,0 +1,35 @@
+{
+  "id": "siggy/introduction",
+  "title": "Statsig CLI (\"Siggy\")",
+  "description": "Overview",
+  "source": "@site/docs/siggy/introduction.md",
+  "sourceDirName": "siggy",
+  "slug": "/statsigcli",
+  "permalink": "/statsigcli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/siggy/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statsig CLI (\"Siggy\")",
+    "sidebar_label": "Overview",
+    "slug": "/statsigcli",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Change Validations",
+    "permalink": "/console-api/change-validation"
+  },
+  "next": {
+    "title": "CLI Commands",
+    "permalink": "/statsigcli/commands"
+  }
+}

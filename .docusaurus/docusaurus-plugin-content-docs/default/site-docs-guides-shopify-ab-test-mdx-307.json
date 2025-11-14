@@ -1,0 +1,34 @@
+{
+  "id": "guides/shopify-ab-test",
+  "title": "A/B Testing on Shopify",
+  "description": "Use cases &amp; considerations",
+  "source": "@site/docs/guides/shopify-ab-test.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/shopify-ab-test",
+  "permalink": "/guides/shopify-ab-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/shopify-ab-test.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "A/B Testing on Shopify",
+    "title": "A/B Testing on Shopify",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "General CMS Integrations",
+    "permalink": "/guides/cms-integrations"
+  },
+  "next": {
+    "title": "Integrating Statsig with Framer",
+    "permalink": "/guides/framer-analytics"
+  }
+}

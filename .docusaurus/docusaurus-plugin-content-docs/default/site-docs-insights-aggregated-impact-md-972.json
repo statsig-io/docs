@@ -1,0 +1,35 @@
+{
+  "id": "insights/aggregated-impact",
+  "title": "Metric Insights and Aggregated Impact",
+  "description": "Statsig's Insights page provides a clear view of how experiments and feature gates impact a specific metric of interest. It not only helps answer key questions such as \"How much impact have I driven?\", but also serves as a powerful tool for diagnosing unexpected changes in metrics.",
+  "source": "@site/docs/insights/aggregated-impact.md",
+  "sourceDirName": "insights",
+  "slug": "/aggregated-impact",
+  "permalink": "/aggregated-impact",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/insights/aggregated-impact.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metric Insights and Aggregated Impact",
+    "sidebar_label": "Aggregated Impact",
+    "slug": "/aggregated-impact",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Custom \"Explore\" Queries",
+    "permalink": "/pulse/custom-queries"
+  },
+  "next": {
+    "title": "Topline Impact",
+    "permalink": "/stats-engine/topline-impact"
+  }
+}

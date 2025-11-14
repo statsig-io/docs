@@ -1,0 +1,34 @@
+{
+  "id": "concepts/user",
+  "title": "User (StatsigUser) Object",
+  "description": "Introduction to the StatsigUser object",
+  "source": "@site/docs/concepts/user.mdx",
+  "sourceDirName": "concepts",
+  "slug": "/concepts/user",
+  "permalink": "/concepts/user",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/concepts/user.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User (StatsigUser) Object",
+    "sidebar_label": "Passing a User to SDKs",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "SDK Overview",
+    "permalink": "/sdks/getting-started"
+  },
+  "next": {
+    "title": "Initializing the SDK",
+    "permalink": "/client/concepts/initialize"
+  }
+}

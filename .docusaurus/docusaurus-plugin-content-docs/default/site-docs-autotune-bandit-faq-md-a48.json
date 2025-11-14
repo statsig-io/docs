@@ -1,0 +1,35 @@
+{
+  "id": "autotune/bandit-faq",
+  "title": "Bandit FAQs",
+  "description": "When should I see data show up in a bandit?",
+  "source": "@site/docs/autotune/bandit-faq.md",
+  "sourceDirName": "autotune",
+  "slug": "/autotune/bandit-faq",
+  "permalink": "/autotune/bandit-faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/bandit-faq.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Bandit FAQs",
+    "sidebar_label": "FAQ",
+    "slug": "/autotune/bandit-faq",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Methodology",
+    "permalink": "/autotune/contextual/methodology"
+  },
+  "next": {
+    "title": "Advanced Usage",
+    "permalink": "/using-bandits"
+  }
+}

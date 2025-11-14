@@ -1,0 +1,29 @@
+{
+  "id": "statsig-warehouse-native/features/entity-properties",
+  "title": "Entity Properties",
+  "description": "Provide additional details about given entity",
+  "source": "@site/docs/statsig-warehouse-native/features/entity-properties.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/entity-properties",
+  "permalink": "/statsig-warehouse-native/features/entity-properties",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/entity-properties.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Entity Properties",
+    "slug": "/statsig-warehouse-native/features/entity-properties",
+    "sidebar_label": "Entity Properties",
+    "description": "Provide additional details about given entity",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

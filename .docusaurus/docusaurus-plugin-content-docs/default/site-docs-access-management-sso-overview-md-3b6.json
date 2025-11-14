@@ -1,0 +1,34 @@
+{
+  "id": "access-management/sso/overview",
+  "title": "Single Sign-On With OIDC",
+  "description": "SSO is an Enterprise feature. Please reach out to our support team, your sales contact, or via our slack channel if you need to enable Enterprise features as you try out Statsig.",
+  "source": "@site/docs/access-management/sso/overview.md",
+  "sourceDirName": "access-management/sso",
+  "slug": "/access-management/sso/overview",
+  "permalink": "/access-management/sso/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/sso/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Overview",
+    "title": "Single Sign-On With OIDC",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Teams",
+    "permalink": "/access-management/teams"
+  },
+  "next": {
+    "title": "SSO with Okta",
+    "permalink": "/access-management/sso/okta_sso"
+  }
+}

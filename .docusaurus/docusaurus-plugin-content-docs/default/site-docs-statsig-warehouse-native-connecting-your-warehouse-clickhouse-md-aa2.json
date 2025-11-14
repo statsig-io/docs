@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+  "title": "Clickhouse Connection [Beta]",
+  "description": "The Clickhouse connector for warehouse native is fully functional, but some functionality may not be performance-optimized or may have minor syntax errors until the beta period is over.",
+  "source": "@site/docs/statsig-warehouse-native/connecting-your-warehouse/clickhouse.md",
+  "sourceDirName": "statsig-warehouse-native/connecting-your-warehouse",
+  "slug": "/statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+  "permalink": "/statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/connecting-your-warehouse/clickhouse.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Clickhouse Connection [Beta]",
+    "slug": "/statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+    "sidebar_label": "Clickhouse [Beta]",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Trino [Beta]",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/trino"
+  },
+  "next": {
+    "title": "Fabric [Beta]",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/fabric"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "metrics/local-metrics",
+  "title": "Local Metrics",
+  "description": "Overview",
+  "source": "@site/docs/metrics/local-metrics.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/local-metrics",
+  "permalink": "/metrics/local-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/local-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Local Metrics",
+    "sidebar_label": "Local Metrics",
+    "slug": "/metrics/local-metrics",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Pulse Metrics",
+    "permalink": "/metrics/pulse"
+  },
+  "next": {
+    "title": "Metrics Dashboard",
+    "permalink": "/metrics/console"
+  }
+}

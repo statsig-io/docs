@@ -1,0 +1,35 @@
+{
+  "id": "siggy/commands",
+  "title": "Commands in Statsig CLI",
+  "description": "Getting Help",
+  "source": "@site/docs/siggy/commands.mdx",
+  "sourceDirName": "siggy",
+  "slug": "/statsigcli/commands",
+  "permalink": "/statsigcli/commands",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/siggy/commands.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Commands in Statsig CLI",
+    "sidebar_label": "CLI Commands",
+    "slug": "/statsigcli/commands",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/statsigcli"
+  },
+  "next": {
+    "title": "Example: Gate Management",
+    "permalink": "/statsigcli/gate-management"
+  }
+}

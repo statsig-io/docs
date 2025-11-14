@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/sum",
+  "title": "Sum Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/sum.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/sum",
+  "permalink": "/statsig-warehouse-native/metrics/sum",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/sum.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Sum Metrics",
+    "sidebar_label": "Sum",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/statsig-warehouse-native/configuration/metrics"
+  },
+  "next": {
+    "title": "Count",
+    "permalink": "/statsig-warehouse-native/metrics/count"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
+  "title": "Forwarded Data",
+  "description": "If you log events or exposures to Statsig's SDK, Statsig will put that data back in your warehouse in near-realtime, on-demand.",
+  "source": "@site/docs/statsig-warehouse-native/connecting-your-warehouse/forwarded-data.md",
+  "sourceDirName": "statsig-warehouse-native/connecting-your-warehouse",
+  "slug": "/statsig-warehouse-native/guides/forwarded-data",
+  "permalink": "/statsig-warehouse-native/guides/forwarded-data",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/connecting-your-warehouse/forwarded-data.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758171299000,
+  "frontMatter": {
+    "title": "Forwarded Data",
+    "slug": "/statsig-warehouse-native/guides/forwarded-data",
+    "sidebar_label": "Forwarded Data"
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "View SQL",
+    "permalink": "/statsig-warehouse-native/guides/sql"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/statsig-warehouse-native/guides/connect"
+  }
+}

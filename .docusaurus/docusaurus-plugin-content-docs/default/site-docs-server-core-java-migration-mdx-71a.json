@@ -1,0 +1,34 @@
+{
+  "id": "server-core/java/migration",
+  "title": "Migrating from Legacy Java/Kotlin SDK to Java Core",
+  "description": "This guide will help you migrate from the legacy Java/Kotlin Server SDK to the new Java Core SDK. The Java Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.",
+  "source": "@site/docs/server-core/java/migration.mdx",
+  "sourceDirName": "server-core/java",
+  "slug": "/server-core/java/migration",
+  "permalink": "/server-core/java/migration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/java/migration.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Migrating from Legacy Java/Kotlin SDK to Java Core",
+    "sidebar_label": "Migration Guide",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Java",
+    "permalink": "/server-core/java-core"
+  },
+  "next": {
+    "title": ".NET",
+    "permalink": "/server-core/dotnetCoreSDK"
+  }
+}

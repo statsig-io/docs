@@ -1,0 +1,28 @@
+{
+  "id": "sdk-keys/api-keys",
+  "title": "API Keys",
+  "description": "Overview",
+  "source": "@site/docs/sdk-keys/api-keys.mdx",
+  "sourceDirName": "sdk-keys",
+  "slug": "/sdk-keys/api-keys",
+  "permalink": "/sdk-keys/api-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdk-keys/api-keys.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758119903000,
+  "frontMatter": {
+    "title": "API Keys",
+    "sidebar_label": "API Keys"
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Workspace Management Overview",
+    "permalink": "/access-management/introduction"
+  },
+  "next": {
+    "title": "Organizations",
+    "permalink": "/access-management/organizations"
+  }
+}

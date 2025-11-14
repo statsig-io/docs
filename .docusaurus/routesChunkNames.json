@@ -1,0 +1,2327 @@
+{
+  "/-6f0": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/-d94": {
+    "__comp": "a7bd4aaa",
+    "__props": "22dd74f7"
+  },
+  "/tags-ce1": {
+    "__comp": "3720c009",
+    "__props": "59af61a6"
+  },
+  "/tags/statsig-cloud-530": {
+    "__comp": "df203c0f",
+    "__props": "9ec45ae7"
+  },
+  "/-a73": {
+    "__comp": "a94703ab"
+  },
+  "/access-management/discussions-9f8": {
+    "__comp": "17896441",
+    "content": "4d6af76f"
+  },
+  "/access-management/introduction-42f": {
+    "__comp": "17896441",
+    "content": "75356a2d"
+  },
+  "/access-management/organizations-8e6": {
+    "__comp": "17896441",
+    "content": "5a5244a6"
+  },
+  "/access-management/projects-8a3": {
+    "__comp": "17896441",
+    "content": "5f2ceeb8"
+  },
+  "/access-management/scim/concepts-a21": {
+    "__comp": "17896441",
+    "content": "1802a7be"
+  },
+  "/access-management/scim/okta_scim_org_roles-259": {
+    "__comp": "17896441",
+    "content": "18483dad"
+  },
+  "/access-management/scim/okta_scim_setup-5b9": {
+    "__comp": "17896441",
+    "content": "b94a2ac2"
+  },
+  "/access-management/scim/okta_scim_team_management-672": {
+    "__comp": "17896441",
+    "content": "7628bde1"
+  },
+  "/access-management/scim/okta_scim_troubleshooting-26e": {
+    "__comp": "17896441",
+    "content": "87667778"
+  },
+  "/access-management/scim/okta_scim_user_management-ef9": {
+    "__comp": "17896441",
+    "content": "87cea8aa"
+  },
+  "/access-management/scim/overview-68b": {
+    "__comp": "17896441",
+    "content": "4df27b0b"
+  },
+  "/access-management/scim/scim-endpoints-0be": {
+    "__comp": "17896441",
+    "content": "01b7178d"
+  },
+  "/access-management/sso/azuread-120": {
+    "__comp": "17896441",
+    "content": "918f1192"
+  },
+  "/access-management/sso/google-490": {
+    "__comp": "17896441",
+    "content": "5a9063e8"
+  },
+  "/access-management/sso/okta_sso-3bc": {
+    "__comp": "17896441",
+    "content": "e41e6931"
+  },
+  "/access-management/sso/overview-726": {
+    "__comp": "17896441",
+    "content": "3b686114"
+  },
+  "/access-management/tags-868": {
+    "__comp": "17896441",
+    "content": "7efd27b0"
+  },
+  "/access-management/teams-b43": {
+    "__comp": "17896441",
+    "content": "471bd3e6"
+  },
+  "/aggregated-impact-b28": {
+    "__comp": "17896441",
+    "content": "9722ea02"
+  },
+  "/aggregated-impact-whn-7ea": {
+    "__comp": "17896441",
+    "content": "6032011a"
+  },
+  "/ai-evals/create-an-online-eval-cc1": {
+    "__comp": "17896441",
+    "content": "78c6d5f8"
+  },
+  "/ai-evals/getting-started-be1": {
+    "__comp": "17896441",
+    "content": "1a69705e"
+  },
+  "/ai-evals/graders-2e4": {
+    "__comp": "17896441",
+    "content": "bac4c33b"
+  },
+  "/ai-evals/offline-evals-a44": {
+    "__comp": "17896441",
+    "content": "444c65ad"
+  },
+  "/ai-evals/online-evals-146": {
+    "__comp": "17896441",
+    "content": "b7400118"
+  },
+  "/ai-evals/overview-cbe": {
+    "__comp": "17896441",
+    "content": "30b76bf6"
+  },
+  "/ai-evals/prompts-374": {
+    "__comp": "17896441",
+    "content": "9aeede9f"
+  },
+  "/autotune-714": {
+    "__comp": "17896441",
+    "content": "fa1e459f"
+  },
+  "/autotune/bandit-faq-017": {
+    "__comp": "17896441",
+    "content": "a4866a3d"
+  },
+  "/autotune/contextual/getting-started-0f0": {
+    "__comp": "17896441",
+    "content": "ac700f23"
+  },
+  "/autotune/contextual/introduction-c47": {
+    "__comp": "17896441",
+    "content": "29305c9c"
+  },
+  "/autotune/contextual/methodology-cb3": {
+    "__comp": "17896441",
+    "content": "4696e500"
+  },
+  "/autotune/contextual/monitoring-302": {
+    "__comp": "17896441",
+    "content": "cf1db410"
+  },
+  "/autotune/monitoring-f3d": {
+    "__comp": "17896441",
+    "content": "3426b3a7"
+  },
+  "/autotune/setup-ed6": {
+    "__comp": "17896441",
+    "content": "86a424e8"
+  },
+  "/azureai/capturing-metrics-637": {
+    "__comp": "17896441",
+    "content": "ae757e9a"
+  },
+  "/azureai/completions-71a": {
+    "__comp": "17896441",
+    "content": "c5649a73"
+  },
+  "/azureai/embeddings-b47": {
+    "__comp": "17896441",
+    "content": "f52bed4e"
+  },
+  "/azureai/getting-started-975": {
+    "__comp": "17896441",
+    "content": "e0ac4b78"
+  },
+  "/azureai/introduction-bca": {
+    "__comp": "17896441",
+    "content": "12344283"
+  },
+  "/azureai/model-client-b9e": {
+    "__comp": "17896441",
+    "content": "848457cc"
+  },
+  "/azureai/running-experiments-b7c": {
+    "__comp": "17896441",
+    "content": "db2db156"
+  },
+  "/bandit-introduction-402": {
+    "__comp": "17896441",
+    "content": "8eef296f"
+  },
+  "/client/androidClientSDK-b44": {
+    "__comp": "17896441",
+    "content": "e61da270"
+  },
+  "/client/androidOnDeviceEvaluationSDK-26b": {
+    "__comp": "17896441",
+    "content": "22fd6fd2"
+  },
+  "/client/concepts/initialize-5b3": {
+    "__comp": "17896441",
+    "content": "b05bfbc7"
+  },
+  "/client/concepts/local-eval-adapter-7c5": {
+    "__comp": "17896441",
+    "content": "718378a3"
+  },
+  "/client/concepts/parameter-stores-040": {
+    "__comp": "17896441",
+    "content": "09879971"
+  },
+  "/client/concepts/persistent_assignment-8a0": {
+    "__comp": "17896441",
+    "content": "95a8e488"
+  },
+  "/client/cpp-client-sdk-014": {
+    "__comp": "17896441",
+    "content": "f6db6715"
+  },
+  "/client/dartSDK-89f": {
+    "__comp": "17896441",
+    "content": "e0cbcb67"
+  },
+  "/client/deprecated/jsClientSDK-ae5": {
+    "__comp": "17896441",
+    "content": "c51fa293"
+  },
+  "/client/deprecated/reactNativeExpoSDK-0b9": {
+    "__comp": "17896441",
+    "content": "fe14b72c"
+  },
+  "/client/deprecated/reactNativeSDK-3df": {
+    "__comp": "17896441",
+    "content": "0121322e"
+  },
+  "/client/deprecated/reactSDK-e12": {
+    "__comp": "17896441",
+    "content": "2f916bcd"
+  },
+  "/client/dotnetSDK-178": {
+    "__comp": "17896441",
+    "content": "847b70fd"
+  },
+  "/client/html-snippet-4c1": {
+    "__comp": "17896441",
+    "content": "c03ed0cc"
+  },
+  "/client/introduction-1dd": {
+    "__comp": "17896441",
+    "content": "251dbdef"
+  },
+  "/client/iOS/repo-migration-guide-907": {
+    "__comp": "17896441",
+    "content": "c42335f4"
+  },
+  "/client/iosClientSDK-e92": {
+    "__comp": "17896441",
+    "content": "b2515340"
+  },
+  "/client/javascript-sdk-22d": {
+    "__comp": "17896441",
+    "content": "6d390953"
+  },
+  "/client/javascript-sdk/Angular-cb6": {
+    "__comp": "17896441",
+    "content": "d7cd06ed"
+  },
+  "/client/javascript-sdk/examples-249": {
+    "__comp": "17896441",
+    "content": "b5c980fe"
+  },
+  "/client/javascript-sdk/expo-cb5": {
+    "__comp": "17896441",
+    "content": "d58759a8"
+  },
+  "/client/javascript-sdk/init-strategies-518": {
+    "__comp": "17896441",
+    "content": "cb3e90b7"
+  },
+  "/client/javascript-sdk/migrating-from-statsig-js-7d0": {
+    "__comp": "17896441",
+    "content": "3ef5b4a5"
+  },
+  "/client/javascript-sdk/migrating-from-statsig-react-2be": {
+    "__comp": "17896441",
+    "content": "4bed826b"
+  },
+  "/client/javascript-sdk/next-js-a6a": {
+    "__comp": "17896441",
+    "content": "808dc645"
+  },
+  "/client/javascript-sdk/react-ff9": {
+    "__comp": "17896441",
+    "content": "cc0890ef"
+  },
+  "/client/javascript-sdk/react-native-d45": {
+    "__comp": "17896441",
+    "content": "3190bc64"
+  },
+  "/client/javascript-sdk/stable-id-33e": {
+    "__comp": "17896441",
+    "content": "f0fa0726"
+  },
+  "/client/javascript-sdk/using-evaluations-data-adapter-407": {
+    "__comp": "17896441",
+    "content": "cf0d4352"
+  },
+  "/client/js-on-device-eval-client-4ba": {
+    "__comp": "17896441",
+    "content": "7440186c"
+  },
+  "/client/js-on-device-eval-client/migrating-from-js-local-eval-ec5": {
+    "__comp": "17896441",
+    "content": "a1ed806f"
+  },
+  "/client/js-on-device-eval-client/react-native-279": {
+    "__comp": "17896441",
+    "content": "eac1c9b9"
+  },
+  "/client/js-on-device-eval-client/using-evaluations-data-adapter-ab5": {
+    "__comp": "17896441",
+    "content": "e31aa990"
+  },
+  "/client/jsLocalEvaluationSDK-5f9": {
+    "__comp": "17896441",
+    "content": "0d7fb918"
+  },
+  "/client/onDevice-c7c": {
+    "__comp": "17896441",
+    "content": "1e569ed6"
+  },
+  "/client/rokuSDK-835": {
+    "__comp": "17896441",
+    "content": "e681a294"
+  },
+  "/client/swiftOnDeviceEvaluationSDK-4bb": {
+    "__comp": "17896441",
+    "content": "74cdde43"
+  },
+  "/client/Templates/-bbe": {
+    "__comp": "17896441",
+    "content": "d0132f24"
+  },
+  "/client/unitySDK-4ab": {
+    "__comp": "17896441",
+    "content": "e4af2d97"
+  },
+  "/compliance/data_privacy_for_mobile-f34": {
+    "__comp": "17896441",
+    "content": "a19100ce"
+  },
+  "/compliance/introduction-51f": {
+    "__comp": "17896441",
+    "content": "7fa978e5"
+  },
+  "/compliance/user_data_deletion_requests-c2b": {
+    "__comp": "17896441",
+    "content": "3b61a9cf"
+  },
+  "/concepts/user-4ea": {
+    "__comp": "17896441",
+    "content": "51be1a89"
+  },
+  "/console-api/all-endpoints-generated-a33": {
+    "__comp": "17896441",
+    "content": "a96fa8cc"
+  },
+  "/console-api/audit_logs-62e": {
+    "__comp": "17896441",
+    "content": "14eb7deb"
+  },
+  "/console-api/autotunes-8d7": {
+    "__comp": "17896441",
+    "content": "b68e3be7"
+  },
+  "/console-api/change-validation-451": {
+    "__comp": "17896441",
+    "content": "c1c7b705"
+  },
+  "/console-api/daily-reports-aeb": {
+    "__comp": "17896441",
+    "content": "8e4cf5c4"
+  },
+  "/console-api/daily-reports-deprecated-46a": {
+    "__comp": "17896441",
+    "content": "57310e7d"
+  },
+  "/console-api/dynamic_configs-9ab": {
+    "__comp": "17896441",
+    "content": "ce97d6dc"
+  },
+  "/console-api/events-002": {
+    "__comp": "17896441",
+    "content": "0f092d13"
+  },
+  "/console-api/experiments-d3a": {
+    "__comp": "17896441",
+    "content": "0abf18b3"
+  },
+  "/console-api/exposure-count-1bb": {
+    "__comp": "17896441",
+    "content": "6b823a4a"
+  },
+  "/console-api/gates-224": {
+    "__comp": "17896441",
+    "content": "b978718a"
+  },
+  "/console-api/holdouts-063": {
+    "__comp": "17896441",
+    "content": "4dcd9a06"
+  },
+  "/console-api/ingestions-64c": {
+    "__comp": "17896441",
+    "content": "67e14e0b"
+  },
+  "/console-api/introduction-297": {
+    "__comp": "17896441",
+    "content": "c557799a"
+  },
+  "/console-api/keys-5c3": {
+    "__comp": "17896441",
+    "content": "79049b12"
+  },
+  "/console-api/layers-8cc": {
+    "__comp": "17896441",
+    "content": "4b1aa34a"
+  },
+  "/console-api/metrics-65c": {
+    "__comp": "17896441",
+    "content": "3827ab98"
+  },
+  "/console-api/param-store-bd4": {
+    "__comp": "17896441",
+    "content": "f6ff51fc"
+  },
+  "/console-api/rules-10d": {
+    "__comp": "17896441",
+    "content": "a7b3a0ae"
+  },
+  "/console-api/segments-663": {
+    "__comp": "17896441",
+    "content": "83f1b291"
+  },
+  "/console-api/snippets/conditions-240": {
+    "__comp": "17896441",
+    "content": "b12b20ec"
+  },
+  "/console-api/tags-b70": {
+    "__comp": "17896441",
+    "content": "6a456614"
+  },
+  "/console-api/target-apps-c53": {
+    "__comp": "17896441",
+    "content": "e72eaedf"
+  },
+  "/console-api/usage-billing-ff7": {
+    "__comp": "17896441",
+    "content": "d7d4de1b"
+  },
+  "/console-api/users-1c8": {
+    "__comp": "17896441",
+    "content": "4c04794a"
+  },
+  "/console-api/warehouse-connections-17a": {
+    "__comp": "17896441",
+    "content": "ff46c973"
+  },
+  "/console/accessManagement/sso/okta_sso-65a": {
+    "__comp": "17896441",
+    "content": "a4232261"
+  },
+  "/contextual-bandit-e3c": {
+    "__comp": "17896441",
+    "content": "c5a7fa55"
+  },
+  "/custom_proxy-4c3": {
+    "__comp": "17896441",
+    "content": "3985b1fc"
+  },
+  "/data-warehouse-ingestion/athena-887": {
+    "__comp": "17896441",
+    "content": "91396f7c"
+  },
+  "/data-warehouse-ingestion/bigquery-f58": {
+    "__comp": "17896441",
+    "content": "092634b1"
+  },
+  "/data-warehouse-ingestion/data_mapping-d42": {
+    "__comp": "17896441",
+    "content": "5bbfe5f8"
+  },
+  "/data-warehouse-ingestion/databricks-9a2": {
+    "__comp": "17896441",
+    "content": "8296e05b"
+  },
+  "/data-warehouse-ingestion/faq-2cf": {
+    "__comp": "17896441",
+    "content": "1ea2c8b8"
+  },
+  "/data-warehouse-ingestion/introduction-181": {
+    "__comp": "17896441",
+    "content": "c7d279f3"
+  },
+  "/data-warehouse-ingestion/redshift-3b9": {
+    "__comp": "17896441",
+    "content": "52a38cac"
+  },
+  "/data-warehouse-ingestion/s3-897": {
+    "__comp": "17896441",
+    "content": "6cd53d40"
+  },
+  "/data-warehouse-ingestion/snowflake-c0d": {
+    "__comp": "17896441",
+    "content": "3210e47e"
+  },
+  "/data-warehouse-ingestion/synapse-7aa": {
+    "__comp": "17896441",
+    "content": "ce4d854f"
+  },
+  "/developer-guides/abtest-in-javascript-42e": {
+    "__comp": "17896441",
+    "content": "ccdd0d45"
+  },
+  "/developer-guides/abtest-in-nodejs-e49": {
+    "__comp": "17896441",
+    "content": "62a589fd"
+  },
+  "/developer-guides/abtest-in-python-3bc": {
+    "__comp": "17896441",
+    "content": "2628f3a8"
+  },
+  "/developer-guides/abtest-in-rust-f1f": {
+    "__comp": "17896441",
+    "content": "973b3fb5"
+  },
+  "/developer-guides/feature-flags-in-android-e96": {
+    "__comp": "17896441",
+    "content": "91bbbd95"
+  },
+  "/developer-guides/feature-flags-in-expo-e5a": {
+    "__comp": "17896441",
+    "content": "bb06658f"
+  },
+  "/developer-guides/feature-flags-in-java-6a9": {
+    "__comp": "17896441",
+    "content": "63b801cc"
+  },
+  "/developer-guides/feature-flags-in-javascript-4e2": {
+    "__comp": "17896441",
+    "content": "24245f04"
+  },
+  "/developer-guides/feature-flags-in-nodejs-de7": {
+    "__comp": "17896441",
+    "content": "24bdb8da"
+  },
+  "/developer-guides/feature-flags-in-python-69f": {
+    "__comp": "17896441",
+    "content": "f3ac6f96"
+  },
+  "/developer-guides/feature-flags-in-react-1f7": {
+    "__comp": "17896441",
+    "content": "0f3a6656"
+  },
+  "/developer-guides/feature-flags-in-ruby-2b9": {
+    "__comp": "17896441",
+    "content": "f1de9018"
+  },
+  "/developer-guides/feature-flags-in-rust-d71": {
+    "__comp": "17896441",
+    "content": "7eb60523"
+  },
+  "/developer-guides/feature-flags-in-swift-e1e": {
+    "__comp": "17896441",
+    "content": "cd87662f"
+  },
+  "/dynamic-config-9f9": {
+    "__comp": "17896441",
+    "content": "c6cdd180"
+  },
+  "/dynamic-config/add-rule-58c": {
+    "__comp": "17896441",
+    "content": "063ce340"
+  },
+  "/dynamic-config/create-new-8e7": {
+    "__comp": "17896441",
+    "content": "d74b8288"
+  },
+  "/dynamic-config/enforce-schema-bf3": {
+    "__comp": "17896441",
+    "content": "04208110"
+  },
+  "/dynamic-config/working-with-e62": {
+    "__comp": "17896441",
+    "content": "c313eeef"
+  },
+  "/exp-templates/decision-framework-bd3": {
+    "__comp": "17896441",
+    "content": "e660bfb0"
+  },
+  "/experimentation/meta-analysis-397": {
+    "__comp": "17896441",
+    "content": "c21a852d"
+  },
+  "/experimentation/meta-analysis-whn-d72": {
+    "__comp": "17896441",
+    "content": "0fc47f36"
+  },
+  "/experimentation/quality-score-177": {
+    "__comp": "17896441",
+    "content": "a7aecc27"
+  },
+  "/experimentation/quality-score-whn-675": {
+    "__comp": "17896441",
+    "content": "1940f6b0"
+  },
+  "/experimentation/statsig-lite-cd8": {
+    "__comp": "17896441",
+    "content": "addf3001"
+  },
+  "/experiments-plus-4c2": {
+    "__comp": "17896441",
+    "content": "4ed8f810"
+  },
+  "/experiments-plus/abandon-0ef": {
+    "__comp": "17896441",
+    "content": "84abe382"
+  },
+  "/experiments-plus/bayesian-0d8": {
+    "__comp": "17896441",
+    "content": "7e522bf0"
+  },
+  "/experiments-plus/conclude-experiment-defer-decision-2e0": {
+    "__comp": "17896441",
+    "content": "a82b9c2b"
+  },
+  "/experiments-plus/create-new-96c": {
+    "__comp": "17896441",
+    "content": "e0aba49f"
+  },
+  "/experiments-plus/cure-f8e": {
+    "__comp": "17896441",
+    "content": "97a9af68"
+  },
+  "/experiments-plus/cure-setup-a05": {
+    "__comp": "17896441",
+    "content": "5019483d"
+  },
+  "/experiments-plus/differential-impact-detection-358": {
+    "__comp": "17896441",
+    "content": "112a7026"
+  },
+  "/experiments-plus/differential-impact-detection-whn-dfd": {
+    "__comp": "17896441",
+    "content": "f8574478"
+  },
+  "/experiments-plus/disable-group-b88": {
+    "__comp": "17896441",
+    "content": "3f8abe35"
+  },
+  "/experiments-plus/ending-experiment-de4": {
+    "__comp": "17896441",
+    "content": "a8813049"
+  },
+  "/experiments-plus/geotests-e66": {
+    "__comp": "17896441",
+    "content": "e60757b3"
+  },
+  "/experiments-plus/geotests-setup-841": {
+    "__comp": "17896441",
+    "content": "2c06f335"
+  },
+  "/experiments-plus/geotests/methodology-846": {
+    "__comp": "17896441",
+    "content": "6ac12a16"
+  },
+  "/experiments-plus/getting-group-a93": {
+    "__comp": "17896441",
+    "content": "be74a91a"
+  },
+  "/experiments-plus/implement-0fb": {
+    "__comp": "17896441",
+    "content": "20084ed7"
+  },
+  "/experiments-plus/interaction-detection-d8f": {
+    "__comp": "17896441",
+    "content": "0b9081e0"
+  },
+  "/experiments-plus/make-decision-d74": {
+    "__comp": "17896441",
+    "content": "12d53cfa"
+  },
+  "/experiments-plus/monitor-aaa": {
+    "__comp": "17896441",
+    "content": "13f3ba5f"
+  },
+  "/experiments-plus/overrides-e8d": {
+    "__comp": "17896441",
+    "content": "fb5e346a"
+  },
+  "/experiments-plus/power-analysis-b26": {
+    "__comp": "17896441",
+    "content": "3616b738"
+  },
+  "/experiments-plus/reconciling-experiment-results-971": {
+    "__comp": "17896441",
+    "content": "e774f16e"
+  },
+  "/experiments-plus/sequential-testing-f3b": {
+    "__comp": "17896441",
+    "content": "4d3f9ab3"
+  },
+  "/experiments-plus/sprt-894": {
+    "__comp": "17896441",
+    "content": "2a49affc"
+  },
+  "/experiments-plus/stop-assignments-209": {
+    "__comp": "17896441",
+    "content": "15688f51"
+  },
+  "/experiments-plus/stratified-sampling-e81": {
+    "__comp": "17896441",
+    "content": "45ab5da1"
+  },
+  "/experiments-plus/stratified-sampling-whn-077": {
+    "__comp": "17896441",
+    "content": "df98fcb3"
+  },
+  "/experiments-plus/switchback-tests-314": {
+    "__comp": "17896441",
+    "content": "023de10e"
+  },
+  "/faq-b11": {
+    "__comp": "17896441",
+    "content": "ea313555"
+  },
+  "/feature-flags/best-practices-a5e": {
+    "__comp": "17896441",
+    "content": "3fe1e253"
+  },
+  "/feature-flags/bots-e5e": {
+    "__comp": "17896441",
+    "content": "ead0e752"
+  },
+  "/feature-flags/conditions-c79": {
+    "__comp": "17896441",
+    "content": "456cb597"
+  },
+  "/feature-flags/create-9ac": {
+    "__comp": "17896441",
+    "content": "37da3994"
+  },
+  "/feature-flags/feature-flags-lifecycle-592": {
+    "__comp": "17896441",
+    "content": "d715fc92"
+  },
+  "/feature-flags/multiple-rollout-stages-0d0": {
+    "__comp": "17896441",
+    "content": "7d7d4767"
+  },
+  "/feature-flags/overrides-ac9": {
+    "__comp": "17896441",
+    "content": "ffcba9b0"
+  },
+  "/feature-flags/overview-256": {
+    "__comp": "17896441",
+    "content": "90790386"
+  },
+  "/feature-flags/permanent-and-stale-gates-a94": {
+    "__comp": "17896441",
+    "content": "97276e55"
+  },
+  "/feature-flags/pre-post-results-649": {
+    "__comp": "17896441",
+    "content": "767f20e5"
+  },
+  "/feature-flags/scheduled-rollouts-28e": {
+    "__comp": "17896441",
+    "content": "65857de7"
+  },
+  "/feature-flags/test-gate-afa": {
+    "__comp": "17896441",
+    "content": "7d5ee8e9"
+  },
+  "/feature-flags/view-exposures-2eb": {
+    "__comp": "17896441",
+    "content": "0e7ee733"
+  },
+  "/guides/aa-sidecar-b12": {
+    "__comp": "17896441",
+    "content": "ea3f3085"
+  },
+  "/guides/aa-test-22e": {
+    "__comp": "17896441",
+    "content": "e812162c"
+  },
+  "/guides/abn-tests-486": {
+    "__comp": "17896441",
+    "content": "774df7f3"
+  },
+  "/guides/cdn-edge-testing-956": {
+    "__comp": "17896441",
+    "content": "0fdaea4c"
+  },
+  "/guides/cms-integrations-2ea": {
+    "__comp": "17896441",
+    "content": "584f4644"
+  },
+  "/guides/config-history-a47": {
+    "__comp": "17896441",
+    "content": "6cdcf5ef"
+  },
+  "/guides/contentful-6ef": {
+    "__comp": "17896441",
+    "content": "07338e4a"
+  },
+  "/guides/customer-io-email-abtest-667": {
+    "__comp": "17896441",
+    "content": "183834a1"
+  },
+  "/guides/email-campaign-test-16d": {
+    "__comp": "17896441",
+    "content": "177bd4c6"
+  },
+  "/guides/experiment-on-custom-id-types-3c2": {
+    "__comp": "17896441",
+    "content": "89f4b660"
+  },
+  "/guides/experimentation-program-590": {
+    "__comp": "17896441",
+    "content": "7aa7d489"
+  },
+  "/guides/experiments-328": {
+    "__comp": "17896441",
+    "content": "e40312b1"
+  },
+  "/guides/feature-flags-99c": {
+    "__comp": "17896441",
+    "content": "b8ab3ca1"
+  },
+  "/guides/featureflags-or-experiments-d45": {
+    "__comp": "17896441",
+    "content": "b3de2432"
+  },
+  "/guides/first-device-level-experiment-8a6": {
+    "__comp": "17896441",
+    "content": "41a659f6"
+  },
+  "/guides/first-dynamic-config-f2d": {
+    "__comp": "17896441",
+    "content": "ed598fba"
+  },
+  "/guides/first-feature-fda": {
+    "__comp": "17896441",
+    "content": "99f0a273"
+  },
+  "/guides/first-holdout-d19": {
+    "__comp": "17896441",
+    "content": "452602a2"
+  },
+  "/guides/first-segment-fc1": {
+    "__comp": "17896441",
+    "content": "d9502528"
+  },
+  "/guides/fomo-2fe": {
+    "__comp": "17896441",
+    "content": "bab68fdb"
+  },
+  "/guides/framer-analytics-fa7": {
+    "__comp": "17896441",
+    "content": "6d2c07b3"
+  },
+  "/guides/frameworks-806": {
+    "__comp": "17896441",
+    "content": "9b38317f"
+  },
+  "/guides/guides_overview-c21": {
+    "__comp": "17896441",
+    "content": "afce28c6"
+  },
+  "/guides/landing-page-experiments/interpreting-682": {
+    "__comp": "17896441",
+    "content": "9fd1ac99"
+  },
+  "/guides/landing-page-experiments/introduction-c47": {
+    "__comp": "17896441",
+    "content": "1e96e002"
+  },
+  "/guides/landing-page-experiments/setup-313": {
+    "__comp": "17896441",
+    "content": "c150ec30"
+  },
+  "/guides/landing-page-experiments/webflow-8bb": {
+    "__comp": "17896441",
+    "content": "60923319"
+  },
+  "/guides/logging-events-980": {
+    "__comp": "17896441",
+    "content": "0f4c71b8"
+  },
+  "/guides/migrate-from-amplitude-884": {
+    "__comp": "17896441",
+    "content": "906aa68e"
+  },
+  "/guides/migrate-from-launchdarkly-9af": {
+    "__comp": "17896441",
+    "content": "6b4c77e8"
+  },
+  "/guides/migrate-from-mixpanel-b44": {
+    "__comp": "17896441",
+    "content": "7e521740"
+  },
+  "/guides/migration-overview-6f9": {
+    "__comp": "17896441",
+    "content": "e355298b"
+  },
+  "/guides/node-express-abtests-6df": {
+    "__comp": "17896441",
+    "content": "b2469bb0"
+  },
+  "/guides/node-express-feature-flags-f81": {
+    "__comp": "17896441",
+    "content": "532c4203"
+  },
+  "/guides/open-source-script-3fb": {
+    "__comp": "17896441",
+    "content": "65e75419"
+  },
+  "/guides/private-attributes-d7b": {
+    "__comp": "17896441",
+    "content": "0d5ed069"
+  },
+  "/guides/production-cda": {
+    "__comp": "17896441",
+    "content": "447f5c0b"
+  },
+  "/guides/python-flask-abtests-995": {
+    "__comp": "17896441",
+    "content": "7c88667e"
+  },
+  "/guides/python-flask-feature-flags-46c": {
+    "__comp": "17896441",
+    "content": "e1778539"
+  },
+  "/guides/running-a-poc-544": {
+    "__comp": "17896441",
+    "content": "c2fed57a"
+  },
+  "/guides/sample-apps-d32": {
+    "__comp": "17896441",
+    "content": "635e7853"
+  },
+  "/guides/sendgrid-email-abtest-2fb": {
+    "__comp": "17896441",
+    "content": "a6ac8f83"
+  },
+  "/guides/seo-testing-e06": {
+    "__comp": "17896441",
+    "content": "f897ebd8"
+  },
+  "/guides/serverless-1df": {
+    "__comp": "17896441",
+    "content": "da9e038a"
+  },
+  "/guides/setting-up-reviews-094": {
+    "__comp": "17896441",
+    "content": "870acb91"
+  },
+  "/guides/shopify-ab-test-e2e": {
+    "__comp": "17896441",
+    "content": "307bd693"
+  },
+  "/guides/sidecar-experiments/advanced-configurations-673": {
+    "__comp": "17896441",
+    "content": "fe8b05a3"
+  },
+  "/guides/sidecar-experiments/advanced-configurations-v3-639": {
+    "__comp": "17896441",
+    "content": "8862e7b3"
+  },
+  "/guides/sidecar-experiments/creating-experiments-99a": {
+    "__comp": "17896441",
+    "content": "7d2a091a"
+  },
+  "/guides/sidecar-experiments/integrating-gtm-883": {
+    "__comp": "17896441",
+    "content": "b2e3b60d"
+  },
+  "/guides/sidecar-experiments/introduction-2e9": {
+    "__comp": "17896441",
+    "content": "3dc86142"
+  },
+  "/guides/sidecar-experiments/measuring-experiments-f20": {
+    "__comp": "17896441",
+    "content": "9671612d"
+  },
+  "/guides/sidecar-experiments/publishing-experiments-676": {
+    "__comp": "17896441",
+    "content": "70ecd94e"
+  },
+  "/guides/sidecar-experiments/setup-acc": {
+    "__comp": "17896441",
+    "content": "c5f60849"
+  },
+  "/guides/sidecar-experiments/sidecar-v3-2e3": {
+    "__comp": "17896441",
+    "content": "ec96ee22"
+  },
+  "/guides/srm-4d4": {
+    "__comp": "17896441",
+    "content": "089441fe"
+  },
+  "/guides/statsig-id-resolver-fdc": {
+    "__comp": "17896441",
+    "content": "e46ed7d3"
+  },
+  "/guides/synchronized-launch-e8c": {
+    "__comp": "17896441",
+    "content": "8d8f7cff"
+  },
+  "/guides/testing-9f2": {
+    "__comp": "17896441",
+    "content": "183ed9a2"
+  },
+  "/guides/ui-based-tool-d62": {
+    "__comp": "17896441",
+    "content": "92623c91"
+  },
+  "/guides/uptime-2be": {
+    "__comp": "17896441",
+    "content": "9edb14b0"
+  },
+  "/guides/using-environments-bfe": {
+    "__comp": "17896441",
+    "content": "8ebfd5bd"
+  },
+  "/guides/webflow-sidecar-ab-test-f98": {
+    "__comp": "17896441",
+    "content": "601f1807"
+  },
+  "/holdouts-a31": {
+    "__comp": "17896441",
+    "content": "8f9f8248"
+  },
+  "/http-api-e82": {
+    "__comp": "17896441",
+    "content": "01444792"
+  },
+  "/infra-analytics/events-mode-logs-explorer-482": {
+    "__comp": "17896441",
+    "content": "a7e58fe0"
+  },
+  "/infra-analytics/getting-started-167": {
+    "__comp": "17896441",
+    "content": "56d7fab2"
+  },
+  "/infra-analytics/logs-explorer-4ec": {
+    "__comp": "17896441",
+    "content": "f3bb66c9"
+  },
+  "/infra-analytics/logs-explorer-queries-d1c": {
+    "__comp": "17896441",
+    "content": "82ac3557"
+  },
+  "/infra-analytics/overview-0c5": {
+    "__comp": "17896441",
+    "content": "5293a198"
+  },
+  "/infra-analytics/topline-alerts-logs-6e8": {
+    "__comp": "17896441",
+    "content": "6f4abad9"
+  },
+  "/infrastructure/api_proxy/introduction-d75": {
+    "__comp": "17896441",
+    "content": "75826c0a"
+  },
+  "/infrastructure/introduction-308": {
+    "__comp": "17896441",
+    "content": "d38ae0a2"
+  },
+  "/infrastructure/managed-proxy-447": {
+    "__comp": "17896441",
+    "content": "cd1735c0"
+  },
+  "/infrastructure/statsig_domains-a8d": {
+    "__comp": "17896441",
+    "content": "1e21ba87"
+  },
+  "/infrastructure/statsig_ip_ranges-230": {
+    "__comp": "17896441",
+    "content": "a1fc0d3d"
+  },
+  "/integrations/akamai-ed0": {
+    "__comp": "17896441",
+    "content": "90804e91"
+  },
+  "/integrations/cloudflare-7ae": {
+    "__comp": "17896441",
+    "content": "64c3fe8f"
+  },
+  "/integrations/data-connectors/amplitude-a17": {
+    "__comp": "17896441",
+    "content": "51e12888"
+  },
+  "/integrations/data-connectors/braze-c46": {
+    "__comp": "17896441",
+    "content": "eeb1b3a5"
+  },
+  "/integrations/data-connectors/census-ed6": {
+    "__comp": "17896441",
+    "content": "a93ad18c"
+  },
+  "/integrations/data-connectors/fivetran-6a8": {
+    "__comp": "17896441",
+    "content": "b2b3b37e"
+  },
+  "/integrations/data-connectors/google-analytics-2b9": {
+    "__comp": "17896441",
+    "content": "8dfe9f5a"
+  },
+  "/integrations/data-connectors/heap-7cc": {
+    "__comp": "17896441",
+    "content": "b9e0327b"
+  },
+  "/integrations/data-connectors/hightouch-cb7": {
+    "__comp": "17896441",
+    "content": "49651b32"
+  },
+  "/integrations/data-connectors/mixpanel-743": {
+    "__comp": "17896441",
+    "content": "9128ca1e"
+  },
+  "/integrations/data-connectors/mparticle-d3a": {
+    "__comp": "17896441",
+    "content": "050db1af"
+  },
+  "/integrations/data-connectors/revenuecat-738": {
+    "__comp": "17896441",
+    "content": "ab449118"
+  },
+  "/integrations/data-connectors/rudderstack-c0c": {
+    "__comp": "17896441",
+    "content": "33c0af62"
+  },
+  "/integrations/data-connectors/segment-fcd": {
+    "__comp": "17896441",
+    "content": "9ffb7dfd"
+  },
+  "/integrations/data-connectors/stitch-988": {
+    "__comp": "17896441",
+    "content": "4f021e51"
+  },
+  "/integrations/data-exports/overview-f9f": {
+    "__comp": "17896441",
+    "content": "0af1de2a"
+  },
+  "/integrations/data-imports/azure-upload-6e0": {
+    "__comp": "17896441",
+    "content": "95e2cf09"
+  },
+  "/integrations/data-imports/bigquery-463": {
+    "__comp": "17896441",
+    "content": "c8d79b36"
+  },
+  "/integrations/data-imports/overview-be7": {
+    "__comp": "17896441",
+    "content": "c8c18b8f"
+  },
+  "/integrations/data-imports/redshift-c47": {
+    "__comp": "17896441",
+    "content": "b3794370"
+  },
+  "/integrations/data-imports/snowflake-1cc": {
+    "__comp": "17896441",
+    "content": "d71ac6d2"
+  },
+  "/integrations/datadog-772": {
+    "__comp": "17896441",
+    "content": "0cb16996"
+  },
+  "/integrations/event_filtering-51f": {
+    "__comp": "17896441",
+    "content": "1911d018"
+  },
+  "/integrations/event_webhook-1fc": {
+    "__comp": "17896441",
+    "content": "c42ab044"
+  },
+  "/integrations/fastly-7e7": {
+    "__comp": "17896441",
+    "content": "3fc736b7"
+  },
+  "/integrations/github_code_references-e8d": {
+    "__comp": "17896441",
+    "content": "dbc77d3f"
+  },
+  "/integrations/gitlab_code_references-dbf": {
+    "__comp": "17896441",
+    "content": "284f89e5"
+  },
+  "/integrations/gtm-4fb": {
+    "__comp": "17896441",
+    "content": "89a31de1"
+  },
+  "/integrations/introduction-17b": {
+    "__comp": "17896441",
+    "content": "13dbdcdf"
+  },
+  "/integrations/jira-d75": {
+    "__comp": "17896441",
+    "content": "edee1e45"
+  },
+  "/integrations/mcp-b01": {
+    "__comp": "17896441",
+    "content": "f1285d9a"
+  },
+  "/integrations/openai-f89": {
+    "__comp": "17896441",
+    "content": "2a036e2a"
+  },
+  "/integrations/pulumi-b4a": {
+    "__comp": "17896441",
+    "content": "c0878bfe"
+  },
+  "/integrations/slack-5b8": {
+    "__comp": "17896441",
+    "content": "bc4d0067"
+  },
+  "/integrations/snippets/integration_event_formats-f58": {
+    "__comp": "17896441",
+    "content": "331c5fa0"
+  },
+  "/integrations/snippets/integration_statsig_env_format-cf7": {
+    "__comp": "17896441",
+    "content": "30fe9d6f"
+  },
+  "/integrations/snippets/stitch_event_formats-464": {
+    "__comp": "17896441",
+    "content": "69cb7ccc"
+  },
+  "/integrations/terraform/introduction-f79": {
+    "__comp": "17896441",
+    "content": "d789eae4"
+  },
+  "/integrations/terraform/terraform_experiment-174": {
+    "__comp": "17896441",
+    "content": "13f3d62a"
+  },
+  "/integrations/terraform/terraform_gate-dac": {
+    "__comp": "17896441",
+    "content": "167d388e"
+  },
+  "/integrations/triggers/datadog-715": {
+    "__comp": "17896441",
+    "content": "e326c110"
+  },
+  "/integrations/vercel-279": {
+    "__comp": "17896441",
+    "content": "8e656a3f"
+  },
+  "/integrations/workersai-1d5": {
+    "__comp": "17896441",
+    "content": "47c45cb9"
+  },
+  "/layers-1ed": {
+    "__comp": "17896441",
+    "content": "2b60acef"
+  },
+  "/messages/healthhub-55a": {
+    "__comp": "17896441",
+    "content": "03a7869a"
+  },
+  "/messages/serverSDKConnection-aa6": {
+    "__comp": "17896441",
+    "content": "de50dda0"
+  },
+  "/metrics-d5f": {
+    "__comp": "17896441",
+    "content": "f706069f"
+  },
+  "/metrics/101-96b": {
+    "__comp": "17896441",
+    "content": "c48908bb"
+  },
+  "/metrics/201-75c": {
+    "__comp": "17896441",
+    "content": "343c3986"
+  },
+  "/metrics/301-891": {
+    "__comp": "17896441",
+    "content": "c1b05502"
+  },
+  "/metrics/archiving-metrics-f89": {
+    "__comp": "17896441",
+    "content": "19fff6d5"
+  },
+  "/metrics/autogenerated-0e2": {
+    "__comp": "17896441",
+    "content": "fe136610"
+  },
+  "/metrics/console-df0": {
+    "__comp": "17896441",
+    "content": "2a2b3ae2"
+  },
+  "/metrics/count_distinct_metric_type-8c4": {
+    "__comp": "17896441",
+    "content": "574defbd"
+  },
+  "/metrics/create-8ea": {
+    "__comp": "17896441",
+    "content": "a310fcce"
+  },
+  "/metrics/create-metric-tags-954": {
+    "__comp": "17896441",
+    "content": "dc8d9d72"
+  },
+  "/metrics/create-user-flows-147": {
+    "__comp": "17896441",
+    "content": "7be83bf7"
+  },
+  "/metrics/create-user-funnels-ca3": {
+    "__comp": "17896441",
+    "content": "ab823c6d"
+  },
+  "/metrics/custom-dau-050": {
+    "__comp": "17896441",
+    "content": "ecde4452"
+  },
+  "/metrics/custom-metrics-5fb": {
+    "__comp": "17896441",
+    "content": "1f5f548a"
+  },
+  "/metrics/deprecate-event-dau-960": {
+    "__comp": "17896441",
+    "content": "01c18f88"
+  },
+  "/metrics/different-id-29e": {
+    "__comp": "17896441",
+    "content": "65d3df5d"
+  },
+  "/metrics/directionality-76a": {
+    "__comp": "17896441",
+    "content": "53f7ecbe"
+  },
+  "/metrics/health-checks-83c": {
+    "__comp": "17896441",
+    "content": "bb7f471a"
+  },
+  "/metrics/hierarchical-id-133": {
+    "__comp": "17896441",
+    "content": "304a4f1c"
+  },
+  "/metrics/how-metrics-work-103": {
+    "__comp": "17896441",
+    "content": "486f4016"
+  },
+  "/metrics/ingest-497": {
+    "__comp": "17896441",
+    "content": "b16fed8e"
+  },
+  "/metrics/local-metrics-86c": {
+    "__comp": "17896441",
+    "content": "23959c71"
+  },
+  "/metrics/metric-dimensions-c94": {
+    "__comp": "17896441",
+    "content": "b303e4eb"
+  },
+  "/metrics/metrics-from-events-242": {
+    "__comp": "17896441",
+    "content": "8dfaadfc"
+  },
+  "/metrics/precomputed-metrics-6da": {
+    "__comp": "17896441",
+    "content": "9781ede9"
+  },
+  "/metrics/pulse-3e8": {
+    "__comp": "17896441",
+    "content": "6a06826f"
+  },
+  "/metrics/raw-events-3ba": {
+    "__comp": "17896441",
+    "content": "06746b94"
+  },
+  "/metrics/rollout-alerts-f97": {
+    "__comp": "17896441",
+    "content": "5fbe695b"
+  },
+  "/metrics/user-77b": {
+    "__comp": "17896441",
+    "content": "a1906297"
+  },
+  "/metrics/user-property-ef9": {
+    "__comp": "17896441",
+    "content": "77b0f623"
+  },
+  "/metrics/verified-044": {
+    "__comp": "17896441",
+    "content": "86bab9cf"
+  },
+  "/multi-armed-bandit-2d7": {
+    "__comp": "17896441",
+    "content": "7113fa8a"
+  },
+  "/org-admin/experiment_policy-deb": {
+    "__comp": "17896441",
+    "content": "3c09659d"
+  },
+  "/org-admin/gates_policy-676": {
+    "__comp": "17896441",
+    "content": "d42ece1f"
+  },
+  "/org-admin/organization_policies-523": {
+    "__comp": "17896441",
+    "content": "2b9b64b4"
+  },
+  "/product-analytics/alerts-52a": {
+    "__comp": "17896441",
+    "content": "aabab4fe"
+  },
+  "/product-analytics/alerts/rollout_alerts-35c": {
+    "__comp": "17896441",
+    "content": "fb9dd2a9"
+  },
+  "/product-analytics/alerts/topline_alerts-763": {
+    "__comp": "17896441",
+    "content": "d59f766d"
+  },
+  "/product-analytics/dashboards-83c": {
+    "__comp": "17896441",
+    "content": "3207f218"
+  },
+  "/product-analytics/distribution-f02": {
+    "__comp": "17896441",
+    "content": "0cd5a232"
+  },
+  "/product-analytics/drilldown-9b1": {
+    "__comp": "17896441",
+    "content": "95b20884"
+  },
+  "/product-analytics/funnels-726": {
+    "__comp": "17896441",
+    "content": "10151d30"
+  },
+  "/product-analytics/overview-2e2": {
+    "__comp": "17896441",
+    "content": "8387a844"
+  },
+  "/product-analytics/retention-b63": {
+    "__comp": "17896441",
+    "content": "bee5d463"
+  },
+  "/product-analytics/user-journeys-be7": {
+    "__comp": "17896441",
+    "content": "ab220120"
+  },
+  "/pulse/access-whn-b94": {
+    "__comp": "17896441",
+    "content": "ebd21808"
+  },
+  "/pulse/best-faq-484": {
+    "__comp": "17896441",
+    "content": "74edbfec"
+  },
+  "/pulse/best-faq-whn-3d1": {
+    "__comp": "17896441",
+    "content": "96b6918d"
+  },
+  "/pulse/best-practices-5ee": {
+    "__comp": "17896441",
+    "content": "54fed543"
+  },
+  "/pulse/best-practices-whn-f53": {
+    "__comp": "17896441",
+    "content": "cf7b048f"
+  },
+  "/pulse/custom-queries-917": {
+    "__comp": "17896441",
+    "content": "27e82ee7"
+  },
+  "/pulse/custom-queries-whn-cd9": {
+    "__comp": "17896441",
+    "content": "bd5a9069"
+  },
+  "/pulse/drill-down-93e": {
+    "__comp": "17896441",
+    "content": "58a2a83b"
+  },
+  "/pulse/drill-down-whn-581": {
+    "__comp": "17896441",
+    "content": "5263f0de"
+  },
+  "/pulse/export-bc5": {
+    "__comp": "17896441",
+    "content": "05ed43d5"
+  },
+  "/pulse/participating-units-e71": {
+    "__comp": "17896441",
+    "content": "259e4fa3"
+  },
+  "/pulse/participating-units-whn-d6c": {
+    "__comp": "17896441",
+    "content": "9945d389"
+  },
+  "/pulse/read-pulse-691": {
+    "__comp": "17896441",
+    "content": "ef307bb4"
+  },
+  "/pulse/read-pulse-whn-a2c": {
+    "__comp": "17896441",
+    "content": "91f080ec"
+  },
+  "/pulse/user-properties-9d0": {
+    "__comp": "17896441",
+    "content": "d3b9aaa2"
+  },
+  "/quickstarts/feature-gates-a2a": {
+    "__comp": "17896441",
+    "content": "a2f65b0d"
+  },
+  "/release-pipeline-bc6": {
+    "__comp": "17896441",
+    "content": "c81cfbf4"
+  },
+  "/release-pipeline/actions-4d8": {
+    "__comp": "17896441",
+    "content": "ef001e99"
+  },
+  "/release-pipeline/create-and-manage-eca": {
+    "__comp": "17896441",
+    "content": "4a63b4fb"
+  },
+  "/release-pipeline/trigger-e67": {
+    "__comp": "17896441",
+    "content": "4565aaf1"
+  },
+  "/reliability-faqs-2fd": {
+    "__comp": "17896441",
+    "content": "80604f31"
+  },
+  "/safeguards/create-a00": {
+    "__comp": "17896441",
+    "content": "2c3e28ed"
+  },
+  "/safeguards/manage-4da": {
+    "__comp": "17896441",
+    "content": "a88367aa"
+  },
+  "/safeguards/overview-e38": {
+    "__comp": "17896441",
+    "content": "28c4dd93"
+  },
+  "/sdk_monitoring-a09": {
+    "__comp": "17896441",
+    "content": "eff9cb1a"
+  },
+  "/sdk-keys/api-keys-49d": {
+    "__comp": "17896441",
+    "content": "73308580"
+  },
+  "/sdk-keys/target-apps-556": {
+    "__comp": "17896441",
+    "content": "8e925065"
+  },
+  "/sdk/debugging-3b6": {
+    "__comp": "17896441",
+    "content": "7793a385"
+  },
+  "/sdks/array-operators-ca6": {
+    "__comp": "17896441",
+    "content": "2b2fa06b"
+  },
+  "/sdks/build-with-llms-467": {
+    "__comp": "17896441",
+    "content": "588c0d65"
+  },
+  "/sdks/client-vs-server-1a6": {
+    "__comp": "17896441",
+    "content": "ad657125"
+  },
+  "/sdks/getting-started-3b5": {
+    "__comp": "17896441",
+    "content": "1c84e1bc"
+  },
+  "/sdks/group-name-breaking-change-02-2024-690": {
+    "__comp": "17896441",
+    "content": "e931dd07"
+  },
+  "/sdks/how-evaluation-works-1a2": {
+    "__comp": "17896441",
+    "content": "722874a4"
+  },
+  "/sdks/identify-users-34a": {
+    "__comp": "17896441",
+    "content": "2004a466"
+  },
+  "/sdks/pagination-params-breaking-change-08-2024-205": {
+    "__comp": "17896441",
+    "content": "46109dfb"
+  },
+  "/sdks/quickstart-c13": {
+    "__comp": "17896441",
+    "content": "ad6c3c95"
+  },
+  "/sdks/support-048": {
+    "__comp": "17896441",
+    "content": "04a827f8"
+  },
+  "/segments-c47": {
+    "__comp": "17896441",
+    "content": "737181c2"
+  },
+  "/segments/add-id-list-d70": {
+    "__comp": "17896441",
+    "content": "3adc18b2"
+  },
+  "/segments/add-rule-7c5": {
+    "__comp": "17896441",
+    "content": "f0f849b0"
+  },
+  "/segments/create-new-a51": {
+    "__comp": "17896441",
+    "content": "eb2af0e8"
+  },
+  "/segments/implement-510": {
+    "__comp": "17896441",
+    "content": "fcf332ba"
+  },
+  "/server-core/-99f": {
+    "__comp": "17896441",
+    "content": "b038da63"
+  },
+  "/server-core/dotnetCoreSDK-e7b": {
+    "__comp": "17896441",
+    "content": "ce9cfb43"
+  },
+  "/server-core/elixir-core-509": {
+    "__comp": "17896441",
+    "content": "0260ab21"
+  },
+  "/server-core/go-core-f74": {
+    "__comp": "17896441",
+    "content": "1f2b6fe6"
+  },
+  "/server-core/go/migration-39c": {
+    "__comp": "17896441",
+    "content": "3d13cea3"
+  },
+  "/server-core/java-core-841": {
+    "__comp": "17896441",
+    "content": "a4005c52"
+  },
+  "/server-core/java/migration-1b8": {
+    "__comp": "17896441",
+    "content": "71ab7179"
+  },
+  "/server-core/legacy-sdks-b9f": {
+    "__comp": "17896441",
+    "content": "0dba6f19"
+  },
+  "/server-core/MigrationGuideTemplates/-ac0": {
+    "__comp": "17896441",
+    "content": "9582ab0e"
+  },
+  "/server-core/node-core-48a": {
+    "__comp": "17896441",
+    "content": "f08919f9"
+  },
+  "/server-core/php-core-006": {
+    "__comp": "17896441",
+    "content": "491a9f92"
+  },
+  "/server-core/python-core-fcb": {
+    "__comp": "17896441",
+    "content": "73acd6b4"
+  },
+  "/server-core/python/migration-guide/-7d6": {
+    "__comp": "17896441",
+    "content": "57bd9817"
+  },
+  "/server-core/rust-core-08f": {
+    "__comp": "17896441",
+    "content": "454f688e"
+  },
+  "/server-core/Templates/-05e": {
+    "__comp": "17896441",
+    "content": "94f83bad"
+  },
+  "/server/concepts/all-assignments-27f": {
+    "__comp": "17896441",
+    "content": "25cb8560"
+  },
+  "/server/concepts/cloudflare-13e": {
+    "__comp": "17896441",
+    "content": "265634ff"
+  },
+  "/server/concepts/data_store-43f": {
+    "__comp": "17896441",
+    "content": "556468ad"
+  },
+  "/server/concepts/forward_proxy-ccb": {
+    "__comp": "17896441",
+    "content": "b0c8f8fa"
+  },
+  "/server/concepts/open_telemetry-4c0": {
+    "__comp": "17896441",
+    "content": "f54db41b"
+  },
+  "/server/concepts/persistent_assignment-b40": {
+    "__comp": "17896441",
+    "content": "1478b57f"
+  },
+  "/server/cppSDK-349": {
+    "__comp": "17896441",
+    "content": "3a864c4f"
+  },
+  "/server/deprecation-notices-f47": {
+    "__comp": "17896441",
+    "content": "6b47af72"
+  },
+  "/server/dotnetSDK-044": {
+    "__comp": "17896441",
+    "content": "4385a661"
+  },
+  "/server/erlangSDK-104": {
+    "__comp": "17896441",
+    "content": "e22768f6"
+  },
+  "/server/golangSDK-efd": {
+    "__comp": "17896441",
+    "content": "35dbd572"
+  },
+  "/server/introduction-645": {
+    "__comp": "17896441",
+    "content": "4de011ae"
+  },
+  "/server/javaSdk-2f5": {
+    "__comp": "17896441",
+    "content": "fba14029"
+  },
+  "/server/nodejsServerSDK-17b": {
+    "__comp": "17896441",
+    "content": "9421e2ba"
+  },
+  "/server/nodejsServerSDK/upgrade_guide/v5ToV6-aab": {
+    "__comp": "17896441",
+    "content": "5a585d51"
+  },
+  "/server/phpCoreSDK-755": {
+    "__comp": "17896441",
+    "content": "d5220657"
+  },
+  "/server/phpSDK-81d": {
+    "__comp": "17896441",
+    "content": "735eff00"
+  },
+  "/server/pythonSDK-61b": {
+    "__comp": "17896441",
+    "content": "7a0a1ded"
+  },
+  "/server/rubySDK-bdd": {
+    "__comp": "17896441",
+    "content": "33556fd9"
+  },
+  "/server/rustSDK-bc3": {
+    "__comp": "17896441",
+    "content": "21ba15b2"
+  },
+  "/server/Templates/-44d": {
+    "__comp": "17896441",
+    "content": "a05d1fd8"
+  },
+  "/session-replay/cli-session-replay-3ee": {
+    "__comp": "17896441",
+    "content": "ee4b24cc"
+  },
+  "/session-replay/configure-4e2": {
+    "__comp": "17896441",
+    "content": "5f9b3257"
+  },
+  "/session-replay/install-272": {
+    "__comp": "17896441",
+    "content": "9f1ca1da"
+  },
+  "/session-replay/overview-0a7": {
+    "__comp": "17896441",
+    "content": "23b8b2fa"
+  },
+  "/session-replay/watch-1cc": {
+    "__comp": "17896441",
+    "content": "48f2feac"
+  },
+  "/stats-engine-b6b": {
+    "__comp": "17896441",
+    "content": "5150ed6e"
+  },
+  "/stats-engine/confidence-intervals-99e": {
+    "__comp": "17896441",
+    "content": "d2fa413a"
+  },
+  "/stats-engine/confidence-intervals-whn-b20": {
+    "__comp": "17896441",
+    "content": "6c4a81c5"
+  },
+  "/stats-engine/methodologies/benjamini–hochberg-procedure-6e1": {
+    "__comp": "17896441",
+    "content": "f71b300f"
+  },
+  "/stats-engine/methodologies/benjamini–hochberg-procedure-whn-294": {
+    "__comp": "17896441",
+    "content": "e81e50c8"
+  },
+  "/stats-engine/methodologies/bonferroni-correction-ca9": {
+    "__comp": "17896441",
+    "content": "5b0b89ee"
+  },
+  "/stats-engine/methodologies/bonferroni-correction-whn-b3c": {
+    "__comp": "17896441",
+    "content": "0c219100"
+  },
+  "/stats-engine/methodologies/cuped-bf4": {
+    "__comp": "17896441",
+    "content": "fbb9a5ed"
+  },
+  "/stats-engine/methodologies/cuped-whn-80d": {
+    "__comp": "17896441",
+    "content": "a8bea1e1"
+  },
+  "/stats-engine/methodologies/delta-method-e53": {
+    "__comp": "17896441",
+    "content": "441f2df1"
+  },
+  "/stats-engine/methodologies/delta-method-whn-5f4": {
+    "__comp": "17896441",
+    "content": "ae6670fe"
+  },
+  "/stats-engine/methodologies/fieller-intervals-901": {
+    "__comp": "17896441",
+    "content": "790aa0f8"
+  },
+  "/stats-engine/methodologies/fieller-intervals-whn-e40": {
+    "__comp": "17896441",
+    "content": "5afa7ed6"
+  },
+  "/stats-engine/methodologies/one-sided-test-whn-af3": {
+    "__comp": "17896441",
+    "content": "b0e46cae"
+  },
+  "/stats-engine/methodologies/srm-checks-414": {
+    "__comp": "17896441",
+    "content": "f863fd4e"
+  },
+  "/stats-engine/methodologies/srm-checks-whn-205": {
+    "__comp": "17896441",
+    "content": "66d0b46c"
+  },
+  "/stats-engine/methodologies/winsorization-a87": {
+    "__comp": "17896441",
+    "content": "148b9d04"
+  },
+  "/stats-engine/methodologies/winsorization-whn-75d": {
+    "__comp": "17896441",
+    "content": "53aa369b"
+  },
+  "/stats-engine/metric-deltas-a7c": {
+    "__comp": "17896441",
+    "content": "bfd2fc8e"
+  },
+  "/stats-engine/metric-deltas-whn-bb3": {
+    "__comp": "17896441",
+    "content": "c543515d"
+  },
+  "/stats-engine/one-sample-test-9d4": {
+    "__comp": "17896441",
+    "content": "4bcad59b"
+  },
+  "/stats-engine/one-sided-test-91b": {
+    "__comp": "17896441",
+    "content": "90cc5350"
+  },
+  "/stats-engine/p-value-e75": {
+    "__comp": "17896441",
+    "content": "23f0c765"
+  },
+  "/stats-engine/p-value-whn-def": {
+    "__comp": "17896441",
+    "content": "cda76057"
+  },
+  "/stats-engine/pre-experiment-bias-3fa": {
+    "__comp": "17896441",
+    "content": "b0437e98"
+  },
+  "/stats-engine/pre-experiment-bias-whn-bf8": {
+    "__comp": "17896441",
+    "content": "bf543ff7"
+  },
+  "/stats-engine/topline-impact-3ac": {
+    "__comp": "17896441",
+    "content": "f092a732"
+  },
+  "/stats-engine/topline-impact-whn-71b": {
+    "__comp": "17896441",
+    "content": "0a17e310"
+  },
+  "/stats-engine/variance-72d": {
+    "__comp": "17896441",
+    "content": "89380f76"
+  },
+  "/stats-engine/variance_reduction-045": {
+    "__comp": "17896441",
+    "content": "ea9dba47"
+  },
+  "/stats-engine/variance_reduction-whn-e6f": {
+    "__comp": "17896441",
+    "content": "2590bfb3"
+  },
+  "/stats-engine/variance-whn-46e": {
+    "__comp": "17896441",
+    "content": "7de41d73"
+  },
+  "/statsig-warehouse-native/configuration/assignment-sources-a76": {
+    "__comp": "17896441",
+    "content": "293729e2"
+  },
+  "/statsig-warehouse-native/configuration/console-api-579": {
+    "__comp": "17896441",
+    "content": "9ce2c83f"
+  },
+  "/statsig-warehouse-native/configuration/data-and-semantic-layer-e13": {
+    "__comp": "17896441",
+    "content": "d0b8c131"
+  },
+  "/statsig-warehouse-native/configuration/dimensional-analysis-834": {
+    "__comp": "17896441",
+    "content": "f12f6abd"
+  },
+  "/statsig-warehouse-native/configuration/entity-properties-9ef": {
+    "__comp": "17896441",
+    "content": "ce508de1"
+  },
+  "/statsig-warehouse-native/configuration/metric-examples-a3d": {
+    "__comp": "17896441",
+    "content": "a85a5be3"
+  },
+  "/statsig-warehouse-native/configuration/metric-sources-411": {
+    "__comp": "17896441",
+    "content": "5191632c"
+  },
+  "/statsig-warehouse-native/configuration/metrics-c16": {
+    "__comp": "17896441",
+    "content": "f6975e43"
+  },
+  "/statsig-warehouse-native/configuration/qualifying-events-6e5": {
+    "__comp": "17896441",
+    "content": "b0d75949"
+  },
+  "/statsig-warehouse-native/configuration/query-tools-a67": {
+    "__comp": "17896441",
+    "content": "fbe5e680"
+  },
+  "/statsig-warehouse-native/configuration/semantic-layer-sync-a11": {
+    "__comp": "17896441",
+    "content": "93771315"
+  },
+  "/statsig-warehouse-native/configuration/tags-and-teams-464": {
+    "__comp": "17896441",
+    "content": "565ba525"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/athena-5d0": {
+    "__comp": "17896441",
+    "content": "57d855ec"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/bigquery-ca1": {
+    "__comp": "17896441",
+    "content": "bdbe2fc1"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/clickhouse-ae0": {
+    "__comp": "17896441",
+    "content": "aa2534c1"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/databricks-e27": {
+    "__comp": "17896441",
+    "content": "9f839e68"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/fabric-b56": {
+    "__comp": "17896441",
+    "content": "102cb6ac"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/other-4ed": {
+    "__comp": "17896441",
+    "content": "89d11964"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/redshift-917": {
+    "__comp": "17896441",
+    "content": "a2eed1e5"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads-440": {
+    "__comp": "17896441",
+    "content": "968abb39"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/snowflake-66b": {
+    "__comp": "17896441",
+    "content": "99a38748"
+  },
+  "/statsig-warehouse-native/connecting-your-warehouse/trino-d3e": {
+    "__comp": "17896441",
+    "content": "b25ab41c"
+  },
+  "/statsig-warehouse-native/data-privacy-00a": {
+    "__comp": "17896441",
+    "content": "e3b3b8bc"
+  },
+  "/statsig-warehouse-native/data-sources-01b": {
+    "__comp": "17896441",
+    "content": "4e3f0d6f"
+  },
+  "/statsig-warehouse-native/features/autotune-041": {
+    "__comp": "17896441",
+    "content": "1bd8f005"
+  },
+  "/statsig-warehouse-native/features/cohort-metrics-b7a": {
+    "__comp": "17896441",
+    "content": "983668bb"
+  },
+  "/statsig-warehouse-native/features/configure-an-experiment-7fe": {
+    "__comp": "17896441",
+    "content": "fad0a765"
+  },
+  "/statsig-warehouse-native/features/early-diagnostics-eb6": {
+    "__comp": "17896441",
+    "content": "14b40b07"
+  },
+  "/statsig-warehouse-native/features/entity-properties-cb0": {
+    "__comp": "17896441",
+    "content": "ce384236"
+  },
+  "/statsig-warehouse-native/features/experiment-options-f68": {
+    "__comp": "17896441",
+    "content": "2e26ef5a"
+  },
+  "/statsig-warehouse-native/features/filtering-exposures-cec": {
+    "__comp": "17896441",
+    "content": "6d2f3430"
+  },
+  "/statsig-warehouse-native/features/full-reloads-e84": {
+    "__comp": "17896441",
+    "content": "12e7f2bf"
+  },
+  "/statsig-warehouse-native/features/funnel-metrics-c87": {
+    "__comp": "17896441",
+    "content": "81e9281b"
+  },
+  "/statsig-warehouse-native/features/id-resolution-f4f": {
+    "__comp": "17896441",
+    "content": "b22cb17c"
+  },
+  "/statsig-warehouse-native/features/incremental-reloads-14f": {
+    "__comp": "17896441",
+    "content": "14cebcd3"
+  },
+  "/statsig-warehouse-native/features/metric-reloads-072": {
+    "__comp": "17896441",
+    "content": "ff6a9669"
+  },
+  "/statsig-warehouse-native/features/mex-on-warehouse-native-53e": {
+    "__comp": "17896441",
+    "content": "3f2d4966"
+  },
+  "/statsig-warehouse-native/features/monitor-an-experiment-d7d": {
+    "__comp": "17896441",
+    "content": "073af6f1"
+  },
+  "/statsig-warehouse-native/features/other-features-935": {
+    "__comp": "17896441",
+    "content": "cc2fe60b"
+  },
+  "/statsig-warehouse-native/features/power-analysis-374": {
+    "__comp": "17896441",
+    "content": "f698694b"
+  },
+  "/statsig-warehouse-native/features/reloads-66f": {
+    "__comp": "17896441",
+    "content": "6212e1b6"
+  },
+  "/statsig-warehouse-native/features/reports-867": {
+    "__comp": "17896441",
+    "content": "d6a8e1cb"
+  },
+  "/statsig-warehouse-native/features/roles-and-access-726": {
+    "__comp": "17896441",
+    "content": "b4fda6ea"
+  },
+  "/statsig-warehouse-native/features/statistics-cda": {
+    "__comp": "17896441",
+    "content": "1c7c8d6d"
+  },
+  "/statsig-warehouse-native/features/targeting-643": {
+    "__comp": "17896441",
+    "content": "67e2f344"
+  },
+  "/statsig-warehouse-native/features/turbo-b7c": {
+    "__comp": "17896441",
+    "content": "31af9604"
+  },
+  "/statsig-warehouse-native/features/types-of-experiments-e95": {
+    "__comp": "17896441",
+    "content": "42b92538"
+  },
+  "/statsig-warehouse-native/features/understanding-experiments-456": {
+    "__comp": "17896441",
+    "content": "7a48d218"
+  },
+  "/statsig-warehouse-native/features/use-case-76b": {
+    "__comp": "17896441",
+    "content": "41b96713"
+  },
+  "/statsig-warehouse-native/guides/AATest-daa": {
+    "__comp": "17896441",
+    "content": "09ad5cb0"
+  },
+  "/statsig-warehouse-native/guides/best-practices-96c": {
+    "__comp": "17896441",
+    "content": "e7b322cc"
+  },
+  "/statsig-warehouse-native/guides/checklist-12c": {
+    "__comp": "17896441",
+    "content": "e3cdad2d"
+  },
+  "/statsig-warehouse-native/guides/cloud2whn-628": {
+    "__comp": "17896441",
+    "content": "86c53ffa"
+  },
+  "/statsig-warehouse-native/guides/connect-56d": {
+    "__comp": "17896441",
+    "content": "132c21d6"
+  },
+  "/statsig-warehouse-native/guides/costs-e9e": {
+    "__comp": "17896441",
+    "content": "a403c643"
+  },
+  "/statsig-warehouse-native/guides/debugging-1dd": {
+    "__comp": "17896441",
+    "content": "e8fd4b35"
+  },
+  "/statsig-warehouse-native/guides/dummy_evaluation-5ff": {
+    "__comp": "17896441",
+    "content": "ed9bf192"
+  },
+  "/statsig-warehouse-native/guides/email-experiments-196": {
+    "__comp": "17896441",
+    "content": "9ed57465"
+  },
+  "/statsig-warehouse-native/guides/experiments-220": {
+    "__comp": "17896441",
+    "content": "960e584b"
+  },
+  "/statsig-warehouse-native/guides/forwarded-data-5fa": {
+    "__comp": "17896441",
+    "content": "2d55a819"
+  },
+  "/statsig-warehouse-native/guides/metric_sources-8c9": {
+    "__comp": "17896441",
+    "content": "ae96dc82"
+  },
+  "/statsig-warehouse-native/guides/metrics-46f": {
+    "__comp": "17896441",
+    "content": "b996780b"
+  },
+  "/statsig-warehouse-native/guides/pulse-f65": {
+    "__comp": "17896441",
+    "content": "4d03a0f2"
+  },
+  "/statsig-warehouse-native/guides/quick-start-274": {
+    "__comp": "17896441",
+    "content": "45bcdfdf"
+  },
+  "/statsig-warehouse-native/guides/reading_pulse-8bd": {
+    "__comp": "17896441",
+    "content": "f49710b6"
+  },
+  "/statsig-warehouse-native/guides/running_a_poc-e50": {
+    "__comp": "17896441",
+    "content": "dc3bbeef"
+  },
+  "/statsig-warehouse-native/guides/scaling-c47": {
+    "__comp": "17896441",
+    "content": "23dad5fb"
+  },
+  "/statsig-warehouse-native/guides/sdks-95f": {
+    "__comp": "17896441",
+    "content": "f3ae522a"
+  },
+  "/statsig-warehouse-native/guides/sql-5eb": {
+    "__comp": "17896441",
+    "content": "1366238b"
+  },
+  "/statsig-warehouse-native/introduction-07a": {
+    "__comp": "17896441",
+    "content": "722a81d4"
+  },
+  "/statsig-warehouse-native/metrics/count-696": {
+    "__comp": "17896441",
+    "content": "f7e5979c"
+  },
+  "/statsig-warehouse-native/metrics/count-distinct-51e": {
+    "__comp": "17896441",
+    "content": "88a2ee5e"
+  },
+  "/statsig-warehouse-native/metrics/funnel-82b": {
+    "__comp": "17896441",
+    "content": "ede1817f"
+  },
+  "/statsig-warehouse-native/metrics/latest-value-1cd": {
+    "__comp": "17896441",
+    "content": "bb211439"
+  },
+  "/statsig-warehouse-native/metrics/log-b52": {
+    "__comp": "17896441",
+    "content": "6f484a9d"
+  },
+  "/statsig-warehouse-native/metrics/max-min-f1e": {
+    "__comp": "17896441",
+    "content": "0a4a325f"
+  },
+  "/statsig-warehouse-native/metrics/mean-ac9": {
+    "__comp": "17896441",
+    "content": "d5d2bef3"
+  },
+  "/statsig-warehouse-native/metrics/normalized-metrics-5e5": {
+    "__comp": "17896441",
+    "content": "d34ec4ac"
+  },
+  "/statsig-warehouse-native/metrics/percentile-e70": {
+    "__comp": "17896441",
+    "content": "7d483d08"
+  },
+  "/statsig-warehouse-native/metrics/ratio-052": {
+    "__comp": "17896441",
+    "content": "3ab67a79"
+  },
+  "/statsig-warehouse-native/metrics/retention-9e4": {
+    "__comp": "17896441",
+    "content": "1da85f7a"
+  },
+  "/statsig-warehouse-native/metrics/sum-aae": {
+    "__comp": "17896441",
+    "content": "ecca842f"
+  },
+  "/statsig-warehouse-native/metrics/unit-count-latest-7c8": {
+    "__comp": "17896441",
+    "content": "3a6cb77d"
+  },
+  "/statsig-warehouse-native/metrics/unit-count-once-19f": {
+    "__comp": "17896441",
+    "content": "c32e90ae"
+  },
+  "/statsig-warehouse-native/metrics/unit-count-rate-269": {
+    "__comp": "17896441",
+    "content": "9a919226"
+  },
+  "/statsig-warehouse-native/metrics/unit-count-window-115": {
+    "__comp": "17896441",
+    "content": "6569dab5"
+  },
+  "/statsig-warehouse-native/native-vs-cloud-c13": {
+    "__comp": "17896441",
+    "content": "14918110"
+  },
+  "/statsig-warehouse-native/pipeline-overview-f73": {
+    "__comp": "17896441",
+    "content": "cbe709cd"
+  },
+  "/statsig-warehouse-native/warehouse-management/storage-367": {
+    "__comp": "17896441",
+    "content": "377aced1"
+  },
+  "/statsigcli-8f1": {
+    "__comp": "17896441",
+    "content": "e29effd1"
+  },
+  "/statsigcli/commands-6c1": {
+    "__comp": "17896441",
+    "content": "63df9a7b"
+  },
+  "/statsigcli/gate-management-c07": {
+    "__comp": "17896441",
+    "content": "91efacac"
+  },
+  "/templates/templates-a3f": {
+    "__comp": "17896441",
+    "content": "8fe2c74b"
+  },
+  "/triggers/introduction-b8a": {
+    "__comp": "17896441",
+    "content": "9b8c48a6"
+  },
+  "/understanding-platform-e6e": {
+    "__comp": "17896441",
+    "content": "dd2599cd"
+  },
+  "/users-0dc": {
+    "__comp": "17896441",
+    "content": "f461ba5e"
+  },
+  "/users/profiles-bc2": {
+    "__comp": "17896441",
+    "content": "cdd29a56"
+  },
+  "/using-bandits-dde": {
+    "__comp": "17896441",
+    "content": "9c8af691"
+  },
+  "/webanalytics/autocapture-2ba": {
+    "__comp": "17896441",
+    "content": "c257481b"
+  },
+  "/webanalytics/overview-41d": {
+    "__comp": "17896441",
+    "content": "32033ce9"
+  },
+  "/-0d9": {
+    "__comp": "17896441",
+    "content": "3021cf83"
+  }
+}

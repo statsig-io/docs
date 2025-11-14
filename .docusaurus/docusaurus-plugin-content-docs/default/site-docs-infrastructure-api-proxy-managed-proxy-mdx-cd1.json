@@ -1,0 +1,35 @@
+{
+  "id": "infrastructure/api_proxy/managed-proxy",
+  "title": "Statsig Managed API Proxy",
+  "description": "An API proxy gives you a unique URL to send and receive data to/from Statsig servers.  This makes it less likely to be intercepted by client-side or DNS-side blockers.  This way you'll be able to get the right configuration for your applications and more data back from your applications.",
+  "source": "@site/docs/infrastructure/api_proxy/managed-proxy.mdx",
+  "sourceDirName": "infrastructure/api_proxy",
+  "slug": "/infrastructure/managed-proxy",
+  "permalink": "/infrastructure/managed-proxy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/api_proxy/managed-proxy.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statsig Managed API Proxy",
+    "sidebar_label": "Managed API Proxy",
+    "slug": "/infrastructure/managed-proxy",
+    "keywords": [
+      "owner:eric"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "API Proxy",
+    "permalink": "/infrastructure/api_proxy/introduction"
+  },
+  "next": {
+    "title": "Custom Proxy for Statsig API",
+    "permalink": "/custom_proxy"
+  }
+}

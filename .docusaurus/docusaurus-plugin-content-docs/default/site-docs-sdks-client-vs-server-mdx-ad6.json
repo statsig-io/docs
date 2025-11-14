@@ -1,0 +1,28 @@
+{
+  "id": "sdks/client-vs-server",
+  "title": "Client vs Server SDKs",
+  "description": "Statsig offers client and server SDKs to enable experimentation and feature management across different parts of your application. This document outlines when you should choose each.",
+  "source": "@site/docs/sdks/client-vs-server.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/client-vs-server",
+  "permalink": "/sdks/client-vs-server",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/client-vs-server.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755567654000,
+  "frontMatter": {
+    "title": "Client vs Server SDKs",
+    "slug": "/sdks/client-vs-server"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Debugging",
+    "permalink": "/sdk/debugging"
+  },
+  "next": {
+    "title": "Data Privacy for Mobile",
+    "permalink": "/compliance/data_privacy_for_mobile"
+  }
+}

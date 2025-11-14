@@ -1,0 +1,35 @@
+{
+  "id": "insights/aggregated-impact-whn",
+  "title": "Metric Insights and Aggregated Impact",
+  "description": "",
+  "source": "@site/docs/insights/aggregated-impact-whn.md",
+  "sourceDirName": "insights",
+  "slug": "/aggregated-impact-whn",
+  "permalink": "/aggregated-impact-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/insights/aggregated-impact-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metric Insights and Aggregated Impact",
+    "sidebar_label": "Aggregated Impact",
+    "slug": "/aggregated-impact-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Reports",
+    "permalink": "/statsig-warehouse-native/features/reports"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/statsig-warehouse-native/features/statistics"
+  }
+}

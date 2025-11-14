@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/bonferroni-correction",
+  "title": "Bonferroni Correction",
+  "description": "What is Bonferroni Correction?",
+  "source": "@site/docs/stats-engine/methodologies/bonferroni-correction.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/bonferroni-correction",
+  "permalink": "/stats-engine/methodologies/bonferroni-correction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/bonferroni-correction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Bonferroni Correction",
+    "sidebar_label": "Bonferroni Correction",
+    "slug": "/stats-engine/methodologies/bonferroni-correction",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Stratified Sampling",
+    "permalink": "/experiments-plus/stratified-sampling"
+  },
+  "next": {
+    "title": "Benjamini–Hochberg",
+    "permalink": "/stats-engine/methodologies/benjamini–hochberg-procedure"
+  }
+}

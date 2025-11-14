@@ -1,0 +1,26 @@
+{
+  "id": "metrics/201",
+  "title": "Overview",
+  "description": "In this 201-level user guide, you'll learn to create your own metrics and organize them as your project grows. You'll also be able to customize the definition of your daily active users (DAU).",
+  "source": "@site/docs/metrics/201.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/201",
+  "permalink": "/metrics/201",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/201.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Overview",
+    "sidebar_label": "Overview",
+    "slug": "/metrics/201",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/percentile",
+  "title": "Percentile Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/percentile.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/percentile",
+  "permalink": "/statsig-warehouse-native/metrics/percentile",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/percentile.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Percentile Metrics",
+    "sidebar_label": "Percentile",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Funnel++",
+    "permalink": "/statsig-warehouse-native/metrics/funnel"
+  },
+  "next": {
+    "title": "Log",
+    "permalink": "/statsig-warehouse-native/metrics/log"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "metrics/raw-event-metrics",
+  "title": "Auto-generated Metrics",
+  "description": "Metrics are critical for monitoring the health and usage of your product as well as the impact of new features and experiments.",
+  "source": "@site/docs/metrics/raw-event-metrics.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/metrics-from-events",
+  "permalink": "/metrics/metrics-from-events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/raw-event-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Auto-generated Metrics",
+    "sidebar_label": "Auto-generated Metrics",
+    "slug": "/metrics/metrics-from-events",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Raw Events",
+    "permalink": "/metrics/raw-events"
+  },
+  "next": {
+    "title": "Deprecating Event_dau",
+    "permalink": "/metrics/deprecate-event-dau"
+  }
+}

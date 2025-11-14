@@ -1,0 +1,44 @@
+{
+  "id": "product-analytics/overview",
+  "title": "Product Analytics Overview",
+  "description": "Statsig product analytics helps you understand how your users experience and interact with your product through the analysis of product data. Metrics Explorer and Dashboards are the primary product analytics surfaces within Statsig.",
+  "source": "@site/docs/product-analytics/overview.md",
+  "sourceDirName": "product-analytics",
+  "slug": "/product-analytics/overview",
+  "permalink": "/product-analytics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/product-analytics/overview.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Product Analytics Overview",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Overview",
+    "slug": "/product-analytics/overview",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "A/A Test with Sidecar",
+    "permalink": "/guides/aa-sidecar"
+  },
+  "next": {
+    "title": "Metric Drilldown",
+    "permalink": "/product-analytics/drilldown"
+  }
+}

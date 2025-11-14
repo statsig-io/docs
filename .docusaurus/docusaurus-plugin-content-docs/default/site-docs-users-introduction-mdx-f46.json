@@ -1,0 +1,35 @@
+{
+  "id": "users/introduction",
+  "title": "Users Tab",
+  "description": "The Users section of Statsig gives you an event-by-event level understanding of how users (and other Unit IDs) are leveraging your product. This allows you to diagnose issues and understand user behavior at an extremely granular level with event logs, session streams, and session replays. It is also a singular place to manage feature rollout and experiment overrides.",
+  "source": "@site/docs/users/introduction.mdx",
+  "sourceDirName": "users",
+  "slug": "/users",
+  "permalink": "/users",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/users/introduction.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Users Tab",
+    "sidebar_label": "Users Tab",
+    "slug": "/users",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Dashboards",
+    "permalink": "/product-analytics/dashboards"
+  },
+  "next": {
+    "title": "User Profiles",
+    "permalink": "/users/profiles"
+  }
+}

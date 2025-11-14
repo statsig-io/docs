@@ -1,0 +1,35 @@
+{
+  "id": "client/js-device-eval-mono/UsingSpecsDataAdapter",
+  "title": "Using SpecsDataAdapter",
+  "description": "The StatsigSpecsDataAdapter is the default SpecsDataAdapter used by a StatsigOnDeviceEvalClient instance.",
+  "source": "@site/docs/client/js-device-eval-mono/UsingSpecsDataAdapter.mdx",
+  "sourceDirName": "client/js-device-eval-mono",
+  "slug": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+  "permalink": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/js-device-eval-mono/UsingSpecsDataAdapter.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Using SpecsDataAdapter",
+    "sidebar_label": "SpecsDataAdapter",
+    "slug": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Migrating from js-local-eval",
+    "permalink": "/client/js-on-device-eval-client/migrating-from-js-local-eval"
+  },
+  "next": {
+    "title": "React Native Support",
+    "permalink": "/client/js-on-device-eval-client/react-native"
+  }
+}

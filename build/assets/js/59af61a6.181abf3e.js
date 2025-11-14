@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstatsig_docs=self.webpackChunkstatsig_docs||[]).push([[19174],{5332:s=>{s.exports=JSON.parse('{"tags":[{"label":"Statsig Cloud","permalink":"/tags/statsig-cloud","count":14}]}')}}]);

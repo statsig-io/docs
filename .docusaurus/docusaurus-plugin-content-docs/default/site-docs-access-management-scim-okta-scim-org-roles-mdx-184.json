@@ -1,0 +1,34 @@
+{
+  "id": "access-management/scim/okta_scim_org_roles",
+  "title": "Okta SCIM Org Roles",
+  "description": "Update Okta User Org Role",
+  "source": "@site/docs/access-management/scim/okta_scim_org_roles.mdx",
+  "sourceDirName": "access-management/scim",
+  "slug": "/access-management/scim/okta_scim_org_roles",
+  "permalink": "/access-management/scim/okta_scim_org_roles",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/scim/okta_scim_org_roles.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Org Roles",
+    "title": "Okta SCIM Org Roles",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "User and Project/Role Management",
+    "permalink": "/access-management/scim/okta_scim_user_management"
+  },
+  "next": {
+    "title": "Statsig Team Management",
+    "permalink": "/access-management/scim/okta_scim_team_management"
+  }
+}

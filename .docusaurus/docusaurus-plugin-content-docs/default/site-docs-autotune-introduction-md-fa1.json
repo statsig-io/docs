@@ -1,0 +1,35 @@
+{
+  "id": "autotune/introduction",
+  "title": "Autotune (Bandits)",
+  "description": "Autotune and Autotune AI are Statsig's Multi-Armed Bandit solutions that automatically find the best variant among a group of candidates, while dynamically allocating traffic to optimize for a single target metric.",
+  "source": "@site/docs/autotune/introduction.md",
+  "sourceDirName": "autotune",
+  "slug": "/autotune",
+  "permalink": "/autotune",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Autotune (Bandits)",
+    "sidebar_label": "Introduction",
+    "slug": "/autotune",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/bandit-introduction"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/autotune/setup"
+  }
+}

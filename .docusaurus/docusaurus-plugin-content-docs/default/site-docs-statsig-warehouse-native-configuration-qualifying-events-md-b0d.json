@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/configuration/qualifying-events",
+  "title": "Qualifying Events",
+  "description": "Using Qualifying Events",
+  "source": "@site/docs/statsig-warehouse-native/configuration/qualifying-events.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/qualifying-events",
+  "permalink": "/statsig-warehouse-native/configuration/qualifying-events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/qualifying-events.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Qualifying Events",
+    "slug": "/statsig-warehouse-native/configuration/qualifying-events",
+    "sidebar_label": "Qualifying Events",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Entity Properties",
+    "permalink": "/statsig-warehouse-native/configuration/entity-properties"
+  },
+  "next": {
+    "title": "Tags & Teams",
+    "permalink": "/statsig-warehouse-native/configuration/tags-and-teams"
+  }
+}

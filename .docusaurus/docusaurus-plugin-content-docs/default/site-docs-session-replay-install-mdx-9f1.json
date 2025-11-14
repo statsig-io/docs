@@ -1,0 +1,35 @@
+{
+  "id": "session-replay/install",
+  "title": "Install Statsig Session Replay",
+  "description": "Session Replay is supported on the Javascript or React SDKs for both desktop and mobile web users on your web application. See the instructions below to install our SDK and record user sessions.",
+  "source": "@site/docs/session-replay/install.mdx",
+  "sourceDirName": "session-replay",
+  "slug": "/session-replay/install",
+  "permalink": "/session-replay/install",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/session-replay/install.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Install Statsig Session Replay",
+    "sidebar_label": "Install",
+    "slug": "/session-replay/install",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/session-replay/overview"
+  },
+  "next": {
+    "title": "Configure",
+    "permalink": "/session-replay/configure"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/understanding-experiments",
+  "title": "Understanding Experiments",
+  "description": "Running statistical analysis for an experiment can be complex. Much of this complexity is abstracted away from the end user, but this commonly leads to questions - things like:",
+  "source": "@site/docs/statsig-warehouse-native/features/understanding-experiments.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/understanding-experiments",
+  "permalink": "/statsig-warehouse-native/features/understanding-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/understanding-experiments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Understanding Experiments",
+    "slug": "/statsig-warehouse-native/features/understanding-experiments",
+    "sidebar_label": "Understanding Experiments",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Semantic Layer Sync",
+    "permalink": "/statsig-warehouse-native/configuration/semantic-layer-sync"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/statsig-warehouse-native/features/experiment-options"
+  }
+}

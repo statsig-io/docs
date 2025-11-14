@@ -1,0 +1,33 @@
+{
+  "id": "integrations/data-connectors/revenuecat",
+  "title": "RevenueCat",
+  "description": "Overview",
+  "source": "@site/docs/integrations/data-connectors/revenuecat.md",
+  "sourceDirName": "integrations/data-connectors",
+  "slug": "/integrations/data-connectors/revenuecat",
+  "permalink": "/integrations/data-connectors/revenuecat",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-connectors/revenuecat.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "RevenueCat",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "mParticle",
+    "permalink": "/integrations/data-connectors/mparticle"
+  },
+  "next": {
+    "title": "RudderStack",
+    "permalink": "/integrations/data-connectors/rudderstack"
+  }
+}

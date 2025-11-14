@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/configuration/metrics",
+  "title": "Metrics",
+  "description": "Metrics",
+  "source": "@site/docs/statsig-warehouse-native/configuration/metrics.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/metrics",
+  "permalink": "/statsig-warehouse-native/configuration/metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metrics",
+    "slug": "/statsig-warehouse-native/configuration/metrics",
+    "sidebar_label": "Overview",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Metric Sources",
+    "permalink": "/statsig-warehouse-native/configuration/metric-sources"
+  },
+  "next": {
+    "title": "Sum",
+    "permalink": "/statsig-warehouse-native/metrics/sum"
+  }
+}

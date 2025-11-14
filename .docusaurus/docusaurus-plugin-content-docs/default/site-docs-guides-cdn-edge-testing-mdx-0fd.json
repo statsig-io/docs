@@ -1,0 +1,34 @@
+{
+  "id": "guides/cdn-edge-testing",
+  "title": "CDN Edge Testing for Cached Resources",
+  "description": "Background",
+  "source": "@site/docs/guides/cdn-edge-testing.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/cdn-edge-testing",
+  "permalink": "/guides/cdn-edge-testing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/cdn-edge-testing.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "CDN Edge Testing",
+    "title": "CDN Edge Testing for Cached Resources",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Serverless",
+    "permalink": "/guides/serverless"
+  },
+  "next": {
+    "title": "Vercel",
+    "permalink": "/integrations/vercel"
+  }
+}

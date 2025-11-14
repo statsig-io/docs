@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/pre-experiment-bias",
+  "title": "Pre-Experiment Bias",
+  "description": "In some cases, users in two experiment groups can have meaningfully different average behaviors before your experiment applies any intervention to them. If this difference is maintained after your experiment starts, it's possible that experiment analysis will attribute that pre-existing difference to your intervention.",
+  "source": "@site/docs/stats-engine/pre-experiment-bias.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/pre-experiment-bias",
+  "permalink": "/stats-engine/pre-experiment-bias",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/pre-experiment-bias.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Pre-Experiment Bias",
+    "sidebar_label": "Pre-Experiment Bias",
+    "slug": "/stats-engine/pre-experiment-bias",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Managing SRM",
+    "permalink": "/guides/srm"
+  },
+  "next": {
+    "title": "Bot Traffic",
+    "permalink": "/feature-flags/bots"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "session-replay/watch",
+  "title": "Watch Session Replays",
+  "description": "Session Replays can be found under the User’s group in the Statsig console’s navigation panel.",
+  "source": "@site/docs/session-replay/watch.md",
+  "sourceDirName": "session-replay",
+  "slug": "/session-replay/watch",
+  "permalink": "/session-replay/watch",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/session-replay/watch.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Watch Session Replays",
+    "sidebar_label": "Watch",
+    "slug": "/session-replay/watch",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Configure",
+    "permalink": "/session-replay/configure"
+  },
+  "next": {
+    "title": "CLI Session Replay",
+    "permalink": "/session-replay/cli-session-replay"
+  }
+}

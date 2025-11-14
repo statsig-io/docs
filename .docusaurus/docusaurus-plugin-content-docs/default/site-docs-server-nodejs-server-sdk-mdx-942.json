@@ -1,0 +1,34 @@
+{
+  "id": "server/nodejsServerSDK",
+  "title": "Legacy Node.js Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server/nodejsServerSDK.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/nodejsServerSDK",
+  "permalink": "/server/nodejsServerSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/nodejsServerSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Legacy Node.js",
+    "title": "Legacy Node.js Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Legacy Server SDKs",
+    "permalink": "/server-core/legacy-sdks"
+  },
+  "next": {
+    "title": "Legacy Python",
+    "permalink": "/server/pythonSDK"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "guides/sidecar-experiments/publishing-experiments",
+  "title": "Taking your experiments to production",
+  "description": "With the experiment configuration out of the way, we need to take this to production.  Sidecar makes this easy with just a few clicks.",
+  "source": "@site/docs/guides/sidecar-experiments/publishing-experiments.mdx",
+  "sourceDirName": "guides/sidecar-experiments",
+  "slug": "/guides/sidecar-experiments/publishing-experiments",
+  "permalink": "/guides/sidecar-experiments/publishing-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/sidecar-experiments/publishing-experiments.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Launching Experiments",
+    "title": "Taking your experiments to production",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Advanced Configurations",
+    "permalink": "/guides/sidecar-experiments/advanced-configurations"
+  },
+  "next": {
+    "title": "GTM Integration",
+    "permalink": "/guides/sidecar-experiments/integrating-gtm"
+  }
+}

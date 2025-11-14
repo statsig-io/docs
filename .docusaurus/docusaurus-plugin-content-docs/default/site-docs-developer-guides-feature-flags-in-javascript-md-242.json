@@ -1,0 +1,28 @@
+{
+  "id": "developer-guides/feature-flags-in-javascript",
+  "title": "How to set up Feature Flags in Javascript",
+  "description": "To use feature flags in a web page with the Statsig JavaScript SDK, you'll start by creating a basic \"Hello World\" HTML page, then integrate Statsig to manage feature flags.",
+  "source": "@site/docs/developer-guides/feature-flags-in-javascript.md",
+  "sourceDirName": "developer-guides",
+  "slug": "/developer-guides/feature-flags-in-javascript",
+  "permalink": "/developer-guides/feature-flags-in-javascript",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/developer-guides/feature-flags-in-javascript.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How to set up Feature Flags in Javascript",
+    "sidebar_label": "Feature Flags in Javascript",
+    "slug": "/developer-guides/feature-flags-in-javascript",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

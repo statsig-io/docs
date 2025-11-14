@@ -1,0 +1,38 @@
+{
+  "id": "console-api/dynamic-configs",
+  "title": "Dynamic Configs (Console API)",
+  "description": "Create dynamic configs via HTTP requests.",
+  "source": "@site/docs/console-api/dynamic-configs.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/dynamic_configs",
+  "permalink": "/console-api/dynamic_configs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Dynamic Configs (Console API)",
+    "sidebar_label": "Dynamic Configs",
+    "slug": "/console-api/dynamic_configs",
+    "description": "Create dynamic configs via HTTP requests.",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Segments",
+    "permalink": "/console-api/segments"
+  },
+  "next": {
+    "title": "Parameter Store",
+    "permalink": "/console-api/param-store"
+  }
+}

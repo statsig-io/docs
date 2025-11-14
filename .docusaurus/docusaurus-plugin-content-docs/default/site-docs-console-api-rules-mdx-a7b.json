@@ -1,0 +1,34 @@
+{
+  "id": "console-api/rules",
+  "title": "Rules (Console API)",
+  "description": "Rule",
+  "source": "@site/docs/console-api/rules.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/rules",
+  "permalink": "/console-api/rules",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/console-api/rules.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Rules (Console API)",
+    "sidebar_label": "Rules",
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Usage and Billing",
+    "permalink": "/console-api/usage-billing"
+  },
+  "next": {
+    "title": "Warehouse Connections",
+    "permalink": "/console-api/warehouse-connections"
+  }
+}

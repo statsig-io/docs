@@ -1,0 +1,27 @@
+{
+  "id": "guides/first-holdout",
+  "title": "Creating your First Holdout",
+  "description": "What is a holdout?",
+  "source": "@site/docs/guides/first-holdout.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/first-holdout",
+  "permalink": "/guides/first-holdout",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/first-holdout.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Creating Holdouts",
+    "title": "Creating your First Holdout",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

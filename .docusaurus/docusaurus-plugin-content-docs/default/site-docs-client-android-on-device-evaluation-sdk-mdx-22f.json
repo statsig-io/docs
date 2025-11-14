@@ -1,0 +1,34 @@
+{
+  "id": "client/androidOnDeviceEvaluationSDK",
+  "title": "Android On Device Evaluation",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/androidOnDeviceEvaluationSDK.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/androidOnDeviceEvaluationSDK",
+  "permalink": "/client/androidOnDeviceEvaluationSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/androidOnDeviceEvaluationSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Android",
+    "title": "Android On Device Evaluation",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Swift / Objective C",
+    "permalink": "/client/swiftOnDeviceEvaluationSDK"
+  },
+  "next": {
+    "title": "(deprecated) statsig-js",
+    "permalink": "/client/deprecated/jsClientSDK"
+  }
+}

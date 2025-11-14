@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/overview",
+  "title": "Feature Flags",
+  "description": "Feature Gates, commonly known as feature flags, allow you to toggle the behavior of your product in real time without deploying new code.",
+  "source": "@site/docs/feature-flags/overview.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/overview",
+  "permalink": "/feature-flags/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Feature Flags",
+    "sidebar_label": "Overview",
+    "slug": "/feature-flags/overview",
+    "keywords": [
+      "owner:jinayoon"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "FAQs",
+    "permalink": "/faq"
+  },
+  "next": {
+    "title": "Create a Feature Gate",
+    "permalink": "/feature-flags/create"
+  }
+}

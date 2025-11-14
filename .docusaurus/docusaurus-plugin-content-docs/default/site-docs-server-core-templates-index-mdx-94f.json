@@ -1,0 +1,16 @@
+{
+  "id": "server-core/Templates/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/server-core/Templates/index.mdx",
+  "sourceDirName": "server-core/Templates",
+  "slug": "/server-core/Templates/",
+  "permalink": "/server-core/Templates/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/Templates/index.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1754415721000,
+  "frontMatter": {}
+}

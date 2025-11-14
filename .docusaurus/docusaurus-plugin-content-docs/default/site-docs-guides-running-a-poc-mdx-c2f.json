@@ -1,0 +1,34 @@
+{
+  "id": "guides/running-a-poc",
+  "title": "Running a Proof of Concept",
+  "description": "Overview",
+  "source": "@site/docs/guides/running-a-poc.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/running-a-poc",
+  "permalink": "/guides/running-a-poc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/running-a-poc.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Running a POC",
+    "title": "Running a Proof of Concept",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Bootstrapping Your Experimentation Program",
+    "permalink": "/guides/experimentation-program"
+  },
+  "next": {
+    "title": "POC to Production",
+    "permalink": "/guides/production"
+  }
+}

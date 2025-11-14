@@ -1,0 +1,34 @@
+{
+  "id": "client/rokuSDK",
+  "title": "Roku Client SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/rokuSDK.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/rokuSDK",
+  "permalink": "/client/rokuSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/rokuSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Roku",
+    "title": "Roku Client SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Angular",
+    "permalink": "/client/javascript-sdk/Angular"
+  },
+  "next": {
+    "title": "Unity",
+    "permalink": "/client/unitySDK"
+  }
+}

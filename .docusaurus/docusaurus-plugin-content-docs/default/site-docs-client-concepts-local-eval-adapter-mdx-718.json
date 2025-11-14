@@ -1,0 +1,35 @@
+{
+  "id": "client/concepts/local-eval-adapter",
+  "title": "Local Eval Adapter",
+  "description": "Local Eval Adapter",
+  "source": "@site/docs/client/concepts/local-eval-adapter.mdx",
+  "sourceDirName": "client/concepts",
+  "slug": "/client/concepts/local-eval-adapter",
+  "permalink": "/client/concepts/local-eval-adapter",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/concepts/local-eval-adapter.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Local Eval Adapter",
+    "sidebar_label": "Local Eval Adapter",
+    "slug": "/client/concepts/local-eval-adapter",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Server Persistent Assignment",
+    "permalink": "/server/concepts/persistent_assignment"
+  },
+  "next": {
+    "title": "Server Data Stores",
+    "permalink": "/server/concepts/data_store"
+  }
+}

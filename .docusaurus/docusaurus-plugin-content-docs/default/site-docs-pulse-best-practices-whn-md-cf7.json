@@ -1,0 +1,35 @@
+{
+  "id": "pulse/best-practices-whn",
+  "title": "Best Practices and Avoiding False Positives",
+  "description": "",
+  "source": "@site/docs/pulse/best-practices-whn.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/best-practices-whn",
+  "permalink": "/pulse/best-practices-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/best-practices-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Best Practices and Avoiding False Positives",
+    "sidebar_label": "Best Practices",
+    "slug": "/pulse/best-practices-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Participating Units",
+    "permalink": "/pulse/participating-units-whn"
+  },
+  "next": {
+    "title": "Pulse FAQs",
+    "permalink": "/pulse/best-faq-whn"
+  }
+}

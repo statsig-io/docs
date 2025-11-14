@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/guides/sdks",
+  "title": "Working With the SDK",
+  "description": "Warehouse Native Works with any of Statsig's SDKs for logging events and getting feature flags or experiment assignments.",
+  "source": "@site/docs/statsig-warehouse-native/guides/sdks.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/sdks",
+  "permalink": "/statsig-warehouse-native/guides/sdks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/sdks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Working With the SDK",
+    "slug": "/statsig-warehouse-native/guides/sdks",
+    "sidebar_label": "Working With the SDK",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Playground Evaluation",
+    "permalink": "/statsig-warehouse-native/guides/dummy_evaluation"
+  },
+  "next": {
+    "title": "A/A Test",
+    "permalink": "/statsig-warehouse-native/guides/AATest"
+  }
+}

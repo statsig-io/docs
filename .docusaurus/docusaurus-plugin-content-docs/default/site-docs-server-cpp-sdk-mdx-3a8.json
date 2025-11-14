@@ -1,0 +1,34 @@
+{
+  "id": "server/cppSDK",
+  "title": "C++ Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server/cppSDK.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/cppSDK",
+  "permalink": "/server/cppSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/cppSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "C++ Server",
+    "title": "C++ Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Server Core Overview",
+    "permalink": "/server-core/"
+  },
+  "next": {
+    "title": "Elixir",
+    "permalink": "/server-core/elixir-core"
+  }
+}

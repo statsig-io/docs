@@ -1,0 +1,16 @@
+{
+  "id": "client/Templates/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/client/Templates/index.mdx",
+  "sourceDirName": "client/Templates",
+  "slug": "/client/Templates/",
+  "permalink": "/client/Templates/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/Templates/index.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1747434002000,
+  "frontMatter": {}
+}

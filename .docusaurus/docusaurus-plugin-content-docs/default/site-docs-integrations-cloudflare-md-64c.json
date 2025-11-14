@@ -1,0 +1,33 @@
+{
+  "id": "integrations/cloudflare",
+  "title": "Cloudflare KV",
+  "description": "Overview",
+  "source": "@site/docs/integrations/cloudflare.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/cloudflare",
+  "permalink": "/integrations/cloudflare",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/cloudflare.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Cloudflare KV",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Vercel",
+    "permalink": "/integrations/vercel"
+  },
+  "next": {
+    "title": "Cloudflare Workers AI",
+    "permalink": "/integrations/workersai"
+  }
+}

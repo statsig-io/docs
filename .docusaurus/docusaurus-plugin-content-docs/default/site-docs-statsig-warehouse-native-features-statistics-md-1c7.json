@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/statistics",
+  "title": "Statistics",
+  "description": "Statsig's statistics engine is designed to deliver the best analysis of experiment results in the market. We have four core values around our Stats Engine: Transparency, Trust, Flexibility, and Power",
+  "source": "@site/docs/statsig-warehouse-native/features/statistics.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/statistics",
+  "permalink": "/statsig-warehouse-native/features/statistics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/statistics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statistics",
+    "slug": "/statsig-warehouse-native/features/statistics",
+    "sidebar_label": "Overview",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Aggregated Impact",
+    "permalink": "/aggregated-impact-whn"
+  },
+  "next": {
+    "title": "Metric Deltas",
+    "permalink": "/stats-engine/metric-deltas-whn"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "guides/sidecar-experiments/measuring-experiments",
+  "title": "Measuring Experiments",
+  "description": "Using Autocapture",
+  "source": "@site/docs/guides/sidecar-experiments/measuring-experiments.mdx",
+  "sourceDirName": "guides/sidecar-experiments",
+  "slug": "/guides/sidecar-experiments/measuring-experiments",
+  "permalink": "/guides/sidecar-experiments/measuring-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/sidecar-experiments/measuring-experiments.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "sidebar_label": "Measuring Experiments",
+    "title": "Measuring Experiments",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Setup & Usage",
+    "permalink": "/guides/sidecar-experiments/sidecar-v3"
+  },
+  "next": {
+    "title": "Advanced Configurations",
+    "permalink": "/guides/sidecar-experiments/advanced-configurations-v3"
+  }
+}

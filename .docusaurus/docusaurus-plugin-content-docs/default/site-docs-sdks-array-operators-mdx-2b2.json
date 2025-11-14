@@ -1,0 +1,21 @@
+{
+  "id": "sdks/array-operators",
+  "title": "Array Operators",
+  "description": "Array operators allow for checking if an array custom field does or does not contain specific values",
+  "source": "@site/docs/sdks/array-operators.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/array-operators",
+  "permalink": "/sdks/array-operators",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/array-operators.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1756963239000,
+  "frontMatter": {
+    "title": "Array Operators",
+    "slug": "/sdks/array-operators",
+    "displayed_sidebar": "api"
+  },
+  "sidebar": "api"
+}

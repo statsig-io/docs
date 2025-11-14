@@ -1,0 +1,35 @@
+{
+  "id": "server/concepts/data_store",
+  "title": "Server Data Stores  / Data Adapter",
+  "description": "One common question when configuring Statsig is how to design your integration around handling potential points of failure. For example - in case of a Statsig API outage, can my integration continue to function?",
+  "source": "@site/docs/server/concepts/data_store.mdx",
+  "sourceDirName": "server/concepts",
+  "slug": "/server/concepts/data_store",
+  "permalink": "/server/concepts/data_store",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/concepts/data_store.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1757289600000,
+  "frontMatter": {
+    "title": "Server Data Stores  / Data Adapter",
+    "sidebar_label": "Server Data Stores",
+    "slug": "/server/concepts/data_store",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-08T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Local Eval Adapter",
+    "permalink": "/client/concepts/local-eval-adapter"
+  },
+  "next": {
+    "title": "Target Apps",
+    "permalink": "/sdk-keys/target-apps"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/metric-deltas",
+  "title": "Metric Deltas",
+  "description": "Computing Metric Deltas",
+  "source": "@site/docs/stats-engine/metric-deltas.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/metric-deltas",
+  "permalink": "/stats-engine/metric-deltas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/metric-deltas.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metric Deltas",
+    "sidebar_label": "Metric Deltas",
+    "slug": "/stats-engine/metric-deltas",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "One-Sample Tests",
+    "permalink": "/stats-engine/one-sample-test"
+  },
+  "next": {
+    "title": "Standard Error & Mean Variance",
+    "permalink": "/stats-engine/variance"
+  }
+}

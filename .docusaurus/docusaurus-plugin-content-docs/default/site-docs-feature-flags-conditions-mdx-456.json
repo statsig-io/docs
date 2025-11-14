@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/conditions",
+  "title": "Feature Gate rule criteria",
+  "description": "Statsig feature gates contain a list of rules that are evaluated in order from top to bottom. The page describes in more detail how these rules are evaluated and lists all currently supported conditions.",
+  "source": "@site/docs/feature-flags/conditions.mdx",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/conditions",
+  "permalink": "/feature-flags/conditions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/conditions.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Feature Gate rule criteria",
+    "sidebar_label": "Targeting rules and conditions",
+    "slug": "/feature-flags/conditions",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create a Feature Gate",
+    "permalink": "/feature-flags/create"
+  },
+  "next": {
+    "title": "Overrides and bypass lists",
+    "permalink": "/feature-flags/overrides"
+  }
+}

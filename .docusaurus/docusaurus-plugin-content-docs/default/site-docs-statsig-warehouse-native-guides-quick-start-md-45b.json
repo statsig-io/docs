@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/guides/quick-start",
+  "title": "Warehouse Native Quickstart",
+  "description": "You can get experiment results in record time with Statsig Warehouse Native. This page walks you through connecting your data, configuring a metric, and getting experiment results.",
+  "source": "@site/docs/statsig-warehouse-native/guides/quick-start.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/quick-start",
+  "permalink": "/statsig-warehouse-native/guides/quick-start",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/quick-start.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Warehouse Native Quickstart",
+    "sidebar_label": "WHN Quickstart",
+    "slug": "/statsig-warehouse-native/guides/quick-start",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "About Warehouse Native",
+    "permalink": "/statsig-warehouse-native/introduction"
+  },
+  "next": {
+    "title": "WHN vs Cloud",
+    "permalink": "/statsig-warehouse-native/native-vs-cloud"
+  }
+}

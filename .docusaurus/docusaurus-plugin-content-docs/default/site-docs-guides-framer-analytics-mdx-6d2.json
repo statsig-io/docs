@@ -1,0 +1,34 @@
+{
+  "id": "guides/framer-analytics",
+  "title": "Integrating Statsig with Framer",
+  "description": "Introduction",
+  "source": "@site/docs/guides/framer-analytics.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/framer-analytics",
+  "permalink": "/guides/framer-analytics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/framer-analytics.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Integrating Statsig with Framer",
+    "title": "Integrating Statsig with Framer",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "A/B Testing on Shopify",
+    "permalink": "/guides/shopify-ab-test"
+  },
+  "next": {
+    "title": "A/B Testing with Webflow and Sidecar",
+    "permalink": "/guides/webflow-sidecar-ab-test"
+  }
+}

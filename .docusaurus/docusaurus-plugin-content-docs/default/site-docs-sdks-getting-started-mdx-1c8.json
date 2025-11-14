@@ -1,0 +1,35 @@
+{
+  "id": "sdks/getting-started",
+  "title": "SDK Overview",
+  "description": "Statsig's SDKs are the in-code tool you'll use to show experiment variants, flag your features, and log your key business metrics. Statsig's SDKs:",
+  "source": "@site/docs/sdks/getting-started.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/getting-started",
+  "permalink": "/sdks/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/getting-started.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "SDK Overview",
+    "sidebar_label": "SDK Overview",
+    "slug": "/sdks/getting-started",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Build with LLMs",
+    "permalink": "/sdks/build-with-llms"
+  },
+  "next": {
+    "title": "Passing a User to SDKs",
+    "permalink": "/concepts/user"
+  }
+}

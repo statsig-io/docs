@@ -1,0 +1,34 @@
+{
+  "id": "access-management/projects",
+  "title": "Project Access Management",
+  "description": "This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our SSO Guides for more information about how to manage access permissions through SSO.",
+  "source": "@site/docs/access-management/projects.md",
+  "sourceDirName": "access-management",
+  "slug": "/access-management/projects",
+  "permalink": "/access-management/projects",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/projects.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Projects",
+    "title": "Project Access Management",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Organizations",
+    "permalink": "/access-management/organizations"
+  },
+  "next": {
+    "title": "Teams",
+    "permalink": "/access-management/teams"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "siggy/gate-management",
+  "title": "Walkthrough guide for Gate Management with CLI",
+  "description": "The walkthrough guide assumes you have Statsig CLI installed and configured with the right API keys.  Please refer to the Statsig CLI Overview to get started",
+  "source": "@site/docs/siggy/gate-management.mdx",
+  "sourceDirName": "siggy",
+  "slug": "/statsigcli/gate-management",
+  "permalink": "/statsigcli/gate-management",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/siggy/gate-management.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Walkthrough guide for Gate Management with CLI",
+    "sidebar_label": "Example: Gate Management",
+    "slug": "/statsigcli/gate-management",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "CLI Commands",
+    "permalink": "/statsigcli/commands"
+  }
+}

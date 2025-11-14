@@ -1,0 +1,16 @@
+{
+  "id": "console-api/snippets/conditions",
+  "title": "conditions",
+  "description": "Everyone",
+  "source": "@site/docs/console-api/snippets/conditions.mdx",
+  "sourceDirName": "console-api/snippets",
+  "slug": "/console-api/snippets/conditions",
+  "permalink": "/console-api/snippets/conditions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/console-api/snippets/conditions.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1727203194000,
+  "frontMatter": {}
+}

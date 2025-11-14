@@ -1,0 +1,26 @@
+{
+  "id": "statsig-warehouse-native/guides/scaling",
+  "title": "Scaling Warehouses (β)",
+  "description": "You can now connect multiple Snowflake warehouses to your account, enabling better query performance by automatically distributing query jobs across all available warehouses. To set it up, you can head over to Settings > Project > Data Connection, and select Set up additional Warehouses.",
+  "source": "@site/docs/statsig-warehouse-native/guides/scaling.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/scaling",
+  "permalink": "/statsig-warehouse-native/guides/scaling",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/scaling.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Scaling Warehouses (β)",
+    "sidebar_label": "Scaling Warehouses β",
+    "slug": "/statsig-warehouse-native/guides/scaling",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  }
+}

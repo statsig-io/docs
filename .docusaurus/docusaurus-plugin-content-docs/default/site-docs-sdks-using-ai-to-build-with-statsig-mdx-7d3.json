@@ -1,0 +1,35 @@
+{
+  "id": "sdks/using-ai-to-build-with-statsig",
+  "title": "Using AI Tools with Statsig Documentation",
+  "description": "Use AI tools and agents to assist with Statsig integration and development.",
+  "source": "@site/docs/sdks/using-ai-to-build-with-statsig.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/using-ai-to-build-with-statsig",
+  "permalink": "/sdks/using-ai-to-build-with-statsig",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/using-ai-to-build-with-statsig.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "sidebar_label": "Using AI to build with Statsig",
+    "title": "Using AI Tools with Statsig Documentation",
+    "keywords": [
+      "ai",
+      "llms.txt"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Log your first custom event",
+    "permalink": "/guides/logging-events"
+  },
+  "next": {
+    "title": "SDK Overview",
+    "permalink": "/sdks/getting-started"
+  }
+}

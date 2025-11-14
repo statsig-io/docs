@@ -1,0 +1,38 @@
+{
+  "id": "console-api/tags",
+  "title": "Tags (Console API)",
+  "description": "Create and get tags via HTTP requests.",
+  "source": "@site/docs/console-api/tags.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/tags",
+  "permalink": "/console-api/tags",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Tags (Console API)",
+    "sidebar_label": "Tags",
+    "slug": "/console-api/tags",
+    "description": "Create and get tags via HTTP requests.",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Ingestions",
+    "permalink": "/console-api/ingestions"
+  },
+  "next": {
+    "title": "Keys",
+    "permalink": "/console-api/keys"
+  }
+}

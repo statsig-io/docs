@@ -1,0 +1,34 @@
+{
+  "id": "guides/cms-integrations",
+  "title": "Guide to General CMS Integrations",
+  "description": "Using Statsig with a CMS",
+  "source": "@site/docs/guides/cms-integrations.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/cms-integrations",
+  "permalink": "/guides/cms-integrations",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/cms-integrations.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "General CMS Integrations",
+    "title": "Guide to General CMS Integrations",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Email AB Testing with SendGrid",
+    "permalink": "/guides/sendgrid-email-abtest"
+  },
+  "next": {
+    "title": "A/B Testing on Shopify",
+    "permalink": "/guides/shopify-ab-test"
+  }
+}

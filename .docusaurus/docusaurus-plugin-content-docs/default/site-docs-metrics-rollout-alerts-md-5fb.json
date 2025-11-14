@@ -1,0 +1,35 @@
+{
+  "id": "metrics/rollout-alerts",
+  "title": "Rollout Alerts",
+  "description": "When rolling out a new feature or experiment, you may want to be notified if your rollout or experiment regresses a metric beyond a pre-set threshold. Statsig enables this via Rollout Alerts.",
+  "source": "@site/docs/metrics/rollout-alerts.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/rollout-alerts",
+  "permalink": "/metrics/rollout-alerts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/rollout-alerts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Rollout Alerts",
+    "sidebar_label": "Rollout Alerts",
+    "slug": "/metrics/rollout-alerts",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Creating Metric Tags",
+    "permalink": "/metrics/create-metric-tags"
+  },
+  "next": {
+    "title": "User Accounting Metrics",
+    "permalink": "/metrics/user"
+  }
+}

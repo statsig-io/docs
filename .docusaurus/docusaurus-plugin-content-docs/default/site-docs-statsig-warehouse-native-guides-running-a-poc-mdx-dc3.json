@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/guides/running_a_poc",
+  "title": "Running a Warehouse Native POC",
+  "description": "The purpose of this guide is to give a general overview of how to plan a proof of concept with Statsig Warehouse Native (WHN). This guide articulates the high level components of our solution, the steps required for a customer to successfully lead a proof of concept and validation/next steps to move forward with a productionization.",
+  "source": "@site/docs/statsig-warehouse-native/guides/running_a_poc.mdx",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/running_a_poc",
+  "permalink": "/statsig-warehouse-native/guides/running_a_poc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/running_a_poc.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Running a Warehouse Native POC",
+    "slug": "/statsig-warehouse-native/guides/running_a_poc",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "WHN vs Cloud",
+    "permalink": "/statsig-warehouse-native/native-vs-cloud"
+  },
+  "next": {
+    "title": "Playground Evaluation",
+    "permalink": "/statsig-warehouse-native/guides/dummy_evaluation"
+  }
+}

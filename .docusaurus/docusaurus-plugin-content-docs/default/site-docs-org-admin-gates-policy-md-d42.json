@@ -1,0 +1,34 @@
+{
+  "id": "org-admin/gates_policy",
+  "title": "Feature Gates Policy",
+  "description": "Organization level Feature Gate Policies are an Enterprise only feature.",
+  "source": "@site/docs/org-admin/gates_policy.md",
+  "sourceDirName": "org-admin",
+  "slug": "/org-admin/gates_policy",
+  "permalink": "/org-admin/gates_policy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/org-admin/gates_policy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Feature Gates Policy",
+    "slug": "/org-admin/gates_policy",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Experiment Policy",
+    "permalink": "/org-admin/experiment_policy"
+  },
+  "next": {
+    "title": "Templates",
+    "permalink": "/templates/templates"
+  }
+}

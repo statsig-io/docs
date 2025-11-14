@@ -1,0 +1,33 @@
+{
+  "id": "infrastructure/introduction",
+  "title": "Infrastructure Operations",
+  "description": "Statsig's infrastructure is the foundation that enables reliable feature flagging, experimentation, and analytics at enterprise scale. When you're running experiments that impact billions of users or managing feature flags for critical business logic, infrastructure reliability is essential to your product's success.",
+  "source": "@site/docs/infrastructure/introduction.mdx",
+  "sourceDirName": "infrastructure",
+  "slug": "/infrastructure/introduction",
+  "permalink": "/infrastructure/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/introduction.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Infrastructure Operations",
+    "keywords": [
+      "owner:eric"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Private Attributes",
+    "permalink": "/guides/private-attributes"
+  },
+  "next": {
+    "title": "Open Telemetry Logs and Metrics",
+    "permalink": "/server/concepts/open_telemetry"
+  }
+}

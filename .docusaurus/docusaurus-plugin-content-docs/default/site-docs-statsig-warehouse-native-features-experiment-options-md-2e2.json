@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/features/experiment-options",
+  "title": "Configuring Experiments",
+  "description": "In Statsig Warehouse Native, there's a large amount of configurability in experiment setup and analysis. Statsig users should be able to run an experiment with \"default\" options and get powerful, trustworthy statistical analysis of your results, but in many cases an advanced configuration helps users maximize power and helps to measure exactly what is intended to be measured.",
+  "source": "@site/docs/statsig-warehouse-native/features/experiment-options.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/experiment-options",
+  "permalink": "/statsig-warehouse-native/features/experiment-options",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/experiment-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Configuration",
+    "title": "Configuring Experiments",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Understanding Experiments",
+    "permalink": "/statsig-warehouse-native/features/understanding-experiments"
+  },
+  "next": {
+    "title": "Configuring Experiments",
+    "permalink": "/statsig-warehouse-native/features/configure-an-experiment"
+  }
+}

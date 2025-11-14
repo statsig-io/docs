@@ -1,0 +1,35 @@
+{
+  "id": "pulse/drill-down-whn",
+  "title": "Pulse",
+  "description": "",
+  "source": "@site/docs/pulse/drill-down-whn.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/drill-down-whn",
+  "permalink": "/pulse/drill-down-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/drill-down-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Pulse",
+    "sidebar_label": "Metric Drill-Down",
+    "slug": "/pulse/drill-down-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Read Results",
+    "permalink": "/pulse/read-pulse-whn"
+  },
+  "next": {
+    "title": "Custom \"Explore\" Queries",
+    "permalink": "/pulse/custom-queries-whn"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "pulse/faq",
+  "title": "Frequently Asked Questions on Using Pulse",
+  "description": "Interpreting statistical results can be tricky, and often people will have similar questions as we ramp up. Here's some answers!",
+  "source": "@site/docs/pulse/faq.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/best-faq",
+  "permalink": "/pulse/best-faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/faq.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Frequently Asked Questions on Using Pulse",
+    "sidebar_label": "Pulse FAQs",
+    "slug": "/pulse/best-faq",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Reconciling Results",
+    "permalink": "/experiments-plus/reconciling-experiment-results"
+  },
+  "next": {
+    "title": "Custom \"Explore\" Queries",
+    "permalink": "/pulse/custom-queries"
+  }
+}

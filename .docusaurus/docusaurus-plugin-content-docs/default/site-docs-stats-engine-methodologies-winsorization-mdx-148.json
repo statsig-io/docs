@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/winsorization",
+  "title": "Winsorization",
+  "description": "Winsorization",
+  "source": "@site/docs/stats-engine/methodologies/winsorization.mdx",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/winsorization",
+  "permalink": "/stats-engine/methodologies/winsorization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/winsorization.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Winsorization",
+    "sidebar_label": "Winsorization",
+    "slug": "/stats-engine/methodologies/winsorization",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "CUPED",
+    "permalink": "/stats-engine/methodologies/cuped"
+  },
+  "next": {
+    "title": "Sequential Testing",
+    "permalink": "/experiments-plus/sequential-testing"
+  }
+}

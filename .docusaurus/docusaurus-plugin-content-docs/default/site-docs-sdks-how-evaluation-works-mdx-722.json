@@ -1,0 +1,28 @@
+{
+  "id": "sdks/how-evaluation-works",
+  "title": "How Evaluation Works",
+  "description": "Evaluation’s importance",
+  "source": "@site/docs/sdks/how-evaluation-works.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/how-evaluation-works",
+  "permalink": "/sdks/how-evaluation-works",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/how-evaluation-works.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1757018330000,
+  "frontMatter": {
+    "title": "How Evaluation Works",
+    "slug": "/sdks/how-evaluation-works"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Initializing the SDK",
+    "permalink": "/client/concepts/initialize"
+  },
+  "next": {
+    "title": "Debugging",
+    "permalink": "/sdk/debugging"
+  }
+}

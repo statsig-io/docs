@@ -1,0 +1,26 @@
+{
+  "id": "server/concepts/all_assignments",
+  "title": "Getting All Assignments Instantaneously",
+  "description": "Our SDKs are designed to be invoked in your code at the point where you're serving the experiment treatment or feature.",
+  "source": "@site/docs/server/concepts/all_assignments.mdx",
+  "sourceDirName": "server/concepts",
+  "slug": "/server/concepts/all-assignments",
+  "permalink": "/server/concepts/all-assignments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/concepts/all_assignments.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Getting All Assignments Instantaneously",
+    "sidebar_label": "Getting All Assignments",
+    "slug": "/server/concepts/all-assignments",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  }
+}

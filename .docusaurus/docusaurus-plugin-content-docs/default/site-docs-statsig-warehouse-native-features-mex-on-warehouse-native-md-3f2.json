@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/mex-on-warehouse-native",
+  "title": "MEX on Warehouse Native [Beta]",
+  "description": "Metrics Explorer (or MEX) is Statsig's Analytics solution. With Warehouse Native, this integrates directly on top of your tables to provide easy analysis on the same datasets you're using for experimentation.",
+  "source": "@site/docs/statsig-warehouse-native/features/mex-on-warehouse-native.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/mex-on-warehouse-native",
+  "permalink": "/statsig-warehouse-native/features/mex-on-warehouse-native",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/mex-on-warehouse-native.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "MEX on Warehouse Native [Beta]",
+    "slug": "/statsig-warehouse-native/features/mex-on-warehouse-native",
+    "sidebar_label": "Metrics Explorer on WHN",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Practical Use Cases",
+    "permalink": "/statsig-warehouse-native/features/use-case"
+  },
+  "next": {
+    "title": "Geotests",
+    "permalink": "/experiments-plus/geotests"
+  }
+}

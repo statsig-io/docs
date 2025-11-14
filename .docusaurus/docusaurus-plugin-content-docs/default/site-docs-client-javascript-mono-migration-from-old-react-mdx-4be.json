@@ -1,0 +1,35 @@
+{
+  "id": "client/javascript-mono/MigrationFromOldReact",
+  "title": "Migrating to @statsig/react-bindings",
+  "description": "Migrate soon! Official support for statsig-react ends Jan 31, 2025.",
+  "source": "@site/docs/client/javascript-mono/MigrationFromOldReact.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/migrating-from-statsig-react",
+  "permalink": "/client/javascript-sdk/migrating-from-statsig-react",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/MigrationFromOldReact.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Migrating to @statsig/react-bindings",
+    "sidebar_label": "Migrating to @statsig/react-bindings",
+    "slug": "/client/javascript-sdk/migrating-from-statsig-react",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Migrating to @statsig/js-client",
+    "permalink": "/client/javascript-sdk/migrating-from-statsig-js"
+  },
+  "next": {
+    "title": "Node",
+    "permalink": "/server-core/node-core"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/use-case",
+  "title": "Practical Use Cases",
+  "description": "How can I define and filter results to 'new users' only?",
+  "source": "@site/docs/statsig-warehouse-native/features/use-case.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/use-case",
+  "permalink": "/statsig-warehouse-native/features/use-case",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/use-case.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Practical Use Cases",
+    "slug": "/statsig-warehouse-native/features/use-case",
+    "sidebar_label": "Practical Use Cases",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Autotune",
+    "permalink": "/statsig-warehouse-native/features/autotune"
+  },
+  "next": {
+    "title": "Metrics Explorer on WHN",
+    "permalink": "/statsig-warehouse-native/features/mex-on-warehouse-native"
+  }
+}

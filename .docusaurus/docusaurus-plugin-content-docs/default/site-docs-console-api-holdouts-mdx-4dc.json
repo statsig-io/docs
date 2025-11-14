@@ -1,0 +1,38 @@
+{
+  "id": "console-api/holdouts",
+  "title": "Holdouts (Console API)",
+  "description": "Create feature holdouts via HTTP requests.",
+  "source": "@site/docs/console-api/holdouts.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/holdouts",
+  "permalink": "/console-api/holdouts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Holdouts (Console API)",
+    "sidebar_label": "Holdouts",
+    "slug": "/console-api/holdouts",
+    "description": "Create feature holdouts via HTTP requests.",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Experiments",
+    "permalink": "/console-api/experiments"
+  },
+  "next": {
+    "title": "Layers",
+    "permalink": "/console-api/layers"
+  }
+}

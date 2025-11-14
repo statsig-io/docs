@@ -1,0 +1,34 @@
+{
+  "id": "access-management/teams",
+  "title": "Teams",
+  "description": "Teams are an Enterprise-only feature. If you are on the Developer or Pro tiers, this guide will not apply to you. To upgrade to Enterprise, feel free to reach out to our team here.",
+  "source": "@site/docs/access-management/teams.md",
+  "sourceDirName": "access-management",
+  "slug": "/access-management/teams",
+  "permalink": "/access-management/teams",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/teams.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Teams",
+    "title": "Teams",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Projects",
+    "permalink": "/access-management/projects"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/access-management/sso/overview"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "product-analytics/funnels",
+  "title": "Funnel Charts",
+  "description": "Overview",
+  "source": "@site/docs/product-analytics/funnels.md",
+  "sourceDirName": "product-analytics",
+  "slug": "/product-analytics/funnels",
+  "permalink": "/product-analytics/funnels",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/product-analytics/funnels.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Funnel Charts",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Funnels",
+    "slug": "/product-analytics/funnels",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Metric Drilldown",
+    "permalink": "/product-analytics/drilldown"
+  },
+  "next": {
+    "title": "Retention",
+    "permalink": "/product-analytics/retention"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "http-api",
+  "title": "HTTP API",
+  "description": "⚠️ Important: While this HTTP API is available for direct use, we strongly recommend using one of our official SDKs for your programming language whenever possible. SDKs offer better performance, automatic error handling, and type safety. They also provide a more idiomatic integration with your codebase. Only use this HTTP API directly if there isn't an SDK available for your language or if you have a specific use case that requires direct API access.",
+  "source": "@site/docs/http-api.md",
+  "sourceDirName": ".",
+  "slug": "/http-api",
+  "permalink": "/http-api",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/http-api.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "HTTP API",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "SDK Support Policy",
+    "permalink": "/sdks/support"
+  },
+  "next": {
+    "title": "Console API Overview",
+    "permalink": "/console-api/introduction"
+  }
+}

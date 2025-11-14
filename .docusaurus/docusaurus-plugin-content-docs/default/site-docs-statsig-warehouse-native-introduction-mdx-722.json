@@ -1,0 +1,30 @@
+{
+  "id": "statsig-warehouse-native/introduction",
+  "title": "About Warehouse Native",
+  "description": "Statsig Warehouse Native is an enterprise-grade experimentation platform that runs analysis in your data warehouse. It integrates easily with your existing datasets and any source of experiment assignment data – including a powerful integration with Statsig's SDKs and real-time logging infrastructure.",
+  "source": "@site/docs/statsig-warehouse-native/introduction.mdx",
+  "sourceDirName": "statsig-warehouse-native",
+  "slug": "/statsig-warehouse-native/introduction",
+  "permalink": "/statsig-warehouse-native/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/introduction.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "About Warehouse Native",
+    "slug": "/statsig-warehouse-native/introduction",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "next": {
+    "title": "WHN Quickstart",
+    "permalink": "/statsig-warehouse-native/guides/quick-start"
+  }
+}

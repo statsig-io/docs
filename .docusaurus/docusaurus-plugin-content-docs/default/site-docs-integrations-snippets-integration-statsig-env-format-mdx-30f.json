@@ -1,0 +1,16 @@
+{
+  "id": "integrations/snippets/integration_statsig_env_format",
+  "title": "integration_statsig_env_format",
+  "description": "Environments",
+  "source": "@site/docs/integrations/snippets/integration_statsig_env_format.mdx",
+  "sourceDirName": "integrations/snippets",
+  "slug": "/integrations/snippets/integration_statsig_env_format",
+  "permalink": "/integrations/snippets/integration_statsig_env_format",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/snippets/integration_statsig_env_format.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1727853638000,
+  "frontMatter": {}
+}

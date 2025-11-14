@@ -1,0 +1,25 @@
+{
+  "id": "guides/first-feature",
+  "title": "Build your first Feature",
+  "description": "Usually referred to online as feature flags, the Statsig UI and SDKs call them feature gates.",
+  "source": "@site/docs/guides/first-feature.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/first-feature",
+  "permalink": "/guides/first-feature",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/first-feature.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Your First Feature",
+    "title": "Build your first Feature",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  }
+}

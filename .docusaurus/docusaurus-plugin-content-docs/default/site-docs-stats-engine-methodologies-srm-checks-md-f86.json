@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/srm-checks",
+  "title": "SRM Checks",
+  "description": "SRM - Sample Ratio Mismatch",
+  "source": "@site/docs/stats-engine/methodologies/srm-checks.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/srm-checks",
+  "permalink": "/stats-engine/methodologies/srm-checks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/srm-checks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758585600000,
+  "frontMatter": {
+    "title": "SRM Checks",
+    "sidebar_label": "SRM Checks",
+    "slug": "/stats-engine/methodologies/srm-checks",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-23T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Monitor",
+    "permalink": "/experiments-plus/monitor"
+  },
+  "next": {
+    "title": "Managing SRM",
+    "permalink": "/guides/srm"
+  }
+}

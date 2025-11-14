@@ -1,0 +1,29 @@
+{
+  "id": "webanalytics/autocapture",
+  "title": "Autocapture on the Web",
+  "description": "The JavaScript, React, and Angular SDKs support autocapture, which automatically captures events and their attributes without requiring you to manually instrument your code.",
+  "source": "@site/docs/webanalytics/autocapture.mdx",
+  "sourceDirName": "webanalytics",
+  "slug": "/webanalytics/autocapture",
+  "permalink": "/webanalytics/autocapture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/webanalytics/autocapture.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755019816000,
+  "frontMatter": {
+    "title": "Autocapture on the Web",
+    "sidebar_label": "Events and Metadata",
+    "slug": "/webanalytics/autocapture"
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/webanalytics/overview"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/session-replay/overview"
+  }
+}

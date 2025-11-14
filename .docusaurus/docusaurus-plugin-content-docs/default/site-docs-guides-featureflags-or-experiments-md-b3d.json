@@ -1,0 +1,34 @@
+{
+  "id": "guides/featureflags-or-experiments",
+  "title": "When to use Feature Flags vs. Experiments?",
+  "description": "With Statsig, you can create control and test groups and compare them using A/B testing via either feature gates or experiments. This guide helps clarify when to use a feature gate versus an experiment, depending on your needs.",
+  "source": "@site/docs/guides/featureflags-or-experiments.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/featureflags-or-experiments",
+  "permalink": "/guides/featureflags-or-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/featureflags-or-experiments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Choosing Flags or Experiments",
+    "title": "When to use Feature Flags vs. Experiments?",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Statsig Platform Overview",
+    "permalink": "/understanding-platform"
+  },
+  "next": {
+    "title": "Bootstrapping Your Experimentation Program",
+    "permalink": "/guides/experimentation-program"
+  }
+}

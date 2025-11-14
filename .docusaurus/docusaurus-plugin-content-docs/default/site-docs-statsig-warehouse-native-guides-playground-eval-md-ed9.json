@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/guides/playground_eval",
+  "title": "How to Run a Playground Evaluation",
+  "description": "Due to the effort involved in setting this up, this section only applies to Enterprise tier evaluations (not for free or pro tier)",
+  "source": "@site/docs/statsig-warehouse-native/guides/playground_eval.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/dummy_evaluation",
+  "permalink": "/statsig-warehouse-native/guides/dummy_evaluation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/playground_eval.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How to Run a Playground Evaluation",
+    "slug": "/statsig-warehouse-native/guides/dummy_evaluation",
+    "sidebar_label": "Playground Evaluation",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Running a Warehouse Native POC",
+    "permalink": "/statsig-warehouse-native/guides/running_a_poc"
+  },
+  "next": {
+    "title": "Working With the SDK",
+    "permalink": "/statsig-warehouse-native/guides/sdks"
+  }
+}

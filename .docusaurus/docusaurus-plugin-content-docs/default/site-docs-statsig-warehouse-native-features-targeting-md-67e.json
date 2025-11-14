@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/targeting",
+  "title": "Targeting",
+  "description": "How to Target Experiments",
+  "source": "@site/docs/statsig-warehouse-native/features/targeting.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/targeting",
+  "permalink": "/statsig-warehouse-native/features/targeting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/targeting.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Targeting",
+    "slug": "/statsig-warehouse-native/features/targeting",
+    "sidebar_label": "Targeting",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Differential Impact",
+    "permalink": "/experiments-plus/differential-impact-detection-whn"
+  },
+  "next": {
+    "title": "Advanced ID Resolution",
+    "permalink": "/statsig-warehouse-native/features/id-resolution"
+  }
+}

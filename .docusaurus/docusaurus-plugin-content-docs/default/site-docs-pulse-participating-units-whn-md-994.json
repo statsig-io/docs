@@ -1,0 +1,35 @@
+{
+  "id": "pulse/participating-units-whn",
+  "title": "Participating Units",
+  "description": "",
+  "source": "@site/docs/pulse/participating-units-whn.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/participating-units-whn",
+  "permalink": "/pulse/participating-units-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/participating-units-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1756857600000,
+  "frontMatter": {
+    "title": "Participating Units",
+    "sidebar_label": "Participating Units",
+    "slug": "/pulse/participating-units-whn",
+    "keywords": [
+      "owner:makris"
+    ],
+    "last_update": {
+      "date": "2025-09-03T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Export Pulse Results",
+    "permalink": "/pulse/access-whn"
+  },
+  "next": {
+    "title": "Best Practices",
+    "permalink": "/pulse/best-practices-whn"
+  }
+}

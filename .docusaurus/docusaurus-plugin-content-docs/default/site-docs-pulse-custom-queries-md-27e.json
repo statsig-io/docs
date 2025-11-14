@@ -1,0 +1,35 @@
+{
+  "id": "pulse/custom-queries",
+  "title": "Custom \"Explore\" Queries",
+  "description": "Custom \"Explore\" Queries",
+  "source": "@site/docs/pulse/custom-queries.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/custom-queries",
+  "permalink": "/pulse/custom-queries",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/custom-queries.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Custom \"Explore\" Queries",
+    "sidebar_label": "Custom \"Explore\" Queries",
+    "slug": "/pulse/custom-queries",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Pulse FAQs",
+    "permalink": "/pulse/best-faq"
+  },
+  "next": {
+    "title": "Aggregated Impact",
+    "permalink": "/aggregated-impact"
+  }
+}

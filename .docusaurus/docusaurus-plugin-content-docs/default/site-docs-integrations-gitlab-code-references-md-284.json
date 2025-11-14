@@ -1,0 +1,33 @@
+{
+  "id": "integrations/gitlab_code_references",
+  "title": "GitLab Code References",
+  "description": "Overview",
+  "source": "@site/docs/integrations/gitlab_code_references.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/gitlab_code_references",
+  "permalink": "/integrations/gitlab_code_references",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/gitlab_code_references.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "GitLab Code References",
+    "keywords": [
+      "owner:kenny"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Github Code References",
+    "permalink": "/integrations/github_code_references"
+  },
+  "next": {
+    "title": "Slack",
+    "permalink": "/integrations/slack"
+  }
+}

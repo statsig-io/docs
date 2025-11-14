@@ -1,0 +1,34 @@
+{
+  "id": "exp-templates/templates",
+  "title": "Templates",
+  "description": "Overview",
+  "source": "@site/docs/exp-templates/templates.md",
+  "sourceDirName": "exp-templates",
+  "slug": "/templates/templates",
+  "permalink": "/templates/templates",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/exp-templates/templates.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Templates",
+    "slug": "/templates/templates",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Feature Gates Policy",
+    "permalink": "/org-admin/gates_policy"
+  },
+  "next": {
+    "title": "Decision Framework",
+    "permalink": "/exp-templates/decision-framework"
+  }
+}

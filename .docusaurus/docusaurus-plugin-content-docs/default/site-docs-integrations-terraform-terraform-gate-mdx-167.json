@@ -1,0 +1,34 @@
+{
+  "id": "integrations/terraform/terraform_gate",
+  "title": "Managing Gates With Terraform",
+  "description": "You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of console/v1/gates are supported. The layout is very similar to the JSON body of a /gates request.",
+  "source": "@site/docs/integrations/terraform/terraform_gate.mdx",
+  "sourceDirName": "integrations/terraform",
+  "slug": "/integrations/terraform/terraform_gate",
+  "permalink": "/integrations/terraform/terraform_gate",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/terraform/terraform_gate.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Managing Gates With Terraform",
+    "sidebar_label": "Managing Gates",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Statsig Terraform Provider",
+    "permalink": "/integrations/terraform/introduction"
+  },
+  "next": {
+    "title": "Managing Experiments",
+    "permalink": "/integrations/terraform/terraform_experiment"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "client/javascript-sdk",
+  "title": "JavaScript Client SDK (Web)",
+  "description": "<FeaturePillList",
+  "source": "@site/docs/client/javascript-sdk.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/javascript-sdk",
+  "permalink": "/client/javascript-sdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-sdk.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "sidebar_label": "JavaScript (Web)",
+    "title": "JavaScript Client SDK (Web)",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "HTML Snippet",
+    "permalink": "/client/html-snippet"
+  },
+  "next": {
+    "title": "React",
+    "permalink": "/client/javascript-sdk/react"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "client/js-device-eval-mono/MigrationFromOldSDK",
+  "title": "Migrating From js-local-eval",
+  "description": "Standard Initialize",
+  "source": "@site/docs/client/js-device-eval-mono/MigrationFromOldSDK.mdx",
+  "sourceDirName": "client/js-device-eval-mono",
+  "slug": "/client/js-on-device-eval-client/migrating-from-js-local-eval",
+  "permalink": "/client/js-on-device-eval-client/migrating-from-js-local-eval",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/js-device-eval-mono/MigrationFromOldSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Migrating From js-local-eval",
+    "sidebar_label": "Migrating from js-local-eval",
+    "slug": "/client/js-on-device-eval-client/migrating-from-js-local-eval",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "JavaScript",
+    "permalink": "/client/js-on-device-eval-client"
+  },
+  "next": {
+    "title": "SpecsDataAdapter",
+    "permalink": "/client/js-on-device-eval-client/using-evaluations-data-adapter"
+  }
+}

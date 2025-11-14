@@ -1,0 +1,35 @@
+{
+  "id": "segments/use-segment",
+  "title": "Using a segment",
+  "description": "You can use a segment to target a set of users in a feature gate or a dynamic config as follows:",
+  "source": "@site/docs/segments/use-segment.md",
+  "sourceDirName": "segments",
+  "slug": "/segments/implement",
+  "permalink": "/segments/implement",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/segments/use-segment.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Using a segment",
+    "sidebar_label": "Usage",
+    "slug": "/segments/implement",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Add ID List",
+    "permalink": "/segments/add-id-list"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/release-pipeline"
+  }
+}

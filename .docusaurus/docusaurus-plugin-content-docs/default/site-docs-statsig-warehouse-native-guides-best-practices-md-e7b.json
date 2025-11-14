@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/guides/best-practices",
+  "title": "Data Best Practices",
+  "description": "Best Practices for using Statsig in your warehouse",
+  "source": "@site/docs/statsig-warehouse-native/guides/best-practices.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/best-practices",
+  "permalink": "/statsig-warehouse-native/guides/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758672000000,
+  "frontMatter": {
+    "title": "Data Best Practices",
+    "slug": "/statsig-warehouse-native/guides/best-practices",
+    "sidebar_label": "Best Practices",
+    "description": "Best Practices for using Statsig in your warehouse",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-24T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Warehouse Costs",
+    "permalink": "/statsig-warehouse-native/guides/costs"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/statsig-warehouse-native/configuration/data-and-semantic-layer"
+  }
+}

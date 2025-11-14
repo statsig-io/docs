@@ -1,0 +1,35 @@
+{
+  "id": "session-replay/overview",
+  "title": "Session Replay Overview",
+  "description": "Session Replay allows you to record users using your website or product, and play back those recorded sessions. This allows you to better understand how users use your service or website, diagnose problems, and uncover insights that help improve conversion and the overall user experience.",
+  "source": "@site/docs/session-replay/overview.md",
+  "sourceDirName": "session-replay",
+  "slug": "/session-replay/overview",
+  "permalink": "/session-replay/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/session-replay/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Session Replay Overview",
+    "sidebar_label": "Overview",
+    "slug": "/session-replay/overview",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Events and Metadata",
+    "permalink": "/webanalytics/autocapture"
+  },
+  "next": {
+    "title": "Install",
+    "permalink": "/session-replay/install"
+  }
+}

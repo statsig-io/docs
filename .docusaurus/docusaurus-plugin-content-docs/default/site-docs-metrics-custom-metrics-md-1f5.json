@@ -1,0 +1,35 @@
+{
+  "id": "metrics/custom-metrics",
+  "title": "Custom Metrics",
+  "description": "You can create Custom Metrics using the custom events you ingest by filtering or aggregating events based on event metadata. You must include metadata along with the custom events when you log these events with Statsig.",
+  "source": "@site/docs/metrics/custom-metrics.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/custom-metrics",
+  "permalink": "/metrics/custom-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/custom-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Custom Metrics",
+    "sidebar_label": "Custom Metrics",
+    "slug": "/metrics/custom-metrics",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Deprecating Event_dau",
+    "permalink": "/metrics/deprecate-event-dau"
+  },
+  "next": {
+    "title": "Precomputed Metrics",
+    "permalink": "/metrics/precomputed-metrics"
+  }
+}

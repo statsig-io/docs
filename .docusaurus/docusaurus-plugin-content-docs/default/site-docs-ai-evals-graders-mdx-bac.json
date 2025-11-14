@@ -1,0 +1,35 @@
+{
+  "id": "ai-evals/graders",
+  "title": "Graders",
+  "description": "What is a Grader?",
+  "source": "@site/docs/ai-evals/graders.mdx",
+  "sourceDirName": "ai-evals",
+  "slug": "/ai-evals/graders",
+  "permalink": "/ai-evals/graders",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-evals/graders.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "title": "Graders",
+    "sidebar_label": "Graders",
+    "slug": "/ai-evals/graders",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Prompts",
+    "permalink": "/ai-evals/prompts"
+  },
+  "next": {
+    "title": "Offline Evals",
+    "permalink": "/ai-evals/offline-evals"
+  }
+}

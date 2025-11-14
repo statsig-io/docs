@@ -1,0 +1,35 @@
+{
+  "id": "sdks/ai-powered-dev",
+  "title": "AI-powered Development",
+  "description": "If you are using AI assistants / coding agents in your workflows, then use this guide to accelerate how you work with Statsig in your application.",
+  "source": "@site/docs/sdks/ai-powered-dev.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/ai-powered-dev",
+  "permalink": "/sdks/ai-powered-dev",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/ai-powered-dev.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "sidebar_label": "AI-powered Development",
+    "title": "AI-powered Development",
+    "keywords": [
+      "ai",
+      "llms.txt"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Log your first custom event",
+    "permalink": "/guides/logging-events"
+  },
+  "next": {
+    "title": "SDK Overview",
+    "permalink": "/sdks/getting-started"
+  }
+}

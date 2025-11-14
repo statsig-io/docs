@@ -1,0 +1,33 @@
+{
+  "id": "azureai/getting-started",
+  "title": "Getting Started",
+  "description": "Step 1: Install the SDK in your server app",
+  "source": "@site/docs/azureai/getting-started.mdx",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/getting-started",
+  "permalink": "/azureai/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/getting-started.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Getting Started",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Azure AI",
+    "permalink": "/azureai/introduction"
+  },
+  "next": {
+    "title": "AI Model Client",
+    "permalink": "/azureai/model-client"
+  }
+}

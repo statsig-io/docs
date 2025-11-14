@@ -1,0 +1,33 @@
+{
+  "id": "azureai/completions",
+  "title": "Completions",
+  "description": "Chat completions are AI-generated responses used to generate text. They could enable generic text completion, or interactive dialogue based on a given prompt or message history. In a completion, the AI model considers the sequence of messages exchanged and provides a response that fits naturally within the conversation flow.",
+  "source": "@site/docs/azureai/completions.mdx",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/completions",
+  "permalink": "/azureai/completions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/completions.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Completions",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "AI Model Client",
+    "permalink": "/azureai/model-client"
+  },
+  "next": {
+    "title": "Text Embeddings",
+    "permalink": "/azureai/embeddings"
+  }
+}

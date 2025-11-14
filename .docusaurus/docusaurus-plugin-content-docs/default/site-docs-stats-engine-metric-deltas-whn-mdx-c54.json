@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/metric-deltas-whn",
+  "title": "Metric Deltas",
+  "description": "",
+  "source": "@site/docs/stats-engine/metric-deltas-whn.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/metric-deltas-whn",
+  "permalink": "/stats-engine/metric-deltas-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/metric-deltas-whn.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metric Deltas",
+    "sidebar_label": "Metric Deltas",
+    "slug": "/stats-engine/metric-deltas-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/statsig-warehouse-native/features/statistics"
+  },
+  "next": {
+    "title": "Standard Error & Mean Variance",
+    "permalink": "/stats-engine/variance-whn"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "console-api/introduction",
+  "title": "Console API Overview",
+  "description": "The \"Console API\" is the CRUD API for performing the actions offered on console.statsig.com without needing to go through the web UI.",
+  "source": "@site/docs/console-api/introduction.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/introduction",
+  "permalink": "/console-api/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/console-api/introduction.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Console API Overview",
+    "slug": "/console-api/introduction",
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "HTTP API",
+    "permalink": "/http-api"
+  },
+  "next": {
+    "title": "OpenAPI Specification",
+    "permalink": "/console-api/all-endpoints-generated"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/best-practices",
+  "title": "Best practices for Feature Gates",
+  "description": "Statsig classifies the best practices for using feature gates into four categories: implementation, development, collaboration, and governance.",
+  "source": "@site/docs/feature-flags/best-practices.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/best-practices",
+  "permalink": "/feature-flags/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Best practices for Feature Gates",
+    "sidebar_label": "Best practices",
+    "slug": "/feature-flags/best-practices",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Permanent and stale gates",
+    "permalink": "/feature-flags/permanent-and-stale-gates"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/dynamic-config"
+  }
+}

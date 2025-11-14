@@ -1,0 +1,34 @@
+{
+  "id": "server-core/go/migration",
+  "title": "Migrating from Legacy Go SDK to Go Core",
+  "description": "This guide will help you migrate from the legacy Go Server SDK to the new Go Core SDK. The Go Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.",
+  "source": "@site/docs/server-core/go/migration.mdx",
+  "sourceDirName": "server-core/go",
+  "slug": "/server-core/go/migration",
+  "permalink": "/server-core/go/migration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/go/migration.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Migrating from Legacy Go SDK to Go Core",
+    "sidebar_label": "Migration Guide",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Go",
+    "permalink": "/server-core/go-core"
+  },
+  "next": {
+    "title": ".NET Server",
+    "permalink": "/server/dotnetSDK"
+  }
+}

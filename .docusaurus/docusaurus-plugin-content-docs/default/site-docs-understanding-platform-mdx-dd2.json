@@ -1,0 +1,34 @@
+{
+  "id": "understanding-platform",
+  "title": "Statsig Platform Overview",
+  "description": "What do I use Statsig for?",
+  "source": "@site/docs/understanding-platform.mdx",
+  "sourceDirName": ".",
+  "slug": "/understanding-platform",
+  "permalink": "/understanding-platform",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/understanding-platform.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Statsig Platform Overview",
+    "slug": "/understanding-platform",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "Choosing Flags or Experiments",
+    "permalink": "/guides/featureflags-or-experiments"
+  }
+}

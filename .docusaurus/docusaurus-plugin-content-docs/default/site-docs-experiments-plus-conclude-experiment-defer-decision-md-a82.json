@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/conclude-experiment-defer-decision",
+  "title": "Conclude Experiment & Defer Decision",
+  "description": "Conclude the Experiment now and Defer Analysis for later",
+  "source": "@site/docs/experiments-plus/conclude-experiment-defer-decision.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/conclude-experiment-defer-decision",
+  "permalink": "/experiments-plus/conclude-experiment-defer-decision",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/conclude-experiment-defer-decision.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Conclude Experiment & Defer Decision",
+    "sidebar_label": "Conclude Experiment & Defer decision",
+    "slug": "/experiments-plus/conclude-experiment-defer-decision",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Stop Assignments",
+    "permalink": "/experiments-plus/stop-assignments"
+  },
+  "next": {
+    "title": "Abandon",
+    "permalink": "/experiments-plus/abandon"
+  }
+}

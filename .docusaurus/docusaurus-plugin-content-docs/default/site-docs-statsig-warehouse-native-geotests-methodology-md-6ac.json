@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/geotests/methodology",
+  "title": "Geotests",
+  "description": "How it's different",
+  "source": "@site/docs/statsig-warehouse-native/geotests/methodology.md",
+  "sourceDirName": "statsig-warehouse-native/geotests",
+  "slug": "/experiments-plus/geotests/methodology",
+  "permalink": "/experiments-plus/geotests/methodology",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/geotests/methodology.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Geotests",
+    "sidebar_label": "Methodology",
+    "slug": "/experiments-plus/geotests/methodology",
+    "keywords": [
+      "owner:makris"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/experiments-plus/geotests-setup"
+  },
+  "next": {
+    "title": "Other Features",
+    "permalink": "/statsig-warehouse-native/features/other-features"
+  }
+}

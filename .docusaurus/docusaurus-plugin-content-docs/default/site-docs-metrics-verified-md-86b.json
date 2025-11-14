@@ -1,0 +1,35 @@
+{
+  "id": "metrics/verified",
+  "title": "Verified Metrics",
+  "description": "This is an Enterprise feature, please reach out to our support team, your sales contact, or via our slack channel if you want this enabled.",
+  "source": "@site/docs/metrics/verified.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/verified",
+  "permalink": "/metrics/verified",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/verified.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Verified Metrics",
+    "sidebar_label": "Verified Metrics",
+    "slug": "/metrics/verified",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Roles",
+    "permalink": "/statsig-warehouse-native/features/roles-and-access"
+  },
+  "next": {
+    "title": "Macros",
+    "permalink": "/statsig-warehouse-native/configuration/query-tools"
+  }
+}

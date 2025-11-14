@@ -1,0 +1,34 @@
+{
+  "id": "guides/logging-events",
+  "title": "Log your first custom event",
+  "description": "Overview",
+  "source": "@site/docs/guides/logging-events.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/logging-events",
+  "permalink": "/guides/logging-events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/logging-events.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Log your first custom event",
+    "title": "Log your first custom event",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Run your first A/B test",
+    "permalink": "/guides/abn-tests"
+  },
+  "next": {
+    "title": "Build with LLMs",
+    "permalink": "/sdks/build-with-llms"
+  }
+}

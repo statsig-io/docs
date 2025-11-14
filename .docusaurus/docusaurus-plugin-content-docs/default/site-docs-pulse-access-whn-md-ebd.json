@@ -1,0 +1,35 @@
+{
+  "id": "pulse/access-whn",
+  "title": "Export Pulse Results to Your Warehouse in Warehouse Native",
+  "description": "How to Access Pulse Data in Warehouse Native",
+  "source": "@site/docs/pulse/access-whn.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/access-whn",
+  "permalink": "/pulse/access-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/access-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Export Pulse Results to Your Warehouse in Warehouse Native",
+    "sidebar_label": "Export Pulse Results",
+    "slug": "/pulse/access-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Custom \"Explore\" Queries",
+    "permalink": "/pulse/custom-queries-whn"
+  },
+  "next": {
+    "title": "Participating Units",
+    "permalink": "/pulse/participating-units-whn"
+  }
+}

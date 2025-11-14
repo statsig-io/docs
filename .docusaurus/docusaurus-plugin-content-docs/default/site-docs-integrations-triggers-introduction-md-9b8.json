@@ -1,0 +1,34 @@
+{
+  "id": "integrations/triggers/introduction",
+  "title": "Introduction",
+  "description": "Overview",
+  "source": "@site/docs/integrations/triggers/introduction.md",
+  "sourceDirName": "integrations/triggers",
+  "slug": "/triggers/introduction",
+  "permalink": "/triggers/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/triggers/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Introduction",
+    "slug": "/triggers/introduction",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Datadog",
+    "permalink": "/integrations/datadog"
+  },
+  "next": {
+    "title": "Datadog",
+    "permalink": "/integrations/triggers/datadog"
+  }
+}

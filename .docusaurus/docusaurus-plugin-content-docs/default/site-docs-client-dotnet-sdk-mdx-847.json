@@ -1,0 +1,34 @@
+{
+  "id": "client/dotnetSDK",
+  "title": ".NET Client SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/dotnetSDK.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/dotnetSDK",
+  "permalink": "/client/dotnetSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/dotnetSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": ".NET Client",
+    "title": ".NET Client SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Dart/Flutter",
+    "permalink": "/client/dartSDK"
+  },
+  "next": {
+    "title": "Expo",
+    "permalink": "/client/javascript-sdk/expo"
+  }
+}

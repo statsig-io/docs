@@ -1,0 +1,35 @@
+{
+  "id": "guides/seo-testing",
+  "title": "SEO Experimentation with Statsig",
+  "description": "In late 2017, Airbnb's growth team faced a deceptively simple question:",
+  "source": "@site/docs/guides/seo-testing.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/seo-testing",
+  "permalink": "/guides/seo-testing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/seo-testing.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1756425600000,
+  "frontMatter": {
+    "sidebar_label": "SEO Experimentation",
+    "title": "SEO Experimentation with Statsig",
+    "slug": "/guides/seo-testing",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-08-29T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "A/A Tests",
+    "permalink": "/guides/aa-test"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/bandit-introduction"
+  }
+}

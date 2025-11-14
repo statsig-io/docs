@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/count-distinct",
+  "title": "Count Distinct Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/count-distinct.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/count-distinct",
+  "permalink": "/statsig-warehouse-native/metrics/count-distinct",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/count-distinct.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Count Distinct Metrics",
+    "sidebar_label": "Count Distinct",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Count",
+    "permalink": "/statsig-warehouse-native/metrics/count"
+  },
+  "next": {
+    "title": "Unit Count (One-Time Event)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-once"
+  }
+}

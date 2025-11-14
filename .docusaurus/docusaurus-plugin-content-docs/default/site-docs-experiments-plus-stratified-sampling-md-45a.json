@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/stratified-sampling",
+  "title": "Stratified Sampling",
+  "description": "What is Stratified Sampling",
+  "source": "@site/docs/experiments-plus/stratified-sampling.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/stratified-sampling",
+  "permalink": "/experiments-plus/stratified-sampling",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/stratified-sampling.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Stratified Sampling",
+    "sidebar_label": "Stratified Sampling",
+    "slug": "/experiments-plus/stratified-sampling",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "SPRT",
+    "permalink": "/experiments-plus/sprt"
+  },
+  "next": {
+    "title": "Bonferroni Correction",
+    "permalink": "/stats-engine/methodologies/bonferroni-correction"
+  }
+}

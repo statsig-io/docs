@@ -1,0 +1,35 @@
+{
+  "id": "holdouts/introduction",
+  "title": "Holdouts",
+  "description": "Holdouts measure the aggregate impact of multiple features. It involves a \"holdout\" group of users that are held back from a set of features for measurement. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares the \"holdout\" group (Control) against users who have been exposed to multiple features and experiments.",
+  "source": "@site/docs/holdouts/introduction.md",
+  "sourceDirName": "holdouts",
+  "slug": "/holdouts",
+  "permalink": "/holdouts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/holdouts/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Holdouts",
+    "sidebar_label": "Holdouts",
+    "slug": "/holdouts",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Layers",
+    "permalink": "/layers"
+  },
+  "next": {
+    "title": "Confidence Intervals",
+    "permalink": "/stats-engine/confidence-intervals"
+  }
+}

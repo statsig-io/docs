@@ -1,0 +1,34 @@
+{
+  "id": "guides/abn-tests",
+  "title": "Run your first A/B test",
+  "description": "In this guide, you will create and implement your first experiment in Statsig from end to end. There are many types of experiments you can set up in Statsig, but this guide will walk through the most common one: an A/B test.",
+  "source": "@site/docs/guides/abn-tests.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/abn-tests",
+  "permalink": "/guides/abn-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/abn-tests.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Run your first A/B test",
+    "title": "Run your first A/B test",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Create your first feature flag",
+    "permalink": "/quickstarts/feature-gates"
+  },
+  "next": {
+    "title": "Log your first custom event",
+    "permalink": "/guides/logging-events"
+  }
+}

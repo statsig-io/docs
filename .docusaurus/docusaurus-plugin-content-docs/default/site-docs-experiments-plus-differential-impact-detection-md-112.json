@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/differential-impact-detection",
+  "title": "Differential Impact Detection",
+  "description": "What is Differential Impact Detection?",
+  "source": "@site/docs/experiments-plus/differential-impact-detection.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/differential-impact-detection",
+  "permalink": "/experiments-plus/differential-impact-detection",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/differential-impact-detection.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Differential Impact Detection",
+    "sidebar_label": "Differential Impact",
+    "slug": "/experiments-plus/differential-impact-detection",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Meta-Analysis",
+    "permalink": "/experimentation/meta-analysis"
+  },
+  "next": {
+    "title": "Interaction Detection",
+    "permalink": "/experiments-plus/interaction-detection"
+  }
+}

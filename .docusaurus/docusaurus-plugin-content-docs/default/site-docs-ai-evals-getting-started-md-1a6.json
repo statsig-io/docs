@@ -1,0 +1,32 @@
+{
+  "id": "ai-evals/getting-started",
+  "title": "Getting Started",
+  "description": "Create/analyze an offline eval in 10 minutes",
+  "source": "@site/docs/ai-evals/getting-started.md",
+  "sourceDirName": "ai-evals",
+  "slug": "/ai-evals/getting-started",
+  "permalink": "/ai-evals/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-evals/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1753401600000,
+  "frontMatter": {
+    "title": "Getting Started",
+    "sidebar_label": "Getting Started",
+    "slug": "/ai-evals/getting-started",
+    "last_update": {
+      "date": "2025-07-25T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/ai-evals/overview"
+  },
+  "next": {
+    "title": "Prompts",
+    "permalink": "/ai-evals/prompts"
+  }
+}

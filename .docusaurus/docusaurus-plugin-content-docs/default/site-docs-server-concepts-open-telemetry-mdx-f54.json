@@ -1,0 +1,35 @@
+{
+  "id": "server/concepts/open_telemetry",
+  "title": "Ingesting Open Telemetry Logs and Metrics into Statsig",
+  "description": "Setting up OTEL can be tricky, if you have any questions, feel free to reach out to us on slack!",
+  "source": "@site/docs/server/concepts/open_telemetry.mdx",
+  "sourceDirName": "server/concepts",
+  "slug": "/server/concepts/open_telemetry",
+  "permalink": "/server/concepts/open_telemetry",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/concepts/open_telemetry.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1749081600000,
+  "frontMatter": {
+    "title": "Ingesting Open Telemetry Logs and Metrics into Statsig",
+    "sidebar_label": "Open Telemetry Logs and Metrics",
+    "slug": "/server/concepts/open_telemetry",
+    "keywords": [
+      "owner:karan"
+    ],
+    "last_update": {
+      "date": "2025-06-05T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Environments",
+    "permalink": "/guides/using-environments"
+  },
+  "next": {
+    "title": "Testing Your Setup",
+    "permalink": "/guides/testing"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/reconciling-experiment-results",
+  "title": "Reconciling Results Between Experimentation Platforms",
+  "description": "Motivation",
+  "source": "@site/docs/experiments-plus/reconciling-experiment-results.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/reconciling-experiment-results",
+  "permalink": "/experiments-plus/reconciling-experiment-results",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/reconciling-experiment-results.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Reconciling Results Between Experimentation Platforms",
+    "sidebar_label": "Reconciling Results",
+    "slug": "/experiments-plus/reconciling-experiment-results",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Export",
+    "permalink": "/pulse/export"
+  },
+  "next": {
+    "title": "Pulse FAQs",
+    "permalink": "/pulse/best-faq"
+  }
+}

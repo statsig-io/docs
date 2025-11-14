@@ -1,0 +1,33 @@
+{
+  "id": "data-warehouse-ingestion/data_mapping",
+  "title": "Data Mapping",
+  "description": "Overview",
+  "source": "@site/docs/data-warehouse-ingestion/data_mapping.mdx",
+  "sourceDirName": "data-warehouse-ingestion",
+  "slug": "/data-warehouse-ingestion/data_mapping",
+  "permalink": "/data-warehouse-ingestion/data_mapping",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/data-warehouse-ingestion/data_mapping.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Data Mapping",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "FAQ & Troubleshooting",
+    "permalink": "/data-warehouse-ingestion/faq"
+  },
+  "next": {
+    "title": "Google Tag Manager (GTM)",
+    "permalink": "/integrations/gtm"
+  }
+}

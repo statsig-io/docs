@@ -1,0 +1,33 @@
+{
+  "id": "azureai/embeddings",
+  "title": "Text Embeddings",
+  "description": "Embeddings are numerical representations of data (like text, images, or audio) that capture their essential features in a compact form, typically as vectors. For text, embeddings map words or sentences to vector spaces, where similar items are closer together, enabling comparisons and efficient searches. Developers use embeddings in tasks like semantic search, recommendation engines, and clustering, as they allow for analyzing and processing unstructured data with machine learning models that recognize and work with these patterns.",
+  "source": "@site/docs/azureai/embeddings.mdx",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/embeddings",
+  "permalink": "/azureai/embeddings",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/embeddings.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Text Embeddings",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Completions",
+    "permalink": "/azureai/completions"
+  },
+  "next": {
+    "title": "Capturing Metrics",
+    "permalink": "/azureai/capturing-metrics"
+  }
+}

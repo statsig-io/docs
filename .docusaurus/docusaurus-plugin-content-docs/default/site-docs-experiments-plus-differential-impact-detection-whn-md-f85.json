@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/differential-impact-detection-whn",
+  "title": "Differential Impact Detection",
+  "description": "",
+  "source": "@site/docs/experiments-plus/differential-impact-detection-whn.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/differential-impact-detection-whn",
+  "permalink": "/experiments-plus/differential-impact-detection-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/differential-impact-detection-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Differential Impact Detection",
+    "sidebar_label": "Differential Impact",
+    "slug": "/experiments-plus/differential-impact-detection-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Stratified Sampling",
+    "permalink": "/experiments-plus/stratified-sampling-whn"
+  },
+  "next": {
+    "title": "Targeting",
+    "permalink": "/statsig-warehouse-native/features/targeting"
+  }
+}

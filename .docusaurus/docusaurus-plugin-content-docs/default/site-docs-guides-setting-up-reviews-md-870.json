@@ -1,0 +1,34 @@
+{
+  "id": "guides/setting-up-reviews",
+  "title": "Setting up Reviews for Team Workflows",
+  "description": "You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment.",
+  "source": "@site/docs/guides/setting-up-reviews.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/setting-up-reviews",
+  "permalink": "/guides/setting-up-reviews",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/setting-up-reviews.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758758400000,
+  "frontMatter": {
+    "sidebar_label": "Setting up Reviews",
+    "title": "Setting up Reviews for Team Workflows",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-25T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Tags",
+    "permalink": "/access-management/tags"
+  },
+  "next": {
+    "title": "Config History",
+    "permalink": "/guides/config-history"
+  }
+}

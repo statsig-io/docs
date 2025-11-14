@@ -1,0 +1,34 @@
+{
+  "id": "guides/serverless",
+  "title": "Using Statsig in Serverless Environments",
+  "description": "In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the statsig-node SDK in a Google Cloud Function.",
+  "source": "@site/docs/guides/serverless.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/serverless",
+  "permalink": "/guides/serverless",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/serverless.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Serverless",
+    "title": "Using Statsig in Serverless Environments",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Exports Overview",
+    "permalink": "/integrations/data-exports/overview"
+  },
+  "next": {
+    "title": "CDN Edge Testing",
+    "permalink": "/guides/cdn-edge-testing"
+  }
+}

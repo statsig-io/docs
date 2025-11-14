@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/variance-reduction",
+  "title": "Variance Reduction",
+  "description": "Variance Reduction",
+  "source": "@site/docs/stats-engine/variance-reduction.md",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/variance_reduction",
+  "permalink": "/stats-engine/variance_reduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/variance-reduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Variance Reduction",
+    "sidebar_label": "Variance Reduction",
+    "slug": "/stats-engine/variance_reduction",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Fieller Intervals",
+    "permalink": "/stats-engine/methodologies/fieller-intervals"
+  },
+  "next": {
+    "title": "CUPED",
+    "permalink": "/stats-engine/methodologies/cuped"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "client/deprecated/reactSDK",
+  "title": "(deprecated) statsig-react client sdk",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/deprecated/reactSDK.mdx",
+  "sourceDirName": "client/deprecated",
+  "slug": "/client/deprecated/reactSDK",
+  "permalink": "/client/deprecated/reactSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/deprecated/reactSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "(deprecated) statsig-react",
+    "title": "(deprecated) statsig-react client sdk",
+    "slug": "/client/deprecated/reactSDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "(deprecated) statsig-js",
+    "permalink": "/client/deprecated/jsClientSDK"
+  },
+  "next": {
+    "title": "(deprecated) statsig-react-native",
+    "permalink": "/client/deprecated/reactNativeSDK"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "session-replay/cli-session-replay",
+  "title": "CLI Session Replay",
+  "description": "CLI Session Replay allows you to record terminal sessions in your Node.js CLI applications and replay them in the Statsig Console. This enables you to understand how users interact with your command-line tools, diagnose issues, and improve the user experience.",
+  "source": "@site/docs/session-replay/cli-session-replay.mdx",
+  "sourceDirName": "session-replay",
+  "slug": "/session-replay/cli-session-replay",
+  "permalink": "/session-replay/cli-session-replay",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/session-replay/cli-session-replay.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1753315200000,
+  "frontMatter": {
+    "title": "CLI Session Replay",
+    "sidebar_label": "CLI Session Replay",
+    "slug": "/session-replay/cli-session-replay",
+    "keywords": [
+      "cli",
+      "terminal",
+      "session replay",
+      "asciicast",
+      "command line"
+    ],
+    "last_update": {
+      "date": "2025-07-24T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Watch",
+    "permalink": "/session-replay/watch"
+  },
+  "next": {
+    "title": "MCP Server",
+    "permalink": "/integrations/mcp"
+  }
+}

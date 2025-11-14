@@ -1,0 +1,33 @@
+{
+  "id": "integrations/jira",
+  "title": "Jira",
+  "description": "Overview",
+  "source": "@site/docs/integrations/jira.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/jira",
+  "permalink": "/integrations/jira",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/jira.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Jira",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Slack",
+    "permalink": "/integrations/slack"
+  },
+  "next": {
+    "title": "A/B Test Email Campaigns",
+    "permalink": "/guides/email-campaign-test"
+  }
+}

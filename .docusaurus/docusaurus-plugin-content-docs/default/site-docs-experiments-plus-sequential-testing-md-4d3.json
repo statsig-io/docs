@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/sequential-testing",
+  "title": "Frequentist Sequential Testing",
+  "description": "What's the problem with looking early in a \"standard\" A/B test?",
+  "source": "@site/docs/experiments-plus/sequential-testing.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/sequential-testing",
+  "permalink": "/experiments-plus/sequential-testing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/sequential-testing.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Frequentist Sequential Testing",
+    "sidebar_label": "Sequential Testing",
+    "slug": "/experiments-plus/sequential-testing",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Winsorization",
+    "permalink": "/stats-engine/methodologies/winsorization"
+  },
+  "next": {
+    "title": "Bayesian",
+    "permalink": "/experiments-plus/bayesian"
+  }
+}

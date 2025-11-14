@@ -1,0 +1,35 @@
+{
+  "id": "client/deprecated/reactNativeExpoSDK",
+  "title": "(deprecated) statsig-react-native-expo client sdk",
+  "description": "To get started with Statsig in Expo, you should use the new Statsig Expo SDK.",
+  "source": "@site/docs/client/deprecated/reactNativeExpoSDK.mdx",
+  "sourceDirName": "client/deprecated",
+  "slug": "/client/deprecated/reactNativeExpoSDK",
+  "permalink": "/client/deprecated/reactNativeExpoSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/deprecated/reactNativeExpoSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "(deprecated) statsig-react-native-expo",
+    "title": "(deprecated) statsig-react-native-expo client sdk",
+    "slug": "/client/deprecated/reactNativeExpoSDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "(deprecated) statsig-react-native",
+    "permalink": "/client/deprecated/reactNativeSDK"
+  },
+  "next": {
+    "title": "On Device Evaluation",
+    "permalink": "/client/jsLocalEvaluationSDK"
+  }
+}

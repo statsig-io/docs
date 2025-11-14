@@ -1,0 +1,32 @@
+{
+  "id": "ai-evals/create-an-online-eval",
+  "title": "Create an Online Eval",
+  "description": "Create/analyze an online eval in 15 minutes",
+  "source": "@site/docs/ai-evals/create-an-online-eval.mdx",
+  "sourceDirName": "ai-evals",
+  "slug": "/ai-evals/create-an-online-eval",
+  "permalink": "/ai-evals/create-an-online-eval",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-evals/create-an-online-eval.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758585600000,
+  "frontMatter": {
+    "title": "Create an Online Eval",
+    "sidebar_label": "Create an Online Eval",
+    "slug": "/ai-evals/create-an-online-eval",
+    "last_update": {
+      "date": "2025-09-23T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/ai-evals/online-evals"
+  },
+  "next": {
+    "title": "Workspace Management Overview",
+    "permalink": "/access-management/introduction"
+  }
+}

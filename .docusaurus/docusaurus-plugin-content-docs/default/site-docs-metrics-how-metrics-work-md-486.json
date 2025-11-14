@@ -1,0 +1,35 @@
+{
+  "id": "metrics/how-metrics-work",
+  "title": "How Metrics Work on Statsig",
+  "description": "You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read more in About Warehouse Native.",
+  "source": "@site/docs/metrics/how-metrics-work.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/how-metrics-work",
+  "permalink": "/metrics/how-metrics-work",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/how-metrics-work.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "How Metrics Work on Statsig",
+    "sidebar_label": "How Metrics Work",
+    "slug": "/metrics/how-metrics-work",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Metrics Overview",
+    "permalink": "/metrics/101"
+  },
+  "next": {
+    "title": "Raw Events",
+    "permalink": "/metrics/raw-events"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "integrations/slack",
+  "title": "Slack",
+  "description": "The Statsig Slack integration lets you receive updates where your team already works. You can connect Slack to get project-level, team-level, or personal notifications.",
+  "source": "@site/docs/integrations/slack.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/slack",
+  "permalink": "/integrations/slack",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/slack.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Slack",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "GitLab Code References",
+    "permalink": "/integrations/gitlab_code_references"
+  },
+  "next": {
+    "title": "Jira",
+    "permalink": "/integrations/jira"
+  }
+}

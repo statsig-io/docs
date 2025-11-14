@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/features/freshness",
+  "title": "Early Diagnostics",
+  "description": "Data Freshness",
+  "source": "@site/docs/statsig-warehouse-native/features/freshness.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/early-diagnostics",
+  "permalink": "/statsig-warehouse-native/features/early-diagnostics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/freshness.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Early Diagnostics",
+    "slug": "/statsig-warehouse-native/features/early-diagnostics",
+    "sidebar_label": "Early Diagnostics",
+    "description": "Data Freshness",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Pipeline Overview",
+    "permalink": "/statsig-warehouse-native/pipeline-overview"
+  },
+  "next": {
+    "title": "Read Results",
+    "permalink": "/pulse/read-pulse-whn"
+  }
+}

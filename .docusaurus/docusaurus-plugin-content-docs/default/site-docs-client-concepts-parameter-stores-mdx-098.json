@@ -1,0 +1,35 @@
+{
+  "id": "client/concepts/parameter-stores",
+  "title": "Parameter Stores",
+  "description": "Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, React Native, Android, iOS, and Dart SDKs on the client side and java, node, python, and rust on the server side.  Let us know in Slack if you'd like support in a certain language soon.",
+  "source": "@site/docs/client/concepts/parameter-stores.mdx",
+  "sourceDirName": "client/concepts",
+  "slug": "/client/concepts/parameter-stores",
+  "permalink": "/client/concepts/parameter-stores",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/concepts/parameter-stores.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Parameter Stores",
+    "sidebar_label": "Using Parameter Stores",
+    "slug": "/client/concepts/parameter-stores",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "POC to Production",
+    "permalink": "/guides/production"
+  },
+  "next": {
+    "title": "Device-level Experiments",
+    "permalink": "/guides/first-device-level-experiment"
+  }
+}

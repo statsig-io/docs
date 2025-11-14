@@ -1,0 +1,35 @@
+{
+  "id": "metrics/101",
+  "title": "Metrics - Overview",
+  "description": "You're viewing the Cloud docs for this page. Metrics and experiments behave differently in Warehouse Native. Read more in Data & Semantic Layer in Warehouse Native.",
+  "source": "@site/docs/metrics/101.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/101",
+  "permalink": "/metrics/101",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/101.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metrics - Overview",
+    "sidebar_label": "Metrics Overview",
+    "slug": "/metrics/101",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "UI Based Tool",
+    "permalink": "/guides/ui-based-tool"
+  },
+  "next": {
+    "title": "How Metrics Work",
+    "permalink": "/metrics/how-metrics-work"
+  }
+}

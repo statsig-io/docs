@@ -1,0 +1,35 @@
+{
+  "id": "metrics/create-metric-tags",
+  "title": "Creating Metric Tags",
+  "description": "To create a metric tag, click on Metrics in the left hand navigation menu, and click on the Metrics Catalog tab.",
+  "source": "@site/docs/metrics/create-metric-tags.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/create-metric-tags",
+  "permalink": "/metrics/create-metric-tags",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/create-metric-tags.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Creating Metric Tags",
+    "sidebar_label": "Creating Metric Tags",
+    "slug": "/metrics/create-metric-tags",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Archiving and Deleting Metrics",
+    "permalink": "/metrics/archiving-metrics"
+  },
+  "next": {
+    "title": "Rollout Alerts",
+    "permalink": "/metrics/rollout-alerts"
+  }
+}

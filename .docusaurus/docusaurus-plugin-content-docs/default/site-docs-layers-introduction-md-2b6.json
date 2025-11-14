@@ -1,0 +1,35 @@
+{
+  "id": "layers/introduction",
+  "title": "Layers",
+  "description": "What are Layers?",
+  "source": "@site/docs/layers/introduction.md",
+  "sourceDirName": "layers",
+  "slug": "/layers",
+  "permalink": "/layers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/layers/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Layers",
+    "sidebar_label": "Layers",
+    "slug": "/layers",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Power Analysis",
+    "permalink": "/experiments-plus/power-analysis"
+  },
+  "next": {
+    "title": "Holdouts",
+    "permalink": "/holdouts"
+  }
+}

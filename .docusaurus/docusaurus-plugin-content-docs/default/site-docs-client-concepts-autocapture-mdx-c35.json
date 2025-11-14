@@ -1,0 +1,25 @@
+{
+  "id": "client/concepts/autocapture",
+  "title": "Autocapture on the Web",
+  "description": "The Javascript, React, and Angular SDKs offer Autocaptured log events: We automatically track page views, clicks, form submission, performance and more, to limit the boilerplate code you have to write.",
+  "source": "@site/docs/client/concepts/autocapture.mdx",
+  "sourceDirName": "client/concepts",
+  "slug": "/client/concepts/autocapture",
+  "permalink": "/client/concepts/autocapture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/concepts/autocapture.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1753315200000,
+  "frontMatter": {
+    "sidebar_label": "Autocapture (Web)",
+    "title": "Autocapture on the Web",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-07-24T00:00:00.000Z"
+    }
+  }
+}

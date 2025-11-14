@@ -1,0 +1,35 @@
+{
+  "id": "exp-templates/decision-framework",
+  "title": "Decision Framework",
+  "description": "A Decision Framework for experiments allows teams to standardize their interpretation of results and decision-making process. Once configured, it provides clear recommendations for which group to ship based on experimental outcomes. While the framework highlights recommended actions based on metric movements, it does not enforce any actions.",
+  "source": "@site/docs/exp-templates/decision-framework.mdx",
+  "sourceDirName": "exp-templates",
+  "slug": "/exp-templates/decision-framework",
+  "permalink": "/exp-templates/decision-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/exp-templates/decision-framework.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "title": "Decision Framework",
+    "sidebar_label": "Decision Framework",
+    "slug": "/exp-templates/decision-framework",
+    "keywords": [
+      "owner:Kaz"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Templates",
+    "permalink": "/templates/templates"
+  },
+  "next": {
+    "title": "Discussions",
+    "permalink": "/access-management/discussions"
+  }
+}

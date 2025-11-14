@@ -1,0 +1,34 @@
+{
+  "id": "client/html-snippet",
+  "title": "HTML Snippet SDK",
+  "description": "💡 Tip Get started quickly with one of our sample apps!",
+  "source": "@site/docs/client/html-snippet.mdx",
+  "sourceDirName": "client",
+  "slug": "/client/html-snippet",
+  "permalink": "/client/html-snippet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/html-snippet.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "sidebar_label": "HTML Snippet",
+    "title": "HTML Snippet SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Data Privacy for Mobile",
+    "permalink": "/compliance/data_privacy_for_mobile"
+  },
+  "next": {
+    "title": "JavaScript (Web)",
+    "permalink": "/client/javascript-sdk"
+  }
+}

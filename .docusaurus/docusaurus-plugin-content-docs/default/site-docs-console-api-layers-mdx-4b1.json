@@ -1,0 +1,37 @@
+{
+  "id": "console-api/layers",
+  "title": "Layers (Console API)",
+  "description": "",
+  "source": "@site/docs/console-api/layers.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/layers",
+  "permalink": "/console-api/layers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Layers (Console API)",
+    "sidebar_label": "Layers",
+    "slug": "/console-api/layers",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Holdouts",
+    "permalink": "/console-api/holdouts"
+  },
+  "next": {
+    "title": "Users",
+    "permalink": "/console-api/users"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "access-management/tags",
+  "title": "Tags in Statsig",
+  "description": "Tags for organization",
+  "source": "@site/docs/access-management/tags.md",
+  "sourceDirName": "access-management",
+  "slug": "/access-management/tags",
+  "permalink": "/access-management/tags",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/tags.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Tags",
+    "title": "Tags in Statsig",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Discussions",
+    "permalink": "/access-management/discussions"
+  },
+  "next": {
+    "title": "Setting up Reviews",
+    "permalink": "/guides/setting-up-reviews"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "metrics/create-user-funnels",
+  "title": "Funnel Metrics",
+  "description": "You can create a custom funnel metric, from either the Custom Metrics creation wizard in the Metrics Catalog or via the Charts tab.",
+  "source": "@site/docs/metrics/create-user-funnels.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/create-user-funnels",
+  "permalink": "/metrics/create-user-funnels",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/create-user-funnels.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Funnel Metrics",
+    "sidebar_label": "Funnel Metrics",
+    "slug": "/metrics/create-user-funnels",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Metric Directionality",
+    "permalink": "/metrics/directionality"
+  },
+  "next": {
+    "title": "Count Distinct Metrics",
+    "permalink": "/metrics/count_distinct_metric_type"
+  }
+}

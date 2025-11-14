@@ -1,0 +1,34 @@
+{
+  "id": "server-core/index",
+  "title": "Server Core Overview",
+  "description": "Statsig Server Core",
+  "source": "@site/docs/server-core/index.mdx",
+  "sourceDirName": "server-core",
+  "slug": "/server-core/",
+  "permalink": "/server-core/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/index.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758758400000,
+  "frontMatter": {
+    "sidebar_label": "Server Core Overview",
+    "title": "Server Core Overview",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-25T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Ruby",
+    "permalink": "/server/rubySDK"
+  },
+  "next": {
+    "title": "C++ Server",
+    "permalink": "/server/cppSDK"
+  }
+}

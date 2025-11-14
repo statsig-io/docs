@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/geotests/introduction",
+  "title": "Geotests",
+  "description": "Sometimes you just can't run an A/B test at a per-user level. Some common causes are:",
+  "source": "@site/docs/statsig-warehouse-native/geotests/introduction.md",
+  "sourceDirName": "statsig-warehouse-native/geotests",
+  "slug": "/experiments-plus/geotests",
+  "permalink": "/experiments-plus/geotests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/geotests/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Geotests",
+    "sidebar_label": "Geotests",
+    "slug": "/experiments-plus/geotests",
+    "keywords": [
+      "owner:makris"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Metrics Explorer on WHN",
+    "permalink": "/statsig-warehouse-native/features/mex-on-warehouse-native"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/experiments-plus/geotests-setup"
+  }
+}

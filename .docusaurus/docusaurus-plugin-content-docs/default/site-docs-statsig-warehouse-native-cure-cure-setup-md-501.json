@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/cure/cure-setup",
+  "title": "Get Started With CURE",
+  "description": "Defaults",
+  "source": "@site/docs/statsig-warehouse-native/cure/cure-setup.md",
+  "sourceDirName": "statsig-warehouse-native/cure",
+  "slug": "/experiments-plus/cure-setup",
+  "permalink": "/experiments-plus/cure-setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/cure/cure-setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Get Started With CURE",
+    "sidebar_label": "Getting Started",
+    "slug": "/experiments-plus/cure-setup",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "CURE (CUPED)",
+    "permalink": "/experiments-plus/cure"
+  },
+  "next": {
+    "title": "Meta-Analysis",
+    "permalink": "/experimentation/meta-analysis-whn"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "guides/customer-io-email-abtest",
+  "title": "Email AB Testing with Customer.io",
+  "description": "Email campaigns are a critical tool for any Marketing team.  Finding the best performing Email template is a perfect use-case for an A/B test.  Statsig allows you to run simple but powerful A/B tests on different parts of your email content.  Since Statsig can integrate seamlessly with product analytics, you can run email experiments and understand deeper business level impact on product metrics easily.",
+  "source": "@site/docs/guides/customer-io-email-abtest.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/customer-io-email-abtest",
+  "permalink": "/guides/customer-io-email-abtest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/customer-io-email-abtest.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Email AB Testing with Customer.io",
+    "title": "Email AB Testing with Customer.io",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Contentful",
+    "permalink": "/guides/contentful"
+  },
+  "next": {
+    "title": "Email AB Testing with SendGrid",
+    "permalink": "/guides/sendgrid-email-abtest"
+  }
+}

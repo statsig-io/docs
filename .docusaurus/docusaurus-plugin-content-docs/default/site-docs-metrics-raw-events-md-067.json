@@ -1,0 +1,35 @@
+{
+  "id": "metrics/raw-events",
+  "title": "Raw Events",
+  "description": "Statsig uses the raw events emitted by your application to compute a wide range of product metrics. These events contain the context you need to understand user behavior and infer their intentions.",
+  "source": "@site/docs/metrics/raw-events.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/raw-events",
+  "permalink": "/metrics/raw-events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/raw-events.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Raw Events",
+    "sidebar_label": "Raw Events",
+    "slug": "/metrics/raw-events",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "How Metrics Work",
+    "permalink": "/metrics/how-metrics-work"
+  },
+  "next": {
+    "title": "Auto-generated Metrics",
+    "permalink": "/metrics/metrics-from-events"
+  }
+}

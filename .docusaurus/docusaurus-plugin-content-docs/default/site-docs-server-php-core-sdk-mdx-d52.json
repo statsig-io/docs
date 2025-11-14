@@ -1,0 +1,28 @@
+{
+  "id": "server/phpCoreSDK",
+  "title": "PHP Core Server SDK (Beta)",
+  "description": "Repository,",
+  "source": "@site/docs/server/phpCoreSDK.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/phpCoreSDK",
+  "permalink": "/server/phpCoreSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/phpCoreSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "PHP Core (Beta)",
+    "title": "PHP Core Server SDK (Beta)",
+    "slug": "/server/phpCoreSDK",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ai-evals/getting-started",
+  "title": "Getting Started",
+  "description": "Offline evals in 10 minutes",
+  "source": "@site/docs/ai-evals/getting-started.mdx",
+  "sourceDirName": "ai-evals",
+  "slug": "/ai-evals/getting-started",
+  "permalink": "/ai-evals/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-evals/getting-started.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1753401600000,
+  "frontMatter": {
+    "title": "Getting Started",
+    "sidebar_label": "Getting Started",
+    "slug": "/ai-evals/getting-started",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-07-25T00:00:00.000Z"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "server-core/rust-core",
+  "title": "Rust Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server-core/rust-core.mdx",
+  "sourceDirName": "server-core",
+  "slug": "/server-core/rust-core",
+  "permalink": "/server-core/rust-core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/rust-core.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Rust",
+    "title": "Rust Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Elixir",
+    "permalink": "/server-core/elixir-core"
+  },
+  "next": {
+    "title": "PHP",
+    "permalink": "/server-core/php-core"
+  }
+}

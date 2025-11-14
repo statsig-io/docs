@@ -1,0 +1,35 @@
+{
+  "id": "autotune/bandit-introduction",
+  "title": "Autotune (Bandits)",
+  "description": "Multi-Armed Bandits are solutions that automatically find the best variant among a group of candidates, balancing between \"exploring\" options and \"exploiting\" the best option by dynamically allocating traffic. On Statsig, Bandits are used to pick the best user experience to drive a target metric or action.",
+  "source": "@site/docs/autotune/bandit-introduction.md",
+  "sourceDirName": "autotune",
+  "slug": "/bandit-introduction",
+  "permalink": "/bandit-introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/bandit-introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Autotune (Bandits)",
+    "sidebar_label": "Introduction",
+    "slug": "/bandit-introduction",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "SEO Experimentation",
+    "permalink": "/guides/seo-testing"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/autotune"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/overrides",
+  "title": "Overrides",
+  "description": "Override group allocation for an Experiment",
+  "source": "@site/docs/experiments-plus/overrides.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/overrides",
+  "permalink": "/experiments-plus/overrides",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/overrides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Overrides",
+    "sidebar_label": "Overrides",
+    "slug": "/experiments-plus/overrides",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create",
+    "permalink": "/experiments-plus/create-new"
+  },
+  "next": {
+    "title": "Quality Score",
+    "permalink": "/experimentation/quality-score"
+  }
+}

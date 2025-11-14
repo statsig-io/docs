@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/events-mode-logs-explorer",
+  "title": "Events Mode on Logs Explorer",
+  "description": "Events Mode brings the searching and filtering abilities from Log Explorer to your existing Statsig events data. No additional instrumentation required!",
+  "source": "@site/docs/infra-analytics/events-mode-logs-explorer.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/events-mode-logs-explorer",
+  "permalink": "/infra-analytics/events-mode-logs-explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/events-mode-logs-explorer.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Events Mode on Logs Explorer",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Events Mode",
+    "slug": "/infra-analytics/events-mode-logs-explorer",
+    "keywords": [
+      "owner:laurel"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Logs Explorer",
+    "permalink": "/infra-analytics/logs-explorer"
+  },
+  "next": {
+    "title": "Query Syntax",
+    "permalink": "/infra-analytics/logs-explorer-queries"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "integrations/mcp",
+  "title": "Statsig MCP Server",
+  "description": "The Statsig MCP (Model Context Protocol) server lets tools like Cursor and Claude Desktop read directly from the Statsig API. With this setup, you can ask questions, explore experiments, and access your Statsig data using AI.",
+  "source": "@site/docs/integrations/mcp.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/mcp",
+  "permalink": "/integrations/mcp",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/mcp.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statsig MCP Server",
+    "sidebar_label": "MCP Server",
+    "slug": "/integrations/mcp",
+    "keywords": [
+      "owner:alisha"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "CLI Session Replay",
+    "permalink": "/session-replay/cli-session-replay"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/ai-evals/overview"
+  }
+}

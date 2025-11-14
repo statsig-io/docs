@@ -1,0 +1,33 @@
+{
+  "id": "azureai/model-client",
+  "title": "AI Model Client",
+  "description": "In order to invoke Azure AI methods, you'll need to instantiate a Model Client.  You have two ways of instantiating a Model Client",
+  "source": "@site/docs/azureai/model-client.mdx",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/model-client",
+  "permalink": "/azureai/model-client",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/model-client.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "AI Model Client",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/azureai/getting-started"
+  },
+  "next": {
+    "title": "Completions",
+    "permalink": "/azureai/completions"
+  }
+}

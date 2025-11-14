@@ -1,0 +1,34 @@
+{
+  "id": "integrations/data-imports/overview-deprecated",
+  "title": "Imports Overview (Deprecated)",
+  "description": "This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the Data Warehouse Ingestion solution instead.",
+  "source": "@site/docs/integrations/data-imports/overview-deprecated.md",
+  "sourceDirName": "integrations/data-imports",
+  "slug": "/integrations/data-imports/overview",
+  "permalink": "/integrations/data-imports/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-imports/overview-deprecated.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Imports Overview (Deprecated)",
+    "slug": "overview",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Statsig ID Resolver",
+    "permalink": "/guides/statsig-id-resolver"
+  },
+  "next": {
+    "title": "BigQuery (Deprecated)",
+    "permalink": "/integrations/data-imports/bigquery"
+  }
+}

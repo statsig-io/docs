@@ -1,0 +1,33 @@
+{
+  "id": "org-admin/organization_policies",
+  "title": "Organization Policies",
+  "description": "Organization-level Experiment and Gate Policies are an Enterprise only feature.",
+  "source": "@site/docs/org-admin/organization_policies.md",
+  "sourceDirName": "org-admin",
+  "slug": "/org-admin/organization_policies",
+  "permalink": "/org-admin/organization_policies",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/org-admin/organization_policies.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Organization Policies",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Running A/B Tests",
+    "permalink": "/azureai/running-experiments"
+  },
+  "next": {
+    "title": "Experiment Policy",
+    "permalink": "/org-admin/experiment_policy"
+  }
+}

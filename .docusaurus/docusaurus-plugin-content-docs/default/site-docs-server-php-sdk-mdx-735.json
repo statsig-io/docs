@@ -1,0 +1,34 @@
+{
+  "id": "server/phpSDK",
+  "title": "Legacy PHP Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server/phpSDK.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/phpSDK",
+  "permalink": "/server/phpSDK",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/phpSDK.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Legacy PHP",
+    "title": "Legacy PHP Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Legacy Rust",
+    "permalink": "/server/rustSDK"
+  },
+  "next": {
+    "title": "Client Persistent Assignment",
+    "permalink": "/client/concepts/persistent_assignment"
+  }
+}

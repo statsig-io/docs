@@ -1,0 +1,34 @@
+{
+  "id": "guides/node-express-feature-flags",
+  "title": "Feature Flags in NodeJS ExpressJS",
+  "description": "ExpressJS, renowned for its efficiency and minimalist design, is a cornerstone framework for NodeJS developers. This guide focuses on integrating feature flags in NodeJS ExpressJS applications using Statsig's NodeJS Server SDK. Discover how to enhance your ExpressJS app with feature flags for flexible and dynamic user experiences.",
+  "source": "@site/docs/guides/node-express-feature-flags.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/node-express-feature-flags",
+  "permalink": "/guides/node-express-feature-flags",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/node-express-feature-flags.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "ExpressJS Feature Flags",
+    "title": "Feature Flags in NodeJS ExpressJS",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Target Apps",
+    "permalink": "/sdk-keys/target-apps"
+  },
+  "next": {
+    "title": "ExpressJS Experiments",
+    "permalink": "/guides/node-express-abtests"
+  }
+}

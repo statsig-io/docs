@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/feature-flags-lifecycle",
+  "title": "Managing Feature Gate lifecycles",
+  "description": "A feature can go through different phases throughout its lifecycle - maybe it’s still being tested out by a few users, or only recently fully rolled out to the world, or maybe it’s been tried and true and you no longer need the feature behind a toggle.",
+  "source": "@site/docs/feature-flags/feature-flags-lifecycle.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/feature-flags-lifecycle",
+  "permalink": "/feature-flags/feature-flags-lifecycle",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/feature-flags-lifecycle.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Managing Feature Gate lifecycles",
+    "sidebar_label": "Feature Gate lifecycles",
+    "slug": "/feature-flags/feature-flags-lifecycle",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Manage a Safeguard",
+    "permalink": "/safeguards/manage"
+  },
+  "next": {
+    "title": "Permanent and stale gates",
+    "permalink": "/feature-flags/permanent-and-stale-gates"
+  }
+}

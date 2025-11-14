@@ -1,0 +1,38 @@
+{
+  "id": "console-api/daily-reports",
+  "title": "Daily Reports (Console API)",
+  "description": "Download daily reports",
+  "source": "@site/docs/console-api/daily-reports.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/daily-reports",
+  "permalink": "/console-api/daily-reports",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Daily Reports (Console API)",
+    "sidebar_label": "Daily Reports",
+    "slug": "/console-api/daily-reports",
+    "description": "Download daily reports",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Keys",
+    "permalink": "/console-api/keys"
+  },
+  "next": {
+    "title": "Daily Reports Deprecated",
+    "permalink": "/console-api/daily-reports-deprecated"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "release-pipeline/overview",
+  "title": "Release Pipeline Overview",
+  "description": "Release Pipelines enable sophisticated, multi-stage rollout strategies that respect your infrastructure boundaries, providing greater control over feature deployments.",
+  "source": "@site/docs/release-pipeline/overview.md",
+  "sourceDirName": "release-pipeline",
+  "slug": "/release-pipeline",
+  "permalink": "/release-pipeline",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/release-pipeline/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Release Pipeline Overview",
+    "sidebar_label": "Overview",
+    "slug": "/release-pipeline",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Usage",
+    "permalink": "/segments/implement"
+  },
+  "next": {
+    "title": "Create and Manage",
+    "permalink": "/release-pipeline/create-and-manage"
+  }
+}

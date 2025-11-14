@@ -1,0 +1,35 @@
+{
+  "id": "segments/add-rule",
+  "title": "Adding Rules",
+  "description": "Create a rule for a segment",
+  "source": "@site/docs/segments/add-rule.md",
+  "sourceDirName": "segments",
+  "slug": "/segments/add-rule",
+  "permalink": "/segments/add-rule",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/segments/add-rule.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Adding Rules",
+    "sidebar_label": "Add rule",
+    "slug": "/segments/add-rule",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create",
+    "permalink": "/segments/create-new"
+  },
+  "next": {
+    "title": "Add ID List",
+    "permalink": "/segments/add-id-list"
+  }
+}

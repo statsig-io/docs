@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/test-gate",
+  "title": "Test your Feature Gate",
+  "description": "There are three ways to test your feature gate and to validate that it's working as expected with the rules you have created:",
+  "source": "@site/docs/feature-flags/test-gate.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/test-gate",
+  "permalink": "/feature-flags/test-gate",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/test-gate.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Test your Feature Gate",
+    "sidebar_label": "Test your Feature Gate",
+    "slug": "/feature-flags/test-gate",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overrides and bypass lists",
+    "permalink": "/feature-flags/overrides"
+  },
+  "next": {
+    "title": "Monitor feature impact",
+    "permalink": "/feature-flags/view-exposures"
+  }
+}

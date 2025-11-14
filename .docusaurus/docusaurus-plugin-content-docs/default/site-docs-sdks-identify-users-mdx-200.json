@@ -1,0 +1,34 @@
+{
+  "id": "sdks/identify-users",
+  "title": "Identify Users",
+  "description": "Why identify users?",
+  "source": "@site/docs/sdks/identify-users.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/identify-users",
+  "permalink": "/sdks/identify-users",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/identify-users.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Identify Users",
+    "title": "Identify Users",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Get started with SDKs",
+    "permalink": "/sdks/quickstart"
+  },
+  "next": {
+    "title": "Create your first feature flag",
+    "permalink": "/quickstarts/feature-gates"
+  }
+}

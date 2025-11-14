@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/switchback-tests",
+  "title": "Switchback Tests",
+  "description": "Switchback tests are an alternative experiment form, whereby an entire population is “switched” back and forth between test and control treatments on a set cadence vs. being split and evenly divided between test and control for the duration of the experiment.",
+  "source": "@site/docs/experiments-plus/switchback-tests.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/switchback-tests",
+  "permalink": "/experiments-plus/switchback-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/switchback-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Switchback Tests",
+    "sidebar_label": "Switchback Tests",
+    "slug": "/experiments-plus/switchback-tests",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Disable a Group",
+    "permalink": "/experiments-plus/disable-group"
+  },
+  "next": {
+    "title": "A/A Tests",
+    "permalink": "/guides/aa-test"
+  }
+}

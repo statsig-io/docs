@@ -1,0 +1,29 @@
+{
+  "id": "metrics/metric-dimensions",
+  "title": "Event Property",
+  "description": "Statsig enables you to breakdown metrics into a single set of non-overlapping dimensions for deep dive analyses.",
+  "source": "@site/docs/metrics/metric-dimensions.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/metric-dimensions",
+  "permalink": "/metrics/metric-dimensions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/metric-dimensions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758171299000,
+  "frontMatter": {
+    "title": "Event Property",
+    "sidebar_label": "Event Property",
+    "slug": "/metrics/metric-dimensions"
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "User Property",
+    "permalink": "/metrics/user-property"
+  },
+  "next": {
+    "title": "Ingesting Metrics",
+    "permalink": "/metrics/ingest"
+  }
+}

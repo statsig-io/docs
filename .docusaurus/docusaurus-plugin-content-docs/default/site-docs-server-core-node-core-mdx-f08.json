@@ -1,0 +1,28 @@
+{
+  "id": "server-core/node-core",
+  "title": "Node Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server-core/node-core.mdx",
+  "sourceDirName": "server-core",
+  "slug": "/server-core/node-core",
+  "permalink": "/server-core/node-core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/node-core.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758841972000,
+  "frontMatter": {
+    "sidebar_label": "Node",
+    "title": "Node Server SDK"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Migrating to @statsig/react-bindings",
+    "permalink": "/client/javascript-sdk/migrating-from-statsig-react"
+  },
+  "next": {
+    "title": "Python",
+    "permalink": "/server-core/python-core"
+  }
+}

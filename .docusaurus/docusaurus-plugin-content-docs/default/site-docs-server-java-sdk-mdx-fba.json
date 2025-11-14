@@ -1,0 +1,34 @@
+{
+  "id": "server/javaSdk",
+  "title": "Legacy Java/Kotlin Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server/javaSdk.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/javaSdk",
+  "permalink": "/server/javaSdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/javaSdk.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Legacy Java/Kotlin Server",
+    "title": "Legacy Java/Kotlin Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Legacy Erlang/Elixir",
+    "permalink": "/server/erlangSDK"
+  },
+  "next": {
+    "title": "Legacy Rust",
+    "permalink": "/server/rustSDK"
+  }
+}

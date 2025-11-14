@@ -1,0 +1,38 @@
+{
+  "id": "console-api/audit-logs",
+  "title": "Audit Logs (Console API)",
+  "description": "Get audit logs via HTTP requests.",
+  "source": "@site/docs/console-api/audit-logs.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/audit_logs",
+  "permalink": "/console-api/audit_logs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Audit Logs (Console API)",
+    "sidebar_label": "Audit Logs",
+    "slug": "/console-api/audit_logs",
+    "description": "Get audit logs via HTTP requests.",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Metrics",
+    "permalink": "/console-api/metrics"
+  },
+  "next": {
+    "title": "Exposure Count",
+    "permalink": "/console-api/exposure-count"
+  }
+}

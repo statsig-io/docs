@@ -1,0 +1,34 @@
+{
+  "id": "guides/uptime",
+  "title": "Paranoid about uptime? 9 things to do!",
+  "description": "Statsig serves billions of individual user interactions. Along the way, we designed the service for reliability and availability of your apps that use Statsig. Because of this, in the case where your application cannot reach Statsig for any reason, your application will continue to work exactly as you expect with locally cached values.",
+  "source": "@site/docs/guides/uptime.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/uptime",
+  "permalink": "/guides/uptime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/uptime.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Maximize uptime",
+    "title": "Paranoid about uptime? 9 things to do!",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Reliability FAQs",
+    "permalink": "/reliability-faqs"
+  },
+  "next": {
+    "title": "SDK Monitoring Integrations",
+    "permalink": "/sdk_monitoring"
+  }
+}

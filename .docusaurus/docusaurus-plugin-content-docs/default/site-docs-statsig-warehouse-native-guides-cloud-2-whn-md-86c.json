@@ -1,0 +1,28 @@
+{
+  "id": "statsig-warehouse-native/guides/cloud2whn",
+  "title": "Cloud to Warehouse Native Migration",
+  "description": "This page gives you a quick overview of what migrating from Statsig Cloud to Statsig Warehouse Native looks like. If you are an enterprise customer on Statsig Cloud and want to use Statsig Warehouse Native please work with your Statsig contact to evaluate feasibility. If all (or most) of your metrics come from your data warehouse already, migration can be straight forward. Migration only changes where metrics are computed - they are sourced in your warehouse with WHN.",
+  "source": "@site/docs/statsig-warehouse-native/guides/cloud2whn.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/cloud2whn",
+  "permalink": "/statsig-warehouse-native/guides/cloud2whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/cloud2whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Cloud to Warehouse Native Migration",
+    "slug": "/statsig-warehouse-native/guides/cloud2whn",
+    "sidebar_label": "Cloud -> WHN Migration",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

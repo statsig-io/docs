@@ -1,0 +1,33 @@
+{
+  "id": "infrastructure/statsig_ip_ranges",
+  "title": "Statsig IP Ranges",
+  "description": "Statsig reserves the following IP addresses and ranges for use by its services. If you have a network policy set up inside your systems, you should allowlist",
+  "source": "@site/docs/infrastructure/statsig_ip_ranges.md",
+  "sourceDirName": "infrastructure",
+  "slug": "/infrastructure/statsig_ip_ranges",
+  "permalink": "/infrastructure/statsig_ip_ranges",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/statsig_ip_ranges.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Statsig IP Ranges",
+    "keywords": [
+      "owner:eric"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Cloudflare Logs",
+    "permalink": "/server/concepts/cloudflare"
+  },
+  "next": {
+    "title": "Statsig Domains",
+    "permalink": "/infrastructure/statsig_domains"
+  }
+}

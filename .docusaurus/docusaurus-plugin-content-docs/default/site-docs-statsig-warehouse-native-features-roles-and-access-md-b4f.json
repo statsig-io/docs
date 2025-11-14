@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/roles-and-access",
+  "title": "Roles",
+  "description": "Statsig has custom, configurable RBAC (role-based-access-control) across console. This is especially useful for warehouse native customers, as you can control who can update which metrics as well as visibility into raw data.",
+  "source": "@site/docs/statsig-warehouse-native/features/roles-and-access.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/roles-and-access",
+  "permalink": "/statsig-warehouse-native/features/roles-and-access",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/roles-and-access.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Roles",
+    "slug": "/statsig-warehouse-native/features/roles-and-access",
+    "sidebar_label": "Roles",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Tags & Teams",
+    "permalink": "/statsig-warehouse-native/configuration/tags-and-teams"
+  },
+  "next": {
+    "title": "Verified Metrics",
+    "permalink": "/metrics/verified"
+  }
+}

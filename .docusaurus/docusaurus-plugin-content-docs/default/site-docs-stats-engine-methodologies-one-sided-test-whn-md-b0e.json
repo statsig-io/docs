@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/one-sided-test-whn",
+  "title": "One-Sided Test",
+  "description": "",
+  "source": "@site/docs/stats-engine/methodologies/one-sided-test-whn.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/one-sided-test-whn",
+  "permalink": "/stats-engine/methodologies/one-sided-test-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/one-sided-test-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "One-Sided Test",
+    "sidebar_label": "One-Sided Tests",
+    "slug": "/stats-engine/methodologies/one-sided-test-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Winsorization",
+    "permalink": "/stats-engine/methodologies/winsorization-whn"
+  },
+  "next": {
+    "title": "CURE (CUPED)",
+    "permalink": "/experiments-plus/cure"
+  }
+}

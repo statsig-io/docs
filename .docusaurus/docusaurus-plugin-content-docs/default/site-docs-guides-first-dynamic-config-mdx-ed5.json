@@ -1,0 +1,34 @@
+{
+  "id": "guides/first-dynamic-config",
+  "title": "Making Your Code More Flexible with Dynamic Config",
+  "description": "Now that you have created your Statsig account, and perhaps even your first feature, this guide will help you make your app a bit more flexible with Dynamic Config.",
+  "source": "@site/docs/guides/first-dynamic-config.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/first-dynamic-config",
+  "permalink": "/guides/first-dynamic-config",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/first-dynamic-config.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Guided Tutorial",
+    "title": "Making Your Code More Flexible with Dynamic Config",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Add rule",
+    "permalink": "/dynamic-config/add-rule"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/segments"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/getting-started",
+  "title": "Getting Started with OTEL + Statsig",
+  "description": "This guide helps you setup and send OpenTelemetry telemetry to Statsig so you can use Infra Analytics (Logs Explorer, Metrics Explorer, Alerts).",
+  "source": "@site/docs/infra-analytics/getting-started.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/getting-started",
+  "permalink": "/infra-analytics/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/getting-started.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759276800000,
+  "frontMatter": {
+    "title": "Getting Started with OTEL + Statsig",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Getting Started",
+    "slug": "/infra-analytics/getting-started",
+    "keywords": [
+      "owner:scott"
+    ],
+    "last_update": {
+      "date": "2025-10-01T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/infra-analytics/overview"
+  },
+  "next": {
+    "title": "Logs Explorer",
+    "permalink": "/infra-analytics/logs-explorer"
+  }
+}

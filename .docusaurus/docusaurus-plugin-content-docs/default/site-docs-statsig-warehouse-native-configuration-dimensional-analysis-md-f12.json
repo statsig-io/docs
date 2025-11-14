@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/configuration/dimensional-analysis",
+  "title": "Dimension Analysis",
+  "description": "Break down Metrics by Dimensions",
+  "source": "@site/docs/statsig-warehouse-native/configuration/dimensional-analysis.md",
+  "sourceDirName": "statsig-warehouse-native/configuration",
+  "slug": "/statsig-warehouse-native/configuration/dimensional-analysis",
+  "permalink": "/statsig-warehouse-native/configuration/dimensional-analysis",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/configuration/dimensional-analysis.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Dimension Analysis",
+    "slug": "/statsig-warehouse-native/configuration/dimensional-analysis",
+    "sidebar_label": "Dimension Analysis",
+    "description": "Break down Metrics by Dimensions",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Cohort Metrics",
+    "permalink": "/statsig-warehouse-native/features/cohort-metrics"
+  },
+  "next": {
+    "title": "Assignment Sources",
+    "permalink": "/statsig-warehouse-native/configuration/assignment-sources"
+  }
+}

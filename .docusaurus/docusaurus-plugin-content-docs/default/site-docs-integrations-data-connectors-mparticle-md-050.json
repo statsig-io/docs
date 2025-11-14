@@ -1,0 +1,33 @@
+{
+  "id": "integrations/data-connectors/mparticle",
+  "title": "mParticle",
+  "description": "Overview",
+  "source": "@site/docs/integrations/data-connectors/mparticle.md",
+  "sourceDirName": "integrations/data-connectors",
+  "slug": "/integrations/data-connectors/mparticle",
+  "permalink": "/integrations/data-connectors/mparticle",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-connectors/mparticle.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "mParticle",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Mixpanel",
+    "permalink": "/integrations/data-connectors/mixpanel"
+  },
+  "next": {
+    "title": "RevenueCat",
+    "permalink": "/integrations/data-connectors/revenuecat"
+  }
+}

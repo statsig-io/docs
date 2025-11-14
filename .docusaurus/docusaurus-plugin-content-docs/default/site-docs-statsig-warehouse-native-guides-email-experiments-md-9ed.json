@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/guides/email-experiments",
+  "title": "Running Email Experiments",
+  "description": "Email marketing experimentation is a common use-case that can be handled elegantly by using Statsig Warehouse Native to analyze the downstream outcomes that occurred as a result of an email experiment.",
+  "source": "@site/docs/statsig-warehouse-native/guides/email-experiments.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/email-experiments",
+  "permalink": "/statsig-warehouse-native/guides/email-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/email-experiments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758240000000,
+  "frontMatter": {
+    "title": "Running Email Experiments",
+    "slug": "/statsig-warehouse-native/guides/email-experiments",
+    "sidebar_label": "Running Email Experiments",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-19T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Cluster Experiments",
+    "permalink": "/metrics/different-id"
+  },
+  "next": {
+    "title": "Setup Checklist",
+    "permalink": "/statsig-warehouse-native/guides/checklist"
+  }
+}

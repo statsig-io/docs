@@ -1,0 +1,28 @@
+{
+  "id": "statsig-warehouse-native/guides/pulse",
+  "title": "Pulse",
+  "description": "Pulse is Statsig's visualization of how an experiment impacted target metrics. This page walks through the tool and how to use it to evaluate your experiment.",
+  "source": "@site/docs/statsig-warehouse-native/guides/pulse.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/pulse",
+  "permalink": "/statsig-warehouse-native/guides/pulse",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/pulse.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Pulse",
+    "slug": "/statsig-warehouse-native/guides/pulse",
+    "sidebar_label": "Pulse",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

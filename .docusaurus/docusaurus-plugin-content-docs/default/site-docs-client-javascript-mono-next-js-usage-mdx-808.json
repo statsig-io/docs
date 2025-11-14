@@ -1,0 +1,35 @@
+{
+  "id": "client/javascript-mono/NextJsUsage",
+  "title": "Next.js with Statsig",
+  "description": "<FeaturePillList",
+  "source": "@site/docs/client/javascript-mono/NextJsUsage.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/next-js",
+  "permalink": "/client/javascript-sdk/next-js",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/NextJsUsage.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Next.js with Statsig",
+    "sidebar_label": "Next.js",
+    "slug": "/client/javascript-sdk/next-js",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "React",
+    "permalink": "/client/javascript-sdk/react"
+  },
+  "next": {
+    "title": "Android",
+    "permalink": "/client/androidClientSDK"
+  }
+}

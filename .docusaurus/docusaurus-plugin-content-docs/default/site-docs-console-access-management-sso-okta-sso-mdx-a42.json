@@ -1,0 +1,16 @@
+{
+  "id": "console/accessManagement/sso/okta_sso",
+  "title": "okta_sso",
+  "description": "",
+  "source": "@site/docs/console/accessManagement/sso/okta_sso.mdx",
+  "sourceDirName": "console/accessManagement/sso",
+  "slug": "/console/accessManagement/sso/okta_sso",
+  "permalink": "/console/accessManagement/sso/okta_sso",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/console/accessManagement/sso/okta_sso.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1648079592000,
+  "frontMatter": {}
+}

@@ -1,0 +1,44 @@
+{
+  "id": "product-analytics/dashboards",
+  "title": "Dashboards",
+  "description": "Overview",
+  "source": "@site/docs/product-analytics/dashboards.md",
+  "sourceDirName": "product-analytics",
+  "slug": "/product-analytics/dashboards",
+  "permalink": "/product-analytics/dashboards",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/product-analytics/dashboards.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758240000000,
+  "frontMatter": {
+    "title": "Dashboards",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Dashboards",
+    "slug": "/product-analytics/dashboards",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-19T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "User Journeys",
+    "permalink": "/product-analytics/user-journeys"
+  },
+  "next": {
+    "title": "Users Tab",
+    "permalink": "/users"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "integrations/snippets/stitch_event_formats",
+  "title": "stitch_event_formats",
+  "description": "Event Format",
+  "source": "@site/docs/integrations/snippets/stitch_event_formats.mdx",
+  "sourceDirName": "integrations/snippets",
+  "slug": "/integrations/snippets/stitch_event_formats",
+  "permalink": "/integrations/snippets/stitch_event_formats",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/snippets/stitch_event_formats.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1736562585000,
+  "frontMatter": {}
+}

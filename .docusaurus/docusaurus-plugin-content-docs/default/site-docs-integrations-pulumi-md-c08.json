@@ -1,0 +1,33 @@
+{
+  "id": "integrations/pulumi",
+  "title": "Pulumi",
+  "description": "The Statsig Pulumi Provider allows you to configure your gates and experiments using Pulumi Infrastructure as Code. The provider synchronizes with Statsig via the Console API. If there is something you need to perform that isn't supported by the Pulumi Provider, checkout the Console API.",
+  "source": "@site/docs/integrations/pulumi.md",
+  "sourceDirName": "integrations",
+  "slug": "/integrations/pulumi",
+  "permalink": "/integrations/pulumi",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/pulumi.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Pulumi",
+    "keywords": [
+      "owner:jason"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Managing Experiments",
+    "permalink": "/integrations/terraform/terraform_experiment"
+  },
+  "next": {
+    "title": "Azure AI",
+    "permalink": "/azureai/introduction"
+  }
+}

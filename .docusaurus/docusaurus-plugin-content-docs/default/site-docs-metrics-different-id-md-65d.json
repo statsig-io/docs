@@ -1,0 +1,35 @@
+{
+  "id": "metrics/different-id",
+  "title": "Cluster Experiments - Running Analysis Across Unit Types",
+  "description": "There are two common scenarios where the experiment assignment unit differs from the analysis unit:",
+  "source": "@site/docs/metrics/different-id.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/different-id",
+  "permalink": "/metrics/different-id",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/different-id.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Cluster Experiments - Running Analysis Across Unit Types",
+    "sidebar_label": "Cluster Experiments",
+    "slug": "/metrics/different-id",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "A/A Test",
+    "permalink": "/statsig-warehouse-native/guides/AATest"
+  },
+  "next": {
+    "title": "Running Email Experiments",
+    "permalink": "/statsig-warehouse-native/guides/email-experiments"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/srm-checks-whn",
+  "title": "SRM Checks",
+  "description": "",
+  "source": "@site/docs/stats-engine/methodologies/srm-checks-whn.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/srm-checks-whn",
+  "permalink": "/stats-engine/methodologies/srm-checks-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/srm-checks-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "SRM Checks",
+    "sidebar_label": "SRM Checks",
+    "slug": "/stats-engine/methodologies/srm-checks-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Fieller Intervals",
+    "permalink": "/stats-engine/methodologies/fieller-intervals-whn"
+  },
+  "next": {
+    "title": "Winsorization",
+    "permalink": "/stats-engine/methodologies/winsorization-whn"
+  }
+}

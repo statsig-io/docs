@@ -1,0 +1,35 @@
+{
+  "id": "experiments-plus/stop-assignments",
+  "title": "Stop Assignments",
+  "description": "Stopping New User Assignments in an Experiment",
+  "source": "@site/docs/experiments-plus/stop-assignments.md",
+  "sourceDirName": "experiments-plus",
+  "slug": "/experiments-plus/stop-assignments",
+  "permalink": "/experiments-plus/stop-assignments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/experiments-plus/stop-assignments.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755475200000,
+  "frontMatter": {
+    "title": "Stop Assignments",
+    "sidebar_label": "Stop Assignments",
+    "slug": "/experiments-plus/stop-assignments",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-08-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Make Decision",
+    "permalink": "/experiments-plus/make-decision"
+  },
+  "next": {
+    "title": "Conclude Experiment & Defer decision",
+    "permalink": "/experiments-plus/conclude-experiment-defer-decision"
+  }
+}

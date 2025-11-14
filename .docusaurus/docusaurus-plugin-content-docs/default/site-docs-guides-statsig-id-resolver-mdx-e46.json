@@ -1,0 +1,34 @@
+{
+  "id": "guides/statsig-id-resolver",
+  "title": "Statsig ID Resolver",
+  "description": "What is Statsig ID Resolver?",
+  "source": "@site/docs/guides/statsig-id-resolver.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/statsig-id-resolver",
+  "permalink": "/guides/statsig-id-resolver",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/statsig-id-resolver.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Statsig ID Resolver",
+    "title": "Statsig ID Resolver",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Statsig Lite",
+    "permalink": "/experimentation/statsig-lite"
+  },
+  "next": {
+    "title": "Imports Overview (Deprecated)",
+    "permalink": "/integrations/data-imports/overview"
+  }
+}

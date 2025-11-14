@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/mean",
+  "title": "Mean Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/mean.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/mean",
+  "permalink": "/statsig-warehouse-native/metrics/mean",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/mean.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Mean Metrics",
+    "sidebar_label": "Mean",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Unit Count (Daily Participation)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-rate"
+  },
+  "next": {
+    "title": "Ratio",
+    "permalink": "/statsig-warehouse-native/metrics/ratio"
+  }
+}

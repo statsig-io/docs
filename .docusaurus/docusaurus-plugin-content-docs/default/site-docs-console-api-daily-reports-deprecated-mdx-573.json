@@ -1,0 +1,37 @@
+{
+  "id": "console-api/daily-reports-deprecated",
+  "title": "Daily Reports Deprecated",
+  "description": "Download daily reports deprecated",
+  "source": "@site/docs/console-api/daily-reports-deprecated.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/daily-reports-deprecated",
+  "permalink": "/console-api/daily-reports-deprecated",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Daily Reports Deprecated",
+    "sidebar_label": "Daily Reports Deprecated",
+    "slug": "/console-api/daily-reports-deprecated",
+    "description": "Download daily reports deprecated",
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Daily Reports",
+    "permalink": "/console-api/daily-reports"
+  },
+  "next": {
+    "title": "Usage and Billing",
+    "permalink": "/console-api/usage-billing"
+  }
+}

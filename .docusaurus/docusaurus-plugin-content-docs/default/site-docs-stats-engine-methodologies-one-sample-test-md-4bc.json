@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/one-sample-test",
+  "title": "One-Sample Test",
+  "description": "One-Sample Tests (aka Fixed-Value Test)",
+  "source": "@site/docs/stats-engine/methodologies/one-sample-test.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/one-sample-test",
+  "permalink": "/stats-engine/one-sample-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/one-sample-test.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "One-Sample Test",
+    "sidebar_label": "One-Sample Tests",
+    "slug": "/stats-engine/one-sample-test",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "One-Sided Tests",
+    "permalink": "/stats-engine/one-sided-test"
+  },
+  "next": {
+    "title": "Metric Deltas",
+    "permalink": "/stats-engine/metric-deltas"
+  }
+}

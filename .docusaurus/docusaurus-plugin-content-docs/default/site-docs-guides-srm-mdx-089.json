@@ -1,0 +1,34 @@
+{
+  "id": "guides/srm",
+  "title": "Managing SRM",
+  "description": "What is SRM?",
+  "source": "@site/docs/guides/srm.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/srm",
+  "permalink": "/guides/srm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/srm.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Managing SRM",
+    "title": "Managing SRM",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "SRM Checks",
+    "permalink": "/stats-engine/methodologies/srm-checks"
+  },
+  "next": {
+    "title": "Pre-Experiment Bias",
+    "permalink": "/stats-engine/pre-experiment-bias"
+  }
+}

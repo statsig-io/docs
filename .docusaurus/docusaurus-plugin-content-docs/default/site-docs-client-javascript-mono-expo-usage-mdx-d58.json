@@ -1,0 +1,35 @@
+{
+  "id": "client/javascript-mono/ExpoUsage",
+  "title": "Statsig in Expo",
+  "description": "<FeaturePillList",
+  "source": "@site/docs/client/javascript-mono/ExpoUsage.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/expo",
+  "permalink": "/client/javascript-sdk/expo",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/ExpoUsage.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Statsig in Expo",
+    "sidebar_label": "Expo",
+    "slug": "/client/javascript-sdk/expo",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": ".NET Client",
+    "permalink": "/client/dotnetSDK"
+  },
+  "next": {
+    "title": "React Native",
+    "permalink": "/client/javascript-sdk/react-native"
+  }
+}

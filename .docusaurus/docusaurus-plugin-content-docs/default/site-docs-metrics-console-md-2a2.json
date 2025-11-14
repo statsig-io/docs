@@ -1,0 +1,35 @@
+{
+  "id": "metrics/console",
+  "title": "Metrics Dashboard",
+  "description": "Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following these steps.  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.",
+  "source": "@site/docs/metrics/console.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/console",
+  "permalink": "/metrics/console",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/console.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metrics Dashboard",
+    "sidebar_label": "Metrics Dashboard",
+    "slug": "/metrics/console",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Local Metrics",
+    "permalink": "/metrics/local-metrics"
+  },
+  "next": {
+    "title": "Health",
+    "permalink": "/metrics/health-checks"
+  }
+}

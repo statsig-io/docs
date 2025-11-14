@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/methodologies/benjamini–hochberg-procedure",
+  "title": "Benjamini–Hochberg Procedure",
+  "description": "What it is",
+  "source": "@site/docs/stats-engine/methodologies/benjamini–hochberg-procedure.md",
+  "sourceDirName": "stats-engine/methodologies",
+  "slug": "/stats-engine/methodologies/benjamini–hochberg-procedure",
+  "permalink": "/stats-engine/methodologies/benjamini–hochberg-procedure",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/methodologies/benjamini–hochberg-procedure.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Benjamini–Hochberg Procedure",
+    "sidebar_label": "Benjamini–Hochberg",
+    "slug": "/stats-engine/methodologies/benjamini–hochberg-procedure",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Bonferroni Correction",
+    "permalink": "/stats-engine/methodologies/bonferroni-correction"
+  },
+  "next": {
+    "title": "Monitor",
+    "permalink": "/experiments-plus/monitor"
+  }
+}

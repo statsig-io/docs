@@ -1,0 +1,35 @@
+{
+  "id": "users/user-profiles",
+  "title": "User Profiles",
+  "description": "User Profiles are a collection of properties about the people using your product. In Metrics Explorer, you can join these profile properties with any event for analysis and segmentation. Previously, user properties had to be present on each event you wanted to analyze. Now they live independently on the user profile, letting you:",
+  "source": "@site/docs/users/user-profiles.mdx",
+  "sourceDirName": "users",
+  "slug": "/users/profiles",
+  "permalink": "/users/profiles",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/users/user-profiles.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User Profiles",
+    "sidebar_label": "User Profiles",
+    "slug": "/users/profiles",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Users Tab",
+    "permalink": "/users"
+  },
+  "next": {
+    "title": "Alerts Overview",
+    "permalink": "/product-analytics/alerts"
+  }
+}

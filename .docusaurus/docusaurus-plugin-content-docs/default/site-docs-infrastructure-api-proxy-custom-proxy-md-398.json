@@ -1,0 +1,34 @@
+{
+  "id": "infrastructure/api_proxy/custom_proxy",
+  "title": "Custom Proxy for Statsig API",
+  "description": "Overview",
+  "source": "@site/docs/infrastructure/api_proxy/custom_proxy.md",
+  "sourceDirName": "infrastructure/api_proxy",
+  "slug": "/custom_proxy",
+  "permalink": "/custom_proxy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/api_proxy/custom_proxy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Custom Proxy for Statsig API",
+    "slug": "/custom_proxy",
+    "keywords": [
+      "owner:eric"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Managed API Proxy",
+    "permalink": "/infrastructure/managed-proxy"
+  },
+  "next": {
+    "title": "Forward Proxy",
+    "permalink": "/server/concepts/forward_proxy"
+  }
+}

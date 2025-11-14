@@ -1,0 +1,28 @@
+{
+  "id": "statsig-warehouse-native/guides/metrics",
+  "title": "Metrics",
+  "description": "This documentation page may be out of date, but is being kept for reference. Please refer to the newer documentation here.",
+  "source": "@site/docs/statsig-warehouse-native/guides/metrics.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/metrics",
+  "permalink": "/statsig-warehouse-native/guides/metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Metrics",
+    "slug": "/statsig-warehouse-native/guides/metrics",
+    "sidebar_label": "Metrics",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

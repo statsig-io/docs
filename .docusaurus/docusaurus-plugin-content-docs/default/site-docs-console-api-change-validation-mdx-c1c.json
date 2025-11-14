@@ -1,0 +1,38 @@
+{
+  "id": "console-api/change-validation",
+  "title": "Change Validations (Console API)",
+  "description": "Endpoints to validate changes",
+  "source": "@site/docs/console-api/change-validation.mdx",
+  "sourceDirName": "console-api",
+  "slug": "/console-api/change-validation",
+  "permalink": "/console-api/change-validation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": null,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1755043200000,
+  "frontMatter": {
+    "title": "Change Validations (Console API)",
+    "sidebar_label": "Change Validations",
+    "slug": "/console-api/change-validation",
+    "description": "Endpoints to validate changes",
+    "hide_table_of_contents": true,
+    "custom_edit_url": null,
+    "keywords": [
+      "owner:oliver"
+    ],
+    "last_update": {
+      "date": "2025-08-13T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Warehouse Connections",
+    "permalink": "/console-api/warehouse-connections"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/statsigcli"
+  }
+}

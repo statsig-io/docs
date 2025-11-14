@@ -1,0 +1,33 @@
+{
+  "id": "integrations/triggers/datadog",
+  "title": "Datadog",
+  "description": "Overview",
+  "source": "@site/docs/integrations/triggers/datadog.md",
+  "sourceDirName": "integrations/triggers",
+  "slug": "/integrations/triggers/datadog",
+  "permalink": "/integrations/triggers/datadog",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/triggers/datadog.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Datadog",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/triggers/introduction"
+  },
+  "next": {
+    "title": "Statsig Terraform Provider",
+    "permalink": "/integrations/terraform/introduction"
+  }
+}

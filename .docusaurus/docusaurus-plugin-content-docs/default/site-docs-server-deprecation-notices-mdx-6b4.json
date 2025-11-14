@@ -1,0 +1,34 @@
+{
+  "id": "server/deprecation-notices",
+  "title": "Deprecation Notices",
+  "description": "Direct Initialization API Access for Server SDKs, October 31, 2025",
+  "source": "@site/docs/server/deprecation-notices.mdx",
+  "sourceDirName": "server",
+  "slug": "/server/deprecation-notices",
+  "permalink": "/server/deprecation-notices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server/deprecation-notices.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758585600000,
+  "frontMatter": {
+    "title": "Deprecation Notices",
+    "sidebar_label": "Deprecation Notices",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-23T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Flask A/B Tests",
+    "permalink": "/guides/python-flask-abtests"
+  },
+  "next": {
+    "title": "SDK Support Policy",
+    "permalink": "/sdks/support"
+  }
+}

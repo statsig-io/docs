@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/connecting-your-warehouse/redshift",
+  "title": "Redshift Connection",
+  "description": "Overview",
+  "source": "@site/docs/statsig-warehouse-native/connecting-your-warehouse/redshift.md",
+  "sourceDirName": "statsig-warehouse-native/connecting-your-warehouse",
+  "slug": "/statsig-warehouse-native/connecting-your-warehouse/redshift",
+  "permalink": "/statsig-warehouse-native/connecting-your-warehouse/redshift",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/connecting-your-warehouse/redshift.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Redshift Connection",
+    "slug": "/statsig-warehouse-native/connecting-your-warehouse/redshift",
+    "sidebar_label": "Redshift",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Databricks",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/databricks"
+  },
+  "next": {
+    "title": "Trino [Beta]",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/trino"
+  }
+}

@@ -1,0 +1,2890 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "getting-started",
+          "docs": [
+            {
+              "id": "access-management/discussions",
+              "path": "/access-management/discussions",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/introduction",
+              "path": "/access-management/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/organizations",
+              "path": "/access-management/organizations",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/projects",
+              "path": "/access-management/projects",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/concepts",
+              "path": "/access-management/scim/concepts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/okta_scim_org_roles",
+              "path": "/access-management/scim/okta_scim_org_roles",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/okta_scim_setup",
+              "path": "/access-management/scim/okta_scim_setup",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/okta_scim_team_management",
+              "path": "/access-management/scim/okta_scim_team_management",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/okta_scim_troubleshooting",
+              "path": "/access-management/scim/okta_scim_troubleshooting",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/okta_scim_user_management",
+              "path": "/access-management/scim/okta_scim_user_management",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/overview",
+              "path": "/access-management/scim/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/scim/scim-endpoints",
+              "path": "/access-management/scim/scim-endpoints",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/sso/azuread",
+              "path": "/access-management/sso/azuread",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/sso/google",
+              "path": "/access-management/sso/google",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/sso/okta_sso",
+              "path": "/access-management/sso/okta_sso",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/sso/overview",
+              "path": "/access-management/sso/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/tags",
+              "path": "/access-management/tags",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "access-management/teams",
+              "path": "/access-management/teams",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/create-an-online-eval",
+              "path": "/ai-evals/create-an-online-eval",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/getting-started",
+              "path": "/ai-evals/getting-started",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/graders",
+              "path": "/ai-evals/graders",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/offline-evals",
+              "path": "/ai-evals/offline-evals",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/online-evals",
+              "path": "/ai-evals/online-evals",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/overview",
+              "path": "/ai-evals/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "ai-evals/prompts",
+              "path": "/ai-evals/prompts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/bandit-faq",
+              "path": "/autotune/bandit-faq",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/bandit-introduction",
+              "path": "/bandit-introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/contextual-bandit",
+              "path": "/contextual-bandit"
+            },
+            {
+              "id": "autotune/contextual/getting-started",
+              "path": "/autotune/contextual/getting-started",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/contextual/introduction",
+              "path": "/autotune/contextual/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/contextual/methodology",
+              "path": "/autotune/contextual/methodology",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/contextual/monitoring",
+              "path": "/autotune/contextual/monitoring",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/introduction",
+              "path": "/autotune",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/monitoring",
+              "path": "/autotune/monitoring",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/multi-armed-bandit",
+              "path": "/multi-armed-bandit",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/setup",
+              "path": "/autotune/setup",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "autotune/using-bandits",
+              "path": "/using-bandits",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/capturing-metrics",
+              "path": "/azureai/capturing-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/completions",
+              "path": "/azureai/completions",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/embeddings",
+              "path": "/azureai/embeddings",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/getting-started",
+              "path": "/azureai/getting-started",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/introduction",
+              "path": "/azureai/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/model-client",
+              "path": "/azureai/model-client",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "azureai/running-experiments",
+              "path": "/azureai/running-experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/androidClientSDK",
+              "path": "/client/androidClientSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/androidOnDeviceEvaluationSDK",
+              "path": "/client/androidOnDeviceEvaluationSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/concepts/initialize",
+              "path": "/client/concepts/initialize",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/concepts/local-eval-adapter",
+              "path": "/client/concepts/local-eval-adapter",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/concepts/parameter-stores",
+              "path": "/client/concepts/parameter-stores",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/concepts/persistent_assignment",
+              "path": "/client/concepts/persistent_assignment",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/cpp-client-sdk",
+              "path": "/client/cpp-client-sdk",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/dartSDK",
+              "path": "/client/dartSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/deprecated/jsClientSDK",
+              "path": "/client/deprecated/jsClientSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/deprecated/reactNativeExpoSDK",
+              "path": "/client/deprecated/reactNativeExpoSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/deprecated/reactNativeSDK",
+              "path": "/client/deprecated/reactNativeSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/deprecated/reactSDK",
+              "path": "/client/deprecated/reactSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/dotnetSDK",
+              "path": "/client/dotnetSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/html-snippet",
+              "path": "/client/html-snippet",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/introduction",
+              "path": "/client/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/iOS/repo-migration-guide",
+              "path": "/client/iOS/repo-migration-guide",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/iosClientSDK",
+              "path": "/client/iosClientSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/AngularUsage",
+              "path": "/client/javascript-sdk/Angular",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/Examples",
+              "path": "/client/javascript-sdk/examples",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/javascript-mono/ExpoUsage",
+              "path": "/client/javascript-sdk/expo",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/InitStrategies",
+              "path": "/client/javascript-sdk/init-strategies",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/javascript-mono/MigrationFromOldJsClient",
+              "path": "/client/javascript-sdk/migrating-from-statsig-js",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/MigrationFromOldReact",
+              "path": "/client/javascript-sdk/migrating-from-statsig-react",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/NextJsUsage",
+              "path": "/client/javascript-sdk/next-js",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/ReactNativeUsage",
+              "path": "/client/javascript-sdk/react-native",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/ReactUsage",
+              "path": "/client/javascript-sdk/react",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/javascript-mono/StableID",
+              "path": "/client/javascript-sdk/stable-id",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/javascript-mono/UsingEvaluationsDataAdapter",
+              "path": "/client/javascript-sdk/using-evaluations-data-adapter",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "client/javascript-sdk",
+              "path": "/client/javascript-sdk",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/js-device-eval-mono/MigrationFromOldSDK",
+              "path": "/client/js-on-device-eval-client/migrating-from-js-local-eval",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/js-device-eval-mono/ReactNativeUsage",
+              "path": "/client/js-on-device-eval-client/react-native",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/js-device-eval-mono/UsingSpecsDataAdapter",
+              "path": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/js-on-device-eval-client",
+              "path": "/client/js-on-device-eval-client",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/jsLocalEvaluationSDK",
+              "path": "/client/jsLocalEvaluationSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/onDevice",
+              "path": "/client/onDevice",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/rokuSDK",
+              "path": "/client/rokuSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/swiftOnDeviceEvaluationSDK",
+              "path": "/client/swiftOnDeviceEvaluationSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "client/Templates/index",
+              "path": "/client/Templates/"
+            },
+            {
+              "id": "client/unitySDK",
+              "path": "/client/unitySDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "compliance/data_privacy_for_mobile",
+              "path": "/compliance/data_privacy_for_mobile",
+              "sidebar": "api"
+            },
+            {
+              "id": "compliance/introduction",
+              "path": "/compliance/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "compliance/user_data_deletion_requests",
+              "path": "/compliance/user_data_deletion_requests",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "concepts/user",
+              "path": "/concepts/user",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/audit-logs",
+              "path": "/console-api/audit_logs",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/autogenerated",
+              "path": "/console-api/all-endpoints-generated",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/autotunes",
+              "path": "/console-api/autotunes",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/change-validation",
+              "path": "/console-api/change-validation",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/daily-reports",
+              "path": "/console-api/daily-reports",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/daily-reports-deprecated",
+              "path": "/console-api/daily-reports-deprecated",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/dynamic-configs",
+              "path": "/console-api/dynamic_configs",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/events",
+              "path": "/console-api/events"
+            },
+            {
+              "id": "console-api/experiments",
+              "path": "/console-api/experiments",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/exposure-count",
+              "path": "/console-api/exposure-count",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/gates",
+              "path": "/console-api/gates",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/holdouts",
+              "path": "/console-api/holdouts",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/ingestions",
+              "path": "/console-api/ingestions",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/introduction",
+              "path": "/console-api/introduction",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/keys",
+              "path": "/console-api/keys",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/layers",
+              "path": "/console-api/layers",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/metrics",
+              "path": "/console-api/metrics",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/param-store",
+              "path": "/console-api/param-store",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/rules",
+              "path": "/console-api/rules",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/segments",
+              "path": "/console-api/segments",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/snippets/conditions",
+              "path": "/console-api/snippets/conditions"
+            },
+            {
+              "id": "console-api/tags",
+              "path": "/console-api/tags",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/target-apps",
+              "path": "/console-api/target-apps",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/usage-billing",
+              "path": "/console-api/usage-billing",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/users",
+              "path": "/console-api/users",
+              "sidebar": "api"
+            },
+            {
+              "id": "console-api/warehouse-connections",
+              "path": "/console-api/warehouse-connections",
+              "sidebar": "api"
+            },
+            {
+              "id": "console/accessManagement/sso/okta_sso",
+              "path": "/console/accessManagement/sso/okta_sso"
+            },
+            {
+              "id": "data-warehouse-ingestion/athena",
+              "path": "/data-warehouse-ingestion/athena",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/bigquery",
+              "path": "/data-warehouse-ingestion/bigquery",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/data_mapping",
+              "path": "/data-warehouse-ingestion/data_mapping",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/databricks",
+              "path": "/data-warehouse-ingestion/databricks",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/faq",
+              "path": "/data-warehouse-ingestion/faq",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/introduction",
+              "path": "/data-warehouse-ingestion/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/redshift",
+              "path": "/data-warehouse-ingestion/redshift",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/s3",
+              "path": "/data-warehouse-ingestion/s3",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/snowflake",
+              "path": "/data-warehouse-ingestion/snowflake",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "data-warehouse-ingestion/synapse",
+              "path": "/data-warehouse-ingestion/synapse",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/abtest-in-javascript",
+              "path": "/developer-guides/abtest-in-javascript",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/abtest-in-nodejs",
+              "path": "/developer-guides/abtest-in-nodejs",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/abtest-in-python",
+              "path": "/developer-guides/abtest-in-python",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/abtest-in-rust",
+              "path": "/developer-guides/abtest-in-rust",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-android",
+              "path": "/developer-guides/feature-flags-in-android",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-expo",
+              "path": "/developer-guides/feature-flags-in-expo",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-java",
+              "path": "/developer-guides/feature-flags-in-java",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-javascript",
+              "path": "/developer-guides/feature-flags-in-javascript",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-nodejs",
+              "path": "/developer-guides/feature-flags-in-nodejs",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-python",
+              "path": "/developer-guides/feature-flags-in-python",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-react",
+              "path": "/developer-guides/feature-flags-in-react",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-ruby",
+              "path": "/developer-guides/feature-flags-in-ruby",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-rust",
+              "path": "/developer-guides/feature-flags-in-rust",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "developer-guides/feature-flags-in-swift",
+              "path": "/developer-guides/feature-flags-in-swift",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "dynamic-config/add-rule",
+              "path": "/dynamic-config/add-rule",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "dynamic-config/create-new",
+              "path": "/dynamic-config/create-new",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "dynamic-config/enforce-schema",
+              "path": "/dynamic-config/enforce-schema",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "dynamic-config/introduction",
+              "path": "/dynamic-config",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "dynamic-config/working-with",
+              "path": "/dynamic-config/working-with",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "exp-templates/decision-framework",
+              "path": "/exp-templates/decision-framework",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "exp-templates/templates",
+              "path": "/templates/templates",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/abandon",
+              "path": "/experiments-plus/abandon",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/bayesian",
+              "path": "/experiments-plus/bayesian",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/bots",
+              "path": "/feature-flags/bots",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/conclude-experiment-defer-decision",
+              "path": "/experiments-plus/conclude-experiment-defer-decision",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/create-new",
+              "path": "/experiments-plus/create-new",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/differential-impact-detection",
+              "path": "/experiments-plus/differential-impact-detection",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/differential-impact-detection-whn",
+              "path": "/experiments-plus/differential-impact-detection-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "experiments-plus/disable-group",
+              "path": "/experiments-plus/disable-group",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/ending-experiment",
+              "path": "/experiments-plus/ending-experiment",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/getting-group",
+              "path": "/experiments-plus/getting-group",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/implement",
+              "path": "/experiments-plus/implement",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/interaction-detection",
+              "path": "/experiments-plus/interaction-detection",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/introduction",
+              "path": "/experiments-plus",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/make-decision",
+              "path": "/experiments-plus/make-decision",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/monitor",
+              "path": "/experiments-plus/monitor",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/overrides",
+              "path": "/experiments-plus/overrides",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/power-analysis",
+              "path": "/experiments-plus/power-analysis",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/reconciling-experiment-results",
+              "path": "/experiments-plus/reconciling-experiment-results",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/sequential-testing",
+              "path": "/experiments-plus/sequential-testing",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/sprt",
+              "path": "/experiments-plus/sprt",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/stop-assignments",
+              "path": "/experiments-plus/stop-assignments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/stratified-sampling",
+              "path": "/experiments-plus/stratified-sampling",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments-plus/stratified-sampling-whn",
+              "path": "/experiments-plus/stratified-sampling-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "experiments-plus/switchback-tests",
+              "path": "/experiments-plus/switchback-tests",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments/meta-analysis",
+              "path": "/experimentation/meta-analysis",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments/meta-analysis-whn",
+              "path": "/experimentation/meta-analysis-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "experiments/quality-score",
+              "path": "/experimentation/quality-score",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "experiments/quality-score-whn",
+              "path": "/experimentation/quality-score-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "experiments/statsiglite",
+              "path": "/experimentation/statsig-lite",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "faq",
+              "path": "/faq",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/best-practices",
+              "path": "/feature-flags/best-practices",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/conditions",
+              "path": "/feature-flags/conditions",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/create",
+              "path": "/feature-flags/create",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/feature-flags-lifecycle",
+              "path": "/feature-flags/feature-flags-lifecycle",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/multiple-rollout-stages",
+              "path": "/feature-flags/multiple-rollout-stages",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/overrides",
+              "path": "/feature-flags/overrides",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/overview",
+              "path": "/feature-flags/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/permanent-and-stale-gates",
+              "path": "/feature-flags/permanent-and-stale-gates",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/pre-post-results",
+              "path": "/feature-flags/pre-post-results",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/safeguards-create",
+              "path": "/safeguards/create",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/safeguards-manage",
+              "path": "/safeguards/manage",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/safeguards-overview",
+              "path": "/safeguards/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/scheduled-rollouts",
+              "path": "/feature-flags/scheduled-rollouts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/test-gate",
+              "path": "/feature-flags/test-gate",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "feature-flags/view-exposures",
+              "path": "/feature-flags/view-exposures",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "getting-started",
+              "path": "/",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/aa-sidecar",
+              "path": "/guides/aa-sidecar",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/aa-test",
+              "path": "/guides/aa-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/abn-tests",
+              "path": "/guides/abn-tests",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/cdn-edge-testing",
+              "path": "/guides/cdn-edge-testing",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/cms-integrations",
+              "path": "/guides/cms-integrations",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/config-history",
+              "path": "/guides/config-history",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/contentful",
+              "path": "/guides/contentful",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/customer-io-email-abtest",
+              "path": "/guides/customer-io-email-abtest",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/email-campaign-test",
+              "path": "/guides/email-campaign-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/experiment-on-custom-id-types",
+              "path": "/guides/experiment-on-custom-id-types",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/experimentation-program",
+              "path": "/guides/experimentation-program",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/experiments",
+              "path": "/guides/experiments"
+            },
+            {
+              "id": "guides/feature-flags",
+              "path": "/guides/feature-flags"
+            },
+            {
+              "id": "guides/featureflags-or-experiments",
+              "path": "/guides/featureflags-or-experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/first-device-level-experiment",
+              "path": "/guides/first-device-level-experiment",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/first-dynamic-config",
+              "path": "/guides/first-dynamic-config",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/first-feature",
+              "path": "/guides/first-feature"
+            },
+            {
+              "id": "guides/first-holdout",
+              "path": "/guides/first-holdout",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/first-segment",
+              "path": "/guides/first-segment",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/fomo",
+              "path": "/guides/fomo",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/framer-analytics",
+              "path": "/guides/framer-analytics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/frameworks-introduction",
+              "path": "/guides/frameworks"
+            },
+            {
+              "id": "guides/guides_overview",
+              "path": "/guides/guides_overview"
+            },
+            {
+              "id": "guides/landing-page-experiments/interpreting",
+              "path": "/guides/landing-page-experiments/interpreting"
+            },
+            {
+              "id": "guides/landing-page-experiments/introduction",
+              "path": "/guides/landing-page-experiments/introduction"
+            },
+            {
+              "id": "guides/landing-page-experiments/setup",
+              "path": "/guides/landing-page-experiments/setup"
+            },
+            {
+              "id": "guides/landing-page-experiments/webflow",
+              "path": "/guides/landing-page-experiments/webflow"
+            },
+            {
+              "id": "guides/logging-events",
+              "path": "/guides/logging-events",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/migrate-from-amplitude",
+              "path": "/guides/migrate-from-amplitude",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/migrate-from-launchdarkly",
+              "path": "/guides/migrate-from-launchdarkly",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/migrate-from-mixpanel",
+              "path": "/guides/migrate-from-mixpanel",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/migration-overview",
+              "path": "/guides/migration-overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/node-express-abtests",
+              "path": "/guides/node-express-abtests",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/node-express-feature-flags",
+              "path": "/guides/node-express-feature-flags",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/open-source-script",
+              "path": "/guides/open-source-script",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/private-attributes",
+              "path": "/guides/private-attributes",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/production",
+              "path": "/guides/production",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/python-flask-abtests",
+              "path": "/guides/python-flask-abtests",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/python-flask-feature-flags",
+              "path": "/guides/python-flask-feature-flags",
+              "sidebar": "api"
+            },
+            {
+              "id": "guides/running-a-poc",
+              "path": "/guides/running-a-poc",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sample-apps",
+              "path": "/guides/sample-apps",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sendgrid-email-abtest",
+              "path": "/guides/sendgrid-email-abtest",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/seo-testing",
+              "path": "/guides/seo-testing",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/serverless",
+              "path": "/guides/serverless",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/setting-up-reviews",
+              "path": "/guides/setting-up-reviews",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/shopify-ab-test",
+              "path": "/guides/shopify-ab-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/advanced-configurations",
+              "path": "/guides/sidecar-experiments/advanced-configurations",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/advanced-configurations-v3",
+              "path": "/guides/sidecar-experiments/advanced-configurations-v3",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/creating-experiments",
+              "path": "/guides/sidecar-experiments/creating-experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/integrating-gtm",
+              "path": "/guides/sidecar-experiments/integrating-gtm",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/introduction",
+              "path": "/guides/sidecar-experiments/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/measuring-experiments",
+              "path": "/guides/sidecar-experiments/measuring-experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/publishing-experiments",
+              "path": "/guides/sidecar-experiments/publishing-experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/setup",
+              "path": "/guides/sidecar-experiments/setup",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/sidecar-experiments/sidecar-v3",
+              "path": "/guides/sidecar-experiments/sidecar-v3",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/srm",
+              "path": "/guides/srm",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/statsig-id-resolver",
+              "path": "/guides/statsig-id-resolver",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/synchronized-launch",
+              "path": "/guides/synchronized-launch"
+            },
+            {
+              "id": "guides/testing",
+              "path": "/guides/testing",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/ui-based-tool",
+              "path": "/guides/ui-based-tool",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/uptime",
+              "path": "/guides/uptime",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/using-environments",
+              "path": "/guides/using-environments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "guides/webflow-sidecar-ab-test",
+              "path": "/guides/webflow-sidecar-ab-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "holdouts/introduction",
+              "path": "/holdouts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "http-api",
+              "path": "/http-api",
+              "sidebar": "api"
+            },
+            {
+              "id": "infra-analytics/events-mode-logs-explorer",
+              "path": "/infra-analytics/events-mode-logs-explorer",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infra-analytics/getting-started",
+              "path": "/infra-analytics/getting-started",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infra-analytics/logs-explorer",
+              "path": "/infra-analytics/logs-explorer",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infra-analytics/logs-explorer-queries",
+              "path": "/infra-analytics/logs-explorer-queries",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infra-analytics/overview",
+              "path": "/infra-analytics/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infra-analytics/topline-alerts-logs",
+              "path": "/infra-analytics/topline-alerts-logs",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/api_proxy/custom_proxy",
+              "path": "/custom_proxy",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/api_proxy/introduction",
+              "path": "/infrastructure/api_proxy/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/api_proxy/managed-proxy",
+              "path": "/infrastructure/managed-proxy",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/introduction",
+              "path": "/infrastructure/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/monitoring",
+              "path": "/sdk_monitoring",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/reliability-faq",
+              "path": "/reliability-faqs",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/statsig_domains",
+              "path": "/infrastructure/statsig_domains",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "infrastructure/statsig_ip_ranges",
+              "path": "/infrastructure/statsig_ip_ranges",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "insights/aggregated-impact",
+              "path": "/aggregated-impact",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "insights/aggregated-impact-whn",
+              "path": "/aggregated-impact-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "integrations/akamai",
+              "path": "/integrations/akamai",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/cloudflare",
+              "path": "/integrations/cloudflare",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/amplitude",
+              "path": "/integrations/data-connectors/amplitude",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/braze",
+              "path": "/integrations/data-connectors/braze",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/census",
+              "path": "/integrations/data-connectors/census",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/fivetran",
+              "path": "/integrations/data-connectors/fivetran",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/google-analytics",
+              "path": "/integrations/data-connectors/google-analytics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/heap",
+              "path": "/integrations/data-connectors/heap",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/hightouch",
+              "path": "/integrations/data-connectors/hightouch",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/mixpanel",
+              "path": "/integrations/data-connectors/mixpanel",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/mparticle",
+              "path": "/integrations/data-connectors/mparticle",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/revenuecat",
+              "path": "/integrations/data-connectors/revenuecat",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/rudderstack",
+              "path": "/integrations/data-connectors/rudderstack",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/segment",
+              "path": "/integrations/data-connectors/segment",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-connectors/stitch",
+              "path": "/integrations/data-connectors/stitch",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-exports/overview",
+              "path": "/integrations/data-exports/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-imports/azure_upload-deprecated",
+              "path": "/integrations/data-imports/azure-upload",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-imports/bigquery-deprecated",
+              "path": "/integrations/data-imports/bigquery",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-imports/overview-deprecated",
+              "path": "/integrations/data-imports/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-imports/redshift-deprecated",
+              "path": "/integrations/data-imports/redshift",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/data-imports/snowflake-deprecated",
+              "path": "/integrations/data-imports/snowflake",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/datadog",
+              "path": "/integrations/datadog",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/event_filtering",
+              "path": "/integrations/event_filtering",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/event_webhook",
+              "path": "/integrations/event_webhook",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/fastly",
+              "path": "/integrations/fastly",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/github_code_references",
+              "path": "/integrations/github_code_references",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/gitlab_code_references",
+              "path": "/integrations/gitlab_code_references",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/gtm",
+              "path": "/integrations/gtm",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/introduction",
+              "path": "/integrations/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/jira",
+              "path": "/integrations/jira",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/mcp",
+              "path": "/integrations/mcp",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/openai",
+              "path": "/integrations/openai",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/pulumi",
+              "path": "/integrations/pulumi",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/slack",
+              "path": "/integrations/slack",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/snippets/integration_event_formats",
+              "path": "/integrations/snippets/integration_event_formats"
+            },
+            {
+              "id": "integrations/snippets/integration_statsig_env_format",
+              "path": "/integrations/snippets/integration_statsig_env_format"
+            },
+            {
+              "id": "integrations/snippets/stitch_event_formats",
+              "path": "/integrations/snippets/stitch_event_formats"
+            },
+            {
+              "id": "integrations/terraform/introduction",
+              "path": "/integrations/terraform/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/terraform/terraform_experiment",
+              "path": "/integrations/terraform/terraform_experiment",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/terraform/terraform_gate",
+              "path": "/integrations/terraform/terraform_gate",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/triggers/datadog",
+              "path": "/integrations/triggers/datadog",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/triggers/introduction",
+              "path": "/triggers/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/vercel",
+              "path": "/integrations/vercel",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "integrations/workersai",
+              "path": "/integrations/workersai",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "layers/introduction",
+              "path": "/layers",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "messages/healthhub",
+              "path": "/messages/healthhub",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "messages/serverSDKConnection",
+              "path": "/messages/serverSDKConnection",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/101",
+              "path": "/metrics/101",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/201",
+              "path": "/metrics/201"
+            },
+            {
+              "id": "metrics/301",
+              "path": "/metrics/301"
+            },
+            {
+              "id": "metrics/archiving-metrics",
+              "path": "/metrics/archiving-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/autogenerated",
+              "path": "/metrics/autogenerated",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/console",
+              "path": "/metrics/console",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/count-distinct",
+              "path": "/metrics/count_distinct_metric_type",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/create",
+              "path": "/metrics/create",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/create-metric-tags",
+              "path": "/metrics/create-metric-tags",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/create-user-flows",
+              "path": "/metrics/create-user-flows",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/create-user-funnels",
+              "path": "/metrics/create-user-funnels",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/custom-dau",
+              "path": "/metrics/custom-dau",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/custom-metrics",
+              "path": "/metrics/custom-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/deprecate-event-dau",
+              "path": "/metrics/deprecate-event-dau",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/different-id",
+              "path": "/metrics/different-id",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "metrics/directionality",
+              "path": "/metrics/directionality",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/health-checks",
+              "path": "/metrics/health-checks",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/hierarchical-id",
+              "path": "/metrics/hierarchical-id",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/how-metrics-work",
+              "path": "/metrics/how-metrics-work",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/ingest",
+              "path": "/metrics/ingest",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/introduction",
+              "path": "/metrics"
+            },
+            {
+              "id": "metrics/local-metrics",
+              "path": "/metrics/local-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/metric-dimensions",
+              "path": "/metrics/metric-dimensions",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/precomputed-metrics",
+              "path": "/metrics/precomputed-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/pulse",
+              "path": "/metrics/pulse",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/raw-event-metrics",
+              "path": "/metrics/metrics-from-events",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/raw-events",
+              "path": "/metrics/raw-events",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/rollout-alerts",
+              "path": "/metrics/rollout-alerts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/user",
+              "path": "/metrics/user",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/user-dimensions",
+              "path": "/metrics/user-property",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "metrics/verified",
+              "path": "/metrics/verified",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "org-admin/experiment_policy",
+              "path": "/org-admin/experiment_policy",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "org-admin/gates_policy",
+              "path": "/org-admin/gates_policy",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "org-admin/organization_policies",
+              "path": "/org-admin/organization_policies",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/alerts",
+              "path": "/product-analytics/alerts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/dashboards",
+              "path": "/product-analytics/dashboards",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/distribution",
+              "path": "/product-analytics/distribution",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/drilldown",
+              "path": "/product-analytics/drilldown",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/funnels",
+              "path": "/product-analytics/funnels",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/overview",
+              "path": "/product-analytics/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/retention",
+              "path": "/product-analytics/retention",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/rollout_alerts",
+              "path": "/product-analytics/alerts/rollout_alerts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/topline_alerts",
+              "path": "/product-analytics/alerts/topline_alerts",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "product-analytics/user-journeys",
+              "path": "/product-analytics/user-journeys",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/access-whn",
+              "path": "/pulse/access-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/best-practices",
+              "path": "/pulse/best-practices",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/best-practices-whn",
+              "path": "/pulse/best-practices-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/custom-queries",
+              "path": "/pulse/custom-queries",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/custom-queries-whn",
+              "path": "/pulse/custom-queries-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/drill-down",
+              "path": "/pulse/drill-down",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/drill-down-whn",
+              "path": "/pulse/drill-down-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/export",
+              "path": "/pulse/export",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/faq",
+              "path": "/pulse/best-faq",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/faq-whn",
+              "path": "/pulse/best-faq-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/participating-units",
+              "path": "/pulse/participating-units",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/participating-units-whn",
+              "path": "/pulse/participating-units-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "pulse/read-pulse",
+              "path": "/pulse/read-pulse",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "pulse/userproperties",
+              "path": "/pulse/user-properties",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "quickstarts/check-gate",
+              "path": "/quickstarts/feature-gates",
+              "sidebar": "api"
+            },
+            {
+              "id": "release-pipeline/actions",
+              "path": "/release-pipeline/actions",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "release-pipeline/create-and-manage",
+              "path": "/release-pipeline/create-and-manage",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "release-pipeline/overview",
+              "path": "/release-pipeline",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "release-pipeline/trigger",
+              "path": "/release-pipeline/trigger",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "sdk-keys/api-keys",
+              "path": "/sdk-keys/api-keys",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "sdk-keys/target-apps",
+              "path": "/sdk-keys/target-apps",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/array-operators",
+              "path": "/sdks/array-operators",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/build-with-llms",
+              "path": "/sdks/build-with-llms",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/client-vs-server",
+              "path": "/sdks/client-vs-server",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/debugging",
+              "path": "/sdk/debugging",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/getting-started",
+              "path": "/sdks/getting-started",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/group-name-breaking-change",
+              "path": "/sdks/group-name-breaking-change-02-2024",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "sdks/how-evaluation-works",
+              "path": "/sdks/how-evaluation-works",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/identify-users",
+              "path": "/sdks/identify-users",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/pagination-params-breaking-change",
+              "path": "/sdks/pagination-params-breaking-change-08-2024",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "sdks/quickstart",
+              "path": "/sdks/quickstart",
+              "sidebar": "api"
+            },
+            {
+              "id": "sdks/support",
+              "path": "/sdks/support",
+              "sidebar": "api"
+            },
+            {
+              "id": "segments/add-id-list",
+              "path": "/segments/add-id-list",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "segments/add-rule",
+              "path": "/segments/add-rule",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "segments/create-new",
+              "path": "/segments/create-new",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "segments/introduction",
+              "path": "/segments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "segments/use-segment",
+              "path": "/segments/implement",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server-core/dotnetCoreSDK",
+              "path": "/server-core/dotnetCoreSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/elixir-core",
+              "path": "/server-core/elixir-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/go-core",
+              "path": "/server-core/go-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/go/migration",
+              "path": "/server-core/go/migration",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/index",
+              "path": "/server-core/",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/java-core",
+              "path": "/server-core/java-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/java/migration",
+              "path": "/server-core/java/migration",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/legacy-sdks",
+              "path": "/server-core/legacy-sdks",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/MigrationGuideTemplates/index",
+              "path": "/server-core/MigrationGuideTemplates/"
+            },
+            {
+              "id": "server-core/node-core",
+              "path": "/server-core/node-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/php-core",
+              "path": "/server-core/php-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/python-core",
+              "path": "/server-core/python-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/python/migration-guide/index",
+              "path": "/server-core/python/migration-guide/",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/rust-core",
+              "path": "/server-core/rust-core",
+              "sidebar": "api"
+            },
+            {
+              "id": "server-core/Templates/index",
+              "path": "/server-core/Templates/"
+            },
+            {
+              "id": "server/concepts/all_assignments",
+              "path": "/server/concepts/all-assignments"
+            },
+            {
+              "id": "server/concepts/cloudflare",
+              "path": "/server/concepts/cloudflare",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/concepts/data_store",
+              "path": "/server/concepts/data_store",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/concepts/forward_proxy",
+              "path": "/server/concepts/forward_proxy",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/concepts/open_telemetry",
+              "path": "/server/concepts/open_telemetry",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/concepts/persistent_assignment",
+              "path": "/server/concepts/persistent_assignment",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/cppSDK",
+              "path": "/server/cppSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/deprecation-notices",
+              "path": "/server/deprecation-notices",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/dotnetSDK",
+              "path": "/server/dotnetSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/erlangSDK",
+              "path": "/server/erlangSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/golangSDK",
+              "path": "/server/golangSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/introduction",
+              "path": "/server/introduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/javaSdk",
+              "path": "/server/javaSdk",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/node/upgrade_guide/v5ToV6UpgradeGuide",
+              "path": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/nodejsServerSDK",
+              "path": "/server/nodejsServerSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/phpCoreSDK",
+              "path": "/server/phpCoreSDK",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "server/phpSDK",
+              "path": "/server/phpSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/pythonSDK",
+              "path": "/server/pythonSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/rubySDK",
+              "path": "/server/rubySDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/rustSDK",
+              "path": "/server/rustSDK",
+              "sidebar": "api"
+            },
+            {
+              "id": "server/Templates/index",
+              "path": "/server/Templates/"
+            },
+            {
+              "id": "session-replay/cli-session-replay",
+              "path": "/session-replay/cli-session-replay",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "session-replay/configure",
+              "path": "/session-replay/configure",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "session-replay/install",
+              "path": "/session-replay/install",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "session-replay/overview",
+              "path": "/session-replay/overview",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "session-replay/watch",
+              "path": "/session-replay/watch",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "siggy/commands",
+              "path": "/statsigcli/commands",
+              "sidebar": "api"
+            },
+            {
+              "id": "siggy/gate-management",
+              "path": "/statsigcli/gate-management",
+              "sidebar": "api"
+            },
+            {
+              "id": "siggy/introduction",
+              "path": "/statsigcli",
+              "sidebar": "api"
+            },
+            {
+              "id": "stats-engine/confidence-intervals",
+              "path": "/stats-engine/confidence-intervals",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/confidence-intervals-whn",
+              "path": "/stats-engine/confidence-intervals-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/introduction",
+              "path": "/stats-engine"
+            },
+            {
+              "id": "stats-engine/methodologies/benjamini–hochberg-procedure",
+              "path": "/stats-engine/methodologies/benjamini–hochberg-procedure",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+              "path": "/stats-engine/methodologies/benjamini–hochberg-procedure-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/bonferroni-correction",
+              "path": "/stats-engine/methodologies/bonferroni-correction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/bonferroni-correction-whn",
+              "path": "/stats-engine/methodologies/bonferroni-correction-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/cuped",
+              "path": "/stats-engine/methodologies/cuped",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/cuped-whn",
+              "path": "/stats-engine/methodologies/cuped-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/delta-method",
+              "path": "/stats-engine/methodologies/delta-method",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/delta-method-whn",
+              "path": "/stats-engine/methodologies/delta-method-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/fieller-intervals",
+              "path": "/stats-engine/methodologies/fieller-intervals",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/fieller-intervals-whn",
+              "path": "/stats-engine/methodologies/fieller-intervals-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/one-sample-test",
+              "path": "/stats-engine/one-sample-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/one-sided-test",
+              "path": "/stats-engine/one-sided-test",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/one-sided-test-whn",
+              "path": "/stats-engine/methodologies/one-sided-test-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/srm-checks",
+              "path": "/stats-engine/methodologies/srm-checks",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/srm-checks-whn",
+              "path": "/stats-engine/methodologies/srm-checks-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/methodologies/winsorization",
+              "path": "/stats-engine/methodologies/winsorization",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/methodologies/winsorization-whn",
+              "path": "/stats-engine/methodologies/winsorization-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/metric-deltas",
+              "path": "/stats-engine/metric-deltas",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/metric-deltas-whn",
+              "path": "/stats-engine/metric-deltas-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/p-value",
+              "path": "/stats-engine/p-value",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/p-value-whn",
+              "path": "/stats-engine/p-value-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/pre-experiment-bias",
+              "path": "/stats-engine/pre-experiment-bias",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/pre-experiment-bias-whn",
+              "path": "/stats-engine/pre-experiment-bias-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/topline-impact",
+              "path": "/stats-engine/topline-impact",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/topline-impact-whn",
+              "path": "/stats-engine/topline-impact-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/variance",
+              "path": "/stats-engine/variance",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/variance-reduction",
+              "path": "/stats-engine/variance_reduction",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "stats-engine/variance-reduction-whn",
+              "path": "/stats-engine/variance_reduction-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "stats-engine/variance-whn",
+              "path": "/stats-engine/variance-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/analysis-tools/data-privacy",
+              "path": "/statsig-warehouse-native/data-privacy",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/analysis-tools/data-sources",
+              "path": "/statsig-warehouse-native/data-sources"
+            },
+            {
+              "id": "statsig-warehouse-native/analysis-tools/pipeline-overview",
+              "path": "/statsig-warehouse-native/pipeline-overview",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/assignment-sources",
+              "path": "/statsig-warehouse-native/configuration/assignment-sources",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/console-api",
+              "path": "/statsig-warehouse-native/configuration/console-api",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/data-and-semantic-layer",
+              "path": "/statsig-warehouse-native/configuration/data-and-semantic-layer",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/dimensional-analysis",
+              "path": "/statsig-warehouse-native/configuration/dimensional-analysis",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/entity-properties",
+              "path": "/statsig-warehouse-native/configuration/entity-properties",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/metric-examples",
+              "path": "/statsig-warehouse-native/configuration/metric-examples",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/metric-sources",
+              "path": "/statsig-warehouse-native/configuration/metric-sources",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/metrics",
+              "path": "/statsig-warehouse-native/configuration/metrics",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/qualifying-events",
+              "path": "/statsig-warehouse-native/configuration/qualifying-events",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/query-tools",
+              "path": "/statsig-warehouse-native/configuration/query-tools",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/semantic-layer-sync",
+              "path": "/statsig-warehouse-native/configuration/semantic-layer-sync",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/configuration/tags-and-teams",
+              "path": "/statsig-warehouse-native/configuration/tags-and-teams",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/athena",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/athena",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/bigquery",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/databricks",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/databricks",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/fabric",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/fabric",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/forwarded-data",
+              "path": "/statsig-warehouse-native/guides/forwarded-data",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/other",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/other",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/redshift",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/redshift",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/snowflake",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/connecting-your-warehouse/trino",
+              "path": "/statsig-warehouse-native/connecting-your-warehouse/trino",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/cure/cure-setup",
+              "path": "/experiments-plus/cure-setup",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/cure/introduction",
+              "path": "/experiments-plus/cure",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/autotune",
+              "path": "/statsig-warehouse-native/features/autotune",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/cohort-metrics",
+              "path": "/statsig-warehouse-native/features/cohort-metrics",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/configure-an-experiment",
+              "path": "/statsig-warehouse-native/features/configure-an-experiment",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/entity-properties",
+              "path": "/statsig-warehouse-native/features/entity-properties",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/features/experiment-options",
+              "path": "/statsig-warehouse-native/features/experiment-options",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/filtering-exposures",
+              "path": "/statsig-warehouse-native/features/filtering-exposures",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/freshness",
+              "path": "/statsig-warehouse-native/features/early-diagnostics",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/full-reloads",
+              "path": "/statsig-warehouse-native/features/full-reloads",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/funnel-metrics",
+              "path": "/statsig-warehouse-native/features/funnel-metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/features/id-resolution",
+              "path": "/statsig-warehouse-native/features/id-resolution",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/incremental-reloads",
+              "path": "/statsig-warehouse-native/features/incremental-reloads",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/metric-reloads",
+              "path": "/statsig-warehouse-native/features/metric-reloads",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/mex-on-warehouse-native",
+              "path": "/statsig-warehouse-native/features/mex-on-warehouse-native",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/monitor-an-experiment",
+              "path": "/statsig-warehouse-native/features/monitor-an-experiment",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/other-useful-features",
+              "path": "/statsig-warehouse-native/features/other-features",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/power-analysis",
+              "path": "/statsig-warehouse-native/features/power-analysis",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/reloads",
+              "path": "/statsig-warehouse-native/features/reloads",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/reports",
+              "path": "/statsig-warehouse-native/features/reports",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/roles-and-access",
+              "path": "/statsig-warehouse-native/features/roles-and-access",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/statistics",
+              "path": "/statsig-warehouse-native/features/statistics",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/targeting",
+              "path": "/statsig-warehouse-native/features/targeting",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/turbo",
+              "path": "/statsig-warehouse-native/features/turbo",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/types-of-experiments",
+              "path": "/statsig-warehouse-native/features/types-of-experiments",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/understanding-experiments",
+              "path": "/statsig-warehouse-native/features/understanding-experiments",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/features/use-case",
+              "path": "/statsig-warehouse-native/features/use-case",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/geotests/geotests-setup",
+              "path": "/experiments-plus/geotests-setup",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/geotests/introduction",
+              "path": "/experiments-plus/geotests",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/geotests/methodology",
+              "path": "/experiments-plus/geotests/methodology",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/aatest",
+              "path": "/statsig-warehouse-native/guides/AATest",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/best-practices",
+              "path": "/statsig-warehouse-native/guides/best-practices",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/checklist",
+              "path": "/statsig-warehouse-native/guides/checklist",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/cloud2whn",
+              "path": "/statsig-warehouse-native/guides/cloud2whn",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/connect",
+              "path": "/statsig-warehouse-native/guides/connect",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/costs",
+              "path": "/statsig-warehouse-native/guides/costs",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/debugging",
+              "path": "/statsig-warehouse-native/guides/debugging",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/email-experiments",
+              "path": "/statsig-warehouse-native/guides/email-experiments",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/experiments",
+              "path": "/statsig-warehouse-native/guides/experiments",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/metric_sources",
+              "path": "/statsig-warehouse-native/guides/metric_sources"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/metrics",
+              "path": "/statsig-warehouse-native/guides/metrics",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/playground_eval",
+              "path": "/statsig-warehouse-native/guides/dummy_evaluation",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/pulse",
+              "path": "/statsig-warehouse-native/guides/pulse",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/quick-start",
+              "path": "/statsig-warehouse-native/guides/quick-start",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/reading_pulse",
+              "path": "/statsig-warehouse-native/guides/reading_pulse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/running_a_poc",
+              "path": "/statsig-warehouse-native/guides/running_a_poc",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/scaling",
+              "path": "/statsig-warehouse-native/guides/scaling"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/sdks",
+              "path": "/statsig-warehouse-native/guides/sdks",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/guides/sql",
+              "path": "/statsig-warehouse-native/guides/sql",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/introduction",
+              "path": "/statsig-warehouse-native/introduction",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/count",
+              "path": "/statsig-warehouse-native/metrics/count",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/count-distinct",
+              "path": "/statsig-warehouse-native/metrics/count-distinct",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/funnel",
+              "path": "/statsig-warehouse-native/metrics/funnel",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/latest-value",
+              "path": "/statsig-warehouse-native/metrics/latest-value",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/log",
+              "path": "/statsig-warehouse-native/metrics/log",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/max-min",
+              "path": "/statsig-warehouse-native/metrics/max-min",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/mean",
+              "path": "/statsig-warehouse-native/metrics/mean",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/normalized-metrics",
+              "path": "/statsig-warehouse-native/metrics/normalized-metrics",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/percentile",
+              "path": "/statsig-warehouse-native/metrics/percentile",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/ratio",
+              "path": "/statsig-warehouse-native/metrics/ratio",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/retention",
+              "path": "/statsig-warehouse-native/metrics/retention",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/sum",
+              "path": "/statsig-warehouse-native/metrics/sum",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/unit-count-latest",
+              "path": "/statsig-warehouse-native/metrics/unit-count-latest",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/unit-count-once",
+              "path": "/statsig-warehouse-native/metrics/unit-count-once",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/unit-count-rate",
+              "path": "/statsig-warehouse-native/metrics/unit-count-rate",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/metrics/unit-count-window",
+              "path": "/statsig-warehouse-native/metrics/unit-count-window",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/native-vs-cloud",
+              "path": "/statsig-warehouse-native/native-vs-cloud",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/read-pulse-whn",
+              "path": "/pulse/read-pulse-whn",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "statsig-warehouse-native/warehouse-management/storage",
+              "path": "/statsig-warehouse-native/warehouse-management/storage",
+              "sidebar": "warehouse"
+            },
+            {
+              "id": "understanding-platform",
+              "path": "/understanding-platform",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "users/introduction",
+              "path": "/users",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "users/user-profiles",
+              "path": "/users/profiles",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "webanalytics/autocapture",
+              "path": "/webanalytics/autocapture",
+              "sidebar": "cloud"
+            },
+            {
+              "id": "webanalytics/overview",
+              "path": "/webanalytics/overview",
+              "sidebar": "cloud"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "cloud": {
+              "link": {
+                "path": "/",
+                "label": "Overview"
+              }
+            },
+            "api": {
+              "link": {
+                "path": "/sdks/quickstart",
+                "label": "sdks/quickstart"
+              }
+            },
+            "warehouse": {
+              "link": {
+                "path": "/statsig-warehouse-native/introduction",
+                "label": "About Warehouse Native"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "azureai/running-experiments",
+  "title": "Running A/B Tests",
+  "description": "Azure AI SDK helps you easily and quickly run A/B tests to measure the effectiveness of different models and related parameters.  By leveraging Statsig's powerful stats engine, you can gain real-time insights into model performance, optimizing for metrics like cost, accuracy, and latency. This integration enables you to experiment with various configurations, such as model type, prompt settings, or response parameters, and make data-driven decisions to enhance your application's efficiency and user experience.",
+  "source": "@site/docs/azureai/running-experiments.mdx",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/running-experiments",
+  "permalink": "/azureai/running-experiments",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/running-experiments.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Running A/B Tests",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Capturing Metrics",
+    "permalink": "/azureai/capturing-metrics"
+  },
+  "next": {
+    "title": "Organization Policies",
+    "permalink": "/org-admin/organization_policies"
+  }
+}

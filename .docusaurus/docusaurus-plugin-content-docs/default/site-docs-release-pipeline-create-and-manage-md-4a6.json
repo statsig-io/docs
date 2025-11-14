@@ -1,0 +1,35 @@
+{
+  "id": "release-pipeline/create-and-manage",
+  "title": "Create and Manage Release Pipelines",
+  "description": "A Release Pipeline must be defined before it can be used by feature gates or dynamic configs during the rollout process.",
+  "source": "@site/docs/release-pipeline/create-and-manage.md",
+  "sourceDirName": "release-pipeline",
+  "slug": "/release-pipeline/create-and-manage",
+  "permalink": "/release-pipeline/create-and-manage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/release-pipeline/create-and-manage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Create and Manage Release Pipelines",
+    "sidebar_label": "Create and Manage",
+    "slug": "/release-pipeline/create-and-manage",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/release-pipeline"
+  },
+  "next": {
+    "title": "Trigger",
+    "permalink": "/release-pipeline/trigger"
+  }
+}

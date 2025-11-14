@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/permanent-and-stale-gates",
+  "title": "Permanent and Stale Gates",
+  "description": "It is important for your codebase and team to bring feature gates to a final state (i.e. flags now permanently part of your codebase or completely removed) when they have served their purpose, as described here. On Statsig, you can use feature gate Types to easily keep track of your flags that might be ready to brought to their final state.",
+  "source": "@site/docs/feature-flags/permanent-and-stale-gates.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/permanent-and-stale-gates",
+  "permalink": "/feature-flags/permanent-and-stale-gates",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/permanent-and-stale-gates.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Permanent and Stale Gates",
+    "sidebar_label": "Permanent and stale gates",
+    "slug": "/feature-flags/permanent-and-stale-gates",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Feature Gate lifecycles",
+    "permalink": "/feature-flags/feature-flags-lifecycle"
+  },
+  "next": {
+    "title": "Best practices",
+    "permalink": "/feature-flags/best-practices"
+  }
+}

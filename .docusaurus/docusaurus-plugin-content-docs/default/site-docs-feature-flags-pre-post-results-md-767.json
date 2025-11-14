@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/pre-post-results",
+  "title": "Pre-Post Results",
+  "description": "This feature is currently available only on Statsig Cloud. As we work on a WHN solution, please reach out to Statsig if you're intereseted in being an early customer.",
+  "source": "@site/docs/feature-flags/pre-post-results.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/pre-post-results",
+  "permalink": "/feature-flags/pre-post-results",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/pre-post-results.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Pre-Post Results",
+    "sidebar_label": "Pre-Post Results",
+    "slug": "/feature-flags/pre-post-results",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Monitor feature impact",
+    "permalink": "/feature-flags/view-exposures"
+  },
+  "next": {
+    "title": "Multi-stage rollouts",
+    "permalink": "/feature-flags/multiple-rollout-stages"
+  }
+}

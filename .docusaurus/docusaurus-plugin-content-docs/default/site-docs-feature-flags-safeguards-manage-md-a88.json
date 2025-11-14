@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/safeguards-manage",
+  "title": "Manage a Safeguard",
+  "description": "View a Safeguard",
+  "source": "@site/docs/feature-flags/safeguards-manage.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/safeguards/manage",
+  "permalink": "/safeguards/manage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/safeguards-manage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Manage a Safeguard",
+    "sidebar_label": "Manage a Safeguard",
+    "slug": "/safeguards/manage",
+    "keywords": [
+      "owner:Shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create a Safeguard",
+    "permalink": "/safeguards/create"
+  },
+  "next": {
+    "title": "Feature Gate lifecycles",
+    "permalink": "/feature-flags/feature-flags-lifecycle"
+  }
+}

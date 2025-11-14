@@ -1,0 +1,35 @@
+{
+  "id": "pulse/custom-queries-whn",
+  "title": "Custom \"Explore\" Queries",
+  "description": "",
+  "source": "@site/docs/pulse/custom-queries-whn.md",
+  "sourceDirName": "pulse",
+  "slug": "/pulse/custom-queries-whn",
+  "permalink": "/pulse/custom-queries-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/pulse/custom-queries-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Custom \"Explore\" Queries",
+    "sidebar_label": "Custom \"Explore\" Queries",
+    "slug": "/pulse/custom-queries-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Metric Drill-Down",
+    "permalink": "/pulse/drill-down-whn"
+  },
+  "next": {
+    "title": "Export Pulse Results",
+    "permalink": "/pulse/access-whn"
+  }
+}

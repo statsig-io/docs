@@ -1,0 +1,28 @@
+{
+  "id": "metrics/create-user-flows",
+  "title": "User Flows",
+  "description": "Statsig's User Flows enable you to visualize customer journeys through your application.",
+  "source": "@site/docs/metrics/create-user-flows.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/create-user-flows",
+  "permalink": "/metrics/create-user-flows",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/create-user-flows.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User Flows",
+    "sidebar_label": "User Flows",
+    "slug": "/metrics/create-user-flows",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

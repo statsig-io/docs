@@ -1,0 +1,35 @@
+{
+  "id": "client/javascript-mono/ReactUsage",
+  "title": "React in Statsig",
+  "description": "<FeaturePillList",
+  "source": "@site/docs/client/javascript-mono/ReactUsage.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/react",
+  "permalink": "/client/javascript-sdk/react",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/ReactUsage.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "React in Statsig",
+    "sidebar_label": "React",
+    "slug": "/client/javascript-sdk/react",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "JavaScript (Web)",
+    "permalink": "/client/javascript-sdk"
+  },
+  "next": {
+    "title": "Next.js",
+    "permalink": "/client/javascript-sdk/next-js"
+  }
+}

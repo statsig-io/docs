@@ -1,0 +1,44 @@
+{
+  "id": "product-analytics/user-journeys",
+  "title": "User Journeys",
+  "description": "Overview",
+  "source": "@site/docs/product-analytics/user-journeys.md",
+  "sourceDirName": "product-analytics",
+  "slug": "/product-analytics/user-journeys",
+  "permalink": "/product-analytics/user-journeys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/product-analytics/user-journeys.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User Journeys",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "User Journeys",
+    "slug": "/product-analytics/user-journeys",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Distribution",
+    "permalink": "/product-analytics/distribution"
+  },
+  "next": {
+    "title": "Dashboards",
+    "permalink": "/product-analytics/dashboards"
+  }
+}

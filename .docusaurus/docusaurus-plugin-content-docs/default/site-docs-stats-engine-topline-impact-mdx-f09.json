@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/topline-impact",
+  "title": "Topline and Projected Impact",
+  "description": "The topline impact is the average daily effect that an experiment has on the overall metric value as compared between two groups. This is the real daily impact to a metric resulting from running the experiment, measured amongst the two groups being evaluated. The projected launch impact is an estimate of the daily impact we expect to see in the metric measured globally if a decision is made and the test group is launched to all users (beyond just those in the experiment). This impact is computed relative to the expected baseline value of the metric if the experiment wasn't running at all.",
+  "source": "@site/docs/stats-engine/topline-impact.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/topline-impact",
+  "permalink": "/stats-engine/topline-impact",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/topline-impact.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Topline and Projected Impact",
+    "sidebar_label": "Topline Impact",
+    "slug": "/stats-engine/topline-impact",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Aggregated Impact",
+    "permalink": "/aggregated-impact"
+  },
+  "next": {
+    "title": "Meta-Analysis",
+    "permalink": "/experimentation/meta-analysis"
+  }
+}

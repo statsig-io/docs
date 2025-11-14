@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/warehouse-management/storage",
+  "title": "Warehouse Storage",
+  "description": "Introduction",
+  "source": "@site/docs/statsig-warehouse-native/warehouse-management/storage.md",
+  "sourceDirName": "statsig-warehouse-native/warehouse-management",
+  "slug": "/statsig-warehouse-native/warehouse-management/storage",
+  "permalink": "/statsig-warehouse-native/warehouse-management/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/warehouse-management/storage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Warehouse Storage",
+    "slug": "/statsig-warehouse-native/warehouse-management/storage",
+    "sidebar_label": "Warehouse Storage",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Egress, Privacy, & Storage",
+    "permalink": "/statsig-warehouse-native/data-privacy"
+  },
+  "next": {
+    "title": "Warehouse Costs",
+    "permalink": "/statsig-warehouse-native/guides/costs"
+  }
+}

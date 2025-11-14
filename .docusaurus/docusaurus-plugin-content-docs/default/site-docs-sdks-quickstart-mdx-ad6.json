@@ -1,0 +1,30 @@
+{
+  "id": "sdks/quickstart",
+  "title": "Get started with the Statsig SDK",
+  "description": "This quickstart will guide you through quickly installing the Statsig SDK in a client app. If you're looking for a more detailed guide, check out the SDK Overview or read about choosing between client or server SDKs.",
+  "source": "@site/docs/sdks/quickstart.mdx",
+  "sourceDirName": "sdks",
+  "slug": "/sdks/quickstart",
+  "permalink": "/sdks/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/sdks/quickstart.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Get started with SDKs",
+    "title": "Get started with the Statsig SDK",
+    "keywords": [
+      "owner:jinayoon"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "next": {
+    "title": "Identify Users",
+    "permalink": "/sdks/identify-users"
+  }
+}

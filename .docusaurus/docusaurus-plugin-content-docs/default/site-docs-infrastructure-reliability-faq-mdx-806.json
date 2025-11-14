@@ -1,0 +1,35 @@
+{
+  "id": "infrastructure/reliability-faq",
+  "title": "Reliability FAQs",
+  "description": "Integrating your product with Statsig means depending on Statsig, and we take reliability seriously. Here are some questions many people have when trying to evaluate the risks, please feel free to reach out on Slack if you have questions that are not listed here.",
+  "source": "@site/docs/infrastructure/reliability-faq.mdx",
+  "sourceDirName": "infrastructure",
+  "slug": "/reliability-faqs",
+  "permalink": "/reliability-faqs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infrastructure/reliability-faq.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Reliability FAQs",
+    "slug": "/reliability-faqs",
+    "sidebar_label": "Reliability FAQs",
+    "keywords": [
+      "owner:eric"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Forward Proxy",
+    "permalink": "/server/concepts/forward_proxy"
+  },
+  "next": {
+    "title": "Maximize uptime",
+    "permalink": "/guides/uptime"
+  }
+}

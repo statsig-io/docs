@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/guides/aatest",
+  "title": "Synthetic A/A Test",
+  "description": "To create a quick A/A test, you can randomly split existing users you already have events for. Create an assignment source using the script below - and you;ll be ready to analyze your A/A test in minutes and see Pulse scorecards light up.",
+  "source": "@site/docs/statsig-warehouse-native/guides/aatest.md",
+  "sourceDirName": "statsig-warehouse-native/guides",
+  "slug": "/statsig-warehouse-native/guides/AATest",
+  "permalink": "/statsig-warehouse-native/guides/AATest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/guides/aatest.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Synthetic A/A Test",
+    "slug": "/statsig-warehouse-native/guides/AATest",
+    "sidebar_label": "A/A Test",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Working With the SDK",
+    "permalink": "/statsig-warehouse-native/guides/sdks"
+  },
+  "next": {
+    "title": "Cluster Experiments",
+    "permalink": "/metrics/different-id"
+  }
+}

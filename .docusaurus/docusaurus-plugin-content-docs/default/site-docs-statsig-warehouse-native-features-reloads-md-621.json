@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/features/reloads",
+  "title": "Loading Pulse",
+  "description": "The Pulse Engine",
+  "source": "@site/docs/statsig-warehouse-native/features/reloads.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/reloads",
+  "permalink": "/statsig-warehouse-native/features/reloads",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/reloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Loading Pulse",
+    "slug": "/statsig-warehouse-native/features/reloads",
+    "sidebar_label": "Loading Pulse",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Quality Score",
+    "permalink": "/experimentation/quality-score-whn"
+  },
+  "next": {
+    "title": "Turbo Mode",
+    "permalink": "/statsig-warehouse-native/features/turbo"
+  }
+}

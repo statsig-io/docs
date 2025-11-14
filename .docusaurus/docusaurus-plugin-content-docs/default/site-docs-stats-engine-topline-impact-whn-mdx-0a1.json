@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/topline-impact-whn",
+  "title": "Topline and Projected Impact",
+  "description": "",
+  "source": "@site/docs/stats-engine/topline-impact-whn.mdx",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/topline-impact-whn",
+  "permalink": "/stats-engine/topline-impact-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/topline-impact-whn.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Topline and Projected Impact",
+    "sidebar_label": "Topline Impact",
+    "slug": "/stats-engine/topline-impact-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "p-Values",
+    "permalink": "/stats-engine/p-value-whn"
+  },
+  "next": {
+    "title": "Variance Reduction",
+    "permalink": "/stats-engine/variance_reduction-whn"
+  }
+}

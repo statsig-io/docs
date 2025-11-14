@@ -1,0 +1,25 @@
+{
+  "id": "ai-ml/ai-prompt-experiment",
+  "title": "AI Prompt Experiment",
+  "description": "Introduction",
+  "source": "@site/docs/ai-ml/ai-prompt-experiment.mdx",
+  "sourceDirName": "ai-ml",
+  "slug": "/ai-ml/ai-prompt-experiment",
+  "permalink": "/ai-ml/ai-prompt-experiment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/ai-ml/ai-prompt-experiment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Switchback Tests",
+    "permalink": "/experiments-plus/switchback-tests"
+  },
+  "next": {
+    "title": "A/A Tests",
+    "permalink": "/guides/aa-test"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "client/concepts/initialize",
+  "title": "Initializing SDKs",
+  "description": "The first step in using a Statsig SDK is calling initialize(), which retrieves the values you need to evaluate experiments & send events. Before initialization, Statsig SDKs won't have latest values in-memory, and therefore may return stale values or none at all.",
+  "source": "@site/docs/client/concepts/initialize.mdx",
+  "sourceDirName": "client/concepts",
+  "slug": "/client/concepts/initialize",
+  "permalink": "/client/concepts/initialize",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/concepts/initialize.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Initializing SDKs",
+    "sidebar_label": "Initializing the SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Passing a User to SDKs",
+    "permalink": "/concepts/user"
+  },
+  "next": {
+    "title": "How Evaluation Works",
+    "permalink": "/sdks/how-evaluation-works"
+  }
+}

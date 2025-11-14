@@ -1,0 +1,35 @@
+{
+  "id": "autotune/contextual/monitoring",
+  "title": "Monitoring your Contextual MAB",
+  "description": "There are three primary ways we recommend you monitor autotune performance.",
+  "source": "@site/docs/autotune/contextual/monitoring.md",
+  "sourceDirName": "autotune/contextual",
+  "slug": "/autotune/contextual/monitoring",
+  "permalink": "/autotune/contextual/monitoring",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/contextual/monitoring.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Monitoring your Contextual MAB",
+    "sidebar_label": "Monitoring",
+    "slug": "/autotune/contextual/monitoring",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/autotune/contextual/getting-started"
+  },
+  "next": {
+    "title": "Methodology",
+    "permalink": "/autotune/contextual/methodology"
+  }
+}

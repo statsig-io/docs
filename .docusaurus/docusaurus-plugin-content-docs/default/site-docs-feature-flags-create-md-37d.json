@@ -1,0 +1,35 @@
+{
+  "id": "feature-flags/create",
+  "title": "Create a Feature Gate",
+  "description": "This guide walks through how to create a Feature Gate in the Statsig console, how to add an evaluation rule to a Feature Gate, how to implement the Feature Gate in your code, examples of common Feature Gate setups, and a list of all Feature Gate targeting conditions available in Statsig.",
+  "source": "@site/docs/feature-flags/create.md",
+  "sourceDirName": "feature-flags",
+  "slug": "/feature-flags/create",
+  "permalink": "/feature-flags/create",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/feature-flags/create.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Create a Feature Gate",
+    "sidebar_label": "Create a Feature Gate",
+    "slug": "/feature-flags/create",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/feature-flags/overview"
+  },
+  "next": {
+    "title": "Targeting rules and conditions",
+    "permalink": "/feature-flags/conditions"
+  }
+}

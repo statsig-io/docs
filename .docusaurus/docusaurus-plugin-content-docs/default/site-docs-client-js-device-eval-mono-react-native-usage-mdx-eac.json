@@ -1,0 +1,35 @@
+{
+  "id": "client/js-device-eval-mono/ReactNativeUsage",
+  "title": "React Native On-Device Evaluation",
+  "description": "💡 Tip: Get started quickly with one of our sample apps!",
+  "source": "@site/docs/client/js-device-eval-mono/ReactNativeUsage.mdx",
+  "sourceDirName": "client/js-device-eval-mono",
+  "slug": "/client/js-on-device-eval-client/react-native",
+  "permalink": "/client/js-on-device-eval-client/react-native",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/js-device-eval-mono/ReactNativeUsage.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "React Native On-Device Evaluation",
+    "sidebar_label": "React Native Support",
+    "slug": "/client/js-on-device-eval-client/react-native",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "SpecsDataAdapter",
+    "permalink": "/client/js-on-device-eval-client/using-evaluations-data-adapter"
+  },
+  "next": {
+    "title": "Swift / Objective C",
+    "permalink": "/client/swiftOnDeviceEvaluationSDK"
+  }
+}

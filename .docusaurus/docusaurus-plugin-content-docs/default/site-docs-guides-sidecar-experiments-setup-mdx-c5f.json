@@ -1,0 +1,34 @@
+{
+  "id": "guides/sidecar-experiments/setup",
+  "title": "Setting up Sidecar",
+  "description": "* This guide assumes you have an existing Statsig account.  Please go here to create a new free account if you don't already have one//statsig.com/signup",
+  "source": "@site/docs/guides/sidecar-experiments/setup.mdx",
+  "sourceDirName": "guides/sidecar-experiments",
+  "slug": "/guides/sidecar-experiments/setup",
+  "permalink": "/guides/sidecar-experiments/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/sidecar-experiments/setup.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "sidebar_label": "Sidecar Setup",
+    "title": "Setting up Sidecar",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Advanced Configurations",
+    "permalink": "/guides/sidecar-experiments/advanced-configurations-v3"
+  },
+  "next": {
+    "title": "Creating Experiments",
+    "permalink": "/guides/sidecar-experiments/creating-experiments"
+  }
+}

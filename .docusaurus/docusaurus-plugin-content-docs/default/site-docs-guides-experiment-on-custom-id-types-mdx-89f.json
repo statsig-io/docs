@@ -1,0 +1,34 @@
+{
+  "id": "guides/experiment-on-custom-id-types",
+  "title": "Experiment on custom Unit ID types",
+  "description": "In certain cases, you may want to randomize experiment bucketing using a custom Unit ID instead of the default userID or Statsig-generated Stable ID. For instance, if you're running a task management tool for companies and want to experiment on company-wide behaviors, you might use companyID as the Unit ID. This ensures all users from the same company get the same experience, allowing you to measure overall productivity impacts at a company level.",
+  "source": "@site/docs/guides/experiment-on-custom-id-types.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/experiment-on-custom-id-types",
+  "permalink": "/guides/experiment-on-custom-id-types",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/experiment-on-custom-id-types.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Custom ID Types",
+    "title": "Experiment on custom Unit ID types",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Device-level Experiments",
+    "permalink": "/guides/first-device-level-experiment"
+  },
+  "next": {
+    "title": "Environments",
+    "permalink": "/guides/using-environments"
+  }
+}

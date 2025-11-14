@@ -1,0 +1,16 @@
+{
+  "id": "integrations/snippets/integration_event_formats",
+  "title": "integration_event_formats",
+  "description": "Event Format",
+  "source": "@site/docs/integrations/snippets/integration_event_formats.mdx",
+  "sourceDirName": "integrations/snippets",
+  "slug": "/integrations/snippets/integration_event_formats",
+  "permalink": "/integrations/snippets/integration_event_formats",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/snippets/integration_event_formats.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1736562585000,
+  "frontMatter": {}
+}

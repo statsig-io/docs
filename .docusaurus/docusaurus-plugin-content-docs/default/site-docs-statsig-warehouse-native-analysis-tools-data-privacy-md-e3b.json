@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/analysis-tools/data-privacy",
+  "title": "Egress, Privacy, & Storage",
+  "description": "Understand how Statsig uses your warehouse",
+  "source": "@site/docs/statsig-warehouse-native/analysis-tools/data-privacy.md",
+  "sourceDirName": "statsig-warehouse-native/analysis-tools",
+  "slug": "/statsig-warehouse-native/data-privacy",
+  "permalink": "/statsig-warehouse-native/data-privacy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/analysis-tools/data-privacy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Egress, Privacy, & Storage",
+    "slug": "/statsig-warehouse-native/data-privacy",
+    "sidebar_label": "Egress, Privacy, & Storage",
+    "description": "Understand how Statsig uses your warehouse",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Other Warehouses",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/other"
+  },
+  "next": {
+    "title": "Warehouse Storage",
+    "permalink": "/statsig-warehouse-native/warehouse-management/storage"
+  }
+}

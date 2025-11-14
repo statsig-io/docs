@@ -1,0 +1,34 @@
+{
+  "id": "server-core/php-core",
+  "title": "PHP Server SDK",
+  "description": "{Builder.result}",
+  "source": "@site/docs/server-core/php-core.mdx",
+  "sourceDirName": "server-core",
+  "slug": "/server-core/php-core",
+  "permalink": "/server-core/php-core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/server-core/php-core.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "PHP",
+    "title": "PHP Server SDK",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Rust",
+    "permalink": "/server-core/rust-core"
+  },
+  "next": {
+    "title": "Go",
+    "permalink": "/server-core/go-core"
+  }
+}

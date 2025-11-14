@@ -1,0 +1,34 @@
+{
+  "id": "integrations/data-imports/snowflake-deprecated",
+  "title": "Snowflake (Deprecated)",
+  "description": "This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the Data Warehouse Ingestion solution instead.",
+  "source": "@site/docs/integrations/data-imports/snowflake-deprecated.md",
+  "sourceDirName": "integrations/data-imports",
+  "slug": "/integrations/data-imports/snowflake",
+  "permalink": "/integrations/data-imports/snowflake",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/integrations/data-imports/snowflake-deprecated.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Snowflake (Deprecated)",
+    "slug": "snowflake",
+    "keywords": [
+      "owner:tim"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Redshift (Deprecated)",
+    "permalink": "/integrations/data-imports/redshift"
+  },
+  "next": {
+    "title": "Azure Metrics Upload (Deprecated)",
+    "permalink": "/integrations/data-imports/azure-upload"
+  }
+}

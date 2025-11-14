@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/connecting-your-warehouse/fabric",
+  "title": "Fabric Connection [Beta]",
+  "description": "Overview",
+  "source": "@site/docs/statsig-warehouse-native/connecting-your-warehouse/fabric.md",
+  "sourceDirName": "statsig-warehouse-native/connecting-your-warehouse",
+  "slug": "/statsig-warehouse-native/connecting-your-warehouse/fabric",
+  "permalink": "/statsig-warehouse-native/connecting-your-warehouse/fabric",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/connecting-your-warehouse/fabric.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Fabric Connection [Beta]",
+    "slug": "/statsig-warehouse-native/connecting-your-warehouse/fabric",
+    "sidebar_label": "Fabric [Beta]",
+    "keywords": [
+      "owner:xhuang"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Clickhouse [Beta]",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/clickhouse"
+  },
+  "next": {
+    "title": "Other Warehouses",
+    "permalink": "/statsig-warehouse-native/connecting-your-warehouse/other"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "product-analytics/retention",
+  "title": "Retention Chart",
+  "description": "Overview",
+  "source": "@site/docs/product-analytics/retention.md",
+  "sourceDirName": "product-analytics",
+  "slug": "/product-analytics/retention",
+  "permalink": "/product-analytics/retention",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/product-analytics/retention.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Retention Chart",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Retention",
+    "slug": "/product-analytics/retention",
+    "keywords": [
+      "owner:akin"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Funnels",
+    "permalink": "/product-analytics/funnels"
+  },
+  "next": {
+    "title": "Distribution",
+    "permalink": "/product-analytics/distribution"
+  }
+}

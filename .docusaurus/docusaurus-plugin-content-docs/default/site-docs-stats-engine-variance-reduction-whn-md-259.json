@@ -1,0 +1,35 @@
+{
+  "id": "stats-engine/variance-reduction-whn",
+  "title": "Variance Reduction",
+  "description": "",
+  "source": "@site/docs/stats-engine/variance-reduction-whn.md",
+  "sourceDirName": "stats-engine",
+  "slug": "/stats-engine/variance_reduction-whn",
+  "permalink": "/stats-engine/variance_reduction-whn",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/stats-engine/variance-reduction-whn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Variance Reduction",
+    "sidebar_label": "Variance Reduction",
+    "slug": "/stats-engine/variance_reduction-whn",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Topline Impact",
+    "permalink": "/stats-engine/topline-impact-whn"
+  },
+  "next": {
+    "title": "Pre-Experiment Bias",
+    "permalink": "/stats-engine/pre-experiment-bias-whn"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "statsig-warehouse-native/features/power-analysis",
+  "title": "Power Analysis",
+  "description": "Determine your experiment duration with confidence",
+  "source": "@site/docs/statsig-warehouse-native/features/power-analysis.md",
+  "sourceDirName": "statsig-warehouse-native/features",
+  "slug": "/statsig-warehouse-native/features/power-analysis",
+  "permalink": "/statsig-warehouse-native/features/power-analysis",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/features/power-analysis.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Power Analysis",
+    "slug": "/statsig-warehouse-native/features/power-analysis",
+    "sidebar_label": "Power Analysis",
+    "description": "Determine your experiment duration with confidence",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Types of Experiments",
+    "permalink": "/statsig-warehouse-native/features/types-of-experiments"
+  },
+  "next": {
+    "title": "Stratified Sampling",
+    "permalink": "/experiments-plus/stratified-sampling-whn"
+  }
+}

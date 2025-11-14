@@ -1,0 +1,34 @@
+{
+  "id": "guides/migration-overview",
+  "title": "Migration Overview",
+  "description": "Statsig combines feature flags, experimentation, and product analytics in one platform. Migrating ensures your data, flag, experiments, and decision workflows live in a single source of truth.",
+  "source": "@site/docs/guides/migration-overview.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/migration-overview",
+  "permalink": "/guides/migration-overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/migration-overview.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1759795200000,
+  "frontMatter": {
+    "sidebar_label": "Migration Overview",
+    "title": "Migration Overview",
+    "keywords": [
+      "owner:Shubham"
+    ],
+    "last_update": {
+      "date": "2025-10-07T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Testing Your Setup",
+    "permalink": "/guides/testing"
+  },
+  "next": {
+    "title": "Migrate from Amplitude",
+    "permalink": "/guides/migrate-from-amplitude"
+  }
+}

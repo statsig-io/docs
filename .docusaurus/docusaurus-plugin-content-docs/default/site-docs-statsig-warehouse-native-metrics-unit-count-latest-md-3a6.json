@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/unit-count-latest",
+  "title": "Unit Count (Latest Value) Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/unit-count-latest.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/unit-count-latest",
+  "permalink": "/statsig-warehouse-native/metrics/unit-count-latest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/unit-count-latest.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Unit Count (Latest Value) Metrics",
+    "sidebar_label": "Unit Count (Latest Value)",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Unit Count (Window)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-window"
+  },
+  "next": {
+    "title": "Unit Count (Daily Participation)",
+    "permalink": "/statsig-warehouse-native/metrics/unit-count-rate"
+  }
+}

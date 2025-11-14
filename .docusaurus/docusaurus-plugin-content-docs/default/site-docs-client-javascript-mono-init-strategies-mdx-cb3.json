@@ -1,0 +1,28 @@
+{
+  "id": "client/javascript-mono/InitStrategies",
+  "title": "Initialization Strategies",
+  "description": "{Builder.result}",
+  "source": "@site/docs/client/javascript-mono/InitStrategies.mdx",
+  "sourceDirName": "client/javascript-mono",
+  "slug": "/client/javascript-sdk/init-strategies",
+  "permalink": "/client/javascript-sdk/init-strategies",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/javascript-mono/InitStrategies.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Initialization Strategies",
+    "sidebar_label": "Initialization Strategies",
+    "slug": "/client/javascript-sdk/init-strategies",
+    "displayed_sidebar": "cloud",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud"
+}

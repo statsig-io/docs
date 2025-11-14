@@ -1,0 +1,35 @@
+{
+  "id": "client/concepts/persistent_assignment",
+  "title": "Client Persistent Assignment",
+  "description": "Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.",
+  "source": "@site/docs/client/concepts/persistent_assignment.mdx",
+  "sourceDirName": "client/concepts",
+  "slug": "/client/concepts/persistent_assignment",
+  "permalink": "/client/concepts/persistent_assignment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/client/concepts/persistent_assignment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Client Persistent Assignment",
+    "sidebar_label": "Client Persistent Assignment",
+    "slug": "/client/concepts/persistent_assignment",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Legacy PHP",
+    "permalink": "/server/phpSDK"
+  },
+  "next": {
+    "title": "Server Persistent Assignment",
+    "permalink": "/server/concepts/persistent_assignment"
+  }
+}

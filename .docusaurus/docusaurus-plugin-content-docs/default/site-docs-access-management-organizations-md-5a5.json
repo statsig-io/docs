@@ -1,0 +1,34 @@
+{
+  "id": "access-management/organizations",
+  "title": "Organization Settings & Administration",
+  "description": "Organizations and their related features are for Enterprise contracts only. Please reach out to our support team, your sales contact, or via our Slack channel if you need to enable Enterprise features as you use Statsig.",
+  "source": "@site/docs/access-management/organizations.md",
+  "sourceDirName": "access-management",
+  "slug": "/access-management/organizations",
+  "permalink": "/access-management/organizations",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/organizations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Organizations",
+    "title": "Organization Settings & Administration",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "API Keys",
+    "permalink": "/sdk-keys/api-keys"
+  },
+  "next": {
+    "title": "Projects",
+    "permalink": "/access-management/projects"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "guides/testing",
+  "title": "Testing your Configurations on Statsig",
+  "description": "Statsig enhances your engineering velocity by offering tools and features that allow you to test configurations quickly while ensuring reliable outcomes. This page highlights key features across the product to help you test efficiently.",
+  "source": "@site/docs/guides/testing.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/testing",
+  "permalink": "/guides/testing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/testing.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Testing Your Setup",
+    "title": "Testing your Configurations on Statsig",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Open Telemetry Logs and Metrics",
+    "permalink": "/server/concepts/open_telemetry"
+  },
+  "next": {
+    "title": "Migration Overview",
+    "permalink": "/guides/migration-overview"
+  }
+}

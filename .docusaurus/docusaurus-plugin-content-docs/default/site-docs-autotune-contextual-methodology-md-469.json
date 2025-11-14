@@ -1,0 +1,35 @@
+{
+  "id": "autotune/contextual/methodology",
+  "title": "Contextual Bandit Methodology",
+  "description": "Methodology",
+  "source": "@site/docs/autotune/contextual/methodology.md",
+  "sourceDirName": "autotune/contextual",
+  "slug": "/autotune/contextual/methodology",
+  "permalink": "/autotune/contextual/methodology",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/autotune/contextual/methodology.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Contextual Bandit Methodology",
+    "sidebar_label": "Methodology",
+    "slug": "/autotune/contextual/methodology",
+    "keywords": [
+      "owner:craig"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Monitoring",
+    "permalink": "/autotune/contextual/monitoring"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/autotune/bandit-faq"
+  }
+}

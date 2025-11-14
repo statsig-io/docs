@@ -1,0 +1,33 @@
+{
+  "id": "azureai/introduction",
+  "title": "Azure AI",
+  "description": "Statsig offers SDKs for integrating Azure AI models into server applications. These SDKs simplify the implementation of features like completions and embeddings in your server application. They provide easy-to-use APIs and automatically track metrics such as latency, token length, and model details, which you can use for optimization and experimentation. Use cases include:",
+  "source": "@site/docs/azureai/introduction.md",
+  "sourceDirName": "azureai",
+  "slug": "/azureai/introduction",
+  "permalink": "/azureai/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/azureai/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Azure AI",
+    "keywords": [
+      "owner:vijaye"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Pulumi",
+    "permalink": "/integrations/pulumi"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/azureai/getting-started"
+  }
+}

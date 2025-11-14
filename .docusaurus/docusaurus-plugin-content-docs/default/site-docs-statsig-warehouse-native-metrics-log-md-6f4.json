@@ -1,0 +1,34 @@
+{
+  "id": "statsig-warehouse-native/metrics/log",
+  "title": "Log Metrics",
+  "description": "Summary",
+  "source": "@site/docs/statsig-warehouse-native/metrics/log.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/log",
+  "permalink": "/statsig-warehouse-native/metrics/log",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/log.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Log Metrics",
+    "sidebar_label": "Log",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Percentile",
+    "permalink": "/statsig-warehouse-native/metrics/percentile"
+  },
+  "next": {
+    "title": "First/Latest Value",
+    "permalink": "/statsig-warehouse-native/metrics/latest-value"
+  }
+}

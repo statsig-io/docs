@@ -1,0 +1,35 @@
+{
+  "id": "statsig-warehouse-native/metrics/normalized-metrics",
+  "title": "Normalized Metrics (aka Clustered Experiments)",
+  "description": "When to use it",
+  "source": "@site/docs/statsig-warehouse-native/metrics/normalized-metrics.md",
+  "sourceDirName": "statsig-warehouse-native/metrics",
+  "slug": "/statsig-warehouse-native/metrics/normalized-metrics",
+  "permalink": "/statsig-warehouse-native/metrics/normalized-metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/statsig-warehouse-native/metrics/normalized-metrics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Normalized Metrics (aka Clustered Experiments)",
+    "slug": "/statsig-warehouse-native/metrics/normalized-metrics",
+    "sidebar_label": "Normalized Metrics",
+    "keywords": [
+      "owner:vm"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "warehouse",
+  "previous": {
+    "title": "Filter Exposures",
+    "permalink": "/statsig-warehouse-native/features/filtering-exposures"
+  },
+  "next": {
+    "title": "Quality Score",
+    "permalink": "/experimentation/quality-score-whn"
+  }
+}

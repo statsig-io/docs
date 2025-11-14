@@ -1,0 +1,35 @@
+{
+  "id": "metrics/user-dimensions",
+  "title": "User Property",
+  "description": "It is  helpful to be able to break down Pulse results by user properties like Free vs Paid, or OS type. Setting User Property lets you slice data by properties like this.",
+  "source": "@site/docs/metrics/user-dimensions.md",
+  "sourceDirName": "metrics",
+  "slug": "/metrics/user-property",
+  "permalink": "/metrics/user-property",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/metrics/user-dimensions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "User Property",
+    "sidebar_label": "User Property",
+    "slug": "/metrics/user-property",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Precomputed Metrics",
+    "permalink": "/metrics/precomputed-metrics"
+  },
+  "next": {
+    "title": "Event Property",
+    "permalink": "/metrics/metric-dimensions"
+  }
+}

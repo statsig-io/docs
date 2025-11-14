@@ -1,0 +1,34 @@
+{
+  "id": "guides/first-device-level-experiment",
+  "title": "Build your first Device-level Experiment",
+  "description": "When you cannot identify a user via their user ID, device-level experiments allow you to randomize experiments based on a consistent identifier for the user's device. While Statsig can automatically generate a stable ID, it's recommended to use your own cookie or logged-out ID when possible.",
+  "source": "@site/docs/guides/first-device-level-experiment.mdx",
+  "sourceDirName": "guides",
+  "slug": "/guides/first-device-level-experiment",
+  "permalink": "/guides/first-device-level-experiment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/guides/first-device-level-experiment.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "sidebar_label": "Device-level Experiments",
+    "title": "Build your first Device-level Experiment",
+    "keywords": [
+      "owner:brock"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Using Parameter Stores",
+    "permalink": "/client/concepts/parameter-stores"
+  },
+  "next": {
+    "title": "Custom ID Types",
+    "permalink": "/guides/experiment-on-custom-id-types"
+  }
+}

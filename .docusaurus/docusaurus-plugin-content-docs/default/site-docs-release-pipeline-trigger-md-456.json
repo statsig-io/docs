@@ -1,0 +1,35 @@
+{
+  "id": "release-pipeline/trigger",
+  "title": "Trigger a Release Pipeline",
+  "description": "A Release Pipeline is activated when you make changes to a feature gate or dynamic config that has a pipeline attached to it.",
+  "source": "@site/docs/release-pipeline/trigger.md",
+  "sourceDirName": "release-pipeline",
+  "slug": "/release-pipeline/trigger",
+  "permalink": "/release-pipeline/trigger",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/release-pipeline/trigger.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Trigger a Release Pipeline",
+    "sidebar_label": "Trigger",
+    "slug": "/release-pipeline/trigger",
+    "keywords": [
+      "owner:shubham"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create and Manage",
+    "permalink": "/release-pipeline/create-and-manage"
+  },
+  "next": {
+    "title": "Manage Actions",
+    "permalink": "/release-pipeline/actions"
+  }
+}

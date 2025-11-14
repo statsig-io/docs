@@ -1,0 +1,44 @@
+{
+  "id": "infra-analytics/topline-alerts-logs",
+  "title": "Topline Alerts with Logs",
+  "description": "Detect regressions in your infrastructure by evaluating logs in real time. You can use them to monitor request success rates, error codes, or other log-derived metrics.",
+  "source": "@site/docs/infra-analytics/topline-alerts-logs.mdx",
+  "sourceDirName": "infra-analytics",
+  "slug": "/infra-analytics/topline-alerts-logs",
+  "permalink": "/infra-analytics/topline-alerts-logs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/infra-analytics/topline-alerts-logs.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Statsig Cloud",
+      "permalink": "/tags/statsig-cloud"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1759363200000,
+  "frontMatter": {
+    "title": "Topline Alerts with Logs",
+    "tags": [
+      "Statsig Cloud"
+    ],
+    "sidebar_label": "Topline Alerts with Logs",
+    "slug": "/infra-analytics/topline-alerts-logs",
+    "keywords": [
+      "owner:laurel"
+    ],
+    "last_update": {
+      "date": "2025-10-02T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Query Syntax",
+    "permalink": "/infra-analytics/logs-explorer-queries"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/webanalytics/overview"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "access-management/introduction",
+  "title": "Workspace Management Overview",
+  "description": "Statsig provides a few different solutions for access management as you scale out adoption in your team/org/company.",
+  "source": "@site/docs/access-management/introduction.mdx",
+  "sourceDirName": "access-management",
+  "slug": "/access-management/introduction",
+  "permalink": "/access-management/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/statsig-io/docs/edit/main/docs/access-management/introduction.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1758153600000,
+  "frontMatter": {
+    "title": "Workspace Management Overview",
+    "slug": "/access-management/introduction",
+    "keywords": [
+      "owner:mseger"
+    ],
+    "last_update": {
+      "date": "2025-09-18T00:00:00.000Z"
+    }
+  },
+  "sidebar": "cloud",
+  "previous": {
+    "title": "Create an Online Eval",
+    "permalink": "/ai-evals/create-an-online-eval"
+  },
+  "next": {
+    "title": "API Keys",
+    "permalink": "/sdk-keys/api-keys"
+  }
+}
