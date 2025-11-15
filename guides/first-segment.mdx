@@ -6,6 +6,7 @@ keywords:
   - owner:shubham
 last_update:
   date: 2025-09-18
+description: User Segments allow you to predefine targeting groups for re-use in Feature Gates and Dynamic Configs. Think of it as a reusable macro for a set of us
 ---
 
 User Segments allow you to predefine targeting groups for re-use in Feature Gates and Dynamic Configs. Think of it as a reusable macro for a set of users.
@@ -68,7 +69,7 @@ Again, remember to "Save Changes"
 Fill in the test gate console with any random user input. You won't be able to get this gate to pass until you pass in a user with an email ending
 in `statsig.com` or `statsig.io` AND a `development` or `staging` environment like this. If you remove either of those, you should see it fail.
 
-```
+```json
 {
   email: 'tore@statsig.com',
   statsigEnvironment: {

@@ -4,6 +4,7 @@ keywords:
   - owner:vijaye
 last_update:
   date: 2025-09-18
+description: In order to invoke Azure AI methods, you'll need to instantiate a Model Client.  You have two ways of instantiating a Model Client
 ---
 
 
@@ -27,7 +28,7 @@ Once created, you can fill in the properties of this deployment like this:
 
 The JSON of this looks like this:
 
-```
+```json
 {
   endpoint: "https://FILL_IN_YOUR_ENDPOINT",
   key: "FILL_IN_YOUR_KEY",
@@ -49,17 +50,17 @@ Once this is done, you can instantiate your Model Client directly by using the *
   <Tab title="NodeJS">
 ```js
 const client = AzureAI.getModelClient("<dynamic_config_id>");
-```
+```text
   </Tab>
   <Tab title="Python">
 ```python
 client = AzureAI.get_model_client("<dynamic_config_id>")
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```csharp
 var client = Server.GetModelClient("<dynamic_config_id>");
-```
+```ruby
   </Tab>
 </Tabs>
 
@@ -74,12 +75,12 @@ const modelClient = AzureAI.getModelClientFromEndpoint(
     "<DEPLOYMENT_ENDPOINT_URL>",
     "<DEPLOYMENT_KEY>"
 );
-```
+```text
   </Tab>
   <Tab title="Python">
 ```python
 modelClient = AzureAI.get_model_client_from_endpoint("<DEPLOYMENT_ENDPOINT_URL>", "<DEPLOYMENT_KEY>")
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```csharp

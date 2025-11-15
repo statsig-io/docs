@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: Getting started with Autotune AI can be done very quickly. <Warning> Statsig supports contextual autotune in all Client SDKs, but only in the followin
 ---
 
 Getting started with Autotune AI can be done very quickly.
@@ -99,7 +100,7 @@ We assume you have your server secret key for the following code. Before running
 
 First, import and initialize Statsig:
 
-```
+```javascript
 from statsig_python_core import Statsig, StatsigUser
 
 key = <your_key_here>
@@ -111,14 +112,14 @@ statsig.initialize().wait()
 
 Then, create a user object and fetch your config:
 
-```
+```text
 user = StatsigUser('user_id', custom={'key1': 'value1', 'key2': 'value2'})
 cfg = statsig.get_experiment(user, autotune_name)
 ```
 
 Now you have your cfg and can apply it!
 
-```
+```python
 color = cfg.get_string("color", "default color")
 print(f"Going to use {color} for my color now")
 ```
@@ -134,7 +135,7 @@ That's it! Your code is now serving personalized variants to your users.
 
 Statsig requires a few hundred units to train a model, and will also not start training until those units' attribution window has elapsed. If you want to test the functionality, we highly recommend "faking a test" to confirm things work like you expect - use logic like
 
-```
+```text
 fetch_autotune_value()
 if(user country == 'us'):
     log_click()

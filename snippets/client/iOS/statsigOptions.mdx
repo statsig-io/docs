@@ -1,3 +1,8 @@
+---
+title: Statsigoptions
+description: <ResponseField name="initTimeout" type="Double" default="3.0"> Used to decide how long the Statsig client waits for the initial network request to res
+---
+
 
 <ResponseField name="initTimeout" type="Double" default="3.0">
   Used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
@@ -39,7 +44,7 @@
         case layer (Layer)
         case parameterStore (ParameterStore)
      }
-  ```
+  ```text
   Here's an example of how to set up an evaluation callback:
  ```swift
      func callback(data: StatsigOptions.EvaluationCallbackData) {
@@ -59,7 +64,7 @@
 
      let opts = StatsigOptions(evaluationCallback: callback)
      Statsig.initialize(sdkKey: "client-key", options: opts)
-  ```
+  ```text
 </ResponseField>
 
 <ResponseField name="storageProvider" type="StorageProvider" default="nil">
@@ -73,7 +78,7 @@
         @objc func write(_ value: Data, _ key: String)
         @objc func remove(_ key: String)
      }
-  ```
+  ```python
 </ResponseField>
 
 <ResponseField name="overrideStableID" type="String" default="nil">
@@ -115,7 +120,7 @@
 
   ```swift
      StatsigOptions(initializationURL: URL(string: "https://example.com/setup"))
-  ```
+  ```text
 </ResponseField>
 
 <ResponseField name="eventLoggingURL" type="URL" default="nil">

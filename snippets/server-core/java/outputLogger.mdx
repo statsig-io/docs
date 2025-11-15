@@ -1,3 +1,8 @@
+---
+title: Outputlogger
+description: Custom output logger allows you to redirect SDK logs to your own logging system. <CodeGroup> ```java Java import com.statsig.*; class MyOutputLogger i
+---
+
 Custom output logger allows you to redirect SDK logs to your own logging system.
 
 <CodeGroup>
@@ -33,7 +38,7 @@ StatsigOptions options = new StatsigOptions.Builder()
 
 Statsig statsig = new Statsig("secret-key", options);
 statsig.initialize().get();
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.*

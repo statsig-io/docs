@@ -5,10 +5,11 @@ keywords:
   - owner:brock
 last_update:
   date: 2025-09-18
+description: Most users with heavy web traffic use a CDN to serve resources from cache, in order to minimize hit to their web servers. This has historically ma
 ---
 
 ## Background
-Most customers with heavy web traffic use a CDN to serve resources from cache, in order to minimize hit to their web servers. This has historically made testing challenging because you don’t have the luxury of calling the SDK for all requests — but now with the emergence of Edge compute (offered by *most providers*), customers can now run code at their CDN edge, allowing them to assign users to tests and determine which resources to serve in a convenient and performant way.
+Most users with heavy web traffic use a CDN to serve resources from cache, in order to minimize hit to their web servers. This has historically made testing challenging because you don’t have the luxury of calling the SDK for all requests — but now with the emergence of Edge compute (offered by *most providers*), users can now run code at their CDN edge, allowing them to assign users to tests and determine which resources to serve in a convenient and performant way.
 This pattern is optimal for testing with cached content without sacrificing cache-hit ratio. For scenarios where running the Statsig SDK at the edge is not possible, the sdk must be implemented on the origin server, or you should consider using a client SDK.
 
 <figure>
@@ -24,7 +25,7 @@ This pattern is optimal for testing with cached content without sacrificing cach
 - Use a provider-specific Data Adapter — This will allow the Statsig SDK to initialize using the configuration stored at the edge near your function. Links for each provider provided below.
 - Use [statsig-node-lite](https://www.npmjs.com/package/statsig-node-lite) — This is a slimmed down version of the Node SDK, which includes only the essentials and dramatically improves initialization performance for cold-starts requests.
 - Persist a uuid — As always, you'll need some sort of user identifier that can be used to consistently assign a user to your test buckets. This can typically be solved by generating a uuid in your function and setting it to a cookie. 
-- Persist assignments in a cookie — Some customers will set assignments to a cookie for the purpose of a performance optimization, allowing your code to skip sdk calls if the user is already assigned to a test. This is best defined as a session-cookie (a cookie that expires when user closes their browser).
+- Persist assignments in a cookie — Some users will set assignments to a cookie for the purpose of a performance optimization, allowing your code to skip sdk calls if the user is already assigned to a test. This is best defined as a session-cookie (a cookie that expires when user closes their browser).
 - Persist client instance — [This pattern](/guides/serverless#usage) allows the Statsig client instance to persists across requests when the edge function remains warm and will improve performance.
 - Use [Target Apps](/sdk-keys/target-apps) — Target apps will allow you to sync a specific subset of experiments/gates to your edge function, reducing the footprint of your project config and improving performance. Target Apps are compatible with all of the "config sync" integrations.   
 - Consider [peaking at experiment assignments](https://github.com/statsig-io/node-js-lite-server-sdk/blob/d88aab788a16d0d38adf851e67c21bb846f12d24/src/index.ts#L191) and avoid logging exposures. You should only log exposure events once a user has been exposed to the treatment, otherwise your test results may become polluted with users that didn't see the treatment.
@@ -43,7 +44,7 @@ We offer both an [integration with Cloudflare KV](/integrations/cloudflare), and
 
 ## Fastly Implementation
 
-Fastly Compute platform supports Functions at the Edge, affording customers the ability to handle assignment at the edge. 
+Fastly Compute platform supports Functions at the Edge, affording users the ability to handle assignment at the edge. 
 
 ### KV (fully supported)
 [Fastly's KV storage solution](https://www.fastly.com/blog/be-among-the-first-to-try-the-greatest-kv-store-ever-made) is touted as being highly-performant and is now their recommended solution over their legacy ConfigStore documented below.

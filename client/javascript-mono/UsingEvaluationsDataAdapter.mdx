@@ -39,7 +39,7 @@ const client = new StatsigClient('client-key', { userID: 'user-123' });
 await client.initializeAsync();
 
 const dataAdapter = client.dataAdapter;
-```
+```python
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-get-data-adapter.tsx)
 
@@ -60,7 +60,7 @@ const bootstrapData = /* data from server or local file */;
 await client.dataAdapter.setData(bootstrapData);
 
 await client.initializeSync();
-```
+```python
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx)
 
@@ -76,7 +76,7 @@ statsig.getClientInitializeResponse(
     hash: 'djb2',
   },
 );
-```
+```text
 
 ### Prefetching
 
@@ -92,7 +92,7 @@ await client.dataAdapter.prefetchData(newUser);
 
 // Update to the new user (will use prefetched data)
 await client.updateUserAsync(newUser);
-```
+```python
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx)
 
@@ -110,7 +110,7 @@ attach: (
   sdkKey: string, 
   options: StatsigOptionsCommon | null
 ) => void
-```
+```sql
 
 ---
 
@@ -119,7 +119,7 @@ attach: (
 
 ```typescript
 getDataSync: (user: StatsigUser) => DataAdapterResult | null;
-```
+```text
 
 ---
 
@@ -129,14 +129,14 @@ getDataAsync: (
   current: DataAdapterResult | null, 
   user: StatsigUser
 ) => Promise<DataAdapterResult | null>;
-```
+```text
 
 ---
 
 `prefetchData` - Manually trigger a fetch for new evaluations data for the given user.
 ```typescript
 prefetchData: (user: StatsigUser) => Promise<void>;
-```
+```python
 
 ---
 
@@ -144,7 +144,7 @@ prefetchData: (user: StatsigUser) => Promise<void>;
 
 ```typescript
 setData: (data: string) => Promise<void>;
-```
+```text
 
 <Note>
 You can use `setDataLegacy` if your Server SDK is outdated.

@@ -1,5 +1,12 @@
+---
+title: Getexperiment
+description: ```elixir user = %StatsigUser{ user_id: "test_user_123" } {:ok, layer} = Statsig.get_layer("user_promo_experiments", user) {:ok, title_string_value} =
+---
 ```elixir
 # Values via get_layer
+
+This page explains values via get_layer.
+
 user = %StatsigUser{
     user_id: "test_user_123"
 }
@@ -21,4 +28,4 @@ options = %Statsig.ExperimentEvaluationOptions{
 
 <Note>
 If you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numbers, for more complex type, SDK will return json serialized values.
-</Note> 
+</Note>

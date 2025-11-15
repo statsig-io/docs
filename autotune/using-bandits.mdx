@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: Both contextual and non-contextual bandits are managed on Statsig's console, or through Statsig's [console API](../console-api/autotunes.mdx) for prog
 ---
 
 Both contextual and non-contextual bandits are managed on Statsig's console, or through Statsig's [console API](../console-api/autotunes.mdx) for programmatic creation. Both bandit types use a common, streamlined API, making it easy to explore either use case without significant changes from using experiments.
@@ -17,7 +18,7 @@ There's no additional steps beyond a regular experiment check to use a bandit, t
 
 Check bandits using your standard experiment call. For example, in react this is as simple as configuring a bandit's variant json like:
 
-```
+```json
 {
     "text": "<my_text>",
     ...
@@ -26,7 +27,7 @@ Check bandits using your standard experiment call. For example, in react this is
 
 and accessing it in code using the same pattern as [experiments](../guides/abn-tests.mdx):
 
-```
+```javascript
 const banditText = useExperiment('contextual_bandit').config.get('text');
 ```
 

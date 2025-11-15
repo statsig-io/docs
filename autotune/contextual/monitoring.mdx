@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: There are three primary ways we recommend you monitor autotune performance. The best way to evaluate if a bandit is working is seeing if it drives mor
 ---
 
 There are three primary ways we recommend you monitor autotune performance.
@@ -17,7 +18,7 @@ This is the gold standard of measurement and is highly encouraged.
 
 Standard practice is to wrap the autotune in a experiment with a binary parameter, either as 50/50 or a 90/10 holdback.  You can link the experiment to the autotune to get the results on the autotune page. In code, this might look like:
 
-```
+```yaml
 experiment_value = statsig.get_experiment('wrapping_experiment').get('flag')
 default_param = '..."
 if(experiment_value):

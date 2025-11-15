@@ -1,8 +1,13 @@
+---
+title: Getexperiment
+description: <CodeGroup> ```erlang Erlang Layer = statsig:get_layer(User, <<"layer_name">>), ParamValue = statsig_layer:get(Layer, <<"param">>, <<"default">>). ```text
+---
+
 <CodeGroup>
 ```erlang Erlang
 Layer = statsig:get_layer(User, <<"layer_name">>),
 ParamValue = statsig_layer:get(Layer, <<"param">>, <<"default">>).
-```
+```text
 
 ```elixir Elixir
 layer = Statsig.get_layer(user, "layer_name")

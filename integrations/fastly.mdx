@@ -1,5 +1,6 @@
 ---
 title: Fastly
+description: Statsig offers a suite of integration tools that make usage with Fastly easy: * Statsig automatically pushes project changes to Fastly KV/Config Store
 ---
 
 Statsig offers a suite of integration tools that make usage with Fastly easy: 
@@ -31,7 +32,7 @@ Install the Statsig serverless SDK:
 
 ```bash
 npm install @statsig/serverless-client
-```
+```text
 </Step>
 <Step>
 #### Import the statsig SDK
@@ -39,13 +40,13 @@ Import the Statsig Helper:
 
 ```javascript
 import { handleWithStatsig} from "@statsig/serverless-client/fastly";
-```
+```text
 </Step>
 <Step>
 #### Use the SDK
 ```javascript
 handleWithStatsig(handler, params)
-```
+```go
 The helper method takes two arguments:
 - `handler` This is your Fastly Compute code. 
 - `params : StatsigFastlyHandlerParams` 
@@ -90,7 +91,7 @@ const handleRequest =  handleWithStatsig(myHandler,{
 
 addEventListener('fetch', (event) => event.respondWith(handleRequest(event)));
 
-```
+```python
 </Step>
 </Steps>
 **That's it!** The helper automatically:
@@ -118,7 +119,7 @@ Install the Statsig serverless SDK:
 
 ```bash
 npm install @statsig/serverless-client
-```
+```text
 </Step>
 <Step>
 #### Import the statsig SDK
@@ -126,13 +127,13 @@ Import the Fastly client:
 
 ```javascript
 import { StatsigFastlyClient} from "@statsig/serverless-client/fastly";
-```
+```text
 </Step>
 <Step>
 #### Creating a `StatsigFastlyClient` instance
 ```javascript
 const client = new StatsigFastlyClient("<Your Statsig client key>");
-```
+```python
 The client instantiation takes two arguments:
 - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
 - `options : StatsigOptions` See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
@@ -151,7 +152,7 @@ const initResult = await client.initializeFromFastly(<YOUR_FASTLY_STORE_TYPE>,
   <KEY_ASSOCIATED_WITH_STASIG_SPECS>,
   <YOUR_FASTLY_API_KEY>
 );
-```
+```go
 The client initialization takes four arguments:
 
 - `fastlyStoreType : string` This is the Fastly store type you are using represented by `kv` or `config`
@@ -166,7 +167,7 @@ For best practice: store `apiToken` in a Fastly [Secret Store](https://www.fastl
 #### Checking a Gate
 ```javascript
 const value = client.checkGate("pass_gate", user);
-```
+```text
 
 This is a gate check in code.
 
@@ -182,7 +183,7 @@ Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDev
 #### Logging an event
 ```javascript
 client.logEvent('fastly_gate_check', user, value.toString());
-```
+```text
 This is an event log in code. 
 
 The `logEvent` method takes two parameters:
@@ -199,7 +200,7 @@ For more information on event logging, see [here](https://docs.statsig.com/clien
 
 ```javascript
 event.waitUntil(client.flush());
-```
+```python
 This flushes all events from the sdk to Statsig.  **Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged**.
 
 </Step>
@@ -233,7 +234,7 @@ async function handleRequest(event) {
 
 }
 
-```
+```ruby
 ## Other Considerations
 
 ### Polling for updates v5.13.0+

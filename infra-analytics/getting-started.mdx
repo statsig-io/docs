@@ -3,7 +3,6 @@ title: Getting Started with OTEL + Statsig
 sidebarTitle: Getting Started
 description: Setup and send OpenTelemetry telemetry to Statsig for Infra Analytics (Logs Explorer, Metrics Explorer, Alerts).
 ---
-
 This guide helps you setup and send OpenTelemetry telemetry to Statsig so you can use Infra Analytics (Logs Explorer, Metrics Explorer, Alerts).
 
 There are two common paths:
@@ -18,6 +17,9 @@ There are two common paths:
 
 ---
 ## Application Telemetry quick starts
+
+This page explains application telemetry quick starts.
+
 
 <Tabs>
 <Tab title="Node.js">
@@ -35,7 +37,7 @@ npm install --save \
   @opentelemetry/exporter-logs-otlp-http \
   @opentelemetry/resources \
   @opentelemetry/semantic-conventions
-```
+```text
 
 Initialize OpenTelemetry (e.g., `instrumentation.js`):
 
@@ -83,7 +85,7 @@ const sdk = new NodeSDK({
 
 sdk.start();
 
-```
+```text
 
 To set up application logs with OTel, you can use the pino or winston bridges. The example below using [pino](https://getpino.io/#/) with 
 [pino auto instrumentation](https://www.npmjs.com/package/@opentelemetry/instrumentation-pino).
@@ -91,7 +93,7 @@ To set up application logs with OTel, you can use the pino or winston bridges. T
 Install the pino instrumentation:
 ```bash
 npm i pino @opentelemetry/instrumentation-pino
-```
+```text
 
 ```js
 // instrumentation.js (continued)
@@ -122,7 +124,7 @@ const pino = require('pino');
 const logger = pino();
 
 logger.info('OTel logs initialized');
-```
+```text
 
 The Statsig SDK also supports forwarding logs to Log Explorer; see the alternative logging example below.
 
@@ -150,7 +152,7 @@ s.forwardLogLineEvent(user, 'info', 'service started', { version: process.env.np
    });
  }
 
-```
+```javascript
 
 Run your service:
 
@@ -160,7 +162,7 @@ make sure that you require or import `instrumentation.js` before any other appli
 STATSIG_SERVER_SDK_SECRET=YOUR_SECRET \
 OTEL_SERVICE_NAME=my-node-service \
 node -r ./instrumentation.js app.js
-```
+```ruby
 
 Tip: you can configure exporters via env instead of code:
 - `OTEL_EXPORTER_OTLP_ENDPOINT=https://api.statsig.com/otlp`
@@ -177,7 +179,7 @@ Install dependencies:
 
 ```bash
 npm install @opentelemetry/sdk-node @opentelemetry/resources @opentelemetry/semantic-conventions @opentelemetry/sdk-trace-node @opentelemetry/exporter-trace-otlp-http @opentelemetry/auto-instrumentations-node
-```
+```text
 
 Add `instrumentation.ts` at the app root (Next 13+):
 
@@ -219,7 +221,7 @@ export async function register() {
 
   sdk.start();
 }
-```
+```text
 
 To set up application logs with OTel, you can use the pino or winston bridges. The example below using [Pino](https://getpino.io/#/) with 
 [Pino auto instrumentation](https://www.npmjs.com/package/@opentelemetry/instrumentation-pino).
@@ -227,7 +229,7 @@ To set up application logs with OTel, you can use the pino or winston bridges. T
 Install the pino instrumentation:
 ```bash
 npm i pino @opentelemetry/instrumentation-pino
-```
+```text
 
 ```js
 // instrumentation.ts (continued)
@@ -258,7 +260,7 @@ import pino from 'pino';
 const logger = pino();
 
 logger.info('OTel logs initialized');
-```
+```text
 
 The Statsig SDK also supports forwarding logs to Log Explorer; see the alternative logging example below.
 
@@ -285,7 +287,7 @@ s.forwardLogLineEvent(user, 'info', 'service started', { version: process.env.np
      stack: err?.stack,
    });
  }
-```
+```python
 Note: In Next.js, mark '@statsig/statsig-node-core' as a server external package in `next.config.js` to avoid bundling.
 
 ### Using Vercel + Statsig integration
@@ -355,7 +357,7 @@ config:
         receivers: [otlp]
         processors: [batch]
         exporters: [otlphttp]
-```
+```text
 
 Install the Collector with Helm:
 
@@ -365,7 +367,7 @@ helm repo update
 helm install otel-gateway open-telemetry/opentelemetry-collector \
   -n otel --create-namespace \
   -f values.yaml
-```
+```ruby
 
 Provide the Statsig key as an environment variable to the Collector pods (for example via a Secret and envFrom). Your applications then send OTLP to the in-cluster Collector endpoint (for example `http://otel-gateway-collector.otel.svc.cluster.local:4318`).
 
@@ -395,7 +397,7 @@ services:
     ports:
       - "4317:4317"   # OTLP gRPC
       - "4318:4318"   # OTLP HTTP
-```
+```text
 
 Create the Collector config referenced above:
 
@@ -430,14 +432,14 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlphttp]
-```
+```text
 
 Start the Collector:
 
 ```bash
 export STATSIG_SERVER_SDK_SECRET=YOUR_SECRET
 docker compose up -d
-```
+```python
 
 Point your applications at the Collector (HTTP): `http://localhost:4318` (or `http://otel-collector:4318` from other compose services). The Collector forwards to Statsig with your key.
 
@@ -454,7 +456,7 @@ exporters:
     encoding: json
     headers:
       statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
-```
+```javascript
 
 </Tab>
 
@@ -477,7 +479,7 @@ image:
   repository: otel/opentelemetry-collector-contrib
   tag: "latest"
   pullPolicy: IfNotPresent
-```
+```python
 
 ### A. File logs (filelog receiver)
 
@@ -512,7 +514,7 @@ service:
       receivers: [filelog]
       processors: [batch]
       exporters: [otlphttp]
-```
+```text
 
 Kubernetes tip: to tail container logs on nodes, mount host paths (e.g., `/var/log/pods` and `/var/lib/docker/containers`) into the Collector DaemonSet and set `include` to those paths.
 
@@ -541,7 +543,7 @@ service:
       receivers: [otlp]
       processors: [resourcedetection/ec2, batch]
       exporters: [otlphttp]
-```
+```sql
 
 Permissions: the Collector must be able to reach the EC2 metadata service (IMDS). Ensure network access to `169.254.169.254` and IMDSv2 where required.
 

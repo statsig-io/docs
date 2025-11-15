@@ -34,7 +34,7 @@ via the `go get` CLI:
 
 ```bash
 go get github.com/statsig-io/go-sdk
-```
+```ruby
 
 Or, add a dependency on the most recent version of the SDK in go.mod:
 
@@ -42,7 +42,7 @@ Or, add a dependency on the most recent version of the SDK in go.mod:
 require (
   github.com/statsig-io/go-sdk v1.26.0
 )
-```
+```text
 
 See the [Releases tab in GitHub](https://github.com/statsig-io/go-sdk/releases) for the latest versions.
 
@@ -59,7 +59,7 @@ statsig.Initialize("server-secret-key")
 
 // Or, if you want to initialize with certain options
 statsig.InitializeWithOptions("server-secret-key", &Options{Environment: Environment{Tier: "staging"}})
-```
+```text
 
 <InitializationFooter/>
 </Step>
@@ -77,7 +77,7 @@ if feature {
 } else {
   // Gate is off
 }
-```
+```text
 
 <GetFeatureGateIntro/>
 
@@ -88,7 +88,7 @@ if feature.Value {
   // Gate is on, enable new feature
   fmt.Print(feature.EvaluationDetails.Reason)
 }
-```
+```text
 
 <GetDynamicConfigIntro/>
 
@@ -105,7 +105,7 @@ bool shouldDiscount = config.GetBool("discount", false);
 // Or just get the whole json object backing this config if you prefer
 json := config.Value
 
-```
+```text
 
 <GetExperimentIntro/>
 
@@ -131,7 +131,7 @@ price := msrp * (1 - discount);
 // getting the layer name that an experiment belongs to
 
 userPromoLayer := Statsig.GetExperimentLayer("new_user_promo_title");
-```
+```text
 
 <LogEventIntro/>
 
@@ -143,7 +143,7 @@ statsig.LogEvent(Event{
 		Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
 	})
 
-```
+```text
 
 <LogEventFooter/>
 
@@ -164,7 +164,7 @@ type Options struct {
   BootstrapValues      string
 	RulesUpdatedCallback func(rules string, time int64)
 }
-```
+```kotlin
 
 - **Environment**: default nil
   - An object you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
@@ -197,7 +197,7 @@ type GCIROptions struct {
 	IncludeConfigType     bool
 	ConfigTypesToInclude  []ConfigType
 }
-```
+```python
 
 - **IncludeLocalOverrides**: default false
   - When set to true, local overrides will be included in the client initialize response.
@@ -235,7 +235,7 @@ type GCIROptions struct {
 
 ```go
 statsig.Shutdown()
-```
+```text
 
 <LocalOverridesIntro/>
 
@@ -243,7 +243,7 @@ statsig.Shutdown()
 func OverrideGate(gate string, val bool)
 
 func OverrideConfig(config string, val map[string]interface{})
-```
+```text
 
 <ClientInitResponseIntro/>
 
@@ -255,7 +255,7 @@ options.ClientKey = "client-YOUR_CLIENT_KEY"
 result := statsig.GetClientInitializeResponseWithOptions(user, &options)
 
 // You can then pass 'result' into a Statsig Client SDK
-```
+```text
 
 ## Data Store
 
@@ -287,7 +287,7 @@ type IDataAdapter interface {
 	*/
 	ShouldBeUsedForQueryingUpdates(key string) bool
 }
-```
+```text
 
 ### Example Implementation
 
@@ -316,7 +316,7 @@ func (d *dataAdapterExample) Shutdown() {}
 func (d *dataAdapterExample) ShouldBeUsedForQueryingUpdates(key string) bool {
 	return false
 }
-```
+```text
 
 ## User Persistent Storage
 
@@ -336,7 +336,7 @@ type IUserPersistentStorage interface {
 	 */
 	Save(key string, data string)
 }
-```
+```text
 
 ### Example Implementation
 
@@ -357,17 +357,17 @@ func (d *userPersistentStorageExample) Save(key string, value string) {
 	d.saveCalled++
 	d.store[key] = value
 }
-```
+```text
 
 <MultiInstanceIntro/>
 
 ```go
 sdkInstance := NewClientWithOptions(sdkKey, &Options{})
-```
+```ruby
 
 ## FAQ
 
-#### How do I run experiments for logged out users?
+### How do I run experiments for logged out users?
 
 See the guide on [device level experiments](/guides/first-device-level-experiment)
 
@@ -388,7 +388,7 @@ gateDefault := c.CheckGate(user, "any_gate")
 
 c.OverrideGate("any_gate", true)
 // "any_gate" is now true
-```
+```text
 
 See also [https://github.com/statsig-io/go-sdk/blob/main/overrides_test.go](https://github.com/statsig-io/go-sdk/blob/main/overrides_test.go)
 
@@ -415,7 +415,7 @@ type User struct {
 	StatsigEnvironment map[string]string      `json:"statsigEnvironment,omitempty"`
 	CustomIDs          map[string]string      `json:"customIDs"`
 }
-```
+```text
 
 ### StatsigOptions
 
@@ -496,7 +496,7 @@ type GCIROptions struct {
 	ClientKey             string
 	HashAlgorithm         string //supports "sha256", "djb2", "none", default "sha256"
 }
-```
+```text
 
 ### Event
 
@@ -508,7 +508,7 @@ type Event struct {
 	Metadata  map[string]string `json:"metadata"`
 	Time      int64             `json:"time"`
 }
-```
+```text
 
 ### FeatureGate
 
@@ -521,7 +521,7 @@ type FeatureGate struct {
 	GroupName         string             `json:"group_name"`
 	EvaluationDetails *EvaluationDetails `json:"evaluation_details"`
 }
-```
+```text
 
 ### DynamicConfig
 

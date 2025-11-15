@@ -1,27 +1,27 @@
 ---
-title: Feature Gate rule criteria
-description: Statsig feature gates contain a list of rules that are evaluated in order from top to bottom. This page describes in more detail how these rules are evaluated and lists all currently supported conditions.
+title: Feature Flag rule criteria
+description: Statsig feature flags contain a list of rules that are evaluated in order from top to bottom. This page describes in more detail how these rules are evaluated and lists all currently supported conditions.
 ---
 
-Statsig feature gates contain a list of rules that are evaluated in order from top to bottom. The page describes in more detail how these rules are evaluated and lists all currently supported conditions.
+Statsig feature flags contain a list of rules that are evaluated in order from top to bottom. The page describes in more detail how these rules are evaluated and lists all currently supported conditions.
 
 ## Rule Evaluation
 
 The rules that you create are evaluated in the order they're listed. For each rule, the **criteria** or **conditions** determine which users _qualify_ for the Pass/Fail treatments. The Pass percentage further determines the percentage of _qualifying_ users that will be exposed to the new feature. The remaining _qualifying_ users will see the feature disabled.
 
-Suppose you set up your rules as shown below, the following flow chart illustrates how Statsig evaluates these rules.
+Suppose you set up your rules as shown in the following example, the following flow chart illustrates how Statsig evaluates these rules.
 
 <Frame>
   <img src="/images/conditions/example-rules-gate.png" alt="Example Rules Gate" />
 </Frame>
 
 <Frame>
-  <img src="/images/conditions/rules-evaluation-flowchart.png" alt="Feature gate rules evaluation flowchart" />
+  <img src="/images/conditions/rules-evaluation-flowchart.png" alt="Feature Flag rules evaluation flowchart" />
 </Frame>
 
 Note that as soon as a user qualifies based on the condition in a given rule, Statsig doesn't evaluate subsequent rules for this user. Statsig then picks the qualifying user to be in either the Pass or Fail group of that rule.
 
-Also note that in the example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then only a subset of your users (users in pools 1 and 2) would qualify for this feature gate and for further analysis, not your total user base.
+Also note that in the example, the third rule for **Remaining Folks** captures all users who don't qualify for previous two rules. If we were to remove this third rule, then only a subset of your users (users in pools 1 and 2) would qualify for this feature flag and for further analysis, not your total user base.
 
 ### Client vs Server SDKs
 All of the following conditions work on both client and server SDKs. Client SDKs handle these conditions a bit more automatically for you - if you do not provide a userID, client SDKs rely on an auto-generated "stable identifier" which is persisted to local storage.
@@ -31,7 +31,7 @@ In addition, if you do not automatically set an IP or User Agent (UA), the clien
 Evaluations at a given percentage are *stable* with respect to the unitID. For example, if the gate/config/experiment/layer has a unit type of "userID", and userID = 4 passes a condition at a 50% rollout, they will always pass at that 50% rollout. The same applies for `customIDs`, if the unit type of the entity is that `customID`. Want to reset that stability? See "Resalting" below.
 
 ### Resalting
-Gate evaluations are stable for a given gate, percentage rollout, and user ID. This is made possible by the salt associated with a feature gate. If you want to reset a gate, triggering a reshuffle of users, you can "resalt" a gate from the dropdown menu in the top right of the feature gate details page.
+Gate evaluations are stable for a given gate, percentage rollout, and user ID. This is made possible by the salt associated with a feature flag. If you want to reset a gate, triggering a reshuffle of users, you can "resalt" a gate from the dropdown menu in the top right of the feature flag details page.
 
 <Frame>
   <img src="/images/conditions/resalt-ui.png" alt="Resalt UI" />
@@ -39,8 +39,8 @@ Gate evaluations are stable for a given gate, percentage rollout, and user ID. T
 
 ### Partial Rollouts
 While 0% or 100% rollouts for gates are simply "on for users matching this rule"/"off for users matching this rule", each rule allows you to specify a percentage of qualifying users who should pass (see the new feature).
-If you want to get [Pulse Results](/pulse/read-pulse) (metric movements caused by a feature), simply specifying a number between 0% and 100% will create a random allocation of users in Pass/Fail or "test"/"control" groups for a simple A/B test.
-You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone. Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Pulse Results as shown below.
+If you want to get [Pulse Results](/pulse/read-pulse) (metric movements caused by a feature), simply specifying a number between 0% and 100% will create a random allocation of users in Pass/Fail or "test"/"control" groups for a simple Experiment.
+You can use this to validate that a new feature does not regress existing metrics as you roll it out to everyone. Statsig suggests a 2% -> 10% -> 50% -> 100% roll out strategy. Each progressive roll out will generate its own Pulse Results as shown in the following example.
 
 <Frame>
   <img src="/images/conditions/metric-lifts.png" alt="Metric Lifts" />
@@ -80,7 +80,7 @@ Usage: Percentage rollout on the remainder of users that reach this condition. T
 
 Supported Operators: `None. Percentage based only.`
 
-Example usage: 50/50 rollout to A/B test a new feature. Or 0% to hide the feature for all people not matching a set of rules. Or 100% to show the feature to the remaining users who did not meet a condition above.
+Example usage: 50/50 rollout to Experiment a new feature. Or 0% to hide the feature for all people not matching a set of rules. Or 100% to show the feature to the remaining users who did not meet a condition above.
 
 <Frame>
   <img src="/images/conditions/everyone-5050-condition-example.png" alt="Everyone 50/50 condition example" />
@@ -310,11 +310,11 @@ Example: Only show a feature to 20 somethings, as marked by the privateAttribute
 <AccordionGroup>
 
 <Accordion title="Could users switch between control (fail) and test (pass) groups?">
-Once a user is exposed, they will be included in the analysis going forward. They saw the new feature and were affected. If the feature gate rules are modified or the user's attributes change in a way that the user no longer qualifies, they will stop receiving the new feature. However, they will continue to be counted for analysis. Once you roll out the feature, all users will see the new feature; alternatively, if you turn off the feature gate, all users will see the control (feature disabled). In either case (roll out or turn off), Statsig performs no further analysis.
+Once a user is exposed, they will be included in the analysis going forward. They saw the new feature and were affected. If the feature flag rules are modified or the user's attributes change in a way that the user no longer qualifies, they will stop receiving the new feature. However, they will continue to be counted for analysis. Once you roll out the feature, all users will see the new feature; alternatively, if you turn off the feature flag, all users will see the control (feature disabled). In either case (roll out or turn off), Statsig performs no further analysis.
 </Accordion>
 
 <Accordion title="How do overrides work? Are users included in overrides also included in the analysis?">
-When you add user IDs in the **Pass** or **Fail** lists of your feature gate, these users will see the appropriate treatment but will not be included in the analysis.
+When you add user IDs in the **Pass** or **Fail** lists of your feature flag, these users will see the appropriate treatment but will not be included in the analysis.
 </Accordion>
 
 </AccordionGroup>

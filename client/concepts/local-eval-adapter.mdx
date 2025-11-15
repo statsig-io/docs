@@ -1,5 +1,6 @@
 ---
 title: Local Eval Adapter
+description: A common limitation of experimentation systems is the **dependence on an upfront network requests to fetch experiment configurations**. While concepts
 ---
 
 ## Local Eval Adapter
@@ -46,7 +47,7 @@ The Adapter manifests as a StatsigOptions object seeded with a ruleset payload:
         println(Statsig.getFeatureGate("a_gate").details.reason) // Network:Recognized
       }
     })
-```
+```text
   </Tab>
   <Tab title="JavaScript">
 ```js
@@ -71,7 +72,7 @@ The Adapter manifests as a StatsigOptions object seeded with a ruleset payload:
 
     const networkEvalGate = client.getFeatureGate('a_gate');
     console.log(networkEvalGate.details.reason); // Network:Recognized
-```
+```text
   </Tab>
 </Tabs>
 

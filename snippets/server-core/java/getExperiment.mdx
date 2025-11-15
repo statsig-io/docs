@@ -1,3 +1,8 @@
+---
+title: Getexperiment
+description: <CodeGroup> ```java Java String userID = "user_id"; // Getting an Experiment Experiment experiment = statsig.getExperiment(userID, "my_experiment"); S
+---
+
 <CodeGroup>
 ```java Java
 String userID = "user_id";
@@ -18,7 +23,7 @@ StatsigUser user = StatsigUser.builder()
     
 Experiment experimentWithUser = statsig.getExperiment(user, "my_experiment");
 Layer layerWithUser = statsig.getLayer(user, "my_layer");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

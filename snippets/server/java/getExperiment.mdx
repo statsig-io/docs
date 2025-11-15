@@ -1,3 +1,8 @@
+---
+title: Getexperiment
+description: <CodeGroup> ```java Java // Values via getLayer Layer layer = Statsig.getLayerSync(user, "user_promo_experiments"); String title = layer.getString("ti
+---
+
 <CodeGroup>
 ```java Java
 // Values via getLayer
@@ -9,7 +14,7 @@ double discount = layer.getDouble("discount", 0.1);
 DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo");
 String expTitle = experiment.getString("title", "Welcome to Statsig!");
 double expDiscount = experiment.getDouble("discount", 0.1);
-```
+```text
 
 ```kotlin Kotlin
 // Values via getLayer

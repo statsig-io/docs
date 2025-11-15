@@ -1,5 +1,6 @@
 ---
 title: Cloudflare KV
+description: Statsig offers a set of integrations that make usage with Cloudflare easy: * Automatically pushing changes to Cloudflare's KV store, for low-latency S
 ---
 
 Statsig offers a set of integrations that make usage with Cloudflare easy: 
@@ -35,7 +36,7 @@ Install the Statsig serverless SDK:
 
 ```bash
 npm install @statsig/serverless-client
-```
+```text
 
 </Step>
 
@@ -55,7 +56,7 @@ export default handleWithStatsig(
    envKvBindingName: 'STATSIG_KV'
   }
 );
-```
+```javascript
 
 <Note>
 The required ParamsObject params (kvKey, envStatsigKey, envKvBindingName) must be stored as env variables, either in your wrangler.toml or as Cloudflare secrets.
@@ -96,7 +97,7 @@ import { handleWithStatsig } from '@statsig/serverless-client/cloudflare';
 export default handleWithStatsig(
   async (request, env, ctx, client) => {
     const randomUserId = Math.floor(Math.random() * 100).toString();
-    const gate = client.getFeatureGate("test_cloudflare_sync", { userID: randomUserId });
+    const gate = client.getFeature Flag("test_cloudflare_sync", { userID: randomUserId });
 	const value = gate.value;
     client.logEvent('new_event', { userID: randomUserId });
     return new Response(`Gate check result: ${value}`);
@@ -108,7 +109,7 @@ export default handleWithStatsig(
   }
 );
 
-```
+```text
   ```wrangler wrangler.toml
   name = "test"
   main = "src/index.js"
@@ -123,7 +124,7 @@ export default handleWithStatsig(
 
   [observability]
   enabled = true
-  ```
+  ```python
 
 </CodeGroup>
 </Step>
@@ -153,14 +154,14 @@ First, you'll need to install the Statsig serverless sdk.
 
 ```bash
 npm install @statsig/serverless-client
-```
+```javascript
 
 ## Import
 Next, import the Cloudflare client.
 
 ```bash
 import { StatsigCloudflareClient } from '@statsig/serverless-client/cloudflare';
-```
+```python
 
 Then, you need to hook it all up.  This involves:
 
@@ -177,7 +178,7 @@ In our example, we are checking a gate called "test_cloudflare_sync" that is set
 ### 1. Creating a `StatsigCloudflareClient` instance
 ```bash
 const client = new StatsigCloudflareClient("<Your Statsig client key>");
-```
+```python
 The client instantiation takes two arguments:
 - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
 - `options : StatsigOptions` See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
@@ -188,11 +189,11 @@ For best practice:
 
 ### 2. Client initialization
 
-The following line initializes the client by loading feature gate and experiment configurations directly from your Cloudflare KV store.
+The following line initializes the client by loading feature flag and experiment configurations directly from your Cloudflare KV store.
 
 ```bash
 const initResult = await client.initializeFromKV(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
-```
+```text
 
 The client initialization takes two arguments:
 
@@ -206,7 +207,7 @@ For best practice:
 ### 3. Checking a Gate
 ```bash
 const value = client.checkGate("test_cloudflare_sync", { userID: randomUserId });
-```
+```text
 
 This is a gate check in code.
 
@@ -219,7 +220,7 @@ Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDev
 ### 4. Logging an event
 ```bash
 client.logEvent('gate_check', { userID: randomUserId });
-```
+```text
 This is an event log in code. 
 
 The `logEvent` method takes two parameters:
@@ -232,7 +233,7 @@ For more information on event logging, see [here](https://docs.statsig.com/clien
 
 ```bash
 ctx.waitUntil(statsig.flush());
-```
+```python
 
 This flushes all events from the sdk to Statsig.  **Without this, you wont be able to get diagnostic information in the Statsig Console, nor any event data you logged**.
 
@@ -264,7 +265,7 @@ export default {
     }
   }
 };
-```
+```text
 </Tab>
 <Tab title="wrangler.toml">
   ```wrangler
@@ -281,7 +282,7 @@ export default {
 
   [observability]
   enabled = true
-  ```
+  ```ruby
 </Tab>
 </Tabs>
 

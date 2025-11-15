@@ -1,3 +1,8 @@
+---
+title: Proxying
+description: <Tabs> <Tab title="App Router"> ```ts app/proxy/initialize/route.ts // Note: Using generic path names like "proxy" instead of "statsig-proxy" // to pr
+---
+
 <Tabs>
 <Tab title="App Router">
 ```ts app/proxy/initialize/route.ts
@@ -13,7 +18,7 @@ export async function POST(request: Request): Promise<Response> {
   const data = await generateBootstrapValues();
   return new Response(data);
 }
-```
+```text
 
 ```ts app/proxy/search.ts
 // Note: Using generic path names like "search" instead of "log_event" or "events"
@@ -31,7 +36,7 @@ export async function POST(request: Request): Promise<Response> {
   };
   return fetch(logEventUrl, fetchOptions);
 }
-```
+```text
 </Tab>
 
 <Tab title="Page Router">
@@ -54,7 +59,7 @@ export default async function handler(
   const values = await getStatsigValues(user);
   res.status(200).send(values);
 }
-```
+```text
 
 ```ts pages/api/proxy/search.ts
 // Note: Using generic path names like "search" instead of "log_event" or "events"
@@ -100,7 +105,7 @@ export default async function handler(
     res.status(500).send('Failed to log event: ' + err);
   }
 }
-```
+```text
 </Tab>
 </Tabs>
 

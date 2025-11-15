@@ -1,6 +1,7 @@
 ---
 title: Statsig Web Analytics Overview
 sidebarTitle: Overview
+description: [Web analytics](https://www.statsig.com/web-analytics) lets you track and watch key measures for your website easily. It is different from product ana
 ---
 
 # Web Analytics Overview
@@ -25,7 +26,7 @@ The simplest way to get started is by adding a single script tag to your website
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=[YOUR_CLIENT_KEY]"></script>
-```
+```python
 
 Get YOUR_CLIENT_KEY from Project Settings -> Keys & Environments. Reveal the Client API Key, copy, and paste it over the [YOUR_CLIENT_KEY] in the snippet above.
 
@@ -51,7 +52,7 @@ For more control over initialization and configuration, you can manually initial
 
   client.initializeAsync().catch((err) => console.error(err));
 </script>
-```
+```text
 
 ### Option 3: JavaScript Client SDK (React Bindings)
 
@@ -74,7 +75,7 @@ import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
       <div>Hello</div>
     </StatsigProvider>
   );
-```
+```python
 
 ## Autocaptured Events
 
@@ -133,7 +134,7 @@ const client = new StatsigClient(
     })
   ]}
 );
-```
+```text
 
 ### Console Log Capture Configuration
 
@@ -151,7 +152,7 @@ const client = new StatsigClient(
     })
   ]}
 );
-```
+```python
 
 There are a few additional optional configuration settings available when capturing console logs:
 

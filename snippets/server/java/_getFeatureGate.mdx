@@ -1,3 +1,8 @@
+---
+title:  Getfeaturegate
+description: <Tabs> <Tab title="Java"> ```java APIFeatureGate featureGate = Statsig.getFeatureGate(user, "a_gate"); System.out.println("Feature Gate: " + featureGa
+---
+
 <Tabs>
   <Tab title="Java">
 
@@ -7,7 +12,7 @@ System.out.println("Feature Gate: " + featureGate.getName() + ", Is Enabled?: " 
 
 String reason = featureGate.getReason() != null ? featureGate.getReason().toString() : "No specific reason";
 System.out.println("Evaluation Reason: " + reason);
-```
+```text
 
   </Tab>
   <Tab title="Kotlin">

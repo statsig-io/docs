@@ -1,5 +1,6 @@
 ---
 title: OpenAI 
+description: When using a pre-trained large language model, several inputs influence user experience, including the prompts used, the "inference parameters" given 
 ---
 ## Context
 
@@ -19,7 +20,7 @@ Of course, you'll need to install both the Statsig and OpenAI Python packages be
 
 ```bash
 pip3 install openai, statsig
-```
+```text
 
 After that, we can begin coding in a python file:
 
@@ -31,7 +32,7 @@ import time
 openai.api_key = "your_openai_key"  # Replace with your own key
 statsig.initialize("your_statsig_secret")  # Replace with your Statsig secret
 user = StatsigUser("user-id") #This is a placeholder ID - in a normal experiment Statsig recommends using a user's actual unique ID for consistency in targeting. See https://docs.statsig.com/concepts/user
-```
+```javascript
 
 ### The ask_question Function
 
@@ -42,7 +43,7 @@ The following code all occurs in one function titled ask_question (see the [fina
 ```python
 #ask the user for a question to query GPT with
 question = input("\nWhat is your question? ")
-```
+```text
 
 First, we prompt the user with the question they'd like to ask ChatGPT
 
@@ -60,7 +61,7 @@ completion = openai.ChatCompletion.create(
             {"role": "user", "content": question}
         ]
     )
-```
+```text
 
 Next, we request a completion that queries the GPT model specified by the Statsig experiment (either gpt-3.5-turbo or gpt-4). We also start a timer so we can track the response time in our events later on.
 
@@ -74,7 +75,7 @@ statsig.log_event(StatsigEvent(user, "chat_completion", value=c.finish_reason, m
 
 #print the message back to the user
 print(f"\nAnswer: {c.message['content']}")
-```
+```python
 
 With the response from OpenAI we have our first set of useful information to log to Statsig - like the response time and tokens used. We log this information with Statsig's SDK, storing them in the metadata of the request. 
 
@@ -88,7 +89,7 @@ if satisfaction == 'y':
     statsig.log_event(StatsigEvent(user, "satisfaction"))
 elif satisfaction == 'n':
     statsig.log_event(StatsigEvent(user, "dissatisfaction"))
-```
+```text
 
 Next, we log a more explicit indicator of feedback, the user's self-reported satisfaction or dissatisfaction. The satisfaction metric can provide a strong indicator of the model's overall power. 
 
@@ -98,9 +99,9 @@ And we're done - we can run this Python program with the following code, now out
 if __name__ == "__main__":
     while input("Would you like to ask a question? (y/n): ").lower() == 'y':
         ask_question()
-```
+```sql
 
-### Tips for Using Statsig with AI
+## Tips for Using Statsig with AI
 1. Experimentation: You can also test other model parameters like temperature, top_p, or initial prompts.
 2. Log Useful Data: Consider logging other interesting user interactions or feedback.
 3. Analyze and Iterate: After collecting enough data, analyze the results on the Statsig dashboard.

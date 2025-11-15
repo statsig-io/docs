@@ -1,3 +1,8 @@
+---
+title: Localoverrides
+description: Local overrides allow you to override feature gate and config values for testing purposes. <CodeGroup> ```java Java import java.util.HashMap; import j
+---
+
 Local overrides allow you to override feature gate and config values for testing purposes.
 
 <CodeGroup>
@@ -30,7 +35,7 @@ statsig.clearAllOverrides();
 // Clear specific override
 statsig.clearGateOverride("my_feature_gate");
 statsig.clearConfigOverride("my_config");
-```
+```text
 
 ```kotlin Kotlin
 // Override a gate

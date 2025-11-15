@@ -1,6 +1,7 @@
 ---
 title: Configure Statsig Session Replay
 sidebarTitle: Configure
+description: In the Statsig Console, you can configure your Session Replay settings under **Project Settings → Analytics & Session Replay**. You must be a project 
 ---
 
 ## Conditional Recording
@@ -76,7 +77,7 @@ runStatsigTriggeredSessionReplay(client, {
 });
 runStatsigAutoCapture(client);
 await client.initializeAsync();
-```
+```text
 
   </Tab>
   <Tab title="React" icon="react">
@@ -106,7 +107,7 @@ function App() {
     </StatsigProvider>
   );
 }
-```
+```python
 
   </Tab>
 </Tabs>
@@ -137,7 +138,7 @@ const sessionReplayClient = new SessionReplay(client);
 if (someCondition) {
   sessionReplayClient.startRecording();
 }
-```
+```javascript
 
 If not, you can import the function from `@Statsig/session-replay` and call it using your SDK key
 

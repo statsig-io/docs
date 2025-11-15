@@ -1,3 +1,7 @@
+---
+title: Manualinstallation
+description: Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router](https://nextjs.org/docs/app), with some differences in integration p
+---
 Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router](https://nextjs.org/docs/app), with some differences in integration patterns.
 
 <Tabs>
@@ -7,9 +11,12 @@ Statsig supports both [Page Router](https://nextjs.org/docs/pages) & [App Router
 Add the keys to your .env.local file:
 ```bash .env.local
 # the NEXT_PUBLIC_ prefix is required for this to be available on the client side
+
+This page explains the next_public_ prefix is required for this to be available on the client side.
+
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
 STATSIG_SERVER_KEY=secret-<REPLACE_WITH_YOUR_SERVER_KEY>
-```
+```text
 
 </Step>
 <Step title="Install packages">
@@ -19,15 +26,15 @@ For App Router, install the @statsig/next package:
 <CodeGroup>
 ```bash NPM
 npm i @statsig/next
-```
+```text
 
 ```bash Yarn
 yarn add @statsig/next
-```
+```text
 
 ```bash PNPM
 pnpm add @statsig/next
-```
+```ruby
 </CodeGroup>
 
 </Step>
@@ -63,7 +70,7 @@ export default function RootLayout({
     </html>
   );
 }
-```
+```text
 </Step>
 </Steps>
 </Tab>
@@ -77,7 +84,7 @@ Add the keys to your .env.local file:
 ```bash .env.local
 # the NEXT_PUBLIC_ prefix is required for this to be available on the client side
 NEXT_PUBLIC_STATSIG_CLIENT_KEY=client-<REPLACE_WITH_YOUR_CLIENT_KEY>
-```
+```text
 
 </Step>
 <Step title="Install packages">
@@ -87,15 +94,15 @@ Install the @statsig/react-bindings package:
 <CodeGroup>
 ```bash NPM
 npm i @statsig/react-bindings @statsig/web-analytics
-```
+```text
 
 ```bash Yarn
 yarn add @statsig/react-bindings @statsig/web-analytics
-```
+```text
 
 ```bash PNPM
 pnpm add @statsig/react-bindings @statsig/web-analytics
-```
+```text
 </CodeGroup>
 
 </Step>

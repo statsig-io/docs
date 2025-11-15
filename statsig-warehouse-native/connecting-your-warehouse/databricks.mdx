@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: To set up a connection with Databricks, you will need the following: - Your Databricks Server Hostname - An HTTP Path to a Cluster or SQL Warehouse
 ---
 
 ## Overview
@@ -50,7 +51,7 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 ```sql
 staging_database_name = '<my_name>'
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {staging_database_name}")
-```
+```python
 
 ### What IP addresses will Statsig access data warehouses from?
 

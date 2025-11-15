@@ -1,3 +1,8 @@
+---
+title: Forwardloglineevent
+description: <CodeGroup> ```java Java import java.util.HashMap; import java.util.Map; String userID = "user_id"; Map<String, Object> payload = new HashMap<>(); pay
+---
+
 <CodeGroup>
 ```java Java
 import java.util.HashMap;
@@ -18,7 +23,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 statsig.forwardLogLineEvent(user, payload);
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

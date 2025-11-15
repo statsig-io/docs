@@ -10,7 +10,7 @@ last_update:
 
 ## Cost Management
 
-Statsig's pipelines leverage many SQL best practices in order to reduce cost, and smaller customers can run month-long analyses for a few pennies.
+Statsig's pipelines leverage many SQL best practices in order to reduce cost, and smaller users can run month-long analyses for a few pennies.
 
 Following these best practices will help keep costs under control and consistent.
 
@@ -87,7 +87,7 @@ SELECT
     dt
 FROM log_table
 WHERE dt BETWEEN {statsig_start_date} AND {statsig_end_date}
-```
+```text
 
 resolves to
 
@@ -99,7 +99,7 @@ SELECT
     dt
 FROM log_table
 WHERE dt BETWEEN DATE('2023-09-01') AND DATE('2023-09-03')
-```
+```ruby
 
 This is a powerful tool since you can inject filters into queries with joins or CTEs and be confident that the initial scan will be pruned.
 
@@ -137,7 +137,7 @@ CREATE TABLE dataset.events (
 )
 PARTITION BY DATE(ts)
 CLUSTER BY event;
-```
+```text
 
 BigQuery's support for applying a cluster to an existing table is limited. Additionally, adding a cluster to an existing table will not automatically recluster the data right away. Given this, if you need to repartition on event date or add a cluster by event, you can create a new table with the correct partitions and clusters using your current table.
 
@@ -153,7 +153,7 @@ FROM dataset.events;
 -- (Optional) Swap the name of your new table with the old one for consistency.
 DROP TABLE dataset.events;
 ALTER TABLE dataset.events_new RENAME TO events;
-```
+```ruby
 
 ### Databricks
 
@@ -172,7 +172,7 @@ ALTER TABLE events ALTER CLUSTER BY (event);
 
 -- Trigger clustering using the OPTIMIZE command.
 OPTIMIZE events;
-```
+```ruby
 
 If your events table is frequently being updated, Databricks recommends scheduling `OPTIMIZE` jobs every 1-2 hours. This will incrementally apply liquid clustering to your table.
 
@@ -183,21 +183,21 @@ If you choose not to use liquid partitioning, our recommendation is to partition
 ```sql
 -- Define a partition on the event date generated column.
 CREATE TABLE events (ts TIMESTAMP, event STRING, event_date DATE GENERATED ALWAYS AS (CAST(ts AS DATE))) USING DELTA PARTITIONED BY (event_date);
-```
+```ruby
 
 You can use `ZORDER` to colocate similar values within a file for a high cardinality column, which benefits query performance by improving data skipping. We recommend doing this on the event column:
 
 ```sql
 -- ZORDER by the event column to improve data skipping.
 OPTIMIZE events ZORDER BY (event);
-```
+```text
 
 Using a scheduled job that runs `OPTIMIZE` on the last week's event data, you can improve query performance by compacting the number of small data files into fewer, larger files:
 
 ```sql
 -- Periodically optimize the events table based on the last week of data.
 OPTIMIZE events WHERE event_date >= current_date() - INTERVAL 7 DAYS;
-```
+```text
 
 In general, avoid partitioning on a combination of event date and event. For even small queries, this can create a lot of overhead. Given 500 events, this would cause a 30-day query to hit 15,000 partitions. Instead, partition only by date as described above and `ZORDER` on the event.
 
@@ -209,7 +209,7 @@ ALTER TABLE events ADD COLUMN event_bucket INT GENERATED ALWAYS AS (pmod(hash(ev
 
 -- Rewrite data into new files based on this ZORDER key.
 OPTIMIZE events ZORDER BY (event_bucket);
-```
+```text
 
 #### Partition Pruning
 
@@ -218,7 +218,7 @@ Dynamic File Pruning will enable Spark to prune partitions based on filter value
 ```sql
 -- Turn on Dynamic File Pruning.
 SET spark.databricks.optimizer.dynamicFilePruning = true;
-```
+```text
 
 #### Handling Skew and Joins
 
@@ -227,7 +227,7 @@ To rebalance skew and adjust join strategy, we advise turning on Adaptive Query 
 ```sql
 -- Turn on Adapative Query Execution
 SET spark.sql.adaptive.enabled = true;
-```
+```ruby
 
 #### Compute Choices
 
@@ -252,7 +252,7 @@ CREATE TABLE events (
 )
 DISTSTYLE AUTO
 COMPOUND SORTKEY (ts, event);
-```
+```ruby
 
 If you already have an events table and want to leverage the recommended distribution style and sort key, you won't be able to apply those changes by modifying the existing table. Instead, you can create a new table and copy over data:
 
@@ -279,7 +279,7 @@ COMMIT;
 
 -- Drop the old table.
 DROP TABLE events_old;
-```
+```ruby
 
 ### Snowflake
 
@@ -290,7 +290,7 @@ Given Snowflake does not allow for explicit partitioning, we recommend using clu
 ```sql
 -- Cluster events on the timestamp truncated to day and event.
 ALTER TABLE events CLUSTER BY (DATE_TRUNC('day', ts), event);
-```
+```text
 
 If you have a high cardinality of unique event types, it might be advisable to add a search optimization on event instead of clustering by that column. See the [next section](#managing-high-cardinality-columns) for details.
 
@@ -301,7 +301,7 @@ If there are high cardinality columns that you frequently reference in Metrics E
 ```sql
 -- Add search optimization for fast lookups.
 ALTER TABLE events ADD SEARCH OPTIMIZATION ON EQUALITY(some_column);
-```
+```text
 
 #### Monitoring Clustering
 
@@ -333,7 +333,7 @@ If a pulse load fails, you can find all of the SQL queries and associated error 
 
 ## Turbo Mode
 
-[Turbo Mode](../features/turbo) skips some enrichment calculations (in particular some time series rollups) in order to very cheaply compute the latest snapshot of your data. With this, customers have run experiments on 150+ million users in less than 5 minutes on a snowflake S cluster.
+[Turbo Mode](../features/turbo) skips some enrichment calculations (in particular some time series rollups) in order to very cheaply compute the latest snapshot of your data. With this, users have run experiments on 150+ million users in less than 5 minutes on a snowflake S cluster.
 
 ### Ask!
 
@@ -342,7 +342,7 @@ Statsig's support is very responsive, and will be happy to help you fix your iss
 ## Compute Cost Transparency
 
 Statsig Warehouse Native now lets you get a birds eye view across the compute time experiment analysis incurs in your warehouse. Break this down by experiment, metric source or type of query to find what to optimize.
-Common customers we've designed the dashboard to be able to address include
+Common users we've designed the dashboard to be able to address include
 What Metric Sources take the most compute time (useful to focus optimization effort here; see tips here)
 What is the split of compute time between full loads vs incremental loads vs custom queries?
 How is compute time distributed across experiments? (useful to make sure value realized and compute costs incurred are roughly aligned)

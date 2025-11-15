@@ -4,6 +4,7 @@ keywords:
   - owner:vijaye
 last_update:
   date: 2025-09-18
+description: Start by installing the Statsig Azure AI SDK.  Depending on your language/framework you would use the right package manager to install the SDK in your
 ---
 
 
@@ -15,17 +16,17 @@ Start by installing the Statsig Azure AI SDK.  Depending on your language/framew
   <Tab title="NodeJS">
 ```shell
 npm i @statsig/azure-ai
-```
+```text
   </Tab>
   <Tab title="Python">
 ```shell
 pip install azureai-statsig
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```shell
 dotnet add package StatsigAzureAI
-```
+```ruby
   </Tab>
 </Tabs>
 
@@ -66,12 +67,12 @@ Go to your **Project Settings** and choose the **Keys & Environments** tab on th
 import { AzureAI } from "@statsig/azure-ai";
 
 await AzureAI.initialize("<STATSIG_SERVER_KEY>");
-```
+```text
   </Tab>
   <Tab title="Python">
 ```python
 AzureAI.initialize("<STATSIG_SERVER_KEY>")
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```csharp

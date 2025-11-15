@@ -187,14 +187,14 @@ const bootstrapValues = Statsig.getClientInitializeResponse(userA);
 const bootstrapValues = await fetchStatsigValuesFromMyServers();
 const userB = { userID: 'user-b' }; // <-- Different from userA
 await Statsig.initialize('client-key', userB, { initializeValues: bootstrapValues });
-```
+```text
 
 Even subtle differences count as a mismatch—adding `customIDs` or other attributes results in a distinct user object.
 
 ```js
 const userA = { userID: 'user-a' };
 const userAExt = { userID: 'user-a', customIDs: { employeeID: 'employee-a' } };
-```
+```text
 
 ### BootstrapStableIDMismatch
 
@@ -209,7 +209,7 @@ const bootstrapValues = Statsig.getClientInitializeResponse(userA);
 const bootstrapValues = await fetchStatsigValuesFromMyServers();
 const userB = { stableID: '12345' }; // <-- Server user lacked a stableID
 await Statsig.initialize('client-key', userB, { initializeValues: bootstrapValues });
-```
+```text
 
 Even if both sides start with `{}`, the client-generated stable ID may not match the server’s, leading to the same warning.
 

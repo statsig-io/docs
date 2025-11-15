@@ -1,10 +1,11 @@
 ---
 title: Deprecation Notices
+description: Until mid-2024, Statsig's Server SDKs downloaded configuration values directly from Statsig servers upon startup. Since then, we've transitioned to ho
 ---
 
 ## Direct Initialization API Access for Server SDKs, October 31, 2025
 
-#### What's changing?
+### What's changing?
 Until mid-2024, Statsig's Server SDKs downloaded configuration values directly from Statsig servers upon startup. Since then, we've transitioned to hosting these configuration files on a secure CDN, which greatly reduces initialization time and increases reliability (we use Cloudflare, which has near-zero downtime.) As we've transitioned to this approach, we've made the decision to deprecate direct API access, which is only available in long outdated SDK versions. We're asking all customers to discontinue using these SDK versions, and upgrade to a newer version.
 
 #### Change required
@@ -31,7 +32,7 @@ If you check some configs on both the Client and Server side, it is possible tha
 
 ## Async Evaluation Functions
 
-#### Reason
+### Reason
 Server SDKs were originally designed for maximum backwards compatibility. 
 This meant that if a Server SDK did not contain support for an operator or configuration, 
 it would fallback to hitting Statsig's servers, ensuring a valid result would be returned. 

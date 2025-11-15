@@ -5,6 +5,7 @@ keywords:
   - owner:craig
 last_update:
   date: 2025-09-18
+description: Statsig uses its sandbox in your warehouse to cache intermediate tables and result tables. This allows incremental reloads - not recalculating metrics
 ---
 
 ## Introduction
@@ -35,7 +36,7 @@ Additionally, exposures do not necessarily dedupe, since fast-forwarded exposure
 
 Scorecard loads will generate a varied number of tables depending on factors like the number of metric sources accessed and the types of metrics loaded. Additionally, depending on data volumes Statsig may choose to materialize intermediate tables before or after large operations; this dramatically reduces compute cost incurred.
 
-This can lead to a large number of artifacts; customers running 300+ experiments have run into default quota limits on vendors like databricks. This can be managed by requesting a free quota increase or utilizing the TTLs described below in the management settings.
+This can lead to a large number of artifacts; users running 300+ experiments have run into default quota limits on vendors like databricks. This can be managed by requesting a free quota increase or utilizing the TTLs described below in the management settings.
 
 ## Management
 

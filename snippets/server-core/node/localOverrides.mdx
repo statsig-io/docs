@@ -1,3 +1,8 @@
+---
+title: Localoverrides
+description: <Tabs> <Tab title="Feature Gates"> ```jsx // Overrides the given gate to the specified value Statsig.overrideGate("a_gate_name", true); // Optional th
+---
+
 <Tabs>
 <Tab title="Feature Gates">
 ```jsx
@@ -6,7 +11,7 @@ Statsig.overrideGate("a_gate_name", true);
 
 // Optional third parameter, overrides the gate only for a given ID
 Statsig.overrideGate("a_gate_name", true, "userID-123");
-```
+```text
 </Tab>
 
 <Tab title="Dynamic Configs">
@@ -16,7 +21,7 @@ Statsig.overrideDynamicConfig("a_config_name", { key: "value" });
 
 // Optional third parameter, overrides the dynamic config only for a given ID
 Statsig.overrideDynamicConfig("a_config_name", { key: "value" }, "userID-123");
-```
+```text
 </Tab>
 
 <Tab title="Experiments">
@@ -33,7 +38,7 @@ Statsig.overrideExperimentByGroupName("an_experiment_name", "a_group_name");
 // Alternatively, get the Experiment object for a given groupName
 const groupExp = statsig.getExperimentByGroupName("pricing_experiment", "premium_group");
 const premiumPrice = groupExp.getValue("price", 9.99);
-```
+```text
 </Tab>
 
 <Tab title="Layers">

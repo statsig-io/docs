@@ -1,3 +1,8 @@
+---
+title: Manualexposures
+description: Manual exposures allow you to control when exposure events are logged. This is useful when you want to delay exposure logging until certain conditions
+---
+
 Manual exposures allow you to control when exposure events are logged. This is useful when you want to delay exposure logging until certain conditions are met.
 
 <CodeGroup>
@@ -20,7 +25,7 @@ statsig.manuallyLogExperimentExposure(userID, "my_experiment");
 
 Layer layer = statsig.getLayerWithExposureLoggingDisabled(userID, "my_layer");
 statsig.manuallyLogLayerParameterExposure(userID, "my_layer", "parameter_name");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

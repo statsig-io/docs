@@ -55,7 +55,7 @@ This is the rough schema we want to return:
   fontSize,
   isCloseable,
 }
-```
+```text
 
 Let's edit the return value for the windows rule, and fill it in. Under "Return" on the right hand side, hit "edit". Then paste the following:
 
@@ -67,7 +67,7 @@ Let's edit the return value for the windows rule, and fill it in. Under "Return"
   fontSize: 14,
   isCloseable: false,
 }
-```
+```sql
 
 <Frame>
   <img src="/images/guides/first-dynamic-config/a2dc7b2a-98f4-4570-86db-34b390d80a89.png" alt="Return Value" />
@@ -90,7 +90,7 @@ Then, lets update the return value:
   color: 'white',
   fontSize: 16,
 }
-```
+```python
 
 Once again, don't forget to click "Save" to apply these new rules to your config. Your Dynamic Config should now look something like this:
 
@@ -112,7 +112,7 @@ After adding the SDK to the webpage via the [jsdelivr cdn](https://www.jsdelivr.
 
 ```js
 const client = new window.Statsig.StatsigClient("<CLIENT-SDK-KEY>", {});
-```
+```text
 
 Now, let's fetch our config and construct the banner:
 
@@ -133,7 +133,7 @@ banner.style.color = color;
 banner.style.fontSize = fontSize + "px";
 banner.style.backgroundColor = backgroundColor;
 banner.appendChild(bannerText);
-```
+```text
 
 Note that this js relies on the html page having the homepageBanner div:
 

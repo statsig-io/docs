@@ -1,3 +1,8 @@
+---
+title: Initialization
+description: <CodeGroup> ```java Java import com.statsig.sdk.Statsig; StatsigOptions options = new StatsigOptions(); // Customize options as needed. For example: /
+---
+
 <CodeGroup>
 ```java Java
 import com.statsig.sdk.Statsig;
@@ -7,7 +12,7 @@ StatsigOptions options = new StatsigOptions();
 // options.initTimeoutMs = 9999;
 Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.sdk.Statsig

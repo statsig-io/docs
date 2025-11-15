@@ -1,3 +1,8 @@
+---
+title: Logevent
+description: <CodeGroup> ```java Java import java.util.HashMap; import java.util.Map; String userID = "user_id"; String eventName = "my_custom_event"; // Simple ev
+---
+
 <CodeGroup>
 ```java Java
 import java.util.HashMap;
@@ -27,7 +32,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 statsig.logEvent(user, eventName, 10.5, metadata);
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

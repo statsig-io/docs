@@ -1,5 +1,6 @@
 ---
 title: "Initializing SDKs"
+description: The first step in using a Statsig SDK is calling `initialize()`, which retrieves the values you need to evaluate experiments & send events. Before ini
 ---
 
 The first step in using a Statsig SDK is calling `initialize()`, which retrieves the values you need to evaluate experiments & send events. Before initialization, Statsig SDKs won't have latest values in-memory, and therefore may return stale values or none at all.
@@ -55,14 +56,14 @@ if (isLoading) {
 }
 
 // Continue with initialized client
-```
+```text
 
 ```js JavaScript Example
 const client = new StatsigClient(YOUR_CLIENT_KEY, { userID: "u_123" });
 await client.initializeAsync();
 
 // Client is now initialized with latest values
-```
+```ruby
 
 </CodeGroup>
 
@@ -86,7 +87,7 @@ const { client } = useClientAsyncInit(
 );
 
 // Client renders immediately with server values
-```
+```text
 
 ```js JavaScript Bootstrap
 const bootstrapValues = getInitializationValuesFromServer();
@@ -95,7 +96,7 @@ const client = new StatsigClient(
   { userID: "u_123" },
   { initializeValues: bootstrapValues }
 );
-```
+```python
 
 </CodeGroup>
 
@@ -140,7 +141,7 @@ await statsig.initialize();
 // Server SDK is now ready to evaluate gates/experiments for any user
 const user = new StatsigUser({ userID: "123" });
 const gate = statsig.checkGate(user, "my_gate");
-```
+```text
 
 ```python Python Initialization
 from statsig_python_core import Statsig, StatsigUser

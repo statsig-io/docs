@@ -1,9 +1,14 @@
+---
+title: Initialize
+description: ```csharp using Statsig; var statsig = new Statsig.Statsig("server-secret-key"); await statsig.Initialize(); ``` You can also provide custom options: 
+---
+
 ```csharp
 using Statsig;
 
 var statsig = new Statsig.Statsig("server-secret-key");
 await statsig.Initialize();
-```
+```text
 
 You can also provide custom options:
 
@@ -15,7 +20,7 @@ var options = new StatsigOptionsBuilder()
 
 var statsig = new Statsig("server-secret-key", options);
 await statsig.Initialize();
-```
+```text
 
 For shared instance usage:
 

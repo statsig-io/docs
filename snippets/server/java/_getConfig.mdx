@@ -1,3 +1,8 @@
+---
+title:  Getconfig
+description: <Tabs> <Tab title="Java"> ```java DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details"); // The 2nd parameter is the default v
+---
+
 <Tabs>
   <Tab title="Java">
 
@@ -10,7 +15,7 @@ DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
-```
+```text
 
   </Tab>
   <Tab title="Kotlin">

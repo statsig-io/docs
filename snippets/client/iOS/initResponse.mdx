@@ -1,3 +1,8 @@
+---
+title: Initresponse
+description: <CodeGroup> ```swift Swift let response = Statsig.getInitializeResponseJson() if let values = response.values { print(values) } let details = response
+---
+
 
 <CodeGroup>
 ```swift Swift
@@ -6,7 +11,7 @@ if let values = response.values {
     print(values)
 }
 let details = response.evaluationDetails
-```
+```text
 
 ```objective-c Objective C
 ExternalInitializeResponse *response = [Statsig getInitializeResponseJson];

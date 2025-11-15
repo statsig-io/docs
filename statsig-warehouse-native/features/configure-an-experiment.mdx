@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to exis
 ---
 
 Setting up an experiment is a core flow in Statsig. In Warehouse Native, there's two modes to setting up an experiment. In one, you'll connect to existing assignment data from your warehouse. In the other, you'll configure the experiment in Statsig, use the Statsig SDK, and then analyze the resulting exposures in your warehouse.
@@ -73,7 +74,7 @@ You need to set up [Persistent Assignment](/client/concepts/persistent_assignmen
 - Whether to allow cohort metrics to mature after experiment end
 
 <Note>
-Once you configure this value, it will overwrite the choice for `only include units with a completed duration` (see above)
+Once you configure this value, it will overwrite the choice for `only include units with a completed duration` (refer to the relevant section)
 </Note>
 - [ID stitching](/statsig-warehouse-native/features/id-resolution)
 - Whether and how to apply [Bonferroni Correction](/stats-engine/methodologies/bonferroni-correction)

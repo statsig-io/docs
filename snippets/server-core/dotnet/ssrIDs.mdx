@@ -1,3 +1,8 @@
+---
+title: Ssrids
+description: To ensure that the server SDK evaluates each config accurately, they need access to all user attributes that the client SDK leverages. We recommend pa
+---
+
 ### Working with IDs
 
 To ensure that the server SDK evaluates each config accurately, they need access to all user attributes that the client SDK leverages. We recommend passing all of these attributes to the server SDK - using tools like Cookies if needed to ensure they're attached on first requests. If the user objects on the client and server aren't identical, modern SDKs will throw an InvalidBootstrap warning.
