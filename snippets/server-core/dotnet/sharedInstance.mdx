@@ -1,3 +1,8 @@
+---
+title: Sharedinstance
+description: ```csharp var sharedStatsig = Statsig.NewShared("server-secret-key"); await sharedStatsig.Initialize(); // Later, anywhere in your codebase var statsi
+---
+
 ```csharp
 var sharedStatsig = Statsig.NewShared("server-secret-key");
 await sharedStatsig.Initialize();
@@ -7,7 +12,7 @@ var statsig = Statsig.Shared();
 
 // Use the shared instance
 var result = statsig.CheckGate(user, "my_gate");
-```
+```ruby
 
 The shared instance is useful for:
 - Singleton pattern usage across your application

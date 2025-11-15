@@ -1,3 +1,8 @@
+---
+title: Statsiguser
+description: ```cpp StatsigUser user; user.user_id = "a-user"; user.email = "developer@statsig.com"; user.custom_ids = { {"employeeID", "an-employee"} }; ``` Have 
+---
+
 ```cpp
 StatsigUser user;
 user.user_id = "a-user";
@@ -5,7 +10,7 @@ user.email = "developer@statsig.com";
 user.custom_ids = {
     {"employeeID", "an-employee"}
 };
-```
+```python
 
 ### Private Attributes
 
@@ -23,7 +28,7 @@ client.UpdateUserSync(user);
 // or, use the shared instance
 
 StatsigClient::Shared().UpdateUserSync(user);
-```
+```python
 
 If you want to ensure you have the latest values for an update (Say you are transition from logged out to logged in). You can use the Asynchronous update function.
 

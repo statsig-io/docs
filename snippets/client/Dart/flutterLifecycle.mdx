@@ -1,3 +1,8 @@
+---
+title: Flutterlifecycle
+description: Due to the nature of mobile development, apps can be closed by the operating system when they are no longer in the foreground. To be sure that all eve
+---
+
 ## Flutter Lifecycle Hooks
 
 Due to the nature of mobile development, apps can be closed by the operating system when they are no longer in the foreground. To be sure that all events are logged before an app is closed by the operating system, we recommend adding Statsig to the app lifecycle events. This way we can flush all pending events when an app state change is detected.
@@ -20,7 +25,7 @@ class StatsigLifecycleObserver extends WidgetsBindingObserver {
   }
 }
 
-```
+```text
 
 Then in your app code, add this observer to the WidgetsBinding instance.
 

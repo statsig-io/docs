@@ -1,3 +1,7 @@
+---
+title: Outputlogger
+description: <AccordionGroup> <Accordion title="Logger Interface"> ```typescript interface OutputLoggerProvider { initialize?: () => void; debug?: (tag: string, me
+---
 <AccordionGroup>
 <Accordion title="Logger Interface">
 ```typescript
@@ -9,11 +13,14 @@ interface OutputLoggerProvider {
   error?: (tag: string, message: string) => void;
   shutdown?: () => void;
 }
-```
+```text
 </Accordion>
 <Accordion title="Implementation Example">
 
 ### Implementation Example
+
+This page explains implementation example.
+
 
 ```typescript
 import { OutputLoggerProvider } from '@statsig/statsig-node-core';
@@ -43,7 +50,7 @@ class CustomOutputLogger implements OutputLoggerProvider {
     console.log('Logger shutdown');
   };
 }
-```
+```text
 </Accordion>
 <Accordion title="Usage with StatsigOptions">
 

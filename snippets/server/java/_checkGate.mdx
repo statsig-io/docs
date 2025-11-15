@@ -1,3 +1,8 @@
+---
+title:  Checkgate
+description: <Tabs> <Tab title="Java"> ```java StatsigUser user = new StatsigUser("user_id"); Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
+---
+
 <Tabs>
   <Tab title="Java">
 
@@ -10,7 +15,7 @@ if (isFeatureOn) {
 } else {
   // Gate is off
 }
-```
+```text
 
   </Tab>
   <Tab title="Kotlin">

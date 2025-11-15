@@ -1,3 +1,7 @@
+---
+title:  Initialize
+description: <CodeGroup> ```java Java import com.statsig.androidlocalevalsdk.*; // ... android.app.Application app = // ref to your Application instance StatsigOpt
+---
 <CodeGroup>
 
 ```java Java
@@ -31,7 +35,7 @@ client.initializeAsync(
 // or, create your own instance of StatsigClient
 StatsigClient client = new StatsigClient();
 client.initializeAsync(...);
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.androidlocalevalsdk.*
@@ -59,11 +63,14 @@ Statsig.client.initializeAsync(
 // or, create your own instance of StatsigClient
 val client = StatsigClient()
 client.initializeAsync(...)
-```
+```text
 
 </CodeGroup>
 
 ### Synchronous Initialization
+
+This page explains synchronous initialization.
+
 
 ```kotlin
 import com.statsig.androidlocalevalsdk.*
@@ -75,7 +82,7 @@ opts.environment.tier = "staging"
 val specs = "..." // JSON string of your configurations
 
 let details = Statsig.client.initializeSync(application, "client-YOUR_CLIENT_SDK_KEY", specs, opts)
-```
+```text
 
 It is possible to configure the SDK to use cached values if they are newer than the local file.
 This can be useful if you ship your app with a local file, but would like it to only be used for the first session.

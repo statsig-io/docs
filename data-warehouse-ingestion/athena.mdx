@@ -5,6 +5,7 @@ keywords:
   - owner:tim
 last_update:
   date: 2025-09-18
+description: To set up connection with Athena, Statsig needs the following - Region - Granting Athena Access Permissions to a Statsig-owned Service Account
 ---
 
 ## Overview
@@ -21,7 +22,7 @@ In place of granting Athena Access Permissions to a Statsig-owned Service Accoun
 
 The above IAM User will need to be given permissions to query from Athena. Here's a sample policy with required permissions to access Athena:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [

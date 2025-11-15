@@ -1,5 +1,6 @@
 ---
 title: Ingesting Open Telemetry Data
+description: <Tip> Setting up OTEL can be tricky, if you have any questions, feel free to reach out to us on slack!
 ---
 
 <Tip>
@@ -64,7 +65,7 @@ exporters:
     encoding: json
     headers:
       statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
-```
+```text
 
 ## 3. Example Helm Chart Values for a quick and correct setup
 
@@ -93,7 +94,7 @@ helm install otel-deployment open-telemetry/opentelemetry-collector \
 helm install otel-daemonset open-telemetry/opentelemetry-collector \
   --version 0.75.1 \
   -f values-agent.yaml -n otel
-```
+```text
 
 ## 4. Verify the Setup
 
@@ -101,7 +102,7 @@ Check that all pods are running:
 
 ```bash
 kubectl get pods -n otel
-```
+```text
 
 Check logs for a specific collector pod and confirm there are errors reported:
 

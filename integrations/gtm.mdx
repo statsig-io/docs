@@ -1,5 +1,6 @@
 ---
 title: Google Tag Manager (GTM)
+description: This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig.
 ---
 
 ## Inbound Integration (Events flow from GTM dataLayer to Statsig)
@@ -27,7 +28,7 @@ statsig.on('values_updated', function(evt) { // bind before init is called
   }
 });
 await statsig.initializeAsync();
-```
+```text
 #### Using statsig-js
 ```js
 await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
@@ -37,7 +38,7 @@ await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
     }));
   }
 }); 
-```
+```sql
 
 ### Step 2: Create new tag 
 <Frame>
@@ -139,7 +140,7 @@ window.StatsigLogger = (function () {
 
 })();  
 </script>
-```
+```text
 
 ## Outbound Integration (GTM Data is enriched with Statsig test assignments)
 

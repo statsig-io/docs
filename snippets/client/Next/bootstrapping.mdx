@@ -1,3 +1,8 @@
+---
+title: Bootstrapping
+description: <Tabs> <Tab title="App Router"> ```ts app/api/statsig-bootstrap/route.ts import { Statsig, StatsigUser } from '@statsig/statsig-node-core'; export asy
+---
+
 <Tabs>
 <Tab title="App Router">
 ```ts app/api/statsig-bootstrap/route.ts
@@ -15,7 +20,7 @@ export async function POST(request: Request): Promise<Response> {
   });
   return new Response(JSON.stringify(values), { status: 200 });
 }
-```
+```text
 
 ```tsx app/layout.tsx
 import { StatsigBootstrapProvider } from '@statsig/next';
@@ -36,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-```
+```text
 </Tab>
 
 <Tab title="Page Router">
@@ -60,7 +65,7 @@ export default async function handler(
   const values = Statsig.getClientInitializeResponse(user, { hash: 'djb2' });
   res.status(200).send(JSON.stringify(values));
 }
-```
+```text
 
 ```tsx pages/_app.tsx
 import type { AppProps } from 'next/app';

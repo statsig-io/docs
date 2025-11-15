@@ -1,7 +1,7 @@
 ---
 title: Vercel
+description: Statsig offers a suite of integration tools that makes usage with Vercel simple: - Statsig automatically pushes project changes to Vercel's Edge Confi
 ---
-
 Statsig offers a suite of integration tools that makes usage with Vercel simple:
 
 - Statsig automatically pushes project changes to Vercel's Edge Config, providing low latency SDK startup.
@@ -43,20 +43,20 @@ Statsig offers a suite of integration tools that makes usage with Vercel simple:
   #### Install the Statsig SDK
     ```bash
     npm install @statsig/vercel-edge
-    ```
+    ```javascript
   </Step>
 
   <Step>
   #### import the Vercel helper
   ```bash
   import {handleWithStatsig} from '@statsig/vercel-edge
-  ```
+  ```text
   </Step>
   <Step>
   #### Use the SDK
   ```Javascript
   export default handleWithStatsig(handler, params)
-  ```
+  ```javascript
   The helper method takes two arguments:
   - `handler` This is your Vercel function code
   - `params` 
@@ -73,6 +73,9 @@ Statsig offers a suite of integration tools that makes usage with Vercel simple:
 </Steps>
 
 ### Example Usage
+
+This page explains example usage.
+
 
 ```javascript api/index.js
 import { handleWithStatsig } from "@statsig/vercel-edge";
@@ -91,7 +94,7 @@ export default handleWithStatsig(myHandler,{
     configKey : process.env.EDGE_CONFIG_KEY,
     statsigSdkKey: process.env.STATSIG_KEY
 })
-```
+```javascript
 <Accordion title="How it Works">
 The `handler` parameter is **your Vercel function code** .This is the same code you would normally export directly in your API route (for example, `myHandler` in the snippet above).  
 Instead of exporting it, you pass it into `handleWithStatsig`, which takes care of the Statsig setup and cleanup for you.  
@@ -128,19 +131,19 @@ Instead of exporting it, you pass it into `handleWithStatsig`, which takes care 
   <Step title="Install the Statsig SDK">
   ```bash
   npm install @statsig/vercel-edge
-  ```
+  ```text
   </Step>
 
   <Step title="Import the Statsig SDK">
   ```bash
   import {StatsigVercelClient} from '@statsig/vercel-edge'
-  ```
+  ```text
   </Step>
 
   <Step title="Creating a StatsigVercelClient instance">
   ```javascript
   const client = new StatsigVercelClient(process.env.STATSIG_KEY)
-  ```
+  ```python
   The client instantiation takes two arguments:
   - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
   - `options : StatsigOptions` See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
@@ -154,7 +157,7 @@ Instead of exporting it, you pass it into `handleWithStatsig`, which takes care 
   
     ```javascript
     const init = await client.initializeFromEdgeConfig(<YOUR_EDGE_CONFIG_KEY>);
-    ```
+    ```text
     The client initialization takes one argument:
 
     - `ConfigKey : string` The Key associated with your Statsig specs in your Edge Config
@@ -163,7 +166,7 @@ Instead of exporting it, you pass it into `handleWithStatsig`, which takes care 
   <Step title = "Checking a Gate">
     ```javascript
     const GateResult = client.checkGate('pass_gate', user);
-    ```
+    ```text
     This is a gate check in code.
 
     The `checkGate` method takes two arguments:
@@ -177,7 +180,7 @@ Instead of exporting it, you pass it into `handleWithStatsig`, which takes care 
   <Step>
     ```javascript
     client.logEvent('gate_check', { userID: randomUserId });
-    ```
+    ```text
     This is an event log in code. 
 
     The `logEvent` method takes two parameters:
@@ -190,7 +193,7 @@ Instead of exporting it, you pass it into `handleWithStatsig`, which takes care 
   <Step>
   ```javascript
   waitUntil(statsig.flush());
-  ```
+  ```python
   This flushes all events from the SDK to Statsig.  **Without this, you will not be able to get diagnostic information in the Statsig Console, nor any event data you logged**.
 
   </Step>
@@ -224,7 +227,7 @@ export default async function handler(request) {
       JSON.stringify({ passed, user }),
     );
 }
-```
+```python
 ## Other Considerations
 
 ### Polling for updates v5.13.0+

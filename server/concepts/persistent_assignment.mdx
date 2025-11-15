@@ -1,5 +1,6 @@
 ---
 title: Server Persistent Assignment
+description: Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation 
 ---
 
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
@@ -38,7 +39,7 @@ val options = GetExperimentOptions(
     enforceTargeting = true,
   )
 )
-```
+```text
   </Tab>
   <Tab title="Node JS">
 ```ts
@@ -49,7 +50,7 @@ const options: GetExperimentOptions = {
   }
 }
 
-```
+```text
   </Tab>
 </Tabs>
 
@@ -81,7 +82,7 @@ exp = Statsig.get_experiment( # User evaluates using values from persisted stora
   )
 )
 puts exp.group_name # 'Control'
-```
+```text
 
   </Tab>
   <Tab title="Python (Python Core)">
@@ -93,7 +94,7 @@ statsig = Statsig.initialize(options).wait
 user = StatsigUser("a-user")
 exp = statsig.get_experiment(StatsigUser("a-user"), ExperimentEvaluationOptions(user_persisted_values= PersistentStorage.get_user_persisted_value(user, "user_id")))
 print(f"{exp.group_name}") # control
-```
+```text
   </Tab>
   <Tab title="Node Core">
 ```typescript
@@ -103,7 +104,7 @@ let statsig = new Statsig(secretKye, options)
 let user = new StatsigUser("a-user")
 let exp = statsig.getExperiment(user, ExperimentEvaluationOptions(userPersistentValues= persistedStorage.getUserPersistedValues(user, "user_id")))
 
-```
+```text
   </Tab>
   
   <Tab title="Kotlin">
@@ -131,7 +132,7 @@ exp = Statsig.getExperimentSync(
   ),
 )
 println(exp.groupName) // "Control"
-```
+```text
   </Tab>
   <Tab title="Node JS">
 ```ts
@@ -158,7 +159,7 @@ exp = Statsig.getExperimentSync(
   },
 )
 console.log(exp.getGroupName()) // "Control"
-```
+```text
   </Tab>
   <Tab title="Go">
 ```go
@@ -185,7 +186,7 @@ exp = GetExperimentWithOptions(
   }
 )
 fmt.Println(exp.GroupName) // "Control"
-```
+```text
   </Tab>
   <Tab title=".Net">
 ```csharp

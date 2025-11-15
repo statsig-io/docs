@@ -1,5 +1,6 @@
 ---
 title: "Identify Users"
+description: When you run an experiment, rollout a feature, or log events, Statsig needs to know who the user is to determine:
 ---
 
 ## Why identify users?
@@ -22,7 +23,7 @@ Start by defining a basic user object:
   "userID": "u_123",       // required for most setups
   "email": "user@example.com" // optional
 }
-```
+```text
 
 </CodeGroup>
 
@@ -53,7 +54,7 @@ export function App() {
     </StatsigProvider>
   );
 }
-```
+```text
 
 </CodeGroup>
 
@@ -71,7 +72,7 @@ return <div>
     Update User
   </button>
 </div>;
-```
+```sql
 
 </CodeGroup>
 

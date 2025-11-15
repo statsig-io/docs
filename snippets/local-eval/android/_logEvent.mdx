@@ -1,3 +1,8 @@
+---
+title:  Logevent
+description: <CodeGroup> ```java Java StatsigUser user = new StatsigUser("user_id"); StatsigClient client = Statsig.INSTANCE.getClient(); client.logEvent(user, "pu
+---
+
 <CodeGroup>
 
 ```java Java
@@ -5,7 +10,7 @@ StatsigUser user = new StatsigUser("user_id");
 StatsigClient client = Statsig.INSTANCE.getClient();
 
 client.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
-```
+```text
 
 ```kotlin Kotlin
 val user = StatsigUser("user_id")

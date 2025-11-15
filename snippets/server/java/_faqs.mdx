@@ -1,3 +1,8 @@
+---
+title:  Faqs
+description: First, there is a `StatsigOptions` parameter called `localMode`. Setting `localMode` to true will cause the SDK to never hit the network,
+---
+
 #### How can I mock Statsig for testing?
 
 First, there is a `StatsigOptions` parameter called `localMode`.
@@ -19,7 +24,7 @@ If you are using a client on-device evaluation SDK, it consumes the same payload
 
 The Java Server SDK [v1.31.0+](https://github.com/statsig-io/java-server-sdk/releases/tag/1.31.0) exposes this payload via:
 
-```
+```text
 getOnDeviceEvalInitializeResponse(clientSDKKey: String? = null): Map<String, Any>
 ```
 

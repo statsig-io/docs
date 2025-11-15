@@ -17,7 +17,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     ```bash
     npm install @statsig/react-bindings
-    ```
+    ```javascript
 
   </Step>
   <Step title="Wrap child components">
@@ -36,7 +36,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         </StatsigProvider> // [!code ++]
       );
     }
-    ```
+    ```python
   <Note>
   This example assumes you're using client-side React, if you're Server-Side Rendering, you'd be better served by our [Next.js docs]().
   </Note>
@@ -55,7 +55,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         return (
           <div>Gate is {client.checkGate('check_user') ? 'passing' : 'failing'}.</div>
         );
-        ```
+        ```text
       </Tab>
       <Tab title="Get an Experiment Value">
         First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
@@ -66,14 +66,14 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         return (
           <div>Headline Parameter: {experiment.get('my_experiment_parameter_name', 'fallback_value')}.</div>
         );
-        ```
+        ```text
       </Tab>
       <Tab title="Log an Event">
         You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
         ```jsx
         const { client } = useStatsigClient();
         return <button onClick={() => client.logEvent("button_click")}>Click Me</button>
-        ```
+        ```text
       </Tab>
     </Tabs>
 
@@ -91,7 +91,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     ```html
     <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=<REPLACE_WITH_YOUR_CLIENT_KEY>"></script>
-    ```
+    ```python
 
   </Step>
   <Step title="Add client key">
@@ -104,7 +104,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         First, create a gate on the [Feature Gates page](https://console.statsig.com/gates) in console, then check it in-code:
         ```jsx
         window.Statsig.instance().checkGate("my_feature_gate_name");
-        ```
+        ```text
         
         <Note>
         You'll want to wait for the SDK to initialize before checking a gate to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
@@ -114,7 +114,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
         ```jsx
         window.Statsig.instance().getExperiment("my_experiment_name").get('my_experiment_parameter_name');
-        ```
+        ```text
         
         <Note>
         You'll want to wait for the SDK to initialize before getting an experiment to ensure it has fresh values, one way to accomplish this is waiting for the ["values_updated"](/client/javascript-sdk#client-event-emitter) event.
@@ -124,7 +124,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
         ```jsx
         window.Statsig.instance().logEvent("my_checkout_event_name", "event_value_item_1234", {"event_metadata": "my_metadata"})
-        ```
+        ```text
       </Tab>
     </Tabs>
 
@@ -146,7 +146,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
   <Step title="Install the Statsig package">
     ```shell
     pip install statsig-python-core
-    ```
+    ```text
 
   </Step>
   <Step title="Initialize the Statsig SDK">
@@ -161,7 +161,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
     statsig.initialize().wait()
 
     statsig.shutdown().wait()
-    ```
+    ```python
 
   </Step>
   <Step title="Add server secret key">
@@ -174,7 +174,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         ```python
         user_object = StatsigUser(user_id="123", email="testuser@statsig.com") //add any number of other attributes
         gate_value = statsig.check_gate(user_object, "my_feature_gate_name"):
-        ```
+        ```text
       </Tab>
       <Tab title="Get an Experiment Value">
         First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
@@ -182,7 +182,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         user_object = StatsigUser(user_id="123", email="testuser@statsig.com"
         my_experiment_object = statsig.get_experiment(user_object, "my_experiment_name")
         my_experiment_parameter_value = my_experiment_object.get_string('my_experiment_parameter_name')
-        ```
+        ```text
       </Tab>
       <Tab title="Log an Event">
         You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:
@@ -194,7 +194,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
           event_name="my_checkout_event_name",
           value="SKU_12345"
         )
-        ```
+        ```text
       </Tab>
     </Tabs>
 
@@ -211,7 +211,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
     
     ```bash
     npm i @statsig/statsig-node-core
-    ```
+    ```text
 
   </Step>
   <Step tite="Initialize the Statsig SDK">
@@ -225,7 +225,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     const statsigWithOptions = new Statsig("secret-key", options);
     await statsigWithOptions.initialize();
-    ```
+    ```python
 
   </Step>
   <Step title="Add server secret key">
@@ -238,7 +238,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         ```js
         const userObject = new StatsigUser({ userID: "123", email="testuser@statsig.com" });
         const is_gate_enabled = statsig.checkGate(userObject, "my_feature_gate_name"):
-        ```
+        ```text
       </Tab>
       <Tab title="Get an Experiment Value">
         First, create an Experiment on the [Experiments page](https://console.statsig.com/experiments) in console
@@ -246,7 +246,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
         const userObject = new StatsigUser({ userID: "123", email="testuser@statsig.com" });
         const myExperimentObject = statsig.getExperiment(userObject, "my_experiment_name")
         const myExperimentParameterValue = myExperimentObject.getValue('my_experiment_parameter_name')
-        ```
+        ```text
       </Tab>
       <Tab title="Log an Event">
         You can use Events to power metrics in your experiment or gates. Events don't need to be set up in console first, just add to your code:

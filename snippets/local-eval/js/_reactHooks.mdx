@@ -1,6 +1,11 @@
-
-
+---
+title:  Reacthooks
+description: ```typescript import { useGateValue } from '@statsig/react-native-bindings-on-device-eval'; const gateValue = useGateValue('a_gate', { userID: "a-user
+---
 ## React Hooks
+
+This page explains react hooks.
+
 
 
 ### useGateValue or useFeatureGate
@@ -12,7 +17,7 @@ const gateValue = useGateValue('a_gate', { userID: "a-user" }); // <-- Returns t
 if (gateValue) {
   // 
 }
-```
+```text
 
 ```typescript
 import { useFeatureGate } from '@statsig/react-native-bindings-on-device-eval';
@@ -21,7 +26,7 @@ const gate = useFeatureGate('a_gate', { userID: "a-user" }); // <-- Returns the 
 if (gate.value) {
   // 
 }
-```
+```text
 
 ### useDynamicConfig
 
@@ -34,7 +39,7 @@ function MyComponent() {
 
   return <View style={{backgroundColor: bgColor}}></View>;
 }
-```
+```text
 
 ### useExperiment
 
@@ -47,7 +52,7 @@ function MyComponent() {
 
   return <View style={{backgroundColor: bgColor}}></View>;
 }
-```
+```text
 
 
 ### useLayer

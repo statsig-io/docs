@@ -1,3 +1,8 @@
+---
+title: Statsiguser
+description: The `StatsigUser` object represents a user in your application and contains fields used for feature evaluation. <CodeGroup> ```java Java import com.st
+---
+
 The `StatsigUser` object represents a user in your application and contains fields used for feature evaluation.
 
 <CodeGroup>
@@ -28,7 +33,7 @@ StatsigUser user = StatsigUser.builder()
 
 // Use the user for evaluation
 boolean result = statsig.checkGate(user, "my_feature_gate");
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.*
@@ -57,7 +62,7 @@ val user = StatsigUser.builder()
 
 // Use the user for evaluation
 val result = statsig.checkGate(user, "my_feature_gate")
-```
+```text
 </CodeGroup>
 
 ## Private Attributes
@@ -73,7 +78,7 @@ StatsigUser user = StatsigUser.builder()
     .userID("user_123")
     .privateAttributes(privateAttributes)
     .build();
-```
+```text
 
 ```kotlin Kotlin
 val privateAttributes = mapOf(

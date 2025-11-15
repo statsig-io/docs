@@ -1,3 +1,8 @@
+---
+title:  Prefetchusersconfig
+description: <CodeGroup> ```typescript TypeScript import type { StatsigUser } from "statsig-js"; const prefetchUsers: StatsigUser[] = [ { userID: "user_a", customI
+---
+
 <CodeGroup>
 
 ```typescript TypeScript
@@ -13,7 +18,7 @@ await Statsig.initialize(
   { userID: "user_a" },
   { prefetchUsers: prefetchUsers }
 );
-```
+```text
 
 ```javascript JavaScript
 const prefetchUsers = [

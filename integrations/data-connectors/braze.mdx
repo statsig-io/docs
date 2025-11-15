@@ -1,12 +1,13 @@
 ---
 title: Braze
+description: Enabling the Braze integration allows you to export Statsig exposure events to your configured Braze app with information on the status of each user's
 ---
 
 ## Overview
 
 Enabling the Braze integration allows you to export Statsig exposure events to your configured Braze app with information on the status of each user's feature gate and experimentation groups. These exposures will be forwarded to Braze as a [Custom Attribute](https://www.braze.com/docs/user_guide/data/custom_data/custom_attributes) object on the user. There will be one Custom Attribute per gate/experiment the user has been exposed to. The Custom Attribute in Braze will be named `statsig_exposure::{gate/experiment name}` and be of the form:
 
-```
+```text
 {
   group_name: String,
   timestamp: Time

@@ -1,3 +1,8 @@
+---
+title: Multiinstance
+description: <CodeGroup> ```swift Swift let client = StatsigClient( sdkKey: "client-xyz", user: StatsigUser(userID: "user-1"), options: StatsigOptions(environment:
+---
+
 
 <CodeGroup>
 ```swift Swift
@@ -10,7 +15,7 @@ let client = StatsigClient(
 }
 
 let gateOn = client.checkGate("some_gate")
-```
+```text
 
 ```objective-c Objective C
 StatsigOptions *options = [[StatsigOptions alloc] initWithEnvironment:[[StatsigEnvironment alloc] initWithTier:StatsigEnvironmentTierProduction]];

@@ -1,3 +1,8 @@
+---
+title: Hooks
+description: <Warning> Hooks that read gates, configs, experiments, or layers will log exposures on render. Use `useStatsigClient` to defer checks until you actual
+---
+
 ## React Hooks
 
 <Warning>
@@ -28,7 +33,7 @@ return (
     {gate.value && <p>Passing ({gate.details.reason})</p>}
   </div>
 );
-```
+```ruby
 
 ### Dynamic Config Hooks
 
@@ -48,7 +53,7 @@ return (
     <p>Another Value: {getDynamicConfig('my_dynamic_config').get('a_bool', false)}</p>
   </div>
 );
-```
+```ruby
 
 ### Experiment Hooks
 
@@ -67,7 +72,7 @@ return (
     <p>Value: {experiment.get('a_value', 'fallback_value')}</p>
   </div>
 );
-```
+```text
 
 ### Layer Hooks
 
@@ -85,7 +90,7 @@ return (
     <p>Value: {layer.get('a_value', 'fallback_value')}</p>
   </div>
 );
-```
+```text
 
 ### Parameter Store Hooks
 
@@ -104,7 +109,7 @@ function MyComponent() {
 
   return <div>{title}</div>;
 }
-```
+```sql
 
 ### Log Events From Hooks
 
@@ -114,7 +119,7 @@ import { useStatsigClient } from '@statsig/react-bindings';
 const { logEvent } = useStatsigClient();
 
 return <button onClick={() => logEvent('my_event')}>Click Me</button>;
-```
+```text
 
 ### StatsigUser Hook
 
@@ -131,7 +136,7 @@ return (
     </button>
   </div>
 );
-```
+```text
 
 ### Direct Access to the Client
 

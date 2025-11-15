@@ -1,3 +1,8 @@
+---
+title: Integration Event Formats
+description: Events will be sent in batches in a JSON format. The structure of a Statsig Event sent will look like the following:
+---
+
 ### Event Format
 
 Events will be sent in batches in a JSON format. The structure of a Statsig Event sent will look like the following:
@@ -37,7 +42,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
   },
   "timeUUID": "abd2a983-ec0f-11ec-917a-fb8cdaeda578"
 }
-```
+```text
 
 #### Feature Gate Exposure Formatting - checkGate
 
@@ -61,7 +66,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
   "timeUUID": "8d7c1040-ec11-11ec-g123-abe2c32fcf46",
   "unitID": "userID"
 }
-```
+```text
 
 #### Dynamic Config Exposure Formatting - getConfig
 
@@ -84,7 +89,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
   "timeUUID": "af379f60-ec11-22ad-8e0a-05c3ee70bd0c",
   "unitID": "userID"
 }
-```
+```text
 
 #### Experiment Exposure Formatting - getExperiment
 
@@ -108,7 +113,7 @@ Events will be sent in batches in a JSON format. The structure of a Statsig Even
   "timeUUID": "af379f61-ab22-11ec-8e0a-05c3ee70bd0c",
   "unitID": "userID"
 }
-```
+```text
 
 #### Example Batch
 

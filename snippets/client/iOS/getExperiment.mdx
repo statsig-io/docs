@@ -1,3 +1,8 @@
+---
+title: Getexperiment
+description: <CodeGroup> ```swift Swift // Values via getLayer let layer = Statsig.getLayer("user_promo_experiments") let promoTitle = layer.getValue(forKey: "titl
+---
+
 
 <CodeGroup>
 ```swift Swift
@@ -18,7 +23,7 @@ let discount = priceExperiment.getValue(forKey: "discount", defaultValue: 0.1)
 ...
 
 let price = msrp * (1 - discount);
-```
+```text
 
 ```objective-c Objective C
 DynamicConfig *expConfig = [Statsig getExperimentForName:@"new_user_promo"];

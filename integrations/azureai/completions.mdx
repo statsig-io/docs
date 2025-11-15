@@ -4,13 +4,14 @@ keywords:
   - owner:vijaye
 last_update:
   date: 2025-09-18
+description: Chat completions are AI-generated responses used to generate text. They could enable generic text completion, or interactive dialogue based on a given
 ---
-
-
-
 Chat completions are AI-generated responses used to generate text. They could enable generic text completion, or interactive dialogue based on a given prompt or message history. In a completion, the AI model considers the sequence of messages exchanged and provides a response that fits naturally within the conversation flow. 
 
 ## Simple completions
+
+This page explains simple completions.
+
 
 <Tabs>
   <Tab title="NodeJS">
@@ -24,7 +25,7 @@ const result = await modelClient.complete(messages);
 for (const choice of result.choices) {
   console.log(choice.message.content);
 }
-```
+```text
   </Tab>
   <Tab title="Python">
 ```python
@@ -37,7 +38,7 @@ self.assertIsNotNone(response, "Expected response to not be None")
 for item in response.choices:
     content = item.message.content
     print(content)
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```csharp
@@ -47,11 +48,11 @@ var completion = await modelClient.Complete(
 );
 
 Console.WriteLine(completion);
-```
+```text
   </Tab>
 </Tabs>
 
-#### Output
+### Output
 ```
 Arrr, trainin’ a parrot be quite the adventure, savvy? Here be some tips fer ye:
 
@@ -68,7 +69,7 @@ Arrr, trainin’ a parrot be quite the adventure, savvy? Here be some tips fer y
 6. **Fun and Play**: Incorporate games into yer training to keep it interestin’. A happy parrot be a learnin’ parrot!
 
 Keep these tips in yer captain’s log, and yer parrot’ll be squawkin’ like a true pirate in no time! Arrr!
-```
+```text
 
 ## Streaming Completions
 
@@ -91,7 +92,7 @@ for await (const event of stream) {
     process.stdout.write(choice.delta?.content ?? "");
   }
 }
-```
+```text
   </Tab>
   <Tab title="Python">
 ```python
@@ -102,7 +103,7 @@ response = modelClient.stream_complete([
 
 for update in response:
     print(update.choices[0].delta.content or "", end="", flush=True)
-```
+```text
   </Tab>
   <Tab title=".NET">
 ```csharp
@@ -119,4 +120,3 @@ await foreach (var update in completion) {
 ```
   </Tab>
 </Tabs>
-

@@ -5,8 +5,8 @@ keywords:
   - owner:brock
 last_update:
   date: 2025-09-18
+description: You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of [console/v1/gates](/console-api/gates) are support
 ---
-
 You can create a .tf file (Terraform File) to configure your Statsig feature gates. All features of [console/v1/gates](/console-api/gates) are supported. The layout is very similar to the JSON body of a /gates request.
 
 Requiring the Statsig provider. (You will need to change the version).
@@ -20,9 +20,12 @@ terraform {
     }
   }
 }
-```
+```text
 
 ## Basic Example
+
+This page explains basic example.
+
 
 Creating a basic gate resource
 
@@ -40,7 +43,7 @@ resource "statsig_gate" "my_gate" {
     }
   }
 }
-```
+```python
 
 ## Conditions
 

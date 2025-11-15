@@ -1,3 +1,8 @@
+---
+title: Statsiguser
+description: When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditio
+---
+
 ## Statsig User
 
 When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. At least one identifier, either userID or a Custom ID, is required to provide a consistent experience for a given user (as explained [here](/concepts/user#why-is-an-id-always-required-for-server-sdks)).

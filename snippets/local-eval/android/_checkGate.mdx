@@ -1,3 +1,8 @@
+---
+title:  Checkgate
+description: <CodeGroup> ```java Java StatsigUser user = new StatsigUser("a-user"); StatsigClient client = Statsig.INSTANCE.getClient(); if (client.checkGate(user,
+---
+
 <CodeGroup>
 
 ```java Java
@@ -9,7 +14,7 @@ if (client.checkGate(user, "new_homepage_design")) {
 } else {
   // Gate is off, show old home page
 }
-```
+```text
 
 ```kotlin Kotlin
 val user = StatsigUser("user_id")

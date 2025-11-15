@@ -4,15 +4,18 @@ keywords:
   - owner:brock
 last_update:
   date: 2025-09-18
+description: import StatsigEnvironmentFormat from "/snippets/integration_statsig_env_format.mdx"; Enabling the Segment integration for Statsig will allow Statsig t
 ---
-
 import StatsigEnvironmentFormat from "/snippets/integration_statsig_env_format.mdx";
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
 
-When Statsig receives events from Segment, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse/read-pulse) results for A/B tests with Statsig's feature gates as well as all your [Experiment](/experiments-plus/monitor) results.
+When Statsig receives events from Segment, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse/read-pulse) results for Experiments with Statsig's feature flags as well as all your [Experiment](/experiments-plus/monitor) results.
 
 ### Supported Segment Event Types
+
+This page explains supported segment event types.
+
 - [Track](https://segment.com/docs/connections/spec/track/)
 - [Page](https://segment.com/docs/connections/spec/page/)
 - [Group](https://segment.com/docs/connections/spec/group/)
@@ -25,8 +28,8 @@ Identify calls are only supported for syncing Segment Engage Audiences with Stat
 
 ### Benefits of using the Segment integration
 Using the Segment integration has several benefits over other methods of event ingestion:
-  * Customers who are ingesting customer data with Segment will be able to quickly populate Statsig with metrics and can typically get up and running within a day 
-    * Customers will only have to use Statsig's assignment SDKs (gate/experiment allocation), simplifying your code and engineer workflows
+  * Users who are ingesting user data with Segment will be able to quickly populate Statsig with metrics and can typically get up and running within a day 
+    * Users will only have to use Statsig's assignment SDKs (gate/experiment allocation), simplifying your code and engineer workflows
     * Additional logging can be done via the [event logging SDKs](/guides/logging-events#logging-events-via-sdks) but will and additional code orchestration and a collection window
   * With [event filtering](/integrations/event_filtering) you can control which events are ingested and make billing more predictable
   * If you have [Segment Replay](https://segment.com/docs/guides/what-is-replay/), you can send Statsig your historical events for analysis
@@ -82,7 +85,7 @@ If you are unable to connect to Segment via OAuth, you can still manually connec
           <img src="/images/integrations/data-connectors/segment/262504950-c5b21cc0-5b51-4a55-997a-74b8a45b2807.png" alt="" />
         </Frame>
         
-    - Put your Server Secret Key in the “API Key” field in the Statsig Destination
+    - Put your Api Key Key in the “API Key” field in the Statsig Destination
 
         <Frame>
           <img src="/images/integrations/data-connectors/segment/262506044-77bef6e4-c79d-47b2-94cc-3f6b3dc06489.png" alt="" />
@@ -129,7 +132,7 @@ Statsig will join incoming user identifiers to whichever [unit of randomization]
 
 Statsig automatically detects the `event` and `userId` fields that are logged through your Segment events (see [`track`](https://segment.com/docs/connections/spec/track/) for an example). If you're running an experiment with the userId as your unit type, this `userID` should match the user identifier that you log with the Statsig SDK.
 
-If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown below.
+If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the Segment `properties` field as shown in the following example.
 
 ```bash title="JSON Body"
 {
@@ -138,7 +141,7 @@ If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit
     "statsigCustomIDs": [ "companyID", "<this_company_id>"]
   }
 }
-```
+```sql
 
 The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
 
@@ -154,7 +157,7 @@ This is particularly useful for working with the [Segment anonymous ID](https://
 <img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png"/>
 
 #### Experimenting on anonymous traffic
-For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new customer identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
+For example, if you're running experiments on anonymous users, you can use Segment's `anonymousId` as the unit of randomization. First, you will want to [add a new user identifier to Statsig](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings). In the above example, we call our new custom ID `segmentAnonymousId`. Then, when [initializing](/client/javascript-sdk) the Statsig SDK, if you have access to the Segment `anonymousId` you will want to pass it to Statsig as a custom ID. For example, your Statsig initialization may look like this:
 
 ```jsx
 import { StatsigClient } from '@statsig/js-client';
@@ -173,7 +176,7 @@ const client = new StatsigClient(sdkKey,
   { environment: { tier: "production" } }
 );
 
-```
+```python
 
 You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/).
 <Note>
@@ -196,7 +199,7 @@ Refer to the following diagram to help orient you to mapping `anonymousIds` in S
 
 ### Syncing Statsig Segment ID Lists with Segment Engage Audiences
 
-By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Gates](/feature-flags/overview). To configure this:
+By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) you are able to maintain a list of users that can be used for targeting using [Statsig Feature Flags](/feature-flags/overview). To configure this:
 
 1. Create a [Statsig ID List Segment](/segments/create-new) on the Statsig Console.
 2. Follow the [Segment guide for Audiences](https://segment.com/docs/engage/audiences/) to create a new Audience and choose `Statsig` as a Destination. The `audience_key` must match the ID of the `Statsig ID List Segment` created.
@@ -204,10 +207,10 @@ By using [Segment Engage Audiences](https://segment.com/docs/engage/audiences/) 
 Once these steps have been completed, your Segment Audience will be synced, and you will be able to target those users for features you develop or experiments you run.
 
 ### Custom Properties
-Passing [custom properties to a Statsig User](/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature gates and experimentation. 
+Passing [custom properties to a Statsig User](/concepts/user#user-attributes) (see `custom` field) enables targeting on specific cohorts of your users in feature flags and experimentation. 
 Providing custom user properties also allows you to drill down your results to specific populations (ex: android/iOS, isVIP, etc) when [reading pulse results](/pulse/custom-queries#running-a-custom-query).
 
-If you're using custom fields to [target users](/feature-flags/conditions#custom) in your feature gates, you can provide these properties through Segment using the key `statsigCustom` as part of the Segment `properties` 
+If you're using custom fields to [target users](/feature-flags/conditions#custom) in your feature flags, you can provide these properties through Segment using the key `statsigCustom` as part of the Segment `properties` 
 field, as an array of key value pairs: `[key1, value1, key2, value2, ...]`. An example is shown below:
 
 ```bash title="JSON Body"
@@ -217,7 +220,7 @@ field, as an array of key value pairs: `[key1, value1, key2, value2, ...]`. An e
     "statsigCustom": [ "isVIP", "true", "marketing_campaign", "abx343", ...]
   }
 }
-```
+```javascript
 
 ## Configuring Outbound Events to Segment
 
@@ -269,7 +272,7 @@ Statsig exports log events and exposure events to segment as `track` events:
     },
   };
 }
-```
+```text
 
 Config Change events follow this schema:
 
@@ -299,7 +302,7 @@ Config Change events follow this schema:
 
 ## Working with Segment Metrics in the Statsig UI
 
-Segment events are piped into Statsig and are accessible in the metrics console like any other event. Furthermore, these metrics will be accessible to use as monitoring metrics in your feature gates and experiments so you can utilize your existing
+Segment events are piped into Statsig and are accessible in the metrics console like any other event. Furthermore, these metrics will be accessible to use as monitoring metrics in your feature flags and experiments so you can utilize your existing
 metric collection via Segment with Statsig's experimentation platform.
 
 <Note>

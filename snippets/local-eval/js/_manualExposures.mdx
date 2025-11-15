@@ -1,3 +1,8 @@
+---
+title:  Manualexposures
+description: ```typescript // Check gate with exposure disabled const result = myStatsigClient.checkGate('a_gate_name', { user, disableExposureLog: true }); // Man
+---
+
 ### Gates
 
 ```typescript
@@ -6,7 +11,7 @@ const result = myStatsigClient.checkGate('a_gate_name', { user, disableExposureL
 
 // Manually log the exposure
 myStatsigClient.checkGate('a_gate_name', { user });
-```
+```text
 
 ### Configs
 
@@ -16,7 +21,7 @@ const config = myStatsigClient.getConfig('a_dynamic_config_name', { user, disabl
 
 // Manually log the exposure
 myStatsigClient.getConfig('a_dynamic_config_name', { user });
-```
+```text
 
 ### Experiments
 
@@ -26,7 +31,7 @@ const experiment = myStatsigClient.getExperiment('an_experiment_name', { user, d
 
 // Manually log the exposure
 myStatsigClient.getExperiment('an_experiment_name', { user });
-```
+```text
 
 ### Layers
 

@@ -6,6 +6,7 @@ keywords:
   - owner:brock
 last_update:
   date: 2025-09-18
+description: The Statsig Forward Proxy is a service that we developed to be hosted and run in your own infrastructure. If SDKs are configured to use the forward pr
 ---
 
 
@@ -35,11 +36,11 @@ helm repo update
 
 # Install the chart
 helm install statsig-forward-proxy statsig/statsig-forward-proxy
-```
+```python
 
 The Helm chart provides extensive configuration options for customizing your deployment. For detailed configuration options, refer to the [Statsig Forward Proxy Helm chart documentation](https://github.com/statsig-io/statsig-forward-proxy/blob/main/chart/README.md).
 
-#### Manual Deployment
+## Manual Deployment
 
 For environments where Helm is not available or for more customized deployments, Statsig Forward Proxy can be deployed manually. The proxy is available as a pre-built Docker image, and you can also build your own binary from source.
 
@@ -58,7 +59,7 @@ While providing this capability, the forward proxy also provides other benefits 
 You can now configure SDK network using different network protocol to integrate with Statsig Forward Proxy for different endpoints. 
 There are 3 network endpoints SDK make requests to download_config_specs,get_id_lists, and log_events, and you can currently configure the download_config_specs to use the proxy. We are actively developing the latter two.
 
-#### Network protocol for different endpoints
+### Network protocol for different endpoints
 For `download_config_specs` endpoint, where we get specs on evaluating gates/layers/experiments/configs 
 1. `http`: the default protocol. If SDK is initialized with http, it will poll config updates in background thread.
 2. `grpc_websocket`: Establish a grpc streaming from SDK to statsig forward proxy, and listen to updates being pushed from proxy servers. You have to use statsig forward proxy or have a similar proxy server in order to use grpc streaming. Note: Not all SDKs support GRPC yet, if you have an SDK you want support for please reach out to our support channel on slack.
@@ -76,7 +77,7 @@ const statsigOptions = {
 }
 Statsig.initialize(server_key, statsigOptions)
 // Statsig will use listen for config updates from statsig forward proxy using grpc_websocket protocol. And use http to get idlists and post log events from statsig servers.
-```
+```python
 
 For information on your specific SDK language, see the language specific docs in the left hand column.
 

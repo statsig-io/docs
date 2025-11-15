@@ -1,3 +1,8 @@
+---
+title: Clientinitresponse
+description: The Python Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network req
+---
+
 ## Client Initialize Response
 
 The Python Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
@@ -11,7 +16,7 @@ response_data = statsig.get_client_initialize_response(user)
 response = json.loads(response_data)
 
 # Pass response to a client SDK to initialize without a network request
-```
+```text
 
 <AccordionGroup>
 <Accordion title = "Initialize Response Parameters">
@@ -25,7 +30,7 @@ def get_client_initialize_response(
     client_sdk_key: Optional[str] = None,
     include_local_overrides: Optional[bool] = None
 ) -> str:
-```
+```text
 
 - **`user`**: `StatsigUser` - The user to generate the initialize response for
 - **`hash`**: `Optional[str]` - Algorithm used for hashing gate/experiment names (default: 'djb2')
@@ -51,7 +56,7 @@ response_data = statsig.get_client_initialize_response(user, hash='sha256')
 
 # Disable hashing
 response_data = statsig.get_client_initialize_response(user, hash='none')
-```
+```text
 
 </Accordion>
 <Accordion title = "Client SDK Key">
@@ -64,7 +69,7 @@ response_data = statsig.get_client_initialize_response(
     user, 
     client_sdk_key='client-key'
 )
-```
+```text
 
 </Accordion>
 <Accordion title = "Local Overrides">
@@ -77,7 +82,7 @@ response_data = statsig.get_client_initialize_response(
     user, 
     include_local_overrides=True
 )
-```
+```text
 
 </Accordion>
 <Accordion title = "Full Code Example">
@@ -120,7 +125,7 @@ def statsig_bootstrap():
     
     # Return the values to the client
     return jsonify({'statsigValues': statsig_values})
-```
+```text
 
 ```javascript
 // Client-side code using @statsig/js-client
@@ -135,7 +140,7 @@ await Statsig.initialize({
   sdkKey: 'client-sdk-key',
   initializeValues: statsigValues,
 });
-```
+```text
 
 </Accordion>
 <Accordion title = "Response Format">

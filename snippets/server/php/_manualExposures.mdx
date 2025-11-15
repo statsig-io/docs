@@ -1,3 +1,8 @@
+---
+title:  Manualexposures
+description: Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature ch
+---
+
 ## Manual Exposures
 
 Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature checks that don't result in the user actually experiencing the feature.
@@ -8,13 +13,13 @@ Check a gate without automatically logging an exposure:
 
 ```php
 $result = $this->statsig->checkGateWithExposureLoggingDisabled($user, 'a_gate_name');
-```
+```text
 
 Manually log the gate exposure:
 
 ```php
 $this->statsig->manuallyLogGateExposure($user, 'a_gate_name');
-```
+```text
 
 ### Dynamic Configs
 
@@ -22,13 +27,13 @@ Get a config without automatically logging an exposure:
 
 ```php
 $config = $this->statsig->getConfigWithExposureLoggingDisabled($user, 'a_dynamic_config_name');
-```
+```text
 
 Manually log the config exposure:
 
 ```php
 $this->statsig->manuallyLogConfigExposure($user, 'a_dynamic_config_name');
-```
+```text
 
 ### Experiments
 
@@ -36,13 +41,13 @@ Get an experiment without automatically logging an exposure:
 
 ```php
 $experiment = $this->statsig->getExperimentWithExposureLoggingDisabled($user, 'an_experiment_name');
-```
+```text
 
 Manually log the experiment exposure:
 
 ```php
 $this->statsig->manuallyLogExperimentExposure($user, 'an_experiment_name');
-```
+```text
 
 ### Layers
 
@@ -51,7 +56,7 @@ Get a layer without automatically logging an exposure:
 ```php
 $layer = $this->statsig->getLayerWithExposureLoggingDisabled($user, 'a_layer_name');
 $paramValue = $layer->get('a_param_name', 'fallback_value');
-```
+```text
 
 Manually log the layer parameter exposure:
 

@@ -39,7 +39,7 @@ const client = new StatsigOnDeviceEvalClient('client-key');
 await client.initializeAsync();
 
 const dataAdapter = client.dataAdapter;
-```
+```python
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/on-device-eval-client/sample-on-device-get-data-adapter.tsx)
 
@@ -59,7 +59,7 @@ const specsData = /* data from local file */;
 await client.dataAdapter.setData(specsData);
 
 await client.initializeAsync();
-```
+```python
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/on-device-eval-client/sample-on-device-bootstrap.tsx)
 
@@ -78,26 +78,26 @@ The `SpecsDataAdapter` type outlines the following functions:
 
   - ```typescript
     attach: (sdkKey: string, options: StatsigOptionsCommon | null) => void
-    ```
+    ```sql
 
 - `getDataSync` - Synchronously get evaluation data for the given user. Called during initializeSync. It is also called during
   async update operations before StatsigDataAdapter.getDataAsync is called.
 
   - ```typescript
     getDataSync: () => DataAdapterResult | null;
-    ```
+    ```text
 
 - `getDataAsync` - Asynchronously get evaluation data for the given user. Called during initializeAsync.
 
   - ```typescript
     getDataAsync: (current: DataAdapterResult | null) => Promise<DataAdapterResult | null>;
-    ```
+    ```text
 
 - `prefetchData` - Manually trigger a fetch for new specs data.
 
   - ```typescript
     prefetchData: () => Promise<void>;
-    ```
+    ```text
 
 - `setData` - Manually set specs data.
 

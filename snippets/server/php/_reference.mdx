@@ -1,4 +1,11 @@
+---
+title:  Reference
+description: ```java class StatsigUser { static function withUserID(string $user_id): StatsigUser static function withCustomIDs(array $custom_ids): StatsigUser fun
+---
 ### Class: StatsigUser
+
+This page explains class: statsiguser.
+
 
 ```java
 class StatsigUser
@@ -27,7 +34,7 @@ class StatsigUser
 
     function setCustomIDs(?array $custom_ids): StatsigUser
 }
-```
+```text
 
 ### Class: StatsigOptions
 
@@ -51,7 +58,7 @@ class StatsigOptions
      */
     function setEventQueueSize(int $size)
 }
-```
+```text
 
 ### Interface: IDataAdapter
 
@@ -61,7 +68,7 @@ interface IDataAdapter
     function get(string $key): ?string;
     function set(string $key, ?string $value);
 }
-```
+```text
 
 ### Interface: ILoggingAdapter
 

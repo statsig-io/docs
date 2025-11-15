@@ -1,3 +1,8 @@
+---
+title: User
+description: `StatsigUser` represents the user context for feature flag evaluation. Use `StatsigUserBuilder` to create user instances: ```csharp var user = new Sta
+---
+
 `StatsigUser` represents the user context for feature flag evaluation. Use `StatsigUserBuilder` to create user instances:
 
 ```csharp
@@ -29,7 +34,7 @@ var user = new StatsigUserBuilder()
     })
     .AddPrivateAttribute("pii_hash", "abc123def456")
     .Build();
-```
+```java
 
 
 ## Builder Methods

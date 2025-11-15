@@ -1,3 +1,8 @@
+---
+title: Angularsetup
+description: The Statsig Angular bindings package provides a `StatsigService` that can be injected into your components. The way you provide and inject this servic
+---
+
 The Statsig Angular bindings package provides a `StatsigService` that can be injected into your components. The way you provide and inject this service can vary depending on how you structure your app.
 
 ```ts
@@ -8,7 +13,7 @@ const StatsigConfig = {
         user: {}, // initial user object
         options: {...} // optional
 }
-```
+```text
 
 ### using app config
 ```ts
@@ -32,7 +37,7 @@ import { appConfig } from './app/app.config';
 bootstrapApplication(AppComponent, appConfig).catch((err) =>
   console.error(err),
 );
-```
+```text
 
 ### using app module
 ```ts

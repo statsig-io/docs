@@ -52,7 +52,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js';
     document.head.appendChild(script);
-    ```
+    ```python
 
     <Frame>
       <img src="/images/guides/first-feature/add-sdk-script.png" alt="Injecting the SDK via DevTools" />
@@ -65,13 +65,13 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
     ```js
     const client = new window.Statsig.StatsigClient('YOUR_SDK_KEY', {});
     await client.initializeAsync();
-    ```
+    ```text
 
     Then call:
 
     ```js
     client.checkGate('mobile_registration');
-    ```
+    ```text
 
     You should see <code>false</code> because the current session is not mobile and doesn’t use the employee email domain.
   </Step>
@@ -88,7 +88,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
     ```js
     await client.updateUserAsync({});
     client.checkGate('mobile_registration');
-    ```
+    ```sql
 
     The gate should now return <code>true</code> for the mobile profile.
 
@@ -103,7 +103,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
     ```js
     await client.updateUserAsync({ email: 'teammate@statsig.com' });
     client.checkGate('mobile_registration');
-    ```
+    ```text
 
     The gate passes again thanks to the email rule.
 
@@ -115,7 +115,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Flush exposures and inspect diagnostics">
     ```js
     client.flush();
-    ```
+    ```text
 
     Open the gate’s <strong>Diagnostics</strong> tab to confirm each exposure, including the failing desktop check, mobile pass, and employee pass.
 

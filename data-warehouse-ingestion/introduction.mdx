@@ -1,5 +1,6 @@
 ---
 title: Data Warehouse Ingestion
+description: <Frame> <img src="/images/data-warehouse-ingestion/introduction/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png" alt="Slide 4_3 - 2" /> </Frame> St
 ---
 
 <Frame>
@@ -90,7 +91,7 @@ Enterprise customers can trigger ingestion for `metrics` or `events` using the s
 
 To trigger ingestion, send a post request to the `https://api.statsig.com/v1/mark_data_ready_dwh` endpoint using your statsig API key. An example would be:
 
-```
+```bash
 curl \
   --header "statsig-api-key: <YOUR-SDK-KEY>" \
   --header "Content-Type: application/json" \

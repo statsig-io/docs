@@ -1,17 +1,22 @@
+---
+title:  Install
+description: via the `go get` CLI: You can install the latest version of the SDK: ``` go get github.com/statsig-io/statsig-server-core/statsig-go@latest ``` or a s
+---
+
 via the `go get` CLI:
 
 You can install the latest version of the SDK:
-```
+```text
 go get github.com/statsig-io/statsig-server-core/statsig-go@latest
 ```
 
 or a specific version of the SDK:
-```
+```text
 go get github.com/statsig-io/statsig-server-core/statsig-go@v0.7.2
 ```
 
 Or, add a dependency on the most recent version of the SDK in go.mod:
-```
+```ruby
 require (
   github.com/statsig-io/statsig-server-core/statsig-go v0.7.2
 )
@@ -27,7 +32,7 @@ Running `go get` will only work if you're working inside a module project with a
 
 Run the following commands to install the necessary binaries and set environment variables:
 
-```
+```javascript
 go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install@latest
 
 // Run the following commands based on your OS:
@@ -48,7 +53,7 @@ post-install
 The system should prompt you to set the environment variables using a statsig.env or statsig.env.ps1 file that was generated during the post-install script.
 Follow the instructions to set the environment variables.
 
-```
+```yaml
 // E.g. - the command will look something like this:
 
 macOS: 

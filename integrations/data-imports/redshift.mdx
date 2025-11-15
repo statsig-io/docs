@@ -5,10 +5,11 @@ keywords:
   - owner:tim
 last_update:
   date: 2025-09-18
+description: <Note> This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out th
 ---
 
 <Note>
-This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data warehouse-ingestion/introduction.md) solution instead.
 </Note>
 
 ## Overview
@@ -52,20 +53,20 @@ Please make sure your data conforms to the following schemas.
 
 <b>Events</b>
 
-```
+```text
 | Column         | Description                                                                                                       | Rules                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
 | event_name     | The name of the event                                                                                             | String under 128 characters, using `_` for spaces                                                       |
 | event_value    | A string representing the value of a current event. Can represent a 'dimension' or a 'value'                      | Read as string format; numeric values will be converted into value                                      |
 | event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format                                                                                           |
-| user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
+| user           | A JSON object representing the user this event was logged for; refer to the following example                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
 | timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
 ```
 
 Please refer to docs for the [Statsig User Object](/concepts/user#user-attributes) for available fields. An example would look like:
 
-```
+```json
 {
   userID: "12345",
   customIDs: {
@@ -102,7 +103,7 @@ Make sure to include all of metric_value, numerator, and denominator, writing `c
 | metric_name  | The name of the metric                                                                                                        | String format. Not null. Length < 128 characters                                                                                                                                                                                             |
 | metric_value | A numeric value for the metric                                                                                                | Double format. Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                                                                                                       |
 | numerator    | Numerator for metric calculation                                                                                              | Double format. Required for ratio metrics. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators                                                   |
-| denominator  | Denominator for metric calculation                                                                                            | Double format. See above                                                                                                                                                                                                                     |
+| denominator  | Denominator for metric calculation                                                                                            | Double format. refer to the relevant section                                                                                                                                                                                                                     |
 
 ### Set up and Provide Credentials
 
@@ -112,7 +113,7 @@ Make sure to include all of metric_value, numerator, and denominator, writing `c
 - Attach an appropriate policy which gives Read and List access to the appropriate bucket. Make sure this is scoped appropriately so the user only has access to the data intended!
   Example policy:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -132,7 +133,7 @@ Make sure to include all of metric_value, numerator, and denominator, writing `c
 Next, modify your bucket access policy (under `permissions` on your S3 bucket's page) to allows this user to access objects.
 Example policy:
 
-```
+```json
 {
 	"Version": "2012-10-17",
 	"Statement": [
@@ -160,7 +161,7 @@ Example policy:
 
 You can confirm your credentials are sufficient by adding any data to your metrics folder and running the following code in PySpark with the IAM user credentials:
 
-```
+```text
 sc._jsc.hadoopConfiguration().set("fs.s3n.awsAccessKeyId", '<IAM_USER_ACCESS_KEY>')
 sc._jsc.hadoopConfiguration().set("fs.s3n.awsSecretAccessKey", '<IAM_USER_SECRET>')
 spark.read.parquet("s3://<BUCKET_NAME>/metrics/*",inferSchema=True).show()

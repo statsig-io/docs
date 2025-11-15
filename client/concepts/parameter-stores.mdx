@@ -1,13 +1,14 @@
 ---
 title: Parameter Stores
 sidebarTitle: Parameterizing your Code
+description: Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, R
 ---
 
 Parameter Stores provide a new way to organize and manage parameters in your web or mobile app via the Statsig console. Now available for JS, React, React Native, Android, iOS, and Dart SDKs on the client side and java, node, python, and rust on the server side.  Let us know in [Slack](https://statsig.com/slack) if you'd like support in a certain language soon.
 
 ## What is a Parameter Store?
 
-Rather than thinking in terms of Statsig entities like Feature Gates, Experiments, Layers, or Dynamic Configs, Parameter Stores let you focus on **parameters**—the values in your app that need to be configurable remotely. 
+Rather than thinking in terms of Statsig entities like Feature Flags, Experiments, Layers, or Dynamic Configs, Parameter Stores let you focus on **parameters**—the values in your app that need to be configurable remotely. 
 
 Parameter Stores **decouple your code from configuration, indefinitely**. This abstraction allows you to run experiments, adjust gating, or change values on the fly— **without hardcoding any experiment/gate names**. Instead you define *parameters* that can be remapped remotely to any value or any Statsig entity. 
 
@@ -20,7 +21,7 @@ While usually release cycles are more painful on platforms like mobile, take the
 </Frame>
 
 
-When the time comes to run an experiment, we can point these variables directly at experiments - starting an A/B test without writing a line of code:
+When the time comes to run an experiment, we can point these variables directly at experiments - starting an Experiment without writing a line of code:
 
 <Frame>
   <img src="/images/tutorials/parameter-stores/param_stores.gif" alt="Parameter Store Experiment Mapping" />
@@ -43,7 +44,7 @@ Here’s a suggested workflow:
 2. **Identify Configuration Variables**:
    Consider which variables you want to decouple from your app and control via Statsig rather than hardcoding them in your app. These could include:
    
-   - A boolean parameter to control access to a new feature. Even if you're used to using Feature Gates for boolean feature management, start with a boolean parameter instead.
+   - A boolean parameter to control access to a new feature. Even if you're used to using Feature Flags for boolean feature management, start with a boolean parameter instead.
    - A string parameter for text resources that you may want to swap or experiment with.
    - A number parameter for inputs such as the number of onboarding steps, a list length to truncate, and more.
 
@@ -51,7 +52,7 @@ Here’s a suggested workflow:
    Begin with a static value for each parameter (what you would have hardcoded in the app). Use this static value initially.
 
 4. **Remap When Ready**: 
-   Once your app is shipped and the feature is ready, remap the parameter to a Feature Gate, Experiment, Dynamic Config, or Layer. This allows you to test and target different variants.
+   Once your app is shipped and the feature is ready, remap the parameter to a Feature Flag, Experiment, Dynamic Config, or Layer. This allows you to test and target different variants.
 
 5. **Update in Real-Time**: 
    After experimenting, you can update the static value or gate the feature for specific app versions. This can be done in real time across mobile apps that are already released.

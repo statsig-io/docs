@@ -10,7 +10,7 @@ import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
 import LogEventIntro from '/snippets/server/logEvent.mdx'
 import LogEventFooter from '/snippets/server/logEventFooter.mdx'
-import GetFeatureGateIntro from '/snippets/server/getFeatureGate.mdx'
+import GetFeature FlagIntro from '/snippets/server/getFeature Flag.mdx'
 import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
 import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
 import StatsigOptionsIntro from '/snippets/server/statsigOptions.mdx'
@@ -36,13 +36,13 @@ If you are using Bundler, add the [gem](https://rubygems.org/gems/statsig) to yo
 
 ```shell
 bundle add statsig
-```
+```text
 
 or directly include it in your Gemfile and run `bundle install`:
 
 ```shell
 gem "statsig", ">= X.Y.Z"
-```
+```text
 
 Check out the latest versions on [https://rubygems.org/gems/statsig](https://rubygems.org/gems/statsig)
 
@@ -53,8 +53,8 @@ Check out the latest versions on [https://rubygems.org/gems/statsig](https://rub
 ```ruby
 require 'statsig'
 
-Statsig.initialize('server-secret-key')
-```
+Statsig.initialize('api key-key')
+```text
 
 
 ```ruby
@@ -68,16 +68,16 @@ options = StatsigOptions.new({'tier' => 'staging'}, network_timeout: 5)
 
 
 ...
-Statsig.initialize('server-secret-key', options, method(:error_callback))
-```
+Statsig.initialize('api key-key', options, method(:error_callback))
+```text
 
-### Initializing Statsig in a Rails Application
+## Initializing Statsig in a Rails Application
 
 If your application is using Rails, you should initialize Statsig in `config/initializers/statsig.rb`:
 
 ```ruby
-Statsig.initialize('server-secret-key', options)
-```
+Statsig.initialize('api key-key', options)
+```text
 
 ### Initializing Statsig when using Unicorn, Puma, Passenger, or Sidekiq
 
@@ -85,27 +85,27 @@ For **Unicorn**, you should initialize Statsig within an `after_fork` hook in yo
 
 ```ruby
 after_fork do |server,worker|
-  Statsig.initialize('server-secret-key', options)
+  Statsig.initialize('api key-key', options)
 end
-```
+```text
 
 For **Puma**, you should initialize Statsig within an `on_worker_boot` hook in your `puma.rb` config file:
 
 ```ruby
 on_worker_boot do
-  Statsig.initialize('server-secret-key', options)
+  Statsig.initialize('api key-key', options)
 end
-```
+```text
 
 For **Passenger**, you should initialize Statsig in your `config.ru` config file:
 
 ```ruby
 if defined?(PhusionPassenger)
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
-    Statsig.initialize('server-secret-key', options)
+    Statsig.initialize('api key-key', options)
   end
 end
-```
+```text
 
 For **Sidekiq**, you should initialize Statsig in your `sidekiq.rb`/server configuration file:
 
@@ -119,7 +119,7 @@ Sidekiq.configure_server do |config|
     Statsig.shutdown
   end
 end
-```
+```text
 
 If you are using Rails in combination with any of the above, you should be sure to initialize using the specific process lifecycle hooks exposed by the respective tool. You can initialize in multiple places, which should ensure the SDK is fully usable including all background processing.
 
@@ -138,7 +138,7 @@ if Statsig.check_gate(user, 'use_new_feature')
 else
   # Gate is off
 end
-```
+```text
 
 <GetDynamicConfigIntro/>
 
@@ -155,7 +155,7 @@ shouldDiscount = config.get('discount', false);
 # Or just get the whole json object backing this config if you prefer
 json = config.value
 
-```
+```text
 
 <GetExperimentIntro/>
 
@@ -179,7 +179,7 @@ discount = price_exp.get("discount", 0.1)
 price = msrp * (1 - discount)
 
 
-```
+```text
 
 <LogEventIntro/>
 
@@ -193,7 +193,7 @@ Statsig.log_event(
     'item_name' => 'diet_coke_48_pack'
   }
 )
-```
+```javascript
 
 <LogEventFooter/>
 
@@ -206,7 +206,7 @@ You can specify optional parameters with `options` when initializing.
 
 - **environment**: Hash, default `nil`
   - a Hash you can use to set environment variables that apply to all of your users in the same session and will be used for targeting purposes.
-  - The most common usage is to set the "tier" (string), and have feature gates pass/fail for specific environments. The accepted values are "production", "staging" and "development", e.g. `StatsigOptions.New({ 'tier' => 'staging' })`.
+  - The most common usage is to set the "tier" (string), and have feature flags pass/fail for specific environments. The accepted values are "production", "staging" and "development", e.g. `StatsigOptions.New({ 'tier' => 'staging' })`.
 - **download_config_specs_url**: String, default `"https://api.statsigcdn.com/v2/download_config_specs/"`
   - The url used specifically to call download_config_specs
 - **log_event_url**: String, default `"https://statsigapi.net/v1/log_event"`
@@ -228,7 +228,7 @@ You can specify optional parameters with `options` when initializing.
 - **local_mode**: Boolean, default `false`
   - Restricts the SDK to not issue any network requests and only respond with default values (or local overrides)
 - **bootstrap_values**: String, default `nil`
-  - A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+  - A string that represents all rules for all feature flags, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
 - **rules_updated_callback**: function, default `nil`
   - A callback function that will be called anytime the rulesets are updated
 - **data_store**: IDataStore, default `nil`
@@ -254,13 +254,13 @@ You can specify optional parameters with `options` when initializing.
 
 ```ruby
 Statsig.shutdown
-```
+```text
 
 <ClientInitResponseIntro/>
 
 ```ruby
 values = Statsig.get_client_initialize_response(user); # Hash[String, Any] | Nil
-```
+```text
 
 <LocalOverridesIntro/>
 
@@ -270,7 +270,7 @@ Statsig.override_gate("a_gate_name", true)
 
 # Adding config overrides
 Statsig.override_config("a_config_name", {"key" => "value"})
-```
+```sql
 
 <Note>
 1. These only apply locally - they do not update definitions in the Statsig console or elsewhere.
@@ -283,46 +283,46 @@ Statsig.override_config("a_config_name", {"key" => "value"})
 
 ```ruby
 result = Statsig.check_gate(user, 'a_gate_name', CheckGateOptions.new(disable_log_exposure: true))
-```
+```text
 
 ```ruby
 Statsig.manually_log_gate_exposure(user, 'a_gate_name')
-```
+```text
 
 **Configs**
 
 ```ruby
 config = Statsig.get_config(user, 'a_dynamic_config_name', GetConfigOptions.new(disable_log_exposure: true))
-```
+```text
 
 ```ruby
 Statsig.manually_log_config_exposure(user, 'a_dynamic_config_name')
-```
+```text
 
 **Experiments**
 
 ```ruby
 experiment = Statsig.get_experiment(user, 'an_experiment_name', GetExperimentOptions.new(disable_log_exposure: true))
-```
+```text
 
 ```ruby
 Statsig.manually_log_experiment_exposure(user, 'an_experiment_name')
-```
+```text
 
 **Layers**
 
 ```ruby
 layer = Statsig.get_layer(user, 'a_layer_name', GetLayerOptions.new(disable_log_exposure: true))
 paramValue = layer.get('a_param_name', 'fallback_value')
-```
+```text
 
 ```ruby
 Statsig.manually_log_layer_parameter_exposure(user, 'a_layer_name', 'a_param_name')
-```
+```text
 
 <PersistentStorageIntro/>
 
-### Interface
+## Interface
 
 ```ruby
 class IUserPersistentStorage
@@ -332,7 +332,7 @@ class IUserPersistentStorage
 
 	def save(key, data) end
 end
-```
+```text
 
 ### Example Implementation
 
@@ -354,17 +354,17 @@ class DummyPersistentStorageAdapter < Statsig::Interfaces::IUserPersistentStorag
     @store[key] = data
   end
 end
-```
+```text
 
 <MultiInstanceIntro/>
 
 ```ruby
 sdk_instance = StatsigDriver.new(secret_key, options, error_callback)
-```
+```text
 
 ## FAQ
 
-#### How do I run experiments for logged out users?
+### How do I run experiments for logged out users?
 
 See the guide on [device level experiments](/guides/first-device-level-experiment)
 
@@ -418,7 +418,7 @@ class StatsigUser
     end
   end
 end
-```
+```text
 
 ### Type StatsigOptions
 
@@ -473,7 +473,7 @@ class StatsigOptions
   )
   end
 end
-```
+```text
 
 ### DataStore
 

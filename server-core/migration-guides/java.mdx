@@ -26,7 +26,7 @@ repositories {
 dependencies {
     implementation 'com.statsig:serversdk:X.X.X'
 }
-```
+```text
 
 ```xml maven
 <dependencies>
@@ -36,7 +36,7 @@ dependencies {
         <version>X.X.X</version>
     </dependency>
 </dependencies>
-```
+```text
 
 </CodeGroup>
 
@@ -59,7 +59,7 @@ dependencies {
     // Platform-specific library (required)
     implementation 'com.statsig:javacore:X.X.X:YOUR-OS-ARCHITECTURE'
 }
-```
+```text
 
 
 ```xml maven
@@ -79,7 +79,7 @@ dependencies {
         <classifier>YOUR-OS-ARCHITECTURE</classifier>
     </dependency>
 </dependencies>
-```
+```ruby
 
 </CodeGroup>
 
@@ -91,7 +91,7 @@ import com.statsig.*;
 
 StatsigOptions options = new StatsigOptions.Builder().build();
 Statsig statsig = new Statsig("your-secret-key", options);
-```
+```ruby
 
 This will output the appropriate dependency for your system.
 
@@ -123,7 +123,7 @@ StatsigOptions options = new StatsigOptions();
 // options.initTimeoutMs = 9999;
 Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 import com.statsig.sdk.Statsig
@@ -133,7 +133,7 @@ val options = StatsigOptions().apply {
     initTimeoutMs = 9999
 }
 async { Statsig.initialize("server-secret-key", options) }.await()
-```
+```text
 
 ```java Java Core SDK
 import com.statsig.*;
@@ -147,7 +147,7 @@ StatsigOptions options = new StatsigOptions.Builder()
 
 Statsig statsig = new Statsig("server-secret-key", options);
 statsig.initialize().get();
-```
+```text
 
 </CodeGroup>
 
@@ -164,7 +164,7 @@ if (isFeatureOn) {
 } else {
   // Gate is off
 }
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 val user = StatsigUser("user_id")
@@ -175,7 +175,7 @@ if (featureOn) {
 } else {
   // Gate is off
 }
-```
+```text
 
 ```java Java Core SDK
 StatsigUser user = new StatsigUser.Builder().setUserID("user_id").build();
@@ -186,7 +186,7 @@ if (isFeatureOn) {
 } else {
   // Gate is off
 }
-```
+```text
 
 </CodeGroup>
 
@@ -200,7 +200,7 @@ DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 val config = Statsig.getConfigSync(user, "awesome_product_details")
@@ -208,7 +208,7 @@ val config = Statsig.getConfigSync(user, "awesome_product_details")
 val itemName = config.getString("product_name", "Awesome Product v1")
 val price = config.getDouble("price", 10.0)
 val shouldDiscount = config.getBoolean("discount", false)
-```
+```text
 
 ```java Java Core SDK
 DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details");
@@ -216,7 +216,7 @@ DynamicConfig config = statsig.getDynamicConfig(user, "awesome_product_details")
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
-```
+```text
 
 </CodeGroup>
 
@@ -229,21 +229,21 @@ DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo_title
 
 String promoTitle = experiment.getString("title", "Welcome to Statsig!");
 Double discount = experiment.getDouble("discount", 0.1);
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 val experiment = Statsig.getExperimentSync(user, "new_user_promo_title")
 
 val promoTitle = experiment.getString("title", "Welcome to Statsig!")
 val discount = experiment.getDouble("discount", 0.1)
-```
+```text
 
 ```java Java Core SDK
 Experiment experiment = statsig.getExperiment(user, "new_user_promo_title");
 
 String promoTitle = experiment.getString("title", "Welcome to Statsig!");
 Double discount = experiment.getDouble("discount", 0.1);
-```
+```text
 
 </CodeGroup>
 
@@ -256,21 +256,21 @@ Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
 
 String promoTitle = layer.getString("title", "Welcome to Statsig!");
 Double discount = layer.getDouble("discount", 0.1);
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 val layer = Statsig.getLayerSync(user, "user_promo_experiments")
 
 val promoTitle = layer.getString("title", "Welcome to Statsig!")
 val discount = layer.getDouble("discount", 0.1)
-```
+```text
 
 ```java Java Core SDK
 Layer layer = statsig.getLayer(user, "user_promo_experiments");
 
 String promoTitle = layer.getString("title", "Welcome to Statsig!");
 Double discount = layer.getDouble("discount", 0.1);
-```
+```text
 
 </CodeGroup>
 
@@ -280,18 +280,18 @@ Double discount = layer.getDouble("discount", 0.1);
 
 ```java Legacy Java SDK
 Statsig.logEvent(user, "purchase", 2.99, Map.of("item_name", "remove_ads"));
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 Statsig.logEvent(user, "purchase", 2.99, mapOf("item_name" to "remove_ads"))
-```
+```text
 
 ```java Java Core SDK
 Map<String, String> metadata = new HashMap<>();
 metadata.put("item_name", "remove_ads");
 
 statsig.logEvent(user, "purchase", "2.99", metadata);
-```
+```text
 
 </CodeGroup>
 
@@ -308,14 +308,14 @@ options.setApi("https://api.statsig.com/v1");
 options.setRulesetsSyncIntervalMs(10 * 1000);
 options.setIdListsSyncIntervalMs(60 * 1000);
 options.setDisableAllLogging(false);
-```
+```text
 
 ```kotlin Legacy Kotlin SDK
 val options = StatsigOptions().apply {
     initTimeoutMs(3000)
     disableAllLogging(false)
 }
-```
+```text
 
 ```java Java Core SDK
 StatsigOptions options = new StatsigOptions.Builder()
@@ -327,7 +327,7 @@ StatsigOptions options = new StatsigOptions.Builder()
     .setIdListsSyncIntervalMs(60 * 1000)
     .setDisableAllLogging(false)
     .build();
-```
+```javascript
 
 </CodeGroup>
 

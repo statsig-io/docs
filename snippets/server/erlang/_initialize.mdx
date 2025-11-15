@@ -1,12 +1,17 @@
+---
+title:  Initialize
+description: Define the application in your `.app.src`. ``` {applications, [..., statsig]}, ``` Set your server secret key as a config for the `statsig` applicatio
+---
+
 Define the application in your `.app.src`.  
 
-```
+```text
 {applications, [..., statsig]},
 ```
 
 Set your server secret key as a config for the `statsig` application. In `app.config`, or your [system configuration file](https://www.erlang.org/doc/design_principles/applications.html#configuring-an-application)
 
-```
+```text
 [{statsig, [statsig_api_key, <<"secret-">>]}].
 ```
 

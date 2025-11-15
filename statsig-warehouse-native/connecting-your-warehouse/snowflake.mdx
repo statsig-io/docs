@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: To set up Warehouse Native connection with Snowflake, Statsig needs the following - Account Name - Database Name - Schema Name
 ---
 
 ## Overview
@@ -51,7 +52,7 @@ You can extract information from here to get the required fields for Account Nam
 
 ### Using \<orgname\>-\<account_name\> for Account Name
 
-For the Account Name field, you can also enter your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-1-preferred-account-name-in-your-organization), which typically takes the form `<orgname>-<account_name>`. To find the `<orgname>` in the Snowflake console, click on your account profile (usually at the bottom left) to view account details as shown below.
+For the Account Name field, you can also enter your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-1-preferred-account-name-in-your-organization), which typically takes the form `<orgname>-<account_name>`. To find the `<orgname>` in the Snowflake console, click on your account profile (usually at the bottom left) to view account details as shown in the following example.
 
 <Frame>
   <img src="/images/statsig-warehouse-native/connecting-your-warehouse/snowflake/195217037-ad630f37-a8fe-4b61-823f-ce0e8c984ed0.png" alt="Snowflake account profile interface" />
@@ -143,11 +144,11 @@ BEGIN;
   GRANT SELECT ON FUTURE VIEWS IN DATABASE <DATABASE> TO ROLE identifier($role_name);
 
 COMMIT;
-```
+```javascript
 
 ### What IP addresses will Statsig access data warehouses from?
 
-[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+[See FAQ](/data warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data warehouses-from)
 
 ### Additional Setup for Warehouse Explorer
 

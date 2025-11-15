@@ -1,3 +1,8 @@
+---
+title:  Initialize
+description: <CodeGroup> ```swift Async (Swift) import StatsigOnDeviceEvaluations // (optional) Configure the SDK if needed let opts = StatsigOptions() opts.enviro
+---
+
 <CodeGroup>
 
 ```swift Async (Swift)
@@ -21,7 +26,7 @@ myStatsigInstance.initialize("client-sdk-key", options: opts) { err in
         print("Error \(err)")
     }
 }
-```
+```text
 
 ```objective-c Objective C
 StatsigOptions *options = [StatsigOptions new];
@@ -38,7 +43,7 @@ options.environment = env;
         NSLog(@"Error %@", error);
     }
 }];
-```
+```text
 
 ```swift Synchronous (Swift)
 import StatsigOnDeviceEvaluations
@@ -53,7 +58,7 @@ let error = client.initializeSync("client-sdk-key", initialSpecs: specs)
 if let err = error {
     print("Error \(err)")
 }
-```
+```text
 
 </CodeGroup>
 

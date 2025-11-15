@@ -1,3 +1,8 @@
+---
+title: Paramstores
+description: <CodeGroup> ```java Java String userID = "user_id"; ParameterStore store = statsig.getParameterStore(userID, "my_param_store"); String stringValue = s
+---
+
 <CodeGroup>
 ```java Java
 String userID = "user_id";
@@ -14,7 +19,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 ParameterStore storeWithUser = statsig.getParameterStore(user, "my_param_store");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

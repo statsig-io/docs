@@ -1,3 +1,8 @@
+---
+title: Initialization
+description: <CodeGroup> ```java Java import com.statsig.*; // All StatsigOptions are optional, feel free to adjust them as needed StatsigOptions options = new Sta
+---
+
 <CodeGroup>
 ```java Java
 import com.statsig.*;
@@ -11,7 +16,7 @@ StatsigOptions options = new StatsigOptions.Builder()
 
 Statsig myStatsigServer = new Statsig(SECRET_KEY, options);
 myStatsigServer.initialize().get();
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.*

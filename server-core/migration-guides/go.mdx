@@ -20,13 +20,13 @@ This guide will help you migrate from the legacy Go Server SDK to the new Go Cor
 
 ```bash CLI
 go get github.com/statsig-io/go-sdk
-```
+```text
 
 ```go go.mod
 require (
   github.com/statsig-io/go-sdk v1.26.0
 )
-```
+```go
 
 </CodeGroup>
 
@@ -40,17 +40,17 @@ Install the latest version of the SDK:
 
 ```bash Latest Version
 go get github.com/statsig-io/statsig-server-core/statsig-go@latest
-```
+```text
 
 ```bash Specific Version
 go get github.com/statsig-io/statsig-server-core/statsig-go@v0.7.2
-```
+```text
 
 ```go go.mod
 require (
   github.com/statsig-io/statsig-server-core/statsig-go v0.7.2
 )
-```
+```text
 
 </CodeGroup>
 
@@ -61,7 +61,7 @@ Run the following commands to install the necessary binaries and set environment
 ```bash
 go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install@latest
 post-install
-```
+```text
 
 The system should prompt you to set the environment variables using a `statsig.env` or `statsig.env.ps1` file that was generated during the post-install script. Follow the instructions to set the environment variables.
 
@@ -69,11 +69,11 @@ The system should prompt you to set the environment variables using a `statsig.e
 
 ```bash macOS
 source /Users/Your-User-Name/.statsig_env
-```
+```text
 
 ```powershell Windows (PowerShell)
 . "C:\Users\Your-User-Name\.statsig_env.ps1"
-```
+```text
 
 </CodeGroup>
 
@@ -110,7 +110,7 @@ statsig.Initialize("server-secret-key")
 
 // Or, if you want to initialize with certain options
 statsig.InitializeWithOptions("server-secret-key", &Options{Environment: Environment{Tier: "staging"}})
-```
+```text
 
 ```go Go Core SDK
 import (
@@ -138,7 +138,7 @@ details, err := s.InitializeWithDetails()
 if err != nil {
     // Handle error
 }
-```
+```text
 
 </CodeGroup>
 
@@ -158,7 +158,7 @@ user := statsig.User{
 
 // Check if a gate is enabled
 enabled := statsig.CheckGate(user, "my_gate")
-```
+```text
 
 ```go Go Core SDK
 import (
@@ -174,7 +174,7 @@ user := statsig.NewStatsigUserBuilder().
 
 // Check if a gate is enabled
 enabled := s.CheckGate(user, "my_gate")
-```
+```text
 
 </CodeGroup>
 
@@ -195,7 +195,7 @@ user := statsig.User{
 // Get a dynamic config
 config := statsig.GetConfig(user, "my_config")
 value := config.Get("key", "default_value")
-```
+```text
 
 ```go Go Core SDK
 import (
@@ -211,7 +211,7 @@ user := statsig.NewStatsigUserBuilder().
 
 // Get a dynamic config
 config := s.GetDynamicConfig(user, "my_config")
-```
+```text
 
 </CodeGroup>
 
@@ -231,7 +231,7 @@ user := statsig.User{
 
 // Get an experiment
 experiment := statsig.GetExperiment(user, "my_experiment")
-```
+```text
 
 ```go Go Core SDK
 import (
@@ -247,7 +247,7 @@ user := statsig.NewStatsigUserBuilder().
 
 // Get an experiment
 experiment := s.GetExperiment(user, "my_experiment")
-```
+```text
 
 </CodeGroup>
 
@@ -272,7 +272,7 @@ statsig.LogEvent(Event{
                 Value: "SKU_12345",
 		Metadata: map[string]string{"price": "9.99","item_name": "diet_coke_48_pack"},
 	})
-```
+```text
 
 ```go Go Core SDK
 import (

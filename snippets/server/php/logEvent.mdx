@@ -1,10 +1,15 @@
+---
+title: Logevent
+description: ```php $event = new StatsigEvent("purchase"); $event->setUser($user); $event->setValue("subscription"); $event->setMetadata(array("promotion" => "2022
+---
+
 ```php
 $event = new StatsigEvent("purchase");
 $event->setUser($user);
 $event->setValue("subscription");
 $event->setMetadata(array("promotion" => "2022 deals"));
 $this->statsig->logEvent($event);
-```
+```ruby
 
 At the end of the request, you can flush events to the log file using:
 

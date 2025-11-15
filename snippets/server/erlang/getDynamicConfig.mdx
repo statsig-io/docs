@@ -1,8 +1,13 @@
+---
+title: Getdynamicconfig
+description: <CodeGroup> ```erlang Erlang Config = statsig:get_config(User, <<"config_name">>), Value = statsig_config:get(Config, <<"param">>, <<"default">>). ```text
+---
+
 <CodeGroup>
 ```erlang Erlang
 Config = statsig:get_config(User, <<"config_name">>),
 Value = statsig_config:get(Config, <<"param">>, <<"default">>).
-```
+```text
 
 ```elixir Elixir
 config = Statsig.get_config(user, "config_name")

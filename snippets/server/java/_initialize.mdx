@@ -1,3 +1,8 @@
+---
+title:  Initialize
+description: <Tabs> <Tab title="Java"> ```java import com.statsig.sdk.Statsig; StatsigOptions options = new StatsigOptions(); // Customize options as needed. For e
+---
+
 <Tabs>
   <Tab title="Java">
 
@@ -9,7 +14,7 @@ StatsigOptions options = new StatsigOptions();
 // options.initTimeoutMs = 9999;
 Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
-```
+```text
 
   </Tab>
   <Tab title="Kotlin">

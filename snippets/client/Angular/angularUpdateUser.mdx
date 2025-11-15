@@ -1,3 +1,8 @@
+---
+title: Angularupdateuser
+description: Sometimes you'll need to update user properties, say when the user logs in and a userID is assigned, or a set of new properties have been identified. 
+---
+
 ## Updating user properties (e.g., Login)
 
 Sometimes you'll need to update user properties, say when the user logs in and a userID is assigned, or a set of new properties have been identified. This would require Statsig to go fetch new values for all the gates, experiments and config evaluations. This is achieved by the calling `updateUserAsync` from the service:

@@ -1,3 +1,8 @@
+---
+title:  Shutdown
+description: <CodeGroup> ```swift Swift Statsig.shared.shutdown { err in if let err = err { print("An error occurred during Statsig shutdown: \(err)") } else {
+---
+
 <CodeGroup>
 
 ```swift Swift
@@ -8,7 +13,7 @@ Statsig.shared.shutdown { err in
         print("Statsig shutdown successfully")
     }
 }
-```
+```text
 
 ```objective-c Objective C
 [[Statsig sharedInstance] shutdownWithCompletion:^(NSError * _Nullable error) {

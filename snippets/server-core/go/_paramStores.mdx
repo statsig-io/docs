@@ -1,4 +1,11 @@
+---
+title:  Paramstores
+description: ```go // Get a Parameter Store by name s, _ := statsig.NewStatsig("secret-key", options) user := statsig.NewStatsigUserBuilder().WithUserID("a-user").
+---
 ### Getting a Parameter Store
+
+This page explains getting a parameter store.
+
 
 ```go
 // Get a Parameter Store by name
@@ -9,7 +16,7 @@ user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
 options := statsig.ParameterStoreOptions{DisableExposureLogging: false}
 
 paramStore := s.GetParameterStore(*user, "paramStore", &options)
-```
+```text
 
 ### Retrieving Parameter Values
 
@@ -38,7 +45,7 @@ objectVal := paramStore.GetMap("obj_param", objectParam)
 arrayParam := []interface{}{"val1", "val2", "val3"}
 arrayVal := paramStore.GetInterface("array_param", arrayParam)
 
-```
+```text
 
 ### Evaluation Options
 

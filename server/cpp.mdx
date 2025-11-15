@@ -36,7 +36,7 @@ FetchContent_Declare(statsig
 )
 
 FetchContent_MakeAvailable(statsig)
-```
+```text
 
 And include the following in your `CMakeLists.txt` file
 
@@ -45,7 +45,7 @@ cmake_minimum_required(VERSION 3.11)
 
 include(FetchContent)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/statsig.cmake)
-```
+```text
 
 Check out the latest versions on [https://github.com/statsig-io/cpp-server-sdk/releases/latest](https://github.com/statsig-io/cpp-server-sdk/releases/latest)
 
@@ -62,7 +62,7 @@ statsig::initialize('server-secret-key');
 statsig::Options options;
 options.localMode = true
 statsig::initialize('server-secret-key', options)
-```
+```text
 
 <InitializationFooter/>
 </Step>
@@ -82,7 +82,7 @@ if (statsig::checkGate(user, 'use_new_feature'))
 else {
   // Gate is off
 }
-```
+```text
 
 <GetDynamicConfigIntro/>
 
@@ -92,7 +92,7 @@ statsig::DynamicConfig config = statsig::get_config(user, 'awesome_product_detai
 auto item_name = config.value['product_name'];
 auto price = config.value['price'];
 auto shouldDiscount = config.value['discount'];
-```
+```text
 
 <GetExperimentIntro/>
 
@@ -116,13 +116,13 @@ discount = price_exp.value["discount"]
 price = msrp * (1 - discount)
 
 
-```
+```text
 
 <LogEventIntro/>
 
 ```cpp
 statsig::logEvent(user, 'add_to_cart')
-```
+```python
 
 <LogEventFooter/>
 
@@ -152,7 +152,7 @@ ID Lists are currently not supported in the C++ server SDK
 
 ```cpp
 statsig::shutdown()
-```
+```text
 
 <LocalOverridesIntro/>
 
@@ -165,11 +165,11 @@ std::unordered_map<std::string, JSON::any> overrideValue = {
     {"overridden key", "overridden field"},
 };
 statsig::overrideConfig("a_config_name", overrideValue)
-```
+```text
 
 ## FAQ
 
-#### How do I run experiments for logged out users?
+### How do I run experiments for logged out users?
 
 See the guide on [device level experiments](/guides/first-device-level-experiment)
 
@@ -206,7 +206,7 @@ inline bool operator==(User const &a, User const &b)
           a.statsigEnvironment == b.statsigEnvironment &&
           a.customIDs == b.customIDs;
 };
-```
+```text
 
 ### Options
 

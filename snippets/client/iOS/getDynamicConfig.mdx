@@ -1,3 +1,8 @@
+---
+title: Getdynamicconfig
+description: <CodeGroup> ```swift Swift let config = Statsig.getConfig("awesome_product_details") // The 2nd parameter is the default value to be used in case the 
+---
+
 
 <CodeGroup>
 ```swift Swift
@@ -9,7 +14,7 @@ let config = Statsig.getConfig("awesome_product_details")
 let itemName = config.getValue(forKey: "product_name", defaultValue: "Awesome Product v1")
 let price = config.getValue(forKey: "price", defaultValue: 10.0)
 let shouldDiscount = config.getValue(forKey: "discount", defaultValue: false)
-```
+```text
 
 ```objective-c Objective C
 DynamicConfig *config = [Statsig getConfigForName:@"awesome_product_details"];

@@ -1,5 +1,6 @@
 ---
 title: Templates
+description: Templates enable you to create a blueprint for gates/dynamic configs/ experiments to enable standardization and reusability across your Project. Templ
 ---
 
 ## Overview
@@ -45,7 +46,7 @@ Templates can be managed via the **Templates** setting under **Product Configura
 
 ## Creating Configs from Templates
 
-To create a config using a template, at the time of config creation, select a template to apply from the template selector. If templates are required at the Organization or Team-level, the user will be blocked from proceeding with config creation until they've selected an approved template. The list of template options in the drop-down is configured at the team level (see below).
+To create a config using a template, at the time of config creation, select a template to apply from the template selector. If templates are required at the Organization or Team-level, the user will be blocked from proceeding with config creation until they've selected an approved template. The list of template options in the drop-down is configured at the team level (refer to the following example).
 
 <Frame>
   <img src="/images/templates/template-selection.png" alt="Template Selection" />
@@ -63,7 +64,7 @@ There are a few key layers of settings governing templates, namely at the-
 Within Experiment and Gate Policies (**Settings** -> **Project Configuration** -> **Feature Management**/ **Experimentation** - **Organization Tab**), you can enforce that a template is used for any new gate/ dynamic config/ experiment creation.  Only organization admins can configure this setting. NOTE that you must create at least 1 experiment/ gate template for users to choose if you toggle on this setting, otherwise they will be blocked in creating new configs.
 
 <Frame>
-  <img src="/images/templates/gates_policy_3.png" alt="Org-level Feature Gate Templates Settings" />
+  <img src="/images/templates/gates_policy_3.png" alt="Org-level Feature Flag Templates Settings" />
 </Frame>
 
 ### Team-level Templates Settings

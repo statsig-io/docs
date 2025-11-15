@@ -1,3 +1,8 @@
+---
+title:  Reactnativesetup
+description: To get setup with Statsig in a React Native component tree, you should use the RN specific `StatsigProviderOnDeviceEvalRN`. This automatically switche
+---
+
 ## React Native Specific Setup
 
 To get setup with Statsig in a React Native component tree, you should use the RN specific `StatsigProviderOnDeviceEvalRN`. This automatically switches out the storage layer used by the SDK, utilizing [AsyncStorage](https://github.com/react-native-async-storage) instead of LocalStorage (which isn't available in RN environments).

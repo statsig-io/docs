@@ -46,7 +46,7 @@ await Statsig.Initialize(
         InitializeTimeoutMs = 5000,
     }
 );
-```
+```text
 </Step>
 </Steps>
 
@@ -63,7 +63,7 @@ else
 {
   // Gate is off, show old loading screen
 }
-```
+```text
 
 <getDynamicConfig/>
 
@@ -76,7 +76,7 @@ var config = Statsig.GetConfig("awesome_product_details");
 string itemName = config.Get<string>("product_name", "Awesome Product v1");
 double price = config.Get<double>("price", 10.0);
 bool shouldDiscount = config.Get<bool>("discount", false);
-```
+```text
 
 <getExperimentLayer/>
 
@@ -98,7 +98,7 @@ var discount = priceExperiment.Get("discount", 0.1);
 ...
 
 double price = msrp * (1 - discount);
-```
+```text
 
 <logEvent/>
 
@@ -110,7 +110,7 @@ Statsig.LogEvent(
     { "price", "9.99" }
   }
 );
-```
+```text
 
 <statsigUser/>
 
@@ -121,7 +121,7 @@ Statsig.LogEvent(
 await Statsig.UpdateUser(
     new StatsigUser { UserID = "new_user_id", Email = "new_user@email.com" },
 );
-```
+```text
 
 <privateAttributes/>
 

@@ -1,3 +1,8 @@
+---
+title:  Getconfig
+description: <CodeGroup> ```java Java StatsigUser user = new StatsigUser("a-user"); StatsigClient client = Statsig.INSTANCE.getClient(); DynamicConfig config = cli
+---
+
 <CodeGroup>
 
 ```java Java
@@ -12,7 +17,7 @@ DynamicConfig config = client.getConfig(user, "awesome_product_details");
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
-```
+```text
 
 ```kotlin Kotlin
 val user = StatsigUser("user_id")

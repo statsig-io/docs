@@ -1,3 +1,8 @@
+---
+title: Getprompt
+description: <CodeGroup> ```java Java String userID = "user_id"; Prompt prompt = statsig.getPrompt(userID, "my_prompt"); // with StatsigUser StatsigUser user = Sta
+---
+
 <CodeGroup>
 ```java Java
 String userID = "user_id";
@@ -9,7 +14,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 Prompt promptWithUser = statsig.getPrompt(user, "my_prompt");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

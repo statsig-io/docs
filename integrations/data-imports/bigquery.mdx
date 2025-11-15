@@ -5,10 +5,11 @@ keywords:
   - owner:tim
 last_update:
   date: 2025-09-18
+description: <Note> This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out th
 ---
 
 <Note>
-This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data warehouse-ingestion/introduction.md) solution instead.
 </Note>
 
 ## Overview
@@ -33,7 +34,7 @@ Here are the steps to take to enable BigQuery integration with Statsig:
 2. Create a table for pre-computed metrics, and another for signalling when data
    has landed with the statement below:
 
-```
+```go
 -- Replace statsig with your dataset name, if not using statsig
 CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics(
   unit_id STRING NOT NULL,
@@ -88,12 +89,12 @@ Your data should conform to these definitions and rules to avoid errors or delay
 | timeuuid     | A unique timeuuid for the event                                                                                               | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
 | metric_name  | The name of the metric                                                                                                        | Not null. Length < 128 characters                                                                                        |
 | metric_value | A numeric value for the metric                                                                                                | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below  |
-| numerator    | Numerator for metric calculation                                                                                              | See above, and details below                                                                                             |
-| denominator  | Denominator for metric calculation                                                                                            | See above, and details below                                                                                             |
+| numerator    | Numerator for metric calculation                                                                                              | refer to the relevant section, and details below                                                                                             |
+| denominator  | Denominator for metric calculation                                                                                            | refer to the relevant section, and details below                                                                                             |
 
 Metric ingestion is for user-day metric pairs. This is useful for measuring experimental results on complex business logic (e.g. LTV estimates) that you generate in your data warehouse.
 
-##### Note on metric values
+### Note on metric values
 
 If you provide **both** a numerator and denominator value for any record of a metric, we'll assume that this metric is a ratio metric; we'll filter out users who do not have a denominator value from analysis, and recalculate the metric value ourselves via the numerator and denominator fields.
 
@@ -120,7 +121,7 @@ These are common errors we've run into - please go through and make sure your se
 - The `id_type` is set correctly
   - Default types are `user_id` or `stable_id`. If you have custom ids, make sure that the capitalization and spelling matches as these are case sensitive (you can find your custom ID types by going to your Project Settings in the Statsig console).
 - Your ids match the format of ids logged from SDKs
-  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
+  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature flag data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
 
 If your data is not showing up in the Statsig console
 

@@ -1,3 +1,8 @@
+---
+title: Faqs
+description: See the guide on [device level experiments](/guides/experiment-on-custom-id-types). 1. **Seeing SSL Error** Right now the binary files will look at ce
+---
+
 ## FAQs
 
 ### How do I run experiments for logged out users?
@@ -13,7 +18,7 @@ Right now the binary files will look at certain versions of SSL.
 ```shell
 // Try run this
 apt-get update && apt-get install libcurl4-openssl-dev -y && rm -rf /var/lib/apt/lists/*
-```
+```bash
 
 2. **Docker build failing with platform-specific dependencies**
 
@@ -23,7 +28,7 @@ When building in Docker (Linux environment), the build may fail if your local `p
 
 ```dockerfile
 RUN npm install @statsig/statsig-node-core-linux-x64-gnu
-```
+```ruby
 
 Or add both platform variants as dependencies in your `package.json`:
 

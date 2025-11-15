@@ -5,10 +5,11 @@ keywords:
   - owner:tim
 last_update:
   date: 2025-09-18
+description: <Note> This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out th
 ---
 
 <Note>
-This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data warehouse-ingestion/introduction.md) solution instead.
 </Note>
 
 ## Overview
@@ -35,20 +36,20 @@ Please make sure your data conforms to the following schemas.
 
 <b>Events</b>
 
-```
+```text
 | Column         | Description                                                                                                       | Rules                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | timestamp      | UNIX timestamp of the event                                                                                       | UTC timestamp                                                                                           |
 | event_name     | The name of the event                                                                                             | String under 128 characters, using `_` for spaces                                                       |
 | event_value    | A string representing the value of a current event. Can represent a 'dimension' or a 'value'                      | Read as string format; numeric values will be converted into value                                      |
 | event_metadata | A dictionary<string, string> in the form of a JSON string, containing named metadata for the event                | String format. Not null. Length < 128 characters                                                        |
-| user           | A JSON object representing the user this event was logged for; see below                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
+| user           | A JSON object representing the user this event was logged for; refer to the following example                                          | Escaped JSON string including the keys 'custom' and 'customIDs'. A userID or customID must be provided. |
 | timeuuid       | A unique UUID or timeUUID used for deduping. If omitted, will be generated but will not be effective for deduping | UUID format                                                                                             |
 ```
 
 Please refer to docs for the [Statsig User Object](/concepts/user#user-attributes) for available fields. An example would look like:
 
-```
+```json
 {
   userID: "12345",
   customIDs: {
@@ -85,7 +86,7 @@ Make sure to include all of metric_value, numerator, and denominator, writing `c
 | metric_name  | The name of the metric                                                                                                        | String format. Not null. Length < 128 characters                                                                                                                                                                                             |
 | metric_value | A numeric value for the metric                                                                                                | Double format. Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below                                                                                                       |
 | numerator    | Numerator for metric calculation                                                                                              | Double format. Required for ratio metrics. If present along with a denominator in any record, the metric will be treated as ratio and only calculated for users with non-null denominators                                                   |
-| denominator  | Denominator for metric calculation                                                                                            | Double format. See above                                                                                                                                                                                                                     |
+| denominator  | Denominator for metric calculation                                                                                            | Double format. refer to the relevant section                                                                                                                                                                                                                     |
 
 ### Scheduling
 
@@ -109,4 +110,4 @@ These are common errors we've run into - please go through and make sure your se
 - The `id_type` is set correctly
   - Default types are `user_id` or `stable_id`. If you have custom ids, make sure that the capitalization and spelling matches as these are case sensitive (you can find your custom ID types by going to your Project Settings in the Statsig console).
 - Your ids match the format of ids logged from SDKs
-  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
+  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature flag data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match

@@ -1,6 +1,7 @@
 ---
 sidebarTitle: Migrate from Mixpanel
 title: Migrate your analytics data from Mixpanel
+description: Switching from Mixpanel to Statsig is a smart move for teams seeking a unified platform that combines analytics, experimentation, and feature flagging
 ---
 
 # Mixpanel Migration Guide
@@ -28,7 +29,7 @@ Use Mixpanel's [Raw Event Export API](https://developer.mixpanel.com/reference/r
 ```bash
 curl --location --request GET 'https://data.mixpanel.com/api/2.0/export?from_date=2023-01-01&to_date=2023-01-01' \
 -u '{project_id}:{service_account_secret}'
-```
+```javascript
 
 **3. Data Pipelines (Bulk Export)**
 
@@ -62,7 +63,7 @@ Mixpanel and Statsig store events in slightly different formats. Map your Mixpan
     "URL": "website.com/signup"
   }
 }
-```
+```text
 
 **After transform**
 
@@ -80,7 +81,7 @@ Mixpanel and Statsig store events in slightly different formats. Map your Mixpan
     "URL": "website.com/signup"
   }
 }
-```
+```javascript
 
 ## Step 3. Import into Statsig
 

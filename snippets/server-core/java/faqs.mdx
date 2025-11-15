@@ -1,3 +1,8 @@
+---
+title: Faqs
+description: <AccordionGroup> <Accordion title="What Java versions are supported?"> The Java Core SDK supports Java 8 and higher. Java 8 support was added in versi
+---
+
 ## FAQ
 
 <AccordionGroup>
@@ -22,7 +27,7 @@ The uber JAR is recommended for most use cases as it includes native libraries f
 For Alpine Linux (musl-based systems), install compatibility packages:
 ```dockerfile
 RUN apk add --no-cache libgcc gcompat
-```
+```text
 The SDK will automatically use musl-compatible native libraries.
 </Accordion>
 
@@ -31,7 +36,7 @@ The SDK initialization is asynchronous. Use `.get()` on the CompletableFuture to
 ```java
 Statsig statsig = new Statsig("secret-key", options);
 statsig.initialize().get(); // Blocks until initialized
-```
+```ruby
 Always call `shutdown()` when your application terminates to flush pending events.
 </Accordion>
 

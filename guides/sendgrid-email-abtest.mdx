@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: Email campaigns are a critical tool for any Marketing team.  Finding the best performing Email template is a perfect use-case for an A/B test.  Statsi
 ---
 
 Email campaigns are a critical tool for any Marketing team.  Finding the best performing Email template is a perfect use-case for an A/B test.  Statsig allows you to run simple but powerful A/B tests on different parts of your email content.  Since Statsig can integrate seamlessly with product analytics, you can run email experiments and understand deeper business level impact easily.
@@ -51,7 +52,7 @@ In your SendGrid console, go to **Settings** -&gt; **Mail Settings** -&gt; **Eve
 
 In the HTTP Post URL, put in:
 
-```https://sendgrid-webhook.statsig.workers.dev/?apikey=[YOUR STATSIG API KEY]```
+```https://sendgrid-webhook.statsig.workers.dev/?apikey=[YOUR STATSIG API KEY]```ruby
 
 <Info>
 You can find your API Key by navigating to Statsig Project Settings -&gt; API Keys, and copying the 'Client API Key'.
@@ -60,7 +61,7 @@ You can find your API Key by navigating to Statsig Project Settings -&gt; API Ke
   <img src="/images/guides/sendgrid-email-abtest/210319717-49ac4a21-8bdd-4348-b534-374b760ab047.png" alt="Statsig API key location" />
 </Frame>
 
-It should look like this: ```client-abcd123efg...```
+It should look like this: ```client-abcd123efg...```ruby
 </Info>
 
 Make sure all the **Deliverability Data** and **Engagement Data** checkboxes are checked.  Next, Enable the **Event Webhook Status** and hit Save.  
@@ -124,7 +125,7 @@ Statsig also supports A/B testing when using API or Automation to send marketing
     "statsig_variant_name": "[control or test]"
   }
 }
-```
+```text
 
 So in our example above, you will set up the Control variant like this:
 
@@ -135,7 +136,7 @@ So in our example above, you will set up the Control variant like this:
     "statsig_variant_name": "control"
   }
 }
-```
+```text
 
 And the Test variant would look like this:
 

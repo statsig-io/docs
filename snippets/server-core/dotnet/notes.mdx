@@ -1,3 +1,8 @@
+---
+title: Notes
+description: The .NET Core SDK leverages Statsig's high-performance Rust evaluation engine through FFI bindings, details: - Native Rust evaluation engine handles a
+---
+
 ## Performance Benefits
 
 The .NET Core SDK leverages Statsig's high-performance Rust evaluation engine through FFI bindings, details:
@@ -15,13 +20,13 @@ All network operations are fully async:
 await statsig.Initialize();
 await statsig.FlushEvents();
 await statsig.Shutdown();
-```
+```text
 
 Evaluation methods are synchronous for optimal performance:
 
 ```csharp
 var result = statsig.CheckGate(user, "gate_name");
-```
+```text
 
 ## Thread Safety
 

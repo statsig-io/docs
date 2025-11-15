@@ -26,7 +26,7 @@ It is important to analyze metric data only after a user has been exposed to the
 
 Statsig Cloud uses a date-based join between exposures and metric data. Experiments will include metric data from the whole of the first exposure date for each experimental unit. While some pre-experiment metric data can be included, the average treatment effect of this dilution should be null. This looks like the SQL snippet below:
 
-```
+```sql
 WITH 
 metrics as (...),
 exposures as (...),
@@ -58,7 +58,7 @@ Statsig does support timestamp-based joins for some Enterprise Cloud customers. 
 #### Statsig Warehouse Native
 
 Statsig WHN employs a timestamp-based join for this purpose, with an option for a date-based joins for daily data if preferred. This should look like the SQL snippet below:
-```
+```sql
 WITH 
 metrics as (...),
 exposures as (...),
@@ -87,7 +87,7 @@ It's also worth noting that timezones can influence this. Timestamps for Statsig
 
 ### Exposure Duplication
 Exposure data must be de-duplicated before joining to ensure a single record per user. Many vendors further manage crossover users (users present in more than one experiment group), removing them from analysis and/or alerting if this occurs with high frequency.
-```
+```sql
 SELECT 
     unit_id,
     experiment_id,

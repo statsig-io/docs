@@ -1,3 +1,8 @@
+---
+title: Getdynamicconfig
+description: <CodeGroup> ```java Java String userID = "user_id"; DynamicConfig config = statsig.getConfig(userID, "my_config"); String name = config.getString("nam
+---
+
 <CodeGroup>
 ```java Java
 String userID = "user_id";
@@ -12,7 +17,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 DynamicConfig dynamicConfig = statsig.getConfig(user, "my_config");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

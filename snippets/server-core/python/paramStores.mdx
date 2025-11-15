@@ -1,9 +1,16 @@
+---
+title: Paramstores
+description: ```python param_store = statsig.get_parameter_store(user, "my_parameter_store") ``` Parameter Store provides methods for retrieving values of differen
+---
 ```python
 # Get a Parameter Store by name
-param_store = statsig.get_parameter_store(user, "my_parameter_store")
-```
 
-### Retrieving Parameter Values
+This page explains get a parameter store by name.
+
+param_store = statsig.get_parameter_store(user, "my_parameter_store")
+```text
+
+## Retrieving Parameter Values
 
 Parameter Store provides methods for retrieving values of different types with fallback defaults.
 
@@ -24,9 +31,9 @@ array_value = param_store.get_array("array_param", default_array)
 
 default_map = {"key": "value"}
 map_value = param_store.get_map("map_param", default_map)
-```
+```text
 
-### Evaluation Options
+## Evaluation Options
 
 You can disable exposure logging when retrieving a parameter store:
 

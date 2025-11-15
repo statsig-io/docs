@@ -1,3 +1,8 @@
+---
+title:  Getexperiment
+description: <CodeGroup> ```java Java StatsigUser user = new StatsigUser("a-user"); StatsigClient client = Statsig.INSTANCE.getClient(); // Values via getLayer Lay
+---
+
 <CodeGroup>
 
 ```java Java
@@ -19,7 +24,7 @@ Double discount = priceExperiment.getDouble("discount", 0.1);
 ...
 
 Double price = msrp * (1 - discount);
-```
+```text
 
 ```kotlin Kotlin
 val user = StatsigUser("user_id")

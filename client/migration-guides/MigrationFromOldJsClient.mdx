@@ -42,7 +42,7 @@ await Statsig.initialize(
   { userID: "some_user_id" },
   { environment: { tier: "staging" } } // optional, pass options here if needed
 );
-```
+```text
 
 ```typescript New - Async
 import { StatsigClient } from '@statsig/js-client';
@@ -55,7 +55,7 @@ const client = new StatsigClient(
 
 // Async - waits for latest values
 await client.initializeAsync();
-```
+```text
 
 ```typescript New - Sync
 import { StatsigClient } from '@statsig/js-client';
@@ -68,7 +68,7 @@ const client = new StatsigClient(
 
 // Sync - uses cache, fetches in background
 client.initializeSync();
-```
+```sql
 
 </CodeGroup>
 
@@ -87,7 +87,7 @@ statsig.getConfig('config_name');
 
 // new
 statsigClient.getDynamicConfig('config_name');
-```
+```python
 
 
 
@@ -104,7 +104,7 @@ statsig.getClientInitializeResponse(
     hash: 'djb2',
   },
 );
-```
+```text
 
 
 
@@ -125,7 +125,7 @@ import Statsig from "statsig-js";
 const user = { userID: "a-user" };
 
 await Statsig.updateUser(user);
-```
+```text
 
 ```typescript New - Async
 import { StatsigClient } from '@statsig/js-client';
@@ -136,7 +136,7 @@ await client.initializeAsync();
 // Update to new user - async
 const newUser = { userID: 'a-user' };
 await client.updateUserAsync(newUser);
-```
+```text
 
 ```typescript New - Sync
 import { StatsigClient } from '@statsig/js-client';
@@ -147,7 +147,7 @@ client.initializeSync();
 // Update to new user - sync
 const newUser = { userID: 'a-user' };
 client.updateUserSync(newUser);
-```
+```text
 
 </CodeGroup>
 
@@ -178,7 +178,7 @@ await Statsig.initialize(YOUR_CLIENT_KEY, { userID: 'a-user' });
 if (Statsig.checkGate('a_gate')) { 
   // do something...
 }
-```
+```text
 
 ```typescript New
 import { StatsigClient } from '@statsig/js-client';
@@ -192,7 +192,7 @@ const instance = StatsigClient.instance(YOUR_CLIENT_KEY);
 if (instance.checkGate('a_gate')) { 
   // do something...
 }
-```
+```python
 
 </CodeGroup>
 
@@ -227,7 +227,7 @@ const client = new StatsigClient(
     overrideAdapter,
   },
 );
-```
+```ruby
 
 Full example here:
 
@@ -263,7 +263,7 @@ Statsig.initialize(
 // or, by manually flipping the related flags
 Statsig.reenableAllLogging();
 StatsigLocalStorage.disabled = false;
-```
+```text
 
 ```typescript New
 import { StatsigClient } from '@statsig/js-client';
@@ -287,7 +287,7 @@ client.updateRuntimeOptions({
   disableStorage: false,
   networkConfig: { preventAllNetworkTraffic: false },
 });
-```
+```javascript
 
 </CodeGroup>
 
@@ -317,7 +317,7 @@ The structure of cached values has changed significantly, and there is no suppor
 ## Legacy StatsigOptions
 The options to parameterize initialization of the SDK have changed.  In some cases, the underlying features were removed or moved and can be enabled/disabled in a different way. In other scenarios, there is a new API for managing them.  The following is a mapping of old options to their equivalents in the new sdk.
 
-#### disableErrorLogging
+### disableErrorLogging
 > This feature does not exist in the new Javascript SDK, so there is no option to disable it.
 
 #### disableAutoMetricsLogging

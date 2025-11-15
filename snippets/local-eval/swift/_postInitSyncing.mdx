@@ -1,3 +1,8 @@
+---
+title:  Postinitsyncing
+description: By default, the SDK will only sync during initialization. If you would like to re-sync after initialization, you can call the `Statsig.update` method.
+---
+
 ## Post Init Syncing
 
 
@@ -11,14 +16,14 @@ Statsig.shared.update { err in
         print("Statsig update error: \(err)")
     }
 }
-```
+```sql
 
 ### From a Local File
 If you maintain your own copy of the "specs" json, you can pass it in to the update with `Statsig.updateSync()`. This will skip the network call and use the provided specs instead.
 
 ```swift
 let result = Statsig.shared.updateSync(updatedSpecs: myJsonData)
-```
+```text
 
 
 ### Scheduled Polling

@@ -1,3 +1,8 @@
+---
+title: Evaluationoptions
+description: <Accordion title="EvaluationOptions"> `EvaluationOptions` allows you to customize the behavior of feature flag evaluations: ```csharp var options = ne
+---
+
 <Accordion title="EvaluationOptions">
 
 `EvaluationOptions` allows you to customize the behavior of feature flag evaluations:
@@ -9,7 +14,7 @@ var gateValue = statsig.CheckGate(user, "feature_gate", options);
 var config = statsig.GetDynamicConfig(user, "product_config", options);
 var experiment = statsig.GetExperiment(user, "button_test", options);
 var layer = statsig.GetLayer(user, "user_prefs_layer", options);
-```
+```sql
 
 ## Options
 

@@ -1,5 +1,6 @@
 ---
 title: Pulumi
+description: The [Statsig Pulumi Provider](https://www.pulumi.com/registry/packages/statsig/) allows you to configure your gates and experiments using Pulumi Infra
 ---
 
 The [Statsig Pulumi Provider](https://www.pulumi.com/registry/packages/statsig/) allows you to configure your gates and experiments using Pulumi Infrastructure as Code. The provider synchronizes with Statsig via the Console API. If there is something you need to perform that isn't supported by the Pulumi Provider, checkout the [Console API](/console-api/introduction).
@@ -24,9 +25,9 @@ runtime: nodejs # or python, go, dotnet
 config:
   statsig:consoleApiKey:
     value: 'YOUR_CONSOLE_API_KEY'
-```
+```python
 
-### Configuration Reference
+## Configuration Reference
 
 - `consoleApiKey` (String) - The Statsig Console API key retrieved from Statsig console.
 
@@ -40,7 +41,7 @@ import * as statsig from "@statsig/pulumi-statsig";
 
 // Create a Feature Gate
 const gate = new statsig.Gate("my-gate", {});
-```
+```text
 
 ### Python
 
@@ -50,9 +51,9 @@ import pulumi_statsig as statsig
 
 # Create a Feature Gate
 gate = statsig.Gate("my-gate")
-```
+```text
 
-### Go
+## Go
 
 ```go
 package main
@@ -72,7 +73,7 @@ func main() {
         return nil
     })
 }
-```
+```text
 
 ### C#
 

@@ -7,7 +7,7 @@ Statsig can ingest your precomputed product and business metrics using our data 
 
 Statsig does not automatically process these metrics until you mark them as ready, as it's possible you might land data out of order. Once you are finished loading data for a period, you mark the data as ready by hitting the `mark_data_ready` API:
 
-```
+```bash
 curl --location --request POST ‘https://api.statsig.com/v1/mark_data_ready’ \
 --header ‘statsig-api-key: {your statsig server secret}’ \
 --header ‘Content-Type: application/json’ \

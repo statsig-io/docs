@@ -1,3 +1,8 @@
+---
+title: Initialization
+description: ```python from statsig_python_core import Statsig, StatsigOptions # note, import statement has underscores while install has dashes options = StatsigO
+---
+
 ```python
 from statsig_python_core import Statsig, StatsigOptions # note, import statement has underscores while install has dashes
 
@@ -9,11 +14,11 @@ statsig.initialize().wait()
 
 # If you're running this in a script, be sure to wait for shutdown at the end to flush event logs to statsig
 statsig.shutdown().wait()
-```
+```python
 
 `initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous (See [Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)). The SDK will fetch updates from Statsig in the background, independently of your API calls.
 
-### ⚠️ Warning: Process Forking and WSGI Servers
+## ⚠️ Warning: Process Forking and WSGI Servers
 
 **Important:** Never fork processes after calling `statsig.initialize()`. Doing so will put Statsig in an undefined state and may cause deadlock.
 
@@ -58,7 +63,7 @@ def before_first_request():
 def index():
     # Use statsig here
     return "Hello World"
-```
+```text
 
 ```ini
 # uwsgi.ini
@@ -67,13 +72,13 @@ module = app:app
 master = true
 processes = 4
 # Statsig will be initialized in each worker process
-```
+```text
 
 </Tab>
 
 <Tab title="Gunicorn">
 
-#### ✅ Correct: Gunicorn example
+## ✅ Correct: Gunicorn example
 
 ```python
 # gunicorn_config.py
@@ -83,18 +88,18 @@ def post_fork(server, worker):
     init_statsig() # as defined above
 
 # ...app.py
-```
+```text
 
 ```bash
 # Start Gunicorn with post-fork hook
 gunicorn --config gunicorn_config.py app:app
-```
+```text
 
 </Tab>
 
 <Tab title="FastAPI">
 
-#### ✅ Correct: FastAPI example
+## ✅ Correct: FastAPI example
 
 ```python expandable
 from fastapi import FastAPI

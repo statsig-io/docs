@@ -1,3 +1,8 @@
+---
+title: Stableid
+description: Stable ID provides a consistent device identifier. It lets you run [logged-out experiments](/guides/first-device-level-experiment) and target gates at
+---
+
 ## Stable ID
 
 Stable ID provides a consistent device identifier. It lets you run [logged-out experiments](/guides/first-device-level-experiment) and target gates at the device level.
@@ -6,7 +11,7 @@ Stable ID provides a consistent device identifier. It lets you run [logged-out e
 
 - On first initialization the SDK generates a Stable ID and stores it in `localStorage` under `statsig.stable_id.<SDK_KEY_HASH>`.
 - Subsequent sessions reuse the stored value. Each client SDK key has its own Stable ID entry.
-- Local storage is scoped per domain, so cross-domain usage requires sharing the value manually (see below).
+- Local storage is scoped per domain, so cross-domain usage requires sharing the value manually (refer to the following example).
 
 ### Reading the Stable ID
 
@@ -16,7 +21,7 @@ Stable ID provides a consistent device identifier. It lets you run [logged-out e
 ```tsx
 const context = client.getContext();
 console.log('Statsig StableID:', context.stableID);
-```
+```text
 
 </Tab>
 <Tab title="React">
@@ -30,7 +35,7 @@ function MyComponent() {
 
   return <div>{context.stableID}</div>;
 }
-```
+```text
 
 </Tab>
 </Tabs>
@@ -53,7 +58,7 @@ const userWithStableID: StatsigUser = {
 
 const client = new StatsigClient('client-xyz', userWithStableID);
 await client.updateUserAsync(userWithStableID);
-```
+```text
 
 </Tab>
 <Tab title="React">
@@ -82,7 +87,7 @@ function MyComponent() {
     });
   }, [client]);
 }
-```
+```text
 
 </Tab>
 </Tabs>
@@ -109,7 +114,7 @@ if (localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
 }
 const client = new Statsig.StatsigClient('<client-sdk-key>', userObj);
 </script>
-```
+```ruby
 
 <small>(Use this script at your discretion and test thoroughly.)</small>
 

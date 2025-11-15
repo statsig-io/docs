@@ -1,3 +1,8 @@
+---
+title: Sharedinstance
+description: <CodeGroup> ```java Java import com.statsig.*; // Create a shared instance that can be accessed globally StatsigServer statsig = Statsig.newShared("se
+---
+
 
 <CodeGroup>
 ```java Java
@@ -18,7 +23,7 @@ if (Statsig.hasSharedInstance()) {
 
 // Remove the shared instance when no longer needed
 Statsig.removeShared();
-```
+```text
 
 ```kotlin Kotlin
 import com.statsig.*
