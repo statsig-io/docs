@@ -1,5 +1,6 @@
 ---
 title: LaunchDarkly Migration Guide
+description: Migrating from LaunchDarkly to Statsig is a strategic move. It can lead to efficient feature flag management and a stronger experimentation culture. B
 ---
 
 ## Overview
@@ -19,17 +20,17 @@ It is important to understand a few fundamental differences in how LaunchDarkly 
 
 **Environment**: LaunchDarkly treats environments as top level concept where flags and segments must be duplicated and managed separately across environments. In Statsig, we have a centralized model where flags/configs handle environment-specific logic in their targeting rules.
 
-**Flag types**: LaunchDarkly uses a mix of boolean, multivariate, and JSON flags. Statsig distinguishes between Feature Gates (boolean) and Dynamic Configs (typed multivariate configs with JSON values).
+**Flag types**: LaunchDarkly uses a mix of boolean, multivariate, and JSON flags. Statsig distinguishes between Feature Flags (boolean) and Dynamic Configs (typed multivariate configs with JSON values).
 
 **Targeting**: LaunchDarkly relies on Contexts to evaluate flags. Statsig evaluates based on what we call a StatsigUser object.
 
-#### Side by side comparison
+### Side by side comparison
 
 | LaunchDarkly concept | Can we migrate? | Statsig notes |
 |---------------------|-----------------|---------------|
 | Project | ✅ Yes | Convert to Project |
 | Environment | ✅ Yes | Convert to Environment (mark critical as production in Statsig) |
-| Boolean Flags | ✅ Yes | Convert to Feature Gates |
+| Boolean Flags | ✅ Yes | Convert to Feature Flags |
 | String, Number, and JSON Flags | ✅ Yes | Convert to Dynamic Configs |
 | Segments | ✅ Yes | Convert to Segments (Big ID list segments won't be imported) |
 | Targeting Rules | ✅ Yes | Convert to Rules |
@@ -66,7 +67,7 @@ LaunchDarkly supports multi-kind, structured user contexts. Statsig requires a u
     "device": "iPad"
   }
 }
-```
+```text
 
 **Example 2: LD Multi context kind to Statsig User object conversion**
 
@@ -99,7 +100,7 @@ LaunchDarkly supports multi-kind, structured user contexts. Statsig requires a u
     "org_tier": "enterprise"
   }
 }
-```
+```javascript
 
 In Statsig, email is a top-level reserved field for the user object, so it should be placed directly as email (not user_email). Statsig expects fields like userID, email, ip, and userAgent at the top level for user targeting and analytics.
 
@@ -117,7 +118,7 @@ Below is a decision framework you can use to decide which flags to import into S
 
 ## Importing flags into Statsig
 
-To import feature flags from LaunchDarkly to Statsig, you can use our official import tool which is designed for this specific purpose. The import tool fetches flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature gates in Statsig. Additionally, it tracks the migration status and details in a CSV file.
+To import feature flags from LaunchDarkly to Statsig, you can use our official import tool which is designed for this specific purpose. The import tool fetches flags from LaunchDarkly, translates them into Statsig's format, and creates corresponding feature flags in Statsig. Additionally, it tracks the migration status and details in a CSV file.
 
 There are two ways to invoke this tool:
 
@@ -137,7 +138,7 @@ The wrapper approach provides several key benefits:
 - **Easy rollback**: Quickly revert to LaunchDarkly if issues arise
 - **Consistent interface**: Maintain existing application code structure
 
-#### Implementation Guide
+### Implementation Guide
 
 **1. Before migration: LaunchDarkly Evaluation**
 
@@ -155,7 +156,7 @@ ldClient.on('ready', () => {
   const isNewHomepageEnabled = ldClient.variation('new_homepage_flag', false);
   const buttonColor = ldClient.variation('button_config', 'gray');
 });
-```
+```text
 
 **2. Create the Migration Wrapper**
 
@@ -206,7 +207,7 @@ export const wrapperFlags = {
     };
   }
 };
-```
+```text
 
 **3. Refactor application code to use the Wrapper**
 

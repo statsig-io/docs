@@ -1,6 +1,7 @@
 ---
 title: Migrate your analytics data from Amplitude
 sidebarTitle: Migrate from Amplitude
+description: Migrating from Amplitude to Statsig is a strategic choice. Statsig is an all-in-one platform that offers analytics, experimentation, and feature flagg
 ---
 
 Migrating from Amplitude to Statsig is a strategic choice. Statsig is an all-in-one platform that offers analytics, experimentation, and feature flagging under one umbrella. Using all these products in a single tool is much more powerful.
@@ -28,7 +29,7 @@ Use Amplitude's Export API to pull gzipped JSON
 ```bash
 curl --location --request GET 'https://amplitude.com/api/2/export?start=<starttime>&end=<endtime>' \
 -u '{api_key}:{secret_key}'
-```
+```javascript
 
 **4. UI Download (CSV/JSON)**
 
@@ -65,7 +66,7 @@ Amplitude and Statsig store events in slightly different formats. To make your A
     "plan": "premium"
   }
 }
-```
+```text
 
 **After transform**
 
@@ -84,7 +85,7 @@ Amplitude and Statsig store events in slightly different formats. To make your A
     "currency": "USD"
   }
 }
-```
+```javascript
 
 ## Step 3. Import into Statsig
 

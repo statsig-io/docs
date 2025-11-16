@@ -1,3 +1,8 @@
+---
+title: Installation
+description: For PHP-core sdk you need to setup composer.json to **run post-install.php** file we provided <CodeGroup> ```bash PHP Core composer require statsig/st
+---
+
 ## Installation and Setup
 
 For PHP-core sdk you need to setup composer.json to **run post-install.php** file we provided
@@ -19,11 +24,11 @@ composer require statsig/statsig-php-core
     ]
   }
 }
-```
+```text
 
 ```bash PHP Legacy
 composer require statsig/statsigsdk
-```
+```ruby
 </CodeGroup>
 
 Both require setting up chron job to fetch configs and flush events
@@ -33,7 +38,7 @@ Both require setting up chron job to fetch configs and flush events
 # Setup chron job / scheduled job to sync config and flush events
 */1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigSyncConfig.php 1>> /dev/null 2>&1
 */1 * * * * /usr/bin/php /var/www/example.com/bin/StatsigFlushEvents.php 1>> /dev/null 2>&1
-```
+```text
 
 ```bash Legacy Php
 # Create a cron job that runs as statsigsync every minute

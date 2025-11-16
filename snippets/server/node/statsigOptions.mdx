@@ -1,3 +1,8 @@
+---
+title: Statsigoptions
+description: `initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the 
+---
+
 `initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
 <ResponseField name="api" type="string" default="https://statsigapi.net/v1">
@@ -17,7 +22,7 @@
 <ResponseField name="rulesUpdatedCallback" type="function" default="null">
   A callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp, like below:
 
-  ```
+  ```text
   options.rulesUpdatedCallback(specsString, timeStamp)
   ```
 </ResponseField>
@@ -88,7 +93,7 @@
   **Note:** if you'd like to turn off Statsig's default logging, set `disableExposureLogging: true` when making checks.
 
   Available callbacks:
-  ```
+  ```typescript
   gateCallback?: (gate: FeatureGate, user: StatsigUser, event: LogEvent) => void;
   dynamicConfigCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;
   experimentCallback?: (config: DynamicConfig, user: StatsigUser, event: LogEvent) => void;

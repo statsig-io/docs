@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: The results tab within Autotune provides a view of your ongoing and completed Autotune tests.  Autotune is computed hourly with metrics and traffic al
 ---
 
 ## How to monitor your Autotune Test
@@ -42,7 +43,7 @@ This is the gold standard of measurement and is highly encouraged.
 
 Standard practice is to wrap the autotune in a experiment with a binary parameter, either as 50/50 or a 90/10 holdback.  You can link the experiment to the autotune to get the results on the autotune page. In code, this might look like:
 
-```
+```yaml
 experiment_value = statsig.get_experiment('wrapping_experiment').get('flag')
 default_param = '..."
 if(experiment_value):

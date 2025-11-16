@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: To set up connection with Athena, Statsig needs the following - An S3 Bucket - A Glue Database for staging - An S3 Query Result Location
 ---
 
 ## Athena Warehouse Native Overview
@@ -120,7 +121,7 @@ You need to grant some permissions for Statsig from your AWS console in order fo
          }
       ]
    }
-   ```
+   ```python
 
 2. Create an IAM Role or IAM User:
 
@@ -156,7 +157,7 @@ Optionally, you can add an External ID condition for added security ([AWS Extern
         }
      ]
   }
-  ```
+  ```python
 - Add the ARN for this IAM Role to your Data Connection settings in the Statsig Console
 
 </Tab>
@@ -194,7 +195,7 @@ With an IAM User, Statsig will use AWS Access Keys to gain access to this IAM Us
          "arn:aws:glue:__REGION__:__YOUR_AWS_ACCOUNT_ID__:table/__YOUR_READONLY_DATABASE__/*"
       ]
    }
-   ```
+   ```text
 2. Give Statsig read-access to your S3 Bucket locations of the tables you need Statsig to read from. Add this to your AWS IAM Permissions Policy:
    ```
    {
@@ -250,4 +251,4 @@ Statsig stores all staging data within the `Statsig S3 Folder` of your S3 Bucket
 
 ### What IP addresses will Statsig access data warehouses from?
 
-[See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+[See FAQ](/data warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data warehouses-from)

@@ -1,3 +1,8 @@
+---
+title: Faqs
+description: Statsig's web SDK does not set cookies. It stores gate/config values and unsent events in `localStorage` so features keep working when offline.
+---
+
 #### Does the SDK use local storage or cookies?
 
 Statsig's web SDK does not set cookies. It stores gate/config values and unsent events in `localStorage` so features keep working when offline.
@@ -6,12 +11,12 @@ Statsig's web SDK does not set cookies. It stores gate/config values and unsent 
 
 ```tsx
 window.Statsig.instance().logEvent('test_event');
-```
+```text
 
 ```ts
 import { StatsigClient } from '@statsig/js-client';
 StatsigClient.instance().logEvent('test_event');
-```
+```text
 
 <Info>
 With multiple instances, pass the SDK key: `Statsig.instance('client-YOUR_KEY')`.

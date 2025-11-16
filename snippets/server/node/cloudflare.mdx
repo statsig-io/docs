@@ -1,3 +1,8 @@
+---
+title: Cloudflare
+description: The SDK cannot poll for updates across requests since Cloudflare does not allow for timers. To solve for this, a manual sync API is available for inde
+---
+
 ## Cloudflare Workers Setup
 
 ### Polling for updates
@@ -11,7 +16,7 @@ if (env.lastSyncTime < Date.now() - env.syncInterval) {
   env.lastSyncTime = Date.now();
   context.waitUntil(Statsig.syncConfigSpecs());
 }
-```
+```ruby
 
 ### Flushing events
 

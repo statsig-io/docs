@@ -1,10 +1,15 @@
+---
+title: Shutdown
+description: ```csharp await statsig.FlushEvents(); await statsig.Shutdown(); statsig.Dispose(); ``` For shared instances: ```csharp var statsig = Statsig.Shared()
+---
+
 ```csharp
 await statsig.FlushEvents();
 
 await statsig.Shutdown();
 
 statsig.Dispose();
-```
+```text
 
 For shared instances:
 

@@ -1,10 +1,15 @@
+---
+title: Quickstart
+description: <Steps> <Step title="Create a new Java project"> Create a new Gradle or Maven project with the following structure: ``` my-statsig-app/ ├── build.grad
+---
+
 ### Quick Start Example
 
 <Steps>
 <Step title="Create a new Java project">
 Create a new Gradle or Maven project with the following structure:
 
-```
+```text
 my-statsig-app/
 ├── build.gradle (or pom.xml)
 └── src/main/java/ExampleApp.java
@@ -30,7 +35,7 @@ dependencies {
 application {
     mainClass = 'ExampleApp'
 }
-```
+```text
 
 ```xml pom.xml
 <project>
@@ -61,7 +66,7 @@ application {
         </plugins>
     </build>
 </project>
-```
+```python
 </CodeGroup>
 
 Replace `X.X.X` with the latest version from [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore).
@@ -93,7 +98,7 @@ public class ExampleApp {
         }
     }
 }
-```
+```text
 
 ```kotlin ExampleApp.kt
 import com.statsig.*
@@ -117,7 +122,7 @@ fun main() {
         statsig.shutdown().get()
     }
 }
-```
+```python
 </CodeGroup>
 
 Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [Statsig Console](https://console.statsig.com/).
@@ -127,7 +132,7 @@ Replace `YOUR_SERVER_SECRET_KEY` with your actual server secret key from the [St
 <CodeGroup>
 ```bash Gradle
 ./gradlew run
-```
+```text
 
 ```bash Maven
 mvn compile exec:java

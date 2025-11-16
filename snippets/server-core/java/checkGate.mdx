@@ -1,3 +1,8 @@
+---
+title: Checkgate
+description: <CodeGroup> ```java Java String userID = "user_id"; boolean result = statsig.checkGate(userID, "my_feature_gate"); // with StatsigUser StatsigUser use
+---
+
 <CodeGroup>
 ```java Java
 String userID = "user_id";
@@ -9,7 +14,7 @@ StatsigUser user = StatsigUser.builder()
     .email("my_user@example.com")
     .build();
 boolean gateResult = statsig.checkGate(user, "my_feature_gate");
-```
+```text
 
 ```kotlin Kotlin
 val userID = "user_id"

@@ -1,9 +1,10 @@
 ---
 title: Snowflake (Deprecated)
+description: <Note> This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out th
 ---
 
 <Note>
-This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data warehouse-ingestion/introduction.md) solution instead.
 </Note>
 
 ## Overview
@@ -102,7 +103,7 @@ BEGIN;
   GRANT SELECT ON statsig.statsig.statsig_user_metrics_signal TO ROLE identifier($role_name);
 
 COMMIT;
-```
+```python
 
 Make sure all the statements ran successfully. This will create the schema and user that Statsig's ingestion expects.
 
@@ -139,7 +140,7 @@ Your data should conform to these definitions and rules to avoid errors or delay
 | -------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | time           | The unix time your event was logged at | Not null                                                                                                                 |
 | timeuuid       | A unique timeuuid for the event        | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
-| user           | A user json object.                    | See below                                                                                                                |
+| user           | A user json object.                    | refer to the following example                                                                                                                |
 | event_name     | The name of the event                  | Not null. Length < 128 characters                                                                                        |
 | event_value    | The value of the event                 | Length < 128 characters                                                                                                  |
 | event_metadata | Metadata about the event               | Not null. Length < 16384 characters. Json-formatted - leave empty if none                                                |
@@ -184,8 +185,8 @@ unit identifier will limit the utility of your events, as we won't be able to us
 | timeuuid     | A unique timeuuid for the event                                                                                               | This should be a timeuuid, but using a unique id will suffice. If not provided, the table defaults to generating a UUID. |
 | metric_name  | The name of the metric                                                                                                        | Not null. Length < 128 characters                                                                                        |
 | metric_value | A numeric value for the metric                                                                                                | Metric value, or both of numerator/denominator need to be provided for Statsig to process the metric. See details below  |
-| numerator    | Numerator for metric calculation                                                                                              | See above, and details below                                                                                             |
-| denominator  | Denominator for metric calculation                                                                                            | See above, and details below                                                                                             |
+| numerator    | Numerator for metric calculation                                                                                              | refer to the relevant section, and details below                                                                                             |
+| denominator  | Denominator for metric calculation                                                                                            | refer to the relevant section, and details below                                                                                             |
 
 Metric ingestion is for user-day metric pairs. This is useful for measuring experimental results on complex business logic (e.g. LTV estimates) that you generate in your data warehouse.
 
@@ -221,7 +222,7 @@ These are common errors we've run into - please go through and make sure your se
 - The `id_type` is set correctly
   - Default types are `user_id` or `stable_id`. If you have custom ids, make sure that the capitalization and spelling matches as these are case sensitive (you can find your custom ID types by going to your Project Settings in the Statsig console).
 - Your ids match the format of ids logged from SDKs
-  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature gate data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
+  - In some cases, your data warehouse may transform IDs. This may mean we can't join your experiment or feature flag data to your metrics to calculate pulse or other reports. You can go to the Metrics page of your project and view the log stream to check the format of the ids being sent (either `User ID`, or a custom ID in `User Properties`) to confirm they match
 
 If your data is not showing up in the Statsig console
 

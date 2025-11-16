@@ -1,4 +1,11 @@
+---
+title: Reference
+description: ```java class FeatureGate { String name;                      // Gate name boolean value;                    // Evaluation boolean result String ruleI
+---
 ## Reference
+
+This page explains reference.
+
 
 ### FeatureGate Class
 
@@ -10,7 +17,7 @@ class FeatureGate {
     EvaluationDetails evaluationDetails; // Evaluation details
     String rawJson;                   // Raw JSON string representation
 }
-```
+```text
 
 ### Experiment Class
 
@@ -23,7 +30,7 @@ class Experiment {
     EvaluationDetails evaluationDetails; // Details about how the experiment was evaluated
     String rawJson;                   // Raw JSON representation of the experiment
 }
-```
+```text
 
 **Methods for Experiment:**
 
@@ -35,7 +42,7 @@ public int getInt(String key, int fallbackValue)
 public long getLong(String key, long fallbackValue)
 public Object[] getArray(String key, Object[] fallbackValue)
 public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
-```
+```text
 
 ### DynamicConfig Class
 
@@ -47,7 +54,7 @@ class DynamicConfig {
     EvaluationDetails evaluationDetails; // Details about how the config was evaluated
     String rawJson;                   // Raw JSON representation
 }
-```
+```text
 
 **Methods for DynamicConfig:**
 
@@ -59,7 +66,7 @@ public int getInt(String key, int fallbackValue)
 public long getLong(String key, long fallbackValue)
 public Object[] getArray(String key, Object[] fallbackValue)
 public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
-```
+```text
 
 ### Layer Class
 
@@ -73,7 +80,7 @@ class Layer {
     EvaluationDetails evaluationDetails; // Evaluation details
     String rawJson;                   // Raw JSON string representation
 }
-```
+```text
 
 **Methods for Layer:**
 
@@ -85,7 +92,7 @@ public int getInt(String key, int fallbackValue)
 public long getLong(String key, long fallbackValue)
 public Object[] getArray(String key, Object[] fallbackValue)
 public Map<String, Object> getMap(String key, Map<String, Object> fallbackValue)
-```
+```text
 
 ### Fields Needed Methods (Enterprise Only)
 
@@ -107,7 +114,7 @@ List<String> getFieldsNeededForExperiment(String experimentName)
 
 // Get user fields needed for a layer evaluation
 List<String> getFieldsNeededForLayer(String layerName)
-```
+```text
 
 **Field Mapping**
 
@@ -130,4 +137,3 @@ targetApp -> "ta"
 // Custom fields are prefixed with "cf:"
 // Example: "cf:plan", "cf:age"
 ```
-

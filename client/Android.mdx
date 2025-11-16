@@ -38,7 +38,7 @@ v4.37.1 and higher are published to only [Maven Central](https://central.sonatyp
 dependencies {
     implementation "com.statsig:android-sdk:4.37.1"
 }
-```
+```text
 Legacy versions (\<=V4.37.0) can be installed with [Jitpack](https://jitpack.io/#statsig-io/android-sdk).
 </Step>
 <Step title="Initialize the SDK">
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements IStatsigCallback 
     }
 
 }
-```
+```text
 
 
 ```kotlin MainActivity.kt
@@ -87,7 +87,7 @@ async {
         StatsigUser("user_id"),
     )
 }.await()
-```
+```text
 </CodeGroup>
 </Step>
 </Steps>
@@ -104,7 +104,7 @@ DynamicConfig config = Statsig.getConfig("awesome_product_details");
 String itemName = config.getString("product_name", "Awesome Product v1");
 Double price = config.getDouble("price", 10.0);
 Boolean shouldDiscount = config.getBoolean("discount", false);
-```
+```text
 
 ```kotlin Kotlin
 val config = Statsig.getConfig("awesome_product_details")
@@ -115,7 +115,7 @@ val config = Statsig.getConfig("awesome_product_details")
 val itemName = config.getString("product_name", "Awesome Product v1")
 val price = config.getDouble("price", 10.0)
 val shouldDiscount = config.getBoolean("discount", false)
-```
+```text
 </CodeGroup>
 
 
@@ -127,7 +127,7 @@ if (Statsig.checkGate("new_homepage_design")) {
 } else {
   // Gate is off, show old home page
 }
-```
+```text
 
 ```kotlin Kotlin
 if (Statsig.checkGate("new_homepage_design")) {
@@ -135,7 +135,7 @@ if (Statsig.checkGate("new_homepage_design")) {
 } else {
   // Gate is off, show old home page
 }
-```
+```text
 </CodeGroup>
 
 
@@ -161,7 +161,7 @@ Double discount = priceExperiment.getDouble("discount", 0.1);
 ...
 
 Double price = msrp * (1 - discount);
-```
+```text
 
 ```kotlin Kotlin
 // Values via getLayer
@@ -181,18 +181,18 @@ val discount = priceExperiment.getDouble("discount", 0.1)
 ...
 
 val price = msrp * (1 - discount);
-```
+```text
 </CodeGroup>
 <logEvent/>
 
 <CodeGroup>
 ```java Java
 Statsig.logEvent("purchase", 2.99, Map.of("item_name", "remove_ads"));
-```
+```text
 
 ```kotlin Kotlin
 Statsig.logEvent("purchase", 2.99, Map.of("item_name" to "remove_ads"))
-```
+```text
 </CodeGroup>
 
 <paramStores/>
@@ -203,11 +203,11 @@ To fetch a set of parameters, use the following api:
 <CodeGroup>
 ```java Java
 ParameterStore homepageStore = Statsig.getParameterStore("homepage");
-```
+```text
 
 ```kotlin Kotlin
 val homepageStore = Statsig.getParameterStore("homepage")
-```
+```text
 </CodeGroup>
 
 ### Getting a parameter
@@ -221,7 +221,7 @@ String title = homepageStore.getString(
 );
 
 boolean shouldShowUpsell = homePageStore.getBoolean("upsell_upgrade_now", false);
-```
+```text
 
 ```kotlin Kotlin
 val title = homepageStore.getString(
@@ -230,7 +230,7 @@ val title = homepageStore.getString(
 )
 
 val shouldShowUpsell = homepageStore.getBoolean("upsell_upgrade_now", false)
-```
+```text
 </CodeGroup>
 
 <statsigUser/>
@@ -245,11 +245,11 @@ Statsig.updateUserAsync(newUser, this); // this must implement IStatsigCallback
 public void onStatsigUpdateUser() {
     // User has been updated and values have been refetched for the new user
 }
-```
+```text
 
 ```kotlin Kotlin
 Statsig.updateUser(StatsigUser("new_user_id"))
-```
+```text
 </CodeGroup>
 
 <privateAttributes/>
@@ -262,11 +262,11 @@ Statsig.updateUser(StatsigUser("new_user_id"))
 <CodeGroup>
 ```java Java
 Statsig.shutdown();
-```
+```text
 
 ```kotlin Kotlin
 Statsig.shutdown()
-```
+```text
 </CodeGroup>
 
 
@@ -299,7 +299,7 @@ class StatsigOverrides(
     @SerializedName("configs")
     val configs: MutableMap<String, Map<String, Any>>
     ) {}
-```
+```text
 
 <manualExposures addedIn="4.9.0" />
 <androidManualExposures/>
@@ -312,7 +312,7 @@ Statsig.getStableID();
 // Override the StableID before initializing, if you have something you'd prefer to use instead
 val opts = StatsigOptions(overrideStableID = "my_stable_id")
 Statsig.initialize(app, "client-xyx", options = opts)
-```
+```text
 
 <multiInstance/>
 
@@ -320,12 +320,12 @@ Statsig.initialize(app, "client-xyx", options = opts)
 ```java Java
 StatsigClient client = new StatsigClient();
 client.initializeAsync(application, sdkKey, user, callback, options);
-```
+```text
 
 ```kotlin Kotlin
 var client: StatsigClient = StatsigClient()
 client.initialize(application, sdkKey, user, options)
-```
+```text
 </CodeGroup>
 
 <initResponse/>
@@ -340,7 +340,7 @@ String jsonValues = response.getInitializeResponseJSON();
 
 // Get the evaluation details
 EvaluationDetails details = response.getEvaluationDetails();
-```
+```text
 
 ```kotlin Kotlin
 // Get the raw values that the SDK is using internally to provide gate/config/layer results

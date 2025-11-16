@@ -1,3 +1,8 @@
+---
+title: Testing
+description: Mock Statsig APIs in Jest to isolate business logic. ```tsx import { StatsigClient } from '@statsig/js-client'; export async function transform(input:
+---
+
 ## Testing
 
 Mock Statsig APIs in Jest to isolate business logic.
@@ -25,7 +30,7 @@ export async function transform(input: string): Promise<string> {
   await client.shutdown();
   return input;
 }
-```
+```text
 
 ```tsx
 import { StatsigClient } from '@statsig/js-client';

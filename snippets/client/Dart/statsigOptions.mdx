@@ -1,3 +1,8 @@
+---
+title: Statsigoptions
+description: <ResponseField name="initTimeout" type="int" default="3"> Used to decide how long (in seconds) the Statsig client waits for the initial network reques
+---
+
 <ResponseField name="initTimeout" type="int" default="3">
   Used to decide how long (in seconds) the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
 

@@ -1,3 +1,8 @@
+---
+title: Clientinitresponse
+description: The Node Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network reque
+---
+
 ## Client Initialize Response
 
 The Node Core SDK provides a method to generate a client initialize response that can be used to bootstrap client SDKs without requiring network requests.
@@ -7,7 +12,7 @@ The Node Core SDK provides a method to generate a client initialize response tha
 const values = statsig.getClientInitializeResponse(user, options);
 
 // Pass values to a client SDK to initialize without a network request
-```
+```text
 
 <AccordionGroup>
 <Accordion title = "Initialize Response Options">
@@ -25,7 +30,7 @@ export interface ClientInitializeResponseOptions {
   layerFilter?: Set<string>;     // Filter to only include specific layers
   paramStoreFilter?: Set<string>; // Filter to only include specific parameter stores
 }
-```
+```text
 
 </Accordion>
 <Accordion title = "Hash Algorithm">
@@ -37,7 +42,7 @@ The `hashAlgorithm` option specifies which algorithm to use for hashing gate and
 const values = statsig.getClientInitializeResponse(user, {
   hashAlgorithm: 'djb2',
 });
-```
+```text
 
 </Accordion>
 <Accordion title = "Client SDK Key">
@@ -49,7 +54,7 @@ The `clientSdkKey` option lets you filter the response to only the specific feat
 const values = statsig.getClientInitializeResponse(user, {
   clientSdkKey: 'client-key',
 });
-```
+```text
 
 </Accordion>
 <Accordion title = "Filtering">
@@ -62,7 +67,7 @@ const values = statsig.getClientInitializeResponse(user, {
   featureGateFilter: new Set(['my_gate_1', 'my_gate_2']),
   experimentFilter: new Set(['my_experiment']),
 });
-```
+```text
 
 </Accordion>
 <Accordion title = "Include Local Overrides">
@@ -74,7 +79,7 @@ The `includeLocalOverrides` option determines whether to consider [local overrid
 const values = statsig.getClientInitializeResponse(user, {
   includeLocalOverrides: true,
 });
-```
+```text
 
 </Accordion>
 <Accordion title = "Full Code Example">
@@ -109,7 +114,7 @@ app.get('/statsig-bootstrap', (req, res) => {
   // Return the values to the client
   res.json({ statsigValues: values });
 });
-```
+```text
 
 ```typescript
 // Client-side code using @statsig/js-client

@@ -1,5 +1,6 @@
 ---
 title: Initial Setup Guide of your Workspace
+description: <Info> Organizations and their related features are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com),
 ---
 
 <Info>
@@ -25,7 +26,7 @@ In Statsig, we have three constructs to help you organize your workspace and sca
 
 **Organization** is an enterprise-level environment that allows companies to create project(s) and bring members to work inside the project.
 
-**Project** is a workspace within the organization where the configs (e.g., feature gates, experiments, layers, etc.), metrics, and SDK keys you and your team created lives.
+**Project** is a workspace within the organization where the configs (e.g., feature flags, experiments, layers, etc.), metrics, and SDK keys you and your team created lives.
 
 **Team** is a group of members at the project level that can help your organization manage the permissions and ownership of resources.
 
@@ -35,7 +36,7 @@ In Statsig, we have three constructs to help you organize your workspace and sca
 In Statsig, each project within the organization is isolated from one another.
 This means that **none** of the resources or data is shared among different projects, even if they are part of the same organization.
 
-The Statsig team believe that the **sensible default structure** for most customers is having an organization with a **single project** where multiple teams contribute and collaborate inside.
+The Statsig team believe that the **sensible default structure** for most users is having an organization with a **single project** where multiple teams contribute and collaborate inside.
 
 We believe that different teams and functions across your organization can stay well-organized within a single project by leveraging features such as **[teams](https://docs.statsig.com/access-management/teams), [roles](https://docs.statsig.com/access-management/projects#roles), [tags](https://docs.statsig.com/access-management/tags),** and **[templates](https://docs.statsig.com/experiments/templates/templates)**.
 This also removes the risk of costly migrations if some projects ever need to be consolidated in the future for cross-functional collaborations.
@@ -73,7 +74,7 @@ New users who are provisioned via SSO will be assigned the *Member* Role unless 
   <img src="/images/access_management_project_view.png" alt="Organization project administration interface" />
 </Frame>
 
-A project in Statsig serves as a workspace that contains everything you and your team will create. This includes configs (e.g., feature gates, experiments, dynamic configs, layers), metrics, integrations, and more.
+A project in Statsig serves as a workspace that contains everything you and your team will create. This includes configs (e.g., feature flags, experiments, dynamic configs, layers), metrics, integrations, and more.
 
 When creating a new project, you can set its type to *Open* which would allow anyone in the organization to join freely, or to *Closed* which would allow people to join only by invitation or request.
 
@@ -140,7 +141,7 @@ Each **team** also has team-level **review settings** that can require reviews f
   <img src="/images/access_management_sdk_env.png" alt="SDK environment interface" />
 </Frame>
 
-In Statsig, you have **Client API Keys** to initialize all Statsig [client SDKs](https://docs.statsig.com/client/introduction) and **Server Secret Keys** to initialize all Statsig [server SDKs](https://docs.statsig.com/server/introduction).
+In Statsig, you have **Client API Keys** to initialize all Statsig [client SDKs](https://docs.statsig.com/client/introduction) and **Api Key Keys** to initialize all Statsig [server SDKs](https://docs.statsig.com/server/introduction).
 
 We believe there is a **"Crawl, Walk, Run"** phase when it comes to configuring your API keys:
 

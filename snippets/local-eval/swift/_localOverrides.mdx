@@ -1,3 +1,8 @@
+---
+title:  Localoverrides
+description: It is possible to override the values returned by the Statsig SDK. This can be useful in unit testing or for enabling features for local development.
+---
+
 ## Local Overrides
 
 It is possible to override the values returned by the Statsig SDK. This can be useful in unit testing or for enabling features for local development.
@@ -28,7 +33,7 @@ Statsig.shared.initialize(YOUR_SDK_KEY, options: opts) { _ in
     let gate = Statsig.shared.getFeatureGate("local_override_gate", user)
     print("Result: \(gate.value) (\(gate.evaluationDetails.reason))")
 }
-```
+```text
 
 ```objective-c Objective C
 StatsigUser *user = [StatsigUser userWithUserID:@"a-user"];

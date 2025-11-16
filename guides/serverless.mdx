@@ -5,6 +5,7 @@ keywords:
   - owner:brock
 last_update:
   date: 2025-09-18
+description: In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the `statsig-no
 ---
 
 In this guide, we will walk you through how to leverage Statsig’s platform in serverless environments.  The examples in this guide use the `statsig-node` SDK in a Google Cloud Function.
@@ -57,7 +58,7 @@ exports.statsig = async (req, res) => {
     alwaysOnGateValue: alwaysOnGateValue,
   });
 };
-```
+```javascript
 
 
 ### Alternatives
@@ -91,7 +92,7 @@ globalThis.fetch = (input, init) => {
 }
 
 (globalThis as any).EdgeRuntime = "fastly";
-```
+```javascript
 
 Next, in the main function entrypoint, simply import the fetch override module prior to importing the Statsig SDK:
 

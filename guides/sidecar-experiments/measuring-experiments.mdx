@@ -21,7 +21,7 @@ StatsigSidecar.logEvent('Order', null, {
   units: 3,
   unitAvgCost: 18.22
 });
-```
+```sql
 
 ## Post-Experiment Callback for outbound integrations
 You can bind a callback that gets invoked after Sidecar has run experiments (also gets called when there are no experiments), 
@@ -47,6 +47,6 @@ window.postExperimentCallback = function(statsigClient, experimentIds) {
 }
 ```
 
-#### Disabling All Logging
+### Disabling All Logging
 To disable all logging to statsig (both autocapture events and logging who has seen your experiments) append the following query string parameter to the Sidecar script URL: `&autostart=0`. This may be useful if you're dealing with GDPR compliance, and you can later re-enable events with `client.updateRuntimeOptions({disableLogging: false})`
 

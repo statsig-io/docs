@@ -1,3 +1,8 @@
+---
+title:  Manualexposures
+description: Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature ch
+---
+
 ## Manual Exposures
 
 Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature checks that don't result in the user actually experiencing the feature.
@@ -8,13 +13,13 @@ Check a gate without automatically logging an exposure:
 
 ```kotlin
 val passed_or_failed = Statsig.checkGateWithExposureLoggingDisabled(user, "a_gate")
-```
+```text
 
 Manually log the gate exposure:
 
 ```kotlin
 Statsig.manuallyLogGateExposure(user, "a_gate")
-```
+```text
 
 ### Dynamic Configs
 
@@ -22,13 +27,13 @@ Get a config without automatically logging an exposure:
 
 ```kotlin
 val config = Statsig.getConfigWithExposureLoggingDisabled(user, "awesome_product_details")
-```
+```text
 
 Manually log the config exposure:
 
 ```kotlin
 Statsig.manuallyLogConfigExposure(user, "awesome_product_details")
-```
+```text
 
 ### Experiments
 
@@ -36,13 +41,13 @@ Get an experiment without automatically logging an exposure:
 
 ```kotlin
 val titleExperiment = Statsig.getExperimentWithExposureLoggingDisabled(user, "new_user_promo_title")
-```
+```text
 
 Manually log the experiment exposure:
 
 ```kotlin
 Statsig.manuallyLogConfigExposure(user, "new_user_promo_title")
-```
+```text
 
 ### Layers
 
@@ -51,7 +56,7 @@ Get a layer without automatically logging an exposure:
 ```kotlin
 val layer = Statsig.getLayerWithExposureLoggingDisabled(user, "user_promo_experiments")
 val promoTitle = layer.getString("title", "Welcome to Statsig!")
-```
+```text
 
 Manually log the layer parameter exposure:
 

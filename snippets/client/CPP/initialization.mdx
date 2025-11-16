@@ -1,3 +1,8 @@
+---
+title: Initialization
+description: ```cpp using namespace statsig; StatsigUser user; user.user_id = "a-user"; user.custom_ids = { {"employeeID", "an-employee"} }; // Create your own ins
+---
+
 ```cpp
 #include <statsig/statsig.h>
 
@@ -23,7 +28,7 @@ client.InitializeAsync(
     },
     user
 );
-```
+```text
 
 **Synchronous** initialization will leverage cache (if available), returning immediately.
 Data for subsequent sessions will then be fetched in the background.
@@ -45,7 +50,7 @@ StatsigClient::Shared().InitializeAsync(
     },
     user
 );
-```
+```text
 
 **Optional** - Configuration via StatsigOptions
 

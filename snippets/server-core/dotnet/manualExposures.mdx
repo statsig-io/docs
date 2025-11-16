@@ -1,40 +1,45 @@
+---
+title: Manualexposures
+description: All of the main SDK functions (`CheckGate`, `GetDynamicConfig`, `GetExperiment`, `GetLayer`) accept an optional `EvaluationOptions` parameter. When `d
+---
+
 All of the main SDK functions (`CheckGate`, `GetDynamicConfig`, `GetExperiment`, `GetLayer`) accept an optional `EvaluationOptions` parameter. When `disableExposureLogging` is set to `true`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
 <Tabs>
 <Tab title="Feature Gates">
 ```csharp
 var result = statsig.CheckGate(user, "a_gate_name", new EvaluationOptions(disableExposureLogging: true));
-```
+```text
 
 ```csharp
 statsig.ManuallyLogGateExposure(user, "a_gate_name");
-```
+```text
 </Tab>
 
 <Tab title="Dynamic Configs">
 ```csharp
 var config = statsig.GetDynamicConfig(user, "a_dynamic_config_name", new EvaluationOptions(disableExposureLogging: true));
-```
+```text
 
 ```csharp
 statsig.ManuallyLogDynamicConfigExposure(user, "a_dynamic_config_name");
-```
+```text
 </Tab>
 
 <Tab title="Experiments">
 ```csharp
 var experiment = statsig.GetExperiment(user, "an_experiment_name", new EvaluationOptions(disableExposureLogging: true));
-```
+```text
 
 ```csharp
 statsig.ManuallyLogExperimentExposure(user, "an_experiment_name");
-```
+```text
 </Tab>
 
 <Tab title="Layers">
 ```csharp
 var layer = statsig.GetLayer(user, "a_layer_name", new EvaluationOptions(disableExposureLogging: true));
 var paramValue = layer.Get("a_param_name", "fallback_value");
-```
+```text
 
 ```csharp
 statsig.ManuallyLogLayerParameterExposure(user, "a_layer_name", "a_param_name");

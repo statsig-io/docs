@@ -1,3 +1,8 @@
+---
+title: Shutdown
+description: <CodeGroup> ```java Java // Shutdown flushes all pending events and stops background tasks statsig.shutdown(); // Or with a timeout (blocks until shut
+---
+
 <CodeGroup>
 ```java Java
 // Shutdown flushes all pending events and stops background tasks
@@ -5,7 +10,7 @@ statsig.shutdown();
 
 // Or with a timeout (blocks until shutdown completes or timeout)
 statsig.shutdown().get(5, TimeUnit.SECONDS);
-```
+```text
 
 ```kotlin Kotlin
 // Shutdown flushes all pending events and stops background tasks

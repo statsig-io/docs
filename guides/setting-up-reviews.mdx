@@ -1,7 +1,8 @@
 ---
 title: Setting up Reviews for Team Workflows  
+description: You can enable reviews for all Statsig resources such as feature flags, dynamic configs, segments, and experiments that you'll likely deploy to a prod
 ---
-You can enable reviews for all Statsig resources such as feature gates, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 
+You can enable reviews for all Statsig resources such as feature flags, dynamic configs, segments, and experiments that you'll likely deploy to a production environment. 
 
 ### Turning on Change Reviews for a Project
 As a Project Admin, you can configure your project to require reviews for any changes. To enable reviews for your project, navigate to the **Project Settings** page, switch to the Reviews tab and toggle this on.
@@ -16,11 +17,11 @@ As a Project Admin, you can configure your project to require reviews for any ch
   <img src="/images/guides/setting-up-reviews/4b7db056-a6be-4a76-99c9-08f8dc053ed8.png" alt="User role permissions configuration screen" />
 </Frame>
 
-- Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
+- Now when you make any configuration changes, say to a feature flag or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
 <img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="/images/guides/setting-up-reviews/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
 
-- Reviewers will now see a notification on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
+- Reviewers will now see a notification on the Statsig console as shown in the following example. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
 
 <Frame>
   <img src="/images/proposed_changes.png" alt="proposed changes" />
@@ -44,9 +45,9 @@ You can now use these predefined **Teams** when you submit any changes for revie
 </Frame>
 
 ### Enforcing Team Reviews
-You can restrict who can make changes to your Project by (a) turning on **Reviews Required** for your Project and (b) adding designated **Teams** or **Reviewers** when you create the Feature Gate or Experiment. 
+You can restrict who can make changes to your Project by (a) turning on **Reviews Required** for your Project and (b) adding designated **Teams** or **Reviewers** when you create the Feature Flag or Experiment. 
 
-For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Gate or Experiment, you can add designated **Teams** or **Reviewers** at any time as shown below. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently designated reviewers. 
+For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Flag or Experiment, you can add designated **Teams** or **Reviewers** at any time as shown in the following example. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently designated reviewers. 
 
 <img width="655" alt="image" src="/images/guides/setting-up-reviews/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
 
@@ -80,10 +81,10 @@ To enable the Pre-commit Webhook experience:
 <Frame><img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="/images/guides/setting-up-reviews/a01617b2-3bb0-4f20-a505-b9318dd220a7.png" /></Frame>
 
 
-Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
+Now, when a change is made in the Statsig Console, Statsig hits the user’s configured webhook with the proposed changes. The change in Statsig will be pending until the user approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
 
 Every payload will have these fields at a minimum:
-```
+```go
 review_id (will need to pass this to the change_validation API to accept/reject a change)
 submitter (email address)
 committer (email address)

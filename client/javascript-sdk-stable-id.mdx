@@ -1,5 +1,6 @@
 ---
 title: Working With Stable ID
+description: StableID is a concept in Statsig that allows us to have a consistent identifier for a single device. This allows Statsig to run [experiments on logged
 ---
 
 
@@ -42,7 +43,7 @@ await client.initializeAsync();
 
 const stableID = client.getContext().stableID;
 console.log('StableID:', stableID);
-```
+```text
 
   </Tab>
   <Tab title="React">
@@ -60,7 +61,7 @@ function App() {
   
   return <div>StableID: {stableID}</div>;
 }
-```
+```text
 
   </Tab>
 </Tabs>
@@ -85,7 +86,7 @@ const client = new StatsigClient(
   }
 );
 await client.initializeAsync();
-```
+```text
 
   </Tab>
   <Tab title="React">
@@ -106,7 +107,7 @@ function App() {
   
   return <div>Using custom StableID</div>;
 }
-```
+```text
 
   </Tab>
 </Tabs>
@@ -136,7 +137,7 @@ if(localStorage.getItem('STATSIG_LOCAL_STORAGE_STABLE_ID')) {
 }
 const statsigClient = new Statsig.StatsigClient('<client-sdk-key>', userObj, {/* OPTIONS */});
 </script>
-```
+```python
 <center><small>(please use the above code at your discretion and test thoroughly)</small></center>
 
 ### Keeping StableID Consistent across Client & Server

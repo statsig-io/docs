@@ -1,3 +1,8 @@
+---
+title:  Reference
+description: ```kotlin /** * An object of properties relating to the current user * Provide as many as possible to take advantage of advanced conditions in the Sta
+---
+
 ### StatsigUser
 
 ```kotlin
@@ -17,7 +22,7 @@
  * @property customIDs - Map<string, string> - Map of ID name to ID value for custom identifiers
  */
 data class StatsigUser
-```
+```text
 
 ### StatsigServer
 
@@ -190,7 +195,7 @@ sealed class StatsigServer {
 
     fun shutdown()
 }
-```
+```text
 
 ### DynamicConfig
 
@@ -217,7 +222,7 @@ class DynamicConfig(
         fun empty(configName: String = ""): DynamicConfig
     }
 }
-```
+```text
 
 ### Layer
 
@@ -244,7 +249,7 @@ class Layer(
         fun empty(layerName: String = ""): Layer
     }
 }
-```
+```text
 
 ### StatsigOptions and StatsigEnvironment
 
@@ -378,7 +383,7 @@ data class ProxyConfig @JvmOverloads constructor(
     var proxyAuth: String? = null,
     val proxySchema: String = "https",
 )
-```
+```text
 
 ### Option Classes
 
@@ -405,7 +410,7 @@ data class GetExperimentOptions(
     var userPersistedValues: PersistedValues? = null,
     var persistentAssignmentOptions: PersistentAssignmentOptions? = null,
 )
-```
+```text
 
 ### EvaluationDetails and EvaluationReason
 
@@ -431,7 +436,7 @@ enum class EvaluationReason(val reason: String) {
     DEFAULT("Default"),
     PERSISTED("Persisted"),
 }
-```
+```text
 
 ### DataStore
 
@@ -441,7 +446,7 @@ abstract class IDataStore {
     abstract fun set(key: String, value: String)
     abstract fun shutdown()
 }
-```
+```text
 
 ### User Persistent Storage
 
@@ -460,7 +465,7 @@ interface IUserPersistentStorage {
 }
 
 typealias PersistedValues = Map<String, String>
-```
+```text
 
 ### APIFeatureGate
 
@@ -474,7 +479,7 @@ data class APIFeatureGate(
     val evaluationDetails: EvaluationDetails?,
     val idType: String?,
 )
-```
+```text
 
 ### InitializationDetails
 
@@ -497,7 +502,7 @@ enum class FailureReason {
     INTERNAL_ERROR,
     TIMEOUT,
 }
-```
+```text
 
 ### ConfigSyncDetails
 

@@ -1,5 +1,6 @@
 ---
 title: Client Persistent Assignment
+description: Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation 
 ---
 
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
@@ -68,7 +69,7 @@ console.log(experiment.getGroupName()); // 'Control'
 const newUser = { userID: "456" };
 const newExperiment = client.getExperiment('active_experiment', { userPersistedValues });
 console.log(newExperiment.getGroupName()); // Still 'Control'
-```
+```text
   </Tab> 
   <Tab title="React">
     The Syntax for react matches vanilla Javascript - for a full implementation example, you can refer to our [Persistent Storage Example](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/persisted-user-storage-example) in Next.js.
@@ -86,7 +87,7 @@ console.log(newExperiment.getGroupName()); // Still 'Control'
         fun delete(key: String, experiment: String)
         ...
     }
-    ```
+    ```text
 
     The `key` string is a combination of ID and ID Type: e.g. "123:userID" or "abc:stableID" which the SDK will construct and call `get` and `set` on by default
 
@@ -105,7 +106,7 @@ console.log(newExperiment.getGroupName()); // Still 'Control'
     interface IPersistentStorageCallback {
         fun onLoaded(values: PersistedValues)
     }
-    ```
+    ```text
 
     For your convenience, we've created a top level method to load the value for a given user and ID Type:
 
@@ -122,7 +123,7 @@ console.log(newExperiment.getGroupName()); // Still 'Control'
         user: StatsigUser,
       idType: string, // userID, stableID, customIDxyz, etc
     )
-    ```
+    ```text
 
     Putting it all together, assuming you have implemented the `UserPersistentStorageInterface` and set it on `StatsigOptions`, your call site will look like this:
     ```kotlin 
@@ -139,7 +140,7 @@ console.log(newExperiment.getGroupName()); // Still 'Control'
     val user = StatsigUser(userID = "user123")
     val userValues = Statsig.client.loadUserPersistedValues(user, 'userID');
     const experiment = statsig.getExperiment({userID: "123"}, 'the_allocated_experiment', { userPersistedValues: userValues });
-    ```
+    ```javascript
     If you are using java, you can only override loadAsync function and ignore load function as empty. 
 
   </Tab>
@@ -164,7 +165,7 @@ console.log(experiment.getGroupName()) // 'Control'
 
 experiment = client.getExperiment('active_experiment', userInUnknown, { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
-```
+```kotlin
 
   For a full implementation example, you can refer to our [Persistent Storage On-Device Eval Example](https://github.com/statsig-io/js-client-monorepo/tree/main/samples/next-js/src/app/persisted-user-storage-example-on-device) in Next.js.
 
@@ -185,7 +186,7 @@ console.log(experiment.getGroupName()) // 'Control'
 
 experiment = statsig.getExperiment(userInUnknown, 'active_experiment', { userPersistedValues });
 console.log(experiment.getGroupName()) // 'Control'
-```
+```ruby
   </Tab>
 </Tabs>
 
@@ -208,7 +209,7 @@ Android and iOS SDKs offer a simplified version of Persistent Storage called `ke
   let layer = Statsig.getLayer("user_promo_experiments", true) // <-- "true" flag sets keep device values
   // Use the layer like normal:
   let promoTitle = layer.getValue(forKey: "title", defaultValue: "Welcome to Statsig!")
-  ```
+  ```text
 
   #### Objective C:
   ```objc
@@ -219,7 +220,7 @@ Android and iOS SDKs offer a simplified version of Persistent Storage called `ke
   double discount = [expConfig getDoubleForKey:@"discount" defaultValue:0.1];
 
   double price = msrp * (1 - discount);
-  ```
+  ```text
 
   </Tab>
 
@@ -235,7 +236,7 @@ Android and iOS SDKs offer a simplified version of Persistent Storage called `ke
   Layer layer = Statsig.getLayer("user_promo_experiments", true) // <-- "true" flag sets keep device values
   // Use the layer like normal:
   String promoTitle = layer.getString("title", "Welcome to Statsig!");
-  ```
+  ```text
 
   #### Kotlin:
   ```kotlin

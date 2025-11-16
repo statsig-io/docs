@@ -1,3 +1,8 @@
+---
+title:  Initialize
+description: There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, w
+---
+
 There is also a parameter `options` that requires you to pass in a storage adapter for storing configurations and event logs. In this below example, we use a local file storage adapter, but you can write your own to plug in Redis or another storage solution.
 
 You should create an adapter that implements `Statsig\Adapters\IConfigAdapter` that hooks up to your caching solution.  By default, we provide a local file solution that can be useful for first time setup but is challenging to work with in production settings.

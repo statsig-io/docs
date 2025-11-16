@@ -1,3 +1,8 @@
+---
+title:  Options
+description: import LocalModeSnippet from '/snippets/server/localModeSnippet.mdx' You can pass in an optional parameter `options` in addition to the server secret 
+---
+
 import LocalModeSnippet from '/snippets/server/localModeSnippet.mdx'
 
 You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client.
@@ -13,7 +18,7 @@ You can pass in an optional parameter `options` in addition to the server secret
   ```kotlin
   val options = StatsigOptions()
   options.setTier("staging")
-  ```
+  ```javascript
 </ResponseField>
 
 <ResponseField name="bootstrapValues" type="string?" default="null">
@@ -81,7 +86,7 @@ You can pass in an optional parameter `options` in addition to the server secret
         val proxySchema: String = "https"
     )
   
-  ```
+  ```text
 
 **Example Usage**
 

@@ -4,12 +4,13 @@ keywords:
   - owner:tore
 last_update:
   date: 2025-05-21
+description: Statsig collects only the data that you configure to be sent to Statsig. This is typically the occurrence of feature flag evaluations (Feature Flags),
 ---
 
 ## General
 
 ### What data does Statsig collect from users of my app?
-Statsig collects only the data that you configure to be sent to Statsig. This is typically the occurrence of feature flag evaluations (Feature Gates), experiment exposures, and custom events you log with the SDK.
+Statsig collects only the data that you configure to be sent to Statsig. This is typically the occurrence of feature flag evaluations (Feature Flags), experiment exposures, and custom events you log with the SDK.
 
 ### Does that data include any personally identifiable information (PII)?
 By default, Statsig uses randomly generated IDs as described below. You can also augment data sent to Statsig with additional context and meta data, including user names, email addresses, or custom attributes. This data, alone or in combination with other data, may constitute PII if it identifies, directly or indirectly, an individual.
@@ -64,7 +65,7 @@ The Statsig SDKs automatically collect the following metadata for targeting and 
 - sdkType: The type of SDK (ios-client)
 - sdkVersion: The version of the Statsig SDK
 - sessionID: A randomly generated UUID for the current session
-- stableID: A persistent device identifier (see below)
+- stableID: A persistent device identifier (refer to the following example)
 - systemVersion: The iOS version
 - systemName: The system name (iOS)
 
@@ -78,7 +79,7 @@ The Statsig SDKs automatically collect the following metadata for targeting and 
 - sdkType: The type of SDK (android-client)
 - sdkVersion: The version of the Statsig SDK
 - sessionID: A randomly generated UUID for the current session
-- stableID: A persistent device identifier (see below)
+- stableID: A persistent device identifier (refer to the following example)
 - systemVersion: The Android API level
 - systemName: The system name (Android)
 
@@ -91,12 +92,12 @@ Both iOS and Android SDKs provide the `optOutNonSdkMetadata` option to limit the
 let options = StatsigOptions()
 options.optOutNonSdkMetadata = true
 Statsig.start(sdkKey: "client-sdk-key", options: options)
-```
+```text
 
 **Android SDK:**
 ```kotlin
 val options = StatsigOptions(optOutNonSdkMetadata = true)
-```
+```python
 
 When `optOutNonSdkMetadata` is enabled, only the following core SDK metadata is included:
 - sdkType: The type of SDK
@@ -135,7 +136,7 @@ let user = StatsigUser(
     email: nil, // Not included at top level to keep private
     privateAttributes: ["email": "user@example.com"] // Used for evaluation but not logged
 )
-```
+```text
 
 **Android SDK:**
 ```kotlin

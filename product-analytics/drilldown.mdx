@@ -1,16 +1,16 @@
 ---
 title: 'Metric Drilldown Charts'
 sidebarTitle: 'Metric Drilldown'
-description: 'A versatile tool for understanding customer behavior and trends within your product'
+description: 'A versatile tool for understanding user behavior and trends within your product'
 ---
 
-The Metric Drilldown chart in Metrics Explorer is a versatile tool for understanding customer behavior and trends within your product. Designed for clarity and depth, it allows you to analyze key metrics and user behavior over time. Importantly, it also allows you to delve several layers deeper into your metrics by filtering to interesting properties or cohorts, as well as the ability to group-by these same properties to compare behaviors between groups.
+The Metric Drilldown chart in Metrics Explorer is a versatile tool for understanding user behavior and trends within your product. Designed for clarity and depth, it allows you to analyze key metrics and user behavior over time. Importantly, it also allows you to delve several layers deeper into your metrics by filtering to interesting properties or cohorts, as well as the ability to group-by these same properties to compare behaviors between groups.
 
 ## Use Cases
 
 - **Trend Analysis Over Time**: Gain insights into how specific metrics evolve over time. Visualizing product data in Metrics Explorer allows you to track and compare key performance indicators and user behavior, and helps understand long-term trends and short-term fluctuations in how users engage with your product and your product's performance.
 - **Identify interesting cohorts**: Define and explore interesting cohorts by zooming in on users who performed certain events at frequencies you define.
-- **Understand how Targeted Feature Launches, A/B tests, and Experiments affect usage:** Split any metric out by Experiment Group or Feature Gate Group to compare how those metrics perform for different groups. Leverage automatically generated annotations on charts for important decisions such as Feature or Experiment launches to help correlate those decisions with changing trends.
+- **Understand how Targeted Feature Launches, Experiments, and Experiments affect usage:** Split any metric out by Experiment Group or Feature Flag Group to compare how those metrics perform for different groups. Leverage automatically generated annotations on charts for important decisions such as Feature or Experiment launches to help correlate those decisions with changing trends.
 - **Segmentation and Comparison**: Dissect metrics to understand how different user segments or product features perform. This is crucial for identifying which areas are providing value for your users and those which may need more attention or improvement. It is also useful in understanding how different segments interact with your product, and for identifying unique trends or needs within these groups.
 - **Filtering**: Focus on specific segments or cohorts that are of particular interest. This filtering capability allows for a more targeted analysis, helping you to understand the behaviors and needs of specific user groups.
 - **Statistical Understanding:** Understand how the average, median, or other percentile value (e.g. p99, p95) of a metric changes over time.
@@ -18,9 +18,9 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Flexible Visualization Options**: Choose from a range of visualization formats, like line charts, bar charts, horizontal bar charts, and stacked bar charts, to best represent your data. The right visualization can make complex data more understandable and actionable.
 - **Event Samples for Debugging**: Quickly access and analyze a metric's underlying sample events, and the granular user-level information attached to the event. This feature is particularly useful for troubleshooting and understanding the root causes of trends or anomalies in your data.
 - **Detailed Data Control**: Adjust the granularity of your data analysis, from high-level overviews to detailed breakdowns. Use features like rolling averages to smooth data for more accurate trend analysis and decision-making.
-- **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
-- **View Sample Ratio Mismatch (SRM)**: See the SRM of your experiments over time and drill down into event and user metadata fields to understand how certain properties (country, browser, etc.) or groups (feature gates, experiments, holdouts) can affect your experiment SRM. 
-- **Debug Feature Gates**: Breakdown your feature gate's first exposures per rule to understand how certain properties or groups (feature gates, experiments, holdouts) affect your feature gate.
+- **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature flags, experiments, holdouts) affect your experiment.
+- **View Sample Ratio Mismatch (SRM)**: See the SRM of your experiments over time and drill down into event and user metadata fields to understand how certain properties (country, browser, etc.) or groups (feature flags, experiments, holdouts) can affect your experiment SRM. 
+- **Debug Feature Flags**: Breakdown your feature flag's first exposures per rule to understand how certain properties or groups (feature flags, experiments, holdouts) affect your feature flag.
 
 # Using the Metric Drilldown Chart
 
@@ -72,7 +72,7 @@ When selecting an event, the total number of times the event occurred (Count) on
 ### Exposures
 Selecting an experiment or gate exposure plots its first exposures over your selected date-range. First exposures are the first time a unique id (set on the experiment or gate) was exposed to each of your experiment groups or each of your gate's rules.
 
-### Understanding First Exposures in Feature Gates
+### Understanding First Exposures in Feature Flags
 
 When a gate is checked for a user, an exposure is created for the rule who's conditions they've met. If the user is exposed to multiple different rules at different times, the first exposure from each rule is kept. We recommend grouping by rule to see each rule's exposures separately.
 
@@ -117,7 +117,7 @@ In addition to plotting metrics, you may want to drill into your metrics to iden
 
 Leveraging a Group-By makes it easy to disaggregate plotted metrics and events by a selected property or group. Doing so allows you to compare how an action or user behavior may correlate with a specific property. Adding a Group-By will split the the plotted metric(s) into several plots. By default we only show the top ten groups by value on the chart, but you can select more groups. You can select 50 groups when the chart is set to daily granularity. 
 
-A metric can be grouped-by event properties, user profile properties, experiment group, or feature gate group. 
+A metric can be grouped-by event properties, user profile properties, experiment group, or feature flag group. 
 
 Group-By limits can be added by first adding a group-by, then moving to the summary table below the charts, and clicking the "Top X series" dropdown button. From there you can select how many groups you want to see at once. You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
@@ -127,9 +127,9 @@ Group-By limits can be added by first adding a group-by, then moving to the summ
  
 When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 
 
-**Feature Gate and Experiment Groups**
+**Feature Flag and Experiment Groups**
 
-At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Gate or Experiments in order to split out a metric by the different groups in the selected test. 
+At Statsig we believe in the power of experimentation. To that end, you can also select one of your Feature Flag or Experiments in order to split out a metric by the different groups in the selected test. 
 
 **Adding a Group-By**
 

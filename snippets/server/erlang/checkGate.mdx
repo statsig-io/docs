@@ -1,8 +1,13 @@
+---
+title: Checkgate
+description: <CodeGroup> ```erlang Erlang User = #{<<"userID">> => <<"user-id">>}, GateValue = statsig:check_gate(User, <<"gate_name">>). ``` ```elixir Elixir user
+---
+
 <CodeGroup>
 ```erlang Erlang
 User = #{<<"userID">> => <<"user-id">>},
 GateValue = statsig:check_gate(User, <<"gate_name">>).
-```
+```text
 
 ```elixir Elixir
 user = %{"userID" => "user-id"}

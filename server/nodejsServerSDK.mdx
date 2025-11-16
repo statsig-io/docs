@@ -4,7 +4,6 @@ sidebarTitle: Node.js
 description: Statsig's Legacy Server SDK for Node.js applications
 icon: "node-js"
 ---
-
 import CheckGateIntro from '/snippets/server/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
@@ -48,6 +47,9 @@ import faqs from '/snippets/server/node/faqs.mdx'
 [Github Repository](https://github.com/statsig-io/node-js-server-sdk)
 
 ## Setup the SDK
+
+This page explains setup the sdk.
+
 
 <Steps>
 <Step title="Install the SDK">
@@ -139,7 +141,7 @@ export type StatsigUser =
     > | null;
     statsigEnvironment?: StatsigEnvironment;
   }
-```
+```text
 
 ### Type StatsigOptions
 
@@ -186,7 +188,7 @@ export interface LoggerInterface {
   error(message?: any, ...optionalParams: any[]): void;
   logLevel: 'none' | 'debug' | 'info' | 'warn' | 'error';
 }
-```
+```text
 
 ### Type FeatureGate
 
@@ -199,7 +201,7 @@ export type FeatureGate = {
   readonly evaluationDetails: EvaluationDetails | null;
   readonly groupName: null; // deprecated
 };
-```
+```text
 
 ### Type DynamicConfig
 
@@ -220,7 +222,7 @@ export default class DynamicConfig {
   getGroupName(): string | null;
   getIDType(): string | null;
   getEvaluationDetails(): EvaluationDetails | null;
-```
+```text
 
 ### Type Layer
 
@@ -240,7 +242,7 @@ export default class Layer {
   getGroupName(): string | null;
   getAllocatedExperimentName(): string | null;
   getEvaluationDetails(): EvaluationDetails | null;
-```
+```text
 
 ### DataAdapter
 
@@ -252,7 +254,7 @@ export interface IDataAdapter {
   shutdown(): Promise<void>;
   supportsPollingUpdatesFor(key: DataAdapterKey): boolean;
 }
-```
+```text
 
 ### EvaluationDetails
 
@@ -263,7 +265,7 @@ export class EvaluationDetails {
   readonly serverTime: number;
   readonly reason: EvaluationReason;
 }
-```
+```text
 
 ### EvaluationReason
 
@@ -277,5 +279,3 @@ export type EvaluationReason =
   | 'DataAdapter'
   | 'Unsupported';
 ```
-
-

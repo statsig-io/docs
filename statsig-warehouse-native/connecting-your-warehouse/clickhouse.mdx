@@ -5,6 +5,7 @@ keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
+description: <Warning> Statsig's Clickhouse connector is in open Beta: some functionality may not be performance-optimized or may have minor syntax errors during t
 ---
 
 <Warning>
@@ -34,7 +35,7 @@ To create a user, the easiest way is to run:
 
 ```sql
 create user <username> IDENTIFIED WITH sha256_password BY '<password>';
-```
+```yaml
 
 But the correct approach will depend on the best practices specified by your database administrator.
 
@@ -53,7 +54,7 @@ Read:
 
 ```sql
 GRANT SHOW TABLES, SHOW COLUMNS, SELECT ON <read_db>.* to <statsig_user>;
-```
+```yaml
 
 CRUD:
 

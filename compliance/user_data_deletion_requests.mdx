@@ -1,5 +1,6 @@
 ---
 title: User Data Deletion Requests API
+description: <Info> User data deletion requests are for Enterprise contracts only. Please reach out to our [support team](mailto:support@statsig.com), your sales c
 ---
 
 <Info>
@@ -28,7 +29,7 @@ curl \
   --request POST \
   --data '{"unit_type": "user_id", "ids": "1,2,3", "request_id": "test_request_1"}' \
   "https://api.statsig.com/v1/delete_user_data"
-```
+```yaml
 
 Response:
 `{"request_id":"test_request_1"}`

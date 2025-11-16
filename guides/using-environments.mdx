@@ -1,5 +1,6 @@
 ---
 title: Environment-based Evaluation
+description: Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and exp
 ---
 
 Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and experiments differently in non-production environments like development or staging. All you need to do is configure the appropriate environment in your code and adjust feature rules in the Statsig Console.
@@ -33,7 +34,7 @@ Here’s an example of setting the environment tier in your code for the **devel
 
 ```javascript
 const client = new StatsigClient(<SDK_KEY>, user, { environment: { tier: 'development' } });
-```
+```text
 
 #### Example (Node Server SDK):
 

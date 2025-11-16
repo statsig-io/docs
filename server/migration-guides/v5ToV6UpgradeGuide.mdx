@@ -1,5 +1,6 @@
 ---
 title: Node SDK v5.x.x to v6.0.0 Upgrade Guide
+description: Node.js SDK V6.0.0 introduced breaking changes on - [Removed async version of core APIs (checkGate, getConfig..)](#synchronous-core-apis) - [Changed D
 ---
 
 ### Summary 
@@ -28,7 +29,7 @@ getConfig(): DynamicConfig // New API
 async getExperiment(): Promise<DynamicConfig>
 getExperiment(): DynamicConfig // New API
 
-```
+```python
 
 **Context**
 The initial design of async APIs are ensuring every evaluation can be done properly even when the SDK is not compatible by requesting evaluation from Statsig Server. 
@@ -43,11 +44,11 @@ Meanwhile, we deprecated functions `*Sync()` for example `checkGateSync()`, plea
 Statsig.checkGate(user, "gate").then(() => {
   // do somethig
 }).catch() // Compile error if you are using typescript. If you are using javascript, there will be runtime error please audit and 
-```
+```ruby
 If you are using as following ways, still recommend to remove await, but there won't affect usage.
 ``` javascript
 const gate = await Statsig.checkGate(user, "gate")
-```
+```python
 
 #### DataAdapter Cache Key Changes
 **Context**
@@ -102,7 +103,7 @@ WithExposureLoggingDisabled functions are deprecated
 ```javascript
 checkGateWithExposureLoggingDisabled()  // DO NOT USE
 getFeatureGateWithExposureLoggingDisabled() // DO NOT USE
-```
+```text
 use core apis with options instead
 
 ```javascript

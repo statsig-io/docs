@@ -1,5 +1,6 @@
 ---
 title: "User (StatsigUser) Object"
+description: The user(StatsigUser) object is the sole input you provide to SDKs to target gates and assign users to experiments. If you'd like to target on an attr
 ---
 
 ## Introduction to the StatsigUser object
@@ -15,7 +16,7 @@ The user(StatsigUser) object is the sole input you provide to SDKs to target gat
 const user = new StatsigUser({ userID: "12345", email: "vincent@statsig.com"});
 //Use it in getExperiment()
 const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any attribute you pass, you can target on
-```
+```python
 
 </CodeGroup>
 

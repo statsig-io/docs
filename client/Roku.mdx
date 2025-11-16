@@ -19,7 +19,7 @@ You can start by downloading a copy of [the GitHub repository](https://github.co
 
 You will need the following files:
 
-```
+```text
 Statsig
   -- components
     -- statsigsdk
@@ -51,14 +51,14 @@ Include `StatsigClient.brs`, `StatsigUser.brs`, `DynamicConfig.brs`, and `Statsi
 <script type="text/brightscript" uri="pkg:/source/StatsigClient.brs" />
 <script type="text/brightscript" uri="pkg:/source/StatsigUser.brs" />
 <script type="text/brightscript" uri="pkg:/source/DynamicConfig.brs" />
-```
+```text
 
 Next, you can initialize the library in your init() function, and add a listener for when gates/experiments have been fetched:
 
 ```xml
 <!-- in component xml -->
 <StatsigTask id="statsigTask" />
-```
+```text
 
 ```brightscript
     statsigTask = m.top.findNode("statsigTask")
@@ -68,7 +68,7 @@ Next, you can initialize the library in your init() function, and add a listener
     user = StatsigUser()
     user.setUserID("456")
     m.statsig.initialize("<STATSIG_CLIENT_SDK_KEY>", user)
-```
+```javascript
 
 For more information on all of the user fields you can use, see the [StatsigUser docs](/concepts/user).
 

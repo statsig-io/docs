@@ -1,4 +1,11 @@
+---
+title:  Reference
+description: ```rust pub struct StatsigUser { pub user_id: Option<String>, pub email: Option<String>, pub ip: Option<String>, pub user_agent: Option<String>, pub c
+---
 ### StatsigUser
+
+This page explains statsiguser.
+
 
 ```rust
 #[derive(Clone, Deserialize, Serialize)]
@@ -13,7 +20,7 @@ pub struct StatsigUser {
     pub custom: Option<HashMap<String, Value>>,
     pub private_attributes: Option<HashMap<String, Value>>,
     pub custom_ids: Option<HashMap<String, String>>,
-```
+```text
 
 ### StatsigOptions
 

@@ -1,5 +1,6 @@
 ---
 title: "Log your first custom event"
+description: The first step towards building better products is tracking events. As the saying goes, "If you can't measure something, you can't understand it. If y
 ---
 
 The first step towards building better products is tracking events. As the saying goes, "If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it."
@@ -34,7 +35,7 @@ The [`StatsigUser`](/concepts/user) is a set of properties that describe the use
   "custom": {},
   "privateAttributes": []
 }
-```
+```text
 
 </CodeGroup>
 
@@ -60,7 +61,7 @@ In Statsig, groups are represented by the `customIDs` field. This is a dictionar
     "projectID": "abc"
   }
 }
-```
+```sql
 
 </CodeGroup>
 
@@ -121,7 +122,7 @@ statsig.logEvent(
   optional_event_value,
   optional_event_metadata
 );
-```
+```sql
 
 </CodeGroup>
 
@@ -144,7 +145,7 @@ statsig.logEvent(
     user_segment: 'first_time_purchaser',
   }
 );
-```
+```text
 
 ```csharp C# Example
 StatsigClient.LogEvent(
