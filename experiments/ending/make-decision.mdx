@@ -16,24 +16,24 @@ as their defaults. These are the values that _all_ your users will see going for
 
 For example, suppose you have a **Demo Layer** that's configured with a parameter, **a_param**. It's default value is set to _layer_default_ as shown below.
 
-<img width="746" alt="image" src="/images/experiments/ending/make-decision/162633143-3ddd9652-4e99-4760-aac0-c89dec8ce70c.png" />
+<img width="746" alt="Layer configuration showing default parameter value before experiment" src="/images/experiments/ending/make-decision/162633143-3ddd9652-4e99-4760-aac0-c89dec8ce70c.png" />
 
 Say you decide to create an experiment, **Demo Experiment** in **Demo Layer** as shown below. 
 
-<img width="383" alt="image" src="/images/experiments/ending/make-decision/162633041-633de059-f676-4f76-a0ef-4d17b03648a0.png" />
+<img width="383" alt="Experiment creation dialog in Demo Layer with control and test groups" src="/images/experiments/ending/make-decision/162633041-633de059-f676-4f76-a0ef-4d17b03648a0.png" />
 
 You set up **Demo Experiment** with two groups: **Control** and **Test**, intending to experiment with new values for the layer-level parameter, **a_param** as shown below.
 
-<img width="630" alt="image" src="/images/experiments/ending/make-decision/162633712-a5e889dd-32ba-4248-8524-b6d5555b4dfd.png" />
+<img width="630" alt="Experiment parameter table comparing control and test values for a_param" src="/images/experiments/ending/make-decision/162633712-a5e889dd-32ba-4248-8524-b6d5555b4dfd.png" />
 
 
 Now if you decide to ship the **Control** group for the **Demo Experiment**, **a_param** will take the value set for the **Control** group as its default: _experiment_one_control_
 
-<img width="455" alt="image" src="/images/experiments/ending/make-decision/162630956-1ffaa81f-c95f-4df7-9ced-b138cfe26d96.png" />
+<img width="455" alt="Layer defaults updated to use control group value experiment_one_control" src="/images/experiments/ending/make-decision/162630956-1ffaa81f-c95f-4df7-9ced-b138cfe26d96.png" />
 
 On the other hand, if you decide to ship the **Test** group, **a_param** will take the value set for the **Test** group as its default: _experiment_two_test_
 
-<img width="454" alt="image" src="/images/experiments/ending/make-decision/162631111-daf31f6f-156b-481e-aa01-f29743f7e20a.png" />
+<img width="454" alt="Layer defaults updated to use test group value experiment_two_test" src="/images/experiments/ending/make-decision/162631111-daf31f6f-156b-481e-aa01-f29743f7e20a.png" />
 
 
 ## Experiment With a Targeting Gate / Targeting Rules
@@ -56,7 +56,7 @@ _targeted_layer_default_value_.
 When you decide to ship **Demo Experiment**, if you discontinue targeting, 
 **targeted_layer_param** will now take on the value from the **Control** group, _targeted_layer_control_, as its default. 
 
-<img width="454" alt="image" src="/images/experiments/ending/make-decision/162630927-e4b147a3-5b68-41d0-a439-f90ab001d737.png" />
+<img width="454" alt="Targeted layer parameter default switching to control value when targeting disabled" src="/images/experiments/ending/make-decision/162630927-e4b147a3-5b68-41d0-a439-f90ab001d737.png" />
 
 On the other hand, if you decide to continue targeting, 
 **targeted_layer_param** will now acquire an override so that:
@@ -65,7 +65,7 @@ On the other hand, if you decide to continue targeting,
 
 In this case, the default value of **targeted_layer_param** in **Demo Layer** will not change. Also, any users who pass the targeting gate will not be eligible for future experiments run in this layer. For this reason, we do not encourage shipping experiments with targeting on, especially when the experiment is in a layer.
 
-<img width="454" alt="image" src="/images/experiments/ending/make-decision/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
+<img width="454" alt="Layer override showing targeted users receiving shipped parameter while others keep default" src="/images/experiments/ending/make-decision/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
 
 ## Rolling Out an Experiment Group
 Rolling out an experiment group is an option available when you have decided the winning variant, but want to avoid a sudden, large shift of traffic into the winning variant group. You can use automated rollouts to schedule gradual rollout phases, which will increase your shipped group size to the desired percentage by reallocating users from all other groups proportionally.
@@ -147,7 +147,7 @@ Shipping with holdback lets you release an experiment variant (the “shipped”
 
 2. Turn on the Ship with holdback option and specify the percentage of users you want to keep in the control (holdback) group.
 
-<img width="597" alt="image" src="/images/experiments/ending/make-decision/046fcb33-d4c0-4ca4-b58a-1c8e931b6161.png" />
+<img width="597" alt="Ship with holdback dialog specifying control percentage in Make Decision modal" src="/images/experiments/ending/make-decision/046fcb33-d4c0-4ca4-b58a-1c8e931b6161.png" />
 
 3. Allocation of users:
         The control (holdback) group is set to your specified percentage.
@@ -158,7 +158,7 @@ Shipping with holdback lets you release an experiment variant (the “shipped”
         - The size of Test segment will have the same percentage allocation as the holdback group for an [equal sized comparison](https://docs.statsig.com/experiments/holdouts-introduction#how-to-read-holdouts) of 50:50.
         - The Launched segment will no longer appear in the pulse results, but users in this segment will continue to receive the shipped experience.
 
-<img width="959" alt="image" src="/images/experiments/ending/make-decision/48f999c5-f7d0-47fd-9af8-96512802d6cf.png" />
+<img width="959" alt="Pulse results display separating test and launched segments when shipping with holdback" src="/images/experiments/ending/make-decision/48f999c5-f7d0-47fd-9af8-96512802d6cf.png" />
 
 5. Continue monitoring the pulse results that evaluates the Test segment vs. Control (holdback)
 
