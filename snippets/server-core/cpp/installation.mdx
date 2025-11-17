@@ -1,0 +1,20 @@
+## Installation
+All core logic are written in rust, and we don't require rust environment from you, so we pre-built all binaries (attached as assets with each release). 
+Our CMakeLists.txt file handle all the complexity for you. 
+
+If you encounter any installation or build issue, please reach back to us!
+```CMake
+FetchContent_Declare(
+    Statsig
+    GIT_REPOSITORY    https://github.com/statsig-io/statsig-cpp-core.git
+    GIT_TAG           0.12.1-beta.2511130238 
+)
+FetchContent_MakeAvailable(Statsig)
+
+target_include_directories(CppApp PRIVATE ${statsig_SOURCE_DIR}/include)
+target_include_directories(CppApp PRIVATE ${statsig_SOURCE_DIR}/src)
+
+target_link_libraries(CppApp PRIVATE Statsig)
+```
+
+
