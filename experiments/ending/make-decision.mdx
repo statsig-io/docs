@@ -143,27 +143,38 @@ This is currently a beta feature.
 
 Shipping with holdback lets you release an experiment variant (the “shipped” group) to most of your users while keeping a percentage in the control group for ongoing comparisons. Here’s how it works:
 
-
 1. Make a decision and select a group to ship: From the Make Decision dropdown, choose which variant you want to ship.
-2. Turn on the Ship with holdback option and specify the percentage of users you want to remain in the control (holdback) group.
+
+2. Turn on the Ship with holdback option and specify the percentage of users you want to keep in the control (holdback) group.
 
 <img width="597" alt="image" src="/images/experiments/ending/make-decision/046fcb33-d4c0-4ca4-b58a-1c8e931b6161.png" />
 
 3. Allocation of users:
         The control (holdback) group is set to your specified percentage.
         The remaining users are assigned to the shipped experience.
+
 4. Splitting the shipped group:
         The shipped group is divided into two segments: Test and Launched.
-        The Test segment matches the same percentage allocation as the holdback group, allowing a direct head-to-head comparison with control.
-        The Launched segment no longer appears in pulse results, but continues to receive the shipped experience.
+        - The size of Test segment will have the same percentage allocation as the holdback group for an [equal sized comparison](https://docs.statsig.com/experiments/holdouts-introduction#how-to-read-holdouts) of 50:50.
+        - The Launched segment will no longer appear in the pulse results, but users in this segment will continue to receive the shipped experience.
 
 <img width="959" alt="image" src="/images/experiments/ending/make-decision/48f999c5-f7d0-47fd-9af8-96512802d6cf.png" />
 
-5. Continue monitoring the pulse results evaluating the Test segment vs. Control (holdback)
+5. Continue monitoring the pulse results tha evaluates the Test segment vs. Control (holdback)
+
+6. Once you decide to end the holdback, you can make a decision to ship the variant to everyone which will include users in holdback.
 
 <Note>
-Some users currently in control will move to the shipped group to achieve the desired allocation. However, any user who has previously been in a test or shipped group will not be reassigned to control. New users—those who have never been exposed to the experiment will be assigned based on the allocation percentages of each group.
+Some users currently in control will move to the shipped group to achieve the desired allocation.
+However, any user who has previously been in a test or shipped group will not be reassigned to control.
+New users—those who have never been exposed to the experiment will be assigned based on the allocation percentages of each group.
 </Note>
+
+Note that the new pulse results (Test segment vs. Holdback) will start when you ship with holdback, but your original experiment's results from the point of holdback decision will be retained and remain available to you.
+
+From the history of experiment, you will see the new log of experiment decision and a 'View Results Snapshot' button where you can view the read-only snapshot of original results.
+
+<img alt="ship_with_holdback_snapshot" src="/images/experiments/ending/make-decision/ship_with_holdback.png" />
 
 By using shipping with holdback, you maintain a dedicated, stable control group alongside a representative test segment of the shipped experience, making it easy to measure ongoing performance and user behavior post-launch.
 
