@@ -4,15 +4,15 @@ CUPED (short for Controlled-experiment Using Pre-Existing Data) is a technique w
 
 Our Cloud product uses a 7-day window for CUPED calculation. For Warehouse Native customers, a 7-day window is recommended, but you have the flexibility to customize it to any length.
 
-## CUPED for Simple Aggregations
+## CUPED
 
 The methodology for simple aggregations is described in the original [Microsoft paper](https://www.exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf), as well as our in-depth [article](https://www.statsig.com/blog/cuped) on the technique.
 
 ## CUPED for Ratio Metrics
 
-CUPED for ratios metrics, where each experiment unit is represented by a numerator and a denominator. The variance reduction process is performed by finding the variance of experiment data, pre-experiment data, and the covariance between the two.
+The Microsoft paper also gives details on how to implement CUPED for those with a different analysis unit (Appendic B). On Statsig,  we extend it to work for our ratio metrics, where each experiment unit is represented by a numerator and a denominator. The variance reduction process is performed by finding the variance of experiment data, pre-experiment data, and the covariance between the two.
 
-Denote the numerator, denominator, pre-experiment numerator, and pre-experiment denominator as $Y$, $N$, $X$, and $M$, respectively. Using the CUPED-reduced variance formula,
+Denote the numerator, denominator, pre-experiment numerator, and pre-experiment denominator of a unit as $Y$, $N$, $X$, and $M$, respectively. Using the CUPED-reduced variance formula,
 
 $$
 
@@ -27,20 +27,24 @@ $$
 $$
 
 expanded to
-
+\\
 $$
 
 \frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{Var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}
-$$
-
-The CUPED-adjusted group means are inferred based on the control group.
 
 $$
 
-\frac{Y_{cv}}{N_{cv}}=\frac{Y}{N}-\theta \frac{X}{M} + \theta \mathbb{E}[R]
+At this point, we have
+
+$$
+\frac{\hat{Y_{c}}}{\hat{N_{c}}}=\frac{Y_{c}}{N_{c}}-\theta( \frac{X_{c}}{M_{c}} - \mathbb{E}[R])
 $$
 
-While $\mathbb{E}[R]$ is hard to deduct, we recognized that
+$$
+\frac{\hat{Y_{t}}}{\hat{N_{t}}}=\frac{Y_{t}}{N_{t}}-\theta( \frac{X_{t}}{M_{t}} - \mathbb{E}[R])
+$$
+
+While $\mathbb{E}[R]$ is hard to deduct, we recognized that the expectation term is the same for both group. We decided to substitute $\mathbb{E}[R]$ with $\frac{X_{c}}{M_{c}}$ so the formulas above are transformed to these following two:
 
 $$
 
