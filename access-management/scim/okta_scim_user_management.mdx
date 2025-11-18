@@ -15,7 +15,7 @@ Users not assigned to the integration cannot be pushed into groups.
 - Process the imported users as needed
 
 <Frame>
-  <img src="/images/okta_scim_steps/step6-import-existing-users.png" alt="img" />
+  <img src="/images/okta_scim_steps/step6-import-existing-users.png" alt="Okta Import tab listing Statsig users ready to be brought into Okta" />
 </Frame>
 
 ## Manage User Assignments
@@ -24,24 +24,24 @@ Users not assigned to the integration cannot be pushed into groups.
 - Adding a user assignment in Okta will create the user in Statsig, while removing the assignment will deactivate the user's Statsig account
 
 <Frame>
-  <img src="/images/okta_scim_steps/step7-manage-user-assignments.png" alt="img" />
+  <img src="/images/okta_scim_steps/step7-manage-user-assignments.png" alt="Okta Assignments tab showing Statsig app user assignment controls" />
 </Frame>
 
 ## Push Groups to Statsig
 
 1. In Okta, go to the Statsig Integration's "Push Groups" tab
    <Frame>
-     <img src="/images/okta_scim_steps/step8-push-groups-1.png" alt="img" />
+     <img src="/images/okta_scim_steps/step8-push-groups-1.png" alt="Push Groups tab in Okta Statsig integration" />
    </Frame>
 
 2. Click the settings button and disable "Rename Groups"
    <Frame>
-     <img src="/images/okta_scim_steps/step8-push-groups-2.png" alt="img" />
+     <img src="/images/okta_scim_steps/step8-push-groups-2.png" alt="Push group settings dialog with Rename Groups toggle" />
    </Frame>
 
 3. Click "Push Groups" and select the method for finding groups in Okta.
    <Frame>
-     <img src="/images/okta_scim_steps/step8-push-groups-3.png" alt="img" />
+     <img src="/images/okta_scim_steps/step8-push-groups-3.png" alt="Okta modal prompting to find groups by name for push" />
    </Frame>
 
 4. Type in and select the Okta group that will push to a Statsig Project x Role Group.
@@ -49,14 +49,14 @@ Users not assigned to the integration cannot be pushed into groups.
 - You can find Groups in left nav of Okta: `Directory > Groups`. In there, you will see the groups created from Okta and groups created by Statsig.
 - The required groups are groups you created from Okta. You can filter by choosing `Group source type` and set to `Okta groups`. If you don't have any, go ahead and create it with members as well.
   <Frame>
-    <img src="/images/okta_scim_steps/step8-push-groups-4.png" alt="img" />
+    <img src="/images/okta_scim_steps/step8-push-groups-4.png" alt="Directory listing of Okta groups filtered to Okta source" />
   </Frame>
 
 5. Now let's link/assign Okta group you created from Okta to the Statsig groups with role you want.
 
 - Change `Match Result & Push Action` to `Link Group`
   <Frame>
-    <img src="/images/okta_scim_steps/step8-push-groups-5.png" alt="img" />
+    <img src="/images/okta_scim_steps/step8-push-groups-5.png" alt="Push group configuration selecting Link group action" />
   </Frame>
 
 6. Select the Statsig Project x Role Group that the Okta group will push to.
@@ -64,10 +64,10 @@ Users not assigned to the integration cannot be pushed into groups.
 - We display the Statsig Project x Role Group with the format `Statsig-<Project Name>-<Role Name>` on Okta.
 - By default Okta only allows you to map 1 Okta Group to 1 Statsig Group.
   <Frame>
-    <img src="/images/okta_scim_steps/step8-push-groups-6.png" alt="img" />
+    <img src="/images/okta_scim_steps/step8-push-groups-6.png" alt="Statsig project role group dropdown showing Statsig-Project-Role format" />
   </Frame>
 
 7. Then link the Okta group to a Statsig Project x Role Group. On save the group should push to Statsig. All future group changes on Okta will be pushed to Statsig.
    <Frame>
-     <img src="/images/okta_scim_steps/step8-push-groups-7.png" alt="img" />
+     <img src="/images/okta_scim_steps/step8-push-groups-7.png" alt="Summary screen confirming Okta group linked to Statsig project role" />
    </Frame>

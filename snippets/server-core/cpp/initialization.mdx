@@ -1,0 +1,16 @@
+```cpp
+#include <statsig/statsig.h>
+
+statsig_cpp_core::StatsigOptionsBuilder optionsBuilder;
+ptionsBuilder.environment = "development";
+ptionsBuilder.specs_url = api_v2 + "/download_config_specs";
+optionsBuilder.log_event_url = api + "/log_event";
+optionsBuilder.id_lists_url = api + "/get_id_lists";
+statsig_cpp_core::StatsigOptions options = optionsBuilder.build();
+Statsig statsig("server-secret-key", options);
+statsig.initializeBlocking().wait();
+
+```
+
+`initialize` will perform a network request. After `initializeBlocking` completes, virtually all SDK operations will be synchronous. The SDK will fetch updates from Statsig in the background, independently of your API calls.
+

@@ -42,6 +42,7 @@ angularDirectives
 angularInstall
 angularSetup
 anonymized
+anonymousId
 api
 APIChanges
 apiChanges
@@ -176,6 +177,7 @@ Cohorting
 cohorting
 collab
 collectFonts
+company_metadata
 company_id
 config
 config_specs
@@ -227,6 +229,7 @@ CUPED
 cuped
 CUPED's
 custom_id
+custom_ids
 customID
 CustomIDs
 customizable
@@ -381,6 +384,7 @@ experimentTags
 experimentTeam
 experimentValue
 expid
+exposure_type
 exstensibility
 facebook
 failback
@@ -416,6 +420,7 @@ Frequentist
 frontmatter
 func
 FWER
+gate_check
 gaurantee
 GBDT
 gcc
@@ -529,6 +534,7 @@ initializeValues
 initializingComponent
 inlineImages
 inlineStylesheet
+inserted_at
 integrations
 IntelliJ
 intent_segment
@@ -584,6 +590,7 @@ justifyContent
 karan
 kaz
 kb
+killswitch
 Kinesis
 Klaviyo
 Kohavi
@@ -715,6 +722,7 @@ ngrok
 nlohmann
 nodejs
 noindex
+non_analytics
 notification_sent
 Notifs
 Novalues
@@ -892,6 +900,7 @@ rollups
 rrweb
 RudderStack
 Rudderstack
+rule_name
 ruleID
 rules_updated_callback
 RULESET
@@ -994,6 +1003,7 @@ statsig_events
 statsig_forwarded_events
 statsig_forwarded_exposures
 statsig_forwarded_switchback_exposures
+statsig_metadata
 statsig_user_metrics
 Statsig's
 statsigapi
@@ -1135,6 +1145,7 @@ user_agent
 user_dimensions
 user_id
 user_id
+user_object
 user_persistent_storage
 user_type
 userAgent
@@ -1154,6 +1165,7 @@ varpop
 vehicleId
 Vercel
 vercel
+vercel_event
 Vercel's
 viewDidLoad
 ViewItemDetail

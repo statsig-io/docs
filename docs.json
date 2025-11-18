@@ -334,7 +334,13 @@
                   "session-replay/cli-session-replay"
                 ]
               },
-              "integrations/mcp",
+              {
+                "group": "Statsig + AI",
+                "pages": [
+                  "integrations/mcp",
+                  "integrations/ai_development_with_statsig"
+                ]
+              },
               {
                 "group": "Data & Metrics",
                 "pages": [

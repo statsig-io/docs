@@ -20,7 +20,7 @@ Steps to do this on Statsig -
 
 This captures the instruction you provide to an LLM to accomplish your task. You can now use the Statsig [Node](/server-core/node-core#getting-a-prompt) or [Python](/server-core/python-core/#getting-a-prompt) Server Core SDKs to retrieve this prompt within your app and use it. You can create multiple versions of the prompt as you iterate, and choose which one is "live" (retrieved by the SDK).
 
-<img alt="image" src="/images/ai-evals/offline-evals/a17b3c4d-2126-4dfe-8d4b-d40b1838f878.png" />
+<img alt="Statsig prompt editor listing live and candidate versions with messages" src="/images/ai-evals/offline-evals/a17b3c4d-2126-4dfe-8d4b-d40b1838f878.png" />
 
 
 
@@ -28,26 +28,25 @@ This captures the instruction you provide to an LLM to accomplish your task. You
 
 For the example above, this might be a list of words, along side known good translations in French. Small lists can be entered (or upload a CSV).
 
-<img alt="image" src="/images/ai-evals/offline-evals/6d4b1abc-bde9-4d63-9d0c-95fef60b3f9a.png" />
+<img alt="Dataset creation table with translation pairs for offline evaluation" src="/images/ai-evals/offline-evals/6d4b1abc-bde9-4d63-9d0c-95fef60b3f9a.png" />
 
 
 **3. Create a grader that will grade LLM completions for your prompt**
 
 Configure a grader that compares the LLM completion text with the reference output. You can use one of the out of box string evaluators, or even configure an LLM-as-a-Judge evaluator that mimics a human's grading rubric.
 
-<img alt="image" src="/images/ai-evals/offline-evals/3cd510f7-c267-4cdd-bebe-dbee527a5318.png" />
+<img alt="Grader configuration form comparing model output against reference answers" src="/images/ai-evals/offline-evals/3cd510f7-c267-4cdd-bebe-dbee527a5318.png" />
 
 **3. Run evaluation**
 
 Run an evaluation on a version of the prompt. You should see results in a few minutes that look like this. You can click into any row of the dataset to understand more about the evaluation for that row.
 
-<img alt="image" src="/images/ai-evals/offline-evals/c450f277-b2ba-4657-b747-440b43859f20.png" />
+<img alt="Offline evaluation results table showing prompt version scores" src="/images/ai-evals/offline-evals/c450f277-b2ba-4657-b747-440b43859f20.png" />
 
 You can categorize your dataset, and break scores out by category.
 
-<img alt="image" src="/images/ai-evals/offline-evals/3c0de7c4-6721-4a45-9a61-04a63db68913.png" />
+<img alt="Category breakdown chart splitting evaluation scores by dataset segments" src="/images/ai-evals/offline-evals/3c0de7c4-6721-4a45-9a61-04a63db68913.png" />
 
 If you have scores for multiple versions, you can compare them to see what changed between versions.
 
-<img alt="image" src="/images/ai-evals/offline-evals/fd593e52-ddec-4826-bf4b-c2ca1d43e4f0.png" />
-
+<img alt="Comparison view charting multiple prompt versions across graders" src="/images/ai-evals/offline-evals/fd593e52-ddec-4826-bf4b-c2ca1d43e4f0.png" />

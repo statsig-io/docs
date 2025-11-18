@@ -122,7 +122,7 @@ The Experiment Designer automates the process of evaluating potential splits of 
 Targeting allows you to define the set of geos potentially eligible to be included in your experiment. By default it pulls the unique set of geo types from your metric source from the last 90 days. You can add additional custom filters that help you filter your geos down, based on columns in your metric source. For example, you can filter geos to those in a certain region or by transactions that occurred in a certain language.
 
 <Frame>
-  <img src="/images/geotests/targeting.png" alt="Image" />
+  <img src="/images/geotests/targeting.png" alt="Geotest targeting filters for eligible regions" />
 </Frame>
 
 You can also manually specify a set of geos yourself. The geo id types must match those in your metric source exactly.
@@ -132,7 +132,7 @@ You can also manually specify a set of geos yourself. The geo id types must matc
 After defining your targeting set, you can manually overwrite any of these geos into treatment or control groups as desired.
 
 <Frame>
-  <img src="/images/geotests/targetingoverwrites.png" alt="Image" />
+  <img src="/images/geotests/targetingoverwrites.png" alt="Override interface assigning specific geos to treatment or control" />
 </Frame>
 
 For example, when testing if a new marketing campaign is effective, you might know that you want include the city of Austin because a contract has already been signed. And you might know that you do not want to launch in New York, Los Angeles, or Washington D.C. because of local regulations. You can specify these constraints on the designer and it will ensure that all design options considered will conform to these rules.

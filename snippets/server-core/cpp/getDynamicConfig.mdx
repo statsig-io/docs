@@ -1,0 +1,20 @@
+```cpp
+// Get a dynamic config for a specific user
+DynamicConfig config = statsig.getDynamicConfig(user, "a_config");
+
+// Access config values (We will provide accessors)
+std::string product_name = config.value.get("product_name", "Awesome Product v1");
+double price = config.value.get("price", 10.0);
+
+
+// Access evaluation details such as rule id 
+statsig_cpp_core::EvaluationDetails detail = config.details;
+std::cout << config.rule_id << std::endl;  // The ID of the rule that served this config
+std::cout << config.id_type << std::endl;  // The type of the evaluation (experiment, config, etc)
+
+// Advanced Usage:
+// You can disable exposure logging for this specific check
+DynamicConfigEvaluationOptions options;
+options.disable_exposure_logging = true;
+config = statsig.getDynamicConfig(user, "a_config", options);
+```

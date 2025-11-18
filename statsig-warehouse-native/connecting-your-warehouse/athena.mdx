@@ -183,6 +183,7 @@ With an IAM User, Statsig will use AWS Access Keys to gain access to this IAM Us
       "Effect": "Allow",
       "Action": [
          "glue:GetTable",
+         "glue:GetTables",
          "glue:GetDatabase",
          "glue:GetDatabases",
          "glue:GetPartition",
@@ -223,7 +224,7 @@ Statsig supports all accessed S3 Buckets being encrypted. Steps to allow Statsig
    - AWS KMS Key: Enter AWS KMS Key ARN
      - (enter your newly created KMS Key ARN in the box)
    - Bucket Key: Enable
-  
+
 ### Statsig Staging Architecture Details
 
 Statsig will create all of its staging tables within the Glue Staging Database that you create and provide. All of the tables created from Statsig will be of table-type `ICEBERG` (with the exception of the forwarded exposures/events tables, which will be regular `EXTERNAL` Athena tables).
@@ -246,7 +247,6 @@ Statsig stores all staging data within the `Statsig S3 Folder` of your S3 Bucket
       - Forwarded Events Table Subfolder (named in the Data Connection settings in your Statsig Console)
         - Dates in `YYYY-MM-DD` format
           - Forwarded Event Data
-   
 
 ### What IP addresses will Statsig access data warehouses from?
 
