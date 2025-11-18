@@ -734,7 +734,7 @@
               {
                 "group": "More Server SDKs",
                 "pages": [
-                  "server/cpp",
+                  "server-core/cpp-core",
                   "server/go",
                   "server-core/rust-core",
                   "server-core/elixir-core",
@@ -1510,7 +1510,7 @@
     },
     {
       "source": "/server/cppSDK",
-      "destination": "/server/cpp"
+      "destination": "/server-core/cpp-core"
     },
     {
       "source": "/client/javascript-sdk/expo",
