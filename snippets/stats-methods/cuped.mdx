@@ -10,7 +10,7 @@ The methodology for simple aggregations is described in the original [Microsoft 
 
 ## CUPED for Ratio Metrics
 
-The Microsoft paper also gives details on how to implement CUPED for those with a different analysis unit (Appendic B). On Statsig,  we extend it to work for our ratio metrics, where each experiment unit is represented by a numerator and a denominator. The variance reduction process is performed by finding the variance of experiment data, pre-experiment data, and the covariance between the two.
+The Microsoft paper also gives details on how to implement CUPED for those with a different analysis unit (Appendix B). On Statsig,  we extend it to work for our ratio metrics, where each experiment unit is represented by a numerator and a denominator. The variance reduction process is performed by finding the variance of experiment data, pre-experiment data, and the covariance between the two.
 
 Denote the numerator, denominator, pre-experiment numerator, and pre-experiment denominator of a unit as $Y$, $N$, $X$, and $M$, respectively. Using the CUPED-reduced variance formula,
 
