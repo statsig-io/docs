@@ -61,12 +61,21 @@ You can also configure which environments require reviews via your **Project Set
 By default if you have turned on "Reviews Required" for your Project, reviews will be required for Production, but not non-Production (lower) environments. 
 
 <Frame>
-  <img src="/images/guides/setting-up-reviews/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png" alt="Environments settings showing review requirement per tier" />
+  <img src="/images/environments.png" alt="Environments settings showing environments and order" />
 </Frame>
 
 <Frame>
-  <img src="/images/guides/setting-up-reviews/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png" alt="Edit environments dialog toggling production review requirements" />
+  <img src="/images/edit-environment-dialog.png" alt="Manage environments dialog with environment list and review settings" />
 </Frame>
+
+You can assign specific teams as reviewers for each environment. This ensures that only designated team members can approve changes for that environment.
+
+<Frame>
+  <img src="/images/environment-reviews.png" alt="Assigning teams as reviewers for specific environments" />
+</Frame>
+
+#### Code Freeze Use Case
+During code freeze periods, you can prevent feature flags or configs from being deployed to production by assigning a dedicated code freeze team as the production reviewer. This ensures that only members of that team (such as your SRE team or designated code freeze owners) can approve production changes. Once the code freeze period ends, you can remove the team assignment to restore normal review workflows.
 
 ### Configuring Custom Approval Workflows (Pre-commit Webhooks)
 If you prefer to leverage an internal approvals workflow or, for example, want to run proposed config changes through a suite of automated tests before they go live, you can leverage **Pre-commit Webhooks**. Pre-commit Webhooks enable you to listen for config changes on the Statsig side, route those changes through internal approval processes, test suites, etc. and then leverage Console API to send back either a review approval or rejection before final changes can be committed. 
