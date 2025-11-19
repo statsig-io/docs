@@ -3,8 +3,6 @@ title: "Count Distinct Metrics"
 description: "Count distinct metrics compute an approximate unique values at unit-level using HyperLogLog++ sketches"
 ---
 
-# Count Distinct Metrics
-
 ## Purpose of count_distinct
 
 The `count_distinct` metric reports the number of unique values at unit-level. At group-level, the mean is calculated as the sum of the unit-level count distinct divided by the count of unique units exposed to the experiment. Because this metric relies on probabilistic HyperLogLog++ (HLL++) sketches, it carries a small amount of estimation error (around 0.2% - 0.3%), which could increase as the experiment window grows. By default, we set precision p = 12 for `count_distinct`. This provides good accuracy for most use cases while keeping results stable and resource usage efficient. 
