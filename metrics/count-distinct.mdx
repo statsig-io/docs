@@ -1,13 +1,13 @@
 ---
 title: "Count Distinct Metrics"
-description: "Learn about probabilistic count distinct metrics using HyperLogLog++ sketches for efficient unique value counting at scale."
+description: "Count distinct metrics compute an approximate unique values at unit-level using HyperLogLog++ sketches"
 ---
 
 # Count Distinct Metrics
 
 ## Purpose of count_distinct
 
-The `count_distinct` metric reports the number of unique values in a dataset. Computing exact distinct counts at large scale requires storing all values or all hashes, which can be expensive in terms of memory and processing time. HyperLogLog++ (HLL++) sketches offer a probabilistic alternative that uses fixed or sublinear space to produce approximate distinct counts with a tight bound on relative error.
+The `count_distinct` metric reports the number of unique values at unit-level. At group-level, the mean is calculated as the sum of the unit-level count distinct divided by the count of unique units exposed to the experiment. Because this metric relies on probabilistic HyperLogLog++ (HLL++) sketches, it carries a small amount of estimation error (around 0.2% - 0.3%), which could increase as the experiment window grows. By default, we set precision p = 12 for `count_distinct`. This provides good accuracy for most use cases while keeping results stable and resource usage efficient. 
 
 <Warning>**Beta Feature**: Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing!</Warning>
 
@@ -149,6 +149,3 @@ When you know the maximum number of unique items (cardinality) ahead of time, pi
 
 count_distinct gives you a simple, consistent way to measure breadth at scale. Define once, use everywhere, and merge across time and partitions with stable behavior. You get decision-ready answers to “How many unique X?” without custom ETL or one-off SQL.
 
-## Defaults at Statsig
-
-By default, we set precision p = 12 for count_distinct. This works well for most use cases and keeps results stable and responsive. If you expect much higher cardinalities or need tighter bounds, please reach out and we’ll help you choose the right setting.
