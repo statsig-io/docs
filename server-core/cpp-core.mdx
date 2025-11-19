@@ -1,7 +1,7 @@
 ---
 title: C++ Server SDK
 sidebarTitle: C++
-description: Statsig's Next-gen Python Server SDK built in our [Server Core](/server-core) framework
+description: Statsig's Next-gen Cpp Server SDK built in our [Server Core](/server-core) framework
 icon: "C++"
 ---
 
@@ -85,7 +85,6 @@ import shutdown from '/snippets/server-core/cpp/shutdown.mdx'
 - `get_experiment(user: StatsigUser, experiment_name: str, options: Optional[ExperimentEvaluationOptions] = None) -> DynamicConfig`
 - `get_layer(user: StatsigUser, layer_name: str, options: Optional[LayerEvaluationOptions] = None) -> Layer`
 - `get_feature_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> FeatureGate`
-- `get_parameter_store(user: StatsigUser, parameter_store_name: str, options: Optional[ParameterStoreEvaluationOptions] = None) -> ParameterStore`
 - `log_event(user: StatsigUser, event_name: str, value: Optional[Union[str, float]] = None, metadata: Optional[Dict[str, str]] = None) -> None`
 - `shutdown() -> AsyncResult[None]`
 
