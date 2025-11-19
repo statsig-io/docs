@@ -1,0 +1,1840 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "aspen",
+  "name": "Statsig Documentation",
+  "colors": {
+    "primary": "#202020",
+    "dark": "#202020",
+    "light": "#F9FAFA"
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "/images/OG_Docs_100725.jpg"
+    }
+  },
+  "background": {
+    "image": {
+      "light": "/images/hero_image_light.png",
+      "dark": "/images/hero_image_dark.png"
+    }
+  },
+  "favicon": "images/Statsig_Favicon_Dark.svg",
+  "fonts": {
+    "family": "Geist"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "chatgpt",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-EM5RHE1RHW"
+    },
+    "gtm": {
+      "tagId": "GTM-NRDCWNF"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Getting Started",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "pages": [
+              "welcome",
+              "understanding-platform"
+            ]
+          },
+          {
+            "group": "Experiments",
+            "icon": "flask",
+            "pages": [
+              "experiments/overview",
+              {
+                "group": "Create & Implement",
+                "pages": [
+                  "experiments/create-new",
+                  "experiments/power-analysis",
+                  "experiments/implementation/implement",
+                  "experiments/setup/overrides",
+                  "experiments/implementation/getting-group",
+                  "experiments/monitor",
+                  "experiments/setup/quality-score"
+                ]
+              },
+              {
+                "group": "Configure Stats Engine",
+                "pages": [
+                  {
+                    "group": "Experiment Types",
+                    "pages": [
+                      "experiments/types/switchback-tests",
+                      "experiments/statistical-methods/methodologies/one-sided-test",
+                      "experiments/types/aa-test",
+                      "experiments/types/seo-testing",
+                      {
+                        "group": "Bandit Experiments",
+                        "pages": [
+                          {
+                            "group": "Contextual (CMAB)",
+                            "pages": [
+                              "autotune/contextual/introduction",
+                              "autotune/contextual/getting-started",
+                              "autotune/contextual/monitoring",
+                              "autotune/contextual/methodology"
+                            ]
+                          },
+                          {
+                            "group": "Autotune (MAB)",
+                            "pages": [
+                              "autotune/overview",
+                              "autotune/setup",
+                              "autotune/monitoring",
+                              "autotune/multi-armed-bandit"
+                            ]
+                          },
+                          "autotune/bandit-faq",
+                          "autotune/using-bandits"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Reducing False Positives",
+                    "pages": [
+                      "experiments/statistical-methods/methodologies/bonferroni-correction",
+                      "experiments/statistical-methods/methodologies/benjamini-hochberg-procedure"
+                    ]
+                  },
+                  {
+                    "group": "Health Checks",
+                    "pages": [
+                      "stats-engine/methodologies/srm-checks",
+                      "experiments/statistical-methods/pre-experiment-bias",
+                      "experiments/monitoring/srm"
+                    ]
+                  },
+                  {
+                    "group": "Variance Reduction",
+                    "pages": [
+                      "experiments/statistical-methods/variance-reduction",
+                      "experiments/statistical-methods/methodologies/cuped",
+                      "experiments/statistical-methods/methodologies/winsorization"
+                    ]
+                  },
+                  {
+                    "group": "How we Calculate:",
+                    "pages": [
+                      "experiments/statistical-methods/confidence-intervals",
+                      "experiments/statistical-methods/p-value",
+                      "experiments/statistical-methods/metric-deltas",
+                      "experiments/statistical-methods/variance",
+                      "experiments/statistical-methods/methodologies/delta-method",
+                      "experiments/monitoring/bots",
+                      "experiments/statistical-methods/methodologies/one-sample-test",
+                      "experiments/statistical-methods/methodologies/fieller-intervals"
+                    ]
+                  },
+                  "experiments/advanced-setup/stratified-sampling",
+                  "experiments/advanced-setup/sequential-testing",
+                  "experiments/advanced-setup/bayesian",
+                  "experiments/advanced-setup/sprt"
+                ]
+              },
+              {
+                "group": "End An Experiment",
+                "pages": [
+                  "experiments/ending/ending-experiment",
+                  "experiments/ending/make-decision",
+                  "experiments/ending/stop-assignments",
+                  "experiments/ending/conclude-experiment-defer-decision",
+                  "experiments/ending/abandon",
+                  "experiments/implementation/disable-group"
+                ]
+              },
+              {
+                "group": "Read Results",
+                "pages": [
+                  "experiments/interpreting-results/read-pulse",
+                  "experiments/interpreting-results/userproperties",
+                  "experiments/interpreting-results/drill-down",
+                  "experiments/interpreting-results/export",
+                  "experiments/interpreting-results/best-practices",
+                  "experiments/interpreting-results/reconciling-experiment-results",
+                  "experiments/interpreting-results/faq",
+                  "experiments/interpreting-results/participating-units",
+                  {
+                    "group": "Further Analysis",
+                    "pages": [
+                      "experiments/interpreting-results/custom-queries",
+                      "experiments/exploring-results/aggregated-impact",
+                      "experiments/statistical-methods/topline-impact",
+                      "experiments/exploring-results/meta-analysis",
+                      "experiments/exploring-results/differential-impact-detection",
+                      "experiments/exploring-results/interaction-detection"
+                    ]
+                  }
+                ]
+              },
+              "experiments/layers-overview",
+              "experiments/holdouts-introduction"
+            ]
+          },
+          {
+            "group": "Feature Management",
+            "icon": "toggle-off",
+            "pages": [
+              {
+                "group": "Feature Flags",
+                "pages": [
+                  "feature-flags/overview",
+                  "guides/first-feature",
+                  "guides/featureflags-or-experiments",
+                  "feature-flags/create",
+                  "feature-flags/conditions",
+                  "feature-flags/overrides",
+                  "feature-flags/test-gate",
+                  "feature-flags/view-exposures",
+                  "feature-flags/pre-post-results",
+                  "feature-flags/multiple-rollout-stages",
+                  "feature-flags/scheduled-rollouts",
+                  "feature-flags/safeguards-overview",
+                  "feature-flags/safeguards-create",
+                  "feature-flags/safeguards-manage",
+                  "feature-flags/feature-flags-lifecycle",
+                  "feature-flags/permanent-and-stale-gates",
+                  "feature-flags/best-practices"
+                ]
+              },
+              {
+                "group": "Dynamic Config",
+                "pages": [
+                  "dynamic-config/overview",
+                  "dynamic-config/working-with",
+                  "dynamic-config/enforce-schema",
+                  "dynamic-config/create-new",
+                  "dynamic-config/add-rule",
+                  "guides/first-dynamic-config"
+                ]
+              },
+              {
+                "group": "Segments",
+                "pages": [
+                  "segments/overview",
+                  "segments/create-new",
+                  "segments/add-rule",
+                  "segments/add-id-list",
+                  "segments/implement"
+                ]
+              },
+              {
+                "group": "Release Pipelines",
+                "pages": [
+                  "release-pipeline/overview",
+                  "release-pipeline/create-and-manage",
+                  "release-pipeline/trigger",
+                  "release-pipeline/actions"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Analytics",
+            "icon": "chart-line",
+            "pages": [
+              {
+                "group": "Product Analytics",
+                "pages": [
+                  "product-analytics/overview",
+                  "product-analytics/drilldown",
+                  "product-analytics/funnels",
+                  "product-analytics/retention",
+                  "product-analytics/distribution",
+                  "product-analytics/user-journeys",
+                  "product-analytics/dashboards",
+                  {
+                    "group": "Users",
+                    "pages": [
+                      "product-analytics/users-tab",
+                      "product-analytics/user-profiles"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Infra Analytics",
+                "pages": [
+                  "infra-analytics/overview",
+                  "infra-analytics/getting-started",
+                  {
+                    "group": "Logs Explorer",
+                    "pages": [
+                      "infra-analytics/logs-explorer",
+                      "infra-analytics/logs-explorer-queries",
+                      "infra-analytics/events-mode-logs-explorer"
+                    ]
+                  },
+                  "infra-analytics/topline-alerts-logs"
+                ]
+              },
+              {
+                "group": "Alerts",
+                "pages": [
+                  "product-analytics/alerts-overview",
+                  "metrics/rollout-alerts",
+                  "product-analytics/topline-alerts"
+                ]
+              },
+              {
+                "group": "Web Analytics",
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "AI Evals",
+            "icon": "magic",
+            "pages": [
+              "ai-evals/overview",
+              "ai-evals/prompts",
+              "ai-evals/offline-evals",
+              "ai-evals/online-evals"
+            ]
+          },
+          {
+            "group": "Other Features",
+            "icon": "bolt",
+            "pages": [
+              {
+                "group": "Low-Code Experiments",
+                "pages": [
+                  "guides/sidecar-experiments/introduction",
+                  "guides/sidecar-experiments/sidecar-v3",
+                  "guides/sidecar-experiments/measuring-experiments",
+                  "guides/sidecar-experiments/advanced-configurations-v3",
+                  {
+                    "group": "(Legacy) Sidecar",
+                    "pages": [
+                      "guides/sidecar-experiments/setup",
+                      "guides/sidecar-experiments/creating-experiments",
+                      "guides/sidecar-experiments/advanced-configurations",
+                      "guides/sidecar-experiments/publishing-experiments",
+                      "guides/sidecar-experiments/integrating-gtm",
+                      "guides/aa-sidecar"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Session Replay",
+                "pages": [
+                  "session-replay/overview",
+                  "session-replay/install",
+                  "session-replay/configure",
+                  "session-replay/debug",
+                  "session-replay/watch",
+                  "session-replay/cli-session-replay"
+                ]
+              },
+              {
+                "group": "Statsig + AI",
+                "pages": [
+                  "integrations/mcp",
+                  "integrations/ai_development_with_statsig"
+                ]
+              },
+              {
+                "group": "Data & Metrics",
+                "pages": [
+                  "metrics/introduction",
+                  {
+                    "group": "Metrics 101 - Overview",
+                    "pages": [
+                      "metrics/101",
+                      "metrics/how-metrics-work",
+                      "metrics/raw-events",
+                      {
+                        "group": "Auto-generated Metrics",
+                        "pages": [
+                          "metrics/raw-event-metrics",
+                          "metrics/deprecate-event-dau"
+                        ]
+                      },
+                      "metrics/custom-metrics",
+                      "metrics/precomputed-metrics",
+                      "metrics/user-property",
+                      "metrics/metric-dimensions"
+                    ]
+                  },
+                  "metrics/ingest",
+                  "metrics/pulse",
+                  "metrics/local-metrics",
+                  "metrics/console",
+                  "metrics/health-checks",
+                  {
+                    "group": "Metrics 201 - Creating Metrics",
+                    "pages": [
+                      "metrics/201",
+                      "metrics/create",
+                      "metrics/custom-dau",
+                      "metrics/archiving-metrics",
+                      "metrics/create-metric-tags",
+                      "metrics/user",
+                      "metrics/directionality"
+                    ]
+                  },
+                  {
+                    "group": "Metrics 301 - Advanced Topics",
+                    "pages": [
+                      "metrics/301",
+                      "metrics/create-user-funnels",
+                      "metrics/create-user-flows",
+                      "metrics/count-distinct"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "icon": "file",
+            "pages": [
+              "sample-apps",
+              "client/concepts/parameter-stores",
+              "guides/first-device-level-experiment",
+              "guides/experiment-on-custom-id-types",
+              "guides/using-environments",
+              "server/concepts/open_telemetry",
+              "guides/testing",
+              {
+                "group": "Migration Guides",
+                "pages": [
+                  "guides/migration-overview",
+                  "guides/migrate-from-amplitude",
+                  "guides/migrate-from-mixpanel",
+                  {
+                    "group": "Migrate from LaunchDarkly",
+                    "pages": [
+                      "guides/migrate-from-launchdarkly",
+                      "guides/open-source-script",
+                      "guides/ui-based-tool"
+                    ]
+                  }
+                ]
+              },
+              "faq"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Warehouse Native",
+        "groups": [
+          {
+            "group": "Introduction",
+            "icon": "flag-checkered",
+            "pages": [
+              "statsig-warehouse-native/introduction",
+              "statsig-warehouse-native/guides/quick-start",
+              "statsig-warehouse-native/native-vs-cloud"
+            ]
+          },
+          {
+            "group": "Guides",
+            "icon": "file",
+            "pages": [
+              {
+                "group": "POCs & Evaluations",
+                "pages": [
+                  "statsig-warehouse-native/guides/running_a_poc",
+                  "statsig-warehouse-native/guides/playground_eval",
+                  "statsig-warehouse-native/guides/sdks",
+                  "statsig-warehouse-native/guides/aatest",
+                  "statsig-warehouse-native/guides/email-experiments",
+                  "metrics/different-id"
+                ]
+              },
+              {
+                "group": "Debugging",
+                "pages": [
+                  "statsig-warehouse-native/guides/checklist",
+                  "statsig-warehouse-native/guides/debugging",
+                  "statsig-warehouse-native/guides/sql"
+                ]
+              },
+              "statsig-warehouse-native/guides/experimentation-program",
+              "statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
+            ]
+          },
+          {
+            "group": "Warehouse Integrations",
+            "icon": "plug",
+            "pages": [
+              "statsig-warehouse-native/guides/connect",
+              "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+              "statsig-warehouse-native/connecting-your-warehouse/athena",
+              "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+              "statsig-warehouse-native/connecting-your-warehouse/databricks",
+              "statsig-warehouse-native/connecting-your-warehouse/redshift",
+              "statsig-warehouse-native/connecting-your-warehouse/trino",
+              "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+              "statsig-warehouse-native/connecting-your-warehouse/fabric",
+              "statsig-warehouse-native/connecting-your-warehouse/other"
+            ]
+          },
+          {
+            "group": "Warehouse Management",
+            "icon": "list-check",
+            "pages": [
+              "statsig-warehouse-native/analysis-tools/data-privacy",
+              "statsig-warehouse-native/warehouse-management/storage",
+              "statsig-warehouse-native/guides/costs",
+              "statsig-warehouse-native/guides/best-practices"
+            ]
+          },
+          {
+            "group": "Data & Semantic Layer",
+            "icon": "bracket-curly",
+            "pages": [
+              "statsig-warehouse-native/configuration/data-and-semantic-layer",
+              "statsig-warehouse-native/configuration/metric-sources",
+              {
+                "group": "Metrics",
+                "pages": [
+                  "statsig-warehouse-native/configuration/metrics",
+                  "statsig-warehouse-native/metrics/sum",
+                  "statsig-warehouse-native/metrics/count",
+                  "statsig-warehouse-native/metrics/count-distinct",
+                  "statsig-warehouse-native/metrics/unit-count-once",
+                  "statsig-warehouse-native/metrics/unit-count-window",
+                  "statsig-warehouse-native/metrics/unit-count-latest",
+                  "statsig-warehouse-native/metrics/unit-count-rate",
+                  "statsig-warehouse-native/metrics/mean",
+                  "statsig-warehouse-native/metrics/ratio",
+                  "statsig-warehouse-native/metrics/funnel",
+                  "statsig-warehouse-native/metrics/percentile",
+                  "statsig-warehouse-native/metrics/log",
+                  "statsig-warehouse-native/metrics/latest-value",
+                  "statsig-warehouse-native/metrics/retention",
+                  "statsig-warehouse-native/metrics/max-min"
+                ]
+              },
+              "statsig-warehouse-native/configuration/metric-examples",
+              "statsig-warehouse-native/features/cohort-metrics",
+              "statsig-warehouse-native/configuration/dimensional-analysis",
+              "statsig-warehouse-native/configuration/assignment-sources",
+              "statsig-warehouse-native/configuration/entity-properties",
+              "statsig-warehouse-native/configuration/qualifying-events",
+              {
+                "group": "Metric Management",
+                "pages": [
+                  "statsig-warehouse-native/configuration/tags-and-teams",
+                  "statsig-warehouse-native/features/roles-and-access",
+                  "metrics/verified",
+                  "statsig-warehouse-native/configuration/query-tools",
+                  "metrics/metric-family"
+                ]
+              },
+              {
+                "group": "Programmatic Management",
+                "pages": [
+                  "statsig-warehouse-native/configuration/console-api",
+                  "statsig-warehouse-native/configuration/semantic-layer-sync"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Experiment Analysis",
+            "icon": "calculator",
+            "pages": [
+              "statsig-warehouse-native/features/understanding-experiments",
+              "statsig-warehouse-native/features/experiment-options",
+              {
+                "group": "Setup",
+                "pages": [
+                  "statsig-warehouse-native/features/configure-an-experiment",
+                  "statsig-warehouse-native/features/types-of-experiments",
+                  "statsig-warehouse-native/features/power-analysis",
+                  "statsig-warehouse-native/features/stratified-sampling",
+                  "statsig-warehouse-native/features/differential-impact",
+                  "statsig-warehouse-native/features/targeting",
+                  "statsig-warehouse-native/features/id-resolution",
+                  "statsig-warehouse-native/features/id-resolution (legacy)",
+                  "statsig-warehouse-native/features/filtering-exposures",
+                  "statsig-warehouse-native/metrics/normalized-metrics",
+                  "statsig-warehouse-native/features/quality-score"
+                ]
+              },
+              {
+                "group": "Loading Results",
+                "pages": [
+                  "statsig-warehouse-native/features/reloads",
+                  "statsig-warehouse-native/features/turbo",
+                  "statsig-warehouse-native/features/full-reloads",
+                  "statsig-warehouse-native/features/incremental-reloads",
+                  "statsig-warehouse-native/features/metric-reloads",
+                  "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+                  "statsig-warehouse-native/analysis-tools/pipeline-overview",
+                  "statsig-warehouse-native/features/freshness"
+                ]
+              },
+              {
+                "group": "Interpreting Results",
+                "pages": [
+                  "statsig-warehouse-native/features/interpreting-results/read-results",
+                  "statsig-warehouse-native/features/interpreting-results/metric-drill-down",
+                  "statsig-warehouse-native/features/interpreting-results/custom-queries",
+                  "experiments/interpreting-results/access-whn",
+                  "statsig-warehouse-native/features/interpreting-results/participating-units",
+                  "statsig-warehouse-native/features/interpreting-results/best-practices",
+                  "statsig-warehouse-native/features/interpreting-results/faq",
+                  "statsig-warehouse-native/features/reports",
+                  "statsig-warehouse-native/features/exploring-results/aggregated-impact"
+                ]
+              },
+              {
+                "group": "Statistics",
+                "pages": [
+                  "statsig-warehouse-native/features/statistics",
+                  "statsig-warehouse-native/features/statistics/confidence-intervals",
+                  "statsig-warehouse-native/features/statistics/p-value",
+                  "statsig-warehouse-native/features/statistics/metric-deltas",
+                  "statsig-warehouse-native/features/statistics/variance",
+                  "statsig-warehouse-native/features/statistics/topline-impact",
+                  "statsig-warehouse-native/features/statistics/variance-reduction",
+                  "statsig-warehouse-native/features/statistics/pre-experiment-bias",
+                  {
+                    "group": "Methodologies Used (WHN)",
+                    "pages": [
+                      "statsig-warehouse-native/features/statistics/methodologies/bonferroni-correction",
+                      "statsig-warehouse-native/features/statistics/methodologies/benjamini-hochberg-procedure",
+                      "statsig-warehouse-native/features/statistics/methodologies/cuped",
+                      "statsig-warehouse-native/features/statistics/methodologies/delta-method",
+                      "statsig-warehouse-native/features/statistics/methodologies/fieller-intervals",
+                      "statsig-warehouse-native/features/statistics/methodologies/srm-checks",
+                      "statsig-warehouse-native/features/statistics/methodologies/winsorization",
+                      "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "CURE",
+                "pages": [
+                  "statsig-warehouse-native/cure/introduction",
+                  "statsig-warehouse-native/cure/cure-setup"
+                ]
+              },
+              "statsig-warehouse-native/features/autotune",
+              "statsig-warehouse-native/features/meta-analysis",
+              "statsig-warehouse-native/features/use-case"
+            ]
+          },
+          {
+            "group": "Other Features",
+            "icon": "bolt",
+            "pages": [
+              "statsig-warehouse-native/features/mex-on-warehouse-native",
+              {
+                "group": "Geotests",
+                "pages": [
+                  "statsig-warehouse-native/geotests/introduction",
+                  "statsig-warehouse-native/geotests/geotests-setup",
+                  "statsig-warehouse-native/geotests/methodology"
+                ]
+              },
+              "statsig-warehouse-native/features/other-useful-features"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDKs & APIs",
+        "groups": [
+          {
+            "group": "SDK Quickstarts",
+            "icon": "flag-checkered",
+            "pages": [
+              "sdks/quickstart",
+              "sdks/identify-users",
+              "guides/check-gate",
+              "guides/abn-tests",
+              "guides/logging-events"
+            ]
+          },
+          {
+            "group": "SDK Concepts",
+            "icon": "lightbulb",
+            "pages": [
+              "sdks/getting-started",
+              "sdks/user",
+              "client/concepts/initialize",
+              "sdks/how-evaluation-works",
+              "sdks/debugging",
+              "sdks/client-vs-server",
+              "compliance/data_privacy_for_mobile"
+            ]
+          },
+          {
+            "group": "Client SDKs",
+            "pages": [
+              "client/javascript-sdk",
+              "client/html-snippet",
+              "client/React",
+              "client/Next",
+              "client/Android",
+              "client/iosClientSDK",
+              {
+                "group": "More Client SDKs",
+                "pages": [
+                  "client/CPP",
+                  "client/Dart",
+                  "client/DotNet",
+                  "client/Expo",
+                  "client/ReactNative",
+                  "client/Angular",
+                  "client/Roku",
+                  "client/Unity",
+                  {
+                    "group": "On Device Evaluation SDKs",
+                    "pages": [
+                      "client/onDeviceOverview",
+                      "client/swiftOnDeviceEvaluationSDK",
+                      "client/androidOnDeviceEvaluationSDK",
+                      {
+                        "group": "JS On Device Evaluation SDKs",
+                        "pages": [
+                          "client/jsOnDeviceEvaluationSDK",
+                          "client/ReactNativeOnDeviceEvaluation"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Migrating from Legacy JS",
+                    "pages": [
+                      "client/migration-guides/MigrationFromOldJsClient",
+                      "client/migration-guides/MigrationFromOldReact"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Server SDKs",
+            "pages": [
+              "server-core/node-core",
+              "server-core/python-core",
+              "server-core/java-core",
+              "server-core/go-core",
+              "server/ruby",
+              "server-core/dotnet-core",
+              "server-core/index",
+              {
+                "group": "More Server SDKs",
+                "pages": [
+                  "server/cpp",
+                  "server/go",
+                  "server-core/rust-core",
+                  "server-core/elixir-core",
+                  "server-core/php-core"
+                ]
+              },
+              {
+                "group": "Legacy Server SDKs",
+                "pages": [
+                  "server-core/legacy-sdks",
+                  "server/nodejsServerSDK",
+                  "server/pythonSDK",
+                  "server/erlang",
+                  "server/java",
+                  "server/rust",
+                  "server/php",
+                  "server/dotnet"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "AI SDKs",
+            "icon": "brain",
+            "pages": [
+              "ai-evals/node",
+              "ai-evals/python"
+            ]
+          },
+          {
+            "group": "More SDK Methods",
+            "icon": "list",
+            "pages": [
+              "client/concepts/persistent_assignment",
+              "server/concepts/persistent_assignment",
+              "client/concepts/local-eval-adapter",
+              "server/concepts/data_store",
+              "sdks/target-apps",
+              "server/deprecation-notices",
+              "sdks/support"
+            ]
+          },
+          {
+            "group": "Console API Reference",
+            "icon": "network-wired",
+            "pages": [
+              "console-api/introduction",
+              {
+                "group": "API reference",
+                "openapi": "https://api.statsig.com/openapi/20240601.json"
+              }
+            ]
+          },
+          {
+            "group": "Statsig CLI",
+            "icon": "terminal",
+            "pages": [
+              "statsigcli/introduction",
+              "statsigcli/commands",
+              "statsigcli/gate-management"
+            ]
+          },
+          {
+            "group": "HTTP API Reference",
+            "icon": "server",
+            "pages": [
+              "http-api/overview",
+              {
+                "group": "API reference (beta)",
+                "openapi": "http-api/httpopenapi.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Management & Integrations",
+        "groups": [
+          {
+            "group": "Workspace Management",
+            "icon": "list-check",
+            "pages": [
+              "access-management/introduction",
+              "sdks/api-keys",
+              {
+                "group": "Workspace",
+                "pages": [
+                  "access-management/organizations",
+                  "access-management/projects",
+                  "access-management/teams",
+                  "access-management/guide"
+                ]
+              },
+              {
+                "group": "Access Management",
+                "pages": [
+                  {
+                    "group": "Single Sign-On",
+                    "pages": [
+                      "access-management/sso/overview",
+                      "access-management/sso/okta_sso",
+                      "access-management/sso/azuread",
+                      "access-management/sso/google"
+                    ]
+                  },
+                  {
+                    "group": "SCIM User Provisioning",
+                    "pages": [
+                      "access-management/scim/overview",
+                      "access-management/scim/concepts",
+                      {
+                        "group": "Okta Guide",
+                        "pages": [
+                          "access-management/scim/okta_scim_setup",
+                          "access-management/scim/okta_scim_user_management",
+                          "access-management/scim/okta_scim_org_roles",
+                          "access-management/scim/okta_scim_team_management",
+                          "access-management/scim/okta_scim_troubleshooting"
+                        ]
+                      },
+                      "access-management/scim/scim-endpoints",
+                      {
+                        "group": "SCIM API reference",
+                        "openapi": "access-management/scim/scimopenapi.json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/introduction",
+              {
+                "group": "Data Into Statsig",
+                "pages": [
+                  {
+                    "group": "Data Connectors",
+                    "pages": [
+                      "integrations/data-connectors/amplitude",
+                      "integrations/data-connectors/braze",
+                      "integrations/data-connectors/census",
+                      "integrations/data-connectors/fivetran",
+                      "integrations/data-connectors/google-analytics",
+                      "integrations/data-connectors/heap",
+                      "integrations/data-connectors/hightouch",
+                      "integrations/data-connectors/mixpanel",
+                      "integrations/data-connectors/mparticle",
+                      "integrations/data-connectors/revenuecat",
+                      "integrations/data-connectors/rudderstack",
+                      "integrations/data-connectors/segment",
+                      "integrations/data-connectors/stitch"
+                    ]
+                  },
+                  {
+                    "group": "Warehouse Ingestion",
+                    "pages": [
+                      "data-warehouse-ingestion/introduction",
+                      {
+                        "group": "Connection Set Up",
+                        "pages": [
+                          "data-warehouse-ingestion/bigquery",
+                          "data-warehouse-ingestion/redshift",
+                          "data-warehouse-ingestion/snowflake",
+                          "data-warehouse-ingestion/databricks",
+                          "data-warehouse-ingestion/synapse",
+                          "data-warehouse-ingestion/s3",
+                          "data-warehouse-ingestion/athena",
+                          "data-warehouse-ingestion/faq"
+                        ]
+                      },
+                      "data-warehouse-ingestion/data_mapping"
+                    ]
+                  },
+                  "integrations/gtm",
+                  "integrations/event_filtering",
+                  "integrations/event_webhook",
+                  "integrations/openai",
+                  "integrations/statsiglite",
+                  "guides/statsig-id-resolver",
+                  {
+                    "group": "Data Imports (Deprecated)",
+                    "pages": [
+                      "integrations/data-imports/overview",
+                      "integrations/data-imports/bigquery",
+                      "integrations/data-imports/redshift",
+                      "integrations/data-imports/snowflake",
+                      "integrations/data-imports/azure_upload"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Data Exports",
+                "pages": [
+                  "integrations/data-exports/experiment_result_exports",
+                  "integrations/data-exports/data_warehouse_exports"
+                ]
+              },
+              {
+                "group": "Serverless & Edge",
+                "pages": [
+                  "guides/serverless",
+                  "guides/cdn-edge-testing",
+                  "integrations/vercel",
+                  "integrations/cloudflare",
+                  "integrations/workersai",
+                  "integrations/fastly",
+                  "integrations/akamai"
+                ]
+              },
+              {
+                "group": "Slack, VS Code & Productivity",
+                "pages": [
+                  "integrations/github_code_references",
+                  "integrations/gitlab_code_references",
+                  "integrations/slack",
+                  "integrations/jira"
+                ]
+              },
+              {
+                "group": "Email & CMS Systems",
+                "pages": [
+                  "guides/email-campaign-test",
+                  "guides/contentful",
+                  "guides/customer-io-email-abtest",
+                  "guides/sendgrid-email-abtest",
+                  "guides/cms-integrations"
+                ]
+              },
+              {
+                "group": "No-Code Editors",
+                "pages": [
+                  "guides/shopify-ab-test",
+                  "guides/framer-analytics",
+                  "guides/webflow-sidecar-ab-test"
+                ]
+              },
+              {
+                "group": "Observability & Infra",
+                "pages": [
+                  "integrations/datadog",
+                  {
+                    "group": "Datadog Triggers",
+                    "pages": [
+                      "integrations/triggers/introduction",
+                      "integrations/triggers/datadog"
+                    ]
+                  },
+                  {
+                    "group": "Terraform",
+                    "pages": [
+                      "integrations/terraform/introduction",
+                      "integrations/terraform/terraform_gate",
+                      "integrations/terraform/terraform_experiment"
+                    ]
+                  },
+                  "integrations/pulumi"
+                ]
+              },
+              {
+                "group": "Azure AI",
+                "pages": [
+                  "integrations/azureai/introduction",
+                  "integrations/azureai/getting-started",
+                  "integrations/azureai/model-client",
+                  "integrations/azureai/completions",
+                  "integrations/azureai/embeddings",
+                  "integrations/azureai/capturing-metrics",
+                  "integrations/azureai/running-experiments"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Collaboration",
+            "icon": "users-rectangle",
+            "pages": [
+              {
+                "group": "Templates & Policies",
+                "pages": [
+                  {
+                    "group": "Organization Policies",
+                    "pages": [
+                      "access-management/org-admin/organization_policies",
+                      "access-management/org-admin/experiment_policy",
+                      "access-management/org-admin/gates_policy"
+                    ]
+                  },
+                  "experiments/templates/templates",
+                  "experiments/templates/decision-framework"
+                ]
+              },
+              "access-management/discussions",
+              "access-management/tags",
+              "guides/setting-up-reviews",
+              "guides/config-history"
+            ]
+          },
+          {
+            "group": "Privacy",
+            "icon": "shield-check",
+            "pages": [
+              "compliance/user_data_deletion_requests",
+              "guides/private-attributes"
+            ]
+          },
+          {
+            "group": "Infrastructure Operations",
+            "icon": "server",
+            "pages": [
+              "infrastructure/introduction",
+              {
+                "group": "Open Telemetry",
+                "pages": [
+                  "/infra-analytics/getting-started"
+                ]
+              },
+              "server/concepts/cloudflare",
+              {
+                "group": "Domains & IP",
+                "pages": [
+                  "infrastructure/statsig_ip_ranges",
+                  "infrastructure/statsig_domains"
+                ]
+              },
+              {
+                "group": "API Proxies",
+                "pages": [
+                  "infrastructure/api_proxy/introduction",
+                  "infrastructure/api_proxy/managed-proxy",
+                  "infrastructure/api_proxy/custom_proxy",
+                  "server/concepts/forward_proxy"
+                ]
+              },
+              {
+                "group": "Reliability",
+                "pages": [
+                  "infrastructure/reliability-faq",
+                  "guides/uptime",
+                  "infrastructure/sdk-monitoring"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community Slack",
+          "href": "https://statsig.com/slack",
+          "icon": "slack"
+        }
+      ]
+    }
+  },
+  "redirects": [
+    {
+      "source": "/pulse",
+      "destination": "/experiments/interpreting-results/read-pulse"
+    },
+    {
+      "source": "/experiments/stratified-sampling-whn",
+      "destination": "/statsig-warehouse-native/features/stratified-sampling"
+    },
+    {
+      "source": "/metrics/metric-alerts",
+      "destination": "/product-analytics/alerts-overview"
+    },
+    {
+      "source": "/feature-gates/working-with",
+      "destination": "/feature-flags/overview"
+    },
+    {
+      "source": "/client/jsClientSDK",
+      "destination": "/client/javascript-sdk"
+    },
+    {
+      "source": "/feature-gates/feature-gates-lifecycle",
+      "destination": "/feature-flags/feature-flags-lifecycle"
+    },
+    {
+      "source": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+      "destination": "/server/migration-guides/v5ToV6UpgradeGuide"
+    },
+    {
+      "source": "/experiments/working-with",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/client/cpp",
+      "destination": "/client/CPP"
+    },
+    {
+      "source": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingSpecsDataAdapter"
+    },
+    {
+      "source": "/autotune",
+      "destination": "/autotune/overview"
+    },
+    {
+      "source": "/http-api",
+      "destination": "/http-api/overview"
+    },
+    {
+      "source": "/product-analytics/alerts/rollout_alerts",
+      "destination": "/metrics/rollout-alerts"
+    },
+    {
+      "source": "/server/phpSDK",
+      "destination": "/server/php"
+    },
+    {
+      "source": "/server/rustSDK",
+      "destination": "/server/rust"
+    },
+    {
+      "source": "/server/erlangSDK",
+      "destination": "/server/erlang"
+    },
+    {
+      "source": "/client/concepts/user",
+      "destination": "/sdks/user"
+    },
+    {
+      "source": "/infrastructure/forward-proxy",
+      "destination": "/server/concepts/forward_proxy"
+    },
+    {
+      "source": "/guides/device-level-experiment",
+      "destination": "/guides/first-device-level-experiment"
+    },
+    {
+      "source": "/guides/device-level-experiments",
+      "destination": "/guides/first-device-level-experiment"
+    },
+    {
+      "source": "/stats-engine/methodologies/winsorization",
+      "destination": "/experiments/statistical-methods/methodologies/winsorization"
+    },
+    {
+      "source": "/metrics",
+      "destination": "/metrics/101"
+    },
+    {
+      "source": "/stats-engine",
+      "destination": "/statsig-warehouse-native/features/experiment-options"
+    },
+    {
+      "source": "/metrics/user-dimensions",
+      "destination": "/metrics/user-property"
+    },
+    {
+      "source": "/infrastructure/managed-proxy",
+      "destination": "/infrastructure/api_proxy/managed-proxy"
+    },
+    {
+      "source": "/guides/experimentation-program",
+      "destination": "/statsig-warehouse-native/guides/experimentation-program"
+    },
+    {
+      "source": "/sdk/debugging",
+      "destination": "/sdks/debugging"
+    },
+    {
+      "source": "/stats-engine/methodologies/delta-method-whn",
+      "destination": "/experiments/statistical-methods/methodologies/delta-method"
+    },
+    {
+      "source": "/experimentation/quality-score-whn",
+      "destination": "/statsig-warehouse-native/features/quality-score"
+    },
+    {
+      "source": "/stats-engine/variance-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/variance"
+    },
+    {
+      "source": "/stats-engine/variance_reduction-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/variance-reduction"
+    },
+    {
+      "source": "/statsig-warehouse-native/features/other-features",
+      "destination": "/statsig-warehouse-native/features/other-useful-features"
+    },
+    {
+      "source": "/server/concepts/all-assignments",
+      "destination": "/client/concepts/initialize#2-bootstrap-initialization"
+    },
+    {
+      "source": "/stats-engine/topline-impact-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/topline-impact"
+    },
+    {
+      "source": "/stats-engine/methodologies/one-sided-test-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+    },
+    {
+      "source": "/stats-engine/metric-deltas-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/metric-deltas"
+    },
+    {
+      "source": "/client/iOS/repo-migration-guide",
+      "destination": "/client/migration-guides/ios-repo-migration-guide"
+    },
+    {
+      "source": "/developer-guides/abtest-in-javascript",
+      "destination": "/client/javascript-sdk"
+    },
+    {
+      "source": "/statsig-warehouse-native/guides/dummy_evaluation",
+      "destination": "/statsig-warehouse-native/guides/playground_eval"
+    },
+    {
+      "source": "/stats-engine/one-sample-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sample-test"
+    },
+    {
+      "source": "/using-bandits",
+      "destination": "/autotune/using-bandits"
+    },
+    {
+      "source": "/client/onDevice",
+      "destination": "/client/onDeviceOverview"
+    },
+    {
+      "source": "/guides/srm",
+      "destination": "experiments/monitoring/srm"
+    },
+    {
+      "source": "/pulse/access-whn",
+      "destination": "/experiments/interpreting-results/access-whn"
+    },
+    {
+      "source": "/infrastructure/monitoring",
+      "destination": "/infrastructure/sdk-monitoring"
+    },
+    {
+      "source": "/sdk_monitoring",
+      "destination": "/infrastructure/sdk-monitoring"
+    },
+    {
+      "source": "/client/cpp-client-sdk",
+      "destination": "/client/CPP"
+    },
+    {
+      "source": "server/phpSDK",
+      "destination": "/server/php"
+    },
+    {
+      "source": "/statsigcli",
+      "destination": "/statsigcli/introduction"
+    },
+    {
+      "source": "/client/javascript-sdk/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter"
+    },
+    {
+      "source": "/client/javascript/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter"
+    },
+    {
+      "source": "/guides/production",
+      "destination": "/statsig-warehouse-native/guides/production"
+    },
+    {
+      "source": "/client/js-on-device-eval-client",
+      "destination": "/client/jsOnDeviceEvaluationSDK"
+    },
+    {
+      "source": "/server-core/java/migration",
+      "destination": "/server-core/migration-guides/java"
+    },
+    {
+      "source": "/server-core/node/migration-guide",
+      "destination": "/server-core/migration-guides/node"
+    },
+    {
+      "source": "/feature-flags/bots",
+      "destination": "/experiments/monitoring/bots"
+    },
+    {
+      "source": "/statsig-warehouse-native/data-privacy",
+      "destination": "/statsig-warehouse-native/analysis-tools/data-privacy"
+    },
+    {
+      "source": "/product-analytics/alerts/topline_alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/product-analytics/topline_alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/statsig-warehouse-native/pipeline-overview",
+      "destination": "/statsig-warehouse-native/analysis-tools/pipeline-overview"
+    },
+    {
+      "source": "/server-core/python/migration-guide",
+      "destination": "/server-core/migration-guides/python"
+    },
+    {
+      "source": "/guides/running-a-poc",
+      "destination": "/statsig-warehouse-native/guides/running_a_poc"
+    },
+    {
+      "source": "/server/javaSdk",
+      "destination": "/server/java"
+    },
+    {
+      "source": "/users/profiles",
+      "destination": "/product-analytics/user-profiles"
+    },
+    {
+      "source": "/statsig-warehouse-native/guides/forwarded-data",
+      "destination": "/statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
+    },
+    {
+      "source": "/server-core/dotnetCoreSDK",
+      "destination": "/server-core/dotnet-core"
+    },
+    {
+      "source": "/server/dotnetSDK",
+      "destination": "/server/dotnet"
+    },
+    {
+      "source": "/client/javascript-sdk/migrating-from-statsig-js",
+      "destination": "/client/migration-guides/MigrationFromOldJsClient"
+    },
+    {
+      "source": "/client/javascript-sdk/migrating-from-statsig-react",
+      "destination": "/client/migration-guides/MigrationFromOldReact"
+    },
+    {
+      "source": "/client/migration-guides/MigrationFromOldReactSDK",
+      "destination": "/client/migration-guides/MigrationFromOldReact"
+    },
+    {
+      "source": "/experiments-plus/cure",
+      "destination": "/statsig-warehouse-native/cure/introduction"
+    },
+    {
+      "source": "/client/javascript-sdk/stable-id",
+      "destination": "/client/javascript-sdk-stable-id"
+    },
+    {
+      "source": "/quickstarts/feature-gates",
+      "destination": "/guides/check-gate"
+    },
+    {
+      "source": "/org-admin/:slug*",
+      "destination": "/access-management/org-admin/:slug*"
+    },
+    {
+      "source": "/concepts/user",
+      "destination": "/sdks/user"
+    },
+    {
+      "source": "/exp-templates/:slug*",
+      "destination": "/experiments/templates/:slug*"
+    },
+    {
+      "source": "/quickstarts/check-gate",
+      "destination": "/guides/check-gate"
+    },
+    {
+      "source": "/layers",
+      "destination": "/experiments/layers-overview"
+    },
+    {
+      "source": "/sdk-keys/:slug*",
+      "destination": "/sdks/:slug*"
+    },
+    {
+      "source": "/experiments-plus",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/experiments",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/experiments/index",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/experiments-plus/:slug*",
+      "destination": "/experiments/:slug*"
+    },
+    {
+      "source": "/azureai/:slug*",
+      "destination": "/integrations/azureai/:slug*"
+    },
+    {
+      "source": "/metrics/metrics-from-events",
+      "destination": "/metrics/raw-event-metrics"
+    },
+    {
+      "source": "/console-api/*",
+      "destination": "/console-api/introduction"
+    },
+    {
+      "source": "/stats-engine/methodologies/cuped",
+      "destination": "/experiments/statistical-methods/methodologies/cuped"
+    },
+    {
+      "source": "/guides/aa-test",
+      "destination": "/experiments/types/aa-test"
+    },
+    {
+      "source": "/client/javascript-sdk/init-strategies",
+      "destination": "/client/concepts/initialize"
+    },
+    {
+      "source": "/console-api/all-endpoints-generated",
+      "destination": "/console-api/introduction"
+    },
+    {
+      "source": "/experiments-plus/implement",
+      "destination": "/experiments/implementation/implement"
+    },
+    {
+      "source": "/client/javascript-sdk/next-js",
+      "destination": "/client/Next"
+    },
+    {
+      "source": "/client/javascript-sdk/react",
+      "destination": "/client/React"
+    },
+    {
+      "source": "/dynamic-config",
+      "destination": "/dynamic-config/overview"
+    },
+    {
+      "source": "/experiments/statistical-methods/methodologies/srm-checks",
+      "destination": "/stats-engine/methodologies/srm-checks"
+    },
+    {
+      "source": "/experiments/setup/create-new",
+      "destination": "/experiments/create-new"
+    },
+    {
+      "source": "/experiments/advanced-setup/power-analysis",
+      "destination": "/experiments/power-analysis"
+    },
+    {
+      "source": "/experiments/monitoring/monitor",
+      "destination": "/experiments/monitor"
+    },
+    {
+      "source": "/experiments/layers-introduction",
+      "destination": "/layers"
+    },
+    {
+      "source": "/client/androidClientSDK",
+      "destination": "/client/Android"
+    },
+    {
+      "source": "/client/javascript-sdk/react-native",
+      "destination": "/client/ReactNative"
+    },
+    {
+      "source": "/client/dartSDK",
+      "destination": "/client/Dart"
+    },
+    {
+      "source": "/server/rubySDK",
+      "destination": "/server/ruby"
+    },
+    {
+      "source": "/server/golangSDK",
+      "destination": "/server/go"
+    },
+    {
+      "source": "/server/cppSDK",
+      "destination": "/server/cpp"
+    },
+    {
+      "source": "/client/javascript-sdk/expo",
+      "destination": "/client/Expo"
+    },
+    {
+      "source": "/client/javascript-sdk/Angular",
+      "destination": "/client/Angular"
+    },
+    {
+      "source": "/client/dotnetSDK",
+      "destination": "/client/DotNet"
+    },
+    {
+      "source": "/client/unitySDK",
+      "destination": "/client/Unity"
+    },
+    {
+      "source": "/client/rokuSDK",
+      "destination": "/client/Roku"
+    },
+    {
+      "source": "/experiments-plus/overrides",
+      "destination": "/experiments/setup/overrides"
+    },
+    {
+      "source": "/holdouts",
+      "destination": "/experiments/holdouts-introduction"
+    },
+    {
+      "source": "/experiments-plus/getting-group",
+      "destination": "/experiments/implementation/getting-group"
+    },
+    {
+      "source": "/experiments-plus/sequential-testing",
+      "destination": "/experiments/advanced-setup/sequential-testing"
+    },
+    {
+      "source": "/segments",
+      "destination": "/segments/overview"
+    },
+    {
+      "source": "/experiments-plus/switchback-tests",
+      "destination": "/experiments/types/switchback-tests"
+    },
+    {
+      "source": "/bandit-introduction",
+      "destination": "/autotune/bandit-introduction"
+    },
+    {
+      "source": "/pulse/read-pulse",
+      "destination": "/experiments/interpreting-results/read-pulse"
+    },
+    {
+      "source": "/experiments-plus/bayesian",
+      "destination": "/experiments/advanced-setup/bayesian"
+    },
+    {
+      "source": "/stats-engine/pre-experiment-bias",
+      "destination": "/experiments/statistical-methods/pre-experiment-bias"
+    },
+    {
+      "source": "/stats-engine/confidence-intervals",
+      "destination": "/experiments/statistical-methods/confidence-intervals"
+    },
+    {
+      "source": "/experiments-plus/make-decision",
+      "destination": "/experiments/ending/make-decision"
+    },
+    {
+      "source": "/stats-engine/variance_reduction",
+      "destination": "/experiments/statistical-methods/variance-reduction"
+    },
+    {
+      "source": "/pulse/drill-down",
+      "destination": "/experiments/interpreting-results/drill-down"
+    },
+    {
+      "source": "/custom_proxy",
+      "destination": "/infrastructure/api_proxy/custom_proxy"
+    },
+    {
+      "source": "/stats-engine/p-value",
+      "destination": "/experiments/statistical-methods/p-value"
+    },
+    {
+      "source": "/experiments-plus/sprt",
+      "destination": "/experiments/advanced-setup/sprt"
+    },
+    {
+      "source": "/experiments-plus/ending-experiment",
+      "destination": "/experiments/ending/ending-experiment"
+    },
+    {
+      "source": "/experiments-plus/stratified-sampling",
+      "destination": "/experiments/advanced-setup/stratified-sampling"
+    },
+    {
+      "source": "/product-analytics/alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/stats-engine/topline-impact",
+      "destination": "/experiments/statistical-methods/topline-impact"
+    },
+    {
+      "source": "/experimentation/quality-score",
+      "destination": "/experiments/setup/quality-score"
+    },
+    {
+      "source": "/stats-engine/methodologies/benjamini-hochberg-procedure",
+      "destination": "/experiments/statistical-methods/methodologies/benjamini-hochberg-procedure"
+    },
+    {
+      "source": "/stats-engine/methodologies/delta-method",
+      "destination": "/experiments/statistical-methods/methodologies/delta-method"
+    },
+    {
+      "source": "/stats-engine/variance",
+      "destination": "/experiments/statistical-methods/variance"
+    },
+    {
+      "source": "/release-pipeline",
+      "destination": "/release-pipeline/overview"
+    },
+    {
+      "source": "/stats-engine/methodologies/bonferroni-correction",
+      "destination": "/experiments/statistical-methods/methodologies/bonferroni-correction"
+    },
+    {
+      "source": "/experiments-plus/interaction-detection",
+      "destination": "/experiments/exploring-results/interaction-detection"
+    },
+    {
+      "source": "/multi-armed-bandit",
+      "destination": "/autotune/multi-armed-bandit"
+    },
+    {
+      "source": "/aggregated-impact",
+      "destination": "/experiments/exploring-results/aggregated-impact"
+    },
+    {
+      "source": "/stats-engine/methodologies/fieller-intervals",
+      "destination": "/experiments/statistical-methods/methodologies/fieller-intervals"
+    },
+    {
+      "source": "/pulse/custom-queries",
+      "destination": "/experiments/interpreting-results/custom-queries"
+    },
+    {
+      "source": "/experiments-plus/stop-assignments",
+      "destination": "/experiments/ending/stop-assignments"
+    },
+    {
+      "source": "/experimentation/meta-analysis",
+      "destination": "/experiments/exploring-results/meta-analysis"
+    },
+    {
+      "source": "/users",
+      "destination": "/sdks/user"
+    },
+    {
+      "source": "/guides/seo-testing",
+      "destination": "/experiments/types/seo-testing"
+    },
+    {
+      "source": "/experiments-plus/differential-impact-detection",
+      "destination": "/experiments/exploring-results/differential-impact-detection"
+    },
+    {
+      "source": "/safeguards/overview",
+      "destination": "/feature-flags/safeguards-overview"
+    },
+    {
+      "source": "/pulse/best-practices",
+      "destination": "/experiments/interpreting-results/best-practices"
+    },
+    {
+      "source": "/pulse/export",
+      "destination": "/experiments/interpreting-results/export"
+    },
+    {
+      "source": "/stats-engine/one-sided-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/experiments-plus/conclude-experiment-defer-decision",
+      "destination": "/experiments/ending/conclude-experiment-defer-decision"
+    },
+    {
+      "source": "/experiments-plus/abandon",
+      "destination": "/experiments/ending/abandon"
+    },
+    {
+      "source": "/pulse/user-properties",
+      "destination": "/experiments/interpreting-results/userproperties"
+    },
+    {
+      "source": "/reliability-faqs",
+      "destination": "/infrastructure/reliability-faq"
+    },
+    {
+      "source": "/experiments-plus/geotests",
+      "destination": "/statsig-warehouse-native/geotests/introduction"
+    },
+    {
+      "source": "/experiments-plus/geotests-setup",
+      "destination": "/statsig-warehouse-native/geotests/geotests-setup"
+    },
+    {
+      "source": "/stats-engine/metric-deltas",
+      "destination": "/experiments/statistical-methods/metric-deltas"
+    },
+    {
+      "source": "/templates/templates",
+      "destination": "/experiments/templates/templates"
+    },
+    {
+      "source": "/experiments-plus/disable-group",
+      "destination": "/experiments/implementation/disable-group"
+    },
+    {
+      "source": "/pulse/participating-units",
+      "destination": "/experiments/interpreting-results/participating-units"
+    },
+    {
+      "source": "/safeguards/create",
+      "destination": "/feature-flags/safeguards-create"
+    },
+    {
+      "source": "/metrics/count_distinct_metric_type",
+      "destination": "/metrics/count-distinct"
+    },
+    {
+      "source": "/safeguards/manage",
+      "destination": "/feature-flags/safeguards-manage"
+    },
+    {
+      "source": "/experiments-plus/reconciling-experiment-results",
+      "destination": "/experiments/interpreting-results/reconciling-experiment-results"
+    },
+    {
+      "source": "/experimentation/statsig-lite",
+      "destination": "/integrations/statsiglite"
+    },
+    {
+      "source": "/guides/feature-flags",
+      "destination": "/feature-flags/overview"
+    },
+    {
+      "source": "/guides/first-holdout",
+      "destination": "/experiments/holdouts-introduction"
+    },
+    {
+      "source": "/guides/node-express-feature-flags",
+      "destination": "/server-core/node-core"
+    },
+    {
+      "source": "/guides/experiments",
+      "destination": "/experiments-plus/overview"
+    },
+    {
+      "source": "/developer-guides/feature-flags-in-react",
+      "destination": "/client/React"
+    },
+    {
+      "source": "/experiments-plus/geotests/methodology",
+      "destination": "/statsig-warehouse-native/geotests/methodology"
+    },
+    {
+      "source": "/guides/landing-page-experiments/introduction",
+      "destination": "/guides/sidecar-experiments/introduction"
+    },
+    {
+      "source": "/guides/landing-page-experiments/interpreting",
+      "destination": "/guides/sidecar-experiments/measuring-experiments"
+    },
+    {
+      "source": "/contextual-bandit",
+      "destination": "/autotune/contextual/introduction"
+    },
+    {
+      "source": "/stats-engine/methodologies/one-sided-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/integrations/data-exports/overview",
+      "destination": "/integrations/data-exports"
+    }
+  ],
+  "logo": {
+    "light": "/images/logo/light.svg",
+    "dark": "/images/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Statsig Console",
+      "href": "https://console.statsig.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/statsig",
+      "github": "https://github.com/statsig-io/",
+      "linkedin": "https://linkedin.com/company/statsig",
+      "slack": "https://statsig.com/slack"
+    }
+  }
+}
