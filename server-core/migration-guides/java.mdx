@@ -43,7 +43,39 @@ dependencies {
 
 ### Java Core SDK
 
-Java Core requires both the core library and a platform-specific native library:
+The recommended approach is to use the "uber" JAR (available since version 0.4.0), which contains both the core library and native libraries for all supported platforms in a single package. This simplifies dependency management and deployment across different environments.
+
+<CodeGroup>
+
+```groovy gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.statsig:javacore:X.X.X:uber' // Uber JAR with all native libraries (recommended)
+}
+```
+
+
+```xml maven
+<dependencies>
+    <dependency>
+        <groupId>com.statsig</groupId>
+        <artifactId>javacore</artifactId>
+        <version>X.X.X</version>
+        <classifier>uber</classifier>
+    </dependency>
+</dependencies>
+```
+
+</CodeGroup>
+
+The uber JAR includes native libraries for Linux (x86_64, arm64), macOS (x86_64, arm64), and Windows (x86_64).
+
+<Accordion title="Advanced: Platform-Specific Installation">
+
+If you need more control over dependencies or want to minimize the JAR size for a specific platform, you can install the core library and platform-specific native library separately:
 
 <CodeGroup>
 
@@ -83,7 +115,6 @@ dependencies {
 
 </CodeGroup>
 
-
 To determine the correct platform-specific dependency, you can run this code:
 
 ```java
@@ -94,6 +125,8 @@ Statsig statsig = new Statsig("your-secret-key", options);
 ```
 
 This will output the appropriate dependency for your system.
+
+</Accordion>
 
 ## API Differences
 
@@ -338,8 +371,8 @@ StatsigOptions options = new StatsigOptions.Builder()
 <Accordion title="Java Migration Steps">
 
 1. **Update Dependencies**
-   - Replace `com.statsig:serversdk` with `com.statsig:javacore`
-   - Add the platform-specific dependency
+   - Replace `com.statsig:serversdk` with `com.statsig:javacore:X.X.X:uber` (recommended)
+   - Alternatively, use platform-specific dependencies if you need to minimize JAR size
 
 2. **Update Imports**
    - Replace `import com.statsig.sdk.*` with `import com.statsig.*`
@@ -367,8 +400,8 @@ StatsigOptions options = new StatsigOptions.Builder()
 <Accordion title="Kotlin Migration Steps">
 
 1. **Update Dependencies**
-   - Replace `com.statsig:serversdk` with `com.statsig:javacore`
-   - Add the platform-specific dependency
+   - Replace `com.statsig:serversdk` with `com.statsig:javacore:X.X.X:uber` (recommended)
+   - Alternatively, use platform-specific dependencies if you need to minimize JAR size
 
 2. **Update Imports**
    - Replace `import com.statsig.sdk.*` with `import com.statsig.*`
