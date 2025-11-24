@@ -273,6 +273,12 @@
                   "infra-analytics/overview",
                   "infra-analytics/getting-started",
                   {
+                    "group": "Traces Explorer",
+                    "pages": [
+                      "infra-analytics/send-traces"
+                    ]
+                  },
+                  {
                     "group": "Logs Explorer",
                     "pages": [
                       "infra-analytics/logs-explorer",
@@ -1056,7 +1062,8 @@
               {
                 "group": "Open Telemetry",
                 "pages": [
-                  "/infra-analytics/getting-started"
+                  "/infra-analytics/getting-started",
+                  "/infra-analytics/send-traces"
                 ]
               },
               "server/concepts/cloudflare",
