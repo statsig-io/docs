@@ -10,10 +10,8 @@ A tooltip with key statistics and deeper information is shown if you hover over 
 - **Units**: The number of distinct units included in the metric. E.g.: Distinct users for user_id experiments, devices for stable_id experiments, etc.
 - **Mean**: The average per-unit value of the metric for each group.
 - **Total**: The total metric value across all units in the group, over the time period of the analysis.
-- **p-Value**: The probability that such an extreme difference can arise by random chance when the experiment or test actually has no effect. A low p-value implies the observed difference is unlikely due to random chance. In hypothesis testing, a p-value threshold is used to determine which results are due to a real effect and which are plausibly due to random chance. ([p-value calculation](/stats-engine/p-value))
 
-The exact calculation for each of the above depends on the metric type: 
-
+### Calculation details
 | Metric Type      | Total Calculation       | Mean           | Units          |
 |------------------|-------------------------|----------------|----------------|
 | event_count      | Sum of events (99.9% winsorization)           | Average events per user (99.9% winsorization)  | All users  |
@@ -26,6 +24,30 @@ The exact calculation for each of the above depends on the metric type:
 | user: new_dau, new_wau, new_mau_28day |  Count of distinct users that are new xAU at some point in the experiment  | Fraction of users that are new xAU |  All users |
 | user: retention metrics |  Overall average retention rate   | Overall average retention rate  | Participating users |
 | user: L7, L14, L28 |  Not shown   | Average L-ness value per user per day  | All users |
+
+### p-Value
+
+In Null Hypothesis Significance Tests, the p-value is the probability that such an extreme difference can arise by random chance when the experiment or test actually has no effect. A low p-value implies the observed difference is unlikely due to random chance. In hypothesis testing, a p-value threshold is used to determine which results are due to a real effect and which are plausibly due to random chance. ([p-value calculation](/stats-engine/p-value))
+
+### Reverse Power
+
+Reverse power is the smallest true effect size that an experiment can reliably detect as of now. It is determined by the realized sample size and the estimated standard error from the control group. Some studies refer to this value as the ex-post MDE (minimal detectable effect). Importantly, reverse power does *not* depend on the estimated effect size. In practice, reverse power answers such question: given how the test actually played out, what is the smallest effect we have 1-β (typically 0.8) to detect?
+
+For a two-sided test, the reverse power for a given metric X is computed using the following equation:
+
+MDE = \frac{(Z_{1-\beta} + Z_{1-\alpha/2})}{\bar{X_{\text{control}}}}\times \sqrt{\frac{\mathrm{var}(X)}{N_{\text{control}}}} \times 100\%
+
+For a one-sided test, the reverse power for a given metric X is computed using the following equation:
+
+MDE = \frac{(Z_{1-\beta} + Z_{1-\alpha})}{\bar{X_{\text{control}}}}\times \sqrt{\frac{\mathrm{var}(X)}{N_{\text{control}}}} \times 100\%
+
+* *X<sub>control</sub>-bar* is the mean metric value across control users
+* *var(X)* is the population variance of the control group
+* *N<sub>control</sub>* are the observed number of units in the control group
+* *Z<sub>1-&beta;</sub>* is the standard Z-score for the selected power.  Typically *1-&beta; = 0.8* and *Z<sub>1-&beta;</sub> = 0.84*
+* *Z<sub>1-&alpha;/2</sub>* and *Z<sub>1-&alpha;</sub>* are the standard Z-scores for the selected significance level in a two-sided test and in a one-sided test. 
+
+You can enable reverse power as an optional feature. To manage it, go to Settings -> Product Configuration -> Experimentation -> Organization, where you can toggle reverse power on or off. 
 
 ## Detailed View
 
