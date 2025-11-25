@@ -31,7 +31,7 @@ In Null Hypothesis Significance Tests, the p-value is the probability that such 
 
 ### Reverse Power
 
-Reverse power is the smallest true effect size that an experiment can reliably detect as of now. It is determined by the realized sample size and the estimated standard error from the control group. Some studies refer to this value as the ex-post MDE (minimal detectable effect). Importantly, reverse power does *not* depend on the estimated effect size. In practice, reverse power answers such question: given how the test actually played out, what is the smallest effect we have 1-β (typically 0.8) to detect?
+Reverse power is the smallest effect size that an experiment can reliably detect in its current state (some studies refer to this value as ex-post MDE). It is determined by the realized sample size and the estimated standard error from the control group. Importantly, reverse power does *not* depend on the observed effect size. In practice, reverse power answers such questions like: given how the test actually played out, what is the smallest effect we have 1-β (typically 80%) power to detect?
 
 For a two-sided test, the reverse power for a given metric X is computed using the following equation:
 
@@ -51,7 +51,7 @@ $$
 * *Z<sub>1-&beta;</sub>* is the standard Z-score for the selected power.  Typically *1-&beta; = 0.8* and *Z<sub>1-&beta;</sub> = 0.84*
 * *Z<sub>1-&alpha;/2</sub>* and *Z<sub>1-&alpha;</sub>* are the standard Z-scores for the selected significance level in a two-sided test and in a one-sided test. 
 
-You can enable reverse power as an optional feature. To manage it, go to Settings -> Product Configuration -> Experimentation -> Organization, where you can toggle reverse power on or off. 
+You can enable reverse power as an optional feature. To manage it, go to Settings -> Product Configuration -> Experimentation -> Organization, where you can toggle it on or off. 
 
 ## Detailed View
 
