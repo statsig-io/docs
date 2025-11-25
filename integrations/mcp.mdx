@@ -10,18 +10,12 @@ Add the following MCP server configuration JSON to your respective tool's config
 ```json expandable
 {
   "mcpServers": {
-    "statsig-local": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://api.statsig.com/v1/mcp",
-        "--header",
-        "statsig-api-key:${AUTH_TOKEN}"
-      ],
+    "statsig": {
+      "command": "npx mcp-remote https://api.statsig.com/v1/mcp --header statsig-api-key:${AUTH_TOKEN}",
       "env": {
-        "AUTH_TOKEN": "console-YOUR-API-KEY"
+        "AUTH_TOKEN": "insert-your-api-key-here"
       }
-    }
+    },
   }
 }
 ```
@@ -66,7 +60,7 @@ This will update your `~/.codex/config.toml`.
 
 ## **Setting up in Cursor**
 
-[Click Here](cursor://anysphere.cursor-deeplink/mcp/install?name=statsig-local&config=eyJjb21tYW5kIjoibnB4IG1jcC1yZW1vdGUgaHR0cHM6Ly9hcGkuc3RhdHNpZy5jb20vdjEvbWNwIC0taGVhZGVyIHN0YXRzaWctYXBpLWtleToke0FVVEhfVE9LRU59IiwiZW52Ijp7IkFVVEhfVE9LRU4iOiJjb25zb2xlLWtleSJ9fQ==) to add the Statsig MCP to Cursor, or copy the json to: `~/.cursor/mcp.json`
+[Click Here](cursor://anysphere.cursor-deeplink/mcp/install?name=statsig&config=eyJjb21tYW5kIjoibnB4IG1jcC1yZW1vdGUgaHR0cHM6Ly9hcGkuc3RhdHNpZy5jb20vdjEvbWNwIC0taGVhZGVyIHN0YXRzaWctYXBpLWtleToke0FVVEhfVE9LRU59IiwiZW52Ijp7IkFVVEhfVE9LRU4iOiJpbnNlcnQteW91ci1hcGkta2V5LWhlcmUifX0%3D) to add the Statsig MCP to Cursor, or copy the json to: `~/.cursor/mcp.json`
 
 ## **Setting up in Claude Desktop**
 
