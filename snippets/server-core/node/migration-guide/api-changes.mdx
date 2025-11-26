@@ -16,3 +16,111 @@
 
 For more details on the new API, see [Node Core SDK documentation](/server-core/node-core).
 
+### Singleton Pattern Changes
+
+The Node Core SDK provides a different approach to singleton management compared to the legacy SDK.
+
+<CodeGroup>
+```typescript Node Core (Instance-based + Shared Singleton)
+import { Statsig, StatsigUser } from "@statsig/statsig-node-core";
+
+// Option 1: Instance-based (recommended for most use cases)
+const statsig = new Statsig("secret-key");
+await statsig.initialize();
+
+// Option 2: Shared singleton pattern
+Statsig.newShared("secret-key", options);  // Creates the shared instance
+await Statsig.shared().initialize();       // Access via Statsig.shared()
+
+// Check if shared instance exists
+if (Statsig.hasShared()) {
+    const result = Statsig.shared().checkGate(user, "my_gate");
+}
+
+// Remove shared instance when done
+Statsig.removeSharedInstance();
+```
+
+```typescript Node Legacy (Global Singleton)
+const Statsig = require("statsig-node");
+
+// Single global singleton - no instance creation needed
+await Statsig.initialize("secret-key", options);
+
+// All methods called directly on the Statsig object
+const result = Statsig.checkGate(user, "my_gate");
+
+// Shutdown the global instance
+await Statsig.shutdown();
+```
+</CodeGroup>
+
+<Note>
+**Key Difference**: The legacy SDK uses a single global singleton that you access directly via `Statsig.methodName()`. The Node Core SDK supports both instance-based usage (`new Statsig()`) and an explicit shared singleton pattern (`Statsig.newShared()` / `Statsig.shared()`). The instance-based approach is recommended as it provides better control over SDK lifecycle.
+</Note>
+
+### Config Value Access with `get()` Method
+
+Starting from version **0.10.0**, the Node Core SDK supports the `get()` method on `DynamicConfig`, `Experiment`, and `Layer` objects, matching the legacy SDK's API.
+
+<CodeGroup>
+```typescript Node Core (0.10.0+)
+import { Statsig, StatsigUser } from "@statsig/statsig-node-core";
+
+const statsig = new Statsig("secret-key");
+await statsig.initialize();
+
+const user = new StatsigUser({ userID: "user_123" });
+
+// Get a dynamic config
+const config = statsig.getDynamicConfig(user, "my_config");
+
+// Access values using get() with type-safe fallback (available in 0.10.0+)
+const stringValue = config.get("param_name", "default_string");
+const numberValue = config.get("count", 0);
+const boolValue = config.get("enabled", false);
+
+// Alternative: getValue() also available
+const value = config.getValue("param_name", "default");
+
+// Same pattern works for experiments
+const experiment = statsig.getExperiment(user, "my_experiment");
+const variant = experiment.get("variant", "control");
+
+// And layers
+const layer = statsig.getLayer(user, "my_layer");
+const layerValue = layer.get("param", "default");
+```
+
+```typescript Node Legacy
+const Statsig = require("statsig-node");
+
+await Statsig.initialize("secret-key");
+
+const user = { userID: "user_123" };
+
+// Get a dynamic config (note: getConfig vs getDynamicConfig)
+const config = Statsig.getConfig(user, "my_config");
+
+// Access values using get() with type-safe fallback
+const stringValue = config.get("param_name", "default_string");
+const numberValue = config.get("count", 0);
+const boolValue = config.get("enabled", false);
+
+// Alternative: getValue() also available
+const value = config.getValue("param_name", "default");
+
+// Same pattern works for experiments
+const experiment = Statsig.getExperiment(user, "my_experiment");
+const variant = experiment.get("variant", "control");
+
+// And layers
+const layer = Statsig.getLayer(user, "my_layer");
+const layerValue = layer.get("param", "default");
+```
+</CodeGroup>
+
+<Note>
+The `get<T>(paramName, fallback)` method provides type inference based on the fallback value type, making it easier to work with typed configuration values.
+</Note>
+

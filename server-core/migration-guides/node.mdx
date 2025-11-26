@@ -27,12 +27,158 @@ import NodeStatsigOptions from '/snippets/server-core/node/migration-guide/stats
 
 <NodeAPIChanges />
 
+## Complete Sample Code
+
+Below are complete, working examples showing the same functionality implemented in both the legacy Node SDK and the new Node Core SDK.
+
+<CodeGroup>
+```typescript Node Core (Complete Example)
+import { Statsig, StatsigUser, StatsigOptions } from "@statsig/statsig-node-core";
+
+async function main() {
+    // 1. Configure options
+    const options: StatsigOptions = {
+        environment: "development",
+        specsSyncIntervalMs: 60000,
+        eventLoggingFlushIntervalMs: 10000,
+    };
+
+    // 2. Create SDK instance (instance-based approach)
+    const statsig = new Statsig("secret-your-server-key", options);
+    
+    // 3. Initialize the SDK
+    const initResult = await statsig.initialize();
+    if (!initResult.isSuccess) {
+        console.error("Failed to initialize Statsig:", initResult.error);
+        return;
+    }
+
+    // 4. Create a user (must use class constructor)
+    const user = new StatsigUser({
+        userID: "user_123",
+        email: "user@example.com",
+        custom: {
+            subscription_tier: "premium",
+            signup_date: "2024-01-15"
+        }
+    });
+
+    // 5. Check a feature gate
+    const showNewFeature = statsig.checkGate(user, "new_feature_gate");
+    console.log("Show new feature:", showNewFeature);
+
+    // 6. Get a dynamic config (note: getDynamicConfig, not getConfig)
+    const config = statsig.getDynamicConfig(user, "app_config");
+    const welcomeMessage = config.get("welcome_message", "Hello!");
+    const maxItems = config.get("max_items", 10);
+    console.log("Welcome message:", welcomeMessage);
+    console.log("Max items:", maxItems);
+
+    // 7. Get an experiment
+    const experiment = statsig.getExperiment(user, "checkout_flow_test");
+    const variant = experiment.get("variant", "control");
+    const buttonColor = experiment.get("button_color", "#007bff");
+    console.log("Experiment variant:", variant);
+    console.log("Button color:", buttonColor);
+
+    // 8. Get a layer
+    const layer = statsig.getLayer(user, "homepage_layer");
+    const heroText = layer.get("hero_text", "Welcome to our app");
+    console.log("Hero text:", heroText);
+
+    // 9. Log a custom event
+    statsig.logEvent(user, "purchase_completed", 49.99, {
+        item_id: "SKU_12345",
+        currency: "USD"
+    });
+
+    // 10. Shutdown gracefully
+    await statsig.shutdown();
+    console.log("Statsig shutdown complete");
+}
+
+main().catch(console.error);
+```
+
+```typescript Node Legacy (Complete Example)
+const Statsig = require("statsig-node");
+
+async function main() {
+    // 1. Configure options
+    const options = {
+        environment: { tier: "development" },
+        rulesetsSyncIntervalMs: 60000,
+        loggingIntervalMs: 10000,
+    };
+
+    // 2. Initialize the SDK (global singleton)
+    await Statsig.initialize("secret-your-server-key", options);
+
+    // 3. Create a user (plain object)
+    const user = {
+        userID: "user_123",
+        email: "user@example.com",
+        custom: {
+            subscription_tier: "premium",
+            signup_date: "2024-01-15"
+        }
+    };
+
+    // 4. Check a feature gate
+    const showNewFeature = Statsig.checkGate(user, "new_feature_gate");
+    console.log("Show new feature:", showNewFeature);
+
+    // 5. Get a dynamic config (note: getConfig, not getDynamicConfig)
+    const config = Statsig.getConfig(user, "app_config");
+    const welcomeMessage = config.get("welcome_message", "Hello!");
+    const maxItems = config.get("max_items", 10);
+    console.log("Welcome message:", welcomeMessage);
+    console.log("Max items:", maxItems);
+
+    // 6. Get an experiment
+    const experiment = Statsig.getExperiment(user, "checkout_flow_test");
+    const variant = experiment.get("variant", "control");
+    const buttonColor = experiment.get("button_color", "#007bff");
+    console.log("Experiment variant:", variant);
+    console.log("Button color:", buttonColor);
+
+    // 7. Get a layer
+    const layer = Statsig.getLayer(user, "homepage_layer");
+    const heroText = layer.get("hero_text", "Welcome to our app");
+    console.log("Hero text:", heroText);
+
+    // 8. Log a custom event
+    Statsig.logEvent(user, "purchase_completed", 49.99, {
+        item_id: "SKU_12345",
+        currency: "USD"
+    });
+
+    // 9. Shutdown gracefully
+    await Statsig.shutdown();
+    console.log("Statsig shutdown complete");
+}
+
+main().catch(console.error);
+```
+</CodeGroup>
+
+### Key Differences Highlighted
+
+| Aspect | Node Core SDK | Legacy Node SDK |
+|--------|---------------|-----------------|
+| SDK Instance | `new Statsig(key, options)` | Global singleton via `Statsig.initialize()` |
+| User Creation | `new StatsigUser({...})` (class) | Plain object `{...}` (type) |
+| Get Config | `statsig.getDynamicConfig()` | `Statsig.getConfig()` |
+| Environment Option | `environment: "development"` | `environment: { tier: "development" }` |
+| Sync Interval | `specsSyncIntervalMs` | `rulesetsSyncIntervalMs` |
+| Logging Interval | `eventLoggingFlushIntervalMs` | `loggingIntervalMs` |
+
 <GlobalChanges 
-  waitForUserAgentInit="wait_for_user_agent_init"
-  waitForCountryLookupInit="wait_for_country_lookup_init"
-  disableUserAgentParsing="disable_user_agent_parsing"
-  disableCountryLookup="disable_country_lookup"
-  enableIdLists="enable_id_lists"
+  waitForUserAgentInit="waitForUserAgentInit"
+  waitForCountryLookupInit="waitForCountryLookupInit"
+  disableUserAgentParsing="disableUserAgentParsing"
+  disableCountryLookup="disableCountryLookup"
+  enableIdLists="enableIdLists"
 />
 
 ## StatsigOptions Changes
