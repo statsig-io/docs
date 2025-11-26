@@ -47,11 +47,7 @@ async function main() {
     const statsig = new Statsig("secret-your-server-key", options);
     
     // 3. Initialize the SDK
-    const initResult = await statsig.initialize();
-    if (!initResult.isSuccess) {
-        console.error("Failed to initialize Statsig:", initResult.error);
-        return;
-    }
+    await statsig.initialize();
 
     // 4. Create a user (must use class constructor)
     const user = new StatsigUser({
