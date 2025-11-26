@@ -158,18 +158,7 @@ main().catch(console.error);
 ```
 </CodeGroup>
 
-### Key Differences Highlighted
-
-| Aspect | Node Core SDK | Legacy Node SDK |
-|--------|---------------|-----------------|
-| SDK Instance | `new Statsig(key, options)` | Global singleton via `Statsig.initialize()` |
-| User Creation | `new StatsigUser({...})` (class) | Plain object `{...}` (type) |
-| Get Config | `statsig.getDynamicConfig()` | `Statsig.getConfig()` |
-| Environment Option | `environment: "development"` | `environment: { tier: "development" }` |
-| Sync Interval | `specsSyncIntervalMs` | `rulesetsSyncIntervalMs` |
-| Logging Interval | `eventLoggingFlushIntervalMs` | `loggingIntervalMs` |
-
-<GlobalChanges 
+<GlobalChanges
   waitForUserAgentInit="waitForUserAgentInit"
   waitForCountryLookupInit="waitForCountryLookupInit"
   disableUserAgentParsing="disableUserAgentParsing"
