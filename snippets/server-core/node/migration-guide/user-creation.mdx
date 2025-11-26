@@ -1,9 +1,61 @@
-In the Node Core SDK, `StatsigUser` is now a class instead of a type interface.
+In the Node Core SDK, `StatsigUser` is now a **class** instead of a TypeScript type interface. This is a key architectural change that affects how you create user objects.
+
+### Type Definitions
 
 <CodeGroup>
-```javascript Node Core
-import {StatsigUser} from "@statsig/statsig-node-core"
+```typescript Node Core (Class)
+// StatsigUser is a class with a constructor
+class StatsigUser {
+  constructor(args: ({userID: string} | {customIDs: Record<string, string>}) & StatsigUserArgs)
+  
+  // Static factory methods
+  static withUserID(userId: string): StatsigUser
+  static withCustomIDs(customIds: Record<string, string>): StatsigUser
+  
+  // Properties with getters/setters
+  userID: string | null
+  customIDs: Record<string, string> | null
+  email: string | null
+  ip: string | null
+  userAgent: string | null
+  country: string | null
+  locale: string | null
+  appVersion: string | null
+  custom: Record<string, string | number | boolean | Array<string | number | boolean>> | null
+  privateAttributes: Record<string, string | number | boolean | Array<string | number | boolean>> | null
+  statsigEnvironment: { tier?: string, [key: string]: string | undefined } | null
+  
+  toJSON(): string
+}
+```
 
+```typescript Node Legacy (Type)
+// StatsigUser is a TypeScript type (plain object)
+type StatsigUser = 
+  // At least one of userID or customIDs must be provided
+  ({ userID: string } | { customIDs: Record<string, string> }) & {
+    userID?: string;
+    customIDs?: Record<string, string>;
+    email?: string;
+    ip?: string;
+    userAgent?: string;
+    country?: string;
+    locale?: string;
+    appVersion?: string;
+    custom?: Record<string, string | number | boolean | Array<string> | undefined>;
+    privateAttributes?: Record<string, string | number | boolean | Array<string> | undefined> | null;
+    statsigEnvironment?: StatsigEnvironment;
+  };
+```
+</CodeGroup>
+
+### Creating Users
+
+<CodeGroup>
+```typescript Node Core
+import { StatsigUser } from "@statsig/statsig-node-core";
+
+// Option 1: Using constructor with object
 const user = new StatsigUser({
     userID: "user_123",
     email: "user@example.com",
@@ -11,24 +63,40 @@ const user = new StatsigUser({
     userAgent: "Mozilla/5.0",
     country: "US",
     custom: {
-        "subscription_level": "premium"
+        subscription_level: "premium"
     }
-})
+});
+
+// Option 2: Using static factory method
+const userById = StatsigUser.withUserID("user_123");
+
+// Option 3: Using customIDs
+const userByCustomId = StatsigUser.withCustomIDs({ companyID: "company_456" });
 ```
 
-```javascript Node Legacy
-import type {StatsigUser} from "statsig-node"
+```typescript Node Legacy
+import { StatsigUser } from "statsig-node";
 
-const user = {
+// Plain object - no constructor needed
+const user: StatsigUser = {
     userID: "user_123",
     email: "user@example.com",
     ip: "192.168.0.1",
     userAgent: "Mozilla/5.0",
     country: "US",
     custom: {
-        "subscription_level": "premium"
+        subscription_level: "premium"
     }
-}
+};
+
+// Using customIDs
+const userByCustomId: StatsigUser = {
+    customIDs: { companyID: "company_456" }
+};
 ```
 </CodeGroup>
+
+<Note>
+**Key Difference**: In Node Core, you must use `new StatsigUser({...})` to create a user object. Plain objects will not work and will cause type errors.
+</Note>
 
