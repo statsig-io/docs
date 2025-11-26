@@ -36,13 +36,13 @@ Reverse power is the smallest effect size that an experiment can reliably detect
 For a two-sided test, the reverse power for a given metric X is computed using the following equation:
 
 $$
-Reverse Power = \frac{(Z_{1-\beta} + Z_{1-\alpha/2})}{\Delta \overline{X}}\times \sqrt{\frac{\mathrm{var}(X)}{N_{\text{control}}}} \times 100\%
+Reverse Power = \frac{(Z_{1-\beta} + Z_{1-\alpha/2})}{\Delta \overline{X}}\times \sqrt{2*\frac{\mathrm{var}(X)}{N_{\text{control}}}} \times 100\%
 $$
 
 For a one-sided test, the reverse power for a given metric X is computed using the following equation:
 
 $$
-Reverse Power = \frac{(Z_{1-\beta} + Z_{1-\alpha})}{\Delta \overline{X}}\times \sqrt{\frac{\mathrm{var}(X)}{N_{\text{control}}} \times 100\%
+Reverse Power = \frac{(Z_{1-\beta} + Z_{1-\alpha})}{\Delta \overline{X}}\times \sqrt{2*\frac{\mathrm{var}(X)}{N_{\text{control}}}} \times 100\%
 $$
 
 * *X<sub>control</sub>-bar* is the mean metric value across control users
