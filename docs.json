@@ -48,7 +48,8 @@
             "icon": "rocket",
             "pages": [
               "welcome",
-              "understanding-platform"
+              "understanding-platform",
+              "support-options"
             ]
           },
           {
