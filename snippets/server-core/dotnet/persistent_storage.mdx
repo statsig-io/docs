@@ -1,0 +1,40 @@
+
+```csharp
+using System.Collections.Generic;
+using Statsig;
+
+// Implement PersistentStorage to control how user stickiness is stored.
+public class MyPersistentStorage : PersistentStorage
+{
+    private readonly Dictionary<string, Dictionary<string, StickyValues>> _store = new();
+
+    public override IDictionary<string, StickyValues> Load(string key)
+    {
+        // Load persisted values for this user from your backing store.
+        return _store.TryGetValue(key, out var configs)
+            ? new Dictionary<string, StickyValues>(configs)
+            : new Dictionary<string, StickyValues>();
+    }
+
+    public override void Save(string key, string configName, StickyValues data)
+    {
+        // Persist the sticky assignment (database, Redis, etc.).
+        if (!_store.TryGetValue(key, out var configs))
+        {
+            configs = new Dictionary<string, StickyValues>();
+            _store[key] = configs;
+        }
+
+        configs[configName] = data;
+    }
+
+    public override void Delete(string key, string configName)
+    {
+        // Remove the persisted value for this config/user.
+        if (_store.TryGetValue(key, out var configs))
+        {
+            configs.Remove(configName);
+        }
+    }
+}
+```
