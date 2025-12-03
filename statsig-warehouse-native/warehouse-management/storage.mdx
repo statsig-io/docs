@@ -43,7 +43,7 @@ Transient tables have a short ttl - usually 1-2 days - and will be automatically
 
 Other tables are permanent by default, and can be cleaned up from the experiment in statsig's console or as part of launching an experiment. Additionally, TTLs can be configured for tables by type in the data connection section of a project's settings.
 
-It may also make sense to manage storage programmatically via your own warehouse tools, e.g. cleaning up entities which have not been accessed or modified in the last month. Generally this is not necessary given TTLs, but in some cases failures can occur and Statsig's internal tracking can consider a table dropped when it still has a storage footprint.
+You should also plan to manage storage programmatically via your own warehouse tools in addition to Statsig's systems, e.g. cleaning up entities which have not been accessed or modified in the last month. Ideally this is not necessary given TTLs, but there are many known cases where Statsig's internal tracking can consider a table dropped when it still has a storage footprint, and Statsig cannot guarantee that all tables will be removed.
 
 **How TTLs work**
 When Statsig creates or modified a table it manages, it will use the current TTL setting to schedule a cleanup of that table at the current time + the TTL. For example, if a Result table is being written on 6/1, and Result tables are configured with a 14-day TTL, a deletion will be scheduled for 6/15. 

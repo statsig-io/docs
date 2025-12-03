@@ -1,34 +1,56 @@
-The Java SDK supports using a shared instance for convenience:
 
 <CodeGroup>
 ```java Java
 import com.statsig.*;
 
-// Initialize the shared instance
-StatsigOptions options = new StatsigOptions.Builder().build();
-Statsig.initializeGlobalSingleton("secret-key", options);
-Statsig.getGlobalSingleton().initialize().get();
+// Create a shared instance that can be accessed globally
+StatsigServer statsig = Statsig.newShared("secret-key");
+statsig.initialize().get();
 
-// Use the shared instance
-boolean result = Statsig.getGlobalSingleton().checkGate("user_id", "my_feature_gate");
+// Access the shared instance from anywhere in your code
+StatsigServer sharedStatsig = Statsig.shared();
+boolean isFeatureEnabled = sharedStatsig.checkGate(user, "feature_name");
 
-// Shutdown the shared instance when done
-Statsig.getGlobalSingleton().shutdown();
+// Check if a shared instance exists
+if (Statsig.hasSharedInstance()) {
+  // Use the shared instance
+}
+
+// Remove the shared instance when no longer needed
+Statsig.removeShared();
 ```
 
 ```kotlin Kotlin
 import com.statsig.*
 
-// Initialize the shared instance
-val options = StatsigOptions.Builder().build()
-Statsig.initializeGlobalSingleton("secret-key", options)
-Statsig.getGlobalSingleton().initialize().get()
+// Create a shared instance that can be accessed globally
+val statsig = Statsig.newShared("secret-key")
+statsig.initialize().get()
 
-// Use the shared instance
-val result = Statsig.getGlobalSingleton().checkGate("user_id", "my_feature_gate")
+// Access the shared instance from anywhere in your code
+val sharedStatsig = Statsig.shared()
+val isFeatureEnabled = sharedStatsig.checkGate(user, "feature_name")
 
-// Shutdown the shared instance when done
-Statsig.getGlobalSingleton().shutdown()
+// Check if a shared instance exists
+if (Statsig.hasSharedInstance()) {
+  // Use the shared instance
+}
+
+// Remove the shared instance when no longer needed
+Statsig.removeShared()
 ```
 </CodeGroup>
+
+The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance.
+
+- `Statsig.newShared(sdkKey, options)`: Creates a new shared instance of Statsig that can be accessed globally
+- `Statsig.shared()`: Returns the shared instance
+- `Statsig.hasSharedInstance()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
+- `Statsig.removeShared()`: Removes the shared instance (useful when you want to switch to a new shared instance)
+
+<Note>
+`hasSharedInstance()` and `removeShared()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
+
+Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
+</Note>
 

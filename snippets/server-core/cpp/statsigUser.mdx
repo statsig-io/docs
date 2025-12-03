@@ -1,0 +1,9 @@
+```cpp
+  statsig_cpp_core::UserBuilder builder;
+  builder.setUserID(j["userID"]);
+  builder.setCustomIDs(j["customIDs"]);
+  builder.setCountry(j["customIDs"]);
+  statsig_cpp_core::User user = builder.build();
+  // UserBuilder also supports deserialize from json
+```
+

@@ -10,14 +10,22 @@ last_update:
 Autotune Experiments in Warehouse Native have a very similar setup to cloud [Autotunes](/autotune/overview). In Warehouse Native, Autotune success events will be pulled from a Metric Source, and computation of results will happen in your warehouse.
 
 <Info>
-Autotune in WHN is currently in beta, please contact the team to get it enabled in your account
+  Continuous Autotune in WHN is currently in beta, please contact the team to
+  get it enabled in your account
 </Info>
 
 # Creating an Autotune
 
-As with a normal Autotune, you will want to define a success event. In Warehouse Native, this will be a Metric Source. Instructions on [how to set up a Metric Source can be found here](/statsig-warehouse-native/configuration/metric-sources).
+To set up an Autotune on Warehouse Native, start by defining your objective. This can either be an _event_ or a _value_ from a Metric Source. For detailed instructions, see [how to set up a Metric Source](/statsig-warehouse-native/configuration/metric-sources).
 
-Once you have a Metric Source setup that exemplifies your success event, you are ready to create the Autotune.
+You can also specify the optimization direction (Maximize or Minimize) to determine how Autotune evaluates variant performance.
+
+<Frame>
+  <img
+    src="/images/statsig-warehouse-native/features/autotune/autotune-config.png"
+    alt="Autotune configuration interface"
+  />
+</Frame>
 
 1. Navigate to the [Experiments section](https://console.statsig.com/experiments) in the sidebar of the Statsig Console.
 2. Click on the [Autotune tab](https://console.statsig.com/autotune) at the top.
@@ -27,7 +35,10 @@ Once you have a Metric Source setup that exemplifies your success event, you are
 6. Select your Metric Source that you defined earlier as shown below.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/152932686/857371e2-22e4-4316-bca0-b310f541b5c3" alt="Autotune metric source configuration interface" />
+  <img
+    src="/images/statsig-warehouse-native/features/autotune/autotune-metric-source.png"
+    alt="Autotune metric source configuration interface"
+  />
 </Frame>
 
 There are a few parameters you can specify:

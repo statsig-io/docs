@@ -104,13 +104,26 @@ Configuration for connecting through a proxy server. The `ProxyConfig` object ha
 - `proxy_protocol`: Optional string specifying the protocol (e.g., "http", "https")
 </ResponseField>
 
+<ResponseField name="spec_adapter_configs" type="Optional[List[SpecAdapterConfig]]">
+Advanced configuration for customizing how the SDK fetches feature specifications. Allows you to configure multiple spec adapters with different priorities and settings.
+
+Each `SpecAdapterConfig` object has the following properties:
+- `adapter_type`: String specifying the adapter type (e.g., "http", "grpc")
+- `specs_url`: Optional custom URL for fetching specifications
+- `init_timeout_ms`: Optional timeout for initialization (in milliseconds)
+
+<Note>
+**Migration Note:** This parameter was previously named `init_resources` in earlier versions. If you're upgrading from an older version, replace `init_resources` with `spec_adapter_configs`.
+</Note>
+</ResponseField>
+
 
 ---
 
 ### Example Usage
 
 ```python
-from statsig_python_core import StatsigOptions
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
 
 # Define proxy configuration if needed
 proxy_config = {
@@ -128,6 +141,34 @@ options.disable_all_logging = False
 options.proxy_config = proxy_config
 
 # Pass the options object into statsig.initialize()
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+```
+
+### Using spec_adapter_configs with Multiple Sources
+
+```python
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
+
+# Configure multiple spec adapters with priority order
+# First source: Statsig CDN
+primary_adapter = SpecAdapterConfig(
+    adapter_type="http",
+    specs_url="https://api.statsigcdn.com/v2/download_config_specs",
+    init_timeout_ms=3000
+)
+
+# Second source: Data Store adapter
+# The SDK will try this source if the primary source fails
+data_store_adapter = SpecAdapterConfig(
+    adapter_type="data_store",
+    init_timeout_ms=5000
+)
+
+options = StatsigOptions()
+options.spec_adapter_configs = [primary_adapter, data_store_adapter]
+options.environment = "production"
+
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 ```

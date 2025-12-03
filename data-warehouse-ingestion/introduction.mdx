@@ -3,7 +3,7 @@ title: Data Warehouse Ingestion
 ---
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png" alt="Slide 4_3 - 2" />
+  <img src="/images/data-warehouse-ingestion/introduction/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png" alt="Slide 4_3 - 2" />
 </Frame>
 
 ## Introduction
@@ -43,11 +43,11 @@ If data lands late or is updated, Statsig will detect this change and reload the
 To begin ingestion from a Data Warehouse:
 
 1. Go to your Statsig Console
-2. Navigate to Metrics tab on the side navigation bar
-3. To go the "Ingestion" tab
+2. Navigate to Data tab on the side navigation bar
+3. Go to the "Ingestion" tab
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187800555-47885bbd-8317-40d9-b8d7-ad5236e3c73f.png" alt="Ingestion Tab" />
+  <img src="/images/ingestions.png" width="700" alt="Statsig Ingestions page prompting you to connect a data warehouse" />
 </Frame>
 
 You will be required to set up connections with necessary credentials, and map your data fields to the fields Statsig expects to ingest. Please refer to the warehouse-level setup documentation for more information on setup.
@@ -56,14 +56,13 @@ You will be required to set up connections with necessary credentials, and map y
 
 See the docs sidebar to find the documentation for the data warehouse of your choice. Upon connection, you will provide a SQL query to generate a view via data for Statsig to ingest.
 
-<img src="https://user-images.githubusercontent.com/87334575/199855101-2bed8f01-bfc7-4ef9-91a8-42620f7b796b.png" width="700"/>
+<img src="/images/ingestions-2.png" width="700" alt="Query Event Data Columns interface showing SQL editor and expected columns panel" />
 
 ### Data Mapping
 
-After connecting and providing a SQL query, we ask you to map columns in your data output to fields Statsig expects and run a small sample query to make sure that there aren't any basic issues with data types.
+After connecting and providing a SQL query, you'll map columns in your data output to fields Statsig expects. We'll run a small sample query to ensure there are no basic issues with data types. To process data correctly, Statsig requires each ingestion to include columns for unit_id, event_name, timestamp, and metadata.
 
-<img src="https://user-images.githubusercontent.com/87334575/199855255-ebd683fb-bf3b-4825-9f2b-63913e1dda89.png" width="700"/>
-<img src="https://user-images.githubusercontent.com/87334575/199855270-a59ead1a-4fd7-4d99-bd1f-a511ca21750a.png" width="700"/>
+<img src="/images/ingestions-3.png" width="700" alt="Event data column mapping workflow with required fields for timestamp, event name, and user ID" />
 
 See [here](https://docs.statsig.com/data-warehouse-ingestion/data_mapping) for more information.
 
@@ -75,13 +74,15 @@ We will check the underlying source table for changes. For up to 3 days after in
 
 We also support a user-triggered backfill. This could be useful if a specific metric definition has changed, or you want to resync data older than a few days.
 
-<img src="https://user-images.githubusercontent.com/87334575/199854289-dec60731-b54e-43d1-92a0-2fbd53f47087.png" width="400"/>
-
-Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
+To change your ingestion schedule or start a backfill, click the ellipses at the end of the data connection and navigate to these menus. Reloading data and backfilling metrics and events is billed as any other [custom event](/metrics/raw-events#billing)
 
 <Note>
 Auto-generated **User Accounting Metrics** are not supported today for data warehouse ingestions.
 </Note>
+
+### Troubleshooting Ingestions
+
+If any ingestion errors occur, Statsig will notify you in project and direct your to the Ingestions page. You can diagnose an error directly in Statsig by following the step-by-step triage flow. Common errors may include missing permissions and out-of-date credentials.
 
 ### API Triggered Ingestion (mark_data_ready)
 

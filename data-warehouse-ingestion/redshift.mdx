@@ -21,7 +21,7 @@ SHA256 passwords are not currently supported, please utilize MD5 to avoid issues
 You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image)
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png" alt="Frame 1" />
+  <img src="/images/statsig-warehouse-native/connecting-your-warehouse/redshift/187515405-17fa7d90-44e1-422f-87a7-cfde090637ed.png" alt="AWS Redshift cluster details highlighting endpoint and admin user" />
 </Frame>
 
 <b>Admin user name and password will be used by Statsig to create a user with restricted access to query from your data warehouse.</b>
@@ -59,5 +59,5 @@ GRANT ALL ON SCHEMA <SCHEMA> TO <USER>;
 After running the script, input the `<USER>` and `<PASSWORD>` you created in our console, during Connection Set Up stage under the Advanced settings options.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/188943178-6b541962-62da-4529-b5af-ff59b20b7a8d.png" alt="Screen Shot 2022-09-07 at 10 36 57 AM" />
+  <img src="/images/data-warehouse-ingestion/redshift/188943178-6b541962-62da-4529-b5af-ff59b20b7a8d.png" alt="Statsig Redshift connection setup form showing cluster endpoint and credentials fields" />
 </Frame>

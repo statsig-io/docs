@@ -340,11 +340,18 @@
                   "session-replay/overview",
                   "session-replay/install",
                   "session-replay/configure",
+                  "session-replay/debug",
                   "session-replay/watch",
                   "session-replay/cli-session-replay"
                 ]
               },
-              "integrations/mcp",
+              {
+                "group": "Statsig + AI",
+                "pages": [
+                  "integrations/mcp",
+                  "integrations/ai_development_with_statsig"
+                ]
+              },
               {
                 "group": "Data & Metrics",
                 "pages": [
@@ -534,7 +541,8 @@
                   "statsig-warehouse-native/configuration/tags-and-teams",
                   "statsig-warehouse-native/features/roles-and-access",
                   "metrics/verified",
-                  "statsig-warehouse-native/configuration/query-tools"
+                  "statsig-warehouse-native/configuration/query-tools",
+                  "metrics/metric-family"
                 ]
               },
               {
@@ -763,7 +771,8 @@
             "group": "AI SDKs",
             "icon": "brain",
             "pages": [
-              "ai-evals/node"
+              "ai-evals/node",
+              "ai-evals/python"
             ]
           },
           {
@@ -826,7 +835,8 @@
                 "pages": [
                   "access-management/organizations",
                   "access-management/projects",
-                  "access-management/teams"
+                  "access-management/teams",
+                  "access-management/guide"
                 ]
               },
               {
@@ -931,7 +941,13 @@
                   }
                 ]
               },
-              "integrations/data-exports",
+              {
+                "group": "Data Exports",
+                "pages": [
+                  "integrations/data-exports/experiment_result_exports",
+                  "integrations/data-exports/data_warehouse_exports"
+                ]
+              },
               {
                 "group": "Serverless & Edge",
                 "pages": [
@@ -1029,6 +1045,7 @@
               "access-management/discussions",
               "access-management/tags",
               "guides/setting-up-reviews",
+              "guides/pre-commit-webhooks",
               "guides/config-history"
             ]
           },
@@ -1225,20 +1242,16 @@
       "destination": "/client/concepts/initialize#2-bootstrap-initialization"
     },
     {
-      "source": "/statsig-warehouse-native/features/statistics/confidence-intervals",
-      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals"
-    },
-    {
       "source": "/stats-engine/topline-impact-whn",
-      "destination": "statsig-warehouse-native/features/statistics/topline-impact"
+      "destination": "/statsig-warehouse-native/features/statistics/topline-impact"
     },
     {
       "source": "/stats-engine/methodologies/one-sided-test-whn",
-      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+      "destination": "/statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
     },
     {
       "source": "/stats-engine/metric-deltas-whn",
-      "destination": "statsig-warehouse-native/features/statistics/metric-deltas"
+      "destination": "/statsig-warehouse-native/features/statistics/metric-deltas"
     },
     {
       "source": "/client/iOS/repo-migration-guide",

@@ -1,0 +1,73 @@
+---
+title: Data Warehouse Exports
+---
+
+## Introduction
+
+You can export your data from Statsig to your Data Warehouse with a Data Connection. This lets you send exposures and events directly to your warehouse for further analysis. We currently support connections to the following providers: 
+
+1. Snowflake
+2. Redshift
+3. S3
+4. BigQuery
+5. Databricks
+
+## How to Begin
+
+1. Go to Statsig Console
+2. Navigate to the Help and Tools Section on the side navigation bar
+3. Go to “Exports List”
+
+<Frame>
+  <img src="/images/exports-list.png" alt="Statsig Help and Tools menu showing Exports List option" />
+</Frame>
+
+On the Exports page, you will find an Export History tab and a Schedule Export tab. The Export History tab shows you a list of all previous experimentation exports triggered from the Experiment Results page. To understand how to export one-off experimentation results, check out the documentation [here](/integrations/export_results). 
+
+Under the Scheduled Export tab, you will be prompted to set up a data warehouse connection. You will be required to set up connections with necessary credentials and grant Statsig Read, Write, and Delete permissions. Check out the [Connection Set Up](/integrations/data-imports/snowflake.mdx) page for more information.
+
+<Frame>
+  <img src="/images/exports-schedule.png" alt="Scheduled export setup form for Snowflake connection with credential fields" />
+</Frame>
+
+## Table Schema
+Statsig will allow you to export both Exposures and Events to your warehouse. During the set up process, we will prompt you to set up a table with the following schema:
+### Exposures
+| Field name             | Type       | Mode      |
+| ----------------------- | ---------- | ---------- |
+| company_id              | STRING     | NULLABLE   |
+| unit_id                 | STRING     | NULLABLE   |
+| unit_type               | STRING     | NULLABLE   |
+| exposure_type           | STRING     | NULLABLE   |
+| name                    | STRING     | NULLABLE   |
+| rule                    | STRING     | NULLABLE   |
+| experiment_group        | STRING     | NULLABLE   |
+| first_exposure_utc      | TIMESTAMP  | NULLABLE   |
+| first_exposure_pst_date | DATE       | NULLABLE   |
+| as_of_pst_date          | DATE       | NULLABLE   |
+| percent                 | FLOAT      | NULLABLE   |
+| rollout                 | INTEGER    | NULLABLE   |
+| user_dimensions         | STRING     | NULLABLE   |
+| inserted_at             | TIMESTAMP  | NULLABLE   |
+| rule_name               | STRING     | NULLABLE   |
+| group_id                | STRING     | NULLABLE   |
+| non_analytics           | BOOLEAN    | NULLABLE   |
+
+### Events
+| Field name       | Type       | Mode      |
+| ----------------- | ---------- | ---------- |
+| user_id           | STRING     | NULLABLE   |
+| stable_id         | STRING     | NULLABLE   |
+| custom_ids        | STRING     | NULLABLE   |
+| timestamp         | TIMESTAMP  | NULLABLE   |
+| event_name        | STRING     | NULLABLE   |
+| event_value       | STRING     | NULLABLE   |
+| user_object       | STRING     | NULLABLE   |
+| statsig_metadata  | STRING     | NULLABLE   |
+| company_metadata  | STRING     | NULLABLE   |
+
+## Troubleshooting Exports
+
+If you set up an Export flow in Statsig, Statsig can notify you if your data connection is failing. To enable notifications, go to Settings → My Account → Email Notifications → Edit and click Alerts to subscribe to these notifications.
+
+If your Exports are failing, make sure your warehouse is connected with up-to-date credentials and the necessary Read, Write, and Delete permissions.

@@ -1,0 +1,48 @@
+---
+title: Debug Statsig Session Replay
+sidebarTitle: Debug
+---
+
+## Large Session Recording Warning
+
+In the Console, you may encounter the warning:
+
+> "This session recording is too large to load."
+
+This occurs when a session exceeds 50 MB in size. Unfortunately, once a session has been recorded at this size, it cannot be displayed or fixed retroactively. If you are consistently seeing this warning, here are a few steps you can take to reduce session sizes going forward:
+
+1. **Disable Inline Stylesheets**  
+   When initializing the `SessionReplayClient`, set `inlineStylesheet` to `false`. We generally recommend keeping `inlineStylesheet` set to `true`, because it ensures recordings accurately reflect your original CSS even if you later update your styles. However, this setting often causes sessions to grow very large and is the most common source of bloat.
+
+<Tabs>
+<Tab title="Javascript" icon="JS">
+
+```jsx
+runStatsigSessionReplay(client, {
+  inlineStylesheet: false,
+});
+```
+
+  </Tab>
+  <Tab title="React" icon="react">
+
+```jsx
+...
+options={{
+  plugins: [
+    new StatsigSessionReplayPlugin({
+      inlineStylesheet: false,
+    }),
+  ],
+}}
+...
+```
+
+  </Tab>
+</Tabs>
+
+2. **Exclude Large Static Elements**  
+   If certain elements on your page are large but static (e.g., background images or videos), you can exclude them from session capture by adding the `rr-block` class to their `className`. This prevents those elements from being recorded and can significantly reduce session size.
+
+3. **Reach Out for Assistance**  
+   If you continue to experience large sessions, feel free to reach out in [Slack Community](https://statsig.com/slack). A Statsig team member can review your session and provide tailored recommendations for your setup.
