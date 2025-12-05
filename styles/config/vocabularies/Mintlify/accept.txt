@@ -1109,6 +1109,10 @@ Unarchive
 Unarchived
 Unarchiving
 Unary
+Unassigned
+unassigned
+Unassigning
+unassigning
 uncaptured
 uncheck
 undelegated
