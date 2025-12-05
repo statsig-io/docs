@@ -32,16 +32,16 @@ The SCIM key includes the `scim` prefix.
 
 ## Current SCIM Offering
 
-We are actively developing SCIM functionality and have rolled out the following features:
+### Okta
+- **Push Users.** Assigning users to the Statsig application in Okta automatically adds the users as members of your organization in Statsig. Unassigning users deactivates them and wipes all roles/permissions.
+- **Import Users.** Users in Statsig can be imported into Okta and either matched to existing Okta users, or created as new Okta users.
+- **Import Groups.** Import project/team roles as groups in Okta. Note that imported groups cannot be modified in Okta. 
+- **Push Groups.** Groups can be pushed to Statsig to update user project/team roles.
 
-- Statsig Org level provisioning: Create new users and deactivate existing users in Statsig
-- Okta Full Name Sync: Full Name synced from Okta to Statsig
-- Statsig Org User Imports: Import existing users on Statsig to Idp
-- Okta Org Role management: Users' organization roles can be managed in Okta
-- Okta Project Role management: Users' project roles can be managed in Okta
-- Okta Team x Role Management: Users can be assigned to teams and roles in Statsig via Okta SCIM
+[Okta Setup Guide](https://docs.statsig.com/access-management/scim/okta_scim_setup)
 
 ## Changelog
+We are actively developing SCIM functionality and have rolled out the following features:
 
 | Date     | Title                            | Log                                                                                                      |
 | -------- | -------------------------------- | -------------------------------------------------------------------------------------------------------- |
