@@ -1,0 +1,168 @@
+---
+title: Traces Explorer Quick Start
+sidebarTitle: Quick Start
+description: Minimal OTLP/HTTP examples for exporting traces to Statsig's Traces Explorer across popular languages.
+---
+
+
+<Info>
+Want Logs and Metrics too? See [Getting Started](/infra-analytics/getting-started) for more in-depth OpenTelemetry Collector setup instructions.
+</Info>
+
+
+Use the OTLP/HTTP traces endpoint to forward spans into Traces Explorer. Authenticate with your Server Secret key in the header:
+
+- Endpoint: `https://api.statsig.com/otlp/v1/traces`
+- Header: `statsig-api-key: <your Server SDK Secret key>`
+
+
+Note: Direct to API is currently supported for TypeScript/Node only. For all other languages, send traces to your OpenTelemetry Collector and configure it to forward to Statsig over OTLP/HTTP.
+
+Point non-TypeScript apps to your Collector (for example `http://localhost:4318/v1/traces`) and configure the Collector to forward to Statsig:
+
+```yaml title="collector.yaml"
+receivers:
+  otlp:
+    protocols:
+      http:
+
+exporters:
+  otlphttp:
+    endpoint: https://api.statsig.com/otlp
+    encoding:  json
+    headers:
+      statsig-api-key: ${env:STATSIG_SERVER_SDK_SECRET}
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlphttp]
+```
+
+<Tabs>
+<Tab title="TypeScript/Node">
+
+```bash
+npm install @opentelemetry/sdk-node @opentelemetry/sdk-trace-node @opentelemetry/sdk-trace-base @opentelemetry/exporter-trace-otlp-http @opentelemetry/resources @opentelemetry/semantic-conventions @opentelemetry/api
+```
+
+```js
+// trace.js
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
+const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+const { trace } = require('@opentelemetry/api');
+
+const sdk = new NodeSDK({
+  resource: new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'trace-sample-node',
+  }),
+  spanProcessor: new BatchSpanProcessor(
+    new OTLPTraceExporter({
+      url: 'https://api.statsig.com/otlp/v1/traces',
+      headers: { 'statsig-api-key': process.env.STATSIG_SERVER_SDK_SECRET || '' },
+    }),
+  ),
+});
+
+sdk.start().then(() => {
+  const tracer = trace.getTracer('example');
+  const span = tracer.startSpan('do-work');
+  span.setAttribute('example', true);
+  span.end();
+
+  setTimeout(() => sdk.shutdown(), 1000);
+});
+```
+</Tab>
+<Tab title="Python">
+
+```bash
+pip install opentelemetry-sdk opentelemetry-exporter-otlp-proto-http
+```
+
+```python
+# trace.py
+from opentelemetry import trace
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+
+trace.set_tracer_provider(
+    TracerProvider(resource=Resource.create({"service.name": "trace-sample-python"}))
+)
+
+exporter = OTLPSpanExporter(
+    endpoint="http://localhost:4318/v1/traces",  # your Collector
+)
+trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(exporter))
+
+tracer = trace.get_tracer(__name__)
+with tracer.start_as_current_span("do-work") as span:
+    span.set_attribute("example", True)
+
+trace.get_tracer_provider().shutdown()
+```
+</Tab>
+<Tab title="Go">
+
+```bash
+go get go.opentelemetry.io/otel/sdk go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp go.opentelemetry.io/otel/semconv/v1.26.0
+```
+
+```go
+// main.go
+package main
+
+import (
+  "context"
+  "log"
+
+  "go.opentelemetry.io/otel"
+  "go.opentelemetry.io/otel/attribute"
+  "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+  "go.opentelemetry.io/otel/sdk/resource"
+  sdktrace "go.opentelemetry.io/otel/sdk/trace"
+  semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+)
+
+func main() {
+  ctx := context.Background()
+
+  exporter, err := otlptracehttp.New(ctx,
+    otlptracehttp.WithEndpointURL("http://localhost:4318/v1/traces"), // your Collector
+  )
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  tp := sdktrace.NewTracerProvider(
+    sdktrace.WithBatcher(exporter),
+    sdktrace.WithResource(resource.NewWithAttributes(
+      semconv.SchemaURL,
+      semconv.ServiceNameKey.String("trace-sample-go"),
+    )),
+  )
+  otel.SetTracerProvider(tp)
+
+  tracer := otel.Tracer("example")
+  ctx, span := tracer.Start(ctx, "do-work")
+  span.SetAttributes(attribute.Bool("example", true))
+  span.End()
+
+  _ = tp.Shutdown(ctx)
+}
+```
+</Tab>
+</Tabs>
+
+
+<Info>
+  Need a deeper setup guide? See [Open Telemetry Logs and Metrics](/server/concepts/open_telemetry) for collector installation/config,
+  and if you want Logs and Metrics too? See [Getting Started](/infra-analytics/getting-started) for
+  more in-depth OpenTelemetry Collector setup instructions.
+</Info>
