@@ -1,0 +1,15 @@
+### Programmatic Evaluation
+
+Programmatic evaluation allows you to run evaluations on datasets programmatically, automatically scoring outputs and sending results to Statsig for analysis.
+
+With programmatic evaluation, you can:
+
+- **Run evaluations on datasets**: Process arrays, iterators, or async generators of input/expected pairs
+- **Define custom tasks**: Create functions that generate outputs from inputs (supports both sync and async)
+- **Score outputs**: Use single or multiple named scorer functions to evaluate outputs (supports boolean, numeric, or metadata-rich scores)
+- **Use parameters**: Pass dynamic parameters to tasks using Zod schemas (Node) or dictionaries (Python)
+- **Categorize data**: Group evaluation records by categories for better analysis
+- **Compute summary scores**: Aggregate results across all records with custom summary functions
+- **Handle errors gracefully**: Task and scorer errors are caught and reported without stopping the evaluation
+
+The evaluation automatically sends results to Statsig, where you can view them in the console alongside your other eval data.

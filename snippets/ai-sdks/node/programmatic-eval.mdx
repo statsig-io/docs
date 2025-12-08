@@ -1,0 +1,114 @@
+```js
+import { Eval } from '@statsig/statsig-ai';
+import { z } from 'zod';
+
+// Basic evaluation with a single scorer
+const result = await Eval('greeting_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'test', expected: 'Hello test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: ({ output, expected }) => output === expected,
+  evalRunName: 'run-123',
+});
+
+// Multiple named scorers
+const result2 = await Eval('multi_scorer_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'test', expected: 'Hello test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: {
+    correctness: ({ output, expected }) => output === expected,
+    startsWithHello: ({ output }) => output.startsWith('Hello'),
+    lengthCheck: ({ output }) => output.length > 5,
+  },
+});
+
+// Using parameters with Zod schemas
+const result3 = await Eval('parameterized_task', {
+  data: [
+    { input: 'world', expected: 'Hi world' },
+  ],
+  task: async (input: string, hooks) => {
+    const prefix = hooks.parameters.name || 'Hello';
+    return `${prefix} ${input}`;
+  },
+  scorer: ({ output, expected }) => output === expected,
+  parameters: {
+    name: z.string().default('Hi'),
+  },
+});
+
+// Async task and scorer
+const result4 = await Eval('async_task', {
+  data: async () => [
+    { input: 'world', expected: 'Hello world' },
+  ],
+  task: async (input: string) => {
+    // Simulate async work
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return `Hello ${input}`;
+  },
+  scorer: async ({ output, expected }) => {
+    // Simulate async scoring
+    await new Promise(resolve => setTimeout(resolve, 50));
+    return output === expected;
+  },
+});
+
+// Using categories
+const result5 = await Eval('categorized_task', {
+  data: [
+    { input: 'world', expected: 'Hello world', category: 'greeting' },
+    { input: 'test', expected: 'Hello test', category: ['greeting', 'test'] },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: ({ output, expected }) => output === expected,
+});
+
+// Summary scores
+const result6 = await Eval('summary_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'test', expected: 'Hello test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: {
+    correctness: ({ output, expected }) => output === expected,
+  },
+  summaryScoresFn: (results) => {
+    const correct = results.filter(r => r.scores.correctness === 1).length;
+    return {
+      accuracy: correct / results.length,
+      total: results.length,
+    };
+  },
+});
+
+// Data without expected values
+const result7 = await Eval('no_expected_task', {
+  data: [
+    { input: 'world' },
+    { input: 'test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: ({ output }) => output.length > 5,
+});
+
+// Error handling - task errors are caught
+const result8 = await Eval('error_handling_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'fail', expected: 'Error' },
+  ],
+  task: (input: string) => {
+    if (input === 'fail') throw new Error('Task failed');
+    return `Hello ${input}`;
+  },
+  scorer: ({ output }) => output !== '[Error]',
+});
+// Results will include error flags for failed tasks
+```
