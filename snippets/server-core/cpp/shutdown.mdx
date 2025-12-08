@@ -1,0 +1,11 @@
+```cpp
+statsig.shutdownBlocking();
+```
+
+The `shutdown()` method will:
+- Flush any pending events to Statsig servers
+- Gracefully shutdown the SDK, cleaning up resources
+- Wait for all operations to complete
+
+It's recommended to call `shutdown()` before your application exits to ensure all events are sent.
+

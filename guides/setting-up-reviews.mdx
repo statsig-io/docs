@@ -18,7 +18,7 @@ As a Project Admin, you can configure your project to require reviews for any ch
 
 - Now when you make any configuration changes, say to a feature gate or experiment, you'll be asked to **Submit for Review**; you can add reviewers when you submit the change for review
 
-<img width="1168" alt="Screen Shot 2022-05-04 at 5 08 21 AM" src="/images/guides/setting-up-reviews/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
+<img width="1168" alt="Submit for Review modal prompting for reviewer selection" src="/images/guides/setting-up-reviews/166678241-272adade-ca60-4942-bd04-a1413d54864c.png"/>
 
 - Reviewers will now see a notification on the Statsig console as shown below. When they click on **View Proposed Changes**, they will see a diff of the *current version* in production and *new version*. Reviewers can now **Approve** or **Reject** the submitted changes.
 
@@ -48,9 +48,9 @@ You can restrict who can make changes to your Project by (a) turning on **Review
 
 For (a), see section **Turning on Change Reviews for a Project** to turn on project-wide reviews. For (b), as an owner of a Feature Gate or Experiment, you can add designated **Teams** or **Reviewers** at any time as shown below. This ensures that only these designated groups or members can review and approve any subsequent changes. When another member now tries to edit these designated review groups/reviewers, this will require approval from currently designated reviewers. 
 
-<img width="655" alt="image" src="/images/guides/setting-up-reviews/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
+<img width="655" alt="Team review configuration settings" src="/images/guides/setting-up-reviews/166682283-c9e2de57-0b9a-473e-adf2-100a240ab6b0.png"/>
 
-<img width="458" alt="Screen Shot 2022-05-04 at 5 14 57 AM" src="/images/guides/setting-up-reviews/166682177-d44411e6-c4ab-49fe-9250-c77b063621af.png"/>
+<img width="458" alt="Teams and reviewers selector for enforcing approvals" src="/images/guides/setting-up-reviews/166682177-d44411e6-c4ab-49fe-9250-c77b063621af.png"/>
 
 
 ### Configuring Review Settings for Different Environments 
@@ -61,44 +61,20 @@ You can also configure which environments require reviews via your **Project Set
 By default if you have turned on "Reviews Required" for your Project, reviews will be required for Production, but not non-Production (lower) environments. 
 
 <Frame>
-  <img src="/images/guides/setting-up-reviews/231233087-5b87310d-b33b-456e-b1a7-7a73555c8100.png" alt="Screen Shot 2023-04-11 at 9 47 12 AM" />
+  <img src="/images/environments.png" alt="Environments settings showing environments and order" />
 </Frame>
+
 
 <Frame>
-  <img src="/images/guides/setting-up-reviews/231233356-967c9785-5a89-4cac-a04a-e3f11cb7bb12.png" alt="Screen Shot 2023-04-11 at 9 48 02 AM" />
+  <img src="/images/edit-environment-dialog.png" alt="Manage environments dialog with environment list and review settings" />
 </Frame>
 
-### Configuring Custom Approval Workflows (Pre-commit Webhooks)
-If you prefer to leverage an internal approvals workflow or, for example, want to run proposed config changes through a suite of automated tests before they go live, you can leverage **Pre-commit Webhooks**. Pre-commit Webhooks enable you to listen for config changes on the Statsig side, route those changes through internal approval processes, test suites, etc. and then leverage Console API to send back either a review approval or rejection before final changes can be committed. 
+#### Team-based Required Reviews per Environment
+You can assign specific teams as reviewers for each environment. This ensures that only designated team members can approve changes for that environment.
 
-To enable the Pre-commit Webhook experience: 
-1. Integrate your approval flow with the change validations Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
-2. Configure the experience for Statsig Console users via **Settings** -> **Product Configuration** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes.
+<Frame>
+  <img src="/images/environment-reviews.png" alt="Assigning teams as reviewers for specific environments" />
+</Frame>
 
-<Frame><img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="/images/guides/setting-up-reviews/49c408da-0910-4a90-9ee3-7d1e114c9013.png" /></Frame>
-
-<Frame><img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="/images/guides/setting-up-reviews/a01617b2-3bb0-4f20-a505-b9318dd220a7.png" /></Frame>
-
-
-Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
-
-Every payload will have these fields at a minimum:
-```
-review_id (will need to pass this to the change_validation API to accept/reject a change)
-submitter (email address)
-committer (email address)
-config_type (one of gate, dynamic_config, segment, or experiment)
-type (listed below)
-config_name / experiment_name
-```
-
-Currently, only changes to gates, dynamic configs, segments, and experiments trigger pre-commit webhooks, and only the following changes:
-- `rules`: Updating rules (for gates, dynamic configs, segments)
-  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. https://docs.statsig.com/api-reference/gates/read-gate for gates)
-- `update_target_apps`: Updating target applications
-- `update_allocation`: Changing the pass percentage of an ongoing experiment
-- `start_experiment`
-- `ship_experiment`
-- `abandon_experiment`
-- `update_experiment_settings`: Changing settings of an ongoing experiment
-  - will contain payloads `old_experiment` and `new_experiment` with the same format returned by the console API (https://docs.statsig.com/api-reference/experiments/get-experiment)
+#### Code Freeze Use Case
+During code freeze periods, you can prevent feature flags or configs from being deployed to production by assigning a dedicated code freeze team as the production reviewer. This ensures that only members of that team (such as your SRE team or designated code freeze owners) can approve production changes. Once the code freeze period ends, you can remove the team assignment to restore normal review workflows.

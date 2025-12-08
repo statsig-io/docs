@@ -30,19 +30,19 @@ The first thing you will do is configure your contextual autotune in the Statsig
 Log into your Statsig console, and navigate to Autotune under Experiments.
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/167d5e87-c155-4465-9419-bcf018c496cb.png" alt="Autotune Nav" />
+  <img src="/images/autotune/contextual/getting-started/167d5e87-c155-4465-9419-bcf018c496cb.png" alt="Statsig console navigation with Autotune section highlighted" />
 </Frame>
 
 Click create. You need to name your contextual autotune, and optionally specify the goal so other users can understand the motivation behind it.
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/b16fb9a6-80f4-495c-8ebc-b0cdcdb1d8a8.png" alt="Create Autotune" />
+  <img src="/images/autotune/contextual/getting-started/b16fb9a6-80f4-495c-8ebc-b0cdcdb1d8a8.png" alt="Create contextual autotune dialog with name and goal fields" />
 </Frame>
 
 Set your autotune type to Contextual
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/4398ae6f-0763-49c0-a49b-804daece4da8.png" alt="Contextual" />
+  <img src="/images/autotune/contextual/getting-started/4398ae6f-0763-49c0-a49b-804daece4da8.png" alt="Autotune type selector set to Contextual" />
 </Frame>
 
 ## Configure Optimization
@@ -63,7 +63,7 @@ Choose Event Value, and set the directionality. You will also choose the field f
 For warehouse native customers, specify the metric source and optional filters for your target event.
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/4885eac2-38ec-42f1-bd52-592b728623a0.png" alt="Setup" />
+  <img src="/images/autotune/contextual/getting-started/4885eac2-38ec-42f1-bd52-592b728623a0.png" alt="Optimization settings screen choosing event outcome and metric source" />
 </Frame>
 
 We highly recommend wrapping contextual autotunes in an experiment, but it is not required. You can set this up before your contextual autotune, and after. This experiment will wrap autotune calls in code, and can be used to measure the topline impact of using this contextual autotune in your project.
@@ -79,16 +79,16 @@ The other settings can use defaults, but you may want to tune them as well:
 - Feature list: provide a list of features Statsig should use to train the model. This is just a mask/filter, and if not set Statsig will read every custom attribute. The main use case is fetching this via CAPI to understand which features a given contextual autotune requires for evaluation when they're fetched on-demand (e.g. introducing latency)
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/8c87e142-247d-42b3-8baa-04f8967ae400.png" alt="Setup" />
+  <img src="/images/autotune/contextual/getting-started/8c87e142-247d-42b3-8baa-04f8967ae400.png" alt="Training settings configuration showing exploration and attribution options" />
 </Frame>
 
 Set up your variants. These are configurations that you will fetch in code. For example, the group below would send this configuration to your codebase and the "red" value could be passed to the color setting on a button.
 
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/591c0b49-2a40-4bb9-9bef-311bd1d64651.png" alt="Screenshot 2025-03-14 at 10 49 57 AM" />
+  <img src="/images/autotune/contextual/getting-started/591c0b49-2a40-4bb9-9bef-311bd1d64651.png" alt="Variants list showing configuration keys and values for contextual autotune" />
 </Frame>
 <Frame>
-  <img src="/images/autotune/contextual/getting-started/10b13396-9bb5-4045-b514-45b0861885cb.png" alt="Screenshot 2025-03-14 at 10 49 51 AM" />
+  <img src="/images/autotune/contextual/getting-started/10b13396-9bb5-4045-b514-45b0861885cb.png" alt="Variant detail editor specifying contextual parameters like button color" />
 </Frame>
 
 # Use the Contextual Autotune in Code (python example)
