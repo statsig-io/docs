@@ -43,41 +43,7 @@ result3 = Eval(
     parameters={'prefix': 'Hi', 'suffix': '!', 'number': 123},
 )
 
-# Async task and scorer
-async def async_task(input: str) -> str:
-    import asyncio
-    await asyncio.sleep(0.1)  # Simulate async work
-    return f'Hello {input}'
-
-async def async_scorer(args: EvalScorerArgs[str, str]) -> float:
-    import asyncio
-    await asyncio.sleep(0.05)  # Simulate async scoring
-    return 1.0 if args.output == args.expected else 0.0
-
-async def async_data():
-    return [
-        {'input': 'world', 'expected': 'Hello world'},
-    ]
-
-result4 = Eval(
-    name='async_task',
-    data=async_data,
-    task=async_task,
-    scorer=async_scorer,
-)
-
-# Using categories
-result5 = Eval(
-    name='categorized_task',
-    data=[
-        {'input': 'world', 'expected': 'Hello world', 'category': 'greeting'},
-        {'input': 'test', 'expected': 'Hello test', 'category': ['greeting', 'test']},
-    ],
-    task=lambda input: f'Hello {input}',
-    scorer=lambda args: args.output == args.expected,
-)
-
-# Summary scores
+# Extras: Categories and summary scores
 def summary_scorer(results):
     correct = sum(1 for r in results if r.scores.get('correctness', 0.0) == 1.0)
     return {
@@ -85,11 +51,12 @@ def summary_scorer(results):
         'total': len(results),
     }
 
-result6 = Eval(
-    name='summary_task',
+result4 = Eval(
+    name='categorized_with_summary',
     data=[
-        {'input': 'world', 'expected': 'Hello world'},
-        {'input': 'test', 'expected': 'Hello test'},
+        {'input': 'world', 'expected': 'Hello world', 'category': 'greeting'},
+        {'input': 'test', 'expected': 'Hello test', 'category': ['greeting', 'test']},
+        {'input': 'foo', 'expected': 'Goodbye foo', 'category': 'farewell'},
     ],
     task=lambda input: f'Hello {input}',
     scorer={
@@ -97,34 +64,6 @@ result6 = Eval(
     },
     summary_score_fn=summary_scorer,
 )
-
-# Data without expected values
-result7 = Eval(
-    name='no_expected_task',
-    data=[
-        {'input': 'world'},
-        {'input': 'test'},
-    ],
-    task=lambda input: f'Hello {input}',
-    scorer=lambda args: len(args.output) > 5,
-)
-
-# Error handling - task errors are caught
-def failing_task(input: str) -> str:
-    if input == 'fail':
-        raise ValueError('Task failed')
-    return f'Hello {input}'
-
-result8 = Eval(
-    name='error_handling_task',
-    data=[
-        {'input': 'world', 'expected': 'Hello world'},
-        {'input': 'fail', 'expected': 'Error'},
-    ],
-    task=failing_task,
-    scorer=lambda args: args.output != 'Error',
-)
-# Results will include error flags for failed tasks
 
 # Using EvalDataRecord dataclass
 result9 = Eval(
