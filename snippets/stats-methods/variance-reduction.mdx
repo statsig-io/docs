@@ -8,31 +8,15 @@ At Statsig, we use a form of CUPED based on a [2013 Microsoft paper](https://www
 
 Refer to our [launch post for CUPED](https://blog.statsig.com/cuped-on-statsig-d57f23122d0e) for more details.
 
-## CUPED
+## CUPED - Controlled-experiment Using Pre-Existing Data
 
-CUPED is a technique in which we use information about an experiment's users from before an experiment started to reduce the variance in their experiment metrics.
-
-The pre-experiment information we use is referred to as a "control variate". We adjust the user's metric value based on this control variate multiplied by a coefficient θ. The method by which it reduces variance is conceptually similar to adding a second variable to a linear regression predicting users' metric value, where the first variable is the treatment group. Part of the error previously attributed to the experiment group term will be explained by the new variable.
-
-Extending this observation, the more correlated the pre-experiment information is with the post-experiment information, the more of the error or noise in the experiment results is explained by the covariate, and the more the variance in the experimental term is reduced.
-
-### Where CUPED works best
-
-- CUPED works best on metrics and behaviors which are predictable from past behavior; in particular, if a metric is consistent over time for the same user, CUPED can be very effective
-- CUPED also acts as a partial solve for pre-exposure bias. If one group has a systemic bias in their pre-exposure data (which is independent of the experiment group they are in), their adjusted metric value will be adjusted towards the population mean.
-
-### Where CUPED is less effective
-
-- CUPED does not work on new users, because there is not pre-exposure data to leverage
-- CUPED is less effective if a user's metric value is uncorrelated with historical behavior
-- On Statsig Cloud : CUPED will not be applied historically for newly created metrics, or metrics that were added to Key Metrics partway through an experiment, but will be calculated for exposed users after the metric is added.
-- CUPED is applied to most metric types, but not all. Today, funnel metrics and "event user" metrics (# users who had an event 1+ time in a given time window) are CUPED-ineligible. We're working on rolling CUPED out to more metric types.
+CUPED (short for Controlled-experiment Using Pre-Existing Data) is a technique which leverages user information from before an experiment to reduce the variance, and increase confidence in experimental metrics. This can help to debias experiments which have meaningful pre-exposure bias (e.g. the groups were randomly different before any treatment was applied).
 
 ## Winsorization
 
 Another common technique for reducing noise is Winsorization, which is a way to manage the influence of outliers.
 
-Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_. At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors. ([learn more](https://docs.statsig.com/stats-engine/methodologies/winsorization/))
+Winsorization refers to the practice of measuring the percentile _P<sub>x</sub>_ of a metric and setting all values over _P<sub>x</sub>_ to _P<sub>x</sub>_.This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors.
 
 ## Metric Selection
 

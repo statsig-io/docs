@@ -56,6 +56,28 @@
   Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 </ResponseField>
 
+<ResponseField name="proxy_config" type="ProxyConfig">
+  Configuration for connecting through a proxy server.
+</ResponseField>
+
+<Accordion title="ProxyConfig">
+<ResponseField name="proxyHost" type="string">
+  The hostname or IP address of the proxy server (e.g., `"proxy.example.com"` or `"192.168.1.100"`).
+</ResponseField>
+
+<ResponseField name="proxyPort" type="int">
+  The port number of the proxy server (e.g., `8080`, `3128`, `1080`).
+</ResponseField>
+
+<ResponseField name="proxyAuth" type="string">
+  Authentication credentials for the proxy server in the format `"username:password"`. Only required if the proxy requires authentication.
+</ResponseField>
+
+<ResponseField name="proxyProtocol" type="string">
+  The protocol to use for the proxy connection. Supported values: `"http"`, `"https"`, `"socks5"`.
+</ResponseField>
+</Accordion>
+
 ---
 
 ### Performance Recommendations
@@ -74,28 +96,42 @@ These optimizations were added in response to performance issues identified in [
 ```php
 use Statsig\Statsig;
 use Statsig\StatsigOptions;
+use Statsig\ProxyConfig;
 use Statsig\StatsigLocalFileSpecsAdapter;
 use Statsig\StatsigLocalFileEventLoggingAdapter;
 
+// Create proxy configuration
+$proxyConfig = new ProxyConfig(
+    proxyHost: "proxy.example.com",
+    proxyPort: 8080,
+    proxyAuth: "username:password",  // Optional, only if authentication is required
+    proxyProtocol: "http"
+);
+
 // Initialize StatsigOptions with custom parameters
 $options = new StatsigOptions(
-    null, // specs_url
-    null, // log_event_url
-    new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"), // specs_adapter
-    new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp"), // event_logging_adapter
-    "development", // environment
-    60000, // event_logging_flush_interval_ms
-    1000, // event_logging_max_queue_size
-    600000, // specs_sync_interval_ms
-    "INFO", // output_log_level
-    true, // disable_country_lookup (for better performance)
-    true, // disable_user_agent_parsing (for better performance)
-    false, // wait_for_country_lookup_init
-    false, // wait_for_user_agent_init
-    false, // disable_network
-    false, // disable_all_logging
-    3000, // init_timeout_ms
-    false  // fallback_to_statsig_api
+    specs_url: null,
+    log_event_url: null,
+    specs_adapter: new StatsigLocalFileSpecsAdapter($sdk_key, "/tmp"),
+    event_logging_adapter: new StatsigLocalFileEventLoggingAdapter($sdk_key, "/tmp"),
+    environment: "development",
+    event_logging_flush_interval_ms: 60000,
+    event_logging_max_queue_size: 1000,
+    specs_sync_interval_ms: 600000,
+    output_log_level: "INFO",
+    disable_country_lookup: true, // For better performance
+    wait_for_country_lookup_init: false,
+    wait_for_user_agent_init: false,
+    enable_id_lists: false,
+    disable_network: false,
+    id_lists_url: null,
+    id_lists_sync_interval_ms: null,
+    disable_all_logging: false,
+    init_timeout_ms: 3000,
+    fallback_to_statsig_api: false,
+    use_third_party_ua_parser: null,
+    persistent_storage: null,
+    proxy_config: $proxyConfig  // Add proxy configuration
 );
 
 // Pass the options object into Statsig constructor
