@@ -6,17 +6,16 @@ description: Learn how to set up the Statsig MCP server using Codex CLI, IDE ext
 ## Overview
 
 You can set up the Statsig MCP server on Codex CLI and Codex IDE Extension today.
-
 Codex CLI is an pre-requisite to set up MCP for the Codex IDE extension or Codex Cloud. You can install Codex CLI based on the [instructions here](https://developers.openai.com/codex/cli/).
 
-1. Once Codex CLI is set up, install the Statsig MCP server using the Codex CLI:
+## Authentication
+Once Codex CLI is set up, navigate to `~/.codex/config.toml` and add the below: 
 
 ```bash
-codex mcp add statsig --url https://api.statsig.com/v1/mcp
-```
+[mcp_servers.statsig]
+url = https://api.statsig.com/v1/mcp
+trust_level = "trusted"
 
-2. Update the `~/.codex/config.toml` file with `trust_level = "trusted"` and add the below:
-```bash
 [features]
 rmcp_client = true
 ```
