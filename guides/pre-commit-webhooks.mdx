@@ -1,0 +1,103 @@
+---
+title: Pre-commit Webhooks
+---
+
+Pre-commit Webhooks allow you to integrate external validation into your change approval workflow. This enables you to:
+- Route changes through internal approval systems
+- Run automated tests before changes go live
+- Enforce custom business logic or compliance checks
+- Integrate with CI/CD pipelines
+
+## How It Works
+
+When a Statsig user submits a change for review and it's approved by a reviewer, clicking "Commit Changes" triggers your configured webhook. Statsig sends the change details to your endpoint, which then validates the change (e.g., runs tests, checks policies). Your system responds to Statsig with either an approval or rejection, determining if the user can finally commit the change or if it remains blocked.
+
+## Setup Instructions
+
+### Step 1: Configure Your Webhook Endpoint
+
+Your webhook endpoint should:
+- Accept POST requests from Statsig
+- Process the change payload (see format below)
+- Call the Change Validation API to approve or reject
+
+See the [Change Validation API documentation](https://docs.statsig.com/console-api/change-validation/) for implementation details.
+
+### Step 2: Configure Statsig Console Settings
+
+Navigate to **Settings** → **Product Configuration** → **General**:
+
+1. **Webhook URL**: The endpoint where Statsig will send change notifications
+2. **Webhook Key**: A secret key sent in the `x-statsig-webhook-key` header for authentication
+3. **Initial Message**: A message shown to users while validation is in progress
+   - Example: "Your change is being validated by our CI/CD system. This may take up to 2 minutes..."
+
+<Frame><img width="495" height="335" alt="Webhook URL and initial message configuration" src="/images/guides/setting-up-reviews/49c408da-0910-4a90-9ee3-7d1e114c9013.png" /></Frame>
+
+<Frame><img width="497" height="259" alt="Webhook verification key configuration" src="/images/guides/setting-up-reviews/a01617b2-3bb0-4f20-a505-b9318dd220a7.png" /></Frame>
+
+## Usage Instructions
+
+### Step 3: Send a Webhook payload
+
+Every payload will have these fields at a minimum:
+
+```json
+{
+  "review_id": "string",           // Required for API response
+  "submitter": "user@example.com", // Who created the review
+  "committer": "user@example.com", // Who is committing the change
+  "config_type": "gate | dynamic_config | segment | experiment",
+  "config_name": "string",         // For gates, configs, segments
+  "experiment_name": "string",     // For experiments
+  "type": "string"                 // Change type (see below)
+}
+```
+
+Currently, only changes to gates, dynamic configs, segments, and experiments trigger pre-commit webhooks, and only the following changes:
+
+- `rules`: Updating rules (for gates, dynamic configs, segments)
+  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. https://docs.statsig.com/api-reference/gates/read-gate for gates)
+- `update_target_apps`: Updating target applications
+- `update_allocation`: Changing the pass percentage of an ongoing experiment
+- `start_experiment`
+- `ship_experiment`
+- `abandon_experiment`
+- `update_experiment_settings`: Changing settings of an ongoing experiment
+  - will contain payloads `old_experiment` and `new_experiment` with the same format returned by the console API (https://docs.statsig.com/api-reference/experiments/get-experiment)
+
+### Step 4: Respond to Webhooks
+
+Your system must call the Change Validation API to approve or reject the change:
+
+**Endpoint:** `POST https://statsigapi.net/console/v1/change_validation`
+
+When you respond to validation, you can also set the `message` field to provide a message to the user. You can set the message after the validation is done or provide progressive updates while the validation is running.
+
+```json
+{
+  "reviewID": "review_123",
+  "message": "⏳ Running tests... (45/150 complete)"
+}
+```
+
+**What Users See**
+
+When a review is pending validation, users see:
+
+- **Title**: "Changes to this config have been reviewed and are pending validation"
+- **Description**: 
+  - The company-level `precommit_webhook_message` (if set in console settings)
+  - The review-specific `precommit_message` (if your webhook has set it)
+
+## Bypassing Validation
+
+Project Admins can grant the "Bypass Pre-commit Webhook" permission to specific roles. Users with this permission will see a "Commit Changes (Bypass Validation)" option, allowing them to skip the webhook validation process entirely.
+
+## Best Practices
+
+1. **Respond quickly**: You have 2 minutes before the request times out
+2. **Include debug links**: Help users troubleshoot failures quickly
+3. **Use progressive updates**: Keep users informed during long validations
+4. **Set a helpful initial message**: Explain what's happening and expected wait time
+5. **Handle errors gracefully**: If your validation system is down, consider auto-approving or notifying users

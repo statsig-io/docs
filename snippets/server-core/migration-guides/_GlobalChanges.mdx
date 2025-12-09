@@ -55,6 +55,12 @@ If you are hosting your own **pass-through proxy**, ensure it supports and corre
 - If you are using the **Statsig Forward Proxy (SFP)**, this endpoint migration is handled automatically.
 </Accordion>
 
+<Accordion title="Environment Evaluation">
+There are different places you can define environment StatsigUser and StatsigOptions, server-core try StatsigUser then StatsigOptions, then default to production.
+Node SDK has different orders: StatsigOptions -> StatsigUser -> default to production.
+
+</Accordion>
+
 <Accordion title="DataStore cache format">
 
 ** New DataStore cache format**
