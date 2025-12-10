@@ -23,12 +23,7 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "chatgpt",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "chatgpt", "cursor", "vscode"]
   },
   "integrations": {
     "ga4": {
@@ -46,11 +41,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": [
-              "welcome",
-              "understanding-platform",
-              "support-options"
-            ]
+            "pages": ["welcome", "understanding-platform", "support-options"]
           },
           {
             "group": "Experiments",
@@ -294,10 +285,7 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": [
-                  "webanalytics/overview",
-                  "webanalytics/autocapture"
-                ]
+                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
               }
             ]
           },
@@ -352,6 +340,10 @@
                   "integrations/mcp",
                   "integrations/ai_development_with_statsig"
                 ]
+              },
+              {
+                "group": "Control Panel",
+                "pages": ["control-panel/overview"]
               },
               {
                 "group": "Data & Metrics",
@@ -771,10 +763,7 @@
           {
             "group": "AI SDKs",
             "icon": "brain",
-            "pages": [
-              "ai-evals/node",
-              "ai-evals/python"
-            ]
+            "pages": ["ai-evals/node", "ai-evals/python"]
           },
           {
             "group": "More SDK Methods",
@@ -1065,9 +1054,7 @@
               "infrastructure/introduction",
               {
                 "group": "Open Telemetry",
-                "pages": [
-                  "/infra-analytics/getting-started"
-                ]
+                "pages": ["/infra-analytics/getting-started"]
               },
               "server/concepts/cloudflare",
               {
