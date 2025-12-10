@@ -338,7 +338,8 @@
                 "group": "Statsig + AI",
                 "pages": [
                   "integrations/mcp",
-                  "integrations/ai_development_with_statsig"
+                  "integrations/ai_development_with_statsig",
+                  "integrations/github_ai_integration"
                 ]
               },
               {
@@ -1044,7 +1045,8 @@
             "icon": "shield-check",
             "pages": [
               "compliance/user_data_deletion_requests",
-              "guides/private-attributes"
+              "guides/private-attributes",
+              "compliance/ai_governance_security_privacy"
             ]
           },
           {

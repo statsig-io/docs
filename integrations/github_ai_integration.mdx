@@ -1,0 +1,91 @@
+---
+title: Github AI Integration
+---
+
+## Overview
+
+The Statsig GitHub integration links your organization's code repository directly to your Statsig project. This allows Statsig to analyze your code base and create a private Knowledge Graph that maps relationships between your codebase and Statsig services such as Feature Gates, Experiments, and Metrics.
+
+This integration connects your software development with measurable business impact, delivering contextual insights within Statsig.
+
+<Frame>
+  <img src="/images/Knowledge-graph-diagram.png" alt="Knowledge Graph diagram showing relationships between codebase and Statsig services" />
+</Frame>
+
+### Key Features
+
+Integrating your code repository unlocks the following capabilities:
+
+* Locate specific lines of code where a Feature Gate or Experiment is implemented  
+* Automatically generate Pull Requests to remove stale flags from code  
+* Understand the intent behind metrics and experiments based on code implementation  
+* Write natural language queries to create charts to answer business questions
+
+## Why Connect Your Codebase
+
+In modern product development, there is often a disconnect between the code you write (hosted on GitHub) and its impact and business outcomes (data in Statsig). The Knowledge Graph bridges this divide by analyzing your connected repositories to provide the context behind every feature.
+
+* Context: It knows *when* an event is logged or a feature is exposed to a user  
+* Intent: It understands what the *purpose and meaning* of that event and feature  
+* Freshness: It ensures insights in Statsig reflect the current state of your main branch
+
+## Installation Guide
+
+Before you begin, ensure you have Admin permissions in both your Statsig Project and the target Github Organization.
+
+### Pre-requisites
+
+If your organization uses [IP restrictions](https://docs.github.com/en/apps/maintaining-github-apps/managing-allowed-ip-addresses-for-a-github-app) to limit access to your GitHub resources, you must allowlist the IP addresses that Statsig services use to connect to GitHub.
+
+Please add the following Statsig IP addresses to your GitHub allowlist:
+
+* *\[Placeholder: IP Address 1\]*  
+* *\[Placeholder: IP Address 2\]*
+
+### First-time Installation
+
+If you are connecting GitHub to Statsig for the first time:
+
+1. Navigate to **Settings** → **Integrations** in the Statsig console  
+2. Locate and select the **Statsig GitHub App** card  
+3. Click **Enable Connection**  
+4. You will be redirected to GitHub. Authenticate and select the target Organization and Repositories.  
+5. Once authorized, you will be redirected back to Statsig to confirm the connection
+
+Note: You can choose to install the app on specific repositories or your entire organization. For the best results with Knowledge Graph, we recommend selecting all relevant repositories containing feature code.
+
+### Connecting Additional Projects
+
+GitHub allows a specific GitHub App to be installed only *once* per GitHub Organization. If you have multiple Statsig Projects (e.g., "Project 1" and "Project 2") that need access to the same GitHub Org, they will share the underlying connection.
+
+To link a new project to an existing GitHub connection:
+
+1. Navigate to **Settings** → **Integrations** in the Statsig console  
+2. Locate and select the **Statsig GitHub App** card. We will indicate if an existing connection exists for any other project.  
+3. Select the Statsig Project you wish to inherit the connection from  
+4. Confirm the link
+
+### Migrating from Legacy (PAT) Integration
+
+If you are using the older Personal Access Token (PAT) integration, we recommend upgrading to the GitHub App for improved security and functionality.
+
+1. Navigate to **Settings** → **Integrations** in the Statsig console  
+2. Locate and select the **Statsig GitHub App** card  
+3. You will see a banner or indicator on the GitHub integration card prompting you to upgrade from PAT based connection  
+4. Follow the flow to install the GitHub App on your repositories  
+5. Once the App is installed, the system will automatically deprecate the old PAT connection
+
+## Statsig GitHub Integration FAQs
+
+1. **Will my data be used to train LLM models?**  
+   Your data may be used to improve the services provided to you. Statsig does not use your data to train LLM models nor does its sub-processors.
+
+2. **Does Statsig store my source code?**  
+   Statsig does not permanently store your source code. Code is temporarily processed to extract metadata and embeddings in order to create the Knowledge Graph, and discarded when no longer necessary.
+
+3. **How long does it take for the code insights to appear in Statsig?**  
+   Setting up the integration can take up to a few hours depending on the size of the repository. After the initial setup, we will index new data every 7 days.
+
+4. **What security controls apply?**   
+   Information on Statsig's security practices is available [here](https://www.statsig.com/trust/security). Information on Statsig's AI governance is available [here](/compliance/ai_governance_security_privacy).
+
