@@ -5,7 +5,7 @@ To read the results of your experiment, go to the **Results** tab, where you wil
 ### Exposures
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/7a80e74e-140d-4c36-a78e-c9b626e1fee5" alt="Exposures Chart" />
+  <img src="/images/snippets/pulse/read-results/7a80e74e-140d-4c36-a78e-c9b626e1fee5.png" alt="Exposures chart showing cumulative users per experiment group" />
 </Frame>
 
 At the top of the Results page is the Exposures Chart. Exposures are the unique experimental units enrolled in the experiment. This is typically the number of unique users, and for device-level experimentation, this is the number of devices. The timeline shows you when the experiment was started, and how many exposures were enrolled on any given day. You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio matches what you configured in experiment setup.
@@ -35,7 +35,7 @@ All of these are available in daily Results, which will start showing in the nex
 #### Post-first Day Scorecard
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/8b855f5c-d26f-4185-ac31-5108fbebe18e" alt="Scorecard" />
+  <img src="/images/snippets/pulse/read-results/8b855f5c-d26f-4185-ac31-5108fbebe18e.png" alt="Experiment scorecard table displaying metric lifts and confidence intervals" />
 </Frame>
 
 The experiment Results daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](/stats-engine). 
@@ -62,13 +62,14 @@ Confidence intervals are reported at the selected significance level (95% by def
 ### Experiment Results Views 
 There are a few different views to see your Scorecard metric lifts, namely: 
 
-- Cumulative results (default view)
-- Daily results
-- Days since exposure
+- **Cumulative results (default view)**: Displays the aggregate difference between experiment groups and visualizes the corresponding confidence intervals
+- **Table view**: Displays the same data as the cumulative view but in a table format with additional fields
+- **Daily results**: Shows the difference between experiment groups aggregated based on days since start of experiment
+- **Days since exposure**: Shows the difference between experiment groups aggregated based on days since exposure to the experiment
 
 Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the metric lift calculations, as well as topline impact.
 <Frame>
-  <img src="https://github.com/user-attachments/assets/856c7750-df56-45d9-b253-6b63f336cac7" alt="Screenshot 2025-05-01 at 4 36 34 PM" />
+  <img src="/images/snippets/pulse/read-results/856c7750-df56-45d9-b253-6b63f336cac7.png" alt="Cumulative results view with hover details" />
 </Frame>
 
 ### Dimensions
@@ -82,7 +83,7 @@ User Dimensions refer to user level attributes that are either part of the user 
 You can create [custom "explore" queries](/pulse/custom-queries) to _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country". Go to the "explore" tab to draft a custom query
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/e3afb526-8f9d-465e-af33-ea9575ac69e7" alt="custom queries" />
+  <img src="/images/snippets/pulse/read-results/e3afb526-8f9d-465e-af33-ea9575ac69e7.png" alt="custom queries" />
 </Frame>
 
 
@@ -92,11 +93,11 @@ Events Dimensions refer to the value or metadata logged as part of a custom even
 
 To see breakdowns for all categories within a metric, click on the (+) sign next to the metric.
 <Frame>
-  <img src="https://github.com/user-attachments/assets/65cbe2a0-d269-4385-a606-c825ff2e8e05" alt="dimension button" />
+  <img src="/images/snippets/pulse/read-results/65cbe2a0-d269-4385-a606-c825ff2e8e05.png" alt="dimension button" />
 </Frame>
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/f557dac6-e29f-4cb5-bd6a-19fc2b226193" alt="dimension results view" />
+  <img src="/images/snippets/pulse/read-results/f557dac6-e29f-4cb5-bd6a-19fc2b226193.png" alt="dimension results view" />
 </Frame>
 
 ### Significance Level Settings
@@ -107,15 +108,15 @@ These settings can be adjusted at any time to view Scorecard results with differ
 * **Confidence Interval**: Changes the confidence interval displayed with the metric deltas.  Choose lower confidence intervals (e.g.: 80%) when there's higher tolerance for false positives and fast iteration with directional results is preferred over longer/larger experiments with increased certainty.
 * **CUPED**: Toggle CUPED on/ off via the inline settings above the metric lifts. Note that this setting can only be toggled for **Scorecard** metrics, as CUPED is not applied to non-Scorecard metrics. 
 * **Sequential Testing**: Applies a correction to the calculate p-values and confidence intervals to reduce false positive rates when evaluating results before the target completion date of the experiment. This helps mitigate the increased false positive rate associated with the "peeking problem". Toggle Sequential Testing on/ off via the inline settings above the metric lifts. Note that this setting is available only for experiments with a set target duration.
-* 
+
 <Frame>
-  <img src="https://github.com/user-attachments/assets/d2d7405a-9e86-4317-8f32-51b369c66699" alt="analysis settings" />
+  <img src="/images/snippets/pulse/read-results/d2d7405a-9e86-4317-8f32-51b369c66699.png" alt="analysis settings" />
 </Frame>  
 
 
 ### Restarting Results
 
-<img width="1062" height="80" alt="Screenshot 2025-07-11 at 9 29 30 AM" src="https://github.com/user-attachments/assets/201ab314-9304-43f1-bc11-58dcf9394aa2" />
+<img width="1062" height="80" alt="Restart results banner" src="/images/snippets/pulse/read-results/201ab314-9304-43f1-bc11-58dcf9394aa2.png" />
 
 If your experiment has stopped computing results, you can resume updates by clicking the Restart button. There are some important facts to be aware of:
 
@@ -126,5 +127,3 @@ If your experiment has stopped computing results, you can resume updates by clic
 * Your Cumulative Exposures chart will update based on new exposures, but the duration of the pause in computations will affect if the chart starts over from zero or your exposure count includes past exposures.
 
 It's best to avoid having to Restart Results by actively extending experiments while they're running. Be sure to look out for email alerts from Statsig and check in your experiments regularly.
-
-

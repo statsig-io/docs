@@ -3,7 +3,7 @@ title: Data Warehouse Ingestion
 ---
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png" alt="Slide 4_3 - 2" />
+  <img src="/images/data-warehouse-ingestion/introduction/187794828-333622ec-6db2-4936-987d-efbef4ba9a47.png" alt="Slide 4_3 - 2" />
 </Frame>
 
 ## Introduction
@@ -47,7 +47,7 @@ To begin ingestion from a Data Warehouse:
 3. Go to the "Ingestion" tab
 
 <Frame>
-  <img src="/images/ingestions.png" width="700"/>
+  <img src="/images/ingestions.png" width="700" alt="Statsig Ingestions page prompting you to connect a data warehouse" />
 </Frame>
 
 You will be required to set up connections with necessary credentials, and map your data fields to the fields Statsig expects to ingest. Please refer to the warehouse-level setup documentation for more information on setup.
@@ -56,13 +56,13 @@ You will be required to set up connections with necessary credentials, and map y
 
 See the docs sidebar to find the documentation for the data warehouse of your choice. Upon connection, you will provide a SQL query to generate a view via data for Statsig to ingest.
 
-<img src="/images/ingestions-2.png" width="700"/>
+<img src="/images/ingestions-2.png" width="700" alt="Query Event Data Columns interface showing SQL editor and expected columns panel" />
 
 ### Data Mapping
 
 After connecting and providing a SQL query, you'll map columns in your data output to fields Statsig expects. We'll run a small sample query to ensure there are no basic issues with data types. To process data correctly, Statsig requires each ingestion to include columns for unit_id, event_name, timestamp, and metadata.
 
-<img src="/images/ingestions-3.png" width="700"/>
+<img src="/images/ingestions-3.png" width="700" alt="Event data column mapping workflow with required fields for timestamp, event name, and user ID" />
 
 See [here](https://docs.statsig.com/data-warehouse-ingestion/data_mapping) for more information.
 

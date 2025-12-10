@@ -16,11 +16,11 @@ in a Feature Gate or Dynamic Config. Let's go through an example. This guide wil
 
 Start by navigating to the "Segments" tab in the console:
 
-![Screen Shot 2022-06-27 at 8 39 00 AM](https://user-images.githubusercontent.com/74584483/175979144-57bbb812-5ea0-429b-b57f-1634b16c5e32.png)
+![Segments tab showing list of existing conditional and ID list segments](/images/guides/first-segment/175979144-57bbb812-5ea0-429b-b57f-1634b16c5e32.png)
 
 Then click "Create New." Lets call it "Internal Stakeholders:"
 
-![Screen Shot 2022-06-27 at 8 42 18 AM](https://user-images.githubusercontent.com/74584483/175979762-f19a7a10-87ae-47c2-bddd-eaef26137385.png)
+![Create new segment modal with Internal Stakeholders name entered](/images/guides/first-segment/175979762-f19a7a10-87ae-47c2-bddd-eaef26137385.png)
 
 There are two types of segments:
 - "Conditional Segments" which operate on a similar set of conditions as Feature Gates and Dynamic Configs
@@ -30,13 +30,13 @@ For now, lets create a conditional segment, and click "Create."
 
 We will start by adding a condition to target people on our internal environments:
 
-![Screen Shot 2022-06-27 at 8 44 36 AM](https://user-images.githubusercontent.com/74584483/175980491-beb329d2-2bbe-4e39-b493-0f59cdb9a66d.png)
+![Add new rule dialog targeting environment tiers development and staging](/images/guides/first-segment/175980491-beb329d2-2bbe-4e39-b493-0f59cdb9a66d.png)
 
 Notice that unlike a Feature Gate, you cannot configure the pass percentage for a rule.  Segments are meant to represent all of the users matching a certain set of rules, but when you create a Feature Gate rule based on a segment, you can configure the pass percentage there.  We will get there in a moment.
 
 Next, lets add another condition to that same rule. Click "Add more conditions", and then use an "email" "contains any of" condition to target internal employees:
 
-![Screen Shot 2022-06-27 at 8 57 15 AM](https://user-images.githubusercontent.com/74584483/175982618-13336e7f-9e72-4c73-9e58-81f86a7fa6a9.png)
+![Add condition dialog requiring email domains statsig.com or statsig.io](/images/guides/first-segment/175982618-13336e7f-9e72-4c73-9e58-81f86a7fa6a9.png)
 
 :::note
 Adding an additional condition to the same rule enforces that both pass - the conditions are evaluated as an AND operation.  
@@ -45,23 +45,23 @@ If you wish to create multiple conditions where any of them can pass as an OR op
 
 Don't forget to "Save Changes" after adding those! Your Segment should look like this:
 
-![Screen Shot 2022-06-27 at 8 55 37 AM](https://user-images.githubusercontent.com/74584483/175982596-1ed7ea2f-40b5-4773-be7f-4765e889c3d0.png)
+![Segment rules summary showing environment tier and email conditions combined](/images/guides/first-segment/175982596-1ed7ea2f-40b5-4773-be7f-4765e889c3d0.png)
 
 ## Step 2: Using a segment
 
 Now, lets make a gate for our new feature, "Landing Page Redesign". Navigate to "Feature Gates" and click "Create New"
 
-![Screen Shot 2022-06-27 at 8 53 04 AM](https://user-images.githubusercontent.com/74584483/175983618-973a9f36-e1c0-4fd6-9b4a-b97fe658156f.png)
+![Create new feature gate modal naming Landing Page V2](/images/guides/first-segment/175983618-973a9f36-e1c0-4fd6-9b4a-b97fe658156f.png)
 
 Since this feature isn't ready for the public, lets gate it to our internal stakeholders using the Segment we just created.
 
 Click "Add New Rule"
 
-![Screen Shot 2022-06-27 at 8 53 33 AM](https://user-images.githubusercontent.com/74584483/175983743-cfe46147-2934-4393-b4aa-3335e55c3502.png)
+![Add new rule dialog selecting User is in Segment for Internal Stakeholders](/images/guides/first-segment/175983743-cfe46147-2934-4393-b4aa-3335e55c3502.png)
 
 Again, remember to "Save Changes"
 
-![Screen Shot 2022-06-27 at 8 53 44 AM](https://user-images.githubusercontent.com/74584483/175983838-e40b4284-af26-4e40-83fc-f2350d9d6fb1.png)
+![Feature gate rules showing Internal Only condition referencing the segment](/images/guides/first-segment/175983838-e40b4284-af26-4e40-83fc-f2350d9d6fb1.png)
 
 ## Step 3: Test it!
 
@@ -77,6 +77,6 @@ in `statsig.com` or `statsig.io` AND a `development` or `staging` environment li
 }
 ```
 
-![Screen Shot 2021-07-30 at 1 01 21 PM](https://user-images.githubusercontent.com/74584483/127705951-6813bb6e-0ae7-44a2-8db3-421e11e54c5c.png)
+![Test gate console showing a passing internal user example](/images/guides/first-segment/127705951-6813bb6e-0ae7-44a2-8db3-421e11e54c5c.png)
 
 Now you can reuse this Segment in as many Feature Gates or Dynamic Configs as you want to gate your internal features while they are under development.

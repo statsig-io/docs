@@ -23,36 +23,36 @@ Log into the Statsig console at https://console.statsig.com/ and navigate to **F
 Click on the **Create** button and enter the name and (optional) description for your feature gate. We will call our feature gate “aatest_example”. Click **Create**. 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163246908-24494f12-9d2e-4d8b-8e3e-4fc0ad9c7e41.png" alt="create_new_fg_empty" />
+  <img src="/images/experiments/types/aa-test/163246908-24494f12-9d2e-4d8b-8e3e-4fc0ad9c7e41.png" alt="create_new_fg_empty" />
 </Frame>
 
 In the Setup tab, define the rules for this feature gate. Tap **+ Add New Rule**. While you could run an A/A test on a specific user-group, platform, etc. the easiest setup is to simply divide all of your traffic 50/50 and deliver the same experience (your default product experience) to each group.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247089-360857f8-ada3-46af-ac82-e41fc99274b5.png" alt="add_new_rule_empty" />
+  <img src="/images/experiments/types/aa-test/163247089-360857f8-ada3-46af-ac82-e41fc99274b5.png" alt="add_new_rule_empty" />
 </Frame>
 
 
 To do this, under **Criteria** select **Everyone** (you may need to scroll up), name your rule, and then change the **Pass Percentage** to 50%. Click **Add Rule** and that’s it! Tap **Save Changes** in the upper right-hand corner.  
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247141-30c96f8a-8257-4b39-aa9f-830bb3c89228.png" alt="add_new_rule_filled" />
+  <img src="/images/experiments/types/aa-test/163247141-30c96f8a-8257-4b39-aa9f-830bb3c89228.png" alt="add_new_rule_filled" />
 </Frame>
 
 Your feature gate setup should now look as follows-  
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247211-aacb2c54-1088-4c4a-ab7b-64e393383bdb.png" alt="aa_rule_filled_out" />
+  <img src="/images/experiments/types/aa-test/163247211-aacb2c54-1088-4c4a-ab7b-64e393383bdb.png" alt="aa_rule_filled_out" />
 </Frame>
 
 Check that it is working as expected by typing in some dummy user IDs into the console- roughly 50% of the time your IDs should pass, and 50% of the time they should fail.  
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247281-c0fb8089-f418-41af-a3a7-d8e684a3cdf3.png" alt="check_rule_pass" />
+  <img src="/images/experiments/types/aa-test/163247281-c0fb8089-f418-41af-a3a7-d8e684a3cdf3.png" alt="check_rule_pass" />
 </Frame>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png" alt="check_rule_fail" />
+  <img src="/images/experiments/types/aa-test/163247287-7d565983-8253-4841-a65a-0f74d2e103b2.png" alt="check_rule_fail" />
 </Frame>
 
 ## Step 2: Check the feature gate in your code
@@ -66,7 +66,7 @@ statsig.checkGate("aatest_example")
 Now when a user renders this page in their client application, you will automatically start to see a live log stream in the Statsig console when you navigate to the **Diagnostics** tab for your feature gate. 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247712-4610d7b4-188f-4418-a696-127b3c2f54da.png" alt="logstream" />
+  <img src="/images/experiments/types/aa-test/163247712-4610d7b4-188f-4418-a696-127b3c2f54da.png" alt="logstream" />
 </Frame>
 
 ## Step 3: Review A/A test results 
@@ -74,7 +74,7 @@ Now when a user renders this page in their client application, you will automati
 Within 24 hours of starting your experiment, you'll see the cumulative exposures in the **Pulse Results** tab of your feature gate. 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163247787-be1e816c-f715-4fd3-ad59-3a6caf48027a.png" alt="cumulative_exposures" />
+  <img src="/images/experiments/types/aa-test/163247787-be1e816c-f715-4fd3-ad59-3a6caf48027a.png" alt="cumulative_exposures" />
 </Frame>
 
 This will break down your logged exposures (as well as the distribution of the logged exposures). If something looks off, check the **Diagnostics** tab for more granular, day-by-day exposure breakdowns at both the Checks and User level.  
@@ -83,7 +83,7 @@ In the **Metric Lifts** panel, you can see the full picture of how all your tagg
 
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png" alt="pulse_results_empty" />
+  <img src="/images/experiments/types/aa-test/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png" alt="pulse_results_empty" />
 </Frame>
 
 What should you expect to see?  
@@ -125,5 +125,5 @@ You can download the running history of your simulated A/A test performance via 
 | avg_participating_units_per_test | The number of units in the test with a value for this metric        |
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/31516123/199562491-84d9b7c4-1cea-4308-a0a9-c04a14a41671.png" alt="A/A test results table showing statistical significance percentages" />
+  <img src="/images/experiments/types/aa-test/199562491-84d9b7c4-1cea-4308-a0a9-c04a14a41671.png" alt="A/A test results table showing statistical significance percentages" />
 </Frame>

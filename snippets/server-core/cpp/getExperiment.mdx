@@ -1,0 +1,22 @@
+```cpp
+// Get a experiment for a specific user
+statsig_cpp_core::Experiment exp = statsig.getExpriment(user, "an_experiment");
+
+// Access config values (We will provide accessors)
+auto product_name = exp.value.get("product_name", "Awesome Product v1");
+auto price = exp.value.get("price", 10.0);
+
+
+// Access evaluation details such as rule id 
+statsig_cpp_core::EvaluationDetails detail = exp.details;
+std::cout << exp.rule_id << std::endl;  // The ID of the rule that served this config
+std::cout << exp.id_type << std::endl;  // The type of the evaluation (experiment, config, etc)
+
+// Advanced Usage:
+// You can disable exposure logging for this specific check
+ExperimentEvaluationOptions options;
+options.disable_exposure_logging = true;
+config = statsig.getExperiment(user, "an_experiment", options);
+
+
+```

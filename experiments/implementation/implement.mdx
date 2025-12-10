@@ -55,6 +55,20 @@ Once experiments are launched, you can't edit the groups without restarting the 
   <img src="/images/experiments/experiment_test_button.png" alt="Experiment test button interface" />
 </Frame>
 
+Once the experiment is enabled for a lower environment, the experiment status will shift from “Not Started” to “Testing”.
+
+<Frame>
+  <img src="/images/experiments/lower_environment_results.png" alt="Lower environment resalt" />
+</Frame>
+
+In the results section, you can track cumulative exposures and metric results collected from lower environments. Results data will be displayed in aggregate across all lower environments and won't be distinguishable between individual environments. Metric data and exposure data will be retained even when the experiment is repeatedly disabled and re-enabled for the lower environment. 
+
+You can resalt experiment in lower environments. This is helpful in the situation where a given user is looking to re-test the experiment E2E. 
+
+<Frame>
+  <img src="/images/experiments/lower_environment_resalt.png" alt="Lower environment resalt" />
+</Frame>
+
 ## Starting your experiments
 
 Once your experiment has metrics, parameters, and a hypothesis - and you've tested it in a lower environment, you're ready to launch! Click the "Start" button and your experiment will be immediately live in Production.

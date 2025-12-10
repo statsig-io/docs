@@ -33,13 +33,13 @@ Statsig Metric Sources can use a query or a table as the source of their data.
 A query-based source will read a SQL query and use that as a source of truth. This, plus Statsig's built-in [query macros](/statsig-warehouse-native/configuration/query-tools), provides an efficient and extremely flexible way to create experimental data sources.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/2cec3d01-f852-4007-aa3b-de276418593b" alt="Screenshot 2024-06-11 at 2 56 22 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/2cec3d01-f852-4007-aa3b-de276418593b.png" alt="Query-based metric source configuration" />
 </Frame>
 
 For larger or managed datasets, it's recommended to use table sources instead. This will minimize data scan and provides a more 1:1 mapping of "data source" to "metric source".
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/04cb0209-580c-4603-a5db-45a08f00f90b" alt="Screenshot 2024-06-11 at 2 56 26 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/04cb0209-580c-4603-a5db-45a08f00f90b.png" alt="Table-based metric source configuration" />
 </Frame>
 
 ### Configuring Data
@@ -47,13 +47,13 @@ For larger or managed datasets, it's recommended to use table sources instead. T
 For any source, you'll be asked to select which field to use for the timestamp of the logs/metrics being provided, as well as 1 to N user identifiers that can be used to join to experiment data.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/9a972d93-3500-4947-89e7-c144b877887f" alt="Screenshot 2024-06-11 at 3 03 21 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/9a972d93-3500-4947-89e7-c144b877887f.png" alt="Interface for selecting timestamp and ID fields" />
 </Frame>
 
 For table sources, you can optionally provide a partitioning column to reduce data scan, and provide aliases to format data as desired and make your column names more human-readable.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/4b388fac-1124-4606-88f6-a0615bd32b18" alt="Screenshot 2024-06-11 at 3 04 55 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/4b388fac-1124-4606-88f6-a0615bd32b18.png" alt="Partition and alias settings for table source" />
 </Frame>
 
 ### Types of Data
@@ -75,7 +75,7 @@ Both of these sources can be used interchangeably and simultaneously.
 In the metric source tab, you can see your metric sources and the metrics/experiments they're being used in. This varies; in some cases, it can make sense to have a broad metric source that's reused with many metrics using different filters and aggregations. In others, a metric source might exist for one metric (such as a set of specific events for a funnel).
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/102695539/264087800-18970974-b639-4d73-8977-e54de752ae0a.png" alt="Metric Source Page" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/264087800-18970974-b639-4d73-8977-e54de752ae0a.png" alt="Metric sources list showing usage across metrics" />
 </Frame>
 
 ### Programmatic Updates
@@ -93,7 +93,7 @@ Statsig to see.
 When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618" alt="Timestamp granularity configuration interface" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/f0edfdaf-9531-4583-b440-d05f0f3c3618.png" alt="Timestamp granularity configuration interface" />
 </Frame>
 
 When this setting is **not** enabled, the system performs a timestamp-based join. This means that events are attributed to the experiment results based on the exact time they occur in relation to the exposure time. For example, if a user is exposed to an experiment at `2024-01-01T11:00:00` and an event occurs at `2024-01-01T11:01:00` on the same day, the event will be attributed to the experiment results because it happened after the exposure. Conversely, if the event occurs at `2024-01-01T10:59:00`, just before the exposure, it will not be attributed to the experiment results since it happened prior to the exposure.

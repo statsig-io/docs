@@ -13,17 +13,17 @@ Statsig offers two ways to manage the end-of-life for your metrics.
 There are two ways to archive a metric: 
 1) In your Metric Catalog, select the metric(s) you want to archive to see a toolbar of options appear to **Archive**, **Compare**, or **Tag**. Select the **Archive** icon.
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215638876-3c2ae682-8db8-4dc7-9c14-3b4d7185f57e.png" alt="Bulk Archive" />
+  <img src="/images/metrics/archiving-metrics/215638876-3c2ae682-8db8-4dc7-9c14-3b4d7185f57e.png" alt="Bulk Archive" />
 </Frame>
 
 2) In the Metrics Detail View page, select the "..." in the upper right-hand corner, and select **Archive**. 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215639240-321b4e3f-d9c7-4f7d-ab77-9e18ba1c5867.png" alt="Archive" />
+  <img src="/images/metrics/archiving-metrics/215639240-321b4e3f-d9c7-4f7d-ab77-9e18ba1c5867.png" alt="Archive" />
 </Frame>
 
 Once you select Archive, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215640348-b210eb9e-5475-4853-869f-7a9f66375f0a.png" alt="Archive dependencies" />
+  <img src="/images/metrics/archiving-metrics/215640348-b210eb9e-5475-4853-869f-7a9f66375f0a.png" alt="Archive dependencies" />
 </Frame>
 While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the archival. This is because archival of a metric stops its computation, and we don't want other dependent metric values impacted by this archival.
 
@@ -45,12 +45,12 @@ _After the 24-hour grace period has ended,_
 If you mistakenly archived a metric you can undo your Archival. 
 - _During_ the 24-hour grace period: Click "undo" on the archival banner at the top of the Metrics Detail View page. Since you **Unarchived** before the grace period ended (when the metric is no longer computed), this will restore the  metric to both your Metrics Catalog as well as any experiment results that include the metric.  
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215640435-412375f7-398b-4bef-9495-cc20d1805769.png" alt="Archive Grace Period" />
+  <img src="/images/metrics/archiving-metrics/215640435-412375f7-398b-4bef-9495-cc20d1805769.png" alt="Archive Grace Period" />
 </Frame>
 
 - _After_ the 24-hour grace period: Either a) go to the last few pages of your Metrics Catalog, select the archived metric(s) you want to **Unarchive** to see a toolbar of options appear, and select the **Unarchive** icon OR b) in the Metrics Detail View page of an archived metric, select "Unarchive" in the banner indicating metric's archival
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215640543-7cb05d46-e61d-4cf4-a07c-eb76c9f50e36.png" alt="Archive after grace period" />
+  <img src="/images/metrics/archiving-metrics/215640543-7cb05d46-e61d-4cf4-a07c-eb76c9f50e36.png" alt="Archive after grace period" />
 </Frame>
 
 Since the grace period has ended and the metric has stopped being computed already, its calculation will restart from scratch and history will not be restored. 
@@ -60,7 +60,7 @@ Since the grace period has ended and the metric has stopped being computed alrea
 To combat metric clutter, Statsig offers a default auto-archival feature that cleans up metrics that have not been in-use for at least 60 days. Metric creators and admins will get a warning about a week before archival happens, at which time they can either choose to extend the metric for another 60 days or mark it as permanent. The entire process is outlined below:
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/132317445/c7912507-636f-4f33-9555-70180dfd205e" alt="State graph" />
+  <img src="/images/metrics/archiving-metrics/c7912507-636f-4f33-9555-70180dfd205e.png" alt="State graph" />
 </Frame>
 
 #### How do we measure activity?
@@ -73,7 +73,7 @@ Statsig counts the number of times the custom metric is used in one or more of t
 If a metric is in use, it will be considered as active. You can see a summary of a metric’s usage on the metric’s main page:
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/132317445/6f7eb3db-399a-45c8-be19-794e89dd349d" alt="Metric References" />
+  <img src="/images/metrics/archiving-metrics/6f7eb3db-399a-45c8-be19-794e89dd349d.png" alt="Metric References" />
 </Frame>
 
 At the same time, we are also detecting (1) any edits to the metrics, including changing any fields in the setup or restoring a previous version, (2) adding tags to the metrics, or (3) creating or modifying an alert on the metric. Any such interaction would restart the 60 day clock.
@@ -83,20 +83,20 @@ At the same time, we are also detecting (1) any edits to the metrics, including 
 Any tracked action above (adding it to a scorecard, etc) will also take the metric out of the archival queue. Outside of that, if you want to pause the archival process, you may simply extend the metric for another 60 days. We also give you an option to mark it as permanent, which takes it out of the auto-archival process entirely. We recommend this only for the most important and widely reused metrics.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/132317445/d7378d7b-a588-496b-ae35-24f38c6d5b6a" alt="Banner" />
+  <img src="/images/metrics/archiving-metrics/d7378d7b-a588-496b-ae35-24f38c6d5b6a.png" alt="Banner" />
 </Frame>
 
 
 Another way to mark it as permanent by clicking into the setup dropdown from the metrics page and selecting “Mark as Permanent”
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/132317445/2a570a92-76d6-41b3-aea5-ebdd53469856" alt="Dropdown" />
+  <img src="/images/metrics/archiving-metrics/2a570a92-76d6-41b3-aea5-ebdd53469856.png" alt="Dropdown" />
 </Frame>
 
 If you’d like to turn off auto-archiving entirely for your project, you may do so in the Project Settings page
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/132317445/74cd5575-e1bb-4f69-87f9-1feece5eb73f" alt="Project Settings" />
+  <img src="/images/metrics/archiving-metrics/74cd5575-e1bb-4f69-87f9-1feece5eb73f.png" alt="Project Settings" />
 </Frame>
 
 
@@ -105,18 +105,18 @@ If you’d like to turn off auto-archiving entirely for your project, you may do
 ### Deleting a Metric 
 To delete a metric, go the Metrics Detail View page of a metric you wish to delete, select the "..." in the upper right-hand corner, and select **Delete**. 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215641202-82f23bac-f620-4d4a-8c32-fe64a4ffc06c.png" alt="Delete metric" />
+  <img src="/images/metrics/archiving-metrics/215641202-82f23bac-f620-4d4a-8c32-fe64a4ffc06c.png" alt="Delete metric" />
 </Frame>
 
 Once you select Delete, Statsig will check if this metric is used in any feature gates, experiments, or other metrics. While feature gate or experiment dependencies will be shown as soft warnings (no action necessary), metric dependencies will require you to remove the dependency first, before proceeding with the deletion, so that other dependent metric values are not impacted by this deletion.
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215641295-55c8dc10-7199-4505-ba0e-d02299fb371a.png" alt="Dependencies" />
+  <img src="/images/metrics/archiving-metrics/215641295-55c8dc10-7199-4505-ba0e-d02299fb371a.png" alt="Dependencies" />
 </Frame>
 
 
 Once you have no metric dependencies, you will start a 24-hour grace period during which you'll be able to undo the deletion. In the Metrics Detail View page, you will see a new banner appear at the top of the page, indicating the start of the grace period. 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/120431069/215641634-1c70e688-0fe9-4cac-80bb-d3faeedcc0ed.png" alt="Undo delete" />
+  <img src="/images/metrics/archiving-metrics/215641634-1c70e688-0fe9-4cac-80bb-d3faeedcc0ed.png" alt="Undo delete" />
 </Frame>
 
 

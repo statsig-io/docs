@@ -16,24 +16,24 @@ as their defaults. These are the values that _all_ your users will see going for
 
 For example, suppose you have a **Demo Layer** that's configured with a parameter, **a_param**. It's default value is set to _layer_default_ as shown below.
 
-<img width="746" alt="image" src="https://user-images.githubusercontent.com/1315028/162633143-3ddd9652-4e99-4760-aac0-c89dec8ce70c.png" />
+<img width="746" alt="Layer configuration showing default parameter value before experiment" src="/images/experiments/ending/make-decision/162633143-3ddd9652-4e99-4760-aac0-c89dec8ce70c.png" />
 
 Say you decide to create an experiment, **Demo Experiment** in **Demo Layer** as shown below. 
 
-<img width="383" alt="image" src="https://user-images.githubusercontent.com/1315028/162633041-633de059-f676-4f76-a0ef-4d17b03648a0.png" />
+<img width="383" alt="Experiment creation dialog in Demo Layer with control and test groups" src="/images/experiments/ending/make-decision/162633041-633de059-f676-4f76-a0ef-4d17b03648a0.png" />
 
 You set up **Demo Experiment** with two groups: **Control** and **Test**, intending to experiment with new values for the layer-level parameter, **a_param** as shown below.
 
-<img width="630" alt="image" src="https://user-images.githubusercontent.com/1315028/162633712-a5e889dd-32ba-4248-8524-b6d5555b4dfd.png" />
+<img width="630" alt="Experiment parameter table comparing control and test values for a_param" src="/images/experiments/ending/make-decision/162633712-a5e889dd-32ba-4248-8524-b6d5555b4dfd.png" />
 
 
 Now if you decide to ship the **Control** group for the **Demo Experiment**, **a_param** will take the value set for the **Control** group as its default: _experiment_one_control_
 
-<img width="455" alt="image" src="https://user-images.githubusercontent.com/1315028/162630956-1ffaa81f-c95f-4df7-9ced-b138cfe26d96.png" />
+<img width="455" alt="Layer defaults updated to use control group value experiment_one_control" src="/images/experiments/ending/make-decision/162630956-1ffaa81f-c95f-4df7-9ced-b138cfe26d96.png" />
 
 On the other hand, if you decide to ship the **Test** group, **a_param** will take the value set for the **Test** group as its default: _experiment_two_test_
 
-<img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162631111-daf31f6f-156b-481e-aa01-f29743f7e20a.png" />
+<img width="454" alt="Layer defaults updated to use test group value experiment_two_test" src="/images/experiments/ending/make-decision/162631111-daf31f6f-156b-481e-aa01-f29743f7e20a.png" />
 
 
 ## Experiment With a Targeting Gate / Targeting Rules
@@ -56,7 +56,7 @@ _targeted_layer_default_value_.
 When you decide to ship **Demo Experiment**, if you discontinue targeting, 
 **targeted_layer_param** will now take on the value from the **Control** group, _targeted_layer_control_, as its default. 
 
-<img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162630927-e4b147a3-5b68-41d0-a439-f90ab001d737.png" />
+<img width="454" alt="Targeted layer parameter default switching to control value when targeting disabled" src="/images/experiments/ending/make-decision/162630927-e4b147a3-5b68-41d0-a439-f90ab001d737.png" />
 
 On the other hand, if you decide to continue targeting, 
 **targeted_layer_param** will now acquire an override so that:
@@ -65,7 +65,7 @@ On the other hand, if you decide to continue targeting,
 
 In this case, the default value of **targeted_layer_param** in **Demo Layer** will not change. Also, any users who pass the targeting gate will not be eligible for future experiments run in this layer. For this reason, we do not encourage shipping experiments with targeting on, especially when the experiment is in a layer.
 
-<img width="454" alt="image" src="https://user-images.githubusercontent.com/1315028/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
+<img width="454" alt="Layer override showing targeted users receiving shipped parameter while others keep default" src="/images/experiments/ending/make-decision/162634627-ae327d9e-81a9-42f9-8171-836808cb6ffb.png" />
 
 ## Rolling Out an Experiment Group
 Rolling out an experiment group is an option available when you have decided the winning variant, but want to avoid a sudden, large shift of traffic into the winning variant group. You can use automated rollouts to schedule gradual rollout phases, which will increase your shipped group size to the desired percentage by reallocating users from all other groups proportionally.
@@ -74,19 +74,19 @@ Rolling out an experiment group is an option available when you have decided the
 To set up rollouts, open the make decision form and select the winning group. Here you will be able to either use automated rollouts, or ship with rollout.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/549864e9-0509-4b44-a588-fd10ace1e365" alt="Make decision rollout options interface" />
+  <img src="/images/experiments/ending/make-decision/549864e9-0509-4b44-a588-fd10ace1e365.png" alt="Make decision rollout options interface" />
 </Frame>
 
 The ship with rollout option allows you to immediately update the shipped group size. Manual rollouts will clear any automated rollout phases.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/f200b795-0442-49ed-8c13-e220b3a77a81" alt="Ship with rollout configuration screen" />
+  <img src="/images/experiments/ending/make-decision/f200b795-0442-49ed-8c13-e220b3a77a81.png" alt="Ship with rollout configuration screen" />
 </Frame>
 
 Alternatively, you can set up automated rollouts, which will open the following dialog that you can populate with the rollout phases: 
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/6fab7c0e-2566-4d14-bdb6-b94102fb08ac" alt="Automated rollout phases configuration dialog" />
+  <img src="/images/experiments/ending/make-decision/6fab7c0e-2566-4d14-bdb6-b94102fb08ac.png" alt="Automated rollout phases configuration dialog" />
 </Frame>
 
 From here, you can configure each phase of your Scheduled Rollout. To add phases to your rollout, click **Add Phase** and configure as many phases as you want. 
@@ -102,7 +102,7 @@ Rollout times are available in 15 minute increments. Additionally, each configur
 
 Upon saving, you will be able to see a preview of the rollout and commit the schedule:
 <Frame>
-  <img src="https://github.com/user-attachments/assets/f1fd04b3-e6a0-4e32-91a8-fb24279ab923" alt="Rollout schedule preview and commit interface" />
+  <img src="/images/experiments/ending/make-decision/f1fd04b3-e6a0-4e32-91a8-fb24279ab923.png" alt="Rollout schedule preview and commit interface" />
 </Frame>
 
 ### Resizing Logic
@@ -143,27 +143,38 @@ This is currently a beta feature.
 
 Shipping with holdback lets you release an experiment variant (the “shipped” group) to most of your users while keeping a percentage in the control group for ongoing comparisons. Here’s how it works:
 
-
 1. Make a decision and select a group to ship: From the Make Decision dropdown, choose which variant you want to ship.
-2. Turn on the Ship with holdback option and specify the percentage of users you want to remain in the control (holdback) group.
 
-<img width="597" alt="image" src="https://github.com/user-attachments/assets/046fcb33-d4c0-4ca4-b58a-1c8e931b6161" />
+2. Turn on the Ship with holdback option and specify the percentage of users you want to keep in the control (holdback) group.
+
+<img width="597" alt="Ship with holdback dialog specifying control percentage in Make Decision modal" src="/images/experiments/ending/make-decision/046fcb33-d4c0-4ca4-b58a-1c8e931b6161.png" />
 
 3. Allocation of users:
         The control (holdback) group is set to your specified percentage.
         The remaining users are assigned to the shipped experience.
+
 4. Splitting the shipped group:
         The shipped group is divided into two segments: Test and Launched.
-        The Test segment matches the same percentage allocation as the holdback group, allowing a direct head-to-head comparison with control.
-        The Launched segment no longer appears in pulse results, but continues to receive the shipped experience.
+        - The size of Test segment will have the same percentage allocation as the holdback group for an [equal sized comparison](https://docs.statsig.com/experiments/holdouts-introduction#how-to-read-holdouts) of 50:50.
+        - The Launched segment will no longer appear in the pulse results, but users in this segment will continue to receive the shipped experience.
 
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/48f999c5-f7d0-47fd-9af8-96512802d6cf" />
+<img width="959" alt="Pulse results display separating test and launched segments when shipping with holdback" src="/images/experiments/ending/make-decision/48f999c5-f7d0-47fd-9af8-96512802d6cf.png" />
 
-5. Continue monitoring the pulse results evaluating the Test segment vs. Control (holdback)
+5. Continue monitoring the pulse results that evaluates the Test segment vs. Control (holdback)
+
+6. Once you decide to end the holdback, you can make a decision to ship the variant to everyone which will include users in holdback.
 
 <Note>
-Some users currently in control will move to the shipped group to achieve the desired allocation. However, any user who has previously been in a test or shipped group will not be reassigned to control. New users—those who have never been exposed to the experiment will be assigned based on the allocation percentages of each group.
+Some users currently in control will move to the shipped group to achieve the desired allocation.
+However, any user who has previously been in a test or shipped group will not be reassigned to control.
+New users—those who have never been exposed to the experiment will be assigned based on the allocation percentages of each group.
 </Note>
+
+Note that the new pulse results (Test segment vs. Holdback) will start when you ship with holdback, but your original experiment's results from the point of holdback decision will be retained and remain available to you.
+
+From the history of experiment, you will see the new log of experiment decision and a 'View Results Snapshot' button where you can view the read-only snapshot of original results.
+
+<img alt="Snapshot of original experiment when using ship with holdback" src="/images/experiments/ending/make-decision/ship_with_holdback.png" />
 
 By using shipping with holdback, you maintain a dedicated, stable control group alongside a representative test segment of the shipped experience, making it easy to measure ongoing performance and user behavior post-launch.
 
