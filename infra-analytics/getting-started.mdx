@@ -75,7 +75,7 @@ const sdk = new NodeSDK({
   traceExporter: new OTLPTraceExporter({
    url: 'https://api.statsig.com/otlp/v1/traces',
    // or
-   // url: <your-collector-endpoint>/v1/metrics
+   // url: <your-collector-endpoint>/v1/traces
    headers,
   }),
   metricReader: new PeriodicExportingMetricReader({
@@ -212,7 +212,7 @@ export async function register() {
     traceExporter: new OTLPTraceExporter({
      url: 'https://api.statsig.com/otlp/v1/traces',
     // or
-    // url: <your-collector-endpoint>/v1/metrics
+    // url: <your-collector-endpoint>/v1/traces
      headers,
     }),
     metricReader: new PeriodicExportingMetricReader({
