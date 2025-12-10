@@ -648,9 +648,24 @@
           "type": "object",
           "additionalProperties": true,
           "description": "SDK metadata for tracking SDK type, version, and other diagnostic information",
+          "properties": {
+            "sdkType": {
+              "type": "string",
+              "description": "SDK type sending the request (e.g., js-client)"
+            },
+            "sdkVersion": {
+              "type": "string",
+              "description": "SDK version"
+            },
+            "exposureLoggingDisabled": {
+              "type": "boolean",
+              "description": "When true, prevents the HTTP API from automatically logging exposures. Use this only if you will handle exposure logging yourself."
+            }
+          },
           "example": {
             "sdkType": "js-client",
-            "sdkVersion": "4.20.0"
+            "sdkVersion": "4.20.0",
+            "exposureLoggingDisabled": false
           }
         },
         "ExposureEventMetadata": {
