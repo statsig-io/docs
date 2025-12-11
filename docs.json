@@ -355,16 +355,7 @@
               {
                 "group": "Statsig + AI",
                 "pages": [
-                  {
-                    "group": "MCP",
-                    "pages": [
-                      "integrations/mcp/overview",
-                      "integrations/mcp/codex",
-                      "integrations/mcp/cursor",
-                      "integrations/mcp/claude-code",
-                      "integrations/mcp/manual-setup"
-                    ]
-                  },
+                  "integrations/mcp/overview",
                   "integrations/ai_development_with_statsig"
                 ]
               },
