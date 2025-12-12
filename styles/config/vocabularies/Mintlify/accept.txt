@@ -339,6 +339,7 @@ dyncon
 Ecommerce
 edgeconfig
 Edgeworkers
+Edu
 eg
 elif
 enable_id_lists
