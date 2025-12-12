@@ -355,8 +355,6 @@
               {
                 "group": "Statsig + AI",
                 "pages": [
-                  "integrations/ai_development_with_statsig",
-                  "integrations/github_ai_integration",
                   {
                     "group": "MCP",
                     "pages": [
@@ -367,7 +365,8 @@
                       "integrations/mcp/claude-code",
                       "integrations/mcp/manual-setup"
                     ]
-                  }
+                  },
+                  "integrations/ai_development_with_statsig"
                 ]
               },
               {
