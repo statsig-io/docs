@@ -19,7 +19,7 @@ Integrating your code repository unlocks the following capabilities:
 * Locate specific lines of code where a Feature Gate or Experiment is implemented  
 * Automatically generate Pull Requests to remove stale flags from code  
 * Understand the intent behind metrics and experiments based on code implementation  
-* Write natural language queries to create charts to answer business questions
+* Write natural language queries to create charts to answer business questions (Coming Soon)
 
 ## Why Connect Your Codebase
 
@@ -35,12 +35,9 @@ Before you begin, ensure you have Admin permissions in both your Statsig Project
 
 ### Pre-requisites
 
-If your organization uses [IP restrictions](https://docs.github.com/en/apps/maintaining-github-apps/managing-allowed-ip-addresses-for-a-github-app) to limit access to your GitHub resources, you must allowlist the IP addresses that Statsig services use to connect to GitHub.
+If your organization uses IP restrictions to limit access to your GitHub resources, you must allowlist the IP addresses that Statsig services use to connect to GitHub. Please perform the steps outlined in this [Github doc] (https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-allowed-ip-addresses-for-your-organization) to allowlist IP addresses for your Organization.
 
-Please add the following Statsig IP addresses to your GitHub allowlist:
-
-* *\[Placeholder: IP Address 1\]*  
-* *\[Placeholder: IP Address 2\]*
+If you choose to manually add IP addresses, you can find Statsig's IP ranges [here](https://docs.statsig.com/infrastructure/statsig_ip_ranges#statsig-ip-ranges). 
 
 ### First-time Installation
 
