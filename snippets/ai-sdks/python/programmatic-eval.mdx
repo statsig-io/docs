@@ -1,0 +1,78 @@
+```python
+from statsig_ai import Eval, EvalScorerArgs, EvalDataRecord, EvalHook
+
+# Basic evaluation with a single scorer
+result = Eval(
+    name='greeting_task',
+    data=[
+        {'input': 'world', 'expected': 'Hello world'},
+        {'input': 'test', 'expected': 'Hello test'},
+    ],
+    task=lambda input: f'Hello {input}',
+    scorer=lambda args: args.output == args.expected,
+    eval_run_name='run-123',
+)
+
+# Multiple named scorers
+result2 = Eval(
+    name='multi_scorer_task',
+    data=[
+        {'input': 'world', 'expected': 'Hello world'},
+        {'input': 'test', 'expected': 'Hello test'},
+    ],
+    task=lambda input: f'Hello {input}',
+    scorer={
+        'correctness': lambda args: args.output == args.expected,
+        'starts_with_hello': lambda args: args.output.startswith('Hello'),
+        'length_check': lambda args: len(args.output) > 5,
+    },
+)
+
+# Using parameters
+def task_with_params(input: str, hook: EvalHook) -> str:
+    prefix = hook.parameters.get('prefix', 'Hello')
+    return f'{prefix} {input}'
+
+result3 = Eval(
+    name='parameterized_task',
+    data=[
+        {'input': 'world', 'expected': 'Hi world'},
+    ],
+    task=task_with_params,
+    scorer=lambda args: args.output == args.expected,
+    parameters={'prefix': 'Hi', 'suffix': '!', 'number': 123},
+)
+
+# Extras: Categories and summary scores
+def summary_scorer(results):
+    correct = sum(1 for r in results if r.scores.get('correctness', 0.0) == 1.0)
+    return {
+        'accuracy': correct / len(results) if results else 0.0,
+        'total': len(results),
+    }
+
+result4 = Eval(
+    name='categorized_with_summary',
+    data=[
+        {'input': 'world', 'expected': 'Hello world', 'category': 'greeting'},
+        {'input': 'test', 'expected': 'Hello test', 'category': ['greeting', 'test']},
+        {'input': 'foo', 'expected': 'Goodbye foo', 'category': 'farewell'},
+    ],
+    task=lambda input: f'Hello {input}',
+    scorer={
+        'correctness': lambda args: args.output == args.expected,
+    },
+    summary_score_fn=summary_scorer,
+)
+
+# Using EvalDataRecord dataclass
+result5 = Eval(
+    name='dataclass_records',
+    data=[
+        EvalDataRecord(input='world', expected='Hello world'),
+        EvalDataRecord(input='test', expected='Hello test'),
+    ],
+    task=lambda input: f'Hello {input}',
+    scorer=lambda args: args.output == args.expected,
+)
+```
