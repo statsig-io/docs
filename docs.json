@@ -23,7 +23,12 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": ["copy", "chatgpt", "cursor", "vscode"]
+    "options": [
+      "copy",
+      "chatgpt",
+      "cursor",
+      "vscode"
+    ]
   },
   "integrations": {
     "ga4": {
@@ -41,7 +46,11 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform", "support-options"]
+            "pages": [
+              "welcome",
+              "understanding-platform",
+              "support-options"
+            ]
           },
           {
             "group": "Experiments",
@@ -265,6 +274,12 @@
                   "infra-analytics/overview",
                   "infra-analytics/getting-started",
                   {
+                    "group": "Traces Explorer",
+                    "pages": [
+                      "infra-analytics/send-traces"
+                    ]
+                  },
+                  {
                     "group": "Logs Explorer",
                     "pages": [
                       "infra-analytics/logs-explorer",
@@ -285,7 +300,10 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
+                ]
               }
             ]
           },
@@ -355,7 +373,9 @@
               },
               {
                 "group": "Control Panel",
-                "pages": ["control-panel/overview"]
+                "pages": [
+                  "control-panel/overview"
+                ]
               },
               {
                 "group": "Data & Metrics",
@@ -775,7 +795,10 @@
           {
             "group": "AI SDKs",
             "icon": "brain",
-            "pages": ["ai-evals/node", "ai-evals/python"]
+            "pages": [
+              "ai-evals/node",
+              "ai-evals/python"
+            ]
           },
           {
             "group": "More SDK Methods",
@@ -1067,7 +1090,10 @@
               "infrastructure/introduction",
               {
                 "group": "Open Telemetry",
-                "pages": ["/infra-analytics/getting-started"]
+                "pages": [
+                  "/infra-analytics/getting-started",
+                  "/infra-analytics/send-traces"
+                ]
               },
               "server/concepts/cloudflare",
               {
