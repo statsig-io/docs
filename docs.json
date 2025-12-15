@@ -339,7 +339,18 @@
                 "pages": [
                   "integrations/mcp",
                   "integrations/ai_development_with_statsig",
-                  "integrations/github_ai_integration"
+                  "integrations/github_ai_integration",
+                  {
+                    "group": "MCP",
+                    "pages": [
+                      "integrations/mcp/overview",
+                      "integrations/mcp/codex",
+                      "integrations/mcp/chatgpt-connector",
+                      "integrations/mcp/cursor",
+                      "integrations/mcp/claude-code",
+                      "integrations/mcp/manual-setup"
+                    ]
+                  }
                 ]
               },
               {

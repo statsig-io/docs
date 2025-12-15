@@ -1,0 +1,25 @@
+---
+title: MCP Manual Setup
+sidebarTitle: Manual Setup
+---
+
+## MCP Server Configuration
+
+Add the following MCP server configuration JSON to your tool's config file:
+
+```json
+{
+  "mcpServers": {
+    "statsig": {
+      "command": "npx mcp-remote https://api.statsig.com/v1/mcp --header statsig-api-key:${AUTH_TOKEN}",
+      "env": {
+        "AUTH_TOKEN": "insert-your-statsig-console-api-key-here"
+      }
+    }
+  }
+}
+```
+
+Replace the token with your Statsig Console API key from `https://console.statsig.com/api_keys`.
+
+

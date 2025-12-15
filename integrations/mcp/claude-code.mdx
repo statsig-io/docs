@@ -1,0 +1,15 @@
+---
+title: MCP Setup for Claude Code
+sidebarTitle: Claude Code
+---
+
+## Setup in Claude Code
+
+We recommend using the HTTP transport directly:
+
+```bash
+claude mcp add --transport http statsig-local https://api.statsig.com/v1/mcp \
+  --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
+```
+
+
