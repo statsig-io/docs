@@ -1,7 +1,7 @@
 (async function initializeStatsig() {
   const STATSIG_CLIENT_KEY =
     "client-Wql5Tkj3Wa3sE8VpFjWpCHCPHxYZMbq6RfcRZZVHFdm";
-  const STATSIG_SCRIPT_URL = `https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?`;
+    const STATSIG_SCRIPT_URL = `https://cdn.jsdelivr.net/npm/@statsig/js-client@3.30.2-beta.1/build/statsig-js-client+session-replay+web-analytics.min.js?`;
 
   const loadScript = (url) => {
     return new Promise((resolve, reject) => {

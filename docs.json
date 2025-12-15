@@ -274,6 +274,12 @@
                   "infra-analytics/overview",
                   "infra-analytics/getting-started",
                   {
+                    "group": "Traces Explorer",
+                    "pages": [
+                      "infra-analytics/send-traces"
+                    ]
+                  },
+                  {
                     "group": "Logs Explorer",
                     "pages": [
                       "infra-analytics/logs-explorer",
@@ -349,8 +355,24 @@
               {
                 "group": "Statsig + AI",
                 "pages": [
-                  "integrations/mcp",
+                  {
+                    "group": "MCP",
+                    "pages": [
+                      "integrations/mcp/overview",
+                      "integrations/mcp/codex",
+                      "integrations/mcp/chatgpt-connector",
+                      "integrations/mcp/cursor",
+                      "integrations/mcp/claude-code",
+                      "integrations/mcp/manual-setup"
+                    ]
+                  },
                   "integrations/ai_development_with_statsig"
+                ]
+              },
+              {
+                "group": "Control Panel",
+                "pages": [
+                  "control-panel/overview"
                 ]
               },
               {
@@ -1066,7 +1088,8 @@
               {
                 "group": "Open Telemetry",
                 "pages": [
-                  "/infra-analytics/getting-started"
+                  "/infra-analytics/getting-started",
+                  "/infra-analytics/send-traces"
                 ]
               },
               "server/concepts/cloudflare",

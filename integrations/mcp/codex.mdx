@@ -1,0 +1,40 @@
+---
+title: Statsig MCP with Codex
+description: Learn how to set up the Statsig MCP server using Codex CLI or IDE extension.
+---
+
+## Overview
+
+You can set up the Statsig MCP server using an API key on Codex CLI and Codex IDE Extension today.
+
+## Installation
+To setup Statsig MCP with Codex, add the below to your `~/.codex/config.toml` file:
+
+```toml
+[mcp_servers.statsig]
+command = "npx"
+args = ["--yes", "mcp-remote", "https://api.statsig.com/v1/mcp", "--header", "statsig-api-key: console-YOUR-CONSOLE-API-KEY"]
+trust_level = "trusted"
+```
+
+Replace `console-YOUR-CONSOLE-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
+
+
+## Using Statsig MCP with Codex
+
+With Statsig MCP configured in any Codex environment, you can:
+
+- **Explore Experiments**: "List all my active experiments"
+- **Manage Gates**: "What gates are currently stale?"
+- **Configure Dynamic Configs**: "Show me the configuration for the dynamic config 'dynamic-config'"
+- **Get Insights**: "Show me details about the experiment called 'new-checkout-flow'"
+
+## Next Steps
+
+After installation, you can:
+- List experiments, gates, and dynamic configs
+- Create and update experiments, gates, and configs
+- Access your Statsig data directly from Codex
+
+For more information about available MCP capabilities, see the [MCP capabilities](/integrations/mcp#current-mcp-capabilities) section.
+
