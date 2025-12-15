@@ -1,12 +1,64 @@
 ---
-title: MCP Overview
+title: Statsig MCP Overview
 sidebarTitle: Overview
+description: Learn how to set up the Statsig MCP server to interact with your Statsig data using AI tools.
 ---
 
 ## Statsig MCP Server
 
-The Statsig MCP (Model Context Protocol) server lets tools like Cursor and Claude have similar functionality to the Statsig Console. With this setup, you can ask questions, explore experiments, and access your Statsig data using AI.
+The Statsig MCP (Model Context Protocol) server lets tools like Cursor, Claude Code, ChatGPT, and Codex have similar functionality to the Statsig Console. With this setup, you can ask questions, explore experiments, and access your Statsig data using AI.
 
-To get started quickly, see the main setup page: [Statsig MCP Server](/integrations/mcp).
+## Quick Start
 
+Choose your preferred AI tool to get started:
 
+<CardGroup cols={2}>
+  <Card title="Cursor" icon="cursor" href="/integrations/mcp/cursor">
+    Set up Statsig MCP in Cursor IDE with OAuth or API key authentication.
+  </Card>
+  <Card title="Claude Code" icon="message-bot" href="/integrations/mcp/claude-code">
+    Configure Statsig MCP for Claude Code with HTTP transport.
+  </Card>
+  <Card title="ChatGPT" icon="comments" href="/integrations/mcp/chatgpt-connector">
+    Connect Statsig MCP to ChatGPT using the connector feature.
+  </Card>
+  <Card title="Codex" icon="terminal" href="/integrations/mcp/codex">
+    Set up Statsig MCP with Codex CLI or IDE extension.
+  </Card>
+</CardGroup>
+
+For other tools or custom setups, see the [Manual Setup](/integrations/mcp/manual-setup) guide.
+
+## Current MCP Capabilities
+
+The Statsig MCP server provides access to:
+
+- **Experiments**: List, view details, and manage experiments
+- **Feature Gates**: Query and manage feature flags
+- **Dynamic Configs**: Access and modify dynamic configurations
+- **Metrics**: Explore metrics and analytics data
+
+## Use Cases
+
+With Statsig MCP configured, you can:
+
+- **Explore Experiments**: "List all my active experiments"
+- **Manage Gates**: "What gates are currently stale?"
+- **Configure Dynamic Configs**: "Show me the configuration for the dynamic config 'dynamic-config'"
+- **Get Insights**: "Show me details about the experiment called 'new-checkout-flow'"
+
+## Example Prompt for Stale Gate Cleanup
+
+```
+List all feature gates that haven't been modified in the last 90 days 
+and have less than 1% of traffic. Suggest which ones might be safe to archive.
+```
+
+## Authentication
+
+Statsig MCP supports two authentication methods:
+
+1. **OAuth (Recommended)**: Secure browser-based authentication that doesn't require managing API keys
+2. **API Key**: Direct authentication using your Statsig Console API key
+
+OAuth is available for Cursor and Claude Code. For other tools, use API key authentication via the [Manual Setup](/integrations/mcp/manual-setup) guide.
