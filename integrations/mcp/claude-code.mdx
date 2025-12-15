@@ -1,15 +1,70 @@
 ---
-title: MCP Setup for Claude Code
-sidebarTitle: Claude Code
+title: Statsig MCP with Claude Code
+description: Learn how to set up the Statsig MCP server in Claude Code.
 ---
 
-## Setup in Claude Code
+## Installation
 
-We recommend using the HTTP transport directly:
+On Claude Code, we recommend using OAuth and the HTTP transport directly. Run this command on the command line:
+
+```bash
+claude mcp add --transport http statsig https://api.statsig.com/v1/mcp
+```
+
+This command will:
+- Add the Statsig MCP server to your Claude Code configuration
+- Configure it to use HTTP transport with OAuth authentication
+- Set up the connection to Statsig's MCP endpoint
+
+<Accordion title="Using API key instead of OAuth">
+
+While we recommend setting up Statsig MCP via OAuth, you can also authenticate with your Console API key. Run this command on the command line:
 
 ```bash
 claude mcp add --transport http statsig-local https://api.statsig.com/v1/mcp \
   --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
 ```
 
+Replace `console-YOUR-CONSOLE-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
+</Accordion>
+
+## Authentication via OAuth
+To authenticate via OAuth, run `/mcp` in Claude Code and follow the setup instructions:
+
+1. Claude Code will open a browser window
+2. Sign in to your Statsig account
+3. Authorize the MCP server to access your Statsig project
+4. The authentication will be saved for future sessions
+
+## Verification
+
+After installation, you can verify the connection by:
+
+1. Opening Claude Code
+2. Asking Claude to list your Statsig experiments or gates
+3. If configured correctly, Claude will be able to access your Statsig data
+
+## Using Statsig MCP with Claude Code
+
+Once configured, you can interact with your Statsig data through Claude Code:
+
+- **Query Experiments**: "What experiments are currently running?"
+- **Manage Gates**: "List all my feature flags"
+- **Get Details**: "Show me the configuration for gate 'new-feature'"
+- **Create Entities**: "Create a new experiment called 'checkout-test'"
+
+## Troubleshooting
+
+If you encounter issues:
+
+- Make sure you have the latest version of Claude Code
+- Verify your Statsig account has the necessary API permissions
+- Check that the MCP server URL is correct: `https://api.statsig.com/v1/mcp`
+- Try re-running the installation command
+
+## Next Steps
+
+- Learn about [MCP capabilities](/integrations/mcp/overview#current-mcp-capabilities)
+- Explore [use cases](/integrations/mcp/overview#use-cases) for Statsig MCP
+- Set up Statsig MCP in other tools: [Cursor](/integrations/mcp/cursor), [Codex](/integrations/mcp/codex)
