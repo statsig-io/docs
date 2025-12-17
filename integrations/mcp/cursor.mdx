@@ -41,7 +41,7 @@ While we recommend setting up Statsig MCP via OAuth, you can also authenticate w
 {
   "mcpServers": {
     "statsig": {
-      "command": "npx mcp-remote https://api.statsig.com/v1/mcp --header statsig-api-key:${AUTH_TOKEN}"
+      "command": "npx mcp-remote https://api.statsig.com/v1/mcp --header statsig-api-key:${AUTH_TOKEN}",
       "env": {
         "AUTH_TOKEN": "console-YOUR-CONSOLE-API-KEY"
       }
