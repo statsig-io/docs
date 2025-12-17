@@ -1,27 +1,34 @@
-Persistent storage allows the SDK to cache feature specifications locally, enabling faster initialization and offline operation.
+Persistent storage allows the SDK to persist sticky experiment assignments for users, ensuring they see consistent experiment variants across sessions.
 
 <CodeGroup>
 ```java Java
 import com.statsig.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class MyPersistentStorage implements PersistentStorage {
+    private Map<String, Map<String, StickyValues>> storage = new HashMap<>();
+
     @Override
-    public void save(String key, String data) {
-        // Save data to your persistent storage (e.g., file, database)
-        // Example: Files.write(Paths.get(key), data.getBytes());
+    public Map<String, StickyValues> load(String key) {
+        // Load persisted sticky values for the given key
+        // Key format is "{userId}:userID" or "{customId}:{idType}"
+        return storage.get(key);
     }
 
     @Override
-    public String load(String key) {
-        // Load data from your persistent storage
-        // Example: return new String(Files.readAllBytes(Paths.get(key)));
-        return null;
+    public void save(String key, String configName, StickyValues data) {
+        // Save sticky values for a specific experiment/config
+        storage.computeIfAbsent(key, k -> new HashMap<>()).put(configName, data);
     }
 
     @Override
-    public void delete(String key) {
-        // Delete data from your persistent storage
-        // Example: Files.deleteIfExists(Paths.get(key));
+    public void delete(String key, String configName) {
+        // Delete sticky values for a specific experiment/config
+        Map<String, StickyValues> values = storage.get(key);
+        if (values != null) {
+            values.remove(configName);
+        }
     }
 }
 
@@ -38,20 +45,22 @@ statsig.initialize().get();
 import com.statsig.*
 
 class MyPersistentStorage : PersistentStorage {
-    override fun save(key: String, data: String) {
-        // Save data to your persistent storage (e.g., file, database)
-        // Example: File(key).writeText(data)
+    private val storage = mutableMapOf<String, MutableMap<String, StickyValues>>()
+
+    override fun load(key: String): Map<String, StickyValues>? {
+        // Load persisted sticky values for the given key
+        // Key format is "{userId}:userID" or "{customId}:{idType}"
+        return storage[key]
     }
 
-    override fun load(key: String): String? {
-        // Load data from your persistent storage
-        // Example: return File(key).readText()
-        return null
+    override fun save(key: String, configName: String, data: StickyValues) {
+        // Save sticky values for a specific experiment/config
+        storage.getOrPut(key) { mutableMapOf() }[configName] = data
     }
 
-    override fun delete(key: String) {
-        // Delete data from your persistent storage
-        // Example: File(key).delete()
+    override fun delete(key: String, configName: String) {
+        // Delete sticky values for a specific experiment/config
+        storage[key]?.remove(configName)
     }
 }
 
