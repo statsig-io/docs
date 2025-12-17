@@ -74,3 +74,16 @@ statsig.initialize().get()
 ```
 </CodeGroup>
 
+### Helper methods
+
+The `PersistentStorage` interface provides helper methods for working with user-based storage keys:
+
+```java
+// Get persisted values for a user using the helper method
+Map<String, StickyValues> values = persistentStorage.getValuesForUser(user, "userID");
+
+// Generate a storage key from a user and ID type
+String key = PersistentStorage.getStorageKey(user, "userID");  // Returns "{userId}:userID"
+String customKey = PersistentStorage.getStorageKey(user, "companyID");  // Returns "{companyId}:companyID"
+```
+
