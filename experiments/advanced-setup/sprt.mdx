@@ -83,15 +83,18 @@ One of the nice things about SPRT is that this Likelihood Ratio is similar to ho
 
 ## Computing SPRT Results
 
-Statsig uses an updated version of Hajnal's two-sample t test, as modified by Derek Ho of Atlassian (ref TBD), in our SPRT calculations.
-
-On each day, compute the following for a comparison between any two groups A and B for a specific metric:
+Statsig uses an updated version of Hajnal's two-sample t test ([Schnuerch and Erdfelder](https://martinschnuerch.com/wp-content/uploads/2020/08/Schnuerch_Erdfelder_2020.pdf), as modified by Derek Ho of Atlassian, in our SPRT calculations. The traditional ratio test using t- or F-distributions (Schnuerch and Erdfelder equations 8 & 10) can be shown to simplify to a ratio of standard-normal distributions.
 
 $$
-{LR} =
-\frac
+\begin{split}
+{LR}
+&= \frac
+{f(t^2| {df}, \Delta)}
+{f(t^2| {df}, 1)} \\
+&= \frac
 {\phi(|z_{m}|; \theta, 1)}
-{\phi(|z_{m}|; 0, 1)}
+{\phi(|z_{m}|; 0, 1)} \\
+\end{split}
 $$
 
 where:
@@ -126,6 +129,16 @@ $$
 $$
 
 - $N_A$ and $N_B$ are the number of observed units for each group
+
+Since log likelihood ratios are a more convenient scale for reporting, we often take the natural log of the LR value above. When doing so, the equation can actually be simplified further, making evaluation straightforward:
+
+$$
+\begin{split}
+LLR
+&= ln(LR) \\
+&= |z_m \cdot \phi_m | - \frac{1}{2}{|\phi_m|}^2
+\end{split}
+$$
 
 ### Power Analysis & Setting Cohen's d
 
