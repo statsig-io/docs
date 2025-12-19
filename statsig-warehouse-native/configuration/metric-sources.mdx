@@ -60,7 +60,7 @@ For table sources, you can optionally provide a partitioning column to reduce da
 
 Statsig works natively with many different types and granularities of data. Common patterns are:
 
-- Raw event logging (event level data), using the log timestamp as the timestamp, example:
+#### 1. Raw event logging (event level data), using the log timestamp as the timestamp, example:
 
 | `event_time`          | `user_id` | `event_name`     | `platform` | `value` |
 |-----------------------|-----------|------------------|------------|---------|
@@ -69,10 +69,12 @@ Statsig works natively with many different types and granularities of data. Comm
 | 2024-03-01 10:07:02   | `u_456`   | `purchase`      | `ios`      | 29.99   |
 
 *Metric examples with this source:*
-*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once), with a filter of event_name = 'purchase'.*
-*- % of users with page view who clicked: You can create a [RATIO](https://docs.statsig.com/statsig-warehouse-native/metrics/ratio) with this metric source in both denominator and numerator, and apply event_name filter accordingly.*
 
-- Fact tables (one row per entity per day), using the date of the row as the timestamp, example:
+*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of event_name = 'purchase'.*
+
+*- % of users with page view who clicked: You can create a [RATIO](https://docs.statsig.com/statsig-warehouse-native/metrics/ratio) metric with this metric source in both denominator and numerator, and apply event_name filter accordingly.*
+
+#### 2.Fact tables (one row per entity per day), using the date of the row as the timestamp, example:
 
 | `order_date` | `order_id` | `user_id` | `order_status` | `items_count` | `revenue` |
 |--------------|------------|-----------|----------------|---------------|-----------|
@@ -81,10 +83,12 @@ Statsig works natively with many different types and granularities of data. Comm
 | 2024-03-02   | `o_10003`  | `u_123`   | `refunded`     | 1             | 19.99     |
 
 *Metric examples with this source:*
+
 *- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+
 *- Average order value: You can create a [MEAN](https://docs.statsig.com/statsig-warehouse-native/metrics/mean) metric on 'revenue' column, with any filters you need.*
 
-- Aggregated fact tables at unit day granularity, using the date of the row as the timestamp, example: 
+#### 3.Aggregated fact tables at unit day granularity, using the date of the row as the timestamp, example: 
 
 | `date`       | `user_id` | `sessions` | `purchases` | `revenue` |
 |--------------|-----------|------------|-------------|-----------|
@@ -93,19 +97,24 @@ Statsig works natively with many different types and granularities of data. Comm
 | 2024-03-02   | `u_123`   | 2          | 0           | 0.00      |
 
 *Metric examples with this source:*
+
 *- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+
 *- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of purchase > 0.*
 
 ### Types of data that needs some transformation
-There are times when you might have a table that does not fall into the schema shared above. For example, a wide user dimension table contains one row per user with pre-aggregated or derived behavioral attributes.
+There are times when you might have a table that does not fall into the schema mentioned above. For example, a wide user dimension table contains one row per user with pre-aggregated or derived behavioral attributes.
 
-| `user_id` | `signup_date` | `country` | `platform` | `first_active_date` | `last_active_date` | `total_sessions` | `total_orders` | `lifetime_revenue` | `is_power_user` |
-|-----------|---------------|-----------|------------|---------------------|--------------------|------------------|----------------|--------------------|-----------------|
-| `u_123`   | 2023-11-12    | `US`      | `web`      | 2023-11-12          | 2024-03-02         | 58               | 7              | 249.85             | `true`          |
-| `u_456`   | 2024-01-05    | `CA`      | `ios`      | 2024-01-06          | 2024-02-18         | 14               | 1              | 19.99              | `false`         |
-| `u_789`   | 2024-02-10    | `GB`      | `android`  | 2024-02-10          | 2024-03-01         | 31               | 3              | 89.97              | `false`         |
+| `user_id` | `signup_date` | `first_active_date` | `first_page_view_date` | `first_purchase_date` | `last_active_date` | `lifetime_revenue` | `is_power_user` |
+|-----------|---------------|---------------------|------------------------|-----------------------|--------------------|--------------------|-----------------|
+| `u_123`   | 2023-11-12    | 2023-11-12          | 2023-11-12             | 2023-11-20            | 2024-03-02         | 249.85             | `true`          |
+| `u_456`   | 2024-01-05    | 2024-01-06          | 2024-01-05             | 2024-02-10            | 2024-02-18         | 19.99              | `false`         |
+| `u_789`   | 2024-02-10    | 2024-02-10          | 2024-02-10             | `null`                | 2024-03-01         | 89.97              | `false`         |
+
 
 This type of table is not compatible with Statsig because it does not have a single timestamp column that can be consistently configured across all events (for example, `signup`, `first_active`, and `last_active`). Statsig’s stats engine relies on a timestamp column to join metric data with exposure timestamps, ensuring that only metric events that occur *after* a user is exposed to an experiment are included in analysis.
+
+For example, suppose you configure `signup_date` as the timestamp column for this metric source. If you then attempt to build a funnel metric across multiple events (for example, `signup` → `first_active` → `first_purchase`), Statsig will treat all funnel steps as occurring at the signup date. This happens because the metric source can only use a single configured timestamp column. As a result, the event-specific timestamps stored in other columns (such as `first_active_date` or `first_purchase_date`) are ignored, and the funnel no longer reflects the true timing of each event.
 
 To address this, there are two recommended options:
 
