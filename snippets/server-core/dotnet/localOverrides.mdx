@@ -21,6 +21,12 @@ statsig.OverrideLayer("test_layer", new Dictionary<string, object>
     ["theme"] = "dark",
     ["font_size"] = 16
 });
+
+statsig.OverrideParameterStore("test_param_store", , new Dictionary<string, object>
+{
+    ["color"] = "treatment",
+    ["Aura"] = 1.5
+});
 ```
 
 You can also specify a user ID for targeted overrides:
