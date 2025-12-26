@@ -4,6 +4,9 @@ class PersistentStorage(PersistentStorageBaseClass):
     def __init__():
         # When you initialize, remember to call super.__init__()
         super().__init__()
+        self.load_fn = self.load
+        self.save_fn = self.save
+        self.delete_fn = self.delete
 
     def load(self, key: str) -> Optional[UserPersistedValues]:
         """
