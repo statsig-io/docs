@@ -57,9 +57,9 @@ const client = new StatsigClient('client-key', { userID: 'user-123' });
 
 // Bootstrap with data from server
 const bootstrapData = /* data from server or local file */;
-await client.dataAdapter.setData(bootstrapData);
+client.dataAdapter.setData(bootstrapData);
 
-await client.initializeSync();
+client.initializeSync();
 ```
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx)
