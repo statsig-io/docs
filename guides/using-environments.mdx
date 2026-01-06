@@ -79,8 +79,7 @@ To edit the target environments of a rule, click the "..." next to the rule name
 
 ## Configuring Environments
 
-By default, Statsig provides three environments: **Development**, **Staging**, and **Production**. You can add more environments or rename the default ones, but the **Production** environment cannot be deleted or modified.
-
+By default, Statsig provides three environments: **Development**, **Staging**, and **Production**. You are able to to edit environment tier names, and metrics will reflect the exact tier you initialize with. You can also delete the "Production" environment if you wish. Before deleting, ensure that none of your SDK initializations or environment settings are still using the "Production" tier name — update all services to use your preferred tier name (such as "prod") consistently.
 ### Steps to Add or Edit Environments:
 
 1. Navigate to **Project Settings** > **Environments & Keys**.
