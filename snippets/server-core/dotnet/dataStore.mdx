@@ -1,0 +1,51 @@
+Data stores allow you to customize how the SDK fetches and caches feature specifications, enabling advanced use cases like using Redis or other distributed caches.
+
+<CodeGroup>
+```csharp Csharp
+using System.Threading.Tasks;
+using Statsig;
+
+public class MyDataStore : DataStore
+{
+    public Task Initialize()
+    {
+        // Perform any initialization needed for your data store.
+        return Task.CompletedTask;
+    }
+
+    public Task Shutdown()
+    {
+        // Clean up resources.
+        return Task.CompletedTask;
+    }
+
+    public DataStoreResponse Get(string key)
+    {
+        // Retrieve data for the given key.
+        // This is called during SDK evaluation.
+        return Task.FromResult<DataStoreResponse?>(null);
+    }
+
+    public void Set(string key, string value, long? time = null)
+    {
+        // Store data for the given key.
+        // Called when SDK receives updates from Statsig.
+        return Task.CompletedTask;
+    }
+
+    public bool SupportsPollingUpdatesFor(string key)
+    {
+        // Return true if your store supports polling updates for this key, false otherwise.
+        return Task.FromResult(false).CompletedTask;
+    }
+}
+
+// Use data store
+var options = new StatsigOptionsBuilder()
+    .SetDataStore(new MyDataStore())
+    .Build();
+
+var statsig = new Statsig("server-secret-key", options);
+await statsig.Initialize();
+```
+</CodeGroup>
