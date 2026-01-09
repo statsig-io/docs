@@ -975,7 +975,6 @@
               {
                 "group": "Serverless & Edge",
                 "pages": [
-                  "guides/serverless",
                   "guides/cdn-edge-testing",
                   "integrations/vercel",
                   "integrations/cloudflare",
