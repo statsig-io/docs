@@ -5,16 +5,22 @@ import (
 			
 options := statsig.NewStatsigOptionsBuilder().WithOutputLogLevel("DEBUG").Build()
 s, err := statsig.NewStatsig("secret-key", *options)
-
 if err != nil {
-    // Initialize the SDK with the secret key and options
-    s.Initialize()
+    return err
 }
+// Initialize the SDK with the secret key and options
+s.Initialize()
 
 // Or if you want to initialize the Statsig client with more details
 details, err := s.InitializeWithDetails()
+if err != nil {
+	return err
+}
 
 json, err := json.MarshalIndent(details, "", " ")
+if err != nil {
+	return err
+}
 fmt.Println("Initialize With Details:", string(json))
 
 /*
