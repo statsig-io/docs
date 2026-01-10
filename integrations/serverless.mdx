@@ -2,7 +2,7 @@
 title: Serverless
 ---
 
-The serverless SDK is a lightweight JS based SDK optimized for serverless environments while being compatible for any other use case. This SDK harnesses the functionalities that all Statsig server SDK's offer.
+The serverless SDK is a lightweight JavaScript SDK optimized for serverless environments while being compatible for any other platform/environment. This SDK harnesses the functionalities that all Statsig server SDK's offer. 
 
 <Steps>
 <Step title = "Install the Statsig SDK">
@@ -23,7 +23,7 @@ npm install @statsig/serverless-client
   ```
   The client instantiation takes two arguments:
   - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
-  - `options : StatsigOptions` See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
+  - `options : StatsigOptions` See [here for more options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
   </Step>
 
   <Step title = "Client Initialization">
@@ -44,7 +44,7 @@ npm install @statsig/serverless-client
     - `name : string` The name of the Statsig gate that you are checking. 
     - `user : StatsigUser` The Statsig user object for whom the gate is being checked. For more information on the user object, see [here](https://docs.statsig.com/sdks/user#introduction-to-the-statsiguser-object).
 
-    Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDeviceEvaluationSDK) for how to check other entities like experiments and dynamic configs.
+    Refer to the [Javascript on-device evaluation SDK documentation](/client/jsOnDeviceEvaluationSDK) for how to check other entities like experiments and dynamic configs.
 
   </Step>
 
@@ -109,7 +109,7 @@ For more information on bootstrapping including options and full code example, s
 
 ### Bring your own CDN
 
-The Statsig Serverless SDK also supports the bring your own CDN model. You can now store your Statsig config specs anywhere, and initialize your client directly from that source. This use case has been tested and optimized for usage with AWS Lambda/Lambda@Edge and S3 but is compatible with any other data source. Ensure the url you provide returns the Statsig config specs for your project.
+The Statsig Serverless SDK also supports the bring-your-own-CDN model. You can now store your Statsig config specs anywhere, and initialize your client directly from that source. This use case has been tested and optimized for usage with AWS Lambda/Lambda@Edge and S3 but is compatible with any other data source. Ensure the URL you provide returns the Statsig config specs for your project.
 
 ``` javascript
 let init = await client.initializeViaURL("https://my-statsig-config.s3.us-east-1.amazonaws.com/my_dcs.json")
