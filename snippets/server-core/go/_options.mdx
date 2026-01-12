@@ -44,8 +44,40 @@
   When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
 </ResponseField>
 
+<ResponseField name="EnableIdLists" type="boolean" default="true">
+  Enables downloading ID lists; set to false to skip ID list syncing.
+</ResponseField>
+
+<ResponseField name="IdListsUrl" type="string">
+  Custom URL for fetching ID lists.
+</ResponseField>
+
+<ResponseField name="IdListsSyncIntervalMs" type="number">
+  How often the SDK syncs ID lists (in milliseconds).
+</ResponseField>
+
 <ResponseField name="DisableAllLogging" type="boolean" default="false">
   When set to true, the SDK will not log any events or exposures.
+</ResponseField>
+
+<ResponseField name="DisableNetwork" type="boolean" default="false">
+  When set to true, the SDK will not make any network requests.
+</ResponseField>
+
+<ResponseField name="GlobalCustomFields" type="string">
+  JSON string of custom fields that should be appended to every evaluation.
+</ResponseField>
+
+<ResponseField name="ObservabilityClientRef" type="number">
+  Internal reference for a custom observability client created via the SDK.
+</ResponseField>
+
+<ResponseField name="DataStoreRef" type="number">
+  Internal reference for a custom data store adapter created via the SDK.
+</ResponseField>
+
+<ResponseField name="PersistentStorageRef" type="number">
+  Internal reference for a persistent storage adapter created via the SDK.
 </ResponseField>
 
 <ResponseField name="InitTimeoutMs" type="number" default="3000">
@@ -62,26 +94,34 @@
 
 ```go expandable
 import (
-    statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
+    statsig "github.com/statsig-io/statsig-go-core"
 )
 
 // Initialize StatsigOptions with custom parameters
-options := statsig.NewStatsigOptionsBuilder().
-		WithSpecsUrl("https://example.com/specsUrl").
-		WithLogEventUrl("https://example.com/logUrl").
-		WithEnvironment("production").
-		WithEventLoggingFlushIntervalMs(2000).
-		WithEventLoggingMaxQueueSize(5000).
-		WithSpecsSyncIntervalMs(1000).
-		WithOutputLogLevel("DEBUG").
-		WithDisableCountryLookup(true).
-		WithDisableUserAgentParsing(true).
-		WithWaitForCountryLookupInit(false).
-		WithInitTimeoutMs(3000).
-		WithFallbackToStatsigApi(false).
-		Build()
+options, err := statsig.NewOptionsBuilder().
+    WithSpecsUrl("https://example.com/specsUrl").
+    WithLogEventUrl("https://example.com/logUrl").
+    WithEnvironment("production").
+    WithEventLoggingFlushIntervalMs(2000).
+    WithEventLoggingMaxQueueSize(5000).
+    WithSpecsSyncIntervalMs(1000).
+    WithOutputLogLevel("DEBUG").
+    WithDisableCountryLookup(true).
+    WithDisableUserAgentParsing(true).
+    WithWaitForCountryLookupInit(false).
+    WithEnableIdLists(true).
+    WithIdListsSyncIntervalMs(60000).
+    WithInitTimeoutMs(3000).
+    WithFallbackToStatsigApi(false).
+    Build()
+if err != nil {
+    // handle options build error
+}
 
 // Pass the options object when initializing the Statsig client
-s, err := statsig.NewStatsig("secret-key", *options)
+s, err := statsig.NewStatsigWithOptions("secret-key", options)
+if err != nil {
+    // handle init error
+}
 s.Initialize()
 ```
