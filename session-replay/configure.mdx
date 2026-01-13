@@ -33,7 +33,10 @@ For each trigger, you can define an individual sampling rate. This rate is evalu
 
 Important: If a conditional trigger occurs while a session recording is already in progress, the recording simply continues uninterrupted.
 
-<img src="/images/session_replay/settings.png" alt="Session replay settings panel with targeting and sampling controls" />
+<img
+  src="/images/session_replay/settings.png"
+  alt="Session replay settings panel with targeting and sampling controls"
+/>
 
 <img
   src="/images/session_replay/conditional_recording_flowchart.png"
@@ -204,7 +207,12 @@ Sessions will end after four hours total or if the user returns from inactive ti
 
 ### Recording Limits
 
-Free Tier Statsig projects can store up to 50,000 session recordings per month. Once this limit is reached, the SDK will automatically prevent new recordings from starting. Pro Tier projects have a higher limit of 100,000 session recordings per month. You can monitor your session replay usage in your project settings. Additionally, for all tiers, we cap session processing to 500 sessions per hour.
+| Tier | Monthly Limit | Daily Limit | Hourly Limit |
+| ---- | ------------- | ----------- | ------------ |
+| Free | 50,000        | 3,500       | 3,500        |
+| Pro  | 100,000       | 7,000       | 7,000        |
+
+Once these limit is reached, the SDK will automatically prevent new recordings from starting. You can monitor your session replay usage in your project settings. [Contact us](https://statsig.com/contact/demo) for custom contracts
 
 ### Replay Availability Time
 
