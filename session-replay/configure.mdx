@@ -129,6 +129,11 @@ function App() {
   - `true`: Statsig maintains a local rolling window of the last 30 seconds of the session, allowing recordings to include context leading up to a trigger.
   - `false`: If a conditional trigger occurs, recording begins from that moment onward, with no historical context.
 
+<Warning>
+  If you are utilizing bootstrapping, reach out to the Statsig team to confirm
+  your server sdk is supported for conditional recording
+</Warning>
+
 ## Advanced: Forcing a Recording on Demand
 
 You may have a use case where you want to manually start a recording. To do this, we offer the startRecording API which will begin recording as soon as you call it.
