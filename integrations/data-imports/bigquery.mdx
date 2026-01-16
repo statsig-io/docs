@@ -110,8 +110,9 @@ or `statsig_events_signal` for events. For example, once all of your metrics dat
 Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that `2022-04-03` has landed,
 we will wait for you to signal that `2022-04-02` has landed, and load that data before we ingest data from `2022-04-03`
 
-_NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
-are loaded after you've run data quality checks!_
+<Note> This ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
+are loaded after you've run data quality checks!
+</Note>
 
 #### Checklist
 
