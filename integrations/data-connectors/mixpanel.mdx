@@ -61,10 +61,17 @@ To export your Statsig events to Mixpanel:
 
 1. Get a copy of your "Project Token" from Mixpanel by following this [guide](https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-).
 
-2. Paste your project token into the Outgoing configuration on the Statsig integration panel and hit "Enable" (or "Confirm" if you are updating the integration).
+2. Paste your project token into the Outgoing configuration on the Statsig integration panel.
+
+3. Select your **Data Residency Region** based on your Mixpanel project's data residency configuration:
+   - **US** (default): Events are sent to the global `api.mixpanel.com` endpoint
+   - **EU**: For projects using [EU data residency](https://docs.mixpanel.com/docs/privacy/eu-residency)
+   - **India**: For projects using [India data residency](https://docs.mixpanel.com/docs/privacy/in-residency)
+
+4. Hit "Enable" (or "Confirm" if you are updating the integration).
 
    <Frame>
-     <img src="/images/integrations/data-connectors/mixpanel/195172632-e14fe03f-377f-435f-92ca-60fe20da4746.png" alt="mixpanel-outgoing-configuration" />
+     <img src="/images/integrations/data-connectors/mixpanel/mixpanel-outgoing-data-residency.png" alt="mixpanel-outgoing-configuration" />
    </Frame>
 
 3. Verify your events are being forward by visiting the Events tab on Mixpanel
