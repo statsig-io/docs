@@ -273,7 +273,8 @@ Statsig.override_config("a_config_name", {"key" => "value"})
 ```
 
 <Note>
-These overrides only apply locally—they do not update definitions in the Statsig console or elsewhere. The local override API is not designed to be a full mock; it is only a convenient way to override the value of a gate, config, or other entity.
+1. These only apply locally - they do not update definitions in the Statsig console or elsewhere.
+2. The local override API is not designed to be a full mock. They are only a convenient way to override the value of the gate/config/etc.
 </Note>
 
 <ManualExposuresIntro/>
