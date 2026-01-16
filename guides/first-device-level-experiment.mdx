@@ -95,6 +95,8 @@ const updatedUser = {
 await client.updateUserAsync(user);
 ```
 
-> **Note**: Adding userID after login enables user-level experiments/gates to target and evaluate using userID. *Device-level* experiment evaluations remain based on stableID (or deviceID) and are not changed by adding userID, as long as you continue to pass that identifier as well! This preserves consistency of device-level bucketing.
+<Note>
+Adding userID after login enables user-level experiments/gates to target and evaluate using userID. *Device-level* experiment evaluations remain based on stableID (or deviceID) and are not changed by adding userID, as long as you continue to pass that identifier as well! This preserves consistency of device-level bucketing.
+</Note>
 
 ---
