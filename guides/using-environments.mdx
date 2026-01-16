@@ -25,7 +25,9 @@ SDK keys can correspond to multiple environments. Therefore, it’s important to
 
 All SDKs accept an `SDK Key` and an optional `StatsigOptions` dictionary. The `StatsigOptions` parameter includes the `environment` key, which has a `tier` field. This tier corresponds to one of your pre-configured environments (e.g., development, staging).
 
-> **Note**: If the environment tier is unset, all checks and event logs will default to "production."
+<Note>
+If the environment tier is unset, all checks and event logs will default to "production."
+</Note>
 
 Here’s an example of setting the environment tier in your code for the **development** environment:
 
