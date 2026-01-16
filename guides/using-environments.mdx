@@ -4,7 +4,7 @@ title: Environment-based Evaluation
 
 Statsig SDKs allow you to set the environment tier for your app during initialization. This helps you evaluate feature gates, dynamic configs, and experiments differently in non-production environments like development or staging. All you need to do is configure the appropriate environment in your code and adjust feature rules in the Statsig Console.
 
-Here’s a step-by-step guide on how to configure and use environments effectively.
+Here's a step-by-step guide on how to configure and use environments effectively.
 
 ---
 
@@ -21,7 +21,7 @@ Setting up environment-specific SDK keys allows you to control which rules are s
 
 ### 2. Environment Tier Parameter
 
-SDK keys can correspond to multiple environments. Therefore, it’s important to explicitly set the environment tier during SDK initialization to ensure the correct rules are applied.
+SDK keys can correspond to multiple environments. Therefore, it's important to explicitly set the environment tier during SDK initialization to ensure the correct rules are applied.
 
 All SDKs accept an `SDK Key` and an optional `StatsigOptions` dictionary. The `StatsigOptions` parameter includes the `environment` key, which has a `tier` field. This tier corresponds to one of your pre-configured environments (e.g., development, staging).
 
@@ -29,7 +29,7 @@ All SDKs accept an `SDK Key` and an optional `StatsigOptions` dictionary. The `S
 If the environment tier is unset, all checks and event logs will default to "production."
 </Note>
 
-Here’s an example of setting the environment tier in your code for the **development** environment:
+Here's an example of setting the environment tier in your code for the **development** environment:
 
 #### Example (JS Client SDK):
 
@@ -97,7 +97,9 @@ By default, Statsig provides three environments: **Development**, **Staging**, a
      <img src="/images/tutorials/environments/environments-edit-environments.png" alt="Edit Environments" />
    </Frame>
 
-> **Note**: Reordering environments doesn’t affect any rule logic, but it helps convey the rollout hierarchy (e.g., development -> staging -> production) to your teams.
+<Note>
+Reordering environments doesn't affect any rule logic, but it helps convey the rollout hierarchy (e.g., development → staging → production) to your teams.
+</Note>
 
 ---
 
