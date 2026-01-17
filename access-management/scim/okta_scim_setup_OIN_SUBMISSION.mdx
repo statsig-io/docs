@@ -1,0 +1,66 @@
+---
+title: Okta SCIM Setup (OIN SUBMISSION)
+sidebarTitle: Setup (OIN SUBMISSION)
+---
+
+⚠️⚠️ This is required documentation for our official Okta integration submission. For now, please reference the existing guide at [Setup](okta_scim_setup)
+--
+This guide outlines the process for setting up SCIM (System for Cross-domain Identity
+Management) integration between Statsig and Okta. This integration allows for automated
+user provisioning and management.
+
+## Prerequisites
+
+- An Okta account with admin access
+- A SCIM Key from the [Statsig Console](/access-management/scim/overview#how-to-obtain-scim-auth-key) (requires Statsig Org Admin rights)
+
+<Note>
+
+### Integration Notes
+
+- User email management is not enabled on SCIM yet.
+- When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
+- Creation of Statsig Projects and Roles is not supported via SCIM.
+</Note>
+
+## Step 1: Add the Statsig App from the Okta App Catalog
+
+- Log in to your Okta admin console
+- Navigate to Applications > Applications > Browse App Catalog
+  
+<img width="2144" height="882" alt="image" src="https://github.com/user-attachments/assets/693cd96c-302b-4434-80a6-039c254847b7" />
+
+- Search for and select "Statsig"  
+<img width="1084" height="470" alt="image" src="https://github.com/user-attachments/assets/41085004-c419-4aa2-902e-00aa84e2fc65" />
+
+- Select "Add Integration"  
+<img width="697" height="271" alt="image" src="https://github.com/user-attachments/assets/c3414a5e-8406-4629-af34-4cb100b3fcc1" />
+
+- Set your desired application label, then select "Done"  
+<img width="912" height="420" alt="image" src="https://github.com/user-attachments/assets/c4c8e6fc-ed55-4384-b9c7-03abd25c49f5" />
+
+## Step 2: Enable API Integration
+- Navigate to the "Provisioning" tab of the generated app -> Select "Enable API Integration"
+- For the API Token, use the SCIM Bearer token generated in Statsig by your Org Admin. See [How to Obtain SCIM Auth Key](/access-management/scim/overview#how-to-obtain-scim-auth-key) for more details.
+- **⚠️Important⚠️** Prepend "Bearer " to the token obtained from Statsig, e.g. "Bearer scim-G22A***"
+<img width="907" height="702" alt="image" src="https://github.com/user-attachments/assets/e48b090b-a624-4d9f-9c35-40dc1e92655d" />
+
+## Step 3: Configure Okta to Statsig Settings
+
+- Enable "Create Users"
+- Enable "Update User Attributes"
+- Enable "Deactivate Users"
+
+<Frame>
+  <img src="/images/okta_scim_steps/step5-configure-okta-to-statsig-settings.png" alt="Provisioning To App settings enabling create, update, and deactivate actions" />
+</Frame>
+
+## Step 4: Import Existing Statsig Users and Groups
+
+- In Okta, go to the Statsig app's "Import" tab
+- Click "Import Now" to fetch existing Statsig users and groups
+- Process the imported users as needed
+
+<Frame>
+  <img src="/images/okta_scim_steps/step6-import-existing-users.png" alt="Okta Import tab with Import Now button for Statsig users and groups" />
+</Frame>
