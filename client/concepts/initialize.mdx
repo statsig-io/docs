@@ -24,10 +24,10 @@ Depending on when you check a gate or experiment after initializing, its possibl
 
 Below are the various strategies summarized at a high level, ordered from most common to least common:
 
-- [**Asynchronous Initialization (Awaited)**](#asynchronous-initialization-awaited): Wait for the initialization network call to finish before rendering content.
-- [**Bootstrap Initialization**](#bootstrap-initialization): Generate the assignment values on your own server, and pass them down with other request, resulting in zero-latency rendering. Best of both worlds for latency and availability of fresh assignments, but requires additional engineering effort.
-- [**Asynchronous Initialization (Not Awaited)**](#asynchronous-initialization-not-awaited): Do not await the return of the initialization network call. This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available.
-- [**Synchronous Initialization**](#synchronous-initialization): Renders immediately, but with stale or no assignments available. First-visit users will never be assigned to gates and experiments.
+- [**Asynchronous Initialization (Awaited)**](#1-asynchronous-initialization-awaited): Wait for the initialization network call to finish before rendering content.
+- [**Bootstrap Initialization**](#2-bootstrap-initialization): Generate the assignment values on your own server, and pass them down with other request, resulting in zero-latency rendering. Best of both worlds for latency and availability of fresh assignments, but requires additional engineering effort.
+- [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization-not-awaited): Do not await the return of the initialization network call. This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available.
+- [**Synchronous Initialization**](#4-synchronous-initialization): Renders immediately, but with stale or no assignments available. First-visit users will never be assigned to gates and experiments.
 
 | Method | Speed-to-render? | Render consistency? | Latest content? | Engineering Complexity? |
 |-------------------------|---------------------|-----------------|-----------------|------------------|
@@ -37,7 +37,7 @@ Below are the various strategies summarized at a high level, ordered from most c
 | InitializeSync() | ✅ Fast | ✅ Good | ❌ No | ✅ Easy |
 | BootstrapInit | ✅ Fast | ✅ Good | ✅ Yes | ❌ Extra Effort |
 
-### 1. Asynchronous Initialization - Awaited {#asynchronous-initialization-awaited}
+### 1. Asynchronous Initialization - Awaited
 > Ensures latest assignments but requires a loading state
 
 When calling `StatsigClient.initializeAsync`, the client loads values from the cache and fetches the latest values from the network. This approach waits for the latest values before rendering, which means it is not immediate but ensures the values are up-to-date.
@@ -66,7 +66,7 @@ await client.initializeAsync();
 
 </CodeGroup>
 
-### 2. Bootstrap Initialization {#bootstrap-initialization}
+### 2. Bootstrap Initialization
 > Ensures both latest assignments with no rendering latency
 
 Bootstrapping allows you to initialize the client with a JSON string. This approach ensures that values are immediately available without the client making any network requests. Note that you will be responsible for keeping these values up to date.
@@ -99,7 +99,7 @@ const client = new StatsigClient(
 
 </CodeGroup>
 
-### 3. Asynchronous Initialization - Not Awaited {#asynchronous-initialization-not-awaited}
+### 3. Asynchronous Initialization - Not Awaited
 
 If you want to fetch the latest values without awaiting the asynchronous call, you can call `initializeAsync` and catch the promise.
 This approach provides immediate rendering with cached values initially, which will update to the latest values mid-session.
@@ -108,7 +108,7 @@ This approach provides immediate rendering with cached values initially, which w
 Be aware that the values may switch when checked a second time after the latest values have been loaded.
 </Warning>
 
-### 4. Synchronous Initialization {#synchronous-initialization}
+### 4. Synchronous Initialization
 > Ensures immediate rendering but uses cached assignments (when available)
 
 When calling `StatsigClient.initializeSync`, the client uses cached values if they are available. The client fetches new values in the background and updates the cache. This approach provides immediate rendering, but the values might be stale or absent during the first session.
