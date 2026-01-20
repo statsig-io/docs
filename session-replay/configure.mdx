@@ -129,6 +129,11 @@ function App() {
   - `true`: Statsig maintains a local rolling window of the last 30 seconds of the session, allowing recordings to include context leading up to a trigger.
   - `false`: If a conditional trigger occurs, recording begins from that moment onward, with no historical context.
 
+<Warning>
+  If you are utilizing bootstrapping, reach out to the Statsig team to confirm
+  your server sdk is supported for conditional recording
+</Warning>
+
 ## Advanced: Forcing a Recording on Demand
 
 You may have a use case where you want to manually start a recording. To do this, we offer the startRecording API which will begin recording as soon as you call it.
@@ -189,15 +194,6 @@ These are options offered by the rrweb recorder (the open source recording tool 
 | userTriggeredOnInput     | false                | whether to add `userTriggered` on input events that indicates if this event was triggered directly by the user or not. [What is `userTriggered`?](https://github.com/rrweb-io/rrweb/pull/495) |
 | plugins                  | []                   | load plugins to provide extended record functions. [What is plugins?](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/plugin.md)                                                   |
 | errorHandler             | -                    | A callback that is called if something inside of rrweb throws an error. The callback receives the error as argument.                                                                          |
-
-## Configure Recording Privacy/PII Options
-
-If your users may be entering or viewing sensitive information, you can prevent this from being recorded and displayed using the mask, block, or ignore options listed above. The most commonly used options are:
-
-- An element with the class name `.rr-block` will not be recorded. Instead, it will replay as a placeholder with the same dimensions.
-- An element with the class name `.rr-ignore` will not record its input events.
-- All text of elements with the class name `.rr-mask` and their children will be masked.
-- `input[type="password"]` will be masked by default.
 
 ## Limits
 
