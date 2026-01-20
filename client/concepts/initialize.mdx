@@ -24,9 +24,9 @@ Depending on when you check a gate or experiment after initializing, its possibl
 
 Below are the various strategies summarized at a high level, ordered from most common to least common:
 
-- [**Asynchronous Initialization (Awaited)**](#1-asynchronous-initialization---awaited): Wait for the initialization network call to finish before rendering content.
+- [**Asynchronous Initialization (Awaited)**](#1-asynchronous-initialization-awaited): Wait for the initialization network call to finish before rendering content.
 - [**Bootstrap Initialization**](#2-bootstrap-initialization): Generate the assignment values on your own server, and pass them down with other request, resulting in zero-latency rendering. Best of both worlds for latency and availability of fresh assignments, but requires additional engineering effort.
-- [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization---not-awaited): Do not await the return of the initialization network call. This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available.
+- [**Asynchronous Initialization (Not Awaited)**](#3-asynchronous-initialization-not-awaited): Do not await the return of the initialization network call. This ensures immediate rendering, but in a state that reflects stale assignments or no assignments available.
 - [**Synchronous Initialization**](#4-synchronous-initialization): Renders immediately, but with stale or no assignments available. First-visit users will never be assigned to gates and experiments.
 
 | Method | Speed-to-render? | Render consistency? | Latest content? | Engineering Complexity? |
