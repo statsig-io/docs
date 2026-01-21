@@ -1112,6 +1112,11 @@
           "anchor": "Community Slack",
           "href": "https://statsig.com/slack",
           "icon": "slack"
+        },
+        {
+          "anchor": "Statsig University",
+          "href": "https://learn.statsig.com",
+          "icon": "graduation-cap"
         }
       ]
     }
