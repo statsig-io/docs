@@ -153,7 +153,7 @@
               {
                 "group": "Read Results",
                 "pages": [
-                  "experiments/interpreting-results/read-pulse",
+                  "experiments/interpreting-results/read-results",
                   "experiments/interpreting-results/userproperties",
                   "experiments/interpreting-results/drill-down",
                   "experiments/interpreting-results/export",
