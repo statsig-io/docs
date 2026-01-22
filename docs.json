@@ -153,7 +153,7 @@
               {
                 "group": "Read Results",
                 "pages": [
-                  "experiments/interpreting-results/read-pulse",
+                  "experiments/interpreting-results/read-results",
                   "experiments/interpreting-results/userproperties",
                   "experiments/interpreting-results/drill-down",
                   "experiments/interpreting-results/export",
@@ -1124,7 +1124,7 @@
   "redirects": [
     {
       "source": "/pulse",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
     },
     {
       "source": "/experiments/stratified-sampling-whn",
@@ -1592,7 +1592,7 @@
     },
     {
       "source": "/pulse/read-pulse",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
     },
     {
       "source": "/experiments-plus/bayesian",
@@ -1829,6 +1829,14 @@
     {
       "source": "/integrations/data-exports/overview",
       "destination": "/integrations/data-exports"
+    },
+    {
+      "source": "/experiments/read-results",
+      "destination": "/experiments/interpreting-results/read-results"
+    },
+    {
+      "source": "/experiments/interpreting-results/read-pulse",
+      "destination": "/experiments/interpreting-results/read-results"
     }
   ],
   "logo": {
