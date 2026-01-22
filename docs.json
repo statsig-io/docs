@@ -1832,7 +1832,11 @@
     },
     {
       "source": "/experiments/read-results",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
+    },
+    {
+      "source": "/experiments/interpreting-results/read-pulse",
+      "destination": "/experiments/interpreting-results/read-results"
     }
   ],
   "logo": {
