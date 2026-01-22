@@ -1124,7 +1124,7 @@
   "redirects": [
     {
       "source": "/pulse",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
     },
     {
       "source": "/experiments/stratified-sampling-whn",
