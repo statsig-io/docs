@@ -1829,6 +1829,10 @@
     {
       "source": "/integrations/data-exports/overview",
       "destination": "/integrations/data-exports"
+    },
+    {
+      "source": "/experiments/read-results",
+      "destination": "/experiments/interpreting-results/read-pulse"
     }
   ],
   "logo": {
