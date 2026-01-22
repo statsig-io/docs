@@ -59,7 +59,7 @@ Confidence intervals are reported at the selected significance level (95% by def
 
 * **Experiment results are computed for the first 90 days**: By default, Statsig will compute experiment results for your experiment for only the first 90 days of your experiment. You will be notified via e-mail as you approach the 90 days cap, at which point will be able to extend this compute window for another 30 days at a time. If the experiment runs beyond the compute window, new users will stop getting added into the experiment's result, but analysis for existing users who have been exposed to the experiment will continue to run even if the compute window is not extended, until you make a decision on the experiment.
 <Note>
-This only affects whether a user is included in the experiment's analysis, and does not affect the treatment each user would receive. New users would still receive the experience for the group they get randomized into.
+This experiment result calculation window only affects whether a user is included in the experiment's analysis, and does not affect the treatment each user would receive. New users would still receive the experience for the group they get randomized into.
 </Note>
 
 ### Experiment Results Views 
