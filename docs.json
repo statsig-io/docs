@@ -34,6 +34,20 @@
     }
   },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community Slack",
+          "icon": "slack",
+          "href": "https://statsig.com/slack"
+        },
+        {
+          "anchor": "Statsig University",
+          "icon": "graduation-cap",
+          "href": "https://learn.statsig.com"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Product Docs",
@@ -41,7 +55,11 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform", "support-options"]
+            "pages": [
+              "welcome",
+              "understanding-platform",
+              "support-options"
+            ]
           },
           {
             "group": "Experiments",
@@ -266,7 +284,9 @@
                   "infra-analytics/getting-started",
                   {
                     "group": "Traces Explorer",
-                    "pages": ["infra-analytics/send-traces"]
+                    "pages": [
+                      "infra-analytics/send-traces"
+                    ]
                   },
                   {
                     "group": "Logs Explorer",
@@ -289,7 +309,10 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
+                ]
               }
             ]
           },
@@ -359,7 +382,9 @@
               },
               {
                 "group": "Control Panel",
-                "pages": ["control-panel/overview"]
+                "pages": [
+                  "control-panel/overview"
+                ]
               },
               {
                 "group": "Data & Metrics",
@@ -535,7 +560,8 @@
                   "statsig-warehouse-native/metrics/log",
                   "statsig-warehouse-native/metrics/latest-value",
                   "statsig-warehouse-native/metrics/retention",
-                  "statsig-warehouse-native/metrics/max-min"
+                  "statsig-warehouse-native/metrics/max-min",
+                  "warehouse-native/data-and-semantic-layer/metrics/composite"
                 ]
               },
               "statsig-warehouse-native/configuration/metric-examples",
@@ -779,7 +805,10 @@
           {
             "group": "AI SDKs",
             "icon": "brain",
-            "pages": ["ai-evals/node", "ai-evals/python"]
+            "pages": [
+              "ai-evals/node",
+              "ai-evals/python"
+            ]
           },
           {
             "group": "More SDK Methods",
@@ -1105,21 +1134,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community Slack",
-          "href": "https://statsig.com/slack",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Statsig University",
-          "href": "https://learn.statsig.com",
-          "icon": "graduation-cap"
-        }
-      ]
-    }
+    ]
   },
   "redirects": [
     {
