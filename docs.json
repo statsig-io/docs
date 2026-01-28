@@ -865,6 +865,7 @@
             "pages": [
               "access-management/introduction",
               "sdks/api-keys",
+              "access-management/pricing",
               {
                 "group": "Workspace",
                 "pages": [
