@@ -11,4 +11,4 @@
 
 ## Questions?
 
-Reach out to Brock, Tore, or Logan on Slack!
+Reach out to Brock, T̶o̶r̶e̶,̶ or Logan on Slack!
