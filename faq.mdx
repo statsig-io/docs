@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "Answers to common questions about Statsig’s SDKs, experiments, gates, billing, and platform usage."
+description: "Answers to common questions about Statsig's SDKs, experiments, gates, billing, and platform usage."
 ---
 
 ## SDKs and APIs
@@ -41,15 +41,15 @@ const color = statsig.getExperiment('button_color_test').getString('button_color
 
 ---
 
-### Why aren’t exposures or custom events showing up?
+### Why aren't exposures or custom events showing up?
 
 In short-lived environments (scripts, edge workers), the process may exit before events flush. Call `statsig.flush()` before shutdown. Details live in the [Node.js server SDK docs](/server/nodejsServerSDK#flushing-events).
 
 ---
 
-### My SDK language isn’t listed. Can I still use Statsig?
+### My SDK language isn't listed. Can I still use Statsig?
 
-Likely yes. Let us know in the [Statsig Slack community](https://statsig.com/slack) and we’ll discuss options.
+Likely yes. Let us know in the <a href="https://statsig.com/slack" target="_blank">Statsig Slack community</a> and we'll discuss options.
 
 ---
 
@@ -63,9 +63,9 @@ const assignments = statsig.getClientInitializeResponse(user, 'client-key', { ha
 
 ---
 
-### What happens if I check a config that doesn’t exist?
+### What happens if I check a config that doesn't exist?
 
-The SDK returns defaults—`false` for gates and the supplied fallback for experiments/layers. You’ll see the evaluation reason `Unrecognized`; learn more in [SDK debugging](/sdk/debugging#evaluation-reason). This applies to deleted, archived, or unseen configs (e.g., filtered by [target apps](/sdk-keys/target-apps/)).
+The SDK returns defaults—`false` for gates and the supplied fallback for experiments/layers. You'll see the evaluation reason `Unrecognized`; learn more in [SDK debugging](/sdk/debugging#evaluation-reason). This applies to deleted, archived, or unseen configs (e.g., filtered by [target apps](/sdk-keys/target-apps/)).
 
 ---
 
@@ -81,13 +81,13 @@ Yes. Increasing the pass percentage (e.g., 10% → 20%) keeps the original 10% a
 
 ### What statistical tests does Statsig use?
 
-We use a two-sample Z-test for most experiments and [Welch’s t-test](/stats-engine/p-value#welchs-t-test) when sample sizes are small or variances differ.
+We use a two-sample Z-test for most experiments and [Welch's t-test](/stats-engine/p-value#welchs-t-test) when sample sizes are small or variances differ.
 
 ---
 
 ### How does Statsig handle low sample sizes?
 
-We fall back to [Welch’s t-test](/stats-engine/p-value#welchs-t-test) and offer CUPED/winsorization to boost power.
+We fall back to [Welch's t-test](/stats-engine/p-value#welchs-t-test) and offer CUPED/winsorization to boost power.
 
 ---
 
@@ -101,7 +101,7 @@ Use one-sided when you only care about movement in a single direction; it increa
 
 ### How do I get started with an A/B test?
 
-If the feature isn’t live yet, wrap it in a [feature gate](/guides/first-feature) and roll out. If it’s already in production, create an [experiment](/guides/abn-tests). Results appear in the Pulse view.
+If the feature isn't live yet, wrap it in a [feature gate](/guides/first-feature) and roll out. If it's already in production, create an [experiment](/guides/abn-tests). Results appear in the Pulse view.
 
 ---
 
