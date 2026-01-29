@@ -3,46 +3,24 @@ title: Node Core SDK Migration Guide
 displayed_sidebar: api
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import {
-  SDKDocsBuilder,
-} from "../../../sdks/_SDKDocsBuilder.mdx";
-
-import {
-    APIChanges,
-    GlobalChanges,
-    Installation,
-    MigrationHelp,
-    StatsigOptions,
-    UserCreation,
-    NeedHelp,
-    Troubleshooting,
-    Intro,
-} from "../../MigrationGuideTemplates/index.mdx";
 import NodeAPIChanges from "./_api_changes.mdx";
-import NodeUserCreation from "./_user_creation.mdx";
 import NodeStatsigOptions from "./_statsig_options.mdx";
 
-export const Builder = SDKDocsBuilder({
-  sections: [
-    [
-      Intro,
-      {
-        sdkType: "Node JS",
-      },
-    ],
-    
-    [
-      Installation,
-      {
-        legacyInstall: <CodeBlock>npm install statsig-node</CodeBlock>,
-        install: <CodeBlock>npm install @statsig/statsig-node-core</CodeBlock>,
-      },
-    ],
-    [
-      UserCreation,
-      {
-        newUserCreation: <CodeBlock language="nodejs">
+This guide walks through migrating from the legacy `statsig-node` SDK to the
+Node Core SDK (`@statsig/statsig-node-core`).
+
+## Installation
+
+**Node Core SDK**
+<CodeBlock>npm install @statsig/statsig-node-core</CodeBlock>
+
+**Legacy Node SDK**
+<CodeBlock>npm install statsig-node</CodeBlock>
+
+## User creation
+
+**Node Core SDK**
+<CodeBlock language="nodejs">
 {`import {StatsigUser} from "@statsig/statsig-node-core"
 const user = new StatsigUser({
     userID: "user_123",
@@ -54,8 +32,10 @@ const user = new StatsigUser({
     "subscription_level": "premium"
     }
 })
-`}</CodeBlock>,
-        legacyUserCreation: <CodeBlock language="python">
+`}</CodeBlock>
+
+**Legacy Node SDK**
+<CodeBlock language="python">
 {`import type {StatsigUser} from "statsig-node"
 user = {
     userID: "user_123",
@@ -67,38 +47,26 @@ user = {
     "subscription_level": "premium"
     }
 }
-`}</CodeBlock>,
-}
-],
-[
-APIChanges,
-{
-apiChanges: <NodeAPIChanges />
-}
-],
-[
-GlobalChanges,
-{
-waitForUserAgentInit: "wait_for_user_agent_init",
-waitForCountryLookupInit: "wait_for_country_lookup_init",
-disableUserAgentParsing: "disable_user_agent_parsing",
-disableCountryLookup: "disable_country_lookup",
-enableIdLists: "enable_id_lists"
-},
-],
-[
-StatsigOptions,
-{
-optionsMapping: <NodeStatsigOptions />
-}
-],
-[
-NeedHelp,
-{}
-],
-]
-})
+`}</CodeBlock>
 
-export const toc = Builder.toc;
+## API changes
 
-<>{Builder.result}</>
+<NodeAPIChanges />
+
+## Global option name changes
+
+| Legacy option | Node Core option |
+| --- | --- |
+| `waitForUserAgentInit` | `wait_for_user_agent_init` |
+| `waitForCountryLookupInit` | `wait_for_country_lookup_init` |
+| `disableUserAgentParsing` | `disable_user_agent_parsing` |
+| `disableCountryLookup` | `disable_country_lookup` |
+| `enableIdLists` | `enable_id_lists` |
+
+## Statsig options
+
+<NodeStatsigOptions />
+
+## Need help?
+
+If you run into issues while migrating, reach out to your Statsig contact.
