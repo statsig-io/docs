@@ -56,9 +56,9 @@ const client = new StatsigOnDeviceEvalClient('client-key');
 
 // Bootstrap with specs data from local file or bundle
 const specsData = /* data from local file */;
-await client.dataAdapter.setData(specsData);
+client.dataAdapter.setData(specsData);
 
-await client.initializeAsync();
+client.initializeSync();
 ```
 
 [View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/on-device-eval-client/sample-on-device-bootstrap.tsx)
