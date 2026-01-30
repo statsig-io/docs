@@ -886,7 +886,6 @@
                       "access-management/sso/google"
                     ]
                   },
-                "access-management/pricing",
                   {
                     "group": "SCIM User Provisioning",
                     "pages": [
@@ -910,7 +909,8 @@
                     ]
                   }
                 ]
-              }
+              },
+              "access-management/pricing",
             ]
           },
           {
