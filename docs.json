@@ -865,7 +865,6 @@
             "pages": [
               "access-management/introduction",
               "sdks/api-keys",
-              "access-management/pricing",
               {
                 "group": "Workspace",
                 "pages": [
@@ -887,6 +886,7 @@
                       "access-management/sso/google"
                     ]
                   },
+                "access-management/pricing",
                   {
                     "group": "SCIM User Provisioning",
                     "pages": [
