@@ -1,6 +1,5 @@
 ---
-title: Criteria Cost Breakdown
-description: Cost impact of conditions, operators, and value counts used in gate evaluation.
+title: Evaluation Cost Breakdown
 ---
 
 Feature gate evaluation speeds are determined through the overall complexity of all rules included in the gate. Each condition, operator, and quantity of values are scored through a point system and used to classify individual rules and gates as normal, slow, or very slow. These factors are weighted with the worst case scenario in mind. The tables below can be used to understand which component of your rule is making your evaluation slow.
@@ -12,7 +11,7 @@ These costs are applied based on the **condition type** used in a gate. Only con
 | Condition       | Impact   | Reason                                          |
 | --------------- | -------- | ----------------------------------------------- |
 | BROWSER         | High     | Requires user agent parsing                     |
-| BROWSER_VERSION | High     | Requires user agent parsing                     |
+| BROWSER VERSION | High     | Requires user agent parsing                     |
 | OS              | High     | Requires user agent parsing                     |
 | OS VERSION      | High     | Requires user agent parsing                     |
 | COUNTRY         | Low      | Requires IP-based geolocation lookup            |
@@ -21,15 +20,14 @@ These costs are applied based on the **condition type** used in a gate. Only con
 | PASSES GATE     | Variable | complexity dependent on cost of nested gates    |
 | FAILS GATE      | Variable | complexity dependent on cost of nested gates    |
 
----
+<Accordion title = "Passes/Fails Segment and Gate conditions">
 
-#### Notes
+For conditions that depend on other gates or segments, their evaluation cost is directly related to the entity they rely on. If a gate has a **Passes Gate** condition, the evaluation cost of the gate it is referencing will be propagated up to the base **Passes Gate** rule.
 
-For conditions that depend on other gates or segments, their computational expense is directly related to the entity they rely on. If a gate has a **Passes Gate** condition, the evaluation speed of the gate it is referencing will be propagated up to the base ** Passes Gate** rule.
-
+</Accordion>
 ## Operator
 
-These costs are applied based on the **operator** used in a condition. If a condition is not listed, it does not significantly impact SDK evaluation speeds.
+These costs are applied based on the **operator** used in a condition. If an operator is not listed, it does not significantly impact SDK evaluation speeds.
 
 | Operator                        | Impact | Reason                                  |
 | ------------------------------- | ------ | --------------------------------------- |
@@ -38,9 +36,6 @@ These costs are applied based on the **operator** used in a condition. If a cond
 | Match Regex String              | Medium | Requires regex matching                 |
 | Version String                  | Medium | Requires semantic version comparison    |
 | ARRAY CONTAINS ANY / NONE / ALL | Low    | Requires array scan                     |
-| NOT_ARRAY_CONTAINS_ALL          | Low    | Requires scanning array values          |
-
----
 
 ## Value Count
 
