@@ -12,6 +12,10 @@ The Local Eval Adapter solves this by enabling you to ship your experiment confi
 
 Shipping with a ruleset presents security concerns, but given that the experiment set can be scoped to only an experiment or two occurring before any network requests, those concerns are often minimal. However, we expect users to take caution shipping a ruleset in their production code, vetting the contents are correct and safe.
 
+<Warning>
+**Country targeting limitation (iOS & Android):** If the `country` field is not set on the user object, it is inferred when the initialize network request completes. Checks that happen using the local eval adapter before the network request finishes won't have the inferred country. This means feature gates or experiments that use country for targeting won't work correctly within the local eval adapter unless you set the country manually on the user object.
+</Warning>
+
 ## Usage & Functionality
 
 The Local Eval Adapter, with proper attention to security, and maintenance of the ruleset in your application, **addresses the downsides of other experiment-at-launch strategies**. 
