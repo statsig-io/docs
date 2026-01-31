@@ -38,5 +38,5 @@ Outputs: It produces a score - ideally 0 (Fail) or Pass (1). This score feeds in
 ## What is a Critical Grader?
 A critical grader is a must-pass evaluation in Statsig AI Evals: if the AI output fails this grader, the entire run is marked as failed. It enforces non-negotiable requirements, acting as a hard gate before results are considered valid. When it does not fail, it acts like a normal grader.
 
-Use Case
+### Use Case
 For example, in a financial support chatbot, a critical grader could check that the model never fabricates account balances. Even if the answer is otherwise helpful, a single failure here blocks the model from being promoted.
