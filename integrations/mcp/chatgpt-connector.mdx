@@ -8,22 +8,19 @@ description: Learn how to talk directly to Statsig from within ChatGPT.
 You can set up an app between the Statsig MCP server and ChatGPT, allowing you to query experiments, manage feature flags, explore analytics -- all directly within ChatGPT's conversational interface.
 
 ## Installation
-1. Navigate to "Settings > Apps > Advanced Settings" and turn on Developer mode.
-<Note> 
-Developer mode is currently only available for Plus, Pro, Business, and Enterprise / Edu tiers.
-</Note>
 
-2. Once Developer mode is activated, return to the Apps settings pane, and in the "Enabled apps" section, select "Create an app".
-
-3. Fill out the form to create a new ChatGPT app:
-    * Add a name (e.g., Statsig MCP) for your tool
-    * Under "MCP Server URL", fill in `https://api.statsig.com/v1/mcp`
-    * Under "Authentication", select OAuth. 
-
-<Frame>
-  <img src="/images/integrations/mcp/statsig-mcp-chatgpt-app-creation.png" alt="ChatGPT app authentication settings" />
-</Frame>
-
+1. Navigate to the Statsig App in the ChatGPT Apps Directory [here](https://chatgpt.com/apps/statsig/asdk_app_6967f065ac9481918969c660ff7686e9).
+2. Click "Connect" and "Continue" to complete OAuth for your Statsig project.
+   <Note>
+     ChatGPT App OAuth only supports Personal Console API Keys. Ensure your
+     Statsig org owner has enabled Personal Console API Keys creation for your
+     role [here](https://console.statsig.com/settings?tab=organization){" "}
+   </Note>
+   <img
+     src="/images/integrations/mcp/statsig-chatgpt-app-listing.png"
+     alt="Statsig listing in the ChatGPT Apps Directory"
+     className="w-full rounded-lg border border-gray-200 dark:border-gray-800"
+   />
 
 ## Using Statsig MCP within ChatGPT
 
@@ -37,9 +34,9 @@ With Statsig MCP configured in ChatGPT, you can:
 ## Next Steps
 
 After installation, you can:
+
 - List experiments, gates, and dynamic configs
 - Create and update experiments, gates, and configs
 - Access your Statsig data directly from Codex
 
 For more information about available MCP capabilities, see the [MCP capabilities](/integrations/mcp#current-mcp-capabilities) section.
-
