@@ -3,7 +3,13 @@ title: Statsig MCP with Cursor
 description: Learn how to set up the Statsig MCP server in Cursor IDE.
 ---
 
-## Installation
+## Installation and Authentication via OAuth
+
+<Note>
+  MCP OAuth only supports Personal Console API Keys. Ensure your Statsig org
+  owner has enabled Personal Console API Keys creation for your role
+  [here](https://console.statsig.com/settings?tab=organization){" "}
+</Note>
 
 You can add the Statsig MCP with OAuth to Cursor in two ways:
 
@@ -28,6 +34,15 @@ You can add the Statsig MCP with OAuth to Cursor in two ways:
 }
 ```
 
+Cursor will automatically handle OAuth authentication when you first use the Statsig MCP. You'll be prompted to:
+
+1. Sign in to your Statsig account
+2. Authorize the MCP server to access your Statsig project
+3. Restart Cursor to apply the changes
+4. Verify the connection by navigating to **Settings > Cursor Settings > Tools & Integrations**, where Statsig MCP server should be listed and active
+
+The authentication will be saved for future sessions.
+
 <Accordion title="Using API Key instead of OAuth">
 
 While we recommend setting up Statsig MCP via OAuth, you can also authenticate with your Console API key. [Click here](cursor://anysphere.cursor-deeplink/mcp/install?name=statsig&config=eyJjb21tYW5kIjoibnB4IG1jcC1yZW1vdGUgaHR0cHM6Ly9hcGkuc3RhdHNpZy5jb20vdjEvbWNwIC0taGVhZGVyIHN0YXRzaWctYXBpLWtleToke0FVVEhfVE9LRU59IiwiZW52Ijp7IkFVVEhfVE9LRU4iOiJpbnNlcnQteW91ci1hcGkta2V5LWhlcmUifX0%3D) to quick install, or manually configure:
@@ -49,19 +64,10 @@ While we recommend setting up Statsig MCP via OAuth, you can also authenticate w
   }
 }
 ```
+
 Replace `console-YOUR-CONSOLE-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
 </Accordion>
-
-## Authentication via OAuth and Verification
-
-Cursor will automatically handle OAuth authentication when you first use the Statsig MCP. You'll be prompted to:
-1. Sign in to your Statsig account
-2. Authorize the MCP server to access your Statsig project
-3. Restart Cursor to apply the changes
-4. Verify the connection by navigating to **Settings > Cursor Settings > Tools & Integrations**, where Statsig MCP server should be listed and active
-
-The authentication will be saved for future sessions
 
 ## Using Statsig MCP with Cursor
 
@@ -85,4 +91,3 @@ If the MCP server doesn't appear:
 - Learn about [MCP capabilities](/integrations/mcp#current-mcp-capabilities)
 - Explore [use cases](/integrations/mcp#use-cases) for Statsig MCP
 - See examples of [stale gate cleanup](/integrations/mcp#example-prompt-for-stale-gate-cleanup)
-

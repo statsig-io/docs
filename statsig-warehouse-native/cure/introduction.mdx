@@ -51,6 +51,13 @@ Thus by calculating the covariance matrix between covariates and experiment outc
 - if no additional covariates are applied, CURE is mathematically equivalent to CUPED
 - if additional covariates are applied that increase the $R^2$ (i.e. portion of explained variance), CURE reduces variance more than CUPED
 
+## Note on CURE for ratio metrics
+
+Combining Statsig's CUPED implementation for ratio metrics and CURE covariates, we also enable ratio metrics to use both pre-experimental data and user-provided covariates. With adjusted formula to calculate the covariance of a ratio random variable to a simple variable, we are able to establish a multi-covariate regression just like CURE for simple metrics. However, the way we adjust the variance and mean follow that of ratio CUPED.
+
+- As an artifact of the regression, we obtain the shrinkage $R^2$, which we use to scale the post-adjustment variance.
+- We construct the mean adjustment as the inner product of the coefficient vector $\theta$ and the covariate group means $C$. By calculating the difference in adjustment between the test and control group, we only adjust the test group mean while holding the control group mean the same.
+
 # Data Sources
 
 When CUPED is enabled, pre-experiment metric data will still be an input to the CURE regression.

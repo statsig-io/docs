@@ -16,8 +16,19 @@
   How often events should flush to the Statsig servers.
 </ResponseField>
 
-<ResponseField name="event_logging_max_queue_size" type="number">
-  How many events should be buffered before flushing to the Statsig servers.
+<ResponseField name="event_logging_max_queue_size" type="Option<u32>">
+  Maximum number of events to queue before forcing a flush. 
+  - Default is `2000`
+  - event_logging_max_queue_size * event_logging_max_pending_batch_queue_size is the upper limit on how many events are queued
+  - See also `event_logging_max_pending_batch_queue_size`
+</ResponseField>
+
+<ResponseField name="event_logging_max_pending_batch_queue_size" type="Option<u32>">
+  Maximum number of event batches to hold in buffer to retry. 
+  - Default is `100`. 
+  - event_logging_max_queue_size * event_logging_max_pending_batch_queue_size is the upper limit on how many events are queued
+  - eg: 2000 * 100 means the SDK can process 200k event per second before events start getting dropped
+  - See also `event_logging_max_queue_size`. 
 </ResponseField>
 
 <ResponseField name="log_event_url" type="string">

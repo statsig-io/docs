@@ -1,0 +1,88 @@
+---
+title: Privacy Options for Session Replay
+sidebarTitle: Privacy
+---
+
+To support your app’s privacy requirements and align with your organization’s policies, we provide multiple ways to control replay privacy:
+
+- **Baseline privacy options** - Select from three preset privacy configurations. Each option applies a different level of text masking, helping you protect PII and sensitive data according to your app’s and users’ needs
+- **Fine-grained privacy controls** - After choosing a baseline configuration, use CSS selector rules to mask, reveal, or block specific elements
+- **Global Targeting Gate** - Use a feature gate to define which users are eligible for replays, ensuring that recordings are limited to specific users or cohorts.
+
+In the Statsig Console, you can configure your privacy settings under **Project Settings → Analytics & Session Replay**. You must be a project admin to modify these settings.
+
+### Baseline Privacy Options
+
+- **Passwords (Default)** — Only password inputs are replaced with asterisks (\*). All other text and inputs are shown as is
+- **Inputs** — All text in inputs are replaced with asterisks (\*). All other text is shown as is
+- **Maximum** — All text and inputs are replaced with asterisks (\*)
+
+### Selector Rules
+
+Use CSS selectors to precisely control how individual elements are handled during session replay—whether they are masked, unmasked, or blocked.
+
+- **Masking** and **unmasking** apply only to text content. Masked text is replaced with asterisks (\*).
+- **Blocking** removes the element entirely from the replay and replaces it with a black placeholder of the same size.
+- **Password inputs cannot be unmasked**, regardless of selector rules.
+
+Selector rules override the baseline privacy settings. When multiple selector rules apply to the same element, the following precedence is enforced: **Block → Mask → Unmask**
+
+See the examples below for examples of how precedence is enforced.
+
+```js
+// Everything within the blocked class will
+// appear as a single black placeholder
+<div class="blocked">
+  <div id="masked">I will be part of the black placeholder</div>
+  <button id="unmasked">I will be part of the black placeholder</button>
+</div>
+```
+
+```js
+// The closest rule will apply
+<div>
+  <div id="masked">Masked Text</div>
+  <div id="masked">
+    <button id="unmasked">Unmasked Text</button>
+  </div>
+</div>
+```
+
+```js
+// With conflicting rules applied at the same level,
+// the higher precedence will apply
+<div>
+  <button id="unmasked" className="masked">
+    Masked Text
+  </button>
+</div>
+```
+
+```js
+// With baseline privacy setting set to Maximum, all text is masked
+// by default but this can be overwritten by unmasking
+<div>
+  <div>Masked Text</div>
+  <div>
+    <button id="unmasked">Unmasked Text</button>
+  </div>
+</div>
+```
+
+All selectors must be valid CSS selectors. For details on supported selector syntax, see MDN’s list of CSS selectors
+
+<Warning>
+  Using selector rules or baseline privacy settings besides Passwords, will
+  cause `maskTextFn`, `maskInputFn`, `maskTextSelector`, `maskAllInputs`,
+  `maskInputOptions`, and `blockSelector` options passed in during
+  initialization to be overwritten
+</Warning>
+
+### Global Targeting Gate
+
+The Global Targeting Gate controls who is _eligible_ for session recording. If a user does not pass this gate, their sessions will never be recorded. By default, this is set to Everyone, meaning there are no restrictions—anyone can be recorded. You can think of this as defining the "top of the funnel" for session recording eligibility.
+
+<Warning>
+  If you are utilizing bootstrapping, reach out to the Statsig team to confirm
+  your server sdk is supported
+</Warning>

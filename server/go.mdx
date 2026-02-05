@@ -1,7 +1,7 @@
 ---
-title: Go Server SDK
-sidebarTitle: Go
-description: Statsig's Server SDK for Go applications
+title: Legacy Go Server SDK
+sidebarTitle: Go (Legacy)
+description: Statsig's legacy Server SDK for Go applications; use Go Core for new projects
 icon: "golang"
 ---
 
@@ -20,6 +20,10 @@ import LocalOverridesIntro from '/snippets/server/localOverrides.mdx'
 import MultiInstanceIntro from '/snippets/server/multiInstance.mdx'
 import InitializationWarning from '/snippets/server/initialization.mdx'
 import InitializationFooter from '/snippets/server/initialization2.mdx'
+
+<Callout type="warning" title="Legacy SDK">
+This page covers the legacy Go SDK. For new implementations, use the [Go Core SDK](/server-core/go-core) built on the Server Core framework.
+</Callout>
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/statsig-io/go-sdk">
   View the Go SDK source code and releases
@@ -541,4 +545,3 @@ type DynamicConfig struct {
   GetMap(key string, fallback map[string]interface{}) map[string]interface{}
 }
 ```
-

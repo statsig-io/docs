@@ -21,8 +21,18 @@ This integration connects your software development with measurable business imp
 Integrating your code repository unlocks the following capabilities:
 
 * Locate specific lines of code where a Feature Gate or Experiment is implemented  
-* Automatically generate Pull Requests to remove stale flags from code  
-* Understand the intent behind metrics and experiments based on code implementation  
+* Automatically generate PRs (Pull Requests) to remove stale flags from your code  
+
+<Frame>
+  <img src="/images/ai-remove-from-code.png" alt="An example of Remove from Code in a stale gate banner" />
+</Frame>
+
+* Understand the intent behind metrics and experiments based on code implementation
+
+<Frame>
+  <img src="/images/ai-contextual-description.png" alt="An example of AI description in the right rail of a config" />
+</Frame>
+
 * Write natural language queries to create charts to answer business questions (Coming Soon)
 
 ## Why Connect Your Codebase
@@ -57,7 +67,9 @@ If you are connecting GitHub to Statsig for the first time:
 4. You will be redirected to GitHub. Authenticate and select the target Organization and Repositories.  
 5. Once authorized, you will be redirected back to Statsig to confirm the connection
 
-Note: You can choose to install the app on specific repositories or your entire organization. For the best results with Knowledge Graph, we recommend selecting all relevant repositories containing feature code.
+<Info>
+You can choose to install the app on specific repositories or your entire organization. For the best results with Knowledge Graph, we recommend selecting all relevant repositories containing feature code.
+</Info>
 
 ### Connecting Additional Projects
 
@@ -83,7 +95,7 @@ If you are using the older Personal Access Token (PAT) integration, we recommend
 ## Statsig GitHub Integration FAQs
 
 1. **Will my data be used to train LLM models?**  
-   Your data may be used to improve the services provided to you. Statsig does not use your data to train LLM models nor does its sub-processors.
+   Statsig does not use your data to train LLM models nor does its sub-processors. Your data is secured to your organization and used to improve the services provided to you. 
 
 2. **Does Statsig store my source code?**  
    Statsig does not permanently store your source code. Code is temporarily processed to extract metadata and embeddings in order to create the Knowledge Graph, and discarded when no longer necessary.

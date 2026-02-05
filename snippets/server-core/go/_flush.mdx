@@ -3,6 +3,7 @@
 func (s *Statsig) FlushEvents() {}
 
 // example usage
-s, err := statsig.NewStatsig("secret-key", statsig.StatsigOptions{})
+s, err := statsig.NewStatsig("secret-key")
+s.Initialize()
 s.FlushEvents()
 ```
