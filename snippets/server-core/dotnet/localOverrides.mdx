@@ -22,10 +22,17 @@ statsig.OverrideLayer("test_layer", new Dictionary<string, object>
     ["font_size"] = 16
 });
 
-statsig.OverrideParameterStore("test_param_store", , new Dictionary<string, object>
+statsig.OverrideParameterStore("testing123", new Dictionary<string, object>()
 {
-    ["color"] = "treatment",
-    ["Aura"] = 1.5
+    ["brush_color"] = "blue",
+    ["monochromatic"] = true,
+    ["weight"] = 42,
+    ["gradient"] = 3.14,
+    ["pen_sizes"] = [1, 2, 3, 4, 5],
+    ["artwork"] = new Dictionary<string, object>()
+        {
+            ["nesting"] = "treatment"
+        }
 });
 ```
 
