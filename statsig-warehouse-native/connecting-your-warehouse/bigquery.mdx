@@ -50,28 +50,9 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 
 Now the service account should have the required permissions to run queries and materialize results.
 
-## Using a First Party Service Account
+## Additional BigQuery Resources
 
-1. Speak with your Statsig technical point of contact and request enabling 1st party service account connectivity for Big Query
-
-2. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
-
-<Frame>
-  <img src="/images/1stprtybq.png" alt="BQ 1st party service account" />
-</Frame>
-
-3. Create a new JSON key (which will download a JSON file)
-
-   <Frame>
-     <img src="/images/1stprtybq2.png" alt="BQ 1st party service account" />
-   </Frame>
-   <Frame>
-     <img src="/images/1stprtybq3.png" alt="BQ 1st party service account" />
-   </Frame>
-
-4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
-
-## BigQuery Project ID
+### BigQuery Project ID
 
 Find your BigQuery Project ID below
 
