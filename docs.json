@@ -432,7 +432,6 @@
             "group": "Tutorials",
             "icon": "file",
             "pages": [
-              "sample-apps",
               "client/concepts/parameter-stores",
               "guides/first-device-level-experiment",
               "guides/experiment-on-custom-id-types",
@@ -759,17 +758,17 @@
           {
             "group": "Server SDKs",
             "pages": [
+              "server-core/index",
               "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
               "server-core/go-core",
               "server/ruby",
               "server-core/dotnet-core",
-              "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
-                  "server/cpp",
+                  "server-core/cpp-core",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
@@ -779,6 +778,7 @@
                 "group": "Legacy Server SDKs",
                 "pages": [
                   "server-core/legacy-sdks",
+                  "server/cpp",
                   "server/go",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
