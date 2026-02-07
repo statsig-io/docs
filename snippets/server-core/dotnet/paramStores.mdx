@@ -1,0 +1,38 @@
+```csharp
+# Get a Parameter Store by name
+param_store = statsig.getParameterStore(user, "my_parameter_store")
+```
+
+### Retrieving Parameter Values
+
+Parameter Store provides methods for retrieving values of different types with fallback defaults.
+
+<Accordion title="Param Store Methods">
+
+- **GetBool(string, default(bool))**: Pulls key value of type boolean
+- **GetString(string, "")**: Pulls key value of type string
+- **GetLong(string, default(long))**: Pulls key value of type long
+- **GetDouble(string, default(double))**: Pulls key value of type double
+- **GetList(string, new List\<\>())**: Pulls key value of type list
+- **GetDictionary(string, new Dictionary\<string, object\>())**: Pulls key value of type Dictionary
+
+</Accordion>
+
+### Evaluation Options
+
+You can disable exposure logging when retrieving a parameter store:
+
+```csharp
+var store = statsig.GetParameterStore(user, name!, options);
+
+if (store == null)
+{
+    throw new Exception($"Parameter store {name} not found");
+}
+
+var x = store.GetBool(paramName, default(bool));
+
+var y = store.GetString(paramName, "");
+
+var z = store.GetDictionary(paramName, new Dictionary<string, object>());
+```

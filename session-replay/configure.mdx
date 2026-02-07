@@ -19,17 +19,24 @@ The Global Sampling Rate determines what percentage of eligible sessions are rec
 
 Conditional triggers can start a session recording mid-session, even if it wasn’t recorded from the beginning. These triggers respect the Global Targeting Gate but operate independently of the Global Sampling Rate. When triggered, the recording includes the last 30 seconds leading up to the event (if rolling window is enabled).
 
-There are three types of conditional triggers:
+Types of conditional triggers:
 
-- **Gate Exposures** — Trigger based on exposure to a specific gate, optionally filtered by group (e.g., Pass/Fail).
-- **Experiment Exposures** — Trigger based on exposure to a specific experiment, optionally filtered by group (e.g., Test/Control).
+- **Individual Gate Exposures** — Trigger based on exposure to a specific gate, optionally filtered by group (e.g., Pass/Fail).
+- **All Gate Exposures** — Trigger based on exposure to any gate, optionally filtered by group (e.g., Pass/Fail). Individual Gate Exposure triggers override All Gate configuration
+- **Individual Experiment Exposures** — Trigger based on exposure to a specific experiment, optionally filtered by group (e.g., Test/Control).
+- **All Experiment Exposures** — Trigger based on exposure to any experiment, filtered by groups Test/Control. No other group names are supported, if an experiment includes additional groups, individual triggers must be configured for each one. Individual Experiment Exposure triggers override All Experiment configuration
 - **Events** — Trigger based on specific logged event, optionally filtered by event values (e.g., "purchase_event" with value "book").
 
 For each trigger, you can define an individual sampling rate. This rate is evaluated based on session_id, meaning the result (pass or fail) will remain consistent for the same session, even if the trigger occurs multiple times.
 
+**All Gates** and **All Experiments** conditional triggers are only available in `3.30.1` or higher
+
 Important: If a conditional trigger occurs while a session recording is already in progress, the recording simply continues uninterrupted.
 
-<img src="/images/session_replay/settings.png" alt="Session replay settings panel with targeting and sampling controls" />
+<img
+  src="/images/session_replay/settings.png"
+  alt="Session replay settings panel with targeting and sampling controls"
+/>
 
 <img
   src="/images/session_replay/conditional_recording_flowchart.png"
@@ -52,7 +59,9 @@ Example Scenario:
 3. A minute later, the user is exposed to the `cool_new_feature` gate, and the recording begins
 
 <Note>
-A trigger's sampling rate is consistent for the entire session based on session_id. So if `purchase_event` fails the sampling rate once, future occurrences of the same event in that session will also fail.
+  A trigger's sampling rate is consistent for the entire session based on
+  session_id. So if `purchase_event` fails the sampling rate once, future
+  occurrences of the same event in that session will also fail.
 </Note>
 
 ### Initialization - StatsigTriggeredSessionReplay
@@ -120,6 +129,11 @@ function App() {
   - `true`: Statsig maintains a local rolling window of the last 30 seconds of the session, allowing recordings to include context leading up to a trigger.
   - `false`: If a conditional trigger occurs, recording begins from that moment onward, with no historical context.
 
+<Warning>
+  If you are utilizing bootstrapping, reach out to the Statsig team to confirm
+  your server sdk is supported for conditional recording
+</Warning>
+
 ## Advanced: Forcing a Recording on Demand
 
 You may have a use case where you want to manually start a recording. To do this, we offer the startRecording API which will begin recording as soon as you call it.
@@ -181,15 +195,6 @@ These are options offered by the rrweb recorder (the open source recording tool 
 | plugins                  | []                   | load plugins to provide extended record functions. [What is plugins?](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/plugin.md)                                                   |
 | errorHandler             | -                    | A callback that is called if something inside of rrweb throws an error. The callback receives the error as argument.                                                                          |
 
-## Configure Recording Privacy/PII Options
-
-If your users may be entering or viewing sensitive information, you can prevent this from being recorded and displayed using the mask, block, or ignore options listed above. The most commonly used options are:
-
-- An element with the class name `.rr-block` will not be recorded. Instead, it will replay as a placeholder with the same dimensions.
-- An element with the class name `.rr-ignore` will not record its input events.
-- All text of elements with the class name `.rr-mask` and their children will be masked.
-- `input[type="password"]` will be masked by default.
-
 ## Limits
 
 ### 4 Hours Per Session or 30 Min Inactive Time
@@ -198,12 +203,17 @@ Sessions will end after four hours total or if the user returns from inactive ti
 
 ### Recording Limits
 
-Free Tier Statsig projects can store up to 50,000 session recordings per month. Once this limit is reached, the SDK will automatically prevent new recordings from starting. Pro Tier projects have a higher limit of 100,000 session recordings per month. You can monitor your session replay usage in your project settings. Additionally, for all tiers, we cap session processing to 500 sessions per hour.
+| Tier | Monthly Limit | Daily Limit | Hourly Limit |
+| ---- | ------------- | ----------- | ------------ |
+| Free | 50,000        | 3,500       | 3,500        |
+| Pro  | 100,000       | 7,000       | 7,000        |
+
+Once these limit is reached, the SDK will automatically prevent new recordings from starting. You can monitor your session replay usage in your project settings. [Contact us](https://statsig.com/contact/demo) for custom contracts
 
 ### Replay Availability Time
 
 It can currently take about 1 hour from when the session is recorded to seeing it in your Statsig console.
 
-### 30 Day Retention
+### Default 30 Day Retention
 
-Sessions have a 30 day lifetime and will be deleted after 30 days.
+Sessions have a default retention period of 30 days and are automatically deleted after that time. You can configure a shorter retention period in settings if needed. Reducing your retention period does not affect your monthly session replay limit and is typically done for privacy and compliance purposes.

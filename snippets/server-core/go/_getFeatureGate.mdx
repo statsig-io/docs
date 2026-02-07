@@ -1,6 +1,6 @@
 ```go
-user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
 
-checkGateOptions := &statsig.CheckGateOptions{DisableExposureLogging: false}
-featureGate := s.GetFeatureGate(*user, "a gate", checkGateOptions)
+options := &statsig.FeatureGateEvaluationOptions{DisableExposureLogging: false}
+featureGate := s.GetFeatureGateWithOptions(user, "a_gate", options)
 ```

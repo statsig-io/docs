@@ -1,9 +1,14 @@
 ```go
-user := statsig.NewStatsigUserBuilder().WithUserID("a-user").Build()
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
 
-if s.CheckGate(*user, "a_gate", nil) {
+// Basic check
+if s.CheckGate(user, "a_gate") {
     // Gate is on, enable new feature
 } else {
     // Gate is off
 }
+
+// With options (e.g., disable automatic exposure logging)
+options := &statsig.FeatureGateEvaluationOptions{DisableExposureLogging: true}
+s.CheckGateWithOptions(user, "a_gate", options)
 ```

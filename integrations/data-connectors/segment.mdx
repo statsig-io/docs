@@ -149,7 +149,9 @@ The `statsigCustomIDs` field in properties should be an array, where the even in
 The Segment integration also allows the mapping of top level fields to custom IDs you define in Statsig. To do this, visit the Segment panel on the Statsig Integrations page and look for the "Map Identifier" section. Here you can choose fields you would like mapped to a [Custom ID](/guides/experiment-on-custom-id-types).
 This is particularly useful for working with the [Segment anonymous ID](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/#anonymous-ids), which is passed as an event field `anonymousId`. By defining a custom ID called `segmentAnonymousId`, Statsig can easily map your anonymous Segment traffic to your metric data.
 
-:warning: **Warning:** values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below:
+<Warning>
+Values passed in `properties.statsigCustomIDs` will take precedence over mapped identifiers below.
+</Warning>
 
 <img src="/images/integrations/data-connectors/segment/279802493-6956e8f7-28f1-4ac9-88d1-96710240373b.png" alt="Segment integration card with Map Identifiers form mapping anonymousId to custom ID" />
 

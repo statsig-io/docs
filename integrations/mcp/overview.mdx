@@ -1,34 +1,47 @@
 ---
-title: Statsig MCP Server
-description: The Statsig MCP (Model Context Protocol) server lets tools like Cursor and Claude Desktop have similar functionality to the Statsig Console. With this setup, you can ask questions, explore experiments, and access your Statsig data using AI.
+title: Overview
+description: The Statsig MCP (Model Context Protocol) server brings the power of Statsig into tools like Codex, Cursor, and Claude Code. With this setup, you can ask questions, explore experiments, and access your Statsig data using AI.
 ---
 
-## MCP Server Configuration
+## MCP configuration guides
 
-Add the following MCP server configuration JSON to your respective tool's config file. This config sets up the connection to Statsig's MCP endpoint with your API key:
+<Columns cols={2}>
+  <Card 
+    title="Codex" 
+    icon="computer"
+    href="/integrations/mcp/codex">
+    Set up Statsig MCP using Codex CLI or IDE extension.
+  </Card>
 
-```json expandable
-{
-  "mcpServers": {
-    "statsig-local": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://api.statsig.com/v1/mcp",
-        "--header",
-        "statsig-api-key:${AUTH_TOKEN}"
-      ],
-      "env": {
-        "AUTH_TOKEN": "console-YOUR-API-KEY"
-      }
-    }
-  }
-}
-```
+    <Card 
+    title="ChatGPT Connector" 
+    icon="message"
+    href="/integrations/mcp/chatgpt-connector">
+    Talk to your Statsig projects from within ChatGPT.
+  </Card>
 
-Replace `console-YOUR-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
-Once you've added and saved the configuration file, restart Cursor or Claude Desktop to apply the changes. After restarting, you should see the MCP server listed and active under the Developer settings. On Cursor, this can be found under Settings > Cursor Settings > Tools & Integrations.
+</Columns>
+
+<Columns cols={3}>
+    <Card 
+    title="Cursor" 
+    href="/integrations/mcp/cursor">
+    Configure Statsig MCP in Cursor IDE.
+  </Card>
+
+  <Card 
+    title="Claude Code" 
+    href="/integrations/mcp/claude-code">
+    Set up Statsig MCP in Claude Code.
+  </Card>
+  
+  <Card 
+    title="Manual setup" 
+    href="/integrations/mcp/manual-setup">
+    Manual configuration for any MCP-compatible tool.
+  </Card>
+</Columns>
 
 ## Current MCP capabilities
 
@@ -55,34 +68,6 @@ Once you've added and saved the configuration file, restart Cursor or Claude Des
 
 Need other functions? We're happy to consider additions by request, reach out in Slack.
 
-## **Setting up in Codex**
-
-```bash
-codex mcp add statsig -- npx --yes mcp-remote https://api.statsig.com/v1/mcp \
-  --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
-```
-
-This will update your `~/.codex/config.toml`.
-
-## **Setting up in Cursor**
-
-[Click Here](cursor://anysphere.cursor-deeplink/mcp/install?name=statsig-local&config=eyJjb21tYW5kIjoibnB4IG1jcC1yZW1vdGUgaHR0cHM6Ly9hcGkuc3RhdHNpZy5jb20vdjEvbWNwIC0taGVhZGVyIHN0YXRzaWctYXBpLWtleToke0FVVEhfVE9LRU59IiwiZW52Ijp7IkFVVEhfVE9LRU4iOiJjb25zb2xlLWtleSJ9fQ==) to add the Statsig MCP to Cursor, or copy the json to: `~/.cursor/mcp.json`
-
-## **Setting up in Claude Desktop**
-
-The configuration file is located at:
-
-- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-
-## **Setting up in Claude Code**
-
-On Claude Code, we recommend using the http transport directly, run this command on the command line anywhere you use Claude Code:
-
-```bash 
-claude mcp add --transport http statsig-local https://api.statsig.com/v1/mcp \
-  --header "statsig-api-key: console-YOUR-CONSOLE-API-KEY"
-```
 
 ## Use Cases
 
