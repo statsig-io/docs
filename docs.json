@@ -768,7 +768,6 @@
               {
                 "group": "More Server SDKs",
                 "pages": [
-                  "server/cpp",
                   "server-core/cpp-core",
                   "server-core/rust-core",
                   "server-core/elixir-core",
@@ -779,6 +778,7 @@
                 "group": "Legacy Server SDKs",
                 "pages": [
                   "server-core/legacy-sdks",
+                  "server/cpp",
                   "server/go",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
