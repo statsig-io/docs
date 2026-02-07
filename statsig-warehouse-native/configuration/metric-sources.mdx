@@ -70,9 +70,9 @@ Statsig works natively with many different types and granularities of data. Comm
 
 *Metric examples with this source:*
 
-*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of event_name = 'purchase'.*
+*- Number of users with purchase: You can create a [UNIT COUNT](/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of event_name = 'purchase'.*
 
-*- % of users with page view who clicked: You can create a [RATIO](https://docs.statsig.com/statsig-warehouse-native/metrics/ratio) metric with this metric source in both denominator and numerator, and apply event_name filter accordingly.*
+*- % of users with page view who clicked: You can create a [RATIO](/statsig-warehouse-native/metrics/ratio) metric with this metric source in both denominator and numerator, and apply event_name filter accordingly.*
 
 #### 2.Fact tables (one row per entity per day), using the date of the row as the timestamp, example:
 
@@ -84,9 +84,9 @@ Statsig works natively with many different types and granularities of data. Comm
 
 *Metric examples with this source:*
 
-*- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+*- Revenue: You can create a [SUM](/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
 
-*- Average order value: You can create a [MEAN](https://docs.statsig.com/statsig-warehouse-native/metrics/mean) metric on 'revenue' column, with any filters you need.*
+*- Average order value: You can create a [MEAN](/statsig-warehouse-native/metrics/mean) metric on 'revenue' column, with any filters you need.*
 
 #### 3.Aggregated fact tables at unit day granularity, using the date of the row as the timestamp, example: 
 
@@ -98,9 +98,9 @@ Statsig works natively with many different types and granularities of data. Comm
 
 *Metric examples with this source:*
 
-*- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+*- Revenue: You can create a [SUM](/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
 
-*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of purchase > 0.*
+*- Number of users with purchase: You can create a [UNIT COUNT](/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of purchase > 0.*
 
 ### Types of data that needs some transformation
 There are times when you might have a table that does not fall into the schema mentioned above. For example, a wide user dimension table contains one row per user with pre-aggregated or derived behavioral attributes.
@@ -200,7 +200,7 @@ Statsig uses techniques like Statsig macros, push-down-filters (predicate filter
 
 Statsig will flag a metric source as slow if it takes more than 30 seconds to retrieve a sample of up to 100 records from the table. If the query is expensive, we recommend considering the following steps in sequence to optimize for your metric source:
 - Include filters based off partition column
-- Use [Statsig macros](https://docs.statsig.com/statsig-warehouse-native/guides/best-practices#use-statsigs-macros) in SQL
+- Use [Statsig macros](/statsig-warehouse-native/guides/best-practices#use-statsigs-macros) in SQL
 - Pre-calculate some of the metrics to avoid joins or complex queries
 - (Do this cautiously) Upgrade your computing resources if you are on a very small cluster.
 

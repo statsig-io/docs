@@ -37,7 +37,7 @@ This means that **none** of the resources or data is shared among different proj
 
 The Statsig team believe that the **sensible default structure** for most customers is having an organization with a **single project** where multiple teams contribute and collaborate inside.
 
-We believe that different teams and functions across your organization can stay well-organized within a single project by leveraging features such as **[teams](https://docs.statsig.com/access-management/teams), [roles](https://docs.statsig.com/access-management/projects#roles), [tags](https://docs.statsig.com/access-management/tags),** and **[templates](https://docs.statsig.com/experiments/templates/templates)**.
+We believe that different teams and functions across your organization can stay well-organized within a single project by leveraging features such as **[teams](/access-management/teams), [roles](/access-management/projects#roles), [tags](/access-management/tags),** and **[templates](/experiments/templates/templates)**.
 This also removes the risk of costly migrations if some projects ever need to be consolidated in the future for cross-functional collaborations.
 
 <Frame>
@@ -59,10 +59,10 @@ Once provisioned, you will see that the [tab for Organization](https://console.s
 
 #### Step 2: Setting up SSO
 
-We recommend configuring [**SSO**](https://docs.statsig.com/access-management/sso/overview) (Single Sign-On) for your Statsig organization to simplify the user experience while improving your security.
+We recommend configuring [**SSO**](/access-management/sso/overview) (Single Sign-On) for your Statsig organization to simplify the user experience while improving your security.
 
-Statsig supports any Identity Provider that implements the **OIDC protocol** for SSO, such as [Okta](https://docs.statsig.com/access-management/sso/okta_sso), [Microsoft Entra ID](https://docs.statsig.com/access-management/sso/azuread), [Google](https://docs.statsig.com/access-management/sso/google), and more.
-Additionally, consider integrating [**SCIM**](https://docs.statsig.com/access-management/scim/overview) (System for Cross-domain Identity Management) if you are using Okta as your identity provider.
+Statsig supports any Identity Provider that implements the **OIDC protocol** for SSO, such as [Okta](/access-management/sso/okta_sso), [Microsoft Entra ID](/access-management/sso/azuread), [Google](/access-management/sso/google), and more.
+Additionally, consider integrating [**SCIM**](/access-management/scim/overview) (System for Cross-domain Identity Management) if you are using Okta as your identity provider.
 
 New users who are provisioned via SSO will be assigned the *Member* Role unless you're using SCIM.
 
@@ -85,7 +85,7 @@ When creating a new project, you can set its type to *Open* which would allow an
 </Frame>
 
 Each person is assigned a role that defines their level of access within the project and organization.
-We recommend reviewing the permissions set for each predefined roles so you can [assign the appropriate roles](https://docs.statsig.com/access-management/organizations#organization-members) or create a custom role that aligns with your organization's needs.
+We recommend reviewing the permissions set for each predefined roles so you can [assign the appropriate roles](/access-management/organizations#organization-members) or create a custom role that aligns with your organization's needs.
 
 Common examples of custom roles include a *Metrics Admin* (responsible for managing metrics) and a *Data Warehouse Admin* (in Warehouse Native projects, responsible for managing warehouse connections).
 
@@ -103,7 +103,7 @@ If you haven’t set up SSO yet, you can invite individual members to your organ
 
 #### Step 6: Creating Teams within the Project
 
-[Teams](https://docs.statsig.com/access-management/teams) can be created within the project to help with organization and ownership.
+[Teams](/access-management/teams) can be created within the project to help with organization and ownership.
 
 Once a team is configured and users are added to team, any configs created will be associated with the team that the user belongs to.
 And these configs will automatically inherit all the default settings and templates from the team when they are created.
@@ -125,7 +125,7 @@ As a best practice, you can require all resource creations to be attached to a t
   <img src="/images/access_management_reviews.png" alt="Review setting interface" />
 </Frame>
 
-Within Statsig, you can enable [reviews](https://docs.statsig.com/guides/setting-up-reviews) for any changes to config and metric, requiring a second pair of eyes to review the change before they get deployed to production.
+Within Statsig, you can enable [reviews](/guides/setting-up-reviews) for any changes to config and metric, requiring a second pair of eyes to review the change before they get deployed to production.
 
 Note that you can **customize** your review policies to align with your organization’s needs.
 For example, you can set up a team of reviewers by giving their roles a permission to approve the reviews.
@@ -140,17 +140,17 @@ Each **team** also has team-level **review settings** that can require reviews f
   <img src="/images/access_management_sdk_env.png" alt="SDK environment interface" />
 </Frame>
 
-In Statsig, you have **Client API Keys** to initialize all Statsig [client SDKs](https://docs.statsig.com/client/introduction) and **Server Secret Keys** to initialize all Statsig [server SDKs](https://docs.statsig.com/server/introduction).
+In Statsig, you have **Client API Keys** to initialize all Statsig [client SDKs](/client/introduction) and **Server Secret Keys** to initialize all Statsig [server SDKs](/server/introduction).
 
 We believe there is a **"Crawl, Walk, Run"** phase when it comes to configuring your API keys:
 
-- **Crawl:** Begin by creating API keys that are scoped to specific environment within Statsig for [environment-based evaluation](https://docs.statsig.com/guides/using-environments#1-environment-specific-sdk-keys).
+- **Crawl:** Begin by creating API keys that are scoped to specific environment within Statsig for [environment-based evaluation](/guides/using-environments#1-environment-specific-sdk-keys).
 
 - **Walk:** Next, create different API keys for each of the frontend clients (e.g., iOS, Android, and Web).
 
 - **Run:** At scale, consider having different API keys at the service level where each backend service and its environments have their own keys.
 
-This setup integrates seamlessly with [Target Apps](https://docs.statsig.com/sdks/target-apps) that can unlock additional performance and security.
+This setup integrates seamlessly with [Target Apps](/sdks/target-apps) that can unlock additional performance and security.
 
 
 #### Configuring Target Apps for API keys
@@ -160,14 +160,14 @@ This setup integrates seamlessly with [Target Apps](https://docs.statsig.com/sdk
 </Frame>
 
 
-[Target app](https://docs.statsig.com/sdks/target-apps) is an attribute you can associate to your SDK keys and configs.
+[Target app](/sdks/target-apps) is an attribute you can associate to your SDK keys and configs.
 Through target apps, you can precisely set the scope of configs that will be accessed from each SDK key (which can also reduce the size of your payloads).
 
-We highly recommend setting up target apps as you scale the usage of Statsig for [additional performance and security](https://docs.statsig.com/sdks/target-apps#motivation).
+We highly recommend setting up target apps as you scale the usage of Statsig for [additional performance and security](/sdks/target-apps#motivation).
 
 
 #### Setting up Notifications
 
-Statsig has an integration with [Slack](https://docs.statsig.com/integrations/slack) that you can set up, so you can receive real-time notifications about the activities, status changes, and other useful alerts directly in your Slack workspace.
+Statsig has an integration with [Slack](/integrations/slack) that you can set up, so you can receive real-time notifications about the activities, status changes, and other useful alerts directly in your Slack workspace.
 
 Additionally, you can configure to receive notifications in your [email](https://www.statsig.com/updates/update/email-notifs) as well for any alerts, reviews, reports, and more.
