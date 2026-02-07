@@ -13,7 +13,7 @@ To ship any of the groups in your experiment, including control, to all your use
 ## Stopping an Experiment
 If your experiment has a problem and you need to stop it, there are two routes you can take.
 - If the problem means you no longer wish to run this test, you can [Abandon the experiment](/experiments-plus/abandon). This will put the experiment in a finished state, and all users will fall back to defaults in code. You can still Reset this later, if you decide to revisit the experiment.
-- If one of the groups has a bug you plan to fix, and you wish to later restart the experiment, you can Reset the experiment. Alternatively, you can [disable a group](https://docs.statsig.com/experiments/implementation/disable-group) with bug if you intend to keep the other test groups in experiment running.
+- If one of the groups has a bug you plan to fix, and you wish to later restart the experiment, you can Reset the experiment. Alternatively, you can [disable a group](/experiments/implementation/disable-group) with bug if you intend to keep the other test groups in experiment running.
 
 Resetting will put the experiment into an unstarted state. Every user will get the default experience - either the value defined in code or the layer default. Additionally, the "salt" used to randomize a user's group will be changed. This means that when you start the experiment again, your users will be randomly assigned to a group that is not necessarily the same group they were in prior to the experiment being reset.
 
