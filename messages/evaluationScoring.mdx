@@ -1,0 +1,49 @@
+---
+title: Evaluation Cost Breakdown
+---
+
+Feature gate evaluation speeds are determined through the overall complexity of all rules included in the gate. Each condition, operator, and quantity of values are scored through a point system and used to classify individual rules and gates as normal, slow, or very slow. These factors are weighted with the worst case scenario in mind. The tables below can be used to understand which component of your rule is making your evaluation slow.
+
+## Condition
+
+These costs are applied based on the **condition type** used in a gate. Only conditions with a significant impact are listed. If a condition is not listed, it does not significantly impact SDK evaluation speeds.
+
+| Condition       | Impact   | Reason                                          |
+| --------------- | -------- | ----------------------------------------------- |
+| BROWSER         | High     | Requires user agent parsing                     |
+| BROWSER VERSION | High     | Requires user agent parsing                     |
+| OS              | High     | Requires user agent parsing                     |
+| OS VERSION      | High     | Requires user agent parsing                     |
+| COUNTRY         | Low      | Requires IP-based geolocation lookup            |
+| PASSES SEGMENT  | Variable | complexity dependent on cost of nested segments |
+| FAILS SEGMENT   | Variable | complexity dependent on cost of nested segments |
+| PASSES GATE     | Variable | complexity dependent on cost of nested gates    |
+| FAILS GATE      | Variable | complexity dependent on cost of nested gates    |
+
+<Accordion title = "Passes/Fails Segment and Gate conditions">
+
+For conditions that depend on other gates or segments, their evaluation cost is directly related to the entity they rely on. If a gate has a **Passes Gate** condition, the evaluation cost of the gate it is referencing will be propagated up to the base **Passes Gate** rule.
+
+</Accordion>
+## Operator
+
+These costs are applied based on the **operator** used in a condition. If an operator is not listed, it does not significantly impact SDK evaluation speeds.
+
+| Operator                        | Impact | Reason                                  |
+| ------------------------------- | ------ | --------------------------------------- |
+| ANY OF (Case Sensitive)         | Low    | Requires explicit equality comparison   |
+| NONE OF (Case Sensitive)        | Low    | Requires explicit inequality comparison |
+| Match Regex String              | Medium | Requires regex matching                 |
+| Version String                  | Medium | Requires semantic version comparison    |
+| ARRAY CONTAINS ANY / NONE / ALL | Low    | Requires array scan                     |
+
+## Value Count
+
+These costs are applied based on the **number of values** provided to a condition.
+
+| Entity       | Impact |
+| ------------ | ------ |
+| 10–19 values | low    |
+| 20–29 values | low    |
+| 30–49 values | Medium |
+| 50+ values   | High   |

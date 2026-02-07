@@ -2,43 +2,50 @@ All of the main SDK functions (`CheckGate`, `GetDynamicConfig`, `GetExperiment`,
 <Tabs>
 <Tab title="Feature Gates">
 ```go
-result := statsig.CheckGate(aUser, "a_gate_name", statsig.CheckGateOptions{DisableExposureLogging: true})
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
+options := &statsig.FeatureGateEvaluationOptions{DisableExposureLogging: true}
+result := s.CheckGateWithOptions(user, "a_gate_name", options)
 ```
 
 ```go
-statsig.ManuallyLogGateExposure(aUser, "gate_name")
+s.ManuallyLogFeatureGateExposure(user, "gate_name")
 ```
 </Tab>
 
 <Tab title="Dynamic Configs">
 ```go
-config := statsig.GetDynamicConfig(aUser, "config_name", statsig.GetDynamicConfigOptions{DisableExposureLogging: true})
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
+options := &statsig.DynamicConfigEvaluationOptions{DisableExposureLogging: true}
+config := s.GetDynamicConfigWithOptions(user, "config_name", options)
 ```
 
 ```go
-statsig.ManuallyLogDynamicConfigExposure(aUser, "config_name")
+s.ManuallyLogDynamicConfigExposure(user, "config_name")
 ```
 </Tab>
 
 <Tab title="Experiments">
 ```go
-experiment := statsig.GetExperiment(aUser, "experiment_name", statsig.GetExperimentOptions{DisableExposureLogging: true})
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
+options := &statsig.ExperimentEvaluationOptions{DisableExposureLogging: true}
+experiment := s.GetExperimentWithOptions(user, "experiment_name", options)
 ```
 
 ```go
-statsig.ManuallyLogExperimentExposure(aUser, "experiment_name")
+s.ManuallyLogExperimentExposure(user, "experiment_name")
 ```
 </Tab>
 
 <Tab title="Layers">
 ```go
-layer := statsig.GetLayer(aUser, "layer_name", statsig.GetLayerOptions{DisableExposureLogging: true})
-paramValue := layer.Get(aUser, "param_name")
+user, _ := statsig.NewUserBuilderWithUserID("a-user").Build()
+options := &statsig.LayerEvaluationOptions{DisableExposureLogging: true}
+layer := s.GetLayerWithOptions(user, "layer_name", options)
+paramValue := layer.GetString("param_name", "fallback")
 ```
 
 ```go
-statsig.ManuallyLogLayerParameterExposure(aUser, "layer_name", "param_name")
+s.ManuallyLogLayerParamExposure(user, "layer_name", "param_name")
 ```
 </Tab>
 </Tabs>
-

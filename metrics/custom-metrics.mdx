@@ -19,7 +19,9 @@ Statsig supports six types of custom metrics:
 | Funnel      | **Funnels**- funnel of multiple events with conversion tracking                                                            | **Sign-up Funnel**, **Checkout Funnel**                       |
 | Count Distinct | **Count Distinct**- Number of unique values for a given field, often approximated with sketches                         | **Unique Songs** listened per user                          |
 
-<Warning>**Beta Feature**: Sketch-based count distinct metrics are in beta. Please reach out to learn more and join our beta testing!</Warning>
+<Info>
+Sketch-based count distinct metrics are in beta. Please reach out to Statsig support to join our beta.
+</Info>
 
 It's worth noting that the "average" in aggregation is the average of event value (average revenue per purchase per user), instead of the average of exposed units (average revenue per user). The latter is defined by sum.
 

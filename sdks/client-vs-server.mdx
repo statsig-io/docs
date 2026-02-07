@@ -20,9 +20,9 @@ Client and Server SDKs follow a similar pattern of setup and usage in-code:
 2. **Check an experiment/gate:** Reference those values to assign an experiment or flag a feature
 3. **Logging custom events:** log important app metrics to power your analyses
 
-:::note
+<Note>
 After initialization, both Client and Server SDKs evaluate experiments/gates *without a network request*, and typically in less than 1ms. Checks in the Statsig SDKs are designed to be very efficient.
-:::
+</Note>
 
 ## Conceptual Differences:
 * Data Privacy: The *Server* SDK is presumed to be a secure, multi-user environment, so Server SDKs have access to the full ruleset describing each experiment and gate. Client SDKs fetch only the value for a single user, avoiding exposing the definition of your configurations.
@@ -85,8 +85,8 @@ After initialization, both Client and Server SDKs evaluate experiments/gates *wi
 - [Go](/server/golangSDK)
 - [Ruby](/server/rubySDK)
 - [.NET Core](/server-core/dotnetCoreSDK)
+- [C++](/server-core/cpp-core)
 - [PHP](/server/phpSDK)
-- [C++](/server/cppSDK)
 - [Rust](/server/rustSDK)
 
 For more detailed information on each SDK, please refer to their respective documentation pages.

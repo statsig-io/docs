@@ -12,6 +12,10 @@ You can export your data from Statsig to your Data Warehouse with a Data Connect
 4. BigQuery
 5. Databricks
 
+<Info>
+Data Warehouse Exports are an Enterprise-only feature. If you are on the Developer or Pro tiers and wish to upgrade to Enterprise, feel free to reach out to our team [here](https://www.statsig.com/contact/demo) or via support.
+</Info>
+
 ## How to Begin
 
 1. Go to Statsig Console
@@ -19,7 +23,7 @@ You can export your data from Statsig to your Data Warehouse with a Data Connect
 3. Go to “Exports List”
 
 <Frame>
-  <img src="/images/exports-list.png" />
+  <img src="/images/exports-list.png" alt="Statsig Help and Tools menu showing Exports List option" />
 </Frame>
 
 On the Exports page, you will find an Export History tab and a Schedule Export tab. The Export History tab shows you a list of all previous experimentation exports triggered from the Experiment Results page. To understand how to export one-off experimentation results, check out the documentation [here](/integrations/export_results). 
@@ -27,7 +31,7 @@ On the Exports page, you will find an Export History tab and a Schedule Export t
 Under the Scheduled Export tab, you will be prompted to set up a data warehouse connection. You will be required to set up connections with necessary credentials and grant Statsig Read, Write, and Delete permissions. Check out the [Connection Set Up](/integrations/data-imports/snowflake.mdx) page for more information.
 
 <Frame>
-  <img src="/images/exports-schedule.png" />
+  <img src="/images/exports-schedule.png" alt="Scheduled export setup form for Snowflake connection with credential fields" />
 </Frame>
 
 ## Table Schema

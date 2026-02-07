@@ -50,7 +50,7 @@ STATSIG-API-KEY: {STATSIG_SERVER_SECRET}
 <div
   style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}
 >
-  <img src="/images/integrations/event_webhook/162286552-c257a736-4050-4d0a-8223-67097c731c0b.png" />
+  <img src="/images/integrations/event_webhook/162286552-c257a736-4050-4d0a-8223-67097c731c0b.png" alt="Statsig Webhook integration card with Enable button" />
 </div>
 
 If you are using a service that we don't have an official integration for, you can always use our Generic Webhook integration.
@@ -142,7 +142,7 @@ Follow the following steps to verify the signature:
 
 1. Grab your webhook signing secret from your Webhook integration card
 
-<img width="738" alt="Screen Shot 2022-12-21 at 5 36 49 PM" src="/images/integrations/event_webhook/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png"></img>
+<img width="738" alt="Webhook integration card showing signing secret" src="/images/integrations/event_webhook/209035738-bbbc0944-b428-4454-bf19-8845892c2044.png"></img>
 
 2. Extract the request time header 'X-Statsig-Request-Timestamp' from the webhook request.
 3. Concatenate the version number ("v0"), the timestamp, and the request body together, using a colon (:) as a delimiter to create a signature basestring. Here's an example of a possible base string:

@@ -27,7 +27,7 @@ Statsig offers a feature allowing users to set a daily **max cap** for specific 
 When creating your custom metric, you can preview a given custom metric's value at the bottom of the page. To view metric preview, tap **View Output Preview** to see what your metric would have looked like based on its components’ values over the last 7 days, in both chart and table form.
 
 <Frame>
-  <img src="/images/metrics/create/0869e1bf-8fea-407e-8a5f-8b97860b3867.png" alt="Screen Shot 2023-09-13 at 10 30 58 AM" />
+  <img src="/images/metrics/create/0869e1bf-8fea-407e-8a5f-8b97860b3867.png" alt="Aggregation metric setup screen with output preview chart and table" />
 </Frame>
 
 ## Examples
@@ -37,7 +37,7 @@ When creating your custom metric, you can preview a given custom metric's value 
 Here's an example of setting up a custom event metric to count the **number of add_to_cart events** filtered by a metadata property called _value_, which carries the price of the item added to the cart. As this example specifies the ID Type as _userID_, Statsig will compute this metric as part of the test group that the corresponding user is assigned to in an experiment.
 
 <Frame>
-  <img src="/images/metrics/create/95489e9b-36f2-4704-9970-da675a8a3d2e.png" alt="Screen Shot 2023-09-12 at 1 11 23 PM" />
+  <img src="/images/metrics/create/95489e9b-36f2-4704-9970-da675a8a3d2e.png" alt="Event count metric filtering add_to_cart events with value greater than 100" />
 </Frame>
 
 If you select the ID Type as _stableID_, Statsig will compute this metric in the test group that the corresponding device is assigned to in an experiment. When you select more than ID Type, Statsig will compute this metric for each type of ID Type that you specify.
@@ -47,7 +47,7 @@ If you select the ID Type as _stableID_, Statsig will compute this metric in the
 The example below creates a metric to count the **number of unique users** who viewed a product in the _toys_ category that was priced under $10.
 
 <Frame>
-  <img src="/images/metrics/create/ae270d11-d3de-4f34-85e5-a67ad9c7cd9e.png" alt="Screen Shot 2023-09-12 at 1 16 11 PM" />
+  <img src="/images/metrics/create/ae270d11-d3de-4f34-85e5-a67ad9c7cd9e.png" alt="User count metric configuration counting viewers of toys category under ten dollars" />
 </Frame>
 
 **Time Window**
@@ -63,7 +63,7 @@ Two time window options are available for user count metrics
 The example below shows a **Total Revenue** metric that sums the _value_ associated with all purchase events.
 
 <Frame>
-  <img src="/images/metrics/create/f0d4d21b-08ae-405d-a156-4d29f96ab298.png" alt="Screen Shot 2023-09-12 at 1 24 49 PM" />
+  <img src="/images/metrics/create/f0d4d21b-08ae-405d-a156-4d29f96ab298.png" alt="Sum aggregation configuration for Total Revenue metric" />
 </Frame>
 
 **[In Beta] Currency Sum**
@@ -77,7 +77,7 @@ Statsig supports currency sums upon request. Please ask in [Slack](https://stats
 The example below shows the creation of a **Cart Conversion Rate** metric. Here we use the unique users who triggered the _purchase event_ as the numerator and the unique users who triggered the _add to cart_ event in the denominator. Note that when calculating the numerator, we filter to only include users who also had the denominator event in the same day. So in the case of this metric, a user who only has _purchase event_ on a given day without an _add to cart_ on that same day will not count towards the numerator.
 
 <Frame>
-  <img src="/images/metrics/create/9f8a671e-ac1f-4e2f-92cb-d154e0daecac.png" alt="Screen Shot 2023-09-12 at 1 29 15 PM" />
+  <img src="/images/metrics/create/9f8a671e-ac1f-4e2f-92cb-d154e0daecac.png" alt="Ratio metric setup for cart conversion rate" />
 </Frame>
 
 This pattern also applies to **click through rates (CTR)** in any part of a step-wise product journey (aka funnels). Statsig recommends using unique users in both the numerator and denominator for defining these kinds of metrics. As an example, when a user reloads a page multiple times but clicks only once, this corresponds to a 100% CTR (1 out of 1). Similarly, a user who loads a page once but clicks multiple times on a button should only count as 1 out of 1. This also solves for cases where users see an important button such as "Sign-up" multiple times a day, and we would still consider it a success if they click just once.
@@ -85,7 +85,7 @@ This pattern also applies to **click through rates (CTR)** in any part of a step
 The example below shows creating a metric for **Items per Cart**. You can track the number of unique items added to a cart if you log an _add_to_cart_ event for each item. For the numerator, select total event count. For the denominator, select unique users. As this metric is computed daily and only for users with a non-zero denominator, this metric can generate ratios such as 1/1, 2/1, 2/1, and 5/1 for individual users. When aggregated, this translates to 10/4 = 2.5 items per cart on average per day.
 
 <Frame>
-  <img src="/images/metrics/create/cf6e6777-a154-4eeb-9a2d-81893810a31d.png" alt="Screen Shot 2023-09-12 at 1 30 28 PM" />
+  <img src="/images/metrics/create/cf6e6777-a154-4eeb-9a2d-81893810a31d.png" alt="Items per cart metric configuration using event counts" />
 </Frame>
 
 <Info>**A Word of Caution**: In experimentation, ratio metrics are a frequent source of misleading information. It's possible to see an increase in **click through rate** alongside a net _decrease_ in total clicks (the opposite may also happen). This situation can occur if the number of unique users viewing a button (denominator) decreases. As a best practice, Statsig recommends tracking the numerator and denominator as independent metrics when monitoring ratio indicator. Ratio metrics are often subject to statistical noise and can be tricky to use for obtaining a statistically significant result. In addition, for the numerator in ratios, we exclude units which don't have a denominator value.</Info>
@@ -95,7 +95,7 @@ The example below shows creating a metric for **Items per Cart**. You can track 
 You can create a custom funnel metric, from either the Custom Metrics Creation wizard in the Metrics Catalog or via the **Charts** tab.
 
 <Frame>
-  <img src="/images/metrics/create/86914826-b8ce-4b4b-9514-39f31d05687a.png" alt="Screen Shot 2023-09-12 at 1 33 10 PM" />
+  <img src="/images/metrics/create/86914826-b8ce-4b4b-9514-39f31d05687a.png" alt="Funnel metric creation wizard" />
 </Frame>
 
 <Info>**Important Note**: Statsig handles funnel metrics differently between our Cloud and Warehouse Native platforms. Funnel metrics using our Cloud platform are *always* unordered, meaning that funnel steps can be completed in any order, and they have a time window of *one day*. This means that for the metric to record a completion, all steps must be triggered by a user within 24 hours. In contrast, funnel metrics on Warehouse Native have the option to be set with strict ordering and custom time windows.</Info>
@@ -109,7 +109,7 @@ Funnel metrics have a few components:
 3. **Conversion rate between stages**: This set of metrics track the percentage of users who triggered an event N relative to all users that triggered event N-1 in the funnel
 
 <Frame>
-  <img src="/images/metrics/create-user-funnels/172446711-5511e394-b353-4d38-97f1-1b681b67042b.png" alt="Screen Shot 2022-06-07 at 10 34 58 AM" />
+  <img src="/images/metrics/create-user-funnels/172446711-5511e394-b353-4d38-97f1-1b681b67042b.png" alt="Funnel lineage and stage conversion breakdown view" />
 </Frame>
 
 After funnels are created and populated, you can view your funnel metric much like any other metric in Pulse. Additionally, you can expand the funnel metric to view Pulse performance at each step in the funnel.
@@ -125,7 +125,9 @@ In the example below, the **Square** variant shows a lift in the **overall funne
 
 ### 6 Count Distinct Metrics
 
-<Warning>**Beta Feature**: Sketch-based count distinct metrics are not live yet.</Warning>
+<Info>
+Sketch-based count distinct metrics are currently in beta, please reach out to Statsig support if you would like this enabled.
+</Info>
 
 - **What it is:** A high-performance way to estimate the number of distinct values using compact sketch data structures. Example use cases include trying to determine unique songs per user or unique products purchased by user.
 - **Benefit:** Delivers much faster computation and uses significantly less memory compared to full exact distinct counting, especially at high cardinality.

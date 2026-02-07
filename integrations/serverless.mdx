@@ -1,0 +1,118 @@
+---
+title: Serverless
+---
+
+The serverless SDK is a lightweight JavaScript SDK optimized for serverless environments while being compatible for any other platform/environment. This SDK harnesses the functionalities that all Statsig server SDK's offer. 
+
+<Steps>
+<Step title = "Install the Statsig SDK">
+``` bash
+npm install @statsig/serverless-client
+```
+</Step>
+
+<Step title = "Import the Statsig SDK">
+  ```bash
+  import {StatsigServerlessClient} from '@statsig/serverless-client'
+  ```
+</Step>
+
+  <Step title="Creating a StatsigServerlessClient instance">
+  ```javascript
+  const client = new StatsigServerlessClient(process.env.STATSIG_KEY)
+  ```
+  The client instantiation takes two arguments:
+  - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
+  - `options : StatsigOptions` See [here for more options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
+  </Step>
+
+  <Step title = "Client Initialization">
+    The following line initializes the client by loading feature gate and experiment configurations over network
+  
+    ```javascript
+    const init = await client.initializeAsync();
+    ```
+  </Step>
+
+    <Step title = "Checking a Gate">
+    ```javascript
+    const GateResult = client.checkGate('pass_gate', user);
+    ```
+    This is a gate check in code.
+
+    The `checkGate` method takes two arguments:
+    - `name : string` The name of the Statsig gate that you are checking. 
+    - `user : StatsigUser` The Statsig user object for whom the gate is being checked. For more information on the user object, see [here](https://docs.statsig.com/sdks/user#introduction-to-the-statsiguser-object).
+
+    Refer to the [Javascript on-device evaluation SDK documentation](/client/jsOnDeviceEvaluationSDK) for how to check other entities like experiments and dynamic configs.
+
+  </Step>
+
+  <Step title  = "Logging an Event">
+    ```javascript
+    client.logEvent('gate_check', { userID: randomUserId });
+    ```
+    This is an event log in code. 
+
+    The `logEvent` method takes two parameters:
+    - `eventOrName : string | StatsigEvent` This is the name and details of the event you are logging.
+    - `user : StatsigUser` The Statsig user object for whom the event is being logged.
+
+    For more information on event logging, see [here](https://docs.statsig.com/client/jsOnDeviceEvaluationSDK#logging-an-event).
+  </Step>
+
+  <Step>
+      ```javascript
+  client.flush();
+  ```
+  This flushes all events from the SDK to Statsig.  **Without this, you will not be able to get diagnostic information in the Statsig Console, nor any event data you logged**.
+
+  </Step>
+
+</Steps>
+
+### Putting it all together
+
+```javascript index.js
+import { StatsigServerlessClient } from '@statsig/serverless-client';
+
+export default async function handler(request) {
+    const client = new StatsigServerlessClient(process.env.STATSIG_KEY);
+    
+    let init = await client.initializeAsync();
+    
+    const user = { userID: Math.random().toString().substring(2, 5) };
+    const passed = client.checkGate('pass_gate', user);
+    
+    client.logEvent('serverless_event', user, passed.toString());
+    
+    client.flush();
+
+    return new Response(
+      JSON.stringify({ passed, user }),
+    );
+}
+```
+
+### Bootstrapping
+
+You can use the serverless SDK to bootstrap your client SDK. 
+
+``` javascript
+// Get client initialize response for a user
+const values = statsig.getClientInitializeResponse(user, options);
+
+// Pass values to a client SDK to initialize without a network request
+```
+
+For more information on bootstrapping including options and full code example, see [here](https://docs.statsig.com/server-core/node-core#client-sdk-bootstrapping-|-ssr)
+
+### Bring your own CDN
+
+The Statsig Serverless SDK also supports the bring-your-own-CDN model. You can now store your Statsig config specs anywhere, and initialize your client directly from that source. This use case has been tested and optimized for usage with AWS Lambda/Lambda@Edge and S3 but is compatible with any other data source. Ensure the URL you provide returns the Statsig config specs for your project.
+
+``` javascript
+let init = await client.initializeViaURL("https://my-statsig-config.s3.us-east-1.amazonaws.com/my_dcs.json")
+```
+
+After initializing, use the SDK as usual.

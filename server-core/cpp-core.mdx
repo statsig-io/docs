@@ -1,0 +1,100 @@
+---
+title: C++ Server SDK
+sidebarTitle: C++
+description: Statsig's Next-gen Cpp Server SDK built in our [Server Core](/server-core) framework
+icon: "C++"
+---
+
+import Installation from '/snippets/server-core/installation.mdx'
+import Initialization from '/snippets/server-core/initialization.mdx'
+import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
+import LogEventIntro from '/snippets/server-core/logEvent.mdx'
+import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
+import StatsigUserIntro from '/snippets/server-core/statsigUser.mdx'
+import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server-core/shutdown.mdx'
+
+import installation from '/snippets/server-core/cpp/installation.mdx'
+import initialization from '/snippets/server-core/cpp/initialization.mdx'
+import checkGate from '/snippets/server-core/cpp/checkGate.mdx'
+import getDynamicConfig from '/snippets/server-core/cpp/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server-core/cpp/getExperiment.mdx'
+import logEvent from '/snippets/server-core/cpp/logEvent.mdx'
+import getFeatureGate from '/snippets/server-core/cpp/getFeatureGate.mdx'
+import statsigUser from '/snippets/server-core/cpp/statsigUser.mdx'
+import statsigOptions from '/snippets/server-core/cpp/options.mdx'
+import shutdown from '/snippets/server-core/cpp/shutdown.mdx'
+
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-cpp-core/" target="_blank" rel="noreferrer">Cpp Core on Github</a>
+<a href="https://github.com/statsig-io/statsig-server-core/" target="_blank" rel="noreferrer">Cpp Core Working Repo</a>
+</Callout>
+
+
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+<installation/>
+<testedPlatforms/>
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+<initialization/>
+<Initialization2/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<CheckGateIntro/>
+<checkGate/>
+
+<GetDynamicConfigIntro/>
+<getDynamicConfig/>
+
+<GetExperimentIntro/>
+<getExperiment/>
+
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
+<LogEventIntro/>
+<logEvent/>
+
+<StatsigUserIntro/>
+<statsigUser/>
+
+<StatsigOptionsIntro/>
+<statsigOptions/>
+
+<ShutdownIntro/>
+<shutdown/>
+
+
+## Reference
+
+### API Methods
+
+- `check_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> bool`
+- `get_dynamic_config(user: StatsigUser, config_name: str, options: Optional[DynamicConfigEvaluationOptions] = None) -> DynamicConfig`
+- `get_experiment(user: StatsigUser, experiment_name: str, options: Optional[ExperimentEvaluationOptions] = None) -> DynamicConfig`
+- `get_layer(user: StatsigUser, layer_name: str, options: Optional[LayerEvaluationOptions] = None) -> Layer`
+- `get_feature_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> FeatureGate`
+- `log_event(user: StatsigUser, event_name: str, value: Optional[Union[str, float]] = None, metadata: Optional[Dict[str, str]] = None) -> None`
+- `shutdown() -> AsyncResult[None]`
+
+### Fields Needed Methods
+
+The following methods return information about which user fields are needed for evaluation:
+
+- `get_gate_fields_needed(gate_name: str) -> List[str]`
+- `get_dynamic_config_fields_needed(config_name: str) -> List[str]`
+- `get_experiment_fields_needed(experiment_name: str) -> List[str]`
+- `get_layer_fields_needed(layer_name: str) -> List[str]`
+
+These methods return a list of strings representing the user fields that are required to properly evaluate the specified gate, config, experiment, or layer.

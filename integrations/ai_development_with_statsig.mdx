@@ -1,0 +1,78 @@
+---
+title: AI Development with Statsig
+description: Use the Statsig MCP server across coding agents to trivially killswitch code and add critical logging.
+---
+
+## Statsig's Role in AI Development
+
+Increasingly, developers are leaning on AI agents to accomplish small-to-midsized tasks.
+For small feature additions, this is low risk - but can still introduce bugs or low-quality user experiences.
+Having the agent be aware of Statsig means that it can automatically add logging for potential errors,
+and add feature gates to new features (or make sure they're behind existing gates) so that you can manage rollouts safely and measure any degredation.
+
+This adds up when considering the high velocity individuals can now achieve with help from these agents, and the ability of people to develop within codebases they have less context in with AI assistance.
+
+## Recommended Approach
+
+Our recommended approach is to use an `AGENTS.md` (or any analagous file, such as `CLAUDE.md`) to provide instructions that you can tailor to your own workflow.
+The behaviors that are critical are:
+
+- Adding gates to new features or codepaths, and tuning how aggressively to do so
+  - Automatically adding your user ID, and any test IDs your agent may log in as, to those gates for testing in development
+- Adding critical logs for errors and user behaviors
+  - Currently adding these to tracking is manual, but we have plans to make this automatable via MCP for event count metrics.
+
+### Boilerplate `Agents.md` file
+
+Fill in your Statsig ID, and follow the [MCP guide](/mcp) to set up the MCP server. Consider updating naming conventions and logic around when to ask.
+
+We recommend using a limited-access console API key to control risk around a scenario where an agent deletes entities in Statsig.
+
+```
+# Statsig Development Guidelines
+It is important that we selectively killswitch new features or any new, risky codepaths using Statsig Feature Gates so that we can turn them off if they cause issues.
+
+## When To Use Gates
+- We should consider adding a gate whenever we make significant changes to product features that have any risk of causing issues.
+- It is possible for this to be spammy, so clarify with users during planning what should be killswitched.
+- Start by assuming atomic, session-level features will be killswitched - e.g. "A new modal" would be, but not a copy change within a modal, or a bugfix.
+- Sometimes, adding a gate is just as dangerous as the feature itself.
+  - Identify situations where this could occur - usually when adding the gate adds a large amount of complexity - and flag the risk to the user when asking if they want to create a gate.
+
+Always ask the user if they want to gate the feature. Often, users will want to include the feature behind an existing gate, so ask in this way, when appropriate:
+"This seems like a feature that you might want to be able to turn off remotely. Would you like to gate this feature, add it to an existing gate, or proceed without using gates?"
+Look for gates already being used for this feature type - often in the same file or nearby in the file tree for client code.
+
+Don't spend a bunch of time investigating code before asking, since it leads to a lot of hang time. This should be an early step in the process.
+Quickly check in with the user on gating before you do a deep codebase scan - though you might want to use a quick context check to identify risk.
+
+## How to Use Gates
+- Create a new gate, if requested, using the statsig-local MCP server. If this server does not exist, ignore the above.
+- After creation, use that gate in code, following the local codebase patterns for accessing statsig.
+  - This will normally be Statsig.useGate() or similar, but they may have an internal wrapper or use a general feature flag library which wraps Statsig.
+- When creating the gate, start it with a default-fail rules. The user, or we, can add rules later to release the gate.
+- Add a rule called "Development" which passes the user's ID, specified below. Make sure this is the first evaluated rule.
+
+## Override instructions
+- The user's ID is the string ""
+- Use a custom ID gate condition, with the userID field set to that ID
+
+## Naming Conventions
+- For these features, create a feature gate which is a 3-4 word description separated by dashes.
+- Do not use the word killswitch. Propose the name of the gate before creating it, allowing the user to update it if desired. Do not include your name (e.g. codex, claude, cursor) in the gate name.
+
+## Logging
+- We would like to measure our gate changes as we roll out features.
+- If there's key interactions in the code which are not logged to Statsig, consider logging those events to statsig
+  - Include critical metadata (e.g. information about what happened, key numeric values)
+
+Propose these logging changes to the user and see what they say, and only if they're very clearly needed. Similar to the gate checks, pattern match to what is in the repo already, e.g.
+Statsig.logEvent or a wrapper like LoggingContext.log()
+
+## Statsig Implementation Instructions
+[left empty - fill with specific instructions about your Statsig implementation if it exists, such as specific calling patterns or gotchas]
+
+## Guardrails and Critical Rules
+- In this context, only use this MCP server to create gates
+- Never run deletions or other destructive tools without explicit instructions from the user
+```

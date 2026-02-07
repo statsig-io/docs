@@ -12,7 +12,9 @@ Steps to do this in Statsig -
 2. In your app, use and produce model output using the v1 and v2 prompts. The output from v1 is rendered to the user; the output from v1 and v2 are judged by an LLM-as-a-judge.
 3. The grades from v1 and v2 are logged back to Statsig and can be compared there.
 
-Note: Online Evals is currently in beta. If you're interested in this feature, reach out to us on Slack!
+<Info>
+Online Evals is currently in beta. If you're interested in this feature, reach out to us on Slack!
+</Info>
 
 ## Create/analyze an online eval in 15 minutes
 
@@ -32,7 +34,7 @@ In Prompts, there are four prompt types: Live, Candidate, Draft and Archive. Bef
 
 Prompts that you can access in code will comprise of the Live version and Candidate versions.
 
-![Image](/images/ai/version-types.png)
+![Prompt versions list showing live, candidate, draft, and archived prompts with setup form](/images/ai/version-types.png)
 
 **2. Load your prompts in code and run completions on user input**
 
@@ -80,4 +82,4 @@ statsigAI.logEvalGrade(user, livePromptVersion, 0.5, "my_grader", {
 
 You can now view these results in Statsig! Select the version you want to evaluate and the versions you want to compare it against. This end to end online eval helps you iterate on your prompts and gain valuable insights.
 
-![Image](/images/ai/online-results.png)
+![Online eval results dashboard comparing prompt versions with cumulative events chart and grader deltas](/images/ai/online-results.png)

@@ -7,8 +7,16 @@ description: "Learn how to disable poorly performing experiment groups while kee
 
 Sometimes you start an experiment with multiple test groups, only to find that one of the groups is performing very poorly or creating bad user experiences. The other test groups are fine and you want to keep them running, but stop the bad experiences. For these situations, we allow you to disable an experiment group.
 
+### What to expect when group is disabled
+
+- Users already assigned to the disabled group will begin to receive the default experience
+- New users can be assigned to the disabled group and receive the default experience
+- Exposures for the disabled group will continue to be tracked
+- Sample Ratio Mismatch (SRM) should not be triggered from the disabled group
+- Experiment results will continue to be calculated for the disabled group
+
 <Info>
-The group will continue to show up in diagnostics charts, exposures stream, and Pulse - but the users will see the default (unassigned) experience. We keep showing the group and logging exposures so that you can verify that the user experiences have recovered after the group was disabled.
+We keep showing the group and logging exposures so that you can verify that the user experiences have recovered after the group was disabled.
 </Info>
 
 ### How To
@@ -21,10 +29,10 @@ The group will continue to show up in diagnostics charts, exposures stream, and 
 - Select the experiment groups you would like to disable, and hit **Confirm** 
 
 <Frame>
-  <img src="/images/experiments/implementation/disable-group/175094935-1dbb9b34-ebbe-467c-9a84-e61aeeb3180f.png" alt="Screen Shot 2022-06-22 at 9 53 47 AM" />
+  <img src="/images/experiments/implementation/disable-group/175094935-1dbb9b34-ebbe-467c-9a84-e61aeeb3180f.png" alt="Experiment overflow menu showing Disable a Group option" />
 </Frame>
 <Frame>
-  <img src="/images/experiments/implementation/disable-group/175095107-2ef5d9e3-4c33-44ec-ac13-937f3b030149.png" alt="Screen Shot 2022-06-22 at 9 57 23 AM" />
+  <img src="/images/experiments/implementation/disable-group/175095107-2ef5d9e3-4c33-44ec-ac13-937f3b030149.png" alt="Disable group dialog listing experiment groups with toggles" />
 </Frame>
 
 ## Reenable a Group
@@ -32,10 +40,10 @@ The group will continue to show up in diagnostics charts, exposures stream, and 
 If you've previously disabled a group but want to revert this change, you can reenable a group by using the **...** menu and selecting **Disable or Enable A Group**.
 
 <Frame>
-  <img src="/images/experiments/implementation/disable-group/2fa3cb71-9a46-46f1-bb11-b8e7f07df9c6.png" alt="Screenshot 2025-03-03 at 5 27 17 PM" />
+  <img src="/images/experiments/implementation/disable-group/2fa3cb71-9a46-46f1-bb11-b8e7f07df9c6.png" alt="Menu option to disable or enable a group in experiment controls" />
 </Frame>
 <Frame>
-  <img src="/images/experiments/implementation/disable-group/a56e7f14-53e9-4d41-8266-d70de1ec3ebf.png" alt="Screenshot 2025-03-03 at 5 26 42 PM" />
+  <img src="/images/experiments/implementation/disable-group/a56e7f14-53e9-4d41-8266-d70de1ec3ebf.png" alt="Modal showing reenable group selections" />
 </Frame>
 
 <Info>
