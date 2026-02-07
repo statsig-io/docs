@@ -758,17 +758,18 @@
           {
             "group": "Server SDKs",
             "pages": [
+              "server-core/index",
               "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
               "server-core/go-core",
               "server/ruby",
               "server-core/dotnet-core",
-              "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
                   "server/cpp",
+                  "server-core/cpp-core",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
