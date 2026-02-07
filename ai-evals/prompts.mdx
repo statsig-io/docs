@@ -14,15 +14,15 @@ With Prompts, you can
    - retrieval-augmented generation (RAG) and
    - evaluation in production.
 <Frame caption = "Creating a prompt">
-<img alt="image" src="https://github.com/user-attachments/assets/77256d12-0d3f-4caa-8fa7-3719517af4eb" />
+<img alt="Prompt creation screen showing model selection and message list" src="/images/ai-evals/prompts/77256d12-0d3f-4caa-8fa7-3719517af4eb.png" />
 </Frame>
 
 <Frame caption = "Code snippet to retrieve the Live version of the prompt">
-<img alt="image" src="https://github.com/user-attachments/assets/66e3b7f6-4613-4d7c-84c7-0fd84f890a29" />
+<img alt="Code example calling statsigAI.getPrompt to fetch live prompt version" src="/images/ai-evals/prompts/66e3b7f6-4613-4d7c-84c7-0fd84f890a29.png" />
 </Frame>
 
 <Frame caption = "Looking at the scores for a prompt version">
-<img alt="image" src="https://github.com/user-attachments/assets/546c4974-b01d-4d13-85a1-4f2a6bfbb6c1" />
+<img alt="Prompt results page summarizing grader scores per version" src="/images/ai-evals/prompts/546c4974-b01d-4d13-85a1-4f2a6bfbb6c1.png" />
 </Frame>
 
 
@@ -38,5 +38,5 @@ Outputs: It produces a score - ideally 0 (Fail) or Pass (1). This score feeds in
 ## What is a Critical Grader?
 A critical grader is a must-pass evaluation in Statsig AI Evals: if the AI output fails this grader, the entire run is marked as failed. It enforces non-negotiable requirements, acting as a hard gate before results are considered valid. When it does not fail, it acts like a normal grader.
 
-Use Case
+### Use Case
 For example, in a financial support chatbot, a critical grader could check that the model never fabricates account balances. Even if the answer is otherwise helpful, a single failure here blocks the model from being promoted.

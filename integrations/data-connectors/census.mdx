@@ -14,7 +14,7 @@ You can find all events that Statsig receives from Census in the [Metrics](/metr
 2. From census, create a new [destination](https://docs.getcensus.com/destinations/overview) and select Statsig from the list of options.
 3. Paste the Statsig secret into the field and click save.
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/111380336/b3134399-288d-4a0f-b4d2-4b88980f0718" alt="" />
+  <img src="/images/integrations/data-connectors/census/b3134399-288d-4a0f-b4d2-4b88980f0718.png" alt="Census destination setup form with Statsig secret key input" />
 </Frame>
 4. Create a Sync to the new Statsig destination (see [Sync Configuration](#sync-configuration) section below)
 5. On the Statsig [Integrations](https://console.statsig.com/integrations) page, enable the Census integration.
@@ -24,7 +24,7 @@ You can find all events that Statsig receives from Census in the [Metrics](/metr
 A sync key is required to uniquely identify each event.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/111380336/e5d1154d-bd55-48d8-a300-13d96a89a0c8" alt="" />
+  <img src="/images/integrations/data-connectors/census/e5d1154d-bd55-48d8-a300-13d96a89a0c8.png" alt="Census sync configuration showing sync key selection" />
 </Frame>
 
 The following fields are required when mapping to Statsig events.
@@ -35,7 +35,7 @@ The following fields are required when mapping to Statsig events.
 - `Value` -\> `value`
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/111380336/7fce9183-312c-4b47-90c4-b48b0479ecca" alt="" />
+  <img src="/images/integrations/data-connectors/census/7fce9183-312c-4b47-90c4-b48b0479ecca.png" alt="Field mapping table aligning Census columns to Statsig event fields" />
 </Frame>
 
 All other fields will be included in the `metadata` section of the mapped Statsig event.
@@ -49,5 +49,5 @@ The input Event Field must match the exact spelling as in the original Census ev
 </Note>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/95646168/213269548-e6457527-c938-44fd-9360-1f3fd7af2fac.png" alt="" />
+  <img src="/images/integrations/data-connectors/census/213269548-e6457527-c938-44fd-9360-1f3fd7af2fac.png" alt="Statsig integration panel for Census custom ID mapping" />
 </Frame>

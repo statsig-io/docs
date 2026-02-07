@@ -2,6 +2,11 @@
 title: Github Code References
 ---
 
+<Warning>
+### Deprecated: PAT-based Integration
+We have deprecated the Personal Access Token (PAT) based integration in favor of our new GitHub App-based integration. The new integration provides improved security and functionality, including AI-powered features like Knowledge Graph. Please migrate to the [GitHub AI Integration](/integrations/github-ai-integration) for the best experience.
+</Warning>
+
 ## Overview
 
 The Statsig Github Integration allows you to find [Feature Gate](/feature-flags/overview) and [Dynamic Config](/dynamic-config) references within your codebase on the Statsig Console. The integration leverages the Github API to access only references to the Feature Gate or Dynamic Config without storing any sensitive information.
@@ -25,13 +30,13 @@ After inputting your token and organization name the integration will verify it 
 Finally, navigate to the Feature Gates or Dynamic Configs pages on the Statsig Console and select a gate or dynamic config. Under the Diagnostics tab click on the View Code References link to see your code References!
 
 <Frame>
-  <img src="/images/github_code_references/feature_gate_view.png" alt="img" />
+  <img src="/images/github_code_references/feature_gate_view.png" alt="Feature gate diagnostics tab showing code references link" />
 </Frame> 
 
 Code References will appear based on the feature gate or dynamic config page you are on. Code References can be filtered by repository and file extension.
 
 <Frame>
-  <img src="/images/github_code_references/code_references.png" alt="img" />
+  <img src="/images/github_code_references/code_references.png" alt="Code references panel listing repositories and files" />
 </Frame>
 
 ### Github Code References Action

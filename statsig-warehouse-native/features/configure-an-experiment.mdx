@@ -21,7 +21,7 @@ There's two types of experiments in Statsig Warehouse Native:
 - Assign & Analyze: these are Statsig-configured experiments. You can set up all of the configuration here, implement it through Statsig SDKs, and track results.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/30954be6-7c2e-48f4-8072-f196349adbc3" alt="Experiment type selection interface" />
+  <img src="/images/statsig-warehouse-native/features/configure-an-experiment/30954be6-7c2e-48f4-8072-f196349adbc3.png" alt="Experiment type selection interface" />
 </Frame>
 
 Next, you'll give the experiment a name, specify your hypothesis, and pick the experiment from your exposure sources. You can sync sources
@@ -30,7 +30,7 @@ if your exposure isn't loaded in the dropdown.
 You'll need to specify the control group as well as the ID type the experiment is using here.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/7984bdd3-e2bf-4322-8230-18e3222077e9" alt="Configure Experiment" />
+  <img src="/images/statsig-warehouse-native/features/configure-an-experiment/7984bdd3-e2bf-4322-8230-18e3222077e9.png" alt="Configure Experiment" />
 </Frame>
 
 ## Choose Metrics
@@ -41,7 +41,7 @@ You'll land in the setup page for the experiment. Here, you can further refine y
 - Secondary metrics are guardrails and explanatory metrics. These are more observational in nature, and should be treated as less conclusive. Applying bonferroni corrections is a way to formalize this approach, though it can be overly conservative.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/102695539/264101219-396f00f6-fbdc-4944-94c0-62354eaa2980.png" alt="Choose Metrics" />
+  <img src="/images/statsig-warehouse-native/features/configure-an-experiment/264101219-396f00f6-fbdc-4944-94c0-62354eaa2980.png" alt="Choose Metrics" />
 </Frame>
 
 ## Choose Groups
@@ -50,7 +50,7 @@ Statsig infers the groups and group splits in your experiment, but you should ch
 
 Here, you can also rename groups or delete irrelevant groups.
 <Frame>
-  <img src="https://github.com/user-attachments/assets/33de7e4f-a0f8-4fcd-bde0-850a57055b71" alt="Choose Groups" />
+  <img src="/images/statsig-warehouse-native/features/configure-an-experiment/33de7e4f-a0f8-4fcd-bde0-850a57055b71.png" alt="Choose Groups" />
 </Frame>
 
 ## Advanced Settings
@@ -87,12 +87,22 @@ Once you configure this value, it will overwrite the choice for `only include un
 - Filter assignment source
   - Add optional, additional filters on the experiment's assignment source. By default, the assignment source is filtered to the experiment and groups being analyzed. This setting can be used to make the primary scorecard ignore known bad actors, or analyze a sub-population in the main scorecard.
 
+## Testing in a lower environment
+
+Once experiments are launched, you can't edit the groups without restarting the experiment, as users are already being allocated to each group. We therefore recommend testing each experiment in lower environments before starting. You can do this by clicking the "Test" button in the experiment setup page, then selecting "Enable for Environments". These environments should match your [SDK environment setup](/guides/using-environments/#configuring-environments). Testing in a lower environment and [overrides](/experiments-plus/overrides) can help you manually set your experiment "group" to properly test each variant.
+
+<Frame>
+  <img src="/images/experiments/experiment_test_button.png" alt="Experiment test button interface" />
+</Frame>
+
+When an experiment is enabled for lower environments, Warehouse Native customers can check exposure logs to troubleshoot exposures. However, experiment results and cumulative exposures are not available.
+
 ## Start The Experiment
 
 With all this done, press Save and Analyze to start the experiment. You'll be prompted to finalize the dates, experiment status, and optionally set up a schedule to reload experiment results.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/102695539/264101192-1626481b-3c45-4622-b7c8-1e9638436a8d.png" alt="Schedule" />
+  <img src="/images/statsig-warehouse-native/features/configure-an-experiment/264101192-1626481b-3c45-4622-b7c8-1e9638436a8d.png" alt="Schedule" />
 </Frame>
 
 When you press load data, a Pulse analysis will start and you'll be taken to the results page.

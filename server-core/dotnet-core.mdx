@@ -11,6 +11,7 @@ import Initialization2 from '/snippets/server-core/initialization2.mdx'
 import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
+import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
 import LogEventIntro from '/snippets/server-core/logEvent.mdx'
 import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
 import SharedInstanceIntro from '/snippets/server-core/sharedInstance.mdx'
@@ -20,12 +21,15 @@ import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
 import ShutdownIntro from '/snippets/server-core/shutdown.mdx'
 import ClientInitResponseIntro from '/snippets/server-core/clientInitResponse.mdx'
 import LocalOverridesIntro from '/snippets/server-core/localOverrides.mdx'
+import PersistentStorageIntro from '/snippets/server-core/persistentStorage.mdx'
+import DataStoreIntro from '/snippets/server-core/dataStore.mdx'
 
 import installation from '/snippets/server-core/dotnet/install.mdx'
 import initialization from '/snippets/server-core/dotnet/initialize.mdx'
 import checkGate from '/snippets/server-core/dotnet/checkGate.mdx'
 import getConfig from '/snippets/server-core/dotnet/getConfig.mdx'
 import getExperiment from '/snippets/server-core/dotnet/getExperiment.mdx'
+import paramStores from '/snippets/server-core/dotnet/paramStores.mdx'
 import getLayer from '/snippets/server-core/dotnet/getLayer.mdx'
 import logEvent from '/snippets/server-core/dotnet/logEvent.mdx'
 import getFeatureGate from '/snippets/server-core/dotnet/getFeatureGate.mdx'
@@ -40,11 +44,13 @@ import ssrIPUserAgent from '/snippets/server-core/dotnet/ssrIPUserAgent.mdx'
 import ssrIDs from '/snippets/server-core/dotnet/ssrIDs.mdx'
 import ssrLegacyJS from '/snippets/server-core/dotnet/ssrLegacyJS.mdx'
 import localOverrides from '/snippets/server-core/dotnet/localOverrides.mdx'
+import persistentStorage from '/snippets/server-core/dotnet/persistent_storage.mdx'
+import dataStore from '/snippets/server-core/dotnet/dataStore.mdx'
 import notes from '/snippets/server-core/dotnet/notes.mdx'
 
 <Callout icon="github">
-<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/dotnet" target="_blank" rel="noreferrer">.NET Core on Github</a>, 
-<a href="https://www.nuget.org/packages/Statsig.Server.Core/" target="_blank" rel="noreferrer">NuGet Package</a>
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-dotnet" target="_blank" rel="noreferrer">.NET Core on Github</a>, 
+<a href="https://www.nuget.org/packages/Statsig.Dotnet/" target="_blank" rel="noreferrer">NuGet Package</a>
 </Callout>
 
 ## Setup the SDK
@@ -82,6 +88,9 @@ import notes from '/snippets/server-core/dotnet/notes.mdx'
 <GetFeatureGateIntro/>
 <getFeatureGate/>
 
+<ParamStoresIntro/>
+<paramStores/>
+
 <SharedInstanceIntro/>
 <sharedInstance/>
 
@@ -108,5 +117,11 @@ import notes from '/snippets/server-core/dotnet/notes.mdx'
 
 <LocalOverridesIntro/>
 <localOverrides/>
+
+<PersistentStorageIntro/>
+<persistentStorage/>
+
+<DataStoreIntro/>
+<dataStore/>
 
 <notes/>

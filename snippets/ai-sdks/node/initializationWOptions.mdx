@@ -1,0 +1,12 @@
+Optionally, you can configure [StatsigOptions](/server-core/node-core#statsig-options):
+
+```js
+import { Statsig } from '@statsig/statsig-server-core-node';
+import { StatsigAI, StatsigAIOptions } from '@statsig/statsig-ai';
+
+const statsig = new Statsig('YOUR_SERVER_SECRET_KEY', {
+  environment: 'production',
+});
+await statsig.initialize();
+await statsigAI.initialize();
+```

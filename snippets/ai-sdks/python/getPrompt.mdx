@@ -1,0 +1,24 @@
+```python
+from statsig_ai import StatsigUser
+
+# Create a user object
+user = StatsigUser(user_id='a-user')
+
+# Get the prompt
+my_prompt = statsig_ai.get_prompt(user, 'my_prompt')
+
+# Use the live version of the prompt
+live_version = my_prompt.get_live()
+
+# Get the candidate versions of the prompt
+candidate_versions = my_prompt.get_candidates()
+
+# Use the live version of the prompt in a completion
+response = openai.chat.completions.create(
+    model=live_version.get_model(fallback='gpt-4'),  # optional fallback
+    temperature=live_version.get_temperature(),
+    max_tokens=live_version.get_max_tokens(),
+    messages=[{'role': 'user', 'content': 'Your prompt here'}],
+)
+```
+

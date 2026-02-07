@@ -22,20 +22,20 @@ The following steps outline how to forward events from Amplitude into Statsig.
    "Add Destination" button in the top right.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_1.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/step_1.png" alt="Amplitude Data Destinations page showing Add Destination button" />
    </Frame>
 
 3. From the Destinations Catalog, search for and select the Statsig Event
    Streaming destination.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_2.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/step_2.png" alt="Destinations catalog highlighting Statsig event streaming option" />
    </Frame>
 
 4. Give this destination a name and click "Create Sync".
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_3.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/step_3.png" alt="Create Sync form for Statsig destination" />
    </Frame>
 
 5. Enter the "Server Secret Key" you copied in Step 1 into the provided
@@ -43,13 +43,13 @@ The following steps outline how to forward events from Amplitude into Statsig.
    Status is set to "Enabled" and then click "Save".
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude:incoming_integration_steps/step_4.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/step_4.png" alt="Statsig destination settings entering server secret key and event selection" />
    </Frame>
 
 6. *Enable the integration* - On the Integrations page for your Statsig project, enable the Amplitude Incoming integration.
 
    <Frame>
-     <img src="https://github.com/statsig-io/.github/assets/74584483/09de394e-dcc7-4a80-81fb-ae4cc58b25a1" alt="Screenshot 2024-06-17 at 2 20 58 PM" />
+     <img src="/images/integrations/data-connectors/amplitude/09de394e-dcc7-4a80-81fb-ae4cc58b25a1.png" alt="Statsig integration panel confirming Amplitude connection" />
    </Frame>
 
 
@@ -59,31 +59,31 @@ The following steps outline how to forward events from Amplitude into Statsig.
    bottom-left corner.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude_integration_steps/settings.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/settings.png" alt="Amplitude settings menu accessed from bottom-left" />
    </Frame>
 
 2. Click on the Projects tab and choose the Project you wish to send data
    to.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude_integration_steps/project.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/project.png" alt="Amplitude Projects tab listing available workspaces" />
    </Frame>
 
 3. Copy the API Key and paste it in the Statsig integration panel.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude_integration_steps/api_key.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/api_key.png" alt="Amplitude project API key display" />
    </Frame>
 
    <Frame>
-     <img src="https://user-images.githubusercontent.com/95646168/197276579-b3884a8f-ed47-4cd9-8852-c37f40958554.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/197276579-b3884a8f-ed47-4cd9-8852-c37f40958554.png" alt="Statsig integration panel fields for Amplitude API key" />
    </Frame>
 
 4. Hit Enable on the integration panel and any data logged to Statsig will show up in your
    Amplitude Project account.
 
    <Frame>
-     <img src="https://console.statsig.com/img/integrations/amplitude_integration_steps/amplitude_data.png" alt="" />
+     <img src="/images/integrations/data-connectors/amplitude/amplitude_data.png" alt="Amplitude event stream showing Statsig exposure events" />
    </Frame>
 
 ## First Exposures
@@ -107,7 +107,7 @@ Once this is done you will be able to go into the event filtering tab of the int
 
 Example of a get_experiment First Exposure in Amplitude.
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/26360698/5e945a95-8c7b-4181-8440-8e60502455e2" alt="" />
+  <img src="/images/integrations/data-connectors/amplitude/5e945a95-8c7b-4181-8440-8e60502455e2.png" alt="Example first exposure event in Amplitude log" />
 </Frame>
 
 ### Accessing Raw Data
@@ -117,6 +117,10 @@ For a comprehensive view, you can obtain the raw first exposure data in CSV form
 ## Cohort Sync - Syncing Amplitude Cohorts to Statsig Segments
 
 For up to date configuration information on syncing Cohorts (aka Segments) from Amplitude to Statsig, please take a look at Amplitude's documentation [here](https://www.docs.developers.amplitude.com/data/destinations/statsig-cohort/).
+
+<Warning>
+Ensure you create and use a console API key from your [Statsig project settings](https://console.statsig.com/api_keys)
+</Warning>
 
 ## Filtering Events
 

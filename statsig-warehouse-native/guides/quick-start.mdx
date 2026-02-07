@@ -15,21 +15,21 @@ All you'll need is a table in your warehouse that has metric or event logging da
 
 Statsig will use your warehouse to store and analyze your experiment data; you have total control and visibility over the data itself. To connect your warehouse, visit your warehouse's setup page.
 
-- [Snowflake]()
-- [Athena]()
-- [BigQuery]()
-- [Databricks]()
-- [Redshift]()
-- [Trino]()
-- [Clickhouse]()
-- [Fabric]()
+- [Snowflake](/statsig-warehouse-native/connecting-your-warehouse/snowflake)
+- [Athena](/statsig-warehouse-native/connecting-your-warehouse/athena)
+- [BigQuery](/statsig-warehouse-native/connecting-your-warehouse/bigquery)
+- [Databricks](/statsig-warehouse-native/connecting-your-warehouse/databricks)
+- [Redshift](/statsig-warehouse-native/connecting-your-warehouse/redshift)
+- [Trino](/statsig-warehouse-native/connecting-your-warehouse/trino)
+- [Clickhouse](/statsig-warehouse-native/connecting-your-warehouse/clickhouse)
+- [Fabric](/statsig-warehouse-native/connecting-your-warehouse/fabric)
 
 ## Step 2: Connect to Data
 
-To connect your event or metric, data, you'll create a [Metric Source](). Navigate to the Metric Sources page and click Create to make a new Metric Source.
+To connect your event or metric, data, you'll create a [Metric Source](/statsig-warehouse-native/configuration/metric-sources). Navigate to the Metric Sources page and click Create to make a new Metric Source.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/66229d92-99a8-45c6-9a1c-7f8585465338" alt="Screenshot 2024-06-11 at 1 21 46 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/66229d92-99a8-45c6-9a1c-7f8585465338.png" alt="Create metric source button" />
 </Frame>
 
 If you have a table, use the `Table` metric source type and put in the path to your table. Otherwise, you can write a query to access or generate some test data.
@@ -37,7 +37,7 @@ If you have a table, use the `Table` metric source type and put in the path to y
 Press analyze to generate samples from your table, and then map required columns (Timestamp and UserID) so that Statsig can connect your metric data to your assignment data.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/c0982d71-71c5-4899-bed9-a72c7db59515" alt="Screenshot 2024-06-11 at 1 23 59 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/c0982d71-71c5-4899-bed9-a72c7db59515.png" alt="Metric source configuration mapping timestamp and user ID" />
 </Frame>
 
 Save your changes, and you've connected to your data!
@@ -47,7 +47,7 @@ Save your changes, and you've connected to your data!
 Now that you've connected to data, you can build metrics on top of this. Later, this can be configured programmatically, but for now navigate to your Metrics Catalog and click Create to make a new Metric.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/8b997a0c-22e9-409d-8918-d21a95af1367" alt="Screenshot 2024-06-11 at 1 27 43 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/8b997a0c-22e9-409d-8918-d21a95af1367.png" alt="Metrics catalog create button" />
 </Frame>
 
 Point to the metric source you just configured, name your metric, and press Create. This will take you to the new Metric's page, where you can configure your metric.
@@ -65,19 +65,19 @@ Otherwise, you can quickly follow our guide to setting up an [A/A test](/guides/
 Navigate to Assignment Sources and create a new one.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/fe0e4c5d-e2a6-4943-9b09-cb81dbadee9e" alt="Screenshot 2024-06-11 at 1 33 29 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/fe0e4c5d-e2a6-4943-9b09-cb81dbadee9e.png" alt="Create assignment source page" />
 </Frame>
 
 If using an AA test, follow the instructions to randomly assign users to groups. If you're using existing assignments, write a query to pull the data from your logs and map the unit, group, experiment, and timestamp columns.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/08e3f20c-1590-4b08-ad60-fa96ecbf15cb" alt="Screenshot 2024-06-11 at 1 27 43 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/08e3f20c-1590-4b08-ad60-fa96ecbf15cb.png" alt="Assignment source query configuration" />
 </Frame>
 
 Pressing save and scan will save your new source and detect experiments that exist on the source. This should only take seconds to a few minutes, and once it's done you can scroll down to look through the experiments Statsig found.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/8be2f079-4440-4742-9727-08e25b65c84b" alt="Screenshot 2024-06-11 at 1 36 18 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/8be2f079-4440-4742-9727-08e25b65c84b.png" alt="Detected experiments table" />
 </Frame>
 
 ## Step 5: Analyze Your Experiment
@@ -85,7 +85,7 @@ Pressing save and scan will save your new source and detect experiments that exi
 Press Create on your experiment of interest to start creating your experiment.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/fc6e7092-b621-494a-bedb-8cd03a64d510" alt="Screenshot 2024-06-11 at 1 37 49 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/fc6e7092-b621-494a-bedb-8cd03a64d510.png" alt="Experiment creation wizard" />
 </Frame>
 
 Add a display name and hypothesis, and press Create. This will take you to the final setup step, where you specify the metrics for your experiment. Choose the metric you created in step 3).
@@ -93,7 +93,7 @@ Add a display name and hypothesis, and press Create. This will take you to the f
 Statsig will automatically detect the group split, but if the detected split is incorrect you can manually adjust it to the intended value.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/287bc60b-23a6-4681-ac26-282ce8b88c13" alt="Screenshot 2024-06-11 at 1 41 01 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/287bc60b-23a6-4681-ac26-282ce8b88c13.png" alt="Experiment setup selecting metrics and group split" />
 </Frame>
 
 Press Save and Analyze, and Statsig will start calculating Pulse Results. You can track the progress in the loading bar at the bottom of the experiment's results page.
@@ -107,7 +107,7 @@ If everything worked, you should see:
 - Your scorecard. This shows a quick summary of the observed differences in metrics between your experiment groups, with access to additional views and raw statistics
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/38f4f438-2592-44cb-9063-d3bc97da404b" alt="Screenshot 2024-06-11 at 1 52 47 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/38f4f438-2592-44cb-9063-d3bc97da404b.png" alt="Experiment results showing hypothesis and exposures" />
 </Frame>
 
 There's a lot of features here - please explore the product and the docs to learn more!
@@ -123,7 +123,7 @@ There's a lot of features here - please explore the product and the docs to lear
 Note that our experiment was not an AA test, and there was an experimental impact. In this case, we have a statistically significant result, with an estimated lift of +12.89% ±0.93% from our control group to our test group. We can also click into see additional details, like the expected change to our overall topline metric value if we were to ship this experiment.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/33e5fc2a-9b36-43f9-a6c2-2936867a7980" alt="Screenshot 2024-06-11 at 1 54 02 PM" />
+  <img src="/images/statsig-warehouse-native/guides/quick-start/33e5fc2a-9b36-43f9-a6c2-2936867a7980.png" alt="Detailed metric lift view with significance" />
 </Frame>
 
 Congratulations - you've completed the Quick Start guide!

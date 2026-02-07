@@ -22,36 +22,40 @@ We have custom documentation for some of the following OIDC providers:
 
 ## Configuration
 
-An `Admin` of an organization can configure SSO on Statsig. On your OIDC Provider you will need to specify the following for your Statsig Project:
+### In your Identity Provider
+You will need to specify the following for your Statsig App:
 
 - Sign-in redirect URI: https://console.statsig.com/sso/oidc (and https://latest.console.statsig.com/sso/oidc if possible)
 - Sign-out redirect URI: https://console.statsig.com
 - Sign-in URI: https://console.statsig.com/sso
 
-To enable SSO on Statsig, you will need the following from your OIDC Provider:
+To enable SSO in Statsig, you will need to collect the following from your OIDC Provider:
 
 - OIDC Domain
 - Client ID
 - Client Secret
 
+### In Statsig Console
 Once you have obtained all of the information mentioned above:
 
-1. Navigate to your Organization's [`Basic Settings` page](https://console.statsig.com/settings?tab=organization) and click the `Enable` button for Single Sign-on.
+1. Navigate to your Organization's [`Info Settings` page](https://console.statsig.com/settings?tab=organization) and click the `Enable` button for Single Sign-on.
+
+_Note that an `Owner`/`Admin` role in your Statsig organization is required to configure SSO on Statsig_ 
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/a31ba14d-9476-4897-afc6-5c39c2f932c9" alt="SSO enable button in organization settings" />
+  <img src="/images/access-management/sso/overview/a31ba14d-9476-4897-afc6-5c39c2f932c9.png" alt="SSO enable button in organization settings" />
 </Frame>
 
 2. Provide the information acquired from your OIDC Provider into the fields in the dialog and click `Enable`.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/d2143c48-f144-4544-a77b-af2e2d486cc8" alt="SSO configuration dialog with OIDC provider fields" />
+  <img src="/images/access-management/sso/overview/d2143c48-f144-4544-a77b-af2e2d486cc8.png" alt="SSO configuration dialog with OIDC provider fields" />
 </Frame>
 
 3. After clicking `Enable`, an SSO link will be shown that can be sent to your team to allow them to login to Statsig through your OIDC Provider.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/e3743107-2e26-4944-b2fb-f90536163b6f" alt="SSO link generated for team login" />
+  <img src="/images/access-management/sso/overview/e3743107-2e26-4944-b2fb-f90536163b6f.png" alt="SSO link generated for team login" />
 </Frame>
 
 Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings. By default, users who are provisioned via SSO will be assigned the "Member" Role. 

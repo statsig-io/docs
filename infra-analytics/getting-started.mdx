@@ -8,12 +8,20 @@ This guide helps you setup and send OpenTelemetry telemetry to Statsig so you ca
 
 There are two common paths:
 - Kubernetes/OpenTelemetry Collector: scrape logs and metrics from your cluster and export to Statsig. See [Open Telemetry Logs and Metrics](/server/concepts/open_telemetry) for a more complete guide.
-- Applications: export traces, metrics, and logs directly from your app over OTLP/HTTP to Statsig or to your collector. See the quick starts below.
+- Applications: export traces, metrics, and logs to your OpenTelemetry Collector (or traces directly from TypeScript/Node). See the quick starts below.
 
 <Info>
 **Endpoint & Auth**
 - Endpoint: `https://api.statsig.com/otlp`
 - Auth header: `statsig-api-key: <your Server SDK Secret key>`
+</Info>
+
+<Info>
+Direct trace export to the Statsig OTLP endpoint is only available for TypeScript/Node. For all other languages, send traces to your OpenTelemetry Collector and forward from the Collector to Statsig over OTLP/HTTP.
+</Info>
+
+<Info>
+Need a deeper setup guide? See [Open Telemetry Logs and Metrics](/server/concepts/open_telemetry) for collector installation/config, and the [Traces Explorer quick start](/infra-analytics/send-traces) for language-specific trace examples.
 </Info>
 
 ---
@@ -64,11 +72,12 @@ const sdk = new NodeSDK({
     [ATTR_SERVICE_VERSION]: process.env.VERSION || '1',
     env: process.env.NODE_ENV || 'development',
   }),
-  // Optional: enable traces if you want to try out tracing
-  // traceExporter: new OTLPTraceExporter({
-  //  url: 'https://api.statsig.com/otlp/v1/traces',
-  //  headers,
-  // }),
+  traceExporter: new OTLPTraceExporter({
+   url: 'https://api.statsig.com/otlp/v1/traces',
+   // or
+   // url: <your-collector-endpoint>/v1/traces
+   headers,
+  }),
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
       url: 'https://api.statsig.com/otlp/v1/metrics',
@@ -200,11 +209,12 @@ export async function register() {
       [ATTR_SERVICE_VERSION]: process.env.VERSION || '1',
       env: process.env.NODE_ENV || 'development',
     }),
-    // Optional: enable traces if you want to try out tracing
-    // traceExporter: new OTLPTraceExporter({
-    //   url: 'https://api.statsig.com/otlp/v1/traces',
-    //  headers,
-    // }),
+    traceExporter: new OTLPTraceExporter({
+     url: 'https://api.statsig.com/otlp/v1/traces',
+    // or
+    // url: <your-collector-endpoint>/v1/traces
+     headers,
+    }),
     metricReader: new PeriodicExportingMetricReader({
       exporter: new OTLPMetricExporter({
         url: 'https://api.statsig.com/otlp/v1/metrics',
@@ -286,7 +296,10 @@ s.forwardLogLineEvent(user, 'info', 'service started', { version: process.env.np
    });
  }
 ```
-Note: In Next.js, mark '@statsig/statsig-node-core' as a server external package in `next.config.js` to avoid bundling.
+
+<Note> 
+In Next.js, mark '@statsig/statsig-node-core' as a server external package in `next.config.js` to avoid bundling.
+</Note>
 
 ### Using Vercel + Statsig integration
 

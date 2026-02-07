@@ -28,8 +28,19 @@ When `true`, disables all network functions: event & exposure logging, spec down
 How often events are flushed to Statsig servers (in milliseconds).
 </ResponseField>
 
-<ResponseField name="event_logging_max_queue_size" type="Optional[int]">
-Maximum number of events to queue before forcing a flush.
+<ResponseField name="event_logging_max_queue_size" type="Option<u32>">
+  Maximum number of events to queue before forcing a flush. 
+  - Default is `2000`
+  - event_logging_max_queue_size * event_logging_max_pending_batch_queue_size is the upper limit on how many events are queued
+  - See also `event_logging_max_pending_batch_queue_size`
+</ResponseField>
+
+<ResponseField name="event_logging_max_pending_batch_queue_size" type="Option<u32>">
+  Maximum number of event batches to hold in buffer to retry. 
+  - Default is `100`. 
+  - event_logging_max_queue_size * event_logging_max_pending_batch_queue_size is the upper limit on how many events are queued
+  - eg: 2000 * 100 means the SDK can process 200k event per second before events start getting dropped
+  - See also `event_logging_max_queue_size`. 
 </ResponseField>
 
 <ResponseField name="enable_id_lists" type="Optional[bool]">
@@ -104,13 +115,26 @@ Configuration for connecting through a proxy server. The `ProxyConfig` object ha
 - `proxy_protocol`: Optional string specifying the protocol (e.g., "http", "https")
 </ResponseField>
 
+<ResponseField name="spec_adapter_configs" type="Optional[List[SpecAdapterConfig]]">
+Advanced configuration for customizing how the SDK fetches feature specifications. Allows you to configure multiple spec adapters with different priorities and settings.
+
+Each `SpecAdapterConfig` object has the following properties:
+- `adapter_type`: String specifying the adapter type (e.g., "http", "grpc")
+- `specs_url`: Optional custom URL for fetching specifications
+- `init_timeout_ms`: Optional timeout for initialization (in milliseconds)
+
+<Note>
+**Migration Note:** This parameter was previously named `init_resources` in earlier versions. If you're upgrading from an older version, replace `init_resources` with `spec_adapter_configs`.
+</Note>
+</ResponseField>
+
 
 ---
 
 ### Example Usage
 
 ```python
-from statsig_python_core import StatsigOptions
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
 
 # Define proxy configuration if needed
 proxy_config = {
@@ -128,6 +152,34 @@ options.disable_all_logging = False
 options.proxy_config = proxy_config
 
 # Pass the options object into statsig.initialize()
+statsig = Statsig("secret-key", options)
+statsig.initialize().wait()
+```
+
+### Using spec_adapter_configs with Multiple Sources
+
+```python
+from statsig_python_core import StatsigOptions, SpecAdapterConfig
+
+# Configure multiple spec adapters with priority order
+# First source: Statsig CDN
+primary_adapter = SpecAdapterConfig(
+    adapter_type="http",
+    specs_url="https://api.statsigcdn.com/v2/download_config_specs",
+    init_timeout_ms=3000
+)
+
+# Second source: Data Store adapter
+# The SDK will try this source if the primary source fails
+data_store_adapter = SpecAdapterConfig(
+    adapter_type="data_store",
+    init_timeout_ms=5000
+)
+
+options = StatsigOptions()
+options.spec_adapter_configs = [primary_adapter, data_store_adapter]
+options.environment = "production"
+
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 ```

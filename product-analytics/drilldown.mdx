@@ -21,6 +21,7 @@ The Metric Drilldown chart in Metrics Explorer is a versatile tool for understan
 - **Debug Experiments**: Breakdown your experiment's first exposures to understand how certain properties or groups (feature gates, experiments, holdouts) affect your experiment.
 - **View Sample Ratio Mismatch (SRM)**: See the SRM of your experiments over time and drill down into event and user metadata fields to understand how certain properties (country, browser, etc.) or groups (feature gates, experiments, holdouts) can affect your experiment SRM. 
 - **Debug Feature Gates**: Breakdown your feature gate's first exposures per rule to understand how certain properties or groups (feature gates, experiments, holdouts) affect your feature gate.
+- **Analyze Dimensions Across Metrics**: Quickly identify top or bottom performers across multiple metrics by viewing your data in a table and sorting by any metric–column combination.
 
 # Using the Metric Drilldown Chart
 
@@ -36,33 +37,33 @@ When selecting an event, the total number of times the event occurred (Count) on
 - **Unique**: Plot the number of unique ids (generally UserIDs) that performed the event in the given time range per data point.
     
     <Frame>
-      <img src="https://github.com/user-attachments/assets/7e4740c5-88e6-4d1c-a49c-dd29dca30714" alt="Event aggregation options interface" />
+      <img src="/images/product-analytics/drilldown/7e4740c5-88e6-4d1c-a49c-dd29dca30714.png" alt="Event aggregation options interface" />
     </Frame>
 
     
     - When viewing data on uniques (e.g. unique users) at daily granularity, you can choose to have the value of each daily data point represent the number of unique weekly users (unique users over previous 7 days). This enables you to get a sense of how weekly usage is changing day over day.
         
         <Frame>
-          <img src="https://github.com/user-attachments/assets/2cec3257-b8a5-4efc-9bcd-be4d7f871c7a" alt="Weekly unique users configuration option" />
+          <img src="/images/product-analytics/drilldown/2cec3257-b8a5-4efc-9bcd-be4d7f871c7a.png" alt="Weekly unique users configuration option" />
         </Frame>
         
 - **Average**: Plot the average of a selected event property value within the given time range per data point. Note this only works for properties that have numerical values.
     
     <Frame>
-      <img src="https://github.com/user-attachments/assets/f7ea5919-5288-42f0-8949-d711e17ffec7" alt="Average event property aggregation interface" />
+      <img src="/images/product-analytics/drilldown/f7ea5919-5288-42f0-8949-d711e17ffec7.png" alt="Average event property aggregation interface" />
     </Frame>
 
     
 - **Sum**: Plot the sum of a selected event property value within the given time range per data point. Note this only works for properties that have numerical values.
     
     <Frame>
-      <img src="https://github.com/user-attachments/assets/20ed372c-e1cb-4c2e-bdac-ed6dd2ba7c4e" alt="Sum event property aggregation interface" />
+      <img src="/images/product-analytics/drilldown/20ed372c-e1cb-4c2e-bdac-ed6dd2ba7c4e.png" alt="Sum event property aggregation interface" />
     </Frame>
 
 - **Percentiles**: Plot the value of a selected event property value at the selected percentile within the given time range per data point.
     
     <Frame>
-      <img src="https://github.com/user-attachments/assets/112d74ec-7a52-4621-8969-af79e8599714" alt="Percentiles aggregation configuration interface" />
+      <img src="/images/product-analytics/drilldown/112d74ec-7a52-4621-8969-af79e8599714.png" alt="Percentiles aggregation configuration interface" />
     </Frame>
 
 - **Unique Values**: Plot the count of distinct values for any property across events or users within the given time range per data point. This aggregation helps answer questions like "How many different referrers drove traffic last week?" or "How many SKUs were added to carts today?" by counting unique property values rather than event occurrences.
@@ -122,7 +123,7 @@ A metric can be grouped-by event properties, user profile properties, experiment
 Group-By limits can be added by first adding a group-by, then moving to the summary table below the charts, and clicking the "Top X series" dropdown button. From there you can select how many groups you want to see at once. You can use this to further drill down on your top X categories (up to 50). This feature is available for line charts, stacked-line charts, bar charts, and stacked-bar charts.
 
  <Frame>
-   <img src="https://github.com/user-attachments/assets/e61fedbe-2633-4469-8120-9959968c484a" alt="Group-by top series selection dropdown" />
+   <img src="/images/product-analytics/drilldown/e61fedbe-2633-4469-8120-9959968c484a.png" alt="Group-by top series selection dropdown" />
  </Frame>
  
 When you have a Group-By applied, you can view the results as raw numbers, or as a percentage. 

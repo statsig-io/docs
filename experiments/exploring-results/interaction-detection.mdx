@@ -3,10 +3,9 @@ title: "Interaction Detection"
 description: "Learn how to detect interactions between overlapping experiments and understand their impact."
 ---
 
-
 ## What is Interaction Detection
 
-When you run overlapping experiments, it is possible for them to interfere with each other. Interaction Detection lets you pick two experiments and evaluate them for interaction. This helps you understand if people exposed to both experiments behave very differently from people who're exposed to either one of the experiments.
+When you run overlapping experiments, it is possible for them to interfere with each other. Interaction Detection lets you pick two experiments and evaluate them for interaction. This helps you understand if people exposed to both experiments behave very differently from people who're exposed to either one of the experiments. Essentially you want to answer this question: **Does being in both experiments change the effect** **on a metric in a way that’s different than just summing the individual effects?**
 
 ## Should I worry about it?
 
@@ -14,13 +13,13 @@ Our general guidance is to run overlapping experiments. People seeing your landi
 
 ## How to use it
 
-You can initiate an Interaction Detection analysis as a special type of custom query on top of an Experiment (Experiment ->  Results -> Explore -> Interaction Effect Detection)
+You can initiate an Interaction Detection analysis as a special type of custom query on top of an Experiment (Experiment -\>  Results -\> Explore -\> Interaction Effect Detection)
 
 <Frame>
-  <img src="https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/jZMgd0DwQQ1ecgiZmsNS/b49e62b2-ba95-4db3-8d5a-3ce3f08b620d.png" alt="Interaction Detection interface in Statsig console" />
+  ![Interaction Detection interface in Statsig console](/images/experiments/exploring-results/interaction-detection/b49e62b2-ba95-4db3-8d5a-3ce3f08b620d.png)
 </Frame>
 
- You can pick a second experiment to analyze (along with metrics) and we will show you a quick summary.
+You can pick a second experiment to analyze (along with metrics) and we will show you a quick summary.
 
 In each section:
 
@@ -29,24 +28,62 @@ In each section:
 - Overlapping Unique Users: offers an overview of the general traffic intersection of the two experiments
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/ebbb4383-8abe-4b9b-9132-fb543e6b33ac" alt="Interaction Detection analysis results dashboard" />
+  ![Interaction Detection analysis results dashboard](/images/experiments/exploring-results/interaction-detection/ebbb4383-8abe-4b9b-9132-fb543e6b33ac.png)
 </Frame>
 
 See more examples in this [article](https://www.statsig.com/blog/interaction-effect-detection).
 
 ## Methodology
 
-$$
-
-\Delta_{\text{treatment effect}} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
-$$
+Assume you have two experiments A & B, both have two experiment groups control & test. The interaction effect will calcuate the overlapping impact on users who are exposed in both experiment A & experiment B.
 
 $$
-
-\Delta_{\text{treatment effect}}{\%} = \frac{\Delta_{\text{treatment effect}}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
+\Delta_{\text{treatment effect}} = (\overline{X_{testA \cdot testB}} - \overline{X_{testA \cdot controlB}}) - (\overline{X_{controlA \cdot testB}} - \overline{X_{controlA \cdot controlB}})
 $$
 
 $$
-
-variance = \frac{Var(X_{test \cdot test})}{n_{test \cdot test}} + \frac{Var(X_{test \cdot control})}{n_{test \cdot control}} + \frac{Var(X_{control \cdot test})}{n_{control \cdot test}} + \frac{Var(X_{control \cdot control})}{n_{control \cdot control}}
+\Delta_{\text{treatment effect}}{\%} = \frac{\Delta_{\text{treatment effect}}}{(\overline{X_{controlA \cdot testB}} - \overline{X_{controlA \cdot controlB}})}
 $$
+
+$$
+variance = \frac{Var(X_{testA \cdot testB})}{n_{testA \cdot testB}} + \frac{Var(X_{testA \cdot controlB})}{n_{testA \cdot controlB}} + \frac{Var(X_{controlA \cdot testB})}{n_{controlA \cdot testB}} + \frac{Var(X_{controlA \cdot controlB})}{n_{controlA \cdot controlB}}
+$$
+
+### Intuition
+
+- The part $\overline{X_{testA \cdot testB}} - \overline{X_{testA \cdot controlB}} $ tells you: “If someone is in A’s test, how much does changing B from control→test change the metric?”
+- The part $\overline{X_{controlA \cdot testB}} - \overline{X_{controlA \cdot controlB}}$  tells you: “If someone is in A’s control, how much does changing B from control→test change the metric?”
+- By subtracting those two, you see whether the effect of B differs depending on whether you’re in A’s test or control group → that difference is the interaction effect.
+
+If that result is not statistically significant, then the effect of B is the same no matter which group you’re in for A (so no significant interaction). If it’s statistically significant, then the effect of B depends on A’s assignment (so there is a significant interaction).
+
+### Directionality
+
+The direction (positive or negative) of the interaction effect tells you **whether the combination of the two treatments amplifies or dampens each other’s effects**.
+
+Think of the interaction effect like this:
+
+$Interaction Effect=(Effect of B when A=Test)−(Effect of B when A=Control)$
+
+So:
+
+- **Statistically Positive interaction** → B’s effect is **stronger** when A is also “on”
+- **Statistically Negative interaction** → B’s effect is **weaker** (or reversed) when A is “on”
+
+### Magnitude
+
+The magnitude (absolute size) of the interaction effect indicates how much the combined impact deviates from simple additivity.
+
+For example:
+
+- Experiment A produces a **\+5%** lift on your metric of interest
+- Experiment B produces a **\+5%** lift on your metric
+- The interaction effect between A and B is **–3%**
+
+This means that when both experiments are rolled out together, their overall impact is expected to be **about 3% lower than the sum of their individual effects** — in other words, the features interfere with each other.
+
+To obtain the most accurate estimate of the true combined impact, it’s best to run a new experiment that includes both features together. Because experiments A and B may not have run over exactly the same time period or under identical conditions, differences in timing and seasonality can slightly influence the measured interaction magnitude.
+
+<Info>
+  When an experiment includes more than two groups, interaction effects are evaluated **pairwise between groups**. You can view the interaction effect for specific group combinations by selecting the desired groups in the **“Select Comparison”** dropdown, as shown in the UI above.
+</Info>

@@ -23,10 +23,7 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "chatgpt"
-    ]
+    "options": ["copy", "chatgpt", "cursor", "vscode"]
   },
   "integrations": {
     "ga4": {
@@ -37,6 +34,20 @@
     }
   },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community Slack",
+          "icon": "slack",
+          "href": "https://statsig.com/slack"
+        },
+        {
+          "anchor": "Statsig University",
+          "icon": "graduation-cap",
+          "href": "https://learn.statsig.com"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Product Docs",
@@ -44,10 +55,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": [
-              "welcome",
-              "understanding-platform"
-            ]
+            "pages": ["welcome", "understanding-platform", "support-options"]
           },
           {
             "group": "Experiments",
@@ -159,7 +167,7 @@
               {
                 "group": "Read Results",
                 "pages": [
-                  "experiments/interpreting-results/read-pulse",
+                  "experiments/interpreting-results/read-results",
                   "experiments/interpreting-results/userproperties",
                   "experiments/interpreting-results/drill-down",
                   "experiments/interpreting-results/export",
@@ -271,6 +279,10 @@
                   "infra-analytics/overview",
                   "infra-analytics/getting-started",
                   {
+                    "group": "Traces Explorer",
+                    "pages": ["infra-analytics/send-traces"]
+                  },
+                  {
                     "group": "Logs Explorer",
                     "pages": [
                       "infra-analytics/logs-explorer",
@@ -291,10 +303,7 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": [
-                  "webanalytics/overview",
-                  "webanalytics/autocapture"
-                ]
+                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
               }
             ]
           },
@@ -338,11 +347,34 @@
                   "session-replay/overview",
                   "session-replay/install",
                   "session-replay/configure",
+                  "session-replay/privacy",
+                  "session-replay/debug",
                   "session-replay/watch",
                   "session-replay/cli-session-replay"
                 ]
               },
-              "integrations/mcp",
+              {
+                "group": "Statsig + AI",
+                "pages": [
+                  {
+                    "group": "MCP",
+                    "pages": [
+                      "integrations/mcp/overview",
+                      "integrations/mcp/codex",
+                      "integrations/mcp/chatgpt-connector",
+                      "integrations/mcp/cursor",
+                      "integrations/mcp/claude-code",
+                      "integrations/mcp/manual-setup"
+                    ]
+                  },
+                  "integrations/ai_development_with_statsig",
+                  "integrations/github-ai-integration"
+                ]
+              },
+              {
+                "group": "Control Panel",
+                "pages": ["control-panel/overview"]
+              },
               {
                 "group": "Data & Metrics",
                 "pages": [
@@ -516,7 +548,8 @@
                   "statsig-warehouse-native/metrics/log",
                   "statsig-warehouse-native/metrics/latest-value",
                   "statsig-warehouse-native/metrics/retention",
-                  "statsig-warehouse-native/metrics/max-min"
+                  "statsig-warehouse-native/metrics/max-min",
+                  "warehouse-native/data-and-semantic-layer/metrics/composite"
                 ]
               },
               "statsig-warehouse-native/configuration/metric-examples",
@@ -531,7 +564,8 @@
                   "statsig-warehouse-native/configuration/tags-and-teams",
                   "statsig-warehouse-native/features/roles-and-access",
                   "metrics/verified",
-                  "statsig-warehouse-native/configuration/query-tools"
+                  "statsig-warehouse-native/configuration/query-tools",
+                  "metrics/metric-family"
                 ]
               },
               {
@@ -724,18 +758,17 @@
           {
             "group": "Server SDKs",
             "pages": [
+              "server-core/index",
               "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
               "server-core/go-core",
               "server/ruby",
               "server-core/dotnet-core",
-              "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
-                  "server/cpp",
-                  "server/go",
+                  "server-core/cpp-core",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
@@ -745,6 +778,8 @@
                 "group": "Legacy Server SDKs",
                 "pages": [
                   "server-core/legacy-sdks",
+                  "server/cpp",
+                  "server/go",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
                   "server/erlang",
@@ -755,6 +790,11 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "AI SDKs",
+            "icon": "brain",
+            "pages": ["ai-evals/node", "ai-evals/python"]
           },
           {
             "group": "More SDK Methods",
@@ -816,7 +856,8 @@
                 "pages": [
                   "access-management/organizations",
                   "access-management/projects",
-                  "access-management/teams"
+                  "access-management/teams",
+                  "access-management/guide"
                 ]
               },
               {
@@ -854,7 +895,8 @@
                     ]
                   }
                 ]
-              }
+              },
+              "access-management/pricing"
             ]
           },
           {
@@ -921,12 +963,18 @@
                   }
                 ]
               },
-              "integrations/data-exports",
+              {
+                "group": "Data Exports",
+                "pages": [
+                  "integrations/data-exports/experiment_result_exports",
+                  "integrations/data-exports/data_warehouse_exports"
+                ]
+              },
               {
                 "group": "Serverless & Edge",
                 "pages": [
-                  "guides/serverless",
                   "guides/cdn-edge-testing",
+                  "integrations/serverless",
                   "integrations/vercel",
                   "integrations/cloudflare",
                   "integrations/workersai",
@@ -1019,6 +1067,7 @@
               "access-management/discussions",
               "access-management/tags",
               "guides/setting-up-reviews",
+              "guides/pre-commit-webhooks",
               "guides/config-history"
             ]
           },
@@ -1027,7 +1076,8 @@
             "icon": "shield-check",
             "pages": [
               "compliance/user_data_deletion_requests",
-              "guides/private-attributes"
+              "guides/private-attributes",
+              "compliance/ai_governance_security_privacy"
             ]
           },
           {
@@ -1038,7 +1088,8 @@
               {
                 "group": "Open Telemetry",
                 "pages": [
-                  "/infra-analytics/getting-started"
+                  "/infra-analytics/getting-started",
+                  "/infra-analytics/send-traces"
                 ]
               },
               "server/concepts/cloudflare",
@@ -1070,21 +1121,12 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community Slack",
-          "href": "https://statsig.com/slack",
-          "icon": "slack"
-        }
-      ]
-    }
+    ]
   },
   "redirects": [
     {
       "source": "/pulse",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
     },
     {
       "source": "/experiments/stratified-sampling-whn",
@@ -1215,20 +1257,16 @@
       "destination": "/client/concepts/initialize#2-bootstrap-initialization"
     },
     {
-      "source": "/statsig-warehouse-native/features/statistics/confidence-intervals",
-      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals"
-    },
-    {
       "source": "/stats-engine/topline-impact-whn",
-      "destination": "statsig-warehouse-native/features/statistics/topline-impact"
+      "destination": "/statsig-warehouse-native/features/statistics/topline-impact"
     },
     {
       "source": "/stats-engine/methodologies/one-sided-test-whn",
-      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+      "destination": "/statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
     },
     {
       "source": "/stats-engine/metric-deltas-whn",
-      "destination": "statsig-warehouse-native/features/statistics/metric-deltas"
+      "destination": "/statsig-warehouse-native/features/statistics/metric-deltas"
     },
     {
       "source": "/client/iOS/repo-migration-guide",
@@ -1556,7 +1594,7 @@
     },
     {
       "source": "/pulse/read-pulse",
-      "destination": "/experiments/interpreting-results/read-pulse"
+      "destination": "/experiments/interpreting-results/read-results"
     },
     {
       "source": "/experiments-plus/bayesian",
@@ -1793,6 +1831,14 @@
     {
       "source": "/integrations/data-exports/overview",
       "destination": "/integrations/data-exports"
+    },
+    {
+      "source": "/experiments/read-results",
+      "destination": "/experiments/interpreting-results/read-results"
+    },
+    {
+      "source": "/experiments/interpreting-results/read-pulse",
+      "destination": "/experiments/interpreting-results/read-results"
     }
   ],
   "logo": {

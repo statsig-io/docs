@@ -1,0 +1,15 @@
+```js
+import { StatsigUser } from '@statsig/statsig-ai';
+
+const livePromptVersion = statsigAI.getPrompt(user, 'my_prompt').getLive();
+// Create a user object
+const user = new StatsigUser({ userID: 'a-user' });
+
+// Log the results of the eval
+statsigAI.logEvalGrade(user, livePromptVersion, 0.5, 'my_grader', {
+  session_id: '1234567890',
+});
+
+// flush eval grade events to statsig
+await statsigAI.flush();
+```

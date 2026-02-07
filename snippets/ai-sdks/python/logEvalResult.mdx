@@ -1,0 +1,16 @@
+```python
+from statsig_ai import StatsigUser
+
+live_prompt_version = statsig_ai.get_prompt(user, 'my_prompt').get_live()
+# Create a user object
+user = StatsigUser(user_id='a-user')
+
+# Log the results of the eval
+statsig_ai.log_eval_grade(user, live_prompt_version, 0.5, 'my_grader', {
+    'session_id': '1234567890',
+})
+
+# flush eval grade events to statsig
+statsig_ai.flush().wait()
+```
+

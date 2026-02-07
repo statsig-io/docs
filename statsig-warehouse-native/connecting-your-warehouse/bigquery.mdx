@@ -11,10 +11,10 @@ last_update:
 
 To set up a connection with BigQuery, there are two supported methods:
 
-- Grant Permissions to a Statsig-owned Service Account 
+- Grant Permissions to a Statsig-owned Service Account
 - Provide Credentials for Your Own First-Party Service Account
 
-In both cases, you'll need: 
+In both cases, you'll need:
 
 - Your BigQuery Project ID
 - The dataset Statsig will use to save temporary tables and materialized results
@@ -29,7 +29,10 @@ You need to grant some permissions for Statsig from your Google Cloud console in
    - `BigQuery User`
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/87334575/198107543-b3bcc19a-3231-4128-be42-a5dd52fb168a.png" alt="BigQuery IAM permissions configuration" />
+  <img
+    src="/images/statsig-warehouse-native/connecting-your-warehouse/bigquery/198107543-b3bcc19a-3231-4128-be42-a5dd52fb168a.png"
+    alt="BigQuery IAM permissions configuration"
+  />
 </Frame>
 
 <br />
@@ -37,7 +40,10 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 2. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on a dataset. Do this for any datasets you want the service user to be able to access.
 
    <Frame>
-     <img src="https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png" alt="BigQuery dataset permissions interface" />
+     <img
+       src="/images/integrations/data-imports/bigquery/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png"
+       alt="BigQuery dataset permissions interface"
+     />
    </Frame>
 
 3. Following the steps above, give the "BigQuery Data Editor" role on the dataset you want Statsig to use for its staging data.
@@ -45,44 +51,63 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 Now the service account should have the required permissions to run queries and materialize results.
 
 ## Using a First Party Service Account
-1. Speak with your Statsig technical point of contact and request enabling 1st party service account connectivity for Big Query
 
-2. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
+<Warning>
+This is not a recommended alternative. Using service accounts is the preferred default for enhanced security.
+</Warning>
+
+1. On the BQ service accounts page, click 'Manage Keys' for the service account you want to use
 
 <Frame>
   <img src="/images/1stprtybq.png" alt="BQ 1st party service account" />
 </Frame>
 
-3. Create a new JSON key (which will download a JSON file)
-<Frame>
-  <img src="/images/1stprtybq2.png" alt="BQ 1st party service account" />
-</Frame>
-<Frame>
-  <img src="/images/1stprtybq3.png" alt="BQ 1st party service account" />
-</Frame>
+2. Create a new JSON key (which will download a JSON file)
 
-4. Copy/paste the contents of that file into the Service Account Private Key field in the Statsig Console and save the connection
+   <Frame>
+     <img src="/images/1stprtybq2.png" alt="BQ 1st party service account" />
+   </Frame>
+   <Frame>
+     <img src="/images/1stprtybq3.png" alt="BQ 1st party service account" />
+   </Frame>
 
+3. In the **Statsig Settings** -> **[Data Connection](https://console.statsig.com/data_connection/connection_setup)
+** tab, paste the above key into the **Service Account Private Key** field under the **Advanced** toggle.
 
-## BigQuery Project ID
+## Additional BigQuery Resources
+
+### BigQuery Project ID
 
 Find your BigQuery Project ID below
 
 1. Click on your Project Dropdown inside your Cloud Console.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187518062-7027f682-d1fd-445e-9947-897e44ea929e.png" alt="Frame 4" />
+  <img
+    src="/images/statsig-warehouse-native/connecting-your-warehouse/bigquery/187518062-7027f682-d1fd-445e-9947-897e44ea929e.png"
+    alt="Frame 4"
+  />
 </Frame>
 
 2. Copy and paste relevant Project ID from the modal pop-up.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/108023879/187517901-9e7fd237-8325-4254-a1bd-c75f0ea08497.png" alt="Frame 5" />
+  <img
+    src="/images/statsig-warehouse-native/connecting-your-warehouse/bigquery/187517901-9e7fd237-8325-4254-a1bd-c75f0ea08497.png"
+    alt="Frame 5"
+  />
 </Frame>
 
 ### What is Statsig's Customer ID on BigQuery
+
 C01d5f80s
 
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
+
+### Additional Setup for Warehouse Explorer
+
+Warehouse Explorer makes it easy to find and bring data from any table into Statsig for ad-hoc analysis.
+
+Statsig will read from `INFORMATION_SCHEMA.COLUMNS`, which requires explicit permission to view table metadata. You may provide access by repeating steps 1 and 2 from the [Grant Permission](/statsig-warehouse-native/connecting-your-warehouse/bigquery#grant-permissions-to-statsig%E2%80%99s-service-account) section above for the "BigQuery Metadata Viewer" role.

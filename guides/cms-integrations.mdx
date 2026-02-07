@@ -25,31 +25,31 @@ For the remainder of this guide, we will assume you are experimenting on a singl
 For the sake of example, let's assume we are parameterizing the Statsig landing page to plug in our CMS.
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187345904-90ade71e-adc7-4205-85c7-751633a864da.png" alt="Screen Shot 2022-08-29 at 8 26 09 PM" />
+  <img src="/images/guides/cms-integrations/187345904-90ade71e-adc7-4205-85c7-751633a864da.png" alt="Statsig landing page diagram showing CMS-provided sections" />
 </Frame>
 
 First, lets create a layer. Navigate to "Experiments" in the left hand column, and then "Layers" in the title bar:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187341751-7c5861a7-90cd-494d-b84d-75c9ea54f923.png" alt="Screen Shot 2022-08-29 at 8 21 39 PM" />
+  <img src="/images/guides/cms-integrations/187341751-7c5861a7-90cd-494d-b84d-75c9ea54f923.png" alt="Layers list and create button in Statsig experiments UI" />
 </Frame>
 
 Here, we'll create one for all content or parameters we want to experiment with on our landing page, so we call it "statsig_landing_page"
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187346608-3314ca52-4c99-4442-b056-7081369d2b8f.png" alt="Screen Shot 2022-08-29 at 9 01 56 PM" />
+  <img src="/images/guides/cms-integrations/187346608-3314ca52-4c99-4442-b056-7081369d2b8f.png" alt="Create layer dialog naming statsig_landing_page" />
 </Frame>
 
 Next, lets create some parameters. One for the title, subtitle, and primary CTA. For the value, we will use the actual ID of the content in the CMS
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187346653-1be62abe-e6b9-4ed6-9bf6-b95e7b04e040.png" alt="Screen Shot 2022-08-29 at 9 02 35 PM" />
+  <img src="/images/guides/cms-integrations/187346653-1be62abe-e6b9-4ed6-9bf6-b95e7b04e040.png" alt="Layer parameter creation form for CMS content IDs" />
 </Frame>
 
 It should look like this when you are done:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187346571-85013f61-6ca6-42f5-9c41-b4631931f93e.png" alt="Screen Shot 2022-08-29 at 9 03 04 PM" />
+  <img src="/images/guides/cms-integrations/187346571-85013f61-6ca6-42f5-9c41-b4631931f93e.png" alt="Layer parameters table listing title, subtitle, and CTA defaults" />
 </Frame>
 
 Note that each layer parameter has a default value. If the user is not in any experiments in that layer, that's the default they will get, which will be backed by the cms.
@@ -72,29 +72,29 @@ Now, you can create new content in your CMS, and create an experiment in Statsig
 to your layer and hit "Create Experiment in Layer":
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187347191-ac9a27bb-3ea3-4338-8680-c94b6d1e753b.png" alt="Screen Shot 2022-08-29 at 9 08 49 PM" />
+  <img src="/images/guides/cms-integrations/187347191-ac9a27bb-3ea3-4338-8680-c94b6d1e753b.png" alt="Create experiment in layer button location" />
 </Frame>
 
 Fill out the resulting form:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187347290-fc3ebc84-1cf0-4f3a-8256-d6cc5a4b21b3.png" alt="Screen Shot 2022-08-29 at 9 09 39 PM" />
+  <img src="/images/guides/cms-integrations/187347290-fc3ebc84-1cf0-4f3a-8256-d6cc5a4b21b3.png" alt="Layer experiment setup form with control and test weights" />
 </Frame>
 
 And you have created an experiment! Now, we just need to set up the test and control groups for the experiment, and say which content will be used for each
 of the parameters we have set up. In the Groups and parameters section, select "Add Parameter" and then choose one of your existing parameters, like title:
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187347358-f336195a-0fa5-42d0-9896-ea0e0cf85875.png" alt="Screen Shot 2022-08-29 at 9 10 14 PM" />
+  <img src="/images/guides/cms-integrations/187347358-f336195a-0fa5-42d0-9896-ea0e0cf85875.png" alt="Groups and parameters section showing Add Parameter menu" />
 </Frame>
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187347464-e4a2dbe6-bcb8-48f1-b807-339f59b6e0b2.png" alt="Screen Shot 2022-08-29 at 9 11 12 PM" />
+  <img src="/images/guides/cms-integrations/187347464-e4a2dbe6-bcb8-48f1-b807-339f59b6e0b2.png" alt="Parameter value editor selecting CMS ID per group" />
 </Frame>
 
 Update the value of the parameter to the id of the new title:
 <Frame>
-  <img src="https://user-images.githubusercontent.com/74584483/187347517-77ff4cfb-8f52-4db3-9dd1-92e453076b01.png" alt="Screen Shot 2022-08-29 at 9 11 43 PM" />
+  <img src="/images/guides/cms-integrations/187347517-77ff4cfb-8f52-4db3-9dd1-92e453076b01.png" alt="Updated parameter table showing new CMS content IDs per variation" />
 </Frame>
 
 If you want to create multiple experiment groups, or add more parameters, keep on adding until your experiment setup is complete.

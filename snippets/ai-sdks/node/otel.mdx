@@ -1,0 +1,78 @@
+The simplest way to start tracing with Statsig and OTel is to call `initializeTracing()` at the root of your application.
+
+```js
+// instrumentation.{js,ts}
+import { initializeTracing } from '@statsig/statsig-ai/otel';
+
+initializeTracing({
+  // optional: enables the global trace provider registration
+  // so that you can create spans without having to create a new trace provider
+  enableGlobalTraceProviderRegistration: true,
+});
+```
+
+If you already have your own OTel setup with `NodeSDK`, you only need to initialize Statsig's OTel tracing and use the processor created by `initializeTracing()`.
+
+```js
+// instrumentation.{js,ts}
+
+import { NodeSDK } from '@opentelemetry/sdk-node';
+
+import {
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} from '@opentelemetry/sdk-metrics';
+
+import { initializeTracing } from '@statsig/statsig-ai/otel';
+
+// when you have your own otel setup and don't want to use the global trace provider
+// you can disable it with the options below
+const { processor } = initializeTracing({
+  // prevents creating a global context manager
+  skipGlobalContextManagerSetup: true,
+  exporterOptions: {
+    sdkKey: process.env.STATSIG_SDK_KEY!,
+  },
+});
+
+
+const sdk = new NodeSDK({
+  // IMPORTANT: use the processor created by initializeTracing
+  // to make sure that spans are exported to Statsig
+  spanProcessors: [processor],
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new ConsoleMetricExporter(),
+  }),
+  // ... other node sdk options like autoInstrumentations
+});
+
+
+sdk.start();
+export { sdk };
+```
+
+The `initializeOTel` function accepts the below options for setting up tracing with OTel.
+
+```ts
+type InitializeOptions = {
+  /** An optional global context manager to use. If not provided, one will be created and set as the global context manager unless `skipGlobalContextManagerSetup` is true. */
+  globalContextManager?: ContextManager;
+  /** If true, will not attempt to set up a global context manager automatically. */
+  skipGlobalContextManagerSetup?: boolean;
+
+  /** If true, will register the trace provider globally. */
+  enableGlobalTraceProviderRegistration?: boolean;
+  /** An optional global trace provider to use. If not provided, a new BasicTracerProvider will be created and optionally registered globally */
+  globalTraceProvider?: TracerProvider;
+
+  /** Options to pass to the StatsigOTLPTraceExporter */
+  exporterOptions?: StatsigOTLPTraceExporterOptions;
+
+  // resource options
+  serviceName?: string;
+  version?: string;
+  environment?: string;
+};
+```
+
+For more examples see the [Statsig AI Node SDK](https://github.com/statsig-io/statsig-ai-node/tree/main/examples/otel).

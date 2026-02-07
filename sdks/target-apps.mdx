@@ -16,9 +16,9 @@ Defining and using Target Apps is a best practice when using Statsig at large sc
 - Performance: removing unused entities from the payload to your Statsig SDK integration will speed up the initialization time and reduce the amount of data that is stored in any local caches or data stores
 - Security: you may not want to expose certain gates/experiments/configs to the client side, or to the client key which is easily found in your client app. Specifying a target app for your client key and ONLY linking that to client specific gates/configs/experiments hides those from prying eyes
 
-<Info>
-NOTE: Before using target apps as a solution, consider if you can instead use separate projects for your Statsig integrations. Note that gates/experiments/metrics are restricted to a single Statsig project, so if you need to share any of those across apps or services, its best to use a Target App instead. But if your services or apps always have distinct gates/experiments/metrics, using a separate project might be a better solution.
-</Info>
+When using target apps, first consider if you should instead use separate projects for your Statsig integrations: 
+- If you need to share gates/experiments/metrics across apps or services, it is recommended to use a Target App as entities are restricted within a single Statsig project.
+- If your services or apps always have distinct gates/experiments/metrics, using a separate Statsig project might be a better solution.
 
 If you have an existing Statsig project with multiple SDK integrations, Statsig will help you to bootstrap your Target Apps by suggesting existing entities to tag which have historically recorded checks from that specific SDK.
 

@@ -4,14 +4,14 @@ Experiments can have interesting effects on sub-populations that are easily miss
 
 Statsig will automatically flag experiments when extreme differential impacts are detected for any sub-population you have configured. Once configured, experiments are analyzed for differential impact when Pulse is loaded after Day 1, Day 3 and when the Target Duration is met.
 <Frame>
-  <img src="https://github.com/user-attachments/assets/9783ba7a-812b-4fea-97af-4e3344f8345f" alt="Differential impact detection alert in Pulse results" />
+  <img src="/images/snippets/whn/differentialImpact/9783ba7a-812b-4fea-97af-4e3344f8345f.png" alt="Differential impact detection alert in Pulse results" />
 </Frame>
 
 ## Enabling this
 Configure the "Segments of Interest" you want automatically evaluated for Differential Impact Detection. On Statsig Cloud, these are user properties in the [User Object](/concepts/user) you configure when using the Statsig SDK. On Statsig Warehouse Native they can be configured as an [Entity Property](/statsig-warehouse-native/features/entity-properties) too.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/c9bb5e56-dbc8-4fc2-a33b-92974f867120" alt="Segments of Interest configuration interface" />
+  <img src="/images/snippets/whn/differentialImpact/c9bb5e56-dbc8-4fc2-a33b-92974f867120.png" alt="Segments of Interest configuration interface" />
 </Frame>
 
 This feature is also referred to as as **Heterogeneous Treatment Effect** or **Segments of Interest**. 
@@ -19,7 +19,7 @@ This feature is also referred to as as **Heterogeneous Treatment Effect** or **S
 ## Seeing Differential Impacts
 If extreme outliers are found for a segment you have configured, Statsig will flag this when you're looking at Pulse results. You will be able to see the data broken out by segments in the Explore section of your Pulse results. 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/5e5a3907-ff67-404c-a94f-2f986262008e" alt="Pulse results showing differential impact by segments" />
+  <img src="/images/snippets/whn/differentialImpact/5e5a3907-ff67-404c-a94f-2f986262008e.png" alt="Pulse results showing differential impact by segments" />
 </Frame>
 
 
@@ -56,5 +56,7 @@ $
 \text{some chance of HTE, } \alpha = \frac{0.05}{\text{number of comparisons}}
 $
 
+## Viewing Results
+You can go to the explore tab of your experiment and filter to the Differential Impact Detection query type to see all historical analyses.
 
 ##

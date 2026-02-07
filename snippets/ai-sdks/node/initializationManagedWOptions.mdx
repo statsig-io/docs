@@ -1,0 +1,17 @@
+Optionally, you can configure [StatsigOptions](/server-core/node-core#statsig-options) for your Statsig instance:
+
+```js
+import { StatsigAI, StatsigAIOptions } from '@statsig/statsig-ai';
+import { StatsigOptions } from '@statsig/statsig-server-core-node';
+
+// if you want to configure any statsig options, this is optional:
+const statsigOptions: StatsigOptions = {
+  environment: 'production',
+};
+
+const statsigAI = new StatsigAI({'YOUR_SERVER_SECRET_KEY', statsigOptions});
+await statsigAI.initialize();
+
+// if you would like to use any statsig methods, you can access the statsig instance from the statsigAI instance:
+const gate = statsigAI.getStatsig().checkGate(statsigUser, 'my_gate');
+```

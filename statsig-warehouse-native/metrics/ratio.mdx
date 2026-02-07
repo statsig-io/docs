@@ -67,7 +67,7 @@ GROUP BY group_id;
 
 Ratio metrics require adjustment due to potential unit-level covariance between the numerator and the denominator. Statsig uses the delta method to estimate this adjustment.
 
-By default, Statsig treats ratio metrics as a conversion rate (unordered). That is, we only count numerator events for units that also performed the denominator event. This is configurable in Advanced settings, where you can switch to a simple ratio.
+By default, Statsig treats ratio metrics as a conversion rate (unordered). That is, we only count numerator events for units that also performed the denominator event. On Statsig Warehouse Native this is a configurable setting- available via Advanced settings at the metric level- where you can switch to a simple ratio.
 
 ## Options
 - Treat as conversion rate (unordered). 

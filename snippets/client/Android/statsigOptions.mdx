@@ -48,6 +48,12 @@ You can pass in an optional parameter `options` in addition to `sdkKey` and `use
   Callback invoked whenever a gate, config, experiment, or layer is checked. Receives the evaluated `BaseConfig`.
 </ResponseField>
 
+<ResponseField name ="lifetimeCallback" type="IStatsigLifetimeCallback?" default = "null">
+  Callbacks that may trigger multiple times over the lifetime of the client SDK.
+  They will be called on the main thread.
+  - `onValuesUpdated()` - called whenever the fired when new values are received and available for use. May be called after `Statsig.updateUser()`, `Statsig.updateUserAsync()`, or auto value updates (see `enableAutoValueUpdate` above)
+</ResponseField>
+
 #### Methods
 
 - **setTier | setEnvironmentParameter | getEnvironment**

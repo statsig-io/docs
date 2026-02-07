@@ -2,27 +2,29 @@
 title: Cloudflare KV
 ---
 
-Statsig offers a suite of integration tools that make usage with Cloudflare easy: 
- * Statsig automatically pushes project changes to Cloudflare's KV store, providing low-latency SDK startup
- * Statsig offers a Cloudflare helper that handles client initialization and event flushing, so you can focus on your business logic.
+Statsig offers a set of integrations that make usage with Cloudflare easy: 
+ * Automatically pushing changes to Cloudflare's KV store, for low-latency SDK startup
+ * A helper pattern that handles Statsig SDK overhead, so you can focus on worker logic
 
 <Steps>
 <Step title="Configure Integration">
 
-Navigate to [Project Settings -> Integrations](https://console.statsig.com/integrations), in the Statsig Console, and select Cloudflare, then input: 
-- **Cloudflare Account ID**: Can be found in Cloudflare portal on the **Compute (Workers)** page, under **Account Details**
-- **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration. You can create a new namespace, and get the ID from **Account Home** -> **Storage and Databases** -> **Workers KV**, and copy it from the table view.
-- **Cloudflare API Key**: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. You need a token with Account.Workers KV Storage Edit Permissions.
+Navigate to [Project Settings -> Integrations](https://console.statsig.com/integrations), in the Statsig Console, then select Cloudflare, and input: 
+- **Cloudflare Account ID**: Can be found in Cloudflare portal on the Compute (Workers) page, under Account Details
+- **KV Namespace ID**: Create a new namespace, then go to Account Home -> Storage and Databases -> Workers KV, and copy the ID from the table view.
+- **Cloudflare API Key**: In Cloudflare portal under Account Home -> Profile -> API Tokens. Use a token with Account.Workers KV Storage Edit Permissions.
 
-There is also an option to filter the configs that are synced into your KV namespace by a Target App.  You may wish to enable this in the future as the size of your config payload grows. When you're getting started, leave this unchecked.
-
-After filling this out, click **Enable**.
-
-Within a minute, the Statsig backend should generate a config payload from your Statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`. This is the `key` associated with your KV storage. Note this key down as it will be required later.
-
+<Accordion title="Advanced: Filtering by Target App">
+You can also filter the configs that are synced to your KV namespace by Target App. This becomes important as you add more configs to your project, but for now, you can leave this unchecked.
+</Accordion>
 </Step>
+
+<Step title="Enable Integration">
+Click **Enable**, then the Statsig backend will push a config to your KV namespace (\<60 seconds). In your KV namespace, navigate to **KV Pairs** - you'll see entry starting with `statsig-`. This is the `key` associated with your KV storage. Note this key down for later.
+</Step>
+
 <Step title="Add the Statsig SDK to your Worker">
-Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your worker.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
+Now, we'll set up a worker to read those experiments and gates from your KV namespace.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
 
 After creating your worker, you will need to connect your KV store to your worker through a binding. Navigate to **Compute (Workers)** -> **Select Your Worker** -> **Bindings** -> **Add binding** -> **KV namespace**. Name your binding under **Variable name**. Under **KV namespace**, select your KV store name. For more information on connecting your worker to your KV store, you can follow the instructions [here](https://developers.cloudflare.com/pages/functions/bindings/).
 
@@ -36,58 +38,76 @@ npm install @statsig/serverless-client
 ```
 
 </Step>
-<Step title="Import the Statsig SDK">
 
-Import the helper
-```bash
-import { handleWithStatsig } from '@statsig/serverless-client/cloudflare';
-```
-
-</Step>
 <Step title="Use the SDK">
+The helper method takes two arguments, a handler function, and a ParamsObject. **Put *all* of your worker logic in the handler function**, along with your Statsig usage.
 
-```javascript
-export default handleWithStatsig(handler, params)
+```javascript highlight={5}
+import { handleWithStatsig } from '@statsig/serverless-client/cloudflare';
+
+export default handleWithStatsig(
+  async (request, env, ctx, client) => {
+    // Your business, and Statsig logic here 
+  },
+  {
+   kvKey: 'kv_key',
+   envStatsigKey: 'statsig_key',
+   envKvBindingName: 'STATSIG_KV'
+  }
+);
 ```
-The helper method takes two arguments:
-- `handler` This is your Cloudflare worker fetch handler code. 
-- `params : ParamsObject` 
 
-    | Parameter | Optional | Type | Description |
-    |-----------|----------|------|-------------|
-    | `kvKey` | No | `string` | Environment variable name containing your KV pair key |
-    | `envStatsigKey` | No | `string` | Environment variable name containing your Statsig client key |
-    | `envKvBindingName` | No | `string` | Your KV binding name |
-    | `statsigOptions` | Yes | `StatsigOptions` | See StatsigOptions [here](https://docs.statsig.com/client/javascript-sdk#statsig-options) |
+<Note>
+The required ParamsObject params (kvKey, envStatsigKey, envKvBindingName) must be stored as env variables, either in your wrangler.toml or as Cloudflare secrets.
+</Note>
 
-For best practice:
+<Accordion title="ParamsObject Definition">
+    <ResponseField name="kvKey" type="string">
+      Environment variable name containing your KV pair key
+    </ResponseField>
+
+<ResponseField name="envStatsigKey" type="string">
+  Environment variable name containing your Statsig client key
+</ResponseField>
+
+<ResponseField name="envKvBindingName" type="string">
+  Your KV binding name
+</ResponseField>
+
+<ResponseField name="statsigOptions" type="StatsigOptions">
+  See StatsigOptions [here](https://docs.statsig.com/client/javascript-sdk#statsig-options)
+</ResponseField>
+
+**Best practice:**
 
 - store `envStatsigKey` as a Cloudflare secret. You can set this in the Cloudflare dashboard under, **Worker → Settings → Variables and Secrets**
 - store `kvKey` and `envKvBindingName` in your wrangler.toml
+</Accordion>
 
-<Note>
-Statsig requires the three required parameters to be stored as environment variables. Either in your wrangler.toml or as Cloudflare secrets
-</Note>
 
 ### Example Usage
+
+This is an example of an end-to-end worker function that uses the Statsig SDK and returns a flag value. This is all you need - this will compile as the index.js file in your worker.
 <CodeGroup>
 
-```javascript index.js
+```javascript index.js expandable
 import { handleWithStatsig } from '@statsig/serverless-client/cloudflare';
 
 export default handleWithStatsig(
   async (request, env, ctx, client) => {
     const randomUserId = Math.floor(Math.random() * 100).toString();
-    const value = client.checkGate("test_cloudflare_sync", { userID: randomUserId });
+    const gate = client.getFeatureGate("test_cloudflare_sync", { userID: randomUserId });
+	const value = gate.value;
     client.logEvent('new_event', { userID: randomUserId });
-    return new Response(value);
+    return new Response(`Gate check result: ${value}`);
   },
   {
    kvKey: 'kv_key',
-   envStatsigKey:'statsig_key', //In Cloudflare secrets, if your statsig key is stored as statsig_key=***********. Your var is "statsig_key"
-   envKvBindingName:'STATSIG_KV'
+   envStatsigKey: 'statsig_key',
+   envKvBindingName: 'STATSIG_KV'
   }
-)
+);
+
 ```
   ```wrangler wrangler.toml
   name = "test"
@@ -171,7 +191,7 @@ For best practice:
 The following line initializes the client by loading feature gate and experiment configurations directly from your Cloudflare KV store.
 
 ```bash
-const initResult = await client.initializeFromKv(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
+const initResult = await client.initializeFromKV(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
 ```
 
 The client initialization takes two arguments:
@@ -269,13 +289,13 @@ If you want to check on the evaluations you are getting, you can go to the gate 
 
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/1cc865ed-e15c-41a4-8979-24e1d457a7b1" alt="Diagnostics Stream" />
+  <img src="/images/integrations/cloudflare/1cc865ed-e15c-41a4-8979-24e1d457a7b1.png" alt="Diagnostics Stream" />
 </Frame>
 
 If you want to check the events you logged, in the **Statsig Console**, go to **Data** -> **Events**
 
 <Frame>
-  <img src="../images/client/Events.png"/>
+  <img src="../images/client/Events.png" alt="Statsig Events log stream showing gate_check events with timestamps and user IDs" />
 </Frame>
 
 And there you have it - a working Cloudflare KV integration for Statsig. 
@@ -284,7 +304,7 @@ And there you have it - a working Cloudflare KV integration for Statsig.
 
 ### Polling for updates
 The SDK cannot poll for updates across requests since [**Cloudflare does not allow for timers**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading).
-To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudlflare client.
+To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudflare client.
 
 ### Flushing events
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.
@@ -301,4 +321,3 @@ Statsig ID Lists are not currently synced into Cloudflare KVs.  If you rely on l
 
 
 </Accordion>
-

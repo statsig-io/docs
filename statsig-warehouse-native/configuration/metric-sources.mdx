@@ -18,9 +18,9 @@ A metric source is a key part of Statsig's semantic layer (and integrations to o
 
 And configuration around the source:
 
-- Required identifier and timestamp columns
-- Aliases, partition information
-- [Beta] Data quality checks and configuration
+- **[Required]** identifier and timestamp columns
+- **[Optional]** Aliases, partition information
+- **[Beta]** Data quality checks and configuration
 
 This is the gateway for your data to be used in parameterized queries for experiment analysis, analytics, and more within the Statsig console.
 
@@ -33,13 +33,13 @@ Statsig Metric Sources can use a query or a table as the source of their data.
 A query-based source will read a SQL query and use that as a source of truth. This, plus Statsig's built-in [query macros](/statsig-warehouse-native/configuration/query-tools), provides an efficient and extremely flexible way to create experimental data sources.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/2cec3d01-f852-4007-aa3b-de276418593b" alt="Screenshot 2024-06-11 at 2 56 22 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/2cec3d01-f852-4007-aa3b-de276418593b.png" alt="Query-based metric source configuration" />
 </Frame>
 
-For larger or managed datasets, it's recommended to use table sources instead. This will minimize data scan and provides a more 1:1 mapping of "data source" to "metric source".
+For larger or managed datasets, it's recommended to use table sources instead. This will minimize data scan and provides a more 1:1 mapping of "data source" to "metric source". Statsig date macros are automatically applied in each experiment result reload when you use table sources. 
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/04cb0209-580c-4603-a5db-45a08f00f90b" alt="Screenshot 2024-06-11 at 2 56 26 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/04cb0209-580c-4603-a5db-45a08f00f90b.png" alt="Table-based metric source configuration" />
 </Frame>
 
 ### Configuring Data
@@ -47,35 +47,96 @@ For larger or managed datasets, it's recommended to use table sources instead. T
 For any source, you'll be asked to select which field to use for the timestamp of the logs/metrics being provided, as well as 1 to N user identifiers that can be used to join to experiment data.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/9a972d93-3500-4947-89e7-c144b877887f" alt="Screenshot 2024-06-11 at 3 03 21 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/9a972d93-3500-4947-89e7-c144b877887f.png" alt="Interface for selecting timestamp and ID fields" />
 </Frame>
 
 For table sources, you can optionally provide a partitioning column to reduce data scan, and provide aliases to format data as desired and make your column names more human-readable.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/4b388fac-1124-4606-88f6-a0615bd32b18" alt="Screenshot 2024-06-11 at 3 04 55 PM" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/4b388fac-1124-4606-88f6-a0615bd32b18.png" alt="Partition and alias settings for table source" />
 </Frame>
 
 ### Types of Data
 
 Statsig works natively with many different types and granularities of data. Common patterns are:
 
-- raw event logging, using the log timestamp as the timestamp
-- unit/day daily fact tables, using the date of the row as the timestamp
-- unit/day level summary tables, using the date of the row as the timestamp
+#### 1. Raw event logging (event level data), using the log timestamp as the timestamp, example:
 
-For example, if you want to measure revenue, you might have one source for raw purchase logs. You could create a [sum](/statsig-warehouse-native/metrics/sum) metric on a `PURCHASE_VALUE` field, adding whatever filters you want.
+| `event_time`          | `user_id` | `event_name`     | `platform` | `value` |
+|-----------------------|-----------|------------------|------------|---------|
+| 2024-03-01 10:05:12   | `u_123`   | `page_view`     | `web`      | `null`  |
+| 2024-03-01 10:05:45   | `u_123`   | `button_click`  | `web`      | `null`  |
+| 2024-03-01 10:07:02   | `u_456`   | `purchase`      | `ios`      | 29.99   |
 
-You might also have a canonical user-level table that's used for dashboards and revenue reporting. You can easily use this, and make sure that it matches your core KPIs, by pointing to that table and creating a sum metric on the relevant column (e.g. `REVENUE`)
+*Metric examples with this source:*
 
-Both of these sources can be used interchangeably and simultaneously.
+*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of event_name = 'purchase'.*
+
+*- % of users with page view who clicked: You can create a [RATIO](https://docs.statsig.com/statsig-warehouse-native/metrics/ratio) metric with this metric source in both denominator and numerator, and apply event_name filter accordingly.*
+
+#### 2.Fact tables (one row per entity per day), using the date of the row as the timestamp, example:
+
+| `order_date` | `order_id` | `user_id` | `order_status` | `items_count` | `revenue` |
+|--------------|------------|-----------|----------------|---------------|-----------|
+| 2024-03-01   | `o_10001`  | `u_123`   | `completed`    | 2             | 49.98     |
+| 2024-03-01   | `o_10002`  | `u_456`   | `completed`    | 1             | 19.99     |
+| 2024-03-02   | `o_10003`  | `u_123`   | `refunded`     | 1             | 19.99     |
+
+*Metric examples with this source:*
+
+*- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+
+*- Average order value: You can create a [MEAN](https://docs.statsig.com/statsig-warehouse-native/metrics/mean) metric on 'revenue' column, with any filters you need.*
+
+#### 3.Aggregated fact tables at unit day granularity, using the date of the row as the timestamp, example: 
+
+| `date`       | `user_id` | `sessions` | `purchases` | `revenue` |
+|--------------|-----------|------------|-------------|-----------|
+| 2024-03-01   | `u_123`   | 3          | 1           | 29.99     |
+| 2024-03-01   | `u_456`   | 1          | 0           | 0.00      |
+| 2024-03-02   | `u_123`   | 2          | 0           | 0.00      |
+
+*Metric examples with this source:*
+
+*- Revenue: You can create a [SUM](https://docs.statsig.com/statsig-warehouse-native/metrics/sum) metric on 'revenue' column, with any filters you need.*
+
+*- Number of users with purchase: You can create a [UNIT COUNT](https://docs.statsig.com/statsig-warehouse-native/metrics/unit-count-once) metric, with a filter of purchase > 0.*
+
+### Types of data that needs some transformation
+There are times when you might have a table that does not fall into the schema mentioned above. For example, a wide user dimension table contains one row per user with pre-aggregated or derived behavioral attributes.
+
+| `user_id` | `signup_date` | `first_active_date` | `first_page_view_date` | `first_purchase_date` | `last_active_date` | `lifetime_revenue` | `is_power_user` |
+|-----------|---------------|---------------------|------------------------|-----------------------|--------------------|--------------------|-----------------|
+| `u_123`   | 2023-11-12    | 2023-11-12          | 2023-11-12             | 2023-11-20            | 2024-03-02         | 249.85             | `true`          |
+| `u_456`   | 2024-01-05    | 2024-01-06          | 2024-01-05             | 2024-02-10            | 2024-02-18         | 19.99              | `false`         |
+| `u_789`   | 2024-02-10    | 2024-02-10          | 2024-02-10             | `null`                | 2024-03-01         | 89.97              | `false`         |
+
+
+This type of table is not compatible with Statsig because it does not have a single timestamp column that can be consistently configured across all events (for example, `signup`, `first_active`, and `last_active`). Statsig’s stats engine relies on a timestamp column to join metric data with exposure timestamps, ensuring that only metric events that occur *after* a user is exposed to an experiment are included in analysis.
+
+For example, suppose you configure `signup_date` as the timestamp column for this metric source. If you then attempt to build a funnel metric across multiple events (for example, `signup` → `first_active` → `first_purchase`), Statsig will treat all funnel steps as occurring at the signup date. This happens because the metric source can only use a single configured timestamp column. As a result, the event-specific timestamps stored in other columns (such as `first_active_date` or `first_purchase_date`) are ignored, and the funnel no longer reflects the true timing of each event.
+
+To address this, there are two recommended options:
+
+- **Use upstream tables as the metric source**: Define metrics directly from event logs or fact tables where each row represents a single event and includes a clear timestamp.
+- **Collapse the table into a long format**: Reshape the wide user table into a long table (for example, one row per user per event or per day) with a unified timestamp column that can be configured in Statsig.
+
+| `user_id` | `event_type`     | `event_timestamp`     |
+|-----------|------------------|-----------------------|
+| `u_123`   | `signup`         | 2023-11-12 09:15:00   |
+| `u_123`   | `first_active`   | 2023-11-13 10:02:41   |
+| `u_123`   | `last_active`    | 2024-03-02 18:45:10   |
+| `u_456`   | `signup`         | 2024-01-05 14:22:09   |
+| `u_456`   | `first_active`   | 2024-01-06 08:11:54   |
+
+
 
 ## Managing Metric Sources
 
 In the metric source tab, you can see your metric sources and the metrics/experiments they're being used in. This varies; in some cases, it can make sense to have a broad metric source that's reused with many metrics using different filters and aggregations. In others, a metric source might exist for one metric (such as a set of specific events for a funnel).
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/102695539/264087800-18970974-b639-4d73-8977-e54de752ae0a.png" alt="Metric Source Page" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/264087800-18970974-b639-4d73-8977-e54de752ae0a.png" alt="Metric sources list showing usage across metrics" />
 </Frame>
 
 ### Programmatic Updates
@@ -93,7 +154,7 @@ Statsig to see.
 When specifying a timestamp, you can also specify if the metric source contains data at a daily or timestamp granularity by toggling the "Treat Timestamp as Date" setting.
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/102695539/f0edfdaf-9531-4583-b440-d05f0f3c3618" alt="Timestamp granularity configuration interface" />
+  <img src="/images/statsig-warehouse-native/configuration/metric-sources/f0edfdaf-9531-4583-b440-d05f0f3c3618.png" alt="Timestamp granularity configuration interface" />
 </Frame>
 
 When this setting is **not** enabled, the system performs a timestamp-based join. This means that events are attributed to the experiment results based on the exact time they occur in relation to the exposure time. For example, if a user is exposed to an experiment at `2024-01-01T11:00:00` and an event occurs at `2024-01-01T11:01:00` on the same day, the event will be attributed to the experiment results because it happened after the exposure. Conversely, if the event occurs at `2024-01-01T10:59:00`, just before the exposure, it will not be attributed to the experiment results since it happened prior to the exposure.

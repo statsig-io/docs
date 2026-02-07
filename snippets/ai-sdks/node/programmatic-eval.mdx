@@ -1,0 +1,64 @@
+```js
+import { Eval } from '@statsig/statsig-ai';
+import { z } from 'zod';
+
+// Basic evaluation with a single scorer
+const result = await Eval('greeting_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'test', expected: 'Hello test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: ({ output, expected }) => output === expected,
+  evalRunName: 'run-123',
+});
+
+// Multiple named scorers
+const result2 = await Eval('multi_scorer_task', {
+  data: [
+    { input: 'world', expected: 'Hello world' },
+    { input: 'test', expected: 'Hello test' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: {
+    correctness: ({ output, expected }) => output === expected,
+    startsWithHello: ({ output }) => output.startsWith('Hello'),
+    lengthCheck: ({ output }) => output.length > 5,
+  },
+});
+
+// Using parameters with Zod schemas
+const result3 = await Eval('parameterized_task', {
+  data: [
+    { input: 'world', expected: 'Hi world' },
+  ],
+  task: (input: string, hooks) => {
+    const prefix = hooks.parameters.name || 'Hello';
+    return `${prefix} ${input}`;
+  },
+  scorer: ({ output, expected }) => output === expected,
+  parameters: {
+    name: z.string().default('Hi'),
+  },
+});
+
+// Extras: Categories and summary scores
+const result4 = await Eval('categorized_with_summary', {
+  data: [
+    { input: 'world', expected: 'Hello world', category: 'greeting' },
+    { input: 'test', expected: 'Hello test', category: ['greeting', 'test'] },
+    { input: 'foo', expected: 'Goodbye foo', category: 'farewell' },
+  ],
+  task: (input: string) => `Hello ${input}`,
+  scorer: {
+    correctness: ({ output, expected }) => output === expected,
+  },
+  summaryScoresFn: (results) => {
+    const correct = results.filter(r => r.scores.correctness === 1).length;
+    return {
+      accuracy: correct / results.length,
+      total: results.length,
+    };
+  },
+});
+```

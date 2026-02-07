@@ -1,0 +1,12 @@
+```cpp
+FeatureGate gate = statsig.getFeatureGate(user, "example_gate");
+std::cout << gate.rule_id << std::endl;
+std::cout << gate.value << std::endl;
+```
+
+The `get_feature_gate()` method returns a FeatureGate object that provides:
+- `value`: The boolean gate value
+- `rule_id`: The ID of the rule that served this gate
+- `id_type`: The type of the evaluation
+- `evaluation_details`: Additional metadata about the evaluation
+

@@ -1,3 +1,5 @@
+import webAnalyticsIntro from '/snippets/client/webAnalytics.mdx'
+
 ## Session Replay
 
 Install `@statsig/session-replay` and register the plugin to record user sessions.
@@ -21,9 +23,7 @@ function App() {
 }
 ```
 
-## Web Analytics / Auto Capture
-
-Capture clicks and page views automatically with `@statsig/web-analytics`.
+<webAnalyticsIntro/>
 
 ```tsx
 import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';

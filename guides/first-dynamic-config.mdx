@@ -14,7 +14,7 @@ In this guide, we will be building a front page banner - something that may show
 Here, I will apply it to a stripped down version of the Statsig homepage. It will look something like this green banner when we are finished:
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/b82e808a-99b5-4922-90f7-727d9e5d942a" alt="UI for mac users" />
+  <img src="/images/guides/first-dynamic-config/b82e808a-99b5-4922-90f7-727d9e5d942a.png" alt="UI for mac users" />
 </Frame>
 
 <Info>
@@ -28,7 +28,7 @@ This example is implemented in [a codepen](https://codepen.io/tore-statsig/pen/m
 Start by creating a new Dynamic Config. Dynamic Configs live under the "Feature Management" tab in the Statsig Console.Pick a name related to the set of variables this config will hold. Since we are building a homepage banner, let's call it "Banner Config":
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/c0564d86-a83c-45c7-a3c3-62397ae00448" alt="Create Dynamic Config" />
+  <img src="/images/guides/first-dynamic-config/c0564d86-a83c-45c7-a3c3-62397ae00448.png" alt="Create Dynamic Config" />
 </Frame>
 
 Great! We have created an (empty) Dynamic Config. It returns the default value (an empty JSON object) whenever it is evaluated. For our example, we are going to add some options to populate a homepage banner. The end goal is to show a targeted banner to a few different sets of developers: those likely to use a .NET SDK, and those more likely to use a Swift SDK. Let's keep our targeting simple here: we want to promote the new .NET SDK to anyone that is browsing our site on the Windows operating system, and the new Swift SDK to anyone browsing on MacOS. That takes us to steps 2 and 3.
@@ -38,7 +38,7 @@ Great! We have created an (empty) Dynamic Config. It returns the default value (
 First, let's add the Window's rule. Select "Add Targeting", and then "Add new Rule":
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/9011708a-24e0-43c9-8e4d-468d57476413" alt="Add Rule" />
+  <img src="/images/guides/first-dynamic-config/9011708a-24e0-43c9-8e4d-468d57476413.png" alt="Add Rule" />
 </Frame>
 
 Though Feature Gates and Dynamic Config share the same powerful user segmentation and targeting tools, they differ in what you return for those different sets of users. Feature Gates are intended to be super lightweight, and only return a boolean indicating the user matched one of the rules. Dynamic Configs, on the other hand, can return a different JSON blob of data for each rule!
@@ -70,13 +70,13 @@ Let's edit the return value for the windows rule, and fill it in. Under "Return"
 ```
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/a2dc7b2a-98f4-4570-86db-34b390d80a89" alt="Return Value" />
+  <img src="/images/guides/first-dynamic-config/a2dc7b2a-98f4-4570-86db-34b390d80a89.png" alt="Return Value" />
 </Frame>
 
 Remember to hit "Save" in the bottom right.
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/b6e0eb73-c623-4a05-b605-ad9eb2c42792" alt="Config with one rule" />
+  <img src="/images/guides/first-dynamic-config/b6e0eb73-c623-4a05-b605-ad9eb2c42792.png" alt="Config with one rule" />
 </Frame>
 
 Let's repeat this process for people using Mac OS. Adding the the same OS rule, but this time select "Mac OS X".
@@ -95,7 +95,7 @@ Then, lets update the return value:
 Once again, don't forget to click "Save" to apply these new rules to your config. Your Dynamic Config should now look something like this:
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/a04575a8-6afb-4380-8cb6-77052a2d5943" alt="Dynamic Config with two rules" />
+  <img src="/images/guides/first-dynamic-config/a04575a8-6afb-4380-8cb6-77052a2d5943.png" alt="Dynamic Config with two rules" />
 </Frame>
 
 ### Step 4 - Call getDynamicConfig In Your App
@@ -103,7 +103,7 @@ Once again, don't forget to click "Save" to apply these new rules to your config
 This is a specific guide for creating a Dynamic Config using the Statsig Javascript SDK - for more guides to calling the statsig SDKs in code, use the Statsig SDK [quickstart guides](https://docs.statsig.com/sdks/quickstart) where you can select which SDK you'll be using!
 You can also reference the code snippet you'll want to use for a particular dynamic config by clicking into the code snippet button on the dynamic config page and selecting the desired SDK
 <Frame>
-  <img src="https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/CbjKvuo40oMU45psWLvG/8211d6ea-db5f-448b-9589-e112de3ac4b2.png" alt="dynamic config code snippet button" />
+  <img src="/images/guides/first-dynamic-config/8211d6ea-db5f-448b-9589-e112de3ac4b2.png" alt="dynamic config code snippet button" />
 </Frame>
 
 Now let's use this Dynamic Config to create a different landing page experience for different sets of developers. Check out this [codepen](https://codepen.io/tore-statsig/pen/mdWEajo) to follow along. If you fork the code and put in the API Key from your Statsig project, you should be able to see the banner for your platform.
@@ -146,7 +146,7 @@ And that's it! With just a handful of javascript, we integrated with the Statsig
 Here's what it looks like for me, viewing this webpage in chrome on a Mac:
 
 <Frame>
-  <img src="https://github.com/user-attachments/assets/b82e808a-99b5-4922-90f7-727d9e5d942a" alt="UI for mac users" />
+  <img src="/images/guides/first-dynamic-config/b82e808a-99b5-4922-90f7-727d9e5d942a.png" alt="UI for mac users" />
 </Frame>
 
 We hope this inspires some ideas of what you could do with your app/website/backend service, and we can't wait to see what you build.

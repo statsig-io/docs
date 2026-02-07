@@ -8,7 +8,7 @@ last_update:
 ---
 
 <Note>
-This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](../../data-warehouse-ingestion/introduction.md) solution instead.
+This solution is still functional, but can be manual and time consuming to set up with minimal error handling. We encourage you to check out the [Data Warehouse Ingestion](/data-warehouse-ingestion/introduction) solution instead.
 </Note>
 
 ## Overview
@@ -58,18 +58,18 @@ CREATE TABLE IF NOT EXISTS statsig.statsig_user_metrics_signal(
 
 2. In your BigQuery's [IAM & Admin settings](https://console.cloud.google.com/iam-admin/), add the Statsig service account you copied in step 1 as a new principal for your project, and give it "BigQuery Read Session User" role.
    <Frame>
-     <img src="https://user-images.githubusercontent.com/77478330/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png" alt="BigQuery IAM permissions configuration" />
+     <img src="/images/integrations/data-imports/bigquery/175113594-7b121b7e-60fd-4c03-b82e-ffe397c9efa7.png" alt="BigQuery IAM permissions configuration" />
    </Frame>
 
 3. Navigate to your [BigQuery SQL Workspace](https://console.cloud.google.com/bigquery), choose the dataset, click on "+ Sharing" -> "Permissions" -> "Add Principal" to give the same Statsig service account "BigQuery Data Viewer" role on the dataset.
    <Frame>
-     <img src="https://user-images.githubusercontent.com/77478330/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png" alt="BigQuery dataset permissions setup" />
+     <img src="/images/integrations/data-imports/bigquery/175113611-90e618ad-f6e8-4005-933e-2a5660a14466.png" alt="BigQuery dataset permissions setup" />
    </Frame>
 
 4. Back to your Statsig console's BigQuery integration dialog, and enter your BigQuery project and dataset name. Then click "Enable".
 
    <Frame>
-     <img src="https://user-images.githubusercontent.com/77478330/175113629-35c9be3c-591b-46f3-b9bd-e04cc9ff4b50.png" alt="bq_permission_step_3" />
+     <img src="/images/integrations/data-imports/bigquery/175113629-35c9be3c-591b-46f3-b9bd-e04cc9ff4b50.png" alt="bq_permission_step_3" />
    </Frame>
 
 Now the service account should have the required permissions to export data from this dataset.
@@ -110,8 +110,9 @@ or `statsig_events_signal` for events. For example, once all of your metrics dat
 Statsig expects you to load data in order. For example, if you have loaded up to `2022-04-01` and signal that `2022-04-03` has landed,
 we will wait for you to signal that `2022-04-02` has landed, and load that data before we ingest data from `2022-04-03`
 
-_NOTE: this ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
-are loaded after you've run data quality checks!_
+<Note> This ingestion pipeline is in beta, and does not currently support automatic backfills or updates to data once it's been ingested. Only signal these tables
+are loaded after you've run data quality checks!
+</Note>
 
 #### Checklist
 

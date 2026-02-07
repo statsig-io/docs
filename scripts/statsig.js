@@ -1,7 +1,7 @@
 (async function initializeStatsig() {
   const STATSIG_CLIENT_KEY =
     "client-Wql5Tkj3Wa3sE8VpFjWpCHCPHxYZMbq6RfcRZZVHFdm";
-  const STATSIG_SCRIPT_URL = `https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?`;
+    const STATSIG_SCRIPT_URL = `https://cdn.jsdelivr.net/npm/@statsig/js-client@3.31.1-beta.2/build/statsig-js-client+session-replay+web-analytics.min.js?`;
 
   const loadScript = (url) => {
     return new Promise((resolve, reject) => {
@@ -46,6 +46,14 @@
         environment: { tier: environment },
         custom: { "newDocs": true }
       },
+      {
+        disableCompression: true,
+        disableStatsigEncoding: true,
+        networkConfig: {
+          api: "https://docs-init-worker.brock-780.workers.dev/v1",
+          logEventUrl: "https://prodregistryv2.org/v1/rgstr"
+        }
+      }
     );
 
     runStatsigSessionReplay(client);
