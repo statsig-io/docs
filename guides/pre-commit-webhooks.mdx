@@ -57,7 +57,7 @@ Every payload will have these fields at a minimum:
 Currently, only changes to gates, dynamic configs, segments, and experiments trigger pre-commit webhooks, and only the following changes:
 
 - `rules`: Updating rules (for gates, dynamic configs, segments)
-  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. https://docs.statsig.com/api-reference/gates/read-gate for gates)
+  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. [/api-reference/gates/read-gate](/api-reference/gates/read-gate) for gates)
 - `update_target_apps`: Updating target applications
 - `update_allocation`: Changing the pass percentage of an ongoing experiment
 - `start_experiment`
