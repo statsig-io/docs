@@ -113,7 +113,7 @@ Forward proxy support TLS and mTLS when use GRPC server, so all grpc network (st
 
 To enable it:
 1. Setup forward proxy server with valid certifications, more details to be found [here](https://github.com/statsig-io/statsig-forward-proxy?tab=readme-ov-file#deploying) 
-2. Setup SDK with valid certifications. more details to be found within SDK page [python example](https://docs.statsig.com/server/pythonSDK). 
+2. Setup SDK with valid certifications. more details to be found within SDK page [python example](/server/pythonSDK). 
    a. If certifications are misconfigured, SDK will treat as exception and started failing over behavior you configured. For example, fallback to statsig api, retry to connect and start falling back behavior. 
 
 #### Coordinate SDK DataAdapter / DataStore with Forward Proxy Cache service
