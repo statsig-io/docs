@@ -44,7 +44,7 @@ After filling this out, click **Enable**.
 Within a minute, the Statsig backend should generate a config payload from your statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`.  The next part of that is your project ID.  Copy that to the clipboard - you'll need it later.
 
 ## Add Statsig SDK to Worker
-1. Create a Statsig [server secret key](https://docs.statsig.com/sdk-keys/api-keys/#server-secret-keys) and [configure it on Akamai](https://techdocs.akamai.com/developer/docs/edgegrid#credentials-as-environment-variables)
+1. Create a Statsig [server secret key](/sdk-keys/api-keys/#server-secret-keys) and [configure it on Akamai](https://techdocs.akamai.com/developer/docs/edgegrid#credentials-as-environment-variables)
 2. Clone the [Statsig Akamai Edge KV](https://github.com/statsig-io/akamai-statsig-example?tab=readme-ov-file#getting-started) repo (or if you already have an Edge KV package, apply these changes to it)
 3. Follow instructions in the repo
 
