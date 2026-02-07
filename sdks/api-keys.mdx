@@ -36,13 +36,13 @@ They have access to the entire suite of [console api](/console-api/all-endpoints
 
 You can also create **Personal Console API Keys** that are scoped to your role in Statsig - if your role has limited access, the same access conditions will be applied to the personal key. The intended use case is for multi-user projects where each user can have their own keys for clean access and audit logs. The ability to generate personal keys can be controlled in the [organization info settings tab](https://console.statsig.com/settings?tab=organization). 
 
-### Additional Considerations
+## Additional Considerations
 
 You can use [target apps](/sdk-keys/target-apps) in combination with server secret keys and client keys to control which gates/configs/experiments/layers are accessible via each key.
 
 Both client and server secret keys can also be used to access individual entities via the http API (/check_gate, /get_config, /get_layer)
 
-#### Client Keys with Server Permissions
+### Client Keys with Server Permissions
 Client keys can also get access to the download_config_specs endpoint via a scope you can add to the key. This is intended only for client local evaluation SDKs, like the [js-on-device-eval sdk](/client/js-on-device-eval-client), which we generally only encourage using in specific situations.
 
 Creating a key like this requires additional consideration. Your entire project scope is exposed to clients that can access this key: the names and configurations of all experiments and feature flags accessible by your client key are exposed. This risk may be acceptable (in fact, many other experimentation platforms operate in this manner by default), but you may choose to put additional processes in place to avoid the inclusion of certain information - like plaintext email addresses used in targeting, or confidential config names. We encourage you to:
