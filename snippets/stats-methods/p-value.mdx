@@ -2,6 +2,8 @@ In Null Hypothesis Significance Tests, the p-value is the probability of observi
 
 The methodology used for p-value calculation depends on the number of degrees of freedom ($\nu$). A two-sample z-test is appropriate for most experiments. Welch's t-test is used for smaller experiments with $\nu < 100$. In both cases, the p-value depends on the metric [mean](/stats-engine/metric-deltas) and [variance](/stats-engine/variance) computed for the test and control groups.
 
+Typically, a p-value that indicates statistical significance (below the pre-determined threshold $\alpha$) could only occur with a confidence interval that does not cross 0. However, this phenomenon can occur in the Statsig UI, due to cases when the p-value of the difference between test and control is statsig, but due to uncertainty in the control, a relative delta confidence interval may cross zero (using [The Delta Method](/experiments/statistical-methods/methodologies/delta-method)) or be represented as a point estimate (using [Fieller Intervals](/experiments/statistical-methods/methodologies/fieller-intervals) ) while the absolute difference's p-value is statistically significant.
+
 ## Two-Sample Tests
 
 ### Two-Sided z-Test

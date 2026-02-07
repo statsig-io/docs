@@ -16,7 +16,10 @@ Use the OTLP/HTTP traces endpoint to forward spans into Traces Explorer. Authent
 - Header: `statsig-api-key: <your Server SDK Secret key>`
 
 
-Note: Direct to API is currently supported for TypeScript/Node only. For all other languages, send traces to your OpenTelemetry Collector and configure it to forward to Statsig over OTLP/HTTP.
+<Note>
+Direct to API is currently supported for TypeScript/Node only. 
+For all other languages, send traces to your OpenTelemetry Collector and configure it to forward to Statsig over OTLP/HTTP.
+</Note>
 
 Point non-TypeScript apps to your Collector (for example `http://localhost:4318/v1/traces`) and configure the Collector to forward to Statsig:
 

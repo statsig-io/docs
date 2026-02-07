@@ -27,7 +27,18 @@ Add the following configuration to your MCP client's configuration file:
 }
 ```
 
-This installs the Statsig MCP Server with OAuth.
+This installs the Statsig MCP Server with OAuth. When you first use the MCP server:
+
+1. Your tool will prompt you to authenticate
+2. You'll be redirected to Statsig's OAuth page
+3. Sign in and authorize the MCP server
+4. The authentication token will be stored automatically
+
+<Note>
+  MCP OAuth only supports Personal Console API Keys. Ensure your Statsig org
+  owner has enabled Personal Console API Keys creation for your role
+  [here](https://console.statsig.com/settings?tab=organization){" "}
+</Note>
 
 <Accordion title="Using API Key instead of OAuth">
 While we recommend setting up Statsig MCP via OAuth, you can also authenticate with your Console API key. Add the below configuration to your MCP client's configuration file:
@@ -40,24 +51,14 @@ While we recommend setting up Statsig MCP via OAuth, you can also authenticate w
       "env": {
         "AUTH_TOKEN": "console-YOUR-CONSOLE-API-KEY"
       }
-    },
+    }
   }
 }
-
 ```
 
 Replace `console-YOUR-CONSOLE-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
 </Accordion>
-
-## Authentication via OAuth
-
-Statsig MCP uses OAuth for authentication. When you first use the MCP server:
-
-1. Your tool will prompt you to authenticate
-2. You'll be redirected to Statsig's OAuth page
-3. Sign in and authorize the MCP server
-4. The authentication token will be stored automatically
 
 ## Verification
 
@@ -80,4 +81,3 @@ You can test the connection by asking your tool to:
 - Learn about [MCP capabilities](/integrations/mcp#current-mcp-capabilities)
 - Explore [use cases](/integrations/mcp#use-cases) for Statsig MCP
 - Check tool-specific guides: [Cursor](/integrations/mcp/cursor), [Claude Code](/integrations/mcp/claude-code), [Codex CLI](/integrations/mcp/codex-cli)
-

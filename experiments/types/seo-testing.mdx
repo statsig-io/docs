@@ -28,7 +28,9 @@ Steps:
 
 Statsig can now deterministically hash your pages into **Control vs Test** in experiments and keep this assignment stable across sessions.  
 
-> **Note:** Strip out `http` vs `https` and query params, leaving only the stable base URL, so that is what is hashed deterministically.  
+<Note>
+Strip out `http` vs `https` and query params, leaving only the stable base URL, so that is what is hashed deterministically.
+</Note>
 
 ---
 
@@ -109,4 +111,7 @@ Register these with Statsig’s **metric catalog**. Because the same pipeline po
 
 ---
 
-> **Note:** Statsig also supports other experiment types such as **switchback testing** and **geo-testing**. Geo-testing is particularly useful for measuring the **incrementality of ad spend**, which is hard to measure with traditional experiments due to privacy requirements.
+<Note>
+Statsig also supports other experiment types such as **switchback testing** and **geo-testing**. 
+Geo-testing is particularly useful for measuring the **incrementality of ad spend**, which is hard to measure with traditional experiments due to privacy requirements.
+</Note>
