@@ -112,9 +112,13 @@ Python will check if the channel is idle every 2 hours to ensure channel is not 
 Forward proxy support TLS and mTLS when use GRPC server, so all grpc network (streaming and unary call) are encrypted
 
 To enable it:
-1. Setup forward proxy server with valid certifications, more details to be found [here](https://github.com/statsig-io/statsig-forward-proxy?tab=readme-ov-file#deploying) 
-2. Setup SDK with valid certifications. more details to be found within SDK page [python example](https://docs.statsig.com/server/pythonSDK). 
-   a. If certifications are misconfigured, SDK will treat as exception and started failing over behavior you configured. For example, fallback to statsig api, retry to connect and start falling back behavior. 
+1. [Setup forward proxy server with valid certifications](https://github.com/statsig-io/statsig-forward-proxy?tab=readme-ov-file#deploying) 
+2. [Setup SDK with valid certifications (python example)](/server/pythonSDK).
+
+<Note>
+If certifications are misconfigured, SDK will treat as exception and started failing over behavior that you configured. 
+For example: fallback to Statsig API, retry connection, and start fall back behavior. 
+</Note>
 
 #### Coordinate SDK DataAdapter / DataStore with Forward Proxy Cache service
 In order to increase reliability of SDK during initialization, setup DataStore will help in case Forward Proxy is not available when initialized. If DataStore is set, the SDK will try to initialize with values from dataStore, and sync (listen or polling depends on setup) from forward proxy in background after initialization. It's recommended for SDK and Forward Proxy to share the same cache service for consistency and reduce cache I/O. 
@@ -152,4 +156,4 @@ Given that every use case for the proxy is different, we don't have strict recom
 
 If you are seeing scaling issues that can't be resolved by scaling out horizontally, we recommend fronting it with nginx to help with flow control.
 
-If you need any help, we are happy to collaborate and work closely, just send a message to our slack channel to get further assistance.
+If you need any help, we are happy to collaborate and work closely, just send a message to our [slack channel](https://statsig.com/slack) to get further assistance.

@@ -303,11 +303,12 @@ In Next.js, mark '@statsig/statsig-node-core' as a server external package in `n
 
 ### Using Vercel + Statsig integration
 
-If you're deploying to Vercel, you can use the Statsig + Vercel integration to automatically forward logs from Vercel to Statsig. See [Vercel + Statsig](https://docs.statsig.com/integrations/vercel/).
+If you're deploying to Vercel, you can use the [Statsig + Vercel integration]((/integrations/vercel/) to automatically forward logs from Vercel to Statsig.
 
-Notes
+<Note>
 - Keep `STATSIG_SERVER_SDK_SECRET` out of client bundles (do not use `NEXT_PUBLIC_`).
 - Client/browser tracing requires separate web tracer setup; do not send secrets client-side. Consider routing via a Collector.
+</Note>
 
 </Tab>
 
@@ -479,9 +480,11 @@ exporters:
 
 The following examples show popular receivers/processors you can enable in your Collector and still export to Statsig via the same `otlphttp` exporter.
 
-Note: These components live in the contrib distribution. Use an image that includes them:
+<Note> 
+These components live in the contrib distribution. Use an image that includes them:
 - Docker: `otel/opentelemetry-collector-contrib` or newer
 - Helm: set `image.repository: otel/opentelemetry-collector-contrib` (and a compatible `image.tag`)
+</Note>
 
 Helm values (contrib image):
 
