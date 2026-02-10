@@ -10,6 +10,8 @@ There are three main types of API keys:
 2. **[Server Secret Key](#server-secret-keys)**: Intended for getting configuration and logging events on the server side.
 3. **[Console API Key](#console-api-keys)**: The most powerful key, intended for server side use for full CRUD operations on your Statsig project.
 
+You can generate API keys using the Statsig Console UI by going to **Project Settings** > [Environments & Keys](https://console.statsig.com/api_keys).
+
 ### Client API Keys
 
 Client API keys (Statsig Client SDK keys) are required to initialize all Statsig client SDKs.  They are intended to be used in a client environment, such as a mobile app or a web app, where the key itself cannot be secret.
@@ -39,6 +41,8 @@ You can also create **Personal Console API Keys** that are scoped to your role i
 ## Additional Considerations
 
 You can use [target apps](/sdk-keys/target-apps) in combination with server secret keys and client keys to control which gates/configs/experiments/layers are accessible via each key.
+
+You can also create [per-environment API keys](/guides/using-environments#per-environment-api-keys) to control which rules are sent to the SDK based on the environment.
 
 Both client and server secret keys can also be used to access individual entities via the http API (/check_gate, /get_config, /get_layer)
 
