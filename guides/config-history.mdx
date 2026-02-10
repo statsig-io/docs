@@ -7,7 +7,9 @@ last_update:
   date: 2025-09-18
 ---
 
-History for entities like Feature Gates, Experiments, Dynamic Configs, and Segments can be accessed by clicking the "History" button on the top right of the page.
+## Entity Change History
+
+Change history for entities like Feature Gates, Experiments, Dynamic Configs, and Segments can be accessed by clicking the "History" button on the top right of their respective page.
 
 <Frame>
   <img src="/images/config_history.png" alt="Config History" />
@@ -33,3 +35,9 @@ For Gates, Dynamic Configs, and Segments, you can also select two different vers
 <Info>
 Note that changes in nested configs are not listed (e.g. if this gate references another gate or segment via a "Passes Target Gate" or "User in Segment" condition, changes to the other gate or segment will not show in the history view).
 </Info>
+
+## Audit Logs
+
+Audit logs will show you the change history for all available entities across the entire project. These audit logs are stored indefinitely and you can filter by entity type or name, tag, target app, environment, action, and user who triggered the action. 
+Audit logs can be accessed programmatically or though the Statsig Console UI in **Settings** > [Audit Logs](https://console.statsig.com/audit_logs). 
+
