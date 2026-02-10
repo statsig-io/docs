@@ -850,7 +850,7 @@
             "icon": "list-check",
             "pages": [
               "access-management/introduction",
-              "sdks/api-keys",
+              "access-management/api-keys",
               {
                 "group": "Workspace",
                 "pages": [
