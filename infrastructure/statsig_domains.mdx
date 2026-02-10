@@ -39,7 +39,7 @@ We constantly and dynamically update these domains to prevent overzealous blocki
 </Info>
 
 ### Don't care about ad-blockers?
-Use the following approach to minimize the number of Statsig domains you need to whitelist. The [networkConfig](https://docs.statsig.com/client/javascript-sdk/#networkconfig-object) initialization option allows you to specify a single domain for both the initialization server and the log event server.
+Use the following approach to minimize the number of Statsig domains you need to whitelist. The [networkConfig](/client/javascript-sdk#networkconfig-object) initialization option allows you to specify a single domain for both the initialization server and the log event server.
 
 ```js
 new Statsig.StatsigClient('client-YOUR_KEY', {/* CONTEXT */}, {

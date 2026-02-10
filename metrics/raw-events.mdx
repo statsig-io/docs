@@ -14,6 +14,8 @@ Statsig records two types of raw events from your application:
 
 2. **Custom events** track user actions and as any events that get triggered in the course of using your application, including events that capture performance (e.g. latency) or capture data for analytics (e.g. session start). These events allow Statsig to assess overall user engagement in your application (e.g. daily active users, weekly stickiness) as well as changes in user behavior as you roll out new features and experiments.
 
+ > **Note:** When logging custom events, avoid using dot (.) notation in metadata keys. Keys containing dots are interpreted as nested paths during JSON parsing (e.g., by JSON_VALUE), which can cause the values to be parsed as NULL.
+
 ## Unit Identifiers
 You must include at least one unit identifier when you record any raw events with Statsig. This unit identifier is essential for two reasons:
 1. Ensure that your users receive a consistent application experience when they're allocated to control or test groups in an experiment 
