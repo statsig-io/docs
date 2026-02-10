@@ -55,15 +55,6 @@ When a layer is evaluated (you call `getLayer`), it follows this evaluation orde
 
 If no experiment allocation rule matches, the user receives the layer's default values.
 
-### Gates
-
-When a feature gate is evaluated (you call `checkGate`), it follows this evaluation order:
-
-1. **ID overrides** — Specific user/unit IDs mapped to pass/fail
-2. **Conditional overrides** — Segment or gate-based overrides
-3. **Holdout rules** — If the gate has holdouts attached
-4. **Rules** — The gate's targeting rules, evaluated in the order they appear in the console. Each rule has its own conditions and pass percentage.
-
 ### Holdouts
 
 Holdout gates evaluate in this order:
@@ -72,6 +63,15 @@ Holdout gates evaluate in this order:
 2. **ID overrides** — Specific user/unit IDs
 3. **Population targeting gate** — If the holdout has a targeting gate, users who fail it are not held out
 4. **Holdout percentage** — The pass percentage on the holdout rule determines the holdout rate
+
+### Gates
+
+When a feature gate is evaluated (you call `checkGate`), it follows this evaluation order:
+
+1. **ID overrides** — Specific user/unit IDs mapped to pass/fail
+2. **Conditional overrides** — Segment or gate-based overrides
+3. **Holdout rules** — If the gate has holdouts attached
+4. **Rules** — The gate's targeting rules, evaluated in the order they appear in the console. Each rule has its own conditions and pass percentage.
 
 ## When Evaluation Happens
 Evaluation happens when the gate or experiment is checked on Server SDKs. To be able to do this, Server SDKs hold the entire ruleset of your project in memory - a representation of each gate or experiment in JSON. On client SDKs, we evaluate all of the gates/experiments when you call initialize - on our servers.
