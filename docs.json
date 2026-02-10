@@ -1839,6 +1839,10 @@
     {
       "source": "/experiments/interpreting-results/read-pulse",
       "destination": "/experiments/interpreting-results/read-results"
+    },
+    {
+      "source": "/sdks/api-keys",
+      "destination": "/access-management/api-keys"
     }
   ],
   "logo": {
