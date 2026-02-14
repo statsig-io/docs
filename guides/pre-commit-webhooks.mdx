@@ -21,7 +21,7 @@ Your webhook endpoint should:
 - Process the change payload (see format below)
 - Call the Change Validation API to approve or reject
 
-See the [Change Validation API documentation](https://docs.statsig.com/console-api/change-validation/) for implementation details.
+See the [Change Validation API documentation](/console-api/change-validation/) for implementation details.
 
 ### Step 2: Configure Statsig Console Settings
 
@@ -57,14 +57,14 @@ Every payload will have these fields at a minimum:
 Currently, only changes to gates, dynamic configs, segments, and experiments trigger pre-commit webhooks, and only the following changes:
 
 - `rules`: Updating rules (for gates, dynamic configs, segments)
-  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. https://docs.statsig.com/api-reference/gates/read-gate for gates)
+  - will contain payloads `old_config` and `new_config` with the same format returned by the console API for the entity type (e.g. [/api-reference/gates/read-gate](/api-reference/gates/read-gate) for gates)
 - `update_target_apps`: Updating target applications
 - `update_allocation`: Changing the pass percentage of an ongoing experiment
 - `start_experiment`
 - `ship_experiment`
 - `abandon_experiment`
 - `update_experiment_settings`: Changing settings of an ongoing experiment
-  - will contain payloads `old_experiment` and `new_experiment` with the same format returned by the console API (https://docs.statsig.com/api-reference/experiments/get-experiment)
+  - will contain payloads `old_experiment` and `new_experiment` with the same format returned by the console API ([/api-reference/experiments/get-experiment](/api-reference/experiments/get-experiment))
 
 ### Step 4: Respond to Webhooks
 
