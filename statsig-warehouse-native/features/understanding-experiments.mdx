@@ -50,7 +50,7 @@ It is also possible, under the advanced tab, to:
 
 ### Selecting Dates
 
-When not using [turbo mode](), or when using [turbo mode]() with incremental reloads, the date picker next to pulse can be used to view pulse "as of" a certain date. This is useful for understanding historical discussion of an experiment, or for understanding how results have evolved over time. This data can also be viewed through the lens of the time series views in Statsig.
+When not using [turbo mode](/statsig-warehouse-native/features/turbo), or when using [turbo mode](/statsig-warehouse-native/features/turbo) with incremental reloads, the date picker next to pulse can be used to view pulse "as of" a certain date. This is useful for understanding historical discussion of an experiment, or for understanding how results have evolved over time. This data can also be viewed through the lens of the time series views in Statsig.
 
 As a reminder, this ability should not be used as a way to cherry-pick dates with desirable results!
 
@@ -60,6 +60,6 @@ For every experiment analysis, the basic flow is:
 
 - Identifying when units first saw or were "enrolled" into the experiment
 - Identifying what those units did (metric data - events, or other rollups) after seeing the experimental variant they were assigned to, up until the end of the experiment. This results in a tagged dataset, where metric data is associated with a group
-- Aggregating that metric data over the experiment duration. The [metrics documentation]() has descriptions and SQL snippets describing this step
+- Aggregating that metric data over the experiment duration. The [metrics documentation](/statsig-warehouse-native/configuration/metrics) has descriptions and SQL snippets describing this step
 - Calculating group-level statistics to be used in the final scorecard analysis - at a high level, the analysis requires the observed totals/means per-group, and the variance which is used to understand how meaningful (usually statistical significance in frequentist analysis, or probability of best in bayesian analysis) that difference is
   - Means are normalized per-unit. For basic aggregations this will impute 0s - that is, the calculation is the total value over the count of units exposed. For ratios and means, the means will be computed as the sum of the numerator over the sum of the denominator.

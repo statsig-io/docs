@@ -18,7 +18,7 @@ To see the Pulse result breakdowns for all categories within a metric, click on 
 
 # Unit Dimensions
 
-Unit dimensions refer to unit-level attributes that are either part of the user object you log to Statsig, provide as part of your [assignment data](), or provide via an [Entity Property](). Examples of these attributes are operating system, country, region, or user segments.
+Unit dimensions refer to unit-level attributes that are either part of the user object you log to Statsig, provide as part of your [assignment data](/statsig-warehouse-native/configuration/assignment-sources), or provide via an [Entity Property](/statsig-warehouse-native/features/entity-properties). Examples of these attributes are operating system, country, region, or user segments.
 
 Using [explore queries](/pulse/custom-queries), you can filter to specific unit dimensions or group results by a dimension. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country".
 
@@ -26,7 +26,7 @@ The dimension will be chosen based on the last available record at or before exp
 
 # Metric Dimensions
 
-Metric Dimensions break down a metric's results based on the values in columns from your [metric source]() for a given metric. You configure these breakdowns per-metric, after which they'll be calculated for that metric across all pulse results.
+Metric Dimensions break down a metric's results based on the values in columns from your [metric source](/statsig-warehouse-native/configuration/metric-sources) for a given metric. You configure these breakdowns per-metric, after which they'll be calculated for that metric across all pulse results.
 
 Note that, unlike Unit Dimensions, these dimensions are not mutually exclusive. For example, a with a user dimension a user can only be from one country for the purpose of pulse analysis, but a user on an e-commerce website could buy all of "clothes", "books", and "snacks" within a "total purchases" metric and contribute to each of those dimensions as well as the overall value.
 

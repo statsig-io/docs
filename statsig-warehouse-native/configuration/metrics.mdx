@@ -40,7 +40,7 @@ To view details about a metric, you can navigate to the Metrics page where you c
   <img src="/images/statsig-warehouse-native/configuration/metrics/f7023ab8-9d3d-4013-8595-b51325b7c954.png" alt="Metric detail page showing definition and timeseries" />
 </Frame>
 
-In the [insights tab](/aggregated-impact/) and in [meta-analysis](), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
+In the [insights tab](/aggregated-impact/) and in [meta-analysis](/statsig-warehouse-native/features/meta-analysis), you can perform more detailed analysis of how experiments have impacted a metric, and how the metric relates to other metrics in your catalog.
 
 <Frame>
   <img src="/images/statsig-warehouse-native/configuration/metrics/94d40316-53bf-484e-8a73-57cc42e22ca6.png" alt="Insights view summarizing aggregated impact" />
@@ -83,8 +83,8 @@ Supported aggregations are:
 - [Sum](/statsig-warehouse-native/metrics/sum)
 - [Logged Sums and Counts](/statsig-warehouse-native/metrics/log)
 - [Count Distinct](/statsig-warehouse-native/metrics/count-distinct)
-- [First Value]()
-- [Latest Value]()
+- [First Value](/statsig-warehouse-native/metrics/latest-value)
+- [Latest Value](/statsig-warehouse-native/metrics/latest-value)
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
@@ -104,7 +104,7 @@ Supported unit count types are:
 - [Windowed](/statsig-warehouse-native/metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
 - [Latest Participation](/statsig-warehouse-native/metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
 - [Daily Participation](/statsig-warehouse-native/metrics/unit-count-rate), the rate at which units were daily active users during the experiment
-- [Retention](), the rolling rate of retention on an action or set of actions with a configurable time window
+- [Retention](/statsig-warehouse-native/metrics/retention), the rolling rate of retention on an action or set of actions with a configurable time window
 
 ### Ratios and Funnels
 
@@ -121,7 +121,7 @@ Ratios and funnel measures rates or conversion. These are aggregated differently
 
 Teams working on performance problems use Statsig to analyze the impact of their changes at a system level. These metric types can also be useful for user behavior. The types most commonly used here are:
 
-- [Percentile Metrics]() allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
+- [Percentile Metrics](/statsig-warehouse-native/metrics/percentile) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
 - [Mean Metrics](/statsig-warehouse-native/metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records
 
 ## Filters
@@ -180,11 +180,11 @@ Most aggregation-type metrics (sum, count, count distinct, unit count, means, ra
 
 Cohort settings allow you to specify a window for data collection after a unit's exposure. For example, a 4-6 day cohort window would only count actions from days 4, 5, and 6 after a unit was exposed to an experiment.
 
-Please refer to the full documentation on cohorts [here]().
+Please refer to the full documentation on cohorts [here](/statsig-warehouse-native/features/cohort-metrics).
 
 ### Baking
 
-Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric. See additional information in the [cohort documentation]().
+Many metric types support baking. Statsig will wait to calculate baked metrics, and use "old" data for baked metrics. This is appropriate for cases like credit card chargebacks, where you may adjust your payments dataset to account for chargebacks in a "net revenue" metric. See additional information in the [cohort documentation](/statsig-warehouse-native/features/cohort-metrics).
 
 Statsig will:
 
