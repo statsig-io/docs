@@ -2,32 +2,22 @@
 title: Evaluation Cost Breakdown
 ---
 
-Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each condition, operator, and value count contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
+Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
 
 ## How to Interpret "Slow" and "Very Slow"
 
-These labels are relative tiers, not fixed millisecond thresholds. Actual runtime depends on SDK language, device/server, and whether the SDK needs to infer attributes (for example, user-agent parsing or IP geolocation). To translate a label into time on **your** stack, measure it directly on the same server or device class you care about.
-
-<Accordion title = "Quick benchmark recipe">
-
-1. Pick a representative server type or device and a production-like `StatsigUser`.
-1. Warm up the SDK (initialize and run a few checks).
-1. Measure a baseline gate (for example, a gate with no rules) for N evaluations and record p50/p95.
-1. Measure your slow gate for the same N evaluations and record p50/p95.
-1. The delta between the two is the true impact for your environment.
-
-</Accordion>
+These labels are relative tiers, not fixed millisecond thresholds. Actual runtime depends on device/server, network, and whether the SDK is using the worst case scenario. (ex. even if country is included in the user object we assume the worst case scenario and that it is being ip geolocated). These labels are intended to be a warning. If you are using the best possible practice for your context, you can ignore them. 
 
 ## Quick Diagnosis
 
-| What you see | Likely cause | Fastest fix |
-| --- | --- | --- |
-| Gate targets OS/Browser/Version and is slow | User-agent parsing at evaluation time | Pass `os_name`, `os_version`, `browser_name`, `browser_version` (server) or `systemName`, `systemVersion`, `browserName`, `browserVersion` (client) directly on `StatsigUser` |
-| Gate targets Country and is slow | IP geolocation lookup | Pass `country` directly on `StatsigUser` |
-| Gate uses large ID lists (overrides or segment rules) | Large list lookup | Trim stale IDs, split lists, or move to rule-based inline segments or a custom attribute |
-| Gate uses Regex or Version String operators | Expensive per-check parsing | Replace with exact matches or precomputed attributes |
-| Gate has many nested Passes Gate/Segment rules | Costs compound across nested evaluations | Reduce nesting or push logic into a single gate/segment |
-| Conditions have many values (50+) | Large value scans | Prune values, split cohorts, or move to a smaller segment |
+| What you see                                         | Likely cause                   | Fastest fix                                                                                                                                             |
+| ---------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gate targets OS/Browser/Version and is slow           | User-agent parsing at evaluation time | Pass `os_name`, `os_version`, `browser_name`, `browser_version` (server) or `systemName`, `systemVersion`, `browserName`, `browserVersion` (client) directly on `StatsigUser` |
+| Gate targets Country and is slow                      | IP geolocation lookup          | Pass `country` directly on `StatsigUser`                                                                                                                 |
+| Gate uses large ID lists (overrides or segment rules) | Large list lookup              | Trim stale IDs, split lists, or move to rule-based inline segments or a custom attribute                                                                  |
+| Gate uses Regex or Version String operators           | Expensive per-check parsing    | Replace with exact matches or precomputed attributes                                                                                                     |
+| Gate has many nested Passes Gate/Segment rules        | Costs compound across nested evaluations | Reduce nesting or push logic into a single gate/segment                                                                                                  |
+| Conditions have many values (50+)                     | Large value scans              | Prune values, split cohorts, or move to a smaller segment                                                                                                |
 
 ## Cost Drivers and Fixes
 
@@ -35,17 +25,18 @@ These labels are relative tiers, not fixed millisecond thresholds. Actual runtim
 
 These costs are applied based on the **condition type** used in a gate. Only conditions with a significant impact are listed. If a condition is not listed, it does not significantly impact SDK evaluation speeds.
 
-| Condition       | Impact   | Reason                                                                       |
-| --------------- | -------- | ---------------------------------------------------------------------------- |
-| BROWSER         | Variable | Requires user agent parsing unless Browser is explicitly provided            |
-| BROWSER VERSION | Variable | Requires user agent parsing unless Browser Version is explicitly provided    |
-| OS              | Variable | Requires user agent parsing unless Operating System is explicitly provided   |
-| OS VERSION      | Variable | Requires user agent parsing unless OS Version is explicitly provided         |
-| COUNTRY         | Low      | Requires IP-based geolocation lookup when `country` is not explicitly set    |
-| PASSES SEGMENT  | Variable | complexity dependent on cost of nested segments                              |
-| FAILS SEGMENT   | Variable | complexity dependent on cost of nested segments                              |
-| PASSES GATE     | Variable | complexity dependent on cost of nested gates                                 |
-| FAILS GATE      | Variable | complexity dependent on cost of nested gates                                 |
+| Condition       | Impact                | worst case                          | Reason                                                                       |
+|                 | (assuming worst case) |                                    |                                                                              |
+| --------------- | --------------------- | ---------------------------------- | ---------------------------------------------------------------------------- |
+| BROWSER         | medium                | user agent                         | Requires user agent parsing unless Browser is explicitly provided            |
+| BROWSER VERSION | medium                | user agent                         | Requires user agent parsing unless Browser Version is explicitly provided    |
+| OS              | medium                | user agent                         | Requires user agent parsing unless Operating System is explicitly provided   |
+| OS VERSION      | medium                | user agent                         | Requires user agent parsing unless OS Version is explicitly provided         |
+| COUNTRY         | Low                   | IP lookup                          | Requires IP-based geolocation lookup when `country` is not explicitly set    |
+| PASSES SEGMENT  | high                  | deeply nested / large segment      | complexity dependent on cost of nested segments                              |
+| FAILS SEGMENT   | high                  | deeply nested / large segment      | complexity dependent on cost of nested segments                              |
+| PASSES GATE     | high                  | deeply nested with slow gates      | complexity dependent on cost of nested gates                                 |
+| FAILS GATE      | high                  | deeply nested with slow gates      | complexity dependent on cost of nested gates                                 |
 
 Tips:
 - If you target OS/Browser or their versions, pass explicit values on `StatsigUser` to avoid user-agent parsing. Server SDKs support `os_name`, `os_version`, `browser_name`, and `browser_version`; client SDKs use `systemName`, `systemVersion`, `browserName`, and `browserVersion`.
@@ -61,15 +52,14 @@ For conditions that depend on other gates or segments, their evaluation cost is 
 
 ID lists have a direct impact on evaluation performance. This applies both to **ID list overrides** and **segment conditions** that reference ID lists.
 
-| ID List Size | Impact |
-| ----------- | ------ |
-| 1,000+ IDs  | High   |
-| 10,000+ IDs | Very High |
+| ID List Size | Impact    |
+| ------------ | --------- |
+| 1,000+ IDs   | High      |
+| 10,000+ IDs  | Very High |
 
 Tips:
 - Trim stale IDs and scope lists to active cohorts.
 - Split large lists into smaller, purpose-built cohorts.
-- Prefer rule-based inline segments or custom attributes where possible.
 
 ### Operator
 
@@ -77,16 +67,16 @@ These costs are applied based on the **operator** used in a condition. If an ope
 
 | Operator                        | Impact | Reason                                  |
 | ------------------------------- | ------ | --------------------------------------- |
-| ANY OF (Case Sensitive)         | Low    | Requires explicit equality comparison   |
-| NONE OF (Case Sensitive)        | Low    | Requires explicit inequality comparison |
+| Any of (Case Sensitive)         | Low    | Requires explicit equality comparison   |
+| None of (Case Sensitive)        | Low    | Requires explicit inequality comparison |
 | Match Regex String              | Medium | Requires regex matching                 |
 | Version String                  | Medium | Requires semantic version comparison    |
-| ARRAY CONTAINS ANY / NONE / ALL | Low    | Requires array scan                     |
+| Array Contains Any / None / All | Low    | Requires array scan                     |
 
 Tips:
-- Match Regex String: Replace with `ANY OF` or precompute a boolean/enum attribute (for example, `is_enterprise_email` or `email_domain`).
-- Version String: Precompute a normalized numeric value or `major`/`minor` fields and compare those instead.
-- ARRAY CONTAINS: Keep arrays short and consider flattening frequent checks into a single boolean attribute (for example, `has_beta_access: true`).
+- **Match Regex String**: Replace with `ANY OF` or precompute a boolean/enum attribute.
+- **Version String**: Precompute a normalized numeric value or `major`/`minor` fields and compare those instead.
+- **Array Contains**: Keep arrays short and consider flattening frequent checks into a single boolean attribute.
 
 ### Value Count
 
@@ -102,23 +92,3 @@ These costs are applied based on the **number of values** provided to a conditio
 Tips:
 - If you are in the 50+ range, prune stale values or split cohorts.
 - Consider moving large lists into a smaller inline segment or a custom attribute computed upstream.
-
-## Examples
-
-### Example 1: OS/Browser Parsing
-
-Issue: Gate targets OS Version and Browser Version and is Slow on server SDKs.
-
-Fix: Pass explicit OS/Browser fields on `StatsigUser` so the SDK does not parse the user agent.
-
-### Example 2: Large ID List Override
-
-Issue: Gate uses an ID list override with 12,000 IDs and is Very Slow.
-
-Fix: Split the list into smaller cohorts or replace it with a rule-based inline segment (for example, a custom attribute like `has_paid_subscription: true`).
-
-### Example 3: Regex Targeting
-
-Issue: Gate uses Match Regex String on email domain and is Slow.
-
-Fix: Precompute `email_domain` (or `is_enterprise_email`) and use `ANY OF` instead.
