@@ -81,14 +81,14 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Initialize and check the gate">
     Replace <code>YOUR_SDK_KEY</code> with the client key from Step&nbsp;4 and run:
 
-    ```js
+    ```javascript
     const client = new window.Statsig.StatsigClient('YOUR_SDK_KEY', {});
     await client.initializeAsync();
     ```
 
     Then call:
 
-    ```js
+    ```javascript
     client.checkGate('mobile_registration');
     ```
 
