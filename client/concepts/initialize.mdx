@@ -79,22 +79,20 @@ With this approach, your server will be responsible for serving the configuratio
 // Server-generated initialization values
 const initValues = getStatsigValuesFromServer(user);
 
-const { client } = useClientAsyncInit(
+const client = useClientBootstrapInit(
   YOUR_CLIENT_KEY,
   { userID: "u_123" },
-  { initializeValues: initValues }
+  initValues
 );
 
-// Client renders immediately with server values
+// Client renders immediately with server values — no network request
 ```
 
 ```js JavaScript Bootstrap
 const bootstrapValues = getInitializationValuesFromServer();
-const client = new StatsigClient(
-  YOUR_CLIENT_KEY,
-  { userID: "u_123" },
-  { initializeValues: bootstrapValues }
-);
+const client = new StatsigClient(YOUR_CLIENT_KEY, { userID: "u_123" });
+client.dataAdapter.setData(bootstrapValues);
+client.initializeSync();
 ```
 
 </CodeGroup>
