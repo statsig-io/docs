@@ -121,7 +121,7 @@ Ratios and funnel measures rates or conversion. These are aggregated differently
 
 Teams working on performance problems use Statsig to analyze the impact of their changes at a system level. These metric types can also be useful for user behavior. The types most commonly used here are:
 
-- [Percentile Metrics](/statsig-warehouse-native/metrics/percentile) allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
+- [Percentile Metrics]() allow you to measure changes in values like the P99.9 - useful for measuring improvements or regressions in latency, TTL, or measuring median change when the mean is skewed
 - [Mean Metrics](/statsig-warehouse-native/metrics/mean) are an easy shorthand for ratio metrics summing an event-level value and dividing by the total records
 
 ## Filters
@@ -180,7 +180,7 @@ Most aggregation-type metrics (sum, count, count distinct, unit count, means, ra
 
 Cohort settings allow you to specify a window for data collection after a unit's exposure. For example, a 4-6 day cohort window would only count actions from days 4, 5, and 6 after a unit was exposed to an experiment.
 
-Please refer to the full documentation on cohorts [here]().
+Please refer to the full documentation on cohorts [here](/statsig-warehouse-native/features/cohort-metrics).
 
 ### Baking
 
