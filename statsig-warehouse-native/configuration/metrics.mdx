@@ -84,7 +84,7 @@ Supported aggregations are:
 - [Logged Sums and Counts](/statsig-warehouse-native/metrics/log)
 - [Count Distinct](/statsig-warehouse-native/metrics/count-distinct)
 - [First Value]()
-- Latest Value
+- [Latest Value]()
 - Thresholds
   - A special cases of sum/count which measure a 1/0 flag for if a user passed a threshold value during the experiment - e.g., "the number of users who spent more than $100"
 
@@ -104,7 +104,7 @@ Supported unit count types are:
 - [Windowed](/statsig-warehouse-native/metrics/unit-count-window), measuring if a user performed an action within some time window after exposure
 - [Latest Participation](/statsig-warehouse-native/metrics/unit-count-latest), measuring if a user fulfilled some criteria on their latest recorded record (e.g. is this user currently a subscriber)
 - [Daily Participation](/statsig-warehouse-native/metrics/unit-count-rate), the rate at which units were daily active users during the experiment
-- [Retention](), the rolling rate of retention on an action or set of actions with a configurable time window
+- [Retention](/statsig-warehouse-native/metrics/retention), the rolling rate of retention on an action or set of actions with a configurable time window
 
 ### Ratios and Funnels
 
