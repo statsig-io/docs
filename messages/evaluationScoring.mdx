@@ -2,7 +2,7 @@
 title: Evaluation Cost Breakdown
 ---
 
-Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
+Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. The sum of the complexity of all rules equls the complexity of a gate. It is possible to not have a slow rule but a slow gate if all of the rules combined put the gate over the threshold. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
 
 ## How to Interpret "Slow" and "Very Slow"
 
@@ -39,7 +39,7 @@ These evaluation costs are applied based on the **condition type** used in a gat
 
 <Tip>
 Tips:
-</Tips>
+</Tip>
 - If you target OS/Browser or their versions, pass explicit values on `StatsigUser` to avoid user-agent parsing. Server SDKs support `os_name`, `os_version`, `browser_name`, and `browser_version`; client SDKs use `systemName`, `systemVersion`, `browserName`, and `browserVersion`.
 - If you target Country, pass `country` directly to avoid IP-based lookup.
 
@@ -60,7 +60,7 @@ ID lists have a direct impact on evaluation performance. This applies both to **
 
 <Tip>
 Tips:
-</Tips>
+</Tip>
 - Trim stale IDs and scope lists to active cohorts.
 - Split large lists into smaller, purpose-built cohorts.
 
@@ -78,7 +78,7 @@ These costs are applied based on the **operator** used in a condition. If an ope
 
 <Tip>
 Tips:
-</Tips>
+</Tip>
 - **Match Regex String**: Replace with `ANY OF` or precompute a boolean/enum attribute.
 - **Version String**: Precompute a normalized numeric value or `major`/`minor` fields and compare those instead.
 - **Array Contains**: Keep arrays short and consider flattening frequent checks into a single boolean attribute.
@@ -96,6 +96,6 @@ These costs are applied based on the **number of values** provided to a conditio
 
 <Tip>
 Tips:
-</Tips>
+</Tip>
 - If you are in the 50+ range, prune stale values or split cohorts.
 - Consider moving large lists into a smaller inline segment or a custom attribute computed upstream.
