@@ -8,10 +8,12 @@ last_update:
   date: 2025-09-18
 ---
 
-### Use Cases
+## Use Cases
 
+### First Value
 First value metrics are used to track the initial experience a user has with your product. This could be first purchase value, initial time-to-load, or any other "initial" result you ar expecting to influence with your change.
 
+### Latest Value
 Latest value metrics are used to track how an experiment is impacting the state of your population. For example, you might want to measure if the test group in an experiment has a higher net account balance, or if the current loyalty rewards balance is higher for users in one arm of an experiment.
 
 You can use latest value metrics to approximate user 'statuses' as well, such as "is_subscriber", if you have a Metric Source with a 1/0 flag for all users. We recommend using [the unit count](./unit-count-latest) equivalent for this use case, since you can filter on a sparse dataset and Statsig handles imputing/tracking 0s.
@@ -65,16 +67,16 @@ GROUP BY group_id;
 
 ### Methodology Notes
 
-Users without a value will be treated as 0s; note that if there is an existing value, the user will "stay at" that value unless a 0 or other new value is provided later.
+Users without a value will be treated as 0s; note that if there is an existing value, the user will "stay at" that value unless a 0 or another new value is provided later.
 
 ## Options
 
 - Metric Breakdowns
   - You can configure Metadata Columns to group results by, getting easy access to dimensional views in pulse results
-- [Cohort Windows]()
+- [Cohort Windows](/statsig-warehouse-native/features/cohort-metrics)
   - You can specify a window for data collection after a unit's exposure. For example, a 0-1 day cohort window would only count actions from days 0 and 1 after a unit was exposed to an experiment
     - **Only include units with a completed window** can be selected to remove units out of pulse analysis for this metric until the cohort window has completed
-- CUPED
+- [CUPED](/experiments/statistical-methods/methodologies/cuped)
   - Specify if you want to calculate CUPED, and the lookback window for CUPED's pre-experiment data inputs
 
 ### Special Case: Surrogate Metrics

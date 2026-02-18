@@ -549,7 +549,7 @@
                   "statsig-warehouse-native/metrics/latest-value",
                   "statsig-warehouse-native/metrics/retention",
                   "statsig-warehouse-native/metrics/max-min",
-                  "warehouse-native/data-and-semantic-layer/metrics/composite"
+                  "statsig-warehouse-native/metrics/composite"
                 ]
               },
               "statsig-warehouse-native/configuration/metric-examples",
@@ -1012,11 +1012,10 @@
               {
                 "group": "Observability & Infra",
                 "pages": [
-                  "integrations/datadog",
                   {
-                    "group": "Datadog Triggers",
+                    "group": "Datadog",
                     "pages": [
-                      "integrations/triggers/introduction",
+                      "integrations/datadog",
                       "integrations/triggers/datadog"
                     ]
                   },
@@ -1843,6 +1842,14 @@
     {
       "source": "/sdks/api-keys",
       "destination": "/access-management/api-keys"
+    },
+    {
+      "source": "/warehouse-native/data-and-semantic-layer/metrics/composite",
+      "destination": "/statsig-warehouse-native/metrics/composite"
+    },
+    {
+      "source": "/integrations/triggers/introduction",
+      "destination": "/integrations/triggers/datadog"
     }
   ],
   "logo": {
