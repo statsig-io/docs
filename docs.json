@@ -1011,11 +1011,10 @@
               },
               {
                 "group": "Observability & Infra",
-                "pages": [
-                  "integrations/datadog",
                   {
-                    "group": "Datadog Triggers",
+                    "group": "Datadog",
                     "pages": [
+                      "integrations/datadog",
                       "integrations/triggers/datadog"
                     ]
                   },
