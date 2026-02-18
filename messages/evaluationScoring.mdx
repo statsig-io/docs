@@ -2,11 +2,11 @@
 title: Evaluation Cost Breakdown
 ---
 
-Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. The sum of the complexity of all rules equls the complexity of a gate. It is possible to not have a slow rule but a slow gate if all of the rules combined put the gate over the threshold. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
+Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. The sum of the complexity of all rules equls the complexity of a gate. It is possible to not have a slow rule but a slow gate if all of the rules combined, put the gate over the threshold. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
 
 ## How to Interpret "Slow" and "Very Slow"
 
-These labels are relative tiers, not fixed millisecond thresholds. Actual runtime depends on device/server, network, and whether the SDK is using the worst case scenario. (ex. even if country is included in the user object we assume the worst case scenario and that it is being ip geolocated). These labels are intended to be a warning. If you are using the best possible practice for your context, you can ignore them. 
+These labels are relative tiers, not fixed millisecond thresholds. Actual runtime depends on device/server, network, and whether the SDK is using the worst case scenario. (ex. even if country is included in the user object we assume the worst case scenario and that it is being IP geolocated). These labels are intended to be a warning. If you are using the best possible practice for your context, you can ignore them. 
 
 ## Quick Diagnosis
 
@@ -14,7 +14,7 @@ These labels are relative tiers, not fixed millisecond thresholds. Actual runtim
 | ---------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Gate targets OS/Browser/Version and is slow           | User-agent parsing at evaluation time | Pass `os_name`, `os_version`, `browser_name`, `browser_version` (server) or `systemName`, `systemVersion`, `browserName`, `browserVersion` (client) directly on `StatsigUser` |
 | Gate targets Country and is slow                      | IP geolocation lookup          | Pass `country` directly on `StatsigUser`                                                                                                                 |
-| Gate uses large ID lists (overrides or id based segments) | Large list lookup              | Trim stale IDs, split lists, or move to conditional segments or a custom attribute                                                                  |
+| Gate uses large ID lists (overrides or ID based segments) | Large list lookup              | Trim stale IDs, split lists, or move to conditional segments or a custom attribute                                                                  |
 | Gate uses Regex or Version String operators           | Expensive per-check parsing    | Replace with exact matches or precomputed attributes                                                                                                     |
 | Gate has many nested Passes Gate/Segment rules        | Costs compound across nested evaluations | Reduce nesting or push logic into a single gate/segment                                                                                                  |
 | Conditions have many values (50+)                     | Large value scans              | Prune values, split cohorts, or move to a smaller segment                                                                                                |
@@ -39,9 +39,9 @@ These evaluation costs are applied based on the **condition type** used in a gat
 
 <Tip>
 Tips:
+    - If you target OS/Browser or their versions, pass explicit values on `StatsigUser` to avoid user-agent parsing. Server SDKs support `os_name`, `os_version`, `browser_name`, and `browser_version`; client SDKs use `systemName`, `systemVersion`, `browserName`, and `browserVersion`.
+    - If you target Country, pass `country` directly to avoid IP-based lookup.
 </Tip>
-- If you target OS/Browser or their versions, pass explicit values on `StatsigUser` to avoid user-agent parsing. Server SDKs support `os_name`, `os_version`, `browser_name`, and `browser_version`; client SDKs use `systemName`, `systemVersion`, `browserName`, and `browserVersion`.
-- If you target Country, pass `country` directly to avoid IP-based lookup.
 
 <Accordion title = "Passes/Fails Segment and Gate conditions">
 
@@ -49,7 +49,7 @@ For conditions that depend on other gates or segments, their evaluation cost is 
 
 </Accordion>
 
-### ID List Size (Overrides and Segment Conditions)
+### ID List Size (Overrides and ID based Segments)
 
 ID lists have a direct impact on evaluation performance. This applies both to **ID list overrides** and **segment conditions** that reference ID lists.
 
@@ -60,9 +60,10 @@ ID lists have a direct impact on evaluation performance. This applies both to **
 
 <Tip>
 Tips:
+    - Trim stale IDs and scope lists to active cohorts.
+    - Split large lists into smaller, purpose-built cohorts.
 </Tip>
-- Trim stale IDs and scope lists to active cohorts.
-- Split large lists into smaller, purpose-built cohorts.
+
 
 ### Operator
 
@@ -78,10 +79,11 @@ These costs are applied based on the **operator** used in a condition. If an ope
 
 <Tip>
 Tips:
+    - **Match Regex String**: Replace with `ANY OF` or precompute a boolean/enum attribute.
+    - **Version String**: Precompute a normalized numeric value or `major`/`minor` fields and compare those instead.
+    - **Array Contains**: Keep arrays short and consider flattening frequent checks into a single boolean attribute.
 </Tip>
-- **Match Regex String**: Replace with `ANY OF` or precompute a boolean/enum attribute.
-- **Version String**: Precompute a normalized numeric value or `major`/`minor` fields and compare those instead.
-- **Array Contains**: Keep arrays short and consider flattening frequent checks into a single boolean attribute.
+
 
 ### Value Count
 
@@ -96,6 +98,7 @@ These costs are applied based on the **number of values** provided to a conditio
 
 <Tip>
 Tips:
+    - If you are in the 50+ range, prune stale values or split cohorts.
+    - Consider moving large lists into a smaller inline segment or a custom attribute computed upstream.
 </Tip>
-- If you are in the 50+ range, prune stale values or split cohorts.
-- Consider moving large lists into a smaller inline segment or a custom attribute computed upstream.
+
