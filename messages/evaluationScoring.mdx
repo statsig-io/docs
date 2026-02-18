@@ -14,7 +14,7 @@ These labels are relative tiers, not fixed millisecond thresholds. Actual runtim
 | ---------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Gate targets OS/Browser/Version and is slow           | User-agent parsing at evaluation time | Pass `os_name`, `os_version`, `browser_name`, `browser_version` (server) or `systemName`, `systemVersion`, `browserName`, `browserVersion` (client) directly on `StatsigUser` |
 | Gate targets Country and is slow                      | IP geolocation lookup          | Pass `country` directly on `StatsigUser`                                                                                                                 |
-| Gate uses large ID lists (overrides or segment rules) | Large list lookup              | Trim stale IDs, split lists, or move to rule-based inline segments or a custom attribute                                                                  |
+| Gate uses large ID lists (overrides or id based segments) | Large list lookup              | Trim stale IDs, split lists, or move to conditional segments or a custom attribute                                                                  |
 | Gate uses Regex or Version String operators           | Expensive per-check parsing    | Replace with exact matches or precomputed attributes                                                                                                     |
 | Gate has many nested Passes Gate/Segment rules        | Costs compound across nested evaluations | Reduce nesting or push logic into a single gate/segment                                                                                                  |
 | Conditions have many values (50+)                     | Large value scans              | Prune values, split cohorts, or move to a smaller segment                                                                                                |
@@ -23,10 +23,9 @@ These labels are relative tiers, not fixed millisecond thresholds. Actual runtim
 
 ### Conditions
 
-These costs are applied based on the **condition type** used in a gate. Only conditions with a significant impact are listed. If a condition is not listed, it does not significantly impact SDK evaluation speeds.
+These evaluation costs are applied based on the **condition type** used in a gate. Only conditions with a significant impact are listed. If a condition is not listed, it does not significantly impact SDK evaluation speeds.
 
-| Condition       | Impact                | worst case                          | Reason                                                                       |
-|                 | (assuming worst case) |                                    |                                                                              |
+| Condition       | Impact (assuming worst case) | worst case                | Reason                                                                       |
 | --------------- | --------------------- | ---------------------------------- | ---------------------------------------------------------------------------- |
 | BROWSER         | medium                | user agent                         | Requires user agent parsing unless Browser is explicitly provided            |
 | BROWSER VERSION | medium                | user agent                         | Requires user agent parsing unless Browser Version is explicitly provided    |
@@ -38,7 +37,9 @@ These costs are applied based on the **condition type** used in a gate. Only con
 | PASSES GATE     | high                  | deeply nested with slow gates      | complexity dependent on cost of nested gates                                 |
 | FAILS GATE      | high                  | deeply nested with slow gates      | complexity dependent on cost of nested gates                                 |
 
+<Tip>
 Tips:
+</Tips?
 - If you target OS/Browser or their versions, pass explicit values on `StatsigUser` to avoid user-agent parsing. Server SDKs support `os_name`, `os_version`, `browser_name`, and `browser_version`; client SDKs use `systemName`, `systemVersion`, `browserName`, and `browserVersion`.
 - If you target Country, pass `country` directly to avoid IP-based lookup.
 
@@ -57,7 +58,9 @@ ID lists have a direct impact on evaluation performance. This applies both to **
 | 1,000+ IDs   | High      |
 | 10,000+ IDs  | Very High |
 
+<Tip>
 Tips:
+</Tips?
 - Trim stale IDs and scope lists to active cohorts.
 - Split large lists into smaller, purpose-built cohorts.
 
@@ -89,6 +92,8 @@ These costs are applied based on the **number of values** provided to a conditio
 | 30–49 values | Medium |
 | 50+ values   | High   |
 
+<Tip>
 Tips:
+</Tips?
 - If you are in the 50+ range, prune stale values or split cohorts.
 - Consider moving large lists into a smaller inline segment or a custom attribute computed upstream.
