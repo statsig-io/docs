@@ -1016,7 +1016,6 @@
                   {
                     "group": "Datadog Triggers",
                     "pages": [
-                      "integrations/triggers/introduction",
                       "integrations/triggers/datadog"
                     ]
                   },
@@ -1847,6 +1846,10 @@
     {
       "source": "/warehouse-native/data-and-semantic-layer/metrics/composite",
       "destination": "/statsig-warehouse-native/metrics/composite"
+    },
+    {
+      "source": "/integrations/triggers/introduction",
+      "destination": "/integrations/triggers/datadog"
     }
   ],
   "logo": {
