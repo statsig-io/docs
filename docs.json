@@ -1011,6 +1011,7 @@
               },
               {
                 "group": "Observability & Infra",
+                "pages": [
                   {
                     "group": "Datadog",
                     "pages": [
@@ -1027,6 +1028,7 @@
                     ]
                   },
                   "integrations/pulumi"
+                ]
               },
               {
                 "group": "Azure AI",
