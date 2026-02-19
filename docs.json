@@ -1497,6 +1497,10 @@
       "destination": "/client/React"
     },
     {
+      "source": "/client/reactSDK",
+      "destination": "/client/React"
+    },
+    {
       "source": "/dynamic-config",
       "destination": "/dynamic-config/overview"
     },
