@@ -1,46 +1,52 @@
 ---
-sidebarTitle: A/B Testing with Webflow and Sidecar
-title: A/B Testing with Webflow and Sidecar
+sidebarTitle: A/B Testing with Webflow and Visual Editor
+title: A/B Testing with Webflow and Visual Editor
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-18
+  date: 2026-02-19
 ---
 
 ## Use cases &amp; considerations
 
 Webflow offers a comprehensive platform for businesses to design, build, and manage visually stunning websites and their content without the need for coding. 
 
-To experiment on a site that utilizes webflow, we recommend using [Statsig Sidecar](/guides/sidecar-experiments/introduction) to both build your test treatments and to assign users to experiments when they land on your site — all without writing any code.
+To experiment on a site that uses Webflow, we recommend using [Statsig Visual Editor](/guides/sidecar-experiments/introduction) to build test treatments and assign users to experiments when they land on your site, all without writing code.
 
-#### Install Sidecar chrome extension
-[Follow this guide](/guides/sidecar-experiments/setup) on installing the Sidecar Chrome extension.
-This simple, lightweight Chrome extension will allow non-technical users to build experiments and their treatments. You can easily indicate where the test should run based on URL, and then configure treatments such as content changes, style changes, image swaps, as well as injecting arbitrary JavaScript for more sophisticated use-cases where the visual editor tools cannot accommodate. 
+#### Install the Visual Editor Chrome extension
+Install the [Statsig Visual Editor Chrome extension](https://chromewebstore.google.com/detail/statsig-sidecar-v3/mmgjfcbidnlghegclgpkgegpdhbopjhn) and follow the [Visual Editor setup guide](/guides/sidecar-experiments/sidecar-v3#2-installing-the-chrome-extension-for-editing).
+The extension allows non-technical users to build experiments and treatments directly on top of a live page. You can target by URL and configure text changes, style changes, image swaps, and custom JavaScript for advanced use cases.
 
-#### Add Sidecar JS to your Webflow Site
+#### Add the Visual Editor script to your Webflow site
 
 1. Log in to your Webflow dashboard and navigate to your project.
 2. Access the **Custom Code** section in your project settings.
-3. Copy the Sidecar script tag from the [Statsig guide](/guides/sidecar-experiments/publishing-experiments#step-2-add-script-code). 
+3. Copy the Visual Editor script tag from the [Visual Editor setup guide](/guides/sidecar-experiments/sidecar-v3#1-installing-the-sidecar-script) and replace `client-xxx` with your Client SDK key from [Settings > Keys &amp; Environments](https://console.statsig.com/api_keys):
 
-`<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar/dist/index.min.js?apikey=client-xxx"></script>`
+`<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar-v2-beta/dist/index.min.js?apikey=client-xxx"></script>`
 
 <Frame>
   <img src="/images/guides/webflow-sidecar-ab-test/210325253-6d118adf-8758-48fb-9c99-fdee6ff34f06.png" alt="Webflow custom code interface" />
 </Frame>
 
 4. Paste the script tag into the `<head>` section of your Webflow site's custom code area.
-5. Save and publish your changes to apply the Sidecar script across your website.
+5. Save and publish your changes to apply the Visual Editor script across your website.
+6. In Statsig Console, create an experiment and choose **Visual Editor** as the experiment type before launching the editor.
 
+#### Optional script parameters
+Add these query parameters to the script URL for additional client behavior controls:
+- `&reduceflicker=0` disables briefly hiding `<body>` while the client initializes.
+- `&autocapture=0` disables event autocapture.
 
 #### Configure event tracking and metrics
-Statsig provides various approaches for tracking events when using Sidecar. You can use the built-in "Autocapture" tracking that comes with Sidecar or set up custom event logging. For detailed guidance, refer to the event tracking [documentation](/guides/sidecar-experiments/measuring-experiments).
+Statsig provides several approaches for tracking events when using Visual Editor. You can use built-in [Autocapture](/webanalytics/autocapture/) tracking or set up custom event logging. For detailed guidance, refer to [Visual Editor Setup &amp; Usage](/guides/sidecar-experiments/sidecar-v3#metrics) and the event tracking [documentation](/guides/sidecar-experiments/measuring-experiments).
 
 #### Debugging and Troubleshooting
 If you encounter issues during the integration or experimentation process, here are some tips:
 
-- Verify that the Sidecar script tag is correctly placed in the `<head>` section of your Webflow site.
+- Verify that the Visual Editor script tag is correctly placed in the `<head>` section of your Webflow site.
+- Confirm you're using the latest package URL: `statsig-sidecar-v2-beta`.
 - Check the browser's console for any JavaScript errors that may indicate problems with the script.
-- Ensure that your experiments are active and properly configured in the Statsig console.
-- Review the [Sidecar setup documentation](/guides/sidecar-experiments/setup) for any missed steps.  
-
+- Ensure your experiment is created as a **Visual Editor** experiment and is active in Statsig Console.
+- Confirm the Visual Editor Chrome extension is installed.
+- Review the [Visual Editor setup documentation](/guides/sidecar-experiments/sidecar-v3) for any missed steps.
