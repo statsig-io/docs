@@ -1850,62 +1850,6 @@
     {
       "source": "/integrations/triggers/introduction",
       "destination": "/integrations/triggers/datadog"
-    },
-    {
-      "source": "/client/react",
-      "destination": "/client/React"
-    },
-    {
-      "source": "/client/android",
-      "destination": "/client/Android"
-    },
-    {
-      "source": "/client/angular",
-      "destination": "/client/Angular"
-    },
-    {
-      "source": "/client/cpp",
-      "destination": "/client/CPP"
-    },
-    {
-      "source": "/client/dart",
-      "destination": "/client/Dart"
-    },
-    {
-      "source": "/client/dotnet",
-      "destination": "/client/DotNet"
-    },
-    {
-      "source": "/client/expo",
-      "destination": "/client/Expo"
-    },
-    {
-      "source": "/client/next",
-      "destination": "/client/Next"
-    },
-    {
-      "source": "/client/reactnative",
-      "destination": "/client/ReactNative"
-    },
-    {
-      "source": "/client/reactnativeondeviceevaluation",
-      "destination": "/client/ReactNativeOnDeviceEvaluation"
-    },
-    {
-      "source": "/client/roku",
-      "destination": "/client/Roku"
-    },
-    {
-      "source": "/client/unity",
-      "destination": "/client/Unity"
-    },
-    {
-      "source": "/client/migration-guides/migrationfromoldjsclient",
-      "destination": "/client/migration-guides/MigrationFromOldJsClient"
-    },
-    {
-      "source": "/client/migration-guides/migrationfromoldreact",
-      "destination": "/client/migration-guides/MigrationFromOldReact"
     }
   ],
   "logo": {
