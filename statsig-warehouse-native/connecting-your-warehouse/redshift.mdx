@@ -50,6 +50,10 @@ To enable access, Statsig requires:
 
 Statsig will use this information to generate an SSH key. Please add this generated key to your `~/.ssh/authorized_keys` file on your SSH proxy machine to enable SSH tunneling.
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
