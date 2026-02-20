@@ -17,8 +17,7 @@ To set up connection with Redshift, Statsig needs the following information
 - A staging schema that Statsig can write results to
 
 <Note>
-  SHA256 passwords are not currently supported, please utilize MD5 to avoid
-  issues.
+  SHA256 passwords are not currently supported, please utilize MD5 to avoid issues.
 </Note>
 
 You can find this information in your aws console within your specific cluster, as shown in the image below. (Open image in new tab for a bigger image). The service user should be able to read necessary experiment data, and be able to write to the Statsig staging schema you specify.
@@ -35,8 +34,7 @@ When you save the connection, we will run a series of tiny commands to test perm
 <Note>
   The provided Service Account will require the following attributes:
   `enable_case_sensitive_identifier`, `enable_case_sensitive_super_attribute`.
-  If these are not already set, Statsig will set them to TRUE upon setup
-  completion.
+  If these are not already set, Statsig will set them to TRUE upon setup completion.
 </Note>
 
 ## SSH Tunneling
@@ -51,6 +49,9 @@ To enable access, Statsig requires:
 Statsig will use this information to generate an SSH key. Please add this generated key to your `~/.ssh/authorized_keys` file on your SSH proxy machine to enable SSH tunneling.
 
 ### What IP addresses will Statsig access data warehouses from?
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
 
