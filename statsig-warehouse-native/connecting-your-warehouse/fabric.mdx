@@ -59,6 +59,10 @@ Any resources you wish to connect to must also be placed in a shared workspace. 
 
 The service principal can now access any resource within the workspace given the appropriate endpoint.
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from) to add Statsig's IP addresses in your firewall to only allow traffic originating from Statsig to access your Microsoft Fabric account. You can specify IP addresses to allow as part of [Microsoft Entra's conditional access](https://learn.microsoft.com/en-us/fabric/security/protect-inbound-traffic#entra-conditional-access). 
