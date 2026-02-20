@@ -62,6 +62,10 @@ GRANT SHOW TABLES, SHOW COLUMNS, SELECT ON <statsig_db>.* to <statsig_user>;
 GRANT CREATE, DROP, DELETE, ALTER, UPDATE, INSERT ON <statsig_db>.* to <statsig_user>;
 ```
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 ### What IP addresses will Statsig access data warehouses from?
 
 [See FAQ](/data-warehouse-ingestion/faq#what-ip-addresses-will-statsig-access-data-warehouses-from)
