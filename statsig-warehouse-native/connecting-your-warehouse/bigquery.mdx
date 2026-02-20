@@ -48,6 +48,10 @@ You need to grant some permissions for Statsig from your Google Cloud console in
 
 3. Following the steps above, give the "BigQuery Data Editor" role on the dataset you want Statsig to use for its staging data.
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 Now the service account should have the required permissions to run queries and materialize results.
 
 ## Using a First Party Service Account
@@ -97,13 +101,13 @@ Find your BigQuery Project ID below
   />
 </Frame>
 
-### What is Statsig's Customer ID on BigQuery
-
-C01d5f80s
-
 <Info>
 If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
 </Info>
+
+### What is Statsig's Customer ID on BigQuery
+
+C01d5f80s
 
 ### What IP addresses will Statsig access data warehouses from?
 
