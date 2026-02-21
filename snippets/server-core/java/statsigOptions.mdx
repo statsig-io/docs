@@ -28,12 +28,36 @@ If true, the SDK will not collect any logging within the session, including cust
 Required to be `true` when using segments with more than 1000 IDs.
 </ResponseField>
 
-<ResponseField name="disableUserAgentParsing" type="boolean" default="false">
-If true, the SDK will not parse User-Agent strings into `browserName`, `browserVersion`, `systemName`, `systemVersion`, and `appVersion` when needed for evaluation.
+<ResponseField name="idListsUrl" type="string">
+Custom URL for fetching ID lists.
+</ResponseField>
+
+<ResponseField name="idListsSyncIntervalMs" type="long">
+How often the SDK updates ID lists from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="initTimeoutMs" type="long" default="3000">
+The amount of time to wait for an `initialize()` response from the server (in milliseconds). The SDK will still fetch gates/configs in the background if this time is exceeded.
+</ResponseField>
+
+<ResponseField name="waitForUserAgentInit" type="boolean" default="false">
+If true, the SDK will wait for User-Agent parsing initialization to complete before returning from `initialize()`.
+</ResponseField>
+
+<ResponseField name="waitForCountryLookupInit" type="boolean" default="false">
+If true, the SDK will wait for country lookup initialization to complete before returning from `initialize()`.
 </ResponseField>
 
 <ResponseField name="disableUserCountryLookup" type="boolean" default="false">
 If true, the SDK will not parse IP addresses (from `user.ip`) into country codes when needed for evaluation.
+</ResponseField>
+
+<ResponseField name="useThirdPartyUAParser" type="boolean" default="false">
+If true, the SDK will use a third-party User-Agent parser instead of the built-in parser.
+</ResponseField>
+
+<ResponseField name="disableNetwork" type="boolean" default="false">
+If true, the SDK will not make any network requests. Useful for testing or when using a custom data store.
 </ResponseField>
 
 <ResponseField name="eventLoggingFlushIntervalMs" type="long">
@@ -42,6 +66,14 @@ How often events are flushed to Statsig servers (in milliseconds).
 
 <ResponseField name="eventLoggingMaxQueueSize" type="int">
 Maximum number of events to queue before forcing a flush.
+</ResponseField>
+
+<ResponseField name="eventLoggingMaxPendingBatchQueueSize" type="long">
+Maximum number of pending batches to queue before dropping events.
+</ResponseField>
+
+<ResponseField name="serviceName" type="string">
+Name of the service using the SDK. Used for observability and debugging.
 </ResponseField>
 
 <ResponseField name="dataStore" type="DataStore">
@@ -54,6 +86,14 @@ Interface to use persistent storage within the SDK.
 
 <ResponseField name="outputLoggerLevel" type="OutputLogger.LogLevel">
 Set the logging level for the SDK. Options: `NONE`, `ERROR`, `WARN`, `INFO`, `DEBUG`.
+</ResponseField>
+
+<ResponseField name="outputLoggerProvider" type="OutputLoggerProvider">
+Custom logger provider for SDK logging output.
+</ResponseField>
+
+<ResponseField name="proxyConfig" type="ProxyConfig">
+Configuration for using a proxy server for network requests.
 </ResponseField>
 
 <ResponseField name="observabilityClient" type="ObservabilityClient">
@@ -69,6 +109,9 @@ StatsigOptions options = new StatsigOptions.Builder()
     .setEnvironment("staging")
     .setSpecsSyncIntervalMs(10000)
     .setEventLoggingFlushIntervalMs(5000)
+    .setInitTimeoutMs(5000)
+    .setServiceName("my-service")
+    .setEnableIDLists(true)
     .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
     .build();
 
@@ -82,6 +125,9 @@ val options = StatsigOptions.Builder()
     .setEnvironment("staging")
     .setSpecsSyncIntervalMs(10000)
     .setEventLoggingFlushIntervalMs(5000)
+    .setInitTimeoutMs(5000)
+    .setServiceName("my-service")
+    .setEnableIDLists(true)
     .setOutputLoggerLevel(OutputLogger.LogLevel.INFO)
     .build()
 
