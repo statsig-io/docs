@@ -96,8 +96,48 @@
 </ResponseField>
 
 <ResponseField name="spec_adapters_config" type="Option<Vec<SpecAdapterConfig>>">
-  Configuration for specification adapters.
+  Configuration for specification adapters. Advanced settings to fetch from different sources (e.g., [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store) or to use different network protocols (HTTP vs gRPC streaming).
 </ResponseField>
+
+<Accordion title="SpecAdapterConfig">
+<ResponseField name="adapter_type" type="SpecsAdapterType" required>
+  Type of adapter to use for fetching specifications. Options:
+  - `NetworkHttp`: Standard HTTP polling (default)
+  - `NetworkGrpcWebsocket`: gRPC streaming for real-time updates
+  - `DataStore`: Fetch from a custom data store
+</ResponseField>
+
+<ResponseField name="init_timeout_ms" type="u64" required>
+  Maximum time (in milliseconds) to wait for initialization to complete.
+</ResponseField>
+
+<ResponseField name="specs_url" type="Option<String>">
+  Custom URL for fetching feature specifications. Use this to point to your own proxy server or custom endpoint. **Note:** When using gRPC (`NetworkGrpcWebsocket`), ensure the URL includes the `dns://` prefix (e.g., `dns://your-server.com:port`).
+</ResponseField>
+
+<ResponseField name="authentication_mode" type="Option<String>">
+  Authentication mode for secure connections (primarily for gRPC). Options: `"none"`, `"tls"`, `"mtls"`:
+  - `none`: No authentication
+  - `tls`: Transport Layer Security
+  - `mtls`: Mutual TLS (client and server authentication)
+</ResponseField>
+
+<ResponseField name="ca_cert_path" type="Option<String>">
+  Path to the Certificate Authority (CA) certificate file for TLS/mTLS authentication.
+</ResponseField>
+
+<ResponseField name="client_cert_path" type="Option<String>">
+  Path to the client certificate file for mTLS authentication.
+</ResponseField>
+
+<ResponseField name="client_key_path" type="Option<String>">
+  Path to the client private key file for mTLS authentication.
+</ResponseField>
+
+<ResponseField name="domain_name" type="Option<String>">
+  Domain name for the server (used for certificate validation in TLS/mTLS).
+</ResponseField>
+</Accordion>
 
 <ResponseField name="specs_adapter" type="Option<Arc<dyn SpecsAdapter>>">
   Custom adapter for specifications.
