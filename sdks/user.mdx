@@ -21,7 +21,7 @@ const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any
 
 ### I passed that attribute before - why do I need to pass it again?
 
-If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/users/profiles).
+If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/product-analytics/user-profiles).
 
 However, you cannot use a user's historical attributes for targeting or gate/experiment evaluation at runtime. Statsig evaluates gates and experiment buckets based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than querying previous data, or storing massive amounts of historical data in memory.
 
