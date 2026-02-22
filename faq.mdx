@@ -65,7 +65,7 @@ const assignments = statsig.getClientInitializeResponse(user, 'client-key', { ha
 
 ### What happens if I check a config that doesn't exist?
 
-The SDK returns defaults—`false` for gates and the supplied fallback for experiments/layers. You'll see the evaluation reason `Unrecognized`; learn more in [SDK debugging](/sdk/debugging#evaluation-reason). This applies to deleted, archived, or unseen configs (e.g., filtered by [target apps](/sdk-keys/target-apps/)).
+The SDK returns defaults—`false` for gates and the supplied fallback for experiments/layers. You'll see the evaluation reason `Unrecognized`; learn more in [SDK debugging](/sdks/debugging#evaluation-reason). This applies to deleted, archived, or unseen configs (e.g., filtered by [target apps](/sdks/target-apps)).
 
 ---
 
