@@ -64,7 +64,7 @@ if (quickstartExperiment.get("enable_banner", false)) {
 
 In this snippet, if this user is assigned to the Experiment group, they will be shown the banner. If they are assigned to the Control group, the banner will not be shown.
 
-Notice that we never actually have to [hardcode the experiment group name](/experiments-plus/getting-group/) ("Control" or "Experiment") in the code. This is because the Statsig SDK will automatically fetch the experiment configuration from the Statsig server and return the correct value based on the user's variant.
+Notice that we never actually have to [hardcode the experiment group name](/experiments/implementation/getting-group) ("Control" or "Experiment") in the code. This is because the Statsig SDK will automatically fetch the experiment configuration from the Statsig server and return the correct value based on the user's variant.
 
 ## Step 3: Monitor experiment diagnostics
 Now, if you run your code, the `showBanner()` function is called for users in the Test group. If you navigate to your experiment in the Statsig console and select the **Diagnostics** tab, you can see a live log stream of checks and events related to this experiment from your application.
