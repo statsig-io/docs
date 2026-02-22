@@ -1905,6 +1905,10 @@
     {
       "source": "/client/migration-guides/migrationfromoldreact",
       "destination": "/client/migration-guides/MigrationFromOldReact"
+    },
+    {
+      "source": "/metrics/health-checks",
+      "destination": "/experiments/monitor#experiment-health-checks"
     }
   ],
   "logo": {
