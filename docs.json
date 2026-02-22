@@ -402,7 +402,6 @@
                   "metrics/pulse",
                   "metrics/local-metrics",
                   "metrics/console",
-                  "metrics/health-checks",
                   {
                     "group": "Metrics 201 - Creating Metrics",
                     "pages": [
