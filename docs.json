@@ -263,6 +263,7 @@
                   "product-analytics/retention",
                   "product-analytics/distribution",
                   "product-analytics/user-journeys",
+                  "product-analytics/lifecycle",
                   "product-analytics/dashboards",
                   {
                     "group": "Users",
