@@ -36,11 +36,16 @@ Apply filters to focus on a specific segment (for example platform, country, app
 Each interval bucket classifies unique units into four categories (mutually exclusive):
 
 **New:** Used during this interval, and did not use at any point earlier within the lookback window (up to 1 year before this interval).
+
 **Returning:** Used during this interval, did not use in the immediately previous interval, and did use earlier within the lookback window.
+
 **Recurring:** Used during this interval and the immediately previous interval.
+
 **Dormant:** Used in the immediately previous interval, but not during this interval (often displayed below the axis to make churn visually obvious).
 
 ### Reading the chart
 **X-axis:** Time, grouped into your chosen interval buckets.
+
 **Y-axis:** Count of unique units.
+
 **Stacked bars:** Show how the composition of usage changes over time (new vs returning vs recurring), while the churn component (dormant) highlights drop-off between adjacent intervals.
