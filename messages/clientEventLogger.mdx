@@ -1,0 +1,63 @@
+---
+title: Client Event Logger Redesign
+---
+
+Version 3.31.3 of all client SDK's introduces a new event logger architecture focused on bounded queues, smart retry/backoff, and improved flush mechanisms.
+
+## What Changed
+
+- Logging now uses coordinated batching/scheduling instead of a single queue.
+- Retry behavior is split into:
+  - request-level retries (inside one send)
+  - batch-level retries (requeue + scheduled retry)
+- Queue growth is explicitly bounded. Under sustained pressure, events may be dropped by design to protect stability.
+
+## Architecture (High Level)
+
+- `PendingEvents`: in-memory collection of newly logged events.
+- `BatchQueue`: queue of batched events waiting to send.
+- `FlushCoordinator`: controls flush timing and modes.
+- `EventSender`: performs network sends and emits flush lifecycle events.
+- `FlushInterval`: manages cooldown/backoff timing.
+
+## Flush Mechanisms
+
+- `Limit flush`: flush when a full batch is reached. Performs opportunistic draining. Limit flush will keep flushing as long as each send over network is succesful. It will fall into backoff upon failure. 
+- `Scheduled:full-batch flush`: scheduler flushes full batches when cooldown allows.
+- `Scheduled:max-time flush`: scheduler flushes partial batches when max interval (60s) is reached.
+- `Manual flush`: explicit `client.flush()`.
+- `Shutdown flush`: best-effort on shutdown on explicit `client.shutdown()`, with persistence for shutdown-failed events in local storage.
+- `Quick flush`: startup optimization for first-event latency.
+
+## Retry Nuances
+
+- A single send can retry at the network layer.
+- Failed batches are also requeued and retried later.
+    - Non-retryable errors are not requeued and are dropped
+    - Each batch gets 3 retries and are dropped after exceeding that threshold
+- Backoff adjusts with success/failure and affects scheduled flush timing.
+
+## Drop Scenarios (Important)
+
+- Batch queue overflow during batching/requeue. if there are more events in the batch queue than the capacity, the oldest batches are dropped.
+    - queue capacity is batch size (default: 100) * max number of batches (30)
+    - You can increase the queue capacity by increasing the batch size with the option `loggingBufferMaxSize` 
+- Non-retryable network failure.
+- Max reties exceeded.
+- Storage persistence failure (disabled/shutdown paths).
+- Persisted-event cap exceeded (oldest events trimmed). Local storage has a hard maximum of 500 events. 
+
+This is an intentional tradeoff: bounded memory and predictable behavior over unbounded queue growth.
+
+## Behavioral Impact for Upgrades
+
+- Under very high throughput or long outages, event loss is possible by design.
+- Logging-disabled behavior defers/stores events and loads them when logging is re-enabled.
+
+## Recommended Post-Upgrade Validation
+
+- Validate flush modes in your environment: `limit`, `scheduled (full + max-time)`, `manual`, `shutdown`.
+- Validate lifecycle/error observability:
+  - `pre_logs_flushed`
+  - `logs_flushed`
+  - error/dropped-event signals
