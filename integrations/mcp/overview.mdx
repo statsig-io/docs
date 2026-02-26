@@ -58,19 +58,16 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
   </thead>
   <tbody>
     <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>GetAuditLogs</td>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Audit_Logs</td>
       <td>
         List audit logs in the project. Filter by:
         <ul>
           <li><code>id</code></li>
           <li><code>sortKey</code></li>
           <li><code>sortOrder</code></li>
-          <li><code>latestID</code></li>
           <li><code>tags</code> (single or array)</li>
-          <li><code>actionType</code> or <code>actionTypes</code></li>
-          <li><code>startDate</code> and <code>endDate</code> (required, max 30-day range)</li>
-          <li><code>limit</code></li>
-          <li><code>page</code></li>
+          <li><code>startDate</code></li>
+          <li><code>endDate</code></li>
         </ul>
       </td>
     </tr>
@@ -89,6 +86,14 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
   </thead>
   <tbody>
     <tr>
+      <td>Create_Dynamic_Config</td>
+      <td>Create new config</td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Dynamic_Config_Details_by_ID</td>
+      <td>Retrieve detailed config information</td>
+    </tr>
+    <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Dynamic_Configs</td>
       <td>
         List all dynamic config objects in the project. Filter by:
@@ -97,14 +102,6 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
           <li><code>tags</code> (single or array)</li>
         </ul>
       </td>
-    </tr>
-    <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Dynamic_Config_Details_by_ID</td>
-      <td>Retrieve detailed config information</td>
-    </tr>
-    <tr>
-      <td>Create_Dynamic_Config</td>
-      <td>Create new config</td>
     </tr>
     <tr>
       <td>Update_Dynamic_Config_Entirely</td>
@@ -123,6 +120,49 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>Create_Experiment</td>
+        <td>Create new experiment</td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_Experiment_Details_by_ID
+        </td>
+        <td>Get experiment details</td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_Experiment_Results
+        </td>
+        <td>
+          Retrieve experiment results/pulse data for a specific experiment.
+          Analyze by:
+          <ul>
+            <li>
+              <code>date</code>
+            </li>
+            <li>
+              <code>cuped</code>: whether or not to apply CUPED
+            </li>
+            <li>
+              <code>confidence</code>: Confidence threshold used for result
+              calculations
+            </li>
+          </ul>
+        </td>
+      </tr>
       <tr>
         <td
           style={{
@@ -155,49 +195,6 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
         </td>
       </tr>
       <tr>
-        <td
-          style={{
-            width: "280px",
-            overflowWrap: "anywhere",
-            wordBreak: "break-word",
-          }}
-        >
-          Get_Experiment_Details_by_ID
-        </td>
-        <td>Get experiment details</td>
-      </tr>
-      <tr>
-        <td>Create_Experiment</td>
-        <td>Create new experiment</td>
-      </tr>
-      <tr>
-        <td
-          style={{
-            width: "280px",
-            overflowWrap: "anywhere",
-            wordBreak: "break-word",
-          }}
-        >
-          Get_Experiment_Results
-        </td>
-        <td>
-          Retrieve experiment results/pulse data for a specific experiment.
-          Analyze by:
-          <ul>
-            <li>
-              <code>date</code>
-            </li>
-            <li>
-              <code>cuped</code>: whether or not to apply CUPED
-            </li>
-            <li>
-              <code>confidence</code>: Confidence threshold used for result
-              calculations
-            </li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
         <td>Update_Experiment_Entirely</td>
         <td>
           Replace entire experiment configuration (any excluded data will be
@@ -205,7 +202,7 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
         </td>
       </tr>
     </tbody>
-</table>
+  </table>
 </Accordion>
 
 <Accordion title="Gates (Feature Flags)">
@@ -219,23 +216,12 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
   </thead>
   <tbody>
     <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Gates</td>
-      <td>
-        List all gates/flags. Filter by:
-        <ul>
-          <li><code>type</code> (e.g., temporary, permanent, stale, tempmlate)</li>
-          <li><code>creatorName</code></li>
-          <li><code>tags</code></li>
-        </ul>
-      </td>
+      <td>Create_Gate</td>
+      <td>Create new gate/flag</td>
     </tr>
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Gate_Details_by_ID</td>
       <td>Get complete gate configuration details</td>
-    </tr>
-    <tr>
-      <td>Create_Gate</td>
-      <td>Create new gate/flag</td>
     </tr>
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Gate_Results</td>
@@ -244,6 +230,17 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
         <ul>
           <li><code>cuped</code>: Whether or not to apply CUPED. Defaults true</li>
           <li><code>confidence</code>: CI percentage, defaults 95</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Gates</td>
+      <td>
+        List all gates/flags. Filter by:
+        <ul>
+          <li><code>type</code> (e.g., temporary, permanent, stale, tempmlate)</li>
+          <li><code>creatorName</code></li>
+          <li><code>tags</code></li>
         </ul>
       </td>
     </tr>
@@ -266,32 +263,26 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
   </thead>
   <tbody>
     <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metric_Sources</td>
+      <td>
+        List all metric sources in the project
+      </td>
+    </tr>
+    <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metrics</td>
       <td>
         List all metrics in the project. Filter by:
         <ul>
           <li><code>showHiddenMetrics</code></li>
-          <li><code>tags</code> (single or array)</li>
-          <li><code>filters</code></li>
-          <li><code>limit</code> (max 100)</li>
-          <li><code>page</code></li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metric_Sources</td>
-      <td>
-        List all metric sources in the project. Supports:
-        <ul>
-          <li><code>limit</code> (max 100)</li>
-          <li><code>page</code></li>
+          <li><code>tags</code></li>
+          <li><code>filters</code> (supports `any of` and `all of`)</li> 
         </ul>
       </td>
     </tr>
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Metric_Definition_by_ID</td>
       <td>
-        Get the full definition for a metric, including its type, source, and configuration details, using required <code>path_id</code>.
+        Get the full definition for a metric, including its type, source, and configuration details
       </td>
     </tr>
   </tbody>
@@ -311,23 +302,17 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Segments</td>
       <td>
-        List all segments in the project. Supports:
-        <ul>
-          <li><code>limit</code></li>
-          <li><code>page</code></li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Create_Segment</td>
-      <td>
-        Create a new segment. Supports <code>name</code>, <code>id</code>, <code>description</code>, <code>type</code>, <code>idType</code>, <code>tags</code>, <code>team</code>, <code>teamID</code>, and <code>rules</code> for rule-based segments.
+        List all segments in the project
       </td>
     </tr>
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Update_Segment</td>
       <td>
-        Update an existing segment using required <code>path_id</code>. Supports optional <code>query_operation</code> values of <code>rule_based_rules</code>, <code>id_list_add</code>, and <code>user_store_add_ids</code>, plus the corresponding request body for rules or IDs.
+        Update an existing segment. Specifically:
+        <ul>
+         <li>Update rules for conditional segment types</li>
+         <li>Add IDs to user stores and ID lists</li>
+         </ul>
       </td>
     </tr>
   </tbody>
