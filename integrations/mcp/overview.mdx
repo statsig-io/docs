@@ -47,6 +47,73 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
 
 <AccordionGroup>
 
+<Accordion title="Audit Logs">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>GetAuditLogs</td>
+      <td>
+        List audit logs in the project. Filter by:
+        <ul>
+          <li><code>id</code></li>
+          <li><code>sortKey</code></li>
+          <li><code>sortOrder</code></li>
+          <li><code>latestID</code></li>
+          <li><code>tags</code> (single or array)</li>
+          <li><code>actionType</code> or <code>actionTypes</code></li>
+          <li><code>startDate</code> and <code>endDate</code> (required, max 30-day range)</li>
+          <li><code>limit</code></li>
+          <li><code>page</code></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
+<Accordion title="Dynamic Configs">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Dynamic_Configs</td>
+      <td>
+        List all dynamic config objects in the project. Filter by:
+        <ul>
+          <li><code>creatorName</code></li>
+          <li><code>tags</code> (single or array)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Dynamic_Config_Details_by_ID</td>
+      <td>Retrieve detailed config information</td>
+    </tr>
+    <tr>
+      <td>Create_Dynamic_Config</td>
+      <td>Create new config</td>
+    </tr>
+    <tr>
+      <td>Update_Dynamic_Config_Entirely</td>
+      <td>Replace entire dynamic config with new targeting and values</td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
 <Accordion title="Experiments (A/B Tests)">
   <table>
     <thead>
@@ -138,7 +205,7 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
         </td>
       </tr>
     </tbody>
-  </table>
+</table>
 </Accordion>
 
 <Accordion title="Gates (Feature Flags)">
@@ -188,7 +255,7 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
 </table>
 </Accordion>
 
-<Accordion title="Dynamic Configs">
+<Accordion title="Metrics and Metric Sources">
 
 <table>
   <thead>
@@ -199,26 +266,69 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
   </thead>
   <tbody>
     <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Dynamic_Configs</td>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metrics</td>
       <td>
-        List all dynamic config objects in the project. Filter by:
+        List all metrics in the project. Filter by:
         <ul>
-          <li><code>creatorName</code></li>
+          <li><code>showHiddenMetrics</code></li>
           <li><code>tags</code> (single or array)</li>
+          <li><code>filters</code></li>
+          <li><code>limit</code> (max 100)</li>
+          <li><code>page</code></li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Dynamic_Config_Details_by_ID</td>
-      <td>Retrieve detailed config information</td>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metric_Sources</td>
+      <td>
+        List all metric sources in the project. Supports:
+        <ul>
+          <li><code>limit</code> (max 100)</li>
+          <li><code>page</code></li>
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td>Create_Dynamic_Config</td>
-      <td>Create new config</td>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Metric_Definition_by_ID</td>
+      <td>
+        Get the full definition for a metric, including its type, source, and configuration details, using required <code>path_id</code>.
+      </td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
+<Accordion title="Segments">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Segments</td>
+      <td>
+        List all segments in the project. Supports:
+        <ul>
+          <li><code>limit</code></li>
+          <li><code>page</code></li>
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td>Update_Dynamic_Config_Entirely</td>
-      <td>Replace entire dynamic config with new targeting and values</td>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Create_Segment</td>
+      <td>
+        Create a new segment. Supports <code>name</code>, <code>id</code>, <code>description</code>, <code>type</code>, <code>idType</code>, <code>tags</code>, <code>team</code>, <code>teamID</code>, and <code>rules</code> for rule-based segments.
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Update_Segment</td>
+      <td>
+        Update an existing segment using required <code>path_id</code>. Supports optional <code>query_operation</code> values of <code>rule_based_rules</code>, <code>id_list_add</code>, and <code>user_store_add_ids</code>, plus the corresponding request body for rules or IDs.
+      </td>
     </tr>
   </tbody>
 </table>
