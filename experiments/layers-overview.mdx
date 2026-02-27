@@ -74,8 +74,12 @@ Even though layered experiments remain technically accessible via `getExperiment
 
 ## A Word on Exposures
 
-When calling `getLayer(LayerName<string>)` you won't see any exposure logged, however, you will see an exposure logged when accessing a specific parameter within the layer using `getLayer(LayerName<string>).get(Parameter<string>)`. The name of the exposure event is called `statsig::layer_exposure`.
+Calling `getLayer(LayerName<string>)` by itself does not log an exposure. A `statsig::layer_exposure` event is logged when you access a specific parameter within the Layer using `getLayer(LayerName<string>).get(Parameter<string>)`.
 
-- If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` exposure event is billable.
-- If the user is not assigned an experiment within the Layer, the `statsig::layer_exposure` exposure event is not billable.
-  > You will see multiple exposure events logged for each parameters accessed, but these are de-duped on Statsig servers.
+- If the user is assigned to an experiment within the Layer, the `statsig::layer_exposure` event is billable.
+- If the user is not assigned to an experiment within the Layer, the `statsig::layer_exposure` event is not billable.
+
+<Note> 
+Repeated reads of the same Layer parameter for the same user within the deduplication window may count as a single billable exposure.
+Reads of different Layer parameters may count separately.
+</Note>

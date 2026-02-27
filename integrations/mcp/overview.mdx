@@ -10,16 +10,16 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
     title="Codex" 
     icon="computer"
     href="/integrations/mcp/codex">
-    Set up Statsig MCP using Codex CLI or IDE extension.
+    Set up Statsig MCP using Codex Desktop App, CLI, or IDE extension.
   </Card>
 
-    <Card 
-    title="ChatGPT App" 
+    <Card
+    title="ChatGPT Connector"
     icon="message"
     href="/integrations/mcp/chatgpt-connector">
     Talk to your Statsig projects from within ChatGPT.
-  </Card>
 
+  </Card>
 
 </Columns>
 
@@ -45,29 +45,283 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
 
 ## Current MCP capabilities
 
-### Experiments (A/B Tests)
+<AccordionGroup>
 
-- **Get_List_of_Experiments**: List all experiments in the project with optional status filtering
-- **Get_Experiment_Details_by_ID**: Get experiment details including groups and parameters
-- **Create_Experiment**: Create new experiments with groups, hypothesis, etc.
-- **Update_Experiment_Entirely**: Replace entire experiment configuration (any excluded data will be removed - the MCP will understand this.)
+<Accordion title="Audit Logs">
 
-### Gates (Feature Flags)
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Audit_Logs</td>
+      <td>
+        List audit logs in the project. Filter by:
+        <ul>
+          <li><code>id</code></li>
+          <li><code>sortKey</code></li>
+          <li><code>sortOrder</code></li>
+          <li><code>tags</code> (single or array)</li>
+          <li><code>startDate</code></li>
+          <li><code>endDate</code></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
 
-- **Get_List_of_Gates**: List all gates/flags with optional type filtering (e.g., STALE, PERMANENT)
-- **Get_Gate_Details_by_ID**: Get complete gate configuration details (rules, ID type, etc.)
-- **Create_Gate**: Create new gate/flag with targeting rules and settings
-- **Update_Gate_Entirely**: Replace entire gate setup with new rules and settings (any excluded data will be removed - the MCP will understand this.)
+<Accordion title="Dynamic Configs">
 
-### Dynamic Configs
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create_Dynamic_Config</td>
+      <td>Create new config</td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Dynamic_Config_Details_by_ID</td>
+      <td>Retrieve detailed config information</td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Dynamic_Configs</td>
+      <td>
+        List all dynamic config objects in the project. Filter by:
+        <ul>
+          <li><code>creatorName</code></li>
+          <li><code>tags</code> (single or array)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Update_Dynamic_Config_Entirely</td>
+      <td>Replace entire dynamic config with new targeting and values</td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
 
-- **Get_List_of_Dynamic_Configs**: List all dynamic config objects in the project
-- **Get_Dynamic_Config_Details_by_ID**: Retrieve detailed config including targeting rules, return values
-- **Create_Dynamic_Config**: Create new config with rules, return values, etc.
-- **Update_Dynamic_Config_Entirely**: Replace entire dynamic config with new targeting and values (any excluded data will be removed - the MCP will understand this.)
+<Accordion title="Experiments (A/B Tests)">
+  <table>
+    <thead>
+      <tr>
+        <th style={{ width: "280px" }}>Tool</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Create_Experiment</td>
+        <td>Create new experiment</td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_Experiment_Details_by_ID
+        </td>
+        <td>Get experiment details</td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_Experiment_Results
+        </td>
+        <td>
+          Retrieve experiment results/pulse data for a specific experiment.
+          Analyze by:
+          <ul>
+            <li>
+              <code>date</code>
+            </li>
+            <li>
+              <code>cuped</code>: whether or not to apply CUPED
+            </li>
+            <li>
+              <code>confidence</code>: Confidence threshold used for result
+              calculations
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_List_of_Experiments
+        </td>
+        <td>
+          List all experiments in the project. Filter by:
+          <ul>
+            <li>
+              <code>status</code>: Supported values include
+              <code>active</code>, <code>setup</code>,<code>decision_made</code>
+              , <code>abandoned</code>,<code>archived</code>,{" "}
+              <code>experiment_stopped</code>,<code>assignment_stopped</code>
+            </li>
+            <li>
+              <code>creatorName</code>
+            </li>
+            <li>
+              <code>tags</code>
+            </li>
+            <li>
+              <code>stale</code>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Update_Experiment_Entirely</td>
+        <td>
+          Replace entire experiment configuration (any excluded data will be
+          removed)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</Accordion>
+
+<Accordion title="Gates (Feature Flags)">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create_Gate</td>
+      <td>Create new gate/flag</td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Gate_Details_by_ID</td>
+      <td>Get complete gate configuration details</td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Gate_Results</td>
+      <td>
+        Retrieve pulse/results for a specific gate rule.
+        <ul>
+          <li><code>cuped</code>: Whether or not to apply CUPED. Defaults true</li>
+          <li><code>confidence</code>: CI percentage, defaults 95</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Gates</td>
+      <td>
+        List all gates/flags. Filter by:
+        <ul>
+          <li><code>type</code> (e.g., temporary, permanent, stale, tempmlate)</li>
+          <li><code>creatorName</code></li>
+          <li><code>tags</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Update_Gate_Entirely</td>
+      <td>Replace entire gate setup with new rules and settings (any excluded data will be removed)</td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
+<Accordion title="Metrics and Metric Sources">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metric_Sources</td>
+      <td>
+        List all metric sources in the project
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Metrics</td>
+      <td>
+        List all metrics in the project. Filter by:
+        <ul>
+          <li><code>showHiddenMetrics</code></li>
+          <li><code>tags</code></li>
+          <li><code>filters</code> (supports `any of` and `all of`)</li> 
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Metric_Definition_by_ID</td>
+      <td>
+        Get the full definition for a metric, including its type, source, and configuration details
+      </td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
+<Accordion title="Segments">
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "280px" }}>Tool</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Segments</td>
+      <td>
+        List all segments in the project
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Update_Segment</td>
+      <td>
+        Update an existing segment. Specifically:
+        <ul>
+         <li>Update rules for conditional segment types</li>
+         <li>Add IDs to user stores and ID lists</li>
+         </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</Accordion>
+
+</AccordionGroup>
 
 Need other functions? We're happy to consider additions by request, reach out in Slack.
-
 
 ## Use Cases
 

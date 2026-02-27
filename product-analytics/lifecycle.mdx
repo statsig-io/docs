@@ -8,7 +8,7 @@ description: 'Understand how users start, return, remain, and churn over time'
 Lifecycle charts in Metrics Explorer help you understand how usage changes over time by classifying your unique units (for example user_id) within each time interval based on whether they used an event recently, returned after a gap, continued to use it, or churned.
 
 <Frame>
-  <img src="/images/product-analytics/lifecycle/lifecycle_chart_demo.png" alt="Life Cycle chart interface in Metrics Explorer" />
+  <img src="/images/product-analytics/lifecycle/lifecycle_chart_demo_updated_02262025.png" alt="Life Cycle chart interface in Metrics Explorer" />
 </Frame>
 
 ### Use Cases
@@ -45,7 +45,7 @@ Each interval bucket classifies unique units into four categories (mutually excl
 
 **New:** Used during this interval, and did not use at any point earlier within the lookback window (up to 1 year before this interval).
 
-**Returning:** Used during this interval, did not use in the immediately previous interval, and did use earlier within the lookback window.
+**Resurrected:** Used during this interval, did not use in the immediately previous interval, and did use earlier within the lookback window.
 
 **Recurring:** Used during this interval and the immediately previous interval.
 
@@ -56,4 +56,4 @@ Each interval bucket classifies unique units into four categories (mutually excl
 
 **Y-axis:** Count of unique units.
 
-**Stacked bars:** Show how the composition of usage changes over time (new vs returning vs recurring), while the churn component (dormant) highlights drop-off between adjacent intervals.
+**Stacked bars:** Show how the composition of usage changes over time (new vs resurrected vs recurring), while the churn component (dormant) highlights drop-off between adjacent intervals.
