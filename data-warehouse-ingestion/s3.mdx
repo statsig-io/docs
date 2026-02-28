@@ -62,3 +62,42 @@ For each dataset you're ingesting through S3, we expect a top level folder in th
 <Frame>
   <img src="/images/data-warehouse-ingestion/s3/228701015-56804b30-522a-4293-b48e-4da3c02b9b6d.png" alt="S3 bucket folder structure example" />
 </Frame>
+
+### S3 Export Permissions
+
+For exports, the user will need bucket-level permissions to list the bucket and retrieve its location, as well as object-level permissions to read, write, and delete objects (including managing multipart uploads). You can use the bucket policy below for convenience, replacing STATSIG_IAM_USER and YOUR_S3_BUCKET as needed.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::999689269917:user/STATSIG_IAM_USER"
+            },
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::999689269917:user/STATSIG_IAM_USER"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:DeleteObjectVersion",
+                "s3:AbortMultipartUpload",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListMultipartUploadParts"
+            ],
+            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET/*"
+        }
+    ]
+}
+```
