@@ -40,7 +40,9 @@ Once you have obtained all of the information mentioned above:
 
 1. Navigate to your Organization's [`Info Settings` page](https://console.statsig.com/settings?tab=organization) and click the `Enable` button for Single Sign-on.
 
-_Note that an `Owner`/`Admin` role in your Statsig organization is required to configure SSO on Statsig_ 
+<Note> 
+An `Owner`/`Admin` role in your Statsig organization is required to configure SSO on Statsig
+</Note>
 
 <Frame>
   <img src="/images/access-management/sso/overview/a31ba14d-9476-4897-afc6-5c39c2f932c9.png" alt="SSO enable button in organization settings" />
@@ -58,7 +60,9 @@ _Note that an `Owner`/`Admin` role in your Statsig organization is required to c
   <img src="/images/access-management/sso/overview/e3743107-2e26-4944-b2fb-f90536163b6f.png" alt="SSO link generated for team login" />
 </Frame>
 
-Users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider if the organization has only one open project, and have access only to those Projects. Users that sign in through an SSO link will also not be able to edit or view any of their personal account settings. By default, users who are provisioned via SSO will be assigned the "Member" Role. 
+By default, users who are provisioned via SSO will be assigned the "Member" role in the organization. 
+If the organization has only one open project, users that sign in through an SSO link will automatically join any Projects that have SSO enabled with the same OIDC Provider. 
+If there are multiple projects, users will be added to the organziation but will need to request to join open projects or be invited to closed projects.
 
 Enabling `Strict SSO` will require that all members of a Project besides the `Owner` must log in to the Statsig Console through SSO with the configured provider to access the Project.
 
