@@ -1,0 +1,126 @@
+---
+title: "Switchback V2"
+---
+
+## What is a Switchback Experiment?
+
+A **switchback experiment** tests two versions of a system by **alternating them over time**. This methodology is ideal when it’s not possible to isolate user experiences between treatment and control.
+
+Sometimes you can’t run a traditional AB test because you can’t cleanly isolate experiences between treatment and control. For example, on a rideshare platform, offering lower prices to a treatment group might increase demand for cars and indirectly affect the experience for control riders. A switchback experiment solves this by measuring impact over time while alternating between experiences.
+
+## Overview
+
+At a high level Switchback Experiments work by
+
+1. Define a cluster and it’s schedule: A cluster represents a grouping of users who will switch between experiences on the same cadence.
+
+   Ex. All users in New York and Chicago follow the schedule
+   - 9AM - 10AM: Control
+   - 10AM - 11AM: Treatment
+   - 11AM - 12PM: Control
+   - 12PM - 1PM: Treatment
+2. Aggregate data by each time bucket: The bucket is each individual window of time where a user’s experience is kept consistent. Each bucket will be used as a data point for analysis
+
+   Ex. The switchback experiment from above has 4 buckets, 2 for control and 2 in treatment
+   - Control
+     - Bucket 1: 9AM -10AM
+     - Bucket 3: 11AM - 12PM
+   - Treatment
+     - Bucket 2: 10AM -11AM
+     - Bucket 4: 12PM - 1PM
+3. Run regression: Account for the impact of things like time-of-day, day-of-week, or cluster attributes on the measured difference between treatment and control
+4. Compare results: The final output resembles a traditional AB test with things like estimated lift and confidence intervals
+
+At a high level, switchback experiments work as follows:
+
+1. **Define clusters and their schedule:** A **cluster** is a group of users that switch between experiences on the same cadence.
+
+   _Example:_ All users in **New York** and **Chicago** follow this schedule:
+   - **9:00–10:00 AM:** Control
+   - **10:00–11:00 AM:** Treatment
+   - **11:00 AM–12:00 PM:** Control
+   - **12:00–1:00 PM:** Treatment
+2. **Aggregate data by time buckets:** A bucket represents a single window of time during which the user experience remains constant. Each bucket is treated as one data point in the analysis.
+
+   _Example:_ In the schedule above, the experiment produces **four buckets**—two for control and two for treatment.
+   - **Control**
+     - Bucket 1: 9:00–10:00 AM
+     - Bucket 3: 11:00 AM–12:00 PM
+   - **Treatment**
+     - Bucket 2: 10:00–11:00 AM
+     - Bucket 4: 12:00–1:00 PM
+3. **Run regression analysis:** Statistical models account for factors such as time of day, day of week, or cluster attributes when estimating the difference between treatment and control.
+4. **Compare results:** The final output resembles a traditional A/B test, including metrics such as estimated lift and confidence intervals.
+
+# Setting up an Switchback experiment
+
+Defining the hypothesis, metrics, groups, targeting, and parameters follows the same general workflow as a traditional A/B test. What makes switchback experiments different are three additional configurations: **clusters**, **scheduling**, and **analysis configuration**.
+
+## Defining Cluster(s)
+
+Clusters are groups of users who follow the same experience cadence. In traditional A/B tests, the selected ID Type acts as both the randomization unit and the unit at which metrics are calculated. In a switchback experiment, however, the ID Type defines the unit for metric calculation, while clusters determine which experience a user receives over time.
+
+In Statsig, there are three ways to define a cluster.
+
+| Method | Description                                                                                                                | Inputs                                                                                                                                                                                                                                                                                                                                       |
+| :----- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Single | Single Cluster where all users eligible for the experiment follows the same cadence                                        | **Start With:** defines which experience (control or treatment) starts the switchback                                                                                                                                                                                                                                                        |
+| Auto   | Provides a two-cluster configuration where users are automatically assigned to each cluster based on the specified inputs. | **Cluster ID Type:** Select a custom ID from the Exposure User Object that Statsig will use to split users into clusters. For example, if server_id is present on the user object, Statsig will randomly assign server_id values to each cluster, and users will be clustered based on their server_id.                                      |
+| Manual | Two-cluster configuration where users are manually assigned to each cluster.                                               | **Cluster Field:** Select a field from the Exposure User Object that will be used to assign users to clusters. For example, if Country is selected as the Cluster Field, you can assign specific countries to either Cluster 1 or Cluster 2. Users will then be placed into clusters based on the value of that field (e.g., their country). |
+
+Fields used as Cluster ID Type (Auto) and Cluster Field (Manual) can be used as covariates in the regression analysis and will be available to break down metric data in the results section.
+
+## Defining Scheduling
+
+Once the clusters are configured, you can define the schedule for experiences within each cluster.
+
+<Frame>
+  ![Screenshot2026 02 25at9 45 50AM](/images/Screenshot2026-02-25at9.45.50AM.png)
+</Frame>
+
+### Inputs
+
+**Window Size / Unit:** The length of each window during which a user’s experience remains constant.
+
+**Experiment Start Date / Time / Timezone:** The date and time when the switchback experiment begins. All clusters start simultaneously. The experiment cannot be started if the selected start date or time is in the past when the experiment is started.
+
+**Target Duration:** The intended length of time to run the experiment. The experiment will **not** automatically stop when this duration is reached. To end the experiment at this point, enable **“Stop Experiment at target duration.”** When the experiment stops, all users will be served the default experiment value configured in code.
+
+## Define Analysis Configuration
+
+In Statsig, you can configure how exposures and metrics are handled during the transition periods between switchback windows. For example, if a rideshare marketplace switches from Control to Treatment at 9 AM, the system may still experience lingering effects from the Control period—such as drivers already on active trips or riders remaining in the queue from earlier periods.
+
+In these cases, you may want to exclude exposures and metric data recorded shortly after the switch, since they may still reflect the previous experience.
+
+In Statsig, this can be done by configuring **Burn-in** and **Burn-out** periods in the **Analysis Configuration** section.
+
+<Frame>
+  ![Screenshot2026 02 25at2 26 44PM](/images/Screenshot2026-02-25at2.26.44PM.png)
+</Frame>
+
+### Inputs
+
+**Burn-in Period:** The amount of time at the beginning of each window that is excluded from analysis.
+
+**Burn-out Period:** The amount of time at the end of each window that is excluded from analysis.
+
+**Metric Calculation:** Determines how metric events are attributed to an exposure. The following options define how metrics are aggregated within each switchback window.
+
+<Frame>
+  ![Screenshot2026 02 25at2 44 24PM](/images/Screenshot2026-02-25at2.44.24PM.png)
+</Frame>
+
+- **Period from first exposure:** Aggregates metric data for a specified period of time after the user’s first exposure.
+- **Entire window:** Aggregates metric data across the full switchback window.
+- **Period between burn-in and burn-out:** Aggregates metric data only within the portion of the window between the burn-in and burn-out periods.
+
+**Exposure Calculation:** Defines how exposures logged during switchback windows are handled in the analysis. The following options are available:
+
+<Frame>
+  ![Screenshot2026 02 25at2 50 36PM](/images/Screenshot2026-02-25at2.50.36PM.png)
+</Frame>
+
+- **Include exposures in burn periods:** Considers all exposures recorded during the switchback window, including those that occur within the burn-in and burn-out periods.
+- **Exclude exposures in burn periods:** Considers only exposures recorded between the burn-in and burn-out periods.
+
+**Specify Pre-computed User Dimensions:** Configure user dimensions that can be used to break down experiment results in the results section. These fields are selected from the exposure user properties or entity properties.
