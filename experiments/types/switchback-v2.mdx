@@ -84,7 +84,7 @@ Once the clusters are configured, you can define the schedule for experiences wi
 
 **Experiment Start Date / Time / Timezone:** The date and time when the switchback experiment begins. All clusters start simultaneously. The experiment cannot be started if the selected start date or time is in the past when the experiment is started.
 
-**Target Duration:** The intended length of time to run the experiment. The experiment will **not** automatically stop when this duration is reached. To end the experiment at this point, enable **“Stop Experiment at target duration.”** When the experiment stops, all users will be served the default experiment value configured in code.
+**Target Duration:** The intended length of time the experiment should run. By default, the experiment will **not automatically stop** when this duration is reached—users will continue to receive the experiment’s switched experiences according to the configured schedule. If **“Stop Experiment at target duration”** is enabled, the experiment will automatically stop at the end of the specified duration. At that point, users will be served the default experiment value configured in code.
 
 ## Define Analysis Configuration
 
@@ -123,4 +123,4 @@ In Statsig, this can be done by configuring **Burn-in** and **Burn-out** periods
 - **Include exposures in burn periods:** Considers all exposures recorded during the switchback window, including those that occur within the burn-in and burn-out periods.
 - **Exclude exposures in burn periods:** Considers only exposures recorded between the burn-in and burn-out periods.
 
-**Specify Pre-computed User Dimensions:** Configure user dimensions that can be used to break down experiment results in the results section. These fields are selected from the exposure user properties or entity properties.
+**[Coming soon] Specify Pre-computed User Dimensions:** Configure user dimensions that can be used to break down experiment results in the results section. These fields are selected from the exposure user properties or entity properties.
