@@ -305,7 +305,20 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
     <tr>
       <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_List_of_Segments</td>
       <td>
-        List all segments in the project
+        List all segments in the project. Supports:
+        <ul>
+          <li><code>limit</code></li>
+          <li><code>page</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ width: "280px", overflowWrap: "anywhere", wordBreak: "break-word" }}>Get_Segment_by_ID</td>
+      <td>
+        Get all details about a segment in the Statsig Console. Requires:
+        <ul>
+          <li><code>id</code></li>
+        </ul>
       </td>
     </tr>
     <tr>
