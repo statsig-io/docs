@@ -14,14 +14,14 @@ At a high level Switchback Experiments work by
 
 1. Define a cluster and it’s schedule: A cluster represents a grouping of users who will switch between experiences on the same cadence.
 
-   Ex. All users in New York and Chicago follow the schedule
+   _Example:_ All users in New York and Chicago follow the schedule
    - 9AM - 10AM: Control
    - 10AM - 11AM: Treatment
    - 11AM - 12PM: Control
    - 12PM - 1PM: Treatment
 2. Aggregate data by each time bucket: The bucket is each individual window of time where a user’s experience is kept consistent. Each bucket will be used as a data point for analysis
 
-   Ex. The switchback experiment from above has 4 buckets, 2 for control and 2 in treatment
+   _Example:_ The switchback experiment from above has 4 buckets, 2 for control and 2 in treatment
    - Control
      - Bucket 1: 9AM -10AM
      - Bucket 3: 11AM - 12PM
