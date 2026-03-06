@@ -273,8 +273,7 @@
                   {
                     "group": "Users",
                     "pages": [
-                      "product-analytics/users-tab",
-                      "product-analytics/user-profiles"
+                      "product-analytics/users-tab"                    
                     ]
                   }
                 ]
