@@ -377,6 +377,7 @@
                       "integrations/mcp/manual-setup"
                     ]
                   },
+                  "integrations/agent-skills",
                   "integrations/ai_development_with_statsig",
                   "integrations/github-ai-integration"
                 ]

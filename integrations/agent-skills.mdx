@@ -1,0 +1,36 @@
+---
+title: Agent Skills Repository
+description: Use the public Statsig agent-skills repository to extend your coding agents with reusable Statsig workflows and capabilities.
+---
+
+The [statsig-io/agent-skills](https://github.com/statsig-io/agent-skills) repository contains reusable skill packs for coding agents. Skills are packaged, shareable workflows for repeated tasks, built on top of the Statsig MCP tools and Console API.
+These skills build on the open [Agent Skills standard](https://agentskills.io/).
+
+## Supported skills today
+
+| Name | Description |
+| --- | --- |
+| `statsig` | Manage Statsig experiments, gates, dynamic configs, segments, layers, and audit logs through the Statsig MCP. |
+| `statsig-create-cloud-metric` | Draft or execute Statsig Cloud metric creation requests through the Statsig Console API. |
+| `statsig-dashboard` | Create, read, and update you Statsig dashboards. |
+
+## Install from the repository
+
+Install a skill from this repo with the Vercel `skills` CLI:
+
+```bash
+npx skills add statsig-io/agent-skills
+```
+
+You can also:
+
+- List installable skills: `npx skills add statsig-io/agent-skills --list`
+- Install a skill globally for your user: `npx skills add -g statsig-io/agent-skills --skill statsig-dashboard`
+- Install every skill in this repo: `npx skills add statsig-io/agent-skills --all`
+
+After installation, compatible agents can discover each skill from its metadata.
+
+## Requirements
+
+- `STATSIG_CONSOLE_API_KEY` for Statsig Console API access
+- Python 3 if you want to run bundled helper scripts directly
