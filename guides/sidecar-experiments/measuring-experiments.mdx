@@ -1,6 +1,6 @@
 ---
 title: Measuring Experiments
-description: Learn how to measure experiment results using autocapture, manual tracking API, and post-experiment callbacks for analytics integrations.
+description: Learn how to measure experiment results using autocapture, the manual tracking API, and Sidecar callbacks for analytics integrations.
 ---
 
 ## Using Autocapture
@@ -23,30 +23,42 @@ StatsigSidecar.logEvent('Order', null, {
 });
 ```
 
-## Post-Experiment Callback for outbound integrations
-You can bind a callback that gets invoked after Sidecar has run experiments (also gets called when there are no experiments), 
-allowing you to run code that processes the experiment assignments as needed.
+## Per-assignment callback for outbound integrations
+You can bind a callback that gets invoked each time Sidecar activates an experiment assignment, including experiments activated later by prerun scripts.
 
 _This method should be defined anywhere prior to the Sidecar client script._
 
 ```js
-window.postExperimentCallback = function(statsigClient, experimentIds) {
-  /** 
-   * add your own callback routine here
-   * ie; annotating 3rd party analytics tools with assignment info
-      
-    var evarValue = [];
-    experimentIds.forEach(function(expId) {
-      var inExp = statsigClient.getExperiment(expId, { disableExposureLog: true }).groupName;
-      if(inExp) {
-        evarValue.push(expId + ':' + inExp);
-      }
+window.statsigSidecarConfig = {
+  onExperimentEvaluation: function (event) {
+    /**
+     * add your own callback routine here
+     * ie; annotating 3rd party analytics tools with assignment info
+     */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "statsig_experiment_evaluation",
+      experiment_name: event.experimentName,
+      experiment_group_name: event.groupName,
     });
-    evarValue = evarValue.join(',');
-   */
+  }
+}
+```
+
+The callback payload includes:
+- `event.name` - always `"experiment_evaluation"`
+- `event.experiment` - the full Statsig experiment object
+- `event.experimentName` - the Sidecar experiment name, or the Statsig experiment name as a fallback
+- `event.groupName` - the assigned group / variant, or `null` if unavailable
+
+## Post-Experiment Callback for one-time readiness hooks
+You can still bind `window.postExperimentCallback` if you need a callback after Sidecar finishes its initial run. This callback can fire even when there are no experiments, and it does not cover experiments that are activated later by prerun scripts.
+
+```js
+window.postExperimentCallback = function(statsigClient, experimentIds) {
+  // One-time initialization hook after Sidecar finishes the initial run
 }
 ```
 
 #### Disabling All Logging
 To disable all logging to statsig (both autocapture events and logging who has seen your experiments) append the following query string parameter to the Sidecar script URL: `&autostart=0`. This may be useful if you're dealing with GDPR compliance, and you can later re-enable events with `client.updateRuntimeOptions({disableLogging: false})`
-

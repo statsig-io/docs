@@ -91,7 +91,19 @@ Plus all elements offer the opportunity to rearrange or hide attributes.
 
 By clicking save in the bottom right hand side of the visual editor, your changes will be saved to the console. If you return to the page in console and refresh, your changes should be listed. You can preview your experiment by clicking the three dots in the variant table. When you're confident with your changes, you can go ahead and launch the experiment by clicking "Start" in the top right hand corner. After this, your experiment will begin appearing for end users and your metrics will be collected.
 
-### Advanced Script Setup
-Add these query string parameters to the Sidecar script URL for additional controls over Sidecar client behavior
-- `&reduceflicker=0` will disable the brief hiding of the `<body>` tag while the client initializes
-- `&autocapture=0` will disable event autocapture
+### Testing a specific user with overrides
+
+If you want to QA a specific Visual Editor variant before launch, add an ID override for a known test user in the experiment's **Manage Overrides** flow. For example, you can create a user ID like `preview_test` and map it to the variant you want to inspect.
+
+Then open your site with that same user ID in the query string:
+
+`https://www.example.com/?overrideuser=preview_test`
+
+This gives you a repeatable way to preview how that exact test user will experience the page. For teams testing multiple variants, it can be helpful to create a few dedicated IDs such as `preview_control`, `preview_test_a`, and `preview_test_b`.
+
+## Advanced topics
+
+If you need more advanced Sidecar controls after the basic setup is working:
+
+- See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for script URL tuning, runtime options, consent, and identity configuration.
+- See [Measuring Experiments](/guides/sidecar-experiments/measuring-experiments#per-assignment-callback-for-outbound-integrations) for outbound analytics callbacks and other measurement patterns.
