@@ -8,7 +8,7 @@ Statsig computes the Px value using all non-zero and non-null unit-level values 
   <Tab title="Statsig Cloud">
 At Statsig, the default percentile for winsorization is 99.9%. This reduces the influence of extreme outliers caused by factors such as logging errors or bad actors.
 
-Winsorization is applied to to sum and event count metrics, including imported metrics. Winsorization will not be applied to Mean, Ratio, Funnel, Participation, or User Accounting metrics.
+Winsorization is applied to sum, event count, mean, ratio, and funnel metrics, including imported metrics. Winsorization will not be applied to Participation or User Accounting metrics.
   </Tab>
   <Tab title="Warehouse Native">
 Statsig Warehouse Native lets you configure this per metric - and choose explicitly the upper and/or lower bounds to apply.
