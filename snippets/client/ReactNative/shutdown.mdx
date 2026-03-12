@@ -1,0 +1,12 @@
+```tsx
+import { useEffect } from 'react';
+import { useStatsigClient } from '@statsig/react-native-bindings';
+
+const { client } = useStatsigClient();
+
+useEffect(() => {
+  return () => {
+    void client.shutdown();
+  };
+}, [client]);
+```
