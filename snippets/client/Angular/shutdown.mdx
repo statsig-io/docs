@@ -1,0 +1,11 @@
+```ts
+import { StatsigService } from '@statsig/angular-bindings';
+
+export class ShutdownStatsigComponent {
+  constructor(private statsigService: StatsigService) {}
+
+  ngOnDestroy(): void {
+    void this.statsigService.getClient().shutdown();
+  }
+}
+```
