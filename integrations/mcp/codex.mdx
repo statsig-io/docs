@@ -1,24 +1,71 @@
 ---
 title: Statsig MCP with Codex
-description: Learn how to set up the Statsig MCP server using Codex CLI, IDE extension, or App.
+description: Learn how to set up the Statsig MCP server using Codex CLI, IDE extension, or Desktop App.
 ---
 
 ## Overview
 
 You can set up the Statsig MCP server using an API key on Codex CLI, IDE Extension, and App today.
 
-## Installation
+## Installation and Authentication via OAuth
 
-To setup Statsig MCP with Codex, add the below to your `~/.codex/config.toml` file:
+<Note>
+  MCP OAuth only supports Personal Console API Keys. Ensure your Statsig org
+  owner has enabled Personal Console API Keys creation for your role
+  [here](https://console.statsig.com/settings?tab=organization){" "}
+</Note>
+
+On Codex, we recommend using OAuth and the HTTP transport directly. Authentication will be saved for future sessions.
+
+If you are working in Codex CLI or IDE extension, run the below command to add the Statsig MCP server into your `~/.codex/config.toml` file and restart Codex.
+
+```bash
+codex mcp add statsig --url https://api.statsig.com/v1/mcp
+```
+
+This command will add the Statsig MCP server to your Codex configuration in `~/.codex/.toml` using HTTP transport and OAuth. Codex should open a browser window for you to sign in to your Statsig account and authorize access to your Statsig project.
 
 ```toml
 [mcp_servers.statsig]
+url = "https://api.statsig.com/v1/mcp"
+trust_level = "trusted"
+enabled = true
+```
+
+If you are working in Codex Desktop, you can complete the same thing by going to Settings > MCP servers and adding a new custom server. Set up via Streamable HTTP, with URL set to `https://api.statsig.com/v1/mcp`:
+
+<img
+  src="/images/integrations/mcp/statsig-codex-desktop-app-setup.png"
+  alt="Set up Statsig MCP in the Codex Desktop App"
+  className="w-full rounded-lg border border-gray-200 dark:border-gray-800"
+/>
+
+<Accordion title="Using API key instead of OAuth">
+
+```toml
+[mcp_servers.statsig]
+url = "https://api.statsig.com/v1/mcp"
 command = "npx"
 args = ["--yes", "mcp-remote", "https://api.statsig.com/v1/mcp", "--header", "statsig-api-key: console-YOUR-CONSOLE-API-KEY"]
 trust_level = "trusted"
+enabled = true
 ```
 
 Replace `console-YOUR-CONSOLE-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
+
+</Accordion>
+
+## Verification
+
+You can verify the Statsig MCP has been set up in Codex by either:
+
+1. (In Codex Desktop) Navigating to Settings > MCP servers, where you should see statsig turned on under custom servers.
+   <img
+     src="/images/integrations/mcp/statsig-codex-desktop-app-complete.png"
+     alt="Statsig MCP in the Codex Desktop App MCP Servers List"
+     className="w-full rounded-lg border border-gray-200 dark:border-gray-800"
+   />
+2. Running `/mcp` in Codex CLI, which will list available MCP tools (including Statsig). Make sure status is enabled for Codex to connect to the Statsig MCP.
 
 ## Using Statsig MCP with Codex
 
