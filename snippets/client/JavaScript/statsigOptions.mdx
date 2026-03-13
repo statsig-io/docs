@@ -34,6 +34,40 @@
   Override network endpoints per request type.
 </ResponseField>
 
+<Accordion title="Network Config Options">
+<ResponseField name="api" type="string" default="https://api.statsig.com">
+  Base URL for all requests. The SDK appends endpoint paths like `/initialize` and `/rgstr`; append `/v1` when your proxy expects it.
+</ResponseField>
+
+<ResponseField name="initializeUrl" type="string" default="https://featureassets.org/v1/initialize">
+  Endpoint for initialization requests only. Takes precedence over `api` for `/initialize`.
+</ResponseField>
+
+<ResponseField name="initializeFallbackUrls" type="string[]">
+  Fallback endpoints for initialization requests only. This does not create a generic fallback for `api`.
+</ResponseField>
+
+<ResponseField name="logEventUrl" type="string" default="https://prodregistryv2.org/v1/rgstr">
+  Endpoint for event uploads.
+</ResponseField>
+
+<ResponseField name="logEventFallbackUrls" type="string[]">
+  Fallback endpoints for event uploads only. This does not create a generic fallback for `api`.
+</ResponseField>
+
+<ResponseField name="networkTimeoutMs" type="number" default="10000">
+  Request timeout in milliseconds.
+</ResponseField>
+
+<ResponseField name="preventAllNetworkTraffic" type="boolean">
+  Disable all outbound requests; combine with `loggingEnabled: 'disabled'` to silence log warnings.
+</ResponseField>
+
+<ResponseField name="networkOverrideFunc" type="function">
+  Provide custom transport (e.g., Axios).
+</ResponseField>
+</Accordion>
+
 <ResponseField name="environment" type="StatsigEnvironment">
   Set environment-wide defaults (for example `{ tier: 'staging' }`).
 </ResponseField>
@@ -77,37 +111,3 @@
 <ResponseField name="customUserCacheKeyFunc" type="CustomCacheKeyGenerator">
   Override cache key generation for stored evaluations.
 </ResponseField>
-
-<Accordion title="Network Config Options">
-<ResponseField name="api" type="string" default="https://api.statsig.com">
-  Base URL for all requests. The SDK appends endpoint paths like `/initialize` and `/rgstr`; append `/v1` when your proxy expects it.
-</ResponseField>
-
-<ResponseField name="initializeUrl" type="string" default="https://featureassets.org/v1/initialize">
-  Endpoint for initialization requests only. Takes precedence over `api` for `/initialize`.
-</ResponseField>
-
-<ResponseField name="initializeFallbackUrls" type="string[]">
-  Fallback endpoints for initialization requests only. This does not create a generic fallback for `api`.
-</ResponseField>
-
-<ResponseField name="logEventUrl" type="string" default="https://prodregistryv2.org/v1/rgstr">
-  Endpoint for event uploads.
-</ResponseField>
-
-<ResponseField name="logEventFallbackUrls" type="string[]">
-  Fallback endpoints for event uploads only. This does not create a generic fallback for `api`.
-</ResponseField>
-
-<ResponseField name="networkTimeoutMs" type="number" default="10000">
-  Request timeout in milliseconds.
-</ResponseField>
-
-<ResponseField name="preventAllNetworkTraffic" type="boolean">
-  Disable all outbound requests; combine with `loggingEnabled: 'disabled'` to silence log warnings.
-</ResponseField>
-
-<ResponseField name="networkOverrideFunc" type="function">
-  Provide custom transport (e.g., Axios).
-</ResponseField>
-</Accordion>
