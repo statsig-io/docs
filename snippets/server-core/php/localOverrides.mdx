@@ -1,0 +1,23 @@
+```php
+$statsig->overrideGate("a_gate_name", true);
+
+$statsig->overrideDynamicConfig("a_config_name", [
+    "key" => "value",
+]);
+
+$statsig->overrideExperiment("an_experiment_name", [
+    "key" => "value",
+]);
+
+$statsig->overrideExperimentByGroupName("an_experiment_name", "a_group_name");
+
+$statsig->overrideLayer("a_layer_name", [
+    "key" => "value",
+]);
+```
+
+You can also pass a third argument to scope an override to a specific ID:
+
+```php
+$statsig->overrideExperimentByGroupName("an_experiment_name", "a_group_name", "user_123");
+```
