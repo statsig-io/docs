@@ -215,9 +215,14 @@
                   "feature-flags/pre-post-results",
                   "feature-flags/multiple-rollout-stages",
                   "feature-flags/scheduled-rollouts",
-                  "feature-flags/safeguards-overview",
-                  "feature-flags/safeguards-create",
-                  "feature-flags/safeguards-manage",
+                  {
+                    "group": "Safeguards",
+                    "pages": [
+                      "feature-flags/safeguards-overview",
+                      "feature-flags/safeguards-create",
+                      "feature-flags/safeguards-manage"
+                    ]
+                  },
                   "feature-flags/feature-flags-lifecycle",
                   "feature-flags/permanent-and-stale-gates",
                   "feature-flags/best-practices"
