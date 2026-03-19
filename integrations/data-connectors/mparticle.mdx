@@ -2,6 +2,8 @@
 title: mParticle
 ---
 
+import CloudOnlyIntegrationNotice from "/snippets/cloud_only_integration_notice.mdx";
+
 ## Overview
 
 Enabling the [mParticle](https://www.mparticle.com/) integration for Statsig allows Statsig to receive events from mParticle.
@@ -9,6 +11,8 @@ Enabling the [mParticle](https://www.mparticle.com/) integration for Statsig all
 You can find all events that Statsig receives from mParticle in the [Metrics](/metrics) tab in the Statsig console. Statsig will automatically include these events in [Pulse](/pulse/read-pulse) and [Experiment](/experiments-plus/monitor) results for your feature gates and experiments respectively.
 
 ## Configuring Incoming Events
+
+<CloudOnlyIntegrationNotice />
 
 1. From the [API Keys](https://console.statsig.com/api_keys) tab in the Statsig console, copy the Statsig `Server Secret Key`.
 2. Use your Statsig `Server Secret Key` to configure a Statsig Event Integration via mParticle's integrations directory.
