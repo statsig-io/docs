@@ -1,0 +1,15 @@
+```tsx
+import { Button } from 'react-native';
+import { useStatsigClient } from '@statsig/react-native-bindings';
+
+const { client } = useStatsigClient();
+
+return (
+  <Button
+    title="Flush Events"
+    onPress={async () => {
+      await client.flush();
+    }}
+  />
+);
+```

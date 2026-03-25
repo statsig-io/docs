@@ -1,0 +1,45 @@
+<Tabs>
+<Tab title="App Router">
+```tsx
+'use client';
+
+import { useEffect } from "react";
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  useEffect(() => {
+    return () => {
+      void client.shutdown();
+    };
+  }, [client]);
+
+  return null;
+}
+```
+
+<Note>
+In an App Router app, you need to use the [`use client` directive](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to ensure your logic runs on the frontend.
+</Note>
+</Tab>
+
+<Tab title="Page Router">
+```tsx
+import { useEffect } from "react";
+import { useStatsigClient } from "@statsig/react-bindings";
+
+export default function Home() {
+  const { client } = useStatsigClient();
+
+  useEffect(() => {
+    return () => {
+      void client.shutdown();
+    };
+  }, [client]);
+
+  return null;
+}
+```
+</Tab>
+</Tabs>

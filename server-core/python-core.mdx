@@ -146,6 +146,7 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 - `manually_log_dynamic_config_exposure(user: StatsigUser, config_name: str) -> None`
 - `manually_log_experiment_exposure(user: StatsigUser, experiment_name: str) -> None`
 - `manually_log_layer_parameter_exposure(user: StatsigUser, layer_name: str, parameter_name: str) -> None`
+- `override_experiment_by_group_name(experiment_name: str, group_name: str, id: Optional[str] = None) -> None`
 - `get_client_initialize_response(user: StatsigUser, options: Optional[ClientInitializeResponseOptions] = None) -> ClientInitializeResponse`
 - `shutdown() -> AsyncResult[None]`
 

@@ -1,0 +1,16 @@
+```tsx
+import { Button } from 'react-native';
+import { useStatsigClient } from '@statsig/expo-bindings';
+
+const { client } = useStatsigClient();
+
+return (
+  <button
+    onClick={async () => {
+      await client.flush();
+    }}
+  >
+    Flush Events
+  </button>
+);
+```

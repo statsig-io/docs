@@ -7,6 +7,7 @@ last_update:
 ---
 
 import StatsigEnvironmentFormat from "/snippets/integration_statsig_env_format.mdx";
+import CloudOnlyIntegrationNotice from "/snippets/cloud_only_integration_notice.mdx";
 
 Enabling the Segment integration for Statsig will allow Statsig to pull in your Segment events. This allows you to run your experiment analysis on Statsig with all of your existing events from Segment without requiring any additional logging.
 
@@ -29,9 +30,12 @@ Using the Segment integration has several benefits over other methods of event i
     * Customers will only have to use Statsig's assignment SDKs (gate/experiment allocation), simplifying your code and engineer workflows
     * Additional logging can be done via the [event logging SDKs](/guides/logging-events#logging-events-via-sdks) but will and additional code orchestration and a collection window
   * With [event filtering](/integrations/event_filtering) you can control which events are ingested and make billing more predictable
-  * If you have [Segment Replay](https://segment.com/docs/guides/what-is-replay/), you can send Statsig your historical events for analysis
+  * If you have [Segment Replay](https://segment.com/docs/guides/what-is-replay/), you can forward up to 7 days of historical events to Statsig for analysis
 
 ## Configuring Inbound Events into Statsig
+
+<CloudOnlyIntegrationNotice />
+
 To send events collected from Segment into Statsig, you must configure the Statsig Destination within the your Segment account:
 
 ### Using OAuth
