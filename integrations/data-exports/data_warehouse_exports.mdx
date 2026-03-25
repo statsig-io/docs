@@ -4,13 +4,7 @@ title: Data Warehouse Exports
 
 ## Introduction
 
-You can export your data from Statsig to your Data Warehouse with a Data Connection. This lets you send exposures and events directly to your warehouse for further analysis. We currently support connections to the following providers: 
-
-1. [Snowflake](/data-warehouse-ingestion/snowflake)
-2. [Redshift](/data-warehouse-ingestion/redshift)
-3. [S3](/data-warehouse-ingestion/s3)
-4. [BigQuery](/data-warehouse-ingestion/bigquery)
-5. [Databricks](/data-warehouse-ingestion/databricks)
+You can export your data from Statsig to your data warehouse with a data connection. This lets you send exposures and events directly to your warehouse for further analysis. We currently support connections to Snowflake, Redshift, S3, BigQuery, and Databricks.
 
 <Info>
 Data Warehouse Exports are an Enterprise-only feature. If you are on the Developer or Pro tiers and wish to upgrade to Enterprise, feel free to reach out to our team [here](https://www.statsig.com/contact/demo) or via support.
@@ -28,47 +22,391 @@ Data Warehouse Exports are an Enterprise-only feature. If you are on the Develop
 
 On the Exports page, you will find an Export History tab and a Schedule Export tab. The Export History tab shows you a list of all previous experimentation exports triggered from the Experiment Results page. To understand how to export one-off experimentation results, check out the documentation [here](/integrations/data-exports/experiment_result_exports). 
 
-Under the Scheduled Export tab, you will be prompted to set up a data warehouse connection. You will be required to set up connections with necessary credentials and grant Statsig Read, Write, and Delete permissions. Check out the example [Snowflake Connection Set Up](/data-warehouse-ingestion/snowflake) page for more information.
+Under the Scheduled Export tab, you will be prompted to set up a data warehouse connection. You will be required to set up connections with the necessary credentials and grant Statsig Read, Write, and Delete permissions. The warehouse-specific tabs below show the fields Statsig asks for and example SQL you can use to create each export table yourself.
 
 <Frame>
   <img src="/images/exports-schedule.png" alt="Scheduled export setup form for Snowflake connection with credential fields" />
 </Frame>
 
 ## Table Schema
-Statsig will allow you to export both Exposures and Events to your warehouse. During the set up process, we will prompt you to set up a table with the following schema:
-### Exposures
-| Field name             | Type       | Mode      |
-| ----------------------- | ---------- | ---------- |
-| company_id              | STRING     | NULLABLE   |
-| unit_id                 | STRING     | NULLABLE   |
-| unit_type               | STRING     | NULLABLE   |
-| exposure_type           | STRING     | NULLABLE   |
-| name                    | STRING     | NULLABLE   |
-| rule                    | STRING     | NULLABLE   |
-| experiment_group        | STRING     | NULLABLE   |
-| first_exposure_utc      | TIMESTAMP  | NULLABLE   |
-| first_exposure_pst_date | DATE       | NULLABLE   |
-| as_of_pst_date          | DATE       | NULLABLE   |
-| percent                 | DOUBLE     | NULLABLE   |
-| rollout                 | LONG       | NULLABLE   |
-| user_dimensions         | STRING     | NULLABLE   |
-| inserted_at             | TIMESTAMP  | NULLABLE   |
-| rule_name               | STRING     | NULLABLE   |
-| group_id                | STRING     | NULLABLE   |
-| non_analytics           | BOOLEAN    | NULLABLE   |
+Statsig can export both Exposures and Events to your destination. The exported columns are logically the same across SQL warehouses, but the physical types vary by warehouse. S3 is a file destination rather than a SQL table destination.
 
-### Events
-| Field name       | Type       | Mode      |
-| ----------------- | ---------- | ---------- |
-| user_id           | STRING     | NULLABLE   |
-| stable_id         | STRING     | NULLABLE   |
-| custom_ids        | STRING     | NULLABLE   |
-| timestamp         | TIMESTAMP  | NULLABLE   |
-| event_name        | STRING     | NULLABLE   |
-| event_value       | STRING     | NULLABLE   |
-| user_object       | STRING     | NULLABLE   |
-| statsig_metadata  | STRING     | NULLABLE   |
-| company_metadata  | STRING     | NULLABLE   |
+<Tabs>
+  <Tab title="BigQuery">
+    **Setup summary**
+
+    Configure:
+    - BigQuery Project ID
+    - BigQuery Dataset ID
+    - one destination table name per export type
+
+    Permissions:
+    - grant the Statsig service account `BigQuery User` at the project level
+    - grant the same service account `BigQuery Data Editor` on the target dataset
+
+    Statsig uses this access to create the table if needed and validate the connection by inserting and deleting a test row.
+
+    If you prefer to create the export tables yourself, you can use SQL like this:
+
+    ```sql BigQuery Exposures
+    CREATE TABLE IF NOT EXISTS `PROJECT_ID.DATASET_ID.EXPOSURES_TABLE` (
+      company_id STRING,
+      unit_id STRING,
+      unit_type STRING,
+      exposure_type STRING,
+      name STRING,
+      rule STRING,
+      experiment_group STRING,
+      first_exposure_utc TIMESTAMP,
+      first_exposure_pst_date DATE,
+      as_of_pst_date DATE,
+      percent FLOAT64,
+      rollout BIGINT,
+      user_dimensions STRING,
+      inserted_at TIMESTAMP,
+      rule_name STRING,
+      group_id STRING,
+      non_analytics BOOLEAN
+    );
+    ```
+
+    ```sql BigQuery Events
+    CREATE TABLE IF NOT EXISTS `PROJECT_ID.DATASET_ID.EVENTS_TABLE` (
+      user_id STRING,
+      stable_id STRING,
+      custom_ids JSON,
+      timestamp TIMESTAMP,
+      event_name STRING,
+      event_value STRING,
+      user_object JSON,
+      statsig_metadata JSON,
+      company_metadata JSON
+    );
+    ```
+
+    **Exposures**
+
+    | Field name             | Type      | Mode     |
+    | ---------------------- | --------- | -------- |
+    | company_id             | STRING    | NULLABLE |
+    | unit_id                | STRING    | NULLABLE |
+    | unit_type              | STRING    | NULLABLE |
+    | exposure_type          | STRING    | NULLABLE |
+    | name                   | STRING    | NULLABLE |
+    | rule                   | STRING    | NULLABLE |
+    | experiment_group       | STRING    | NULLABLE |
+    | first_exposure_utc     | TIMESTAMP | NULLABLE |
+    | first_exposure_pst_date | DATE      | NULLABLE |
+    | as_of_pst_date         | DATE      | NULLABLE |
+    | percent                | FLOAT64   | NULLABLE |
+    | rollout                | BIGINT    | NULLABLE |
+    | user_dimensions        | STRING    | NULLABLE |
+    | inserted_at            | TIMESTAMP | NULLABLE |
+    | rule_name              | STRING    | NULLABLE |
+    | group_id               | STRING    | NULLABLE |
+    | non_analytics          | BOOLEAN   | NULLABLE |
+
+    **Events**
+
+    | Field name        | Type      | Mode     |
+    | ----------------- | --------- | -------- |
+    | user_id           | STRING    | NULLABLE |
+    | stable_id         | STRING    | NULLABLE |
+    | custom_ids        | JSON      | NULLABLE |
+    | timestamp         | TIMESTAMP | NULLABLE |
+    | event_name        | STRING    | NULLABLE |
+    | event_value       | STRING    | NULLABLE |
+    | user_object       | JSON      | NULLABLE |
+    | statsig_metadata  | JSON      | NULLABLE |
+    | company_metadata  | JSON      | NULLABLE |
+  </Tab>
+
+  <Tab title="Snowflake">
+    **Setup summary**
+
+    Configure:
+    - Account Name
+    - Database Name
+    - Schema Name
+    - either Username and Password, or Private Key authentication
+    - one destination table name per export type
+
+    Permissions:
+    - the configured user must be able to create tables and insert/delete rows in the target database and schema
+
+    If you prefer to create the export tables yourself, you can use SQL like this:
+
+    ```sql Snowflake Exposures
+    CREATE TABLE IF NOT EXISTS DATABASE_NAME.SCHEMA_NAME.EXPOSURES_TABLE (
+      company_id STRING,
+      unit_id STRING,
+      unit_type STRING,
+      exposure_type STRING,
+      name STRING,
+      rule STRING,
+      experiment_group STRING,
+      first_exposure_utc TIMESTAMP,
+      first_exposure_pst_date DATE,
+      as_of_pst_date DATE,
+      percent DOUBLE,
+      rollout BIGINT,
+      user_dimensions STRING,
+      inserted_at TIMESTAMP,
+      rule_name STRING,
+      group_id STRING,
+      non_analytics BOOLEAN
+    );
+    ```
+
+    ```sql Snowflake Events
+    CREATE TABLE IF NOT EXISTS DATABASE_NAME.SCHEMA_NAME.EVENTS_TABLE (
+      user_id STRING,
+      stable_id STRING,
+      custom_ids STRING,
+      timestamp TIMESTAMP,
+      event_name STRING,
+      event_value STRING,
+      user_object STRING,
+      statsig_metadata STRING,
+      company_metadata STRING
+    );
+    ```
+
+    **Exposures**
+
+    | Field name             | Type      | Mode     |
+    | ---------------------- | --------- | -------- |
+    | company_id             | STRING    | NULLABLE |
+    | unit_id                | STRING    | NULLABLE |
+    | unit_type              | STRING    | NULLABLE |
+    | exposure_type          | STRING    | NULLABLE |
+    | name                   | STRING    | NULLABLE |
+    | rule                   | STRING    | NULLABLE |
+    | experiment_group       | STRING    | NULLABLE |
+    | first_exposure_utc     | TIMESTAMP | NULLABLE |
+    | first_exposure_pst_date | DATE      | NULLABLE |
+    | as_of_pst_date         | DATE      | NULLABLE |
+    | percent                | DOUBLE    | NULLABLE |
+    | rollout                | BIGINT    | NULLABLE |
+    | user_dimensions        | STRING    | NULLABLE |
+    | inserted_at            | TIMESTAMP | NULLABLE |
+    | rule_name              | STRING    | NULLABLE |
+    | group_id               | STRING    | NULLABLE |
+    | non_analytics          | BOOLEAN   | NULLABLE |
+
+    **Events**
+
+    | Field name        | Type      | Mode     |
+    | ----------------- | --------- | -------- |
+    | user_id           | STRING    | NULLABLE |
+    | stable_id         | STRING    | NULLABLE |
+    | custom_ids        | STRING    | NULLABLE |
+    | timestamp         | TIMESTAMP | NULLABLE |
+    | event_name        | STRING    | NULLABLE |
+    | event_value       | STRING    | NULLABLE |
+    | user_object       | STRING    | NULLABLE |
+    | statsig_metadata  | STRING    | NULLABLE |
+    | company_metadata  | STRING    | NULLABLE |
+  </Tab>
+
+  <Tab title="Redshift">
+    **Setup summary**
+
+    Configure:
+    - Cluster Endpoint
+    - Username and Password
+    - Staging Schema
+    - one destination table name per export type
+
+    Permissions:
+    - the configured user must be able to create tables and insert/delete rows in the target database and schema
+    - if your cluster is not directly reachable, you can also configure SSH tunneling
+
+    If you prefer to create the export tables yourself, you can use SQL like this:
+
+    ```sql Redshift Exposures
+    CREATE TABLE IF NOT EXISTS "DATABASE_NAME"."STAGING_SCHEMA"."EXPOSURES_TABLE" (
+      "company_id" VARCHAR,
+      "unit_id" VARCHAR,
+      "unit_type" VARCHAR,
+      "exposure_type" VARCHAR,
+      "name" VARCHAR,
+      "rule" VARCHAR,
+      "experiment_group" VARCHAR,
+      "first_exposure_utc" TIMESTAMP,
+      "first_exposure_pst_date" DATE,
+      "as_of_pst_date" DATE,
+      "percent" DOUBLE PRECISION,
+      "rollout" BIGINT,
+      "user_dimensions" VARCHAR,
+      "inserted_at" TIMESTAMP,
+      "rule_name" VARCHAR,
+      "group_id" VARCHAR,
+      "non_analytics" BOOLEAN
+    );
+    ```
+
+    ```sql Redshift Events
+    CREATE TABLE IF NOT EXISTS "DATABASE_NAME"."STAGING_SCHEMA"."EVENTS_TABLE" (
+      "user_id" VARCHAR,
+      "stable_id" VARCHAR,
+      "custom_ids" VARCHAR,
+      "timestamp" TIMESTAMP,
+      "event_name" VARCHAR,
+      "event_value" VARCHAR,
+      "user_object" VARCHAR,
+      "statsig_metadata" VARCHAR,
+      "company_metadata" VARCHAR
+    );
+    ```
+
+    **Exposures**
+
+    | Field name             | Type              | Mode     |
+    | ---------------------- | ----------------- | -------- |
+    | company_id             | VARCHAR           | NULLABLE |
+    | unit_id                | VARCHAR           | NULLABLE |
+    | unit_type              | VARCHAR           | NULLABLE |
+    | exposure_type          | VARCHAR           | NULLABLE |
+    | name                   | VARCHAR           | NULLABLE |
+    | rule                   | VARCHAR           | NULLABLE |
+    | experiment_group       | VARCHAR           | NULLABLE |
+    | first_exposure_utc     | TIMESTAMP         | NULLABLE |
+    | first_exposure_pst_date | DATE              | NULLABLE |
+    | as_of_pst_date         | DATE              | NULLABLE |
+    | percent                | DOUBLE PRECISION  | NULLABLE |
+    | rollout                | BIGINT            | NULLABLE |
+    | user_dimensions        | VARCHAR           | NULLABLE |
+    | inserted_at            | TIMESTAMP         | NULLABLE |
+    | rule_name              | VARCHAR           | NULLABLE |
+    | group_id               | VARCHAR           | NULLABLE |
+    | non_analytics          | BOOLEAN           | NULLABLE |
+
+    **Events**
+
+    | Field name        | Type              | Mode     |
+    | ----------------- | ----------------- | -------- |
+    | user_id           | VARCHAR           | NULLABLE |
+    | stable_id         | VARCHAR           | NULLABLE |
+    | custom_ids        | VARCHAR           | NULLABLE |
+    | timestamp         | TIMESTAMP         | NULLABLE |
+    | event_name        | VARCHAR           | NULLABLE |
+    | event_value       | VARCHAR           | NULLABLE |
+    | user_object       | VARCHAR           | NULLABLE |
+    | statsig_metadata  | VARCHAR           | NULLABLE |
+    | company_metadata  | VARCHAR           | NULLABLE |
+  </Tab>
+
+  <Tab title="Databricks">
+    **Setup summary**
+
+    Configure:
+    - API Key
+    - Server Hostname
+    - HTTP Path
+    - Database
+    - one destination table name per export type
+
+    Permissions:
+    - the configured user or token must be able to create tables and insert/delete rows in the target database
+
+    If you prefer to create the export tables yourself, you can use SQL like this:
+
+    ```sql Databricks Exposures
+    CREATE TABLE IF NOT EXISTS DATABASE_NAME.EXPOSURES_TABLE (
+      company_id STRING,
+      unit_id STRING,
+      unit_type STRING,
+      exposure_type STRING,
+      name STRING,
+      rule STRING,
+      experiment_group STRING,
+      first_exposure_utc TIMESTAMP,
+      first_exposure_pst_date DATE,
+      as_of_pst_date DATE,
+      percent DOUBLE,
+      rollout BIGINT,
+      user_dimensions STRING,
+      inserted_at TIMESTAMP,
+      rule_name STRING,
+      group_id STRING,
+      non_analytics BOOLEAN
+    );
+    ```
+
+    ```sql Databricks Events
+    CREATE TABLE IF NOT EXISTS DATABASE_NAME.EVENTS_TABLE (
+      user_id STRING,
+      stable_id STRING,
+      custom_ids STRING,
+      timestamp TIMESTAMP,
+      event_name STRING,
+      event_value STRING,
+      user_object STRING,
+      statsig_metadata STRING,
+      company_metadata STRING
+    );
+    ```
+
+    **Exposures**
+
+    | Field name             | Type      | Mode     |
+    | ---------------------- | --------- | -------- |
+    | company_id             | STRING    | NULLABLE |
+    | unit_id                | STRING    | NULLABLE |
+    | unit_type              | STRING    | NULLABLE |
+    | exposure_type          | STRING    | NULLABLE |
+    | name                   | STRING    | NULLABLE |
+    | rule                   | STRING    | NULLABLE |
+    | experiment_group       | STRING    | NULLABLE |
+    | first_exposure_utc     | TIMESTAMP | NULLABLE |
+    | first_exposure_pst_date | DATE      | NULLABLE |
+    | as_of_pst_date         | DATE      | NULLABLE |
+    | percent                | DOUBLE    | NULLABLE |
+    | rollout                | BIGINT    | NULLABLE |
+    | user_dimensions        | STRING    | NULLABLE |
+    | inserted_at            | TIMESTAMP | NULLABLE |
+    | rule_name              | STRING    | NULLABLE |
+    | group_id               | STRING    | NULLABLE |
+    | non_analytics          | BOOLEAN   | NULLABLE |
+
+    **Events**
+
+    | Field name        | Type      | Mode     |
+    | ----------------- | --------- | -------- |
+    | user_id           | STRING    | NULLABLE |
+    | stable_id         | STRING    | NULLABLE |
+    | custom_ids        | STRING    | NULLABLE |
+    | timestamp         | TIMESTAMP | NULLABLE |
+    | event_name        | STRING    | NULLABLE |
+    | event_value       | STRING    | NULLABLE |
+    | user_object       | STRING    | NULLABLE |
+    | statsig_metadata  | STRING    | NULLABLE |
+    | company_metadata  | STRING    | NULLABLE |
+  </Tab>
+
+  <Tab title="S3">
+    **Setup summary**
+
+    Configure:
+    - Region
+    - Bucket
+    - one folder name per export type
+
+    Permissions:
+    - grant the Statsig IAM user bucket-level access to list the bucket and retrieve its location
+    - grant object-level read, write, and delete permissions, including multipart upload management
+
+    S3 exports are file-based. Statsig writes export files to the configured bucket and folder for each export type. In the export UI, the per-export destination is configured as a folder rather than a table.
+
+    **Export outputs**
+
+    | Export type | Destination shape |
+    | ----------- | ----------------- |
+    | Exposures   | Files written to the configured folder in your bucket |
+    | Events      | Files written to the configured folder in your bucket |
+  </Tab>
+</Tabs>
 
 ## Troubleshooting Exports
 
