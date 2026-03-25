@@ -47,9 +47,6 @@ After saving the tag, and publishing your updated GTM tag, tracking will be done
 To debug the integration, you can set a local storage entry `debug_ss_gtm` with any value on your webpage. Now, you'll console log statements for each tracking call being dispatched to Statsig. You can also inspect your browser's network traffic to see events being tracked.
 
 ### GTM Code
-
-This example uses `window.postExperimentCallback` only as a one-time readiness hook so the GTM listener starts after Sidecar finishes its initial run. If you need one callback per activated experiment assignment for outbound analytics, use `window.statsigSidecarConfig.onExperimentEvaluation` instead.
-
 ```html
 <script type="text/javascript">
 /* dataLayer helper */
@@ -77,7 +74,6 @@ window.StatsigLogger = (function () {
     }
     else {
       log('+++ Statsig:ready callback');
-      // postExperimentCallback is used here as a one-time "Sidecar is ready" hook
       window.postExperimentCallback = function(statsigClient, expIds) {
         callback(statsigClient);
       }
