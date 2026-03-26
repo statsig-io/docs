@@ -144,11 +144,40 @@ description: The Statsig MCP (Model Context Protocol) server brings the power of
             wordBreak: "break-word",
           }}
         >
-          Get_Experiment_Results
+          Get_Experiment_Overall_Results
         </td>
         <td>
           Retrieve experiment results/pulse data for a specific experiment.
           Analyze by:
+          <ul>
+            <li>
+              <code>date</code>
+            </li>
+            <li>
+              <code>cuped</code>: whether or not to apply CUPED
+            </li>
+            <li>
+              <code>confidence</code>: Confidence threshold used for result
+              calculations
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            width: "280px",
+            overflowWrap: "anywhere",
+            wordBreak: "break-word",
+          }}
+        >
+          Get_Experiment_Metric_
+          <br />
+          {"Dimension_Results"}
+        </td>
+        <td>
+          Retrieve metric results for one experiment metric with dimensional
+          breakdowns. Analyze by:
           <ul>
             <li>
               <code>date</code>
