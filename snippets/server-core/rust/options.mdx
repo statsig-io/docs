@@ -121,6 +121,7 @@
   - `proxy_port`: Option\<u16\> - Specifies the proxy server port
   - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
   - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
+  - `ca_cert_path`: Option\<String\> - Optional path to a PEM CA bundle for outbound TLS
 </ResponseField>
 
 
@@ -155,6 +156,7 @@ let options = StatsigOptions::builder()
         proxy_port: Some(8080),
         proxy_protocol: Some("https".to_string()),
         proxy_auth: None, // Use Some("username:password".to_string()) if authentication is required
+        ca_cert_path: Some("/etc/ssl/certs/corporate-ca.pem".to_string()),
     }))
     .build();
 
@@ -162,5 +164,9 @@ let options = StatsigOptions::builder()
 let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
 statsig.initialize().await?;
 ```
+
+### Proxy and Custom Network Routing
+
+Use `proxy_config` if your service needs a standard outbound HTTP proxy. If you need to route config sync through Statsig Forward Proxy or another custom source, use `spec_adapters_config` or `specs_url` instead. Set `ca_cert_path` when your environment requires a custom PEM CA bundle for outbound TLS.
 
 </Accordion>
