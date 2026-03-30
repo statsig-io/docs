@@ -43,6 +43,10 @@
   The URL Statsig should download specs from
 </ResponseField>
 
+<ResponseField name="spec_adapter_configs" type="list">
+  Advanced configuration for fetching specs from custom sources, including [Statsig Forward Proxy](/infrastructure/forward-proxy).
+</ResponseField>
+
 <ResponseField name="enable_id_lists" type="boolean" default="false">
   Enable ID list download. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
 </ResponseField>
@@ -93,3 +97,20 @@ Statsig.initialize()
 ```
 
 </Accordion>
+
+### Proxy and Custom Network Routing
+
+The Elixir Server Core SDK does not currently document a dedicated outbound HTTP proxy config. For custom network routing, use `spec_adapter_configs` for [Statsig Forward Proxy](/infrastructure/forward-proxy) or set `specs_url`, `log_event_url`, and `id_lists_url` directly.
+
+```elixir
+statsig_options = %StatsigOptions{
+  spec_adapter_configs: [
+    %Statsig.SpecAdapterConfig{
+      adapter_type: "network_grpc_websocket",
+      specs_url: "http://forward-proxy.internal:50051",
+      authentication_mode: "none"
+    }
+  ],
+  fallback_to_statsig_api: true
+}
+```

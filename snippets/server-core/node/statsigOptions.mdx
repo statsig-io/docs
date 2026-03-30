@@ -57,7 +57,7 @@
   An adapter with custom storage behavior for config specs. Can also continuously fetch updates in place of the Statsig network. See [Data Stores](#data-store). For example, see our 1P Redis implementation [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
 </ResponseField>
 
-<ResponseField name="specsAdapterConfig" type="SpecAdapterConfig">
+<ResponseField name="specAdaptersConfig" type="SpecAdapterConfig[]">
   Advanced settings to fetch from different sources (e.g., [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store) or to use different network protocols (HTTP vs gRPC streaming).
 </ResponseField>
 
@@ -89,9 +89,17 @@
 <ResponseField name="proxyProtocol" type="string">
   Protocol (e.g., "http", "https").
 </ResponseField>
+
+<ResponseField name="caCertPath" type="string">
+  Optional path to a PEM CA bundle for outbound TLS.
+</ResponseField>
 </Accordion>
 
----
+</Accordion>
+
+### Proxy and Custom Network Routing
+
+Use `proxyConfig` if your service needs a standard outbound HTTP proxy. Use `specAdaptersConfig` if you are routing spec downloads through [Statsig Forward Proxy](/infrastructure/forward-proxy) or another custom spec source.
 
 ```typescript
 // Example usage:
@@ -102,11 +110,12 @@ options.proxyConfig = {
   proxyHost: "proxy.example.com",
   proxyPort: 8080,
   // proxyAuth can be set if authentication is required
-  proxyProtocol: "https"
+  proxyProtocol: "https",
+  caCertPath: "/etc/ssl/certs/corporate-ca.pem"
 };
 
 const statsig = new Statsig("secret-key", options);
 await statsig.initialize();
 ```
 
-</Accordion>
+Set `caCertPath` when your environment requires a custom PEM CA bundle for outbound TLS.

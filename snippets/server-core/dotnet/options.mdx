@@ -47,11 +47,14 @@ var statsig = new Statsig("server-secret-key", options);
 - **SetIDListsURL(string)**: Override the default ID lists endpoint
 - **SetIDListsSyncIntervalMs(int)**: How often to sync ID lists (default: 60000ms)
 - **SetGlobalCustomFields(Dictionary\<string, object\>)**: Global custom fields for all events
+- **SetSpecAdapterConfig(SpecAdapterConfig)**: Configure a custom spec source such as [Statsig Forward Proxy](/infrastructure/forward-proxy)
 - **SetProxyConfig(ProxyConfig)**: Configuration for connecting through a proxy server
 
-## Proxy Configuration
+</Accordion>
 
-The `ProxyConfig` class allows you to configure the SDK to connect through a proxy server. This is useful when your application runs in an environment that requires all outbound HTTP traffic to go through a proxy.
+### Proxy and Custom Network Routing
+
+The `.NET` Server Core SDK uses `SetProxyConfig(ProxyConfig)` for a standard outbound HTTP proxy. If you are routing config sync through [Statsig Forward Proxy](/infrastructure/forward-proxy) or another custom spec source, use `SetSpecAdapterConfig(SpecAdapterConfig)`. If you only need custom Statsig endpoints, use `SetSpecsURL`, `SetLogEventURL`, and `SetIDListsURL`.
 
 ```csharp
 var proxyConfig = new ProxyConfig
@@ -59,7 +62,8 @@ var proxyConfig = new ProxyConfig
     ProxyHost = "proxy.example.com",
     ProxyPort = 8080,
     ProxyAuth = "username:password", // Optional
-    ProxyProtocol = "http" // Optional: "http" or "https"
+    ProxyProtocol = "http", // Optional: "http" or "https"
+    CaCertPath = "/etc/ssl/certs/corporate-ca.pem" // Optional
 };
 
 var options = new StatsigOptionsBuilder()
@@ -75,5 +79,18 @@ var statsig = new Statsig("server-secret-key", options);
 - **ProxyPort** (int): The port number of the proxy server
 - **ProxyAuth** (string, optional): Authentication credentials in the format "username:password"
 - **ProxyProtocol** (string, optional): The protocol to use for the proxy connection ("http" or "https")
+- **CaCertPath** (string, optional): Path to a PEM CA bundle for outbound TLS
 
-</Accordion>
+### Statsig Forward Proxy Example
+
+```csharp
+var specAdapterConfig = new SpecAdapterConfig(
+    adapterType: "network_grpc_websocket",
+    specsUrl: "http://forward-proxy.internal:50051"
+);
+
+var options = new StatsigOptionsBuilder()
+    .SetSpecAdapterConfig(specAdapterConfig)
+    .SetFallbackToStatsigApi(true)
+    .Build();
+```
