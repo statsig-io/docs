@@ -88,6 +88,10 @@
   When set to true, the SDK will fallback to using the Statsig API directly if custom adapters (like local file adapters) fail to load configurations.
 </ResponseField>
 
+### Proxy and Custom Network Routing
+
+The Go Server Core SDK currently documents endpoint overrides rather than a dedicated outbound proxy config. Use `WithSpecsUrl(...)`, `WithLogEventUrl(...)`, and `WithIdListsUrl(...)` to route Statsig network calls through your own endpoints or proxy layer.
+
 ---
 
 ### Example Options Usage
@@ -125,7 +129,3 @@ if err != nil {
 }
 s.Initialize()
 ```
-
-### Proxy and Custom Network Routing
-
-The Go Server Core SDK currently documents endpoint overrides rather than a dedicated outbound proxy config. Use `WithSpecsUrl(...)`, `WithLogEventUrl(...)`, and `WithIdListsUrl(...)` to route Statsig network calls through your own endpoints or proxy layer.

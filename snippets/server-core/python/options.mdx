@@ -129,12 +129,11 @@ Each `SpecAdapterConfig` object has the following properties:
 </Note>
 </ResponseField>
 
-
----
+</Accordion>
 
 ### Proxy and Custom Network Routing
 
-Use `proxy_config` if your service needs a standard outbound HTTP proxy. Use `spec_adapter_configs` if you need to route spec downloads through Statsig Forward Proxy or another custom spec source.
+Use `proxy_config` if your service needs a standard outbound HTTP proxy. Use `spec_adapter_configs` if you need to route spec downloads through [Statsig Forward Proxy](/infrastructure/forward-proxy) or another custom spec source.
 
 ```python
 from statsig_python_core import ProxyConfig, Statsig, StatsigOptions
@@ -182,5 +181,3 @@ options.environment = "production"
 statsig = Statsig("secret-key", options)
 statsig.initialize().wait()
 ```
-
-</Accordion>

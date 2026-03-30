@@ -44,7 +44,7 @@
 </ResponseField>
 
 <ResponseField name="spec_adapter_configs" type="list">
-  Advanced configuration for fetching specs from custom sources, including Statsig Forward Proxy.
+  Advanced configuration for fetching specs from custom sources, including [Statsig Forward Proxy](/infrastructure/forward-proxy).
 </ResponseField>
 
 <ResponseField name="enable_id_lists" type="boolean" default="false">
@@ -96,9 +96,11 @@ statsig_options = %StatsigOptions{
 Statsig.initialize()
 ```
 
+</Accordion>
+
 ### Proxy and Custom Network Routing
 
-The Elixir Server Core SDK does not currently document a dedicated outbound HTTP proxy config. For custom network routing, use `spec_adapter_configs` for Statsig Forward Proxy or set `specs_url`, `log_event_url`, and `id_lists_url` directly.
+The Elixir Server Core SDK does not currently document a dedicated outbound HTTP proxy config. For custom network routing, use `spec_adapter_configs` for [Statsig Forward Proxy](/infrastructure/forward-proxy) or set `specs_url`, `log_event_url`, and `id_lists_url` directly.
 
 ```elixir
 statsig_options = %StatsigOptions{
@@ -112,5 +114,3 @@ statsig_options = %StatsigOptions{
   fallback_to_statsig_api: true
 }
 ```
-
-</Accordion>

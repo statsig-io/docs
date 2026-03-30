@@ -165,8 +165,8 @@ let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
 statsig.initialize().await?;
 ```
 
+</Accordion>
+
 ### Proxy and Custom Network Routing
 
-Use `proxy_config` if your service needs a standard outbound HTTP proxy. If you need to route config sync through Statsig Forward Proxy or another custom source, use `spec_adapters_config` or `specs_url` instead. Set `ca_cert_path` when your environment requires a custom PEM CA bundle for outbound TLS.
-
-</Accordion>
+Use `proxy_config` if your service needs a standard outbound HTTP proxy. If you need to route config sync through [Statsig Forward Proxy](/infrastructure/forward-proxy) or another custom source, use `spec_adapters_config` or `specs_url` instead. Set `ca_cert_path` when your environment requires a custom PEM CA bundle for outbound TLS.

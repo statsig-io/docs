@@ -47,12 +47,14 @@ var statsig = new Statsig("server-secret-key", options);
 - **SetIDListsURL(string)**: Override the default ID lists endpoint
 - **SetIDListsSyncIntervalMs(int)**: How often to sync ID lists (default: 60000ms)
 - **SetGlobalCustomFields(Dictionary\<string, object\>)**: Global custom fields for all events
-- **SetSpecAdapterConfig(SpecAdapterConfig)**: Configure a custom spec source such as Statsig Forward Proxy
+- **SetSpecAdapterConfig(SpecAdapterConfig)**: Configure a custom spec source such as [Statsig Forward Proxy](/infrastructure/forward-proxy)
 - **SetProxyConfig(ProxyConfig)**: Configuration for connecting through a proxy server
 
-## Proxy Configuration
+</Accordion>
 
-The `.NET` Server Core SDK uses `SetProxyConfig(ProxyConfig)` for a standard outbound HTTP proxy. If you are routing config sync through Statsig Forward Proxy or another custom spec source, use `SetSpecAdapterConfig(SpecAdapterConfig)`. If you only need custom Statsig endpoints, use `SetSpecsURL`, `SetLogEventURL`, and `SetIDListsURL`.
+### Proxy and Custom Network Routing
+
+The `.NET` Server Core SDK uses `SetProxyConfig(ProxyConfig)` for a standard outbound HTTP proxy. If you are routing config sync through [Statsig Forward Proxy](/infrastructure/forward-proxy) or another custom spec source, use `SetSpecAdapterConfig(SpecAdapterConfig)`. If you only need custom Statsig endpoints, use `SetSpecsURL`, `SetLogEventURL`, and `SetIDListsURL`.
 
 ```csharp
 var proxyConfig = new ProxyConfig
@@ -79,7 +81,7 @@ var statsig = new Statsig("server-secret-key", options);
 - **ProxyProtocol** (string, optional): The protocol to use for the proxy connection ("http" or "https")
 - **CaCertPath** (string, optional): Path to a PEM CA bundle for outbound TLS
 
-### Forward Proxy Configuration
+### Statsig Forward Proxy Example
 
 ```csharp
 var specAdapterConfig = new SpecAdapterConfig(
@@ -92,5 +94,3 @@ var options = new StatsigOptionsBuilder()
     .SetFallbackToStatsigApi(true)
     .Build();
 ```
-
-</Accordion>
