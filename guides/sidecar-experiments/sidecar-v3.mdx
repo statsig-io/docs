@@ -4,7 +4,7 @@ title: Visual Editor Setup & Usage
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-18
+  date: 2026-04-01
 displayed_sidebar: cloud
 ---
 
@@ -76,6 +76,19 @@ To setup an experiment - enter your metrics, any targeting (on URL, or other use
 
 ![Visual Editor Page](/images/sidecarv3openxp.gif)
 
+### Runtime settings
+
+For more advanced experiment flows, you can also configure runtime settings on the experiment setup page before opening the editor.
+
+- **Disable Auto Run** prevents the experiment from applying automatically on page load.
+- **Prerun Script** lets you run custom JavaScript before the experiment starts. This is useful for SPAs or other advanced flows where you need to bind listeners or evaluate custom logic before manually activating the experiment with `StatsigSidecar.activateExperiment("experiment_name")`.
+
+<Warning>
+Prerun Script is currently in beta. Please reach out to Statsig Support if you'd like access enabled for your account.
+</Warning>
+
+See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for more detail on runtime settings, manual activation, and prerun scripts.
+
 ## Making your edits
 
 By clicking the "Element selector" or pressing command + E, you enable the element editor, which provides a preset set of editable attributes depending on the element you select, for example:
@@ -100,5 +113,5 @@ Add these query string parameters to the Sidecar script URL for additional contr
 
 If you need more advanced Sidecar controls after the basic setup is working:
 
-- See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for script URL tuning, runtime options, consent, and identity configuration.
+- See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for runtime settings, manual activation, prerun scripts, script URL tuning, consent, and identity configuration.
 - See [Measuring Experiments](/guides/sidecar-experiments/measuring-experiments#per-assignment-callback-for-outbound-integrations) for outbound analytics callbacks and other measurement patterns.
