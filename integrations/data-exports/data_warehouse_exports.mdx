@@ -263,6 +263,11 @@ Please note that we do not export exposures from rules that are 0%/100%.
     );
     ```
 
+    Note: the default size for VARCHAR is 256. If you anticipate certain columns will exceed these limits, please adjust accordingly.  
+    Common longer columns are `user_dimensions` in exposures and `user_object`, `custom_ids`, and `company_metadata` in events.
+
+    For example, you can replace `"user_object" VARCHAR` with `"user_object" VARCHAR(512)` in the SQL.
+
     **Exposures**
 
     | Field name             | Type              | Mode     |
