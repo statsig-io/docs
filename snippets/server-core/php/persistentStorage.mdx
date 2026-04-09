@@ -1,6 +1,49 @@
 ## Persistent Storage
 
-The Persistent Storage interface allows you to implement custom storage for experiment assignments. This ensures consistent user experiences across sessions by persisting experiment assignments. For more information on persistent assignments, see the [Persistent Assignment](/client/concepts/persistent_assignment) documentation.
+The Persistent Storage interface allows you to implement custom storage for experiment assignments. This ensures consistent user experiences across sessions by persisting experiment assignments. For more information on persistent assignments, see the [Persistent Assignment](/server/concepts/persistent_assignment) documentation.
 
-<Note>Not supported at this time.</Note>
+```php expandable MyPersistentStorage.php
+use Statsig\PersistentStorage;
+use Statsig\StickyValues;
 
+class MyPersistentStorage extends PersistentStorage
+{
+    private array $storage = [];
+
+    public function load(string $key): ?array
+    {
+        return $this->storage[$key] ?? null;
+    }
+
+    public function save(string $key, string $config_name, StickyValues $data): void
+    {
+        $this->storage[$key] ??= [];
+        $this->storage[$key][$config_name] = $data->toArray();
+    }
+
+    public function delete(string $key, string $config_name): void
+    {
+        unset($this->storage[$key][$config_name]);
+    }
+}
+```
+
+```php expandable PersistentStorageUsage.php
+$persistent_storage = new MyPersistentStorage();
+
+$options = new StatsigOptions(
+    persistent_storage: $persistent_storage
+);
+
+$statsig = new Statsig("secret-key", $options);
+$statsig->initialize();
+
+$persisted_user = new StatsigUser("test-123");
+$values = $persistent_storage->getValuesForUser($persisted_user, "userID") ?? [];
+
+$experiment = $statsig->getExperiment(
+    $persisted_user,
+    "active_experiment",
+    ["user_persisted_values" => $values],
+);
+```
