@@ -21,7 +21,7 @@ const my_experiment = statsig.getExperiment(user, "my_experiment_name") //<- any
 
 ### I passed that attribute before - why do I need to pass it again?
 
-If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/product-analytics/user-profiles).
+If you want to see a specific user's historical attributes for analytics purposes, you can see that in the statsig console via [User Profiles](/product-analytics/users-tab).
 
 However, you cannot use a user's historical attributes for targeting or gate/experiment evaluation at runtime. Statsig evaluates gates and experiment buckets based **only on the information you provide when you check something.** Statsig's promise of evaluating every gate or experiment in milliseconds is dependent on having all information available at request time, rather than querying previous data, or storing massive amounts of historical data in memory.
 
@@ -48,6 +48,50 @@ All user attributes can be explicitly supplied, and some can be inferred from a 
 | `custom`            | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will be stored and available after targeting.                                                                                                                        | `{subscriber: "yes", ...}`                                                                                         | All                |            |
 | `privateAttributes` | Dictionary that can contain key/value pairs that can be used for Feature Gate targeting. The content of this dictionary will **not** be stored after being used for targeting and will be removed from any `log_event` calls.                                                                | `{sensitive_field: "sensitive_information", ...}`                                                                          | All                |            |
 | `customIDs`         | Dictionary that can contain key/value pairs used as the randomization unit ID for experiments that are set up using these IDs instead of the `User ID`.                                                                                                                                      | `{account_id: "23456555", company_id: "company_xyz"}`                                                                      | All                |            |
+
+### How to override the Stable ID
+
+Client SDKs generate a `stableID` for logged-out or device-level targeting. If you already manage your own durable device identifier, override the SDK-generated value before or during initialization so Statsig uses your identifier for Stable ID-based evaluations.
+
+<Tabs>
+<Tab title="JavaScript">
+
+```tsx
+import { StatsigClient, StatsigUser } from '@statsig/js-client';
+
+const user: StatsigUser = {
+  userID: 'a-user',
+  customIDs: {
+    stableID: 'my-custom-stable-id',
+  },
+};
+
+const client = new StatsigClient('client-sdk-key', user);
+await client.initializeAsync();
+```
+
+</Tab>
+<Tab title="Android">
+
+```kotlin
+val options = StatsigOptions(overrideStableID = "my-custom-stable-id")
+Statsig.initialize(app, "client-sdk-key", user, options = options)
+```
+
+</Tab>
+<Tab title="iOS">
+
+```swift
+let options = StatsigOptions(overrideStableID: "my-custom-stable-id")
+Statsig.initialize(sdkKey: "client-sdk-key", user: user, options: options)
+```
+
+</Tab>
+</Tabs>
+
+<Note>
+When you override the Stable ID in a client SDK, that value is persisted locally and reused on later sessions unless local storage is cleared or the app is reinstalled.
+</Note>
 
 </Tab>
 <Tab title="Server SDKs">

@@ -10,7 +10,7 @@ The persistent storage adapter allows you to plug in your own storage solution t
 The storage interface consists of just a `load` and `save` API for read/write operations.
 
 <Info>
-Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node Core`, `Kotlin`, `.Net`, `Python Core`
+Currently only supported in `Go`, `Ruby`, `Legacy Node`, `Node Core`, `Java Core`, `Kotlin`, `.Net`, `Python Core`, `PHP Core`, `Rust Core`
 </Info>
 
 ### Persistent Storage Logic
@@ -95,6 +95,39 @@ exp = statsig.get_experiment(StatsigUser("a-user"), ExperimentEvaluationOptions(
 print(f"{exp.group_name}") # control
 ```
   </Tab>
+  <Tab title="Java Core">
+```java
+PersistentStorage persistentStorage = new MyPersistentStorage(); // See https://docs.statsig.com/server-core/java-core/#persistent-storage on how to implement it
+StatsigOptions options = new StatsigOptions.Builder()
+    .setPersistentStorage(persistentStorage)
+    .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+
+StatsigUser persistedUser = new StatsigUser.Builder().setUserID("test-123").build();
+Map<String, StickyValues> persistedValues = persistentStorage.getValuesForUser(persistedUser, "userID");
+if (persistedValues == null) {
+    persistedValues = new HashMap<>();
+}
+
+Experiment exp = statsig.getExperiment(
+    persistedUser,
+    "active_experiment",
+    new GetExperimentOptions(persistedValues)
+);
+System.out.println(exp.getGroupName()); // "Control"
+
+StatsigUser unknownUser = new StatsigUser.Builder().setUserID("unknown").build();
+Map<String, StickyValues> valuesForPersistedUser = persistentStorage.getValuesForUser(persistedUser, "userID");
+Experiment persistedExp = statsig.getExperiment(
+    unknownUser,
+    "active_experiment",
+    new GetExperimentOptions(valuesForPersistedUser)
+);
+System.out.println(persistedExp.getGroupName()); // "Control"
+```
+  </Tab>
   <Tab title="Node Core">
 ```typescript
 let persistedStorage =  new MyPersistentStorage() // See https://docs.statsig.com/server-core/node-core/#persistent-storage on how to implement it
@@ -103,6 +136,70 @@ let statsig = new Statsig(secretKye, options)
 let user = new StatsigUser("a-user")
 let exp = statsig.getExperiment(user, ExperimentEvaluationOptions(userPersistentValues= persistedStorage.getUserPersistedValues(user, "user_id")))
 
+```
+  </Tab>
+  <Tab title="PHP Core">
+```php
+$persistent_storage = new MyPersistentStorage(); // See https://docs.statsig.com/server-core/php-core/#persistent-storage on how to implement it
+$options = new StatsigOptions(persistent_storage: $persistent_storage);
+
+$statsig = new Statsig("secret-key", $options);
+$statsig->initialize();
+
+$persisted_user = new StatsigUser("test-123");
+$persisted_values = $persistent_storage->getValuesForUser($persisted_user, "userID") ?? [];
+$exp = $statsig->getExperiment(
+    $persisted_user,
+    "active_experiment",
+    ["user_persisted_values" => $persisted_values],
+);
+echo $exp->groupName; // "Control"
+
+$unknown_user = new StatsigUser("unknown");
+$values_for_persisted_user = $persistent_storage->getValuesForUser($persisted_user, "userID");
+$persisted_exp = $statsig->getExperiment(
+    $unknown_user,
+    "active_experiment",
+    ["user_persisted_values" => $values_for_persisted_user],
+);
+echo $persisted_exp->groupName; // "Control"
+```
+  </Tab>
+  <Tab title="Rust Core">
+```rust
+let persistent_storage = Arc::new(MyPersistentStorage::new()); // See https://docs.statsig.com/server-core/rust-core/#persistent-storage on how to implement it
+let options = StatsigOptions::builder()
+    .persistent_storage(Some(persistent_storage.clone()))
+    .build();
+
+let statsig = Statsig::new("secret-key", Some(Arc::new(options)));
+statsig.initialize().await;
+
+let persisted_user = StatsigUser::with_user_id("test-123");
+let persisted_values = persistent_storage
+    .get_values_for_user(&persisted_user, "userID")
+    .unwrap_or_default();
+let exp = statsig.get_experiment_with_options(
+    &persisted_user,
+    "active_experiment",
+    ExperimentEvaluationOptions {
+        user_persisted_values: Some(persisted_values),
+        ..Default::default()
+    },
+);
+println!("{}", exp.group_name.as_deref().unwrap_or("")); // "Control"
+
+let unknown_user = StatsigUser::with_user_id("unknown");
+let values_for_persisted_user = persistent_storage.get_values_for_user(&persisted_user, "userID");
+let persisted_exp = statsig.get_experiment_with_options(
+    &unknown_user,
+    "active_experiment",
+    ExperimentEvaluationOptions {
+        user_persisted_values: values_for_persisted_user,
+        ..Default::default()
+    },
+);
+println!("{}", persisted_exp.group_name.as_deref().unwrap_or("")); // "Control"
 ```
   </Tab>
   
