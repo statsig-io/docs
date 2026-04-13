@@ -263,9 +263,11 @@ Please note that we do not export exposures from rules that are 0%/100%.
     );
     ```
 
+    ```text
     Note: the default size for VARCHAR is 256 and we truncate all columns to 256 characters for Redshift.
     If you anticipate certain columns will exceed these limits, please adjust accordingly and let us know to remove these limits.
     Common longer columns are `user_dimensions` in exposures and `user_object`, `custom_ids`, and `company_metadata` in events.
+    ```
 
     **Exposures**
 
