@@ -1,12 +1,36 @@
 ---
 title: "Run your first A/B test"
+description: Step-by-step guide to creating and implementing your first A/B test experiment in Statsig
+doc_type: tutorial
+keywords:
+  - a/b test
+  - experiment
+  - tutorial
+  - getting started
+  - quickstart
+  - control group
+  - test group
+  - parameters
+  - sdk integration
+related_docs:
+  - /experiments/overview
+  - /experiments/create-new
+  - /sdks/quickstart
+  - /guides/first-feature
+prerequisites:
+  - Statsig account
+  - Statsig SDK installed in your application
 ---
 
 In this guide, you will create and implement your first experiment in Statsig from end to end. There are many types of experiments you can set up in Statsig, but this guide will walk through the most common one: an A/B test.
 
+## What you'll learn
+
 By the end of this tutorial, you will have:
 * Created a new user-level **Experiment** in the Statsig console, with **parameters** set for a Control and Experiment group
 * **Checked the experiment** in your application code using the **Statsig Client SDK** `getExperiment` function
+* Monitored experiment diagnostics in real-time
+* Understood how to read experiment results
 
 ## Prerequisites
 1. You already have a [Statsig account](https://console.statsig.com/sign_up)
@@ -51,7 +75,7 @@ Next, we'll use a Statsig Client SDK to check a user's assigned experiment group
 
 <CodeGroup>
 
-```tsx Check Experiment
+```typescript Check Experiment
 const quickstartExperiment = myStatsigClient.getExperiment(user, "quickstart_experiment");
 
 // the second parameter is the default fallback value if the experiment is not found

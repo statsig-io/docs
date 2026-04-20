@@ -2,6 +2,25 @@
 title: Build Your First Feature
 description: Walk through creating a feature gate, targeting audiences, and rolling out your first feature with the JavaScript SDK.
 slug: /guides/first-feature
+doc_type: tutorial
+keywords:
+  - feature flag
+  - feature gate
+  - tutorial
+  - getting started
+  - quickstart
+  - rollout
+  - targeting
+  - javascript sdk
+  - browser sdk
+related_docs:
+  - /feature-flags/overview
+  - /feature-flags/create
+  - /sdks/quickstart
+  - /guides/abn-tests
+prerequisites:
+  - Statsig account
+  - Access to browser DevTools
 ---
 
 <Info title="Feature gates vs feature flags">
@@ -48,7 +67,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
     Paste the snippet below into the browser console on any site to fetch the SDK from jsDelivr:
 
-    ```js
+    ```javascript
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js';
     document.head.appendChild(script);
@@ -62,14 +81,14 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Initialize and check the gate">
     Replace <code>YOUR_SDK_KEY</code> with the client key from Step&nbsp;4 and run:
 
-    ```js
+    ```javascript
     const client = new window.Statsig.StatsigClient('YOUR_SDK_KEY', {});
     await client.initializeAsync();
     ```
 
     Then call:
 
-    ```js
+    ```javascript
     client.checkGate('mobile_registration');
     ```
 
@@ -85,7 +104,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
     Re-evaluate the user to pick up the new environment and re-check the gate:
 
-    ```js
+    ```javascript
     await client.updateUserAsync({});
     client.checkGate('mobile_registration');
     ```
@@ -100,7 +119,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Test the employee backdoor">
     Switch DevTools back to the desktop view and update the user with a company email:
 
-    ```js
+    ```javascript
     await client.updateUserAsync({ email: 'teammate@statsig.com' });
     client.checkGate('mobile_registration');
     ```
@@ -113,7 +132,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   </Step>
 
   <Step title="Flush exposures and inspect diagnostics">
-    ```js
+    ```javascript
     client.flush();
     ```
 
@@ -129,7 +148,7 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
 Wrap feature logic in a gate check so only targeted users see the experience:
 
-```js
+```javascript
 if (client.checkGate('mobile_registration')) {
   show(mobileRegistrationPage);
 } else {
