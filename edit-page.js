@@ -91,6 +91,7 @@
     '.DocSearch-Button',
     'button[class*="search"]',
   ];
+  const KAPA_WIDGET_SELECTOR = '#kapa-button,[id*="kapa"],[class*="kapa"],[data-kapa-button],[data-kapa-launcher],[data-kapa-widget]';
 
   function isEditableElement(element) {
     if (!element) {
@@ -103,6 +104,25 @@
       tagName === 'INPUT' ||
       tagName === 'TEXTAREA' ||
       element.getAttribute('role') === 'textbox'
+    );
+  }
+
+  function isKapaEvent(event) {
+    const path = typeof event.composedPath === 'function'
+      ? event.composedPath()
+      : [event.target];
+
+    return (
+      path.some(function(element) {
+        return (
+          element instanceof Element &&
+          Boolean(element.closest(KAPA_WIDGET_SELECTOR))
+        );
+      }) ||
+      Boolean(
+        document.activeElement &&
+        document.activeElement.closest(KAPA_WIDGET_SELECTOR)
+      )
     );
   }
 
@@ -138,7 +158,8 @@
         event.metaKey ||
         event.ctrlKey ||
         event.shiftKey ||
-        isEditableElement(event.target)
+        isEditableElement(event.target) ||
+        isKapaEvent(event)
       ) {
         return;
       }
