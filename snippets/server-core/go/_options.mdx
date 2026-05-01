@@ -44,12 +44,16 @@
   When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
 </ResponseField>
 
-<ResponseField name="EnableIdLists" type="boolean" default="true">
-  Enables downloading ID lists; set to false to skip ID list syncing.
+<ResponseField name="EnableIdLists" type="boolean" default="false">
+  Required to be `true` when using segments with more than 1000 IDs. See [ID List segments](/segments/add-id-list).
 </ResponseField>
 
 <ResponseField name="IdListsUrl" type="string">
-  Custom URL for fetching ID lists.
+  Custom URL for fetching the ID list manifest.
+</ResponseField>
+
+<ResponseField name="DownloadIdListFileApi" type="string">
+  Custom base URL for downloading individual ID list files. Use this with `IdListsUrl` when routing ID list traffic through your own proxy or endpoint.
 </ResponseField>
 
 <ResponseField name="IdListsSyncIntervalMs" type="number">
@@ -90,7 +94,7 @@
 
 ### Proxy and Custom Network Routing
 
-The Go Server Core SDK currently documents endpoint overrides rather than a dedicated outbound proxy config. Use `WithSpecsUrl(...)`, `WithLogEventUrl(...)`, and `WithIdListsUrl(...)` to route Statsig network calls through your own endpoints or proxy layer.
+The Go Server Core SDK currently documents endpoint overrides rather than a dedicated outbound proxy config. Use `WithSpecsUrl(...)`, `WithLogEventUrl(...)`, `WithIdListsUrl(...)`, and `WithDownloadIdListFileApi(...)` to route Statsig network calls through your own endpoints or proxy layer.
 
 ---
 
@@ -114,6 +118,8 @@ options, err := statsig.NewOptionsBuilder().
     WithDisableUserAgentParsing(true).
     WithWaitForCountryLookupInit(false).
     WithEnableIdLists(true).
+    WithIdListsUrl("https://example.com/id-list-manifest").
+    WithDownloadIdListFileApi("https://example.com/id-list-files").
     WithIdListsSyncIntervalMs(60000).
     WithInitTimeoutMs(3000).
     WithFallbackToStatsigApi(false).
