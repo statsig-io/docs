@@ -23,7 +23,7 @@ Version 3.32.0 of all client SDK's introduces a new event logger architecture fo
 
 ## Flush Mechanisms
 
-- `Limit flush`: flushes when a full batch is reached and backoff is satisfied. Limit flush performs opportunistic draining. Limit flush will keep flushing as long as each send over network is succesful. It will fall into backoff upon failure. 
+- `Limit flush`: flushes when a full batch is reached and backoff is satisfied. Limit flush performs opportunistic draining. Limit flush will keep flushing as long as each send over network is successful. It will fall into backoff upon failure. 
 - `Scheduled:full-batch flush`: scheduler flushes full batches when cooldown allows.
 - `Scheduled:max-time flush`: scheduler flushes partial batches when max interval (60s) is reached.
 - `Manual flush`: explicit `client.flush()`.

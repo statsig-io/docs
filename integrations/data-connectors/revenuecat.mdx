@@ -25,6 +25,6 @@ Statsig integrates with RevenueCat through a Webhook and receives data as mentio
 4. On the Statsig [Integrations](https://console.statsig.com/integrations) page, enable the RevenueCat integration.
 
 
-If you're running an experiment with the user as your unit type, you must set the RevenueCat `appUserID` to match the `userID` that you log with the Statsig SDK, for example, when you expose the the user to a Statsig feature gate or experiment. Check out how to set the `appUserID` on RevenueCat [here](https://docs.revenuecat.com/docs/user-ids#provided-app-user-id). 
+If you're running an experiment with the user as your unit type, you must set the RevenueCat `appUserID` to match the `userID` that you log with the Statsig SDK, for example, when you expose the user to a Statsig feature gate or experiment. Check out how to set the `appUserID` on RevenueCat [here](https://docs.revenuecat.com/docs/user-ids#provided-app-user-id). 
 
 By default, Statsig will not ingest [Sandbox events](https://docs.revenuecat.com/docs/webhooks#testing) from RevenueCat to reduce noise from test events. However, you can explicitly enable ingestion of Sandbox events into Statsig using the Statsig [Integrations](https://console.statsig.com/integrations) page while debugging. 
