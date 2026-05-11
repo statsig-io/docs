@@ -11,7 +11,7 @@ last_update:
 
 Initialization is the step in SDK setup where your SDK downloads the values for your set of Flags(Gates), Experiments, Dynamic Configs, etc., and prepares itself to log events. In all SDKs, initialization entails calling a method like .initialize() - with occasional naming variation between SDKs (e.g., InitializeAsync in javascript). 
 
-*How to solve:* If you're using a less common SDK (.NET, Dart, Unity, PHP), or an older version, its possible that this section can appear incomplete erroneously. Otherwise - all you need to do is initialize your SDK - see the [docs for the SDK you're using.](/sdks/getting-started)
+*How to solve:* If you're using a less common SDK (.NET, Dart, Unity, PHP), or an older version, it's possible that this section can appear incomplete erroneously. Otherwise - all you need to do is initialize your SDK - see the [docs for the SDK you're using.](/sdks/getting-started)
 
 ### Initialization Success
 
@@ -41,14 +41,14 @@ Any time you call .checkGate, .getExperiment, .getDynamicConfig or similar in th
 
 Every config (gate, experiment, or Dynamic Config) in Statsig has an ID type that is used to randomly bucket users into groups. When that ID is absent from your "checks", Statsig can't accurately bucket those users (they'll all be placed in the same bucket, perhaps unbalancing your experiment).
 
-*How to solve:* inspect your code paths to ensure that the ID type you're using is the correct one for where you're running the experiment: if its a logged-out experiment, an anonymous identifier like StableID is most appropriate. For a quick fix, you can also add a targeting gate to an experiment, filtering out any users with a null ID type. 
+*How to solve:* inspect your code paths to ensure that the ID type you're using is the correct one for where you're running the experiment: if it's a logged-out experiment, an anonymous identifier like StableID is most appropriate. For a quick fix, you can also add a targeting gate to an experiment, filtering out any users with a null ID type. 
 
 ### Healthy Evaluation Reasons
 
 When you check a Statsig gate/experiment/dynamic config - the SDK will always provide a value, to ensure your customer experience is unaffected even if something goes wrong. Instead of panicking when something hasn't worked quite right - the SDKs expose "Evaluation Reason" as a key source of information for if the SDK is in a healthy state when you make checks. Reasons are discussed in detail in our [debugging docs](/sdk/debugging#evaluation-reason).
 
 *How to solve:* 
- - If your evaluation reason looks like: `uninitialized`,  `unrecognized`,  `novalues`, `loading`, review your [Initialization Strategy](/client/concepts/initialize). With uninitialized, its common that you've forgotten to call initialize at all. Loading and Novalues often mean that you're checking a config before initialization returns, or that a successful initialization doesn't have values for the user object that you're using (e.g., you called updateUserSync(), which changes the user without getting new values for them.)
+ - If your evaluation reason looks like: `uninitialized`,  `unrecognized`,  `novalues`, `loading`, review your [Initialization Strategy](/client/concepts/initialize). With uninitialized, it's common that you've forgotten to call initialize at all. Loading and Novalues often mean that you're checking a config before initialization returns, or that a successful initialization doesn't have values for the user object that you're using (e.g., you called updateUserSync(), which changes the user without getting new values for them.)
  - If your evaluation reason look like: `error` or `unsupported`, you likely need to update your SDK version, as you're attempting to use a rule type that your SDK doesn't support.
  - If your evaluation reason looks like: `bootstrapstableidmismatch` or `invalidbootstrap`, see our [debugging guides](/sdk/debugging#faqs) for these issues.
  - If your evaluation reason looks like `noclient`, then you might be trying to check a config outside of the \<StatsigProvider\> in React.
@@ -75,7 +75,7 @@ We're constantly updating Statsig's SDKs with performance, security and function
 
 [Client Bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) is a method to use Server SDKs to provide initialization values to client SDKs. Along with performance benefits (this request can be parallelized with other requests your client makes, reducing load times), client bootstrapping improves resilience in the case of a Statsig outage, as Server SDKs have continual, uninterrupted access to rulesets. 
 
-*How to solve:* visit our [guides on client bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) to assess if its the right initialization strategy for you.
+*How to solve:* visit our [guides on client bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) to assess if it's the right initialization strategy for you.
 
 ### Target Applications
 
