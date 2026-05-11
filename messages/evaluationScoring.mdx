@@ -1,5 +1,6 @@
 ---
 title: Evaluation Cost Breakdown
+description: "Troubleshooting reference for Statsig evaluation scoring messages in the console, including diagnostics for SDK health and evaluation correctness."
 ---
 
 Feature gate evaluation speeds are determined by the overall complexity of all rules in a gate. Each **condition**, **operator**, and **value count** contributes to a score that classifies rules and gates as Normal, Slow, or Very Slow. The sum of the complexity of all rules equls the complexity of a gate. It is possible to not have a slow rule but a slow gate if all of the rules combined, put the gate over the threshold. Use this page to quickly identify the likely cause of a slow gate and the fastest way to fix it.
