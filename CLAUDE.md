@@ -249,21 +249,181 @@ Add a redirect when renaming or moving a page to avoid broken links.
 
 ## Writing style
 
-Apply these rules to all content:
+Apply these rules to all content. For a systematic automated pass, invoke the `/edit-doc` skill (`.claude/skills/edit-doc/SKILL.md`).
 
-- **Active voice.** "Statsig processes the event" not "The event is processed."
-- **Present tense.** "Statsig sends a notification" not "Statsig will send a notification."
-- **Second person.** "You can configure..." not "Users can configure..." or "We can configure..."
-- **Contractions.** "you can't", "it doesn't", "that's" — always.
-- **No "please"** in instructions.
-- **Sentence-case headings.** No end punctuation on headings. Body content starts at `##` — never use `#` in page body.
-- **Bold** (`**text**`) for interactive UI elements: buttons, tabs, field labels, checkboxes.
-- **Italics** (`*text*`) for navigation paths: `*Feature Flags > Create*`.
-- **List items** end with a period.
-- Replace "in order to" → "to", "via" → "through", "utilize" → "use", "see [doc]" → "go to [doc]".
-- No "we", "our", or "us" in prose.
+### Minimal mode exception
 
-Use the `/edit-doc` skill (`.claude/skills/edit-doc/SKILL.md`) for a systematic style pass on any file.
+If a file has `edit_doc: minimal` in its frontmatter (used for developer-authored release notes and changelogs), skip all style rules below except: full-sentence prose ends with terminal punctuation, first word of each sentence is capitalized, no stray characters or doubled punctuation, and no frontmatter changes.
+
+---
+
+### 1. Active voice (highest priority — two passes required)
+
+Rewrite passive constructions so the actor is the subject. When the system is the actor, use "Statsig" as the subject.
+
+| Passive (avoid) | Active (use) |
+|---|---|
+| "Users can be assigned to groups" | "You can assign users to groups" |
+| "Events are sent to the API" | "The SDK sends events to the API" |
+| "Data is processed in real time" | "Statsig processes data in real time" |
+| "Permissions are granted at the org level" | "Statsig grants permissions at the org level" |
+
+**Run a second pass explicitly after fixing everything else.** These patterns are easy to miss:
+
+```
+is assigned | are assigned | is removed | are removed
+is granted | are granted | is created | are created
+is available | are available | was assigned | were assigned
+is sent | are sent | can be configured | can be accessed
+will be displayed | will be shown | should be checked
+```
+
+---
+
+### 2. Present tense
+
+Remove all future tense. The docs describe how the product works now.
+
+| Future (avoid) | Present (use) |
+|---|---|
+| "This feature will allow you to..." | "This feature lets you..." |
+| "The modal will open" | "The modal opens" |
+| "Statsig will send a notification" | "Statsig sends a notification" |
+
+Search for: `will`, `will be`, `will allow`, `will enable`, `would be`, `going to`.
+
+---
+
+### 3. Contractions (always required)
+
+Use contractions in all prose. Omitting them makes docs feel formal and stiff.
+
+| Expand (avoid) | Contraction (use) |
+|---|---|
+| cannot | can't |
+| are not | aren't |
+| is not | isn't |
+| does not | doesn't |
+| do not | don't |
+| has not | hasn't |
+| have not | haven't |
+| was not / were not | wasn't / weren't |
+| should not | shouldn't |
+| could not | couldn't |
+| would not | wouldn't |
+| will not | won't |
+
+---
+
+### 4. No "please" in instructions
+
+Remove "please" from all instructional text. It adds no information and makes steps feel tentative.
+
+Before: "Please navigate to *Settings > API Keys*."
+After: "Navigate to *Settings > API Keys*."
+
+---
+
+### 5. Concise language
+
+Replace wordy phrases with their direct equivalents:
+
+| Wordy (avoid) | Concise (use) |
+|---|---|
+| in order to | to |
+| prior to | before |
+| due to the fact that | because |
+| has the ability to | can |
+| currently | remove (almost always redundant) |
+| desired / desire | want or need |
+| utilize | use |
+| via | through or using |
+
+---
+
+### 6. Inclusive navigation terms
+
+Replace `see` when it directs readers to other documentation. This is an accessibility rule — "see" excludes users with visual impairments.
+
+| Avoid | Use instead |
+|---|---|
+| "See the API reference." | "Go to the API reference." |
+| "See [Configuring the SDK]." | "Refer to [Configuring the SDK]." |
+| "See below for details." | "Navigate to the section below." |
+
+**Exception:** Do not replace `see` in non-navigational contexts: "you can see this in the chart", "as you can see".
+
+---
+
+### 7. Second person — no first-person plural
+
+Write to the reader using "you". Remove "we", "our", and "us" from prose (except in URLs).
+
+| Avoid | Use |
+|---|---|
+| "We recommend using..." | "Statsig recommends using..." |
+| "Let's configure the SDK." | "Configure the SDK." |
+| "Our platform supports..." | "Statsig supports..." |
+| "In this guide, we'll show you..." | "This guide shows you..." |
+
+---
+
+### 8. UI element formatting
+
+| Element type | Formatting | Example |
+|---|---|---|
+| Interactive elements (buttons, tabs, field labels, checkboxes, menu items) | **Bold** | Click **Save**. Select the **Metrics** tab. |
+| Navigation paths and page names | *Italics* | Go to *Feature Flags > Create*. |
+| Code, parameters, values | `Backticks` | Set `api_key` to your project key. |
+
+Navigation paths always use italics — never bold:
+- Correct: Go to *Settings > API Keys*.
+- Incorrect: Go to **Settings** > **API Keys**.
+
+---
+
+### 9. List punctuation
+
+All bulleted and numbered list items end with a period, including single-word and short-phrase items.
+
+---
+
+### 10. Headings
+
+- Sentence case only — capitalize the first word and proper nouns; lowercase everything else.
+- No end punctuation (no `.`, `?`, `!`, or `:`).
+- Body content starts at `##`. Never use a single `#` in the page body.
+- Don't use title case.
+
+Correct: `## Configure your API key`
+Incorrect: `## Configure Your API Key.`
+
+---
+
+### Preferred wording substitutions
+
+Apply these everywhere in prose (not inside code blocks or frontmatter):
+
+| Avoid | Use instead |
+|---|---|
+| `once` (temporal: "once you configure X") | `after` or `when` — don't change `once` meaning "a single time" |
+| `first-class` | `primary` or `default` |
+| `blacklist` | `block list` or `deny list` |
+| `blackout period` | `moratorium` |
+| `cripple` | `hinder`, `slow down`, or `impede` |
+| `dummy` | `placeholder`, `mock`, `stub`, or `sample` |
+| `grandfathered` / `grandfather` | `legacy` or `exempt` |
+| `grayed-out` | `disabled` or `inactive` |
+| `kill` (non-literal) | `end`, `cancel`, or `stop` |
+| `sanity-check` | `validate` or `final check` |
+| `terminate` | `end`, `cancel`, or `stop` |
+| `abort` | `end`, `cancel`, or `stop` |
+
+---
+
+### What style rules do NOT cover
+
+Do not change: code, API endpoints, parameter names, product names, or content inside fenced code blocks. Do not alter technical meaning when rewriting for style.
 
 ---
 
