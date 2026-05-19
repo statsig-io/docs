@@ -1,0 +1,39 @@
+---
+description: Statsig doc style rules — applies when editing **/*.mdx files
+globs: "**/*.mdx"
+alwaysApply: false
+---
+
+# Doc editing rules
+
+When editing any `.mdx` file in this repo, apply the full Statsig style guide from the `edit-doc` skill below. The same rules are enforced by style review — lint errors block merge, and PRs without a `Doc-Reviewed-By: skill` commit trailer get a `needs-doc-review` label.
+
+If a content file has `edit_doc: minimal` in frontmatter, limit style review to the minimal checklist: complete full-sentence prose, correct capitalization, no stray characters, and no frontmatter changes. Keep structural rules in force, but skip style rewrites for passive voice, future tense, contractions, "please", "see", wordy phrases, first-person plural, UI formatting, headings, and list punctuation on intentionally terse bullets.
+
+## Process
+
+1. **Search for style issues first.** Before editing, scan for passive voice, future tense, missing contractions, "please" in instructions, wordy phrases, ableist navigation terms ("see X" → "go to X"), first-person plural ("we/our/us"), bold navigation paths, and heading issues. Report findings with line numbers.
+2. **Fix by category, not line-by-line.** Apply related changes together (all active-voice fixes, then all contractions, etc.).
+3. **Run a second pass explicitly for passive voice.** The second pass is mandatory — passive constructions are easily missed when fixing other issues.
+4. **Preserve technical accuracy.** Don't change code, API names, or product names. Don't alter meaning.
+5. **After editing, add a trailer to the commit message:** `Doc-Reviewed-By: skill`
+
+## Structural rules for this repo (Mintlify MDX)
+
+- `title` and `description` frontmatter required and non-empty.
+- No raw HTML outside of supported Mintlify components.
+- Use Mintlify MDX component syntax for callouts — never markdown blockquotes for notes/warnings:
+  - `<Note>Text</Note>`
+  - `<Warning>Text</Warning>`
+  - `<Tip>Text</Tip>`
+  - `<Info>Text</Info>`
+- Use `<Frame>` for images that need a container.
+- Use `<Tabs>` / `<Tab>` for tabbed content.
+- Use `<Accordion>` for collapsible sections.
+- Use `<CodeGroup>` for multi-language code blocks.
+- Fenced code blocks should specify a language.
+- Internal links use `/[section]/[slug]` — no `.mdx` extensions.
+
+## Full style guide
+
+The authoritative rules (active voice patterns, UI element formatting, heading conventions, etc.) live at `@.claude/skills/edit-doc/SKILL.md`. Read that file when starting a doc edit — it contains the full priority-ordered checklist, passive-voice patterns to search for, and before/after examples.

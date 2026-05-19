@@ -11,6 +11,8 @@ import checkGate from '/snippets/client/checkGate.mdx'
 import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
 import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
 import logEvent from '/snippets/client/logEvent.mdx'
+import flushEvents from '/snippets/client/flush.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
 
 import angularInstall from '/snippets/client/Angular/angularInstall.mdx'
 import angularSetup from '/snippets/client/Angular/angularSetup.mdx'
@@ -20,6 +22,8 @@ import angularGetConfig from '/snippets/client/Angular/getDynamicConfig.mdx'
 import angularGetExperiment from '/snippets/client/Angular/getExperiment.mdx'
 import angularGetLayer from '/snippets/client/Angular/getLayer.mdx'
 import angularLogEvent from '/snippets/client/Angular/logEvent.mdx'
+import angularFlush from '/snippets/client/Angular/flush.mdx'
+import angularShutdown from '/snippets/client/Angular/shutdown.mdx'
 import angularUpdateUser from '/snippets/client/Angular/angularUpdateUser.mdx'
 import angularLoadingState from '/snippets/client/Angular/angularLoadingState.mdx'
 import angularDirectives from '/snippets/client/Angular/angularDirectives.mdx'
@@ -58,9 +62,16 @@ Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="
 
 <logEvent/>
 <angularLogEvent/>
+<flushEvents/>
+<angularFlush/>
 
 <angularUpdateUser/>
 <angularLoadingState/>
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown/>
+<angularShutdown/>
+
 <angularDirectives/>
 <angularSessionReplay/>
-

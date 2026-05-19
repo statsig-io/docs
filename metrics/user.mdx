@@ -7,7 +7,7 @@ description: "Understand and customize how Statsig calculates standard user enga
 
 Statsig automatically creates a standard set of user accounting metrics to track common product-wide engagement metrics like daily active users (DAU), new users, and retention.  We also track more sophisticated metrics like L-ness, retention, and stickiness. 
 
-All of these Standard User Accounting Metrics rely on a company-wide definition of a daily active user, which is defined by default in Statsig as [users that the Statsig SDK has logged](/concepts/user) any event or request (e.g., check_gate, get_config, log_event) for. You can always [customize your company's definition of a DAU](#customizing-the-dau-definition).
+All of these Standard User Accounting Metrics rely on a company-wide definition of a daily active user, which is defined by default in Statsig as [users that the Statsig SDK has logged](/concepts/user) any custom event (i.e. log_event) for. You can always [customize your company's definition of a DAU](#customizing-the-dau-definition).
 
 
 <Info>**Warehouse Native Users**: You're currently viewing a feature designed for Statsig Cloud users. Warehouse Native customers typically have multiple datasets that uniquely affect how they define active users. Read about [Retention metrics in Warehouse Native](/statsig-warehouse-native/metrics/retention).</Info>
@@ -16,6 +16,7 @@ All of these Standard User Accounting Metrics rely on a company-wide definition 
 - It's common to denote the first day a (new) user was active as Day Zero (D0), and the subsequent days as D1, D2, D3... etc.
 - A weekly active user is someone who has been active within the last 7 days (0-6 days).  This includes users who were active on each of the 7 days, and users who have only been active on a single day.  The same definition applies to a monthly active user.
 - A user with a single session that spans midnight with qualifying events at 11:59p and 12:01a will qualify a user as being a daily active user on both days.
+- We reserve the right to limit tracking to 100M unique IDs per unit type for 1 year.
 
 ## Default User Accounting Metrics in Statsig
 
@@ -51,9 +52,8 @@ You can customize the definition of DAU within the Statsig Console and specify o
 </Frame>
 
 
-There are several options:
-1. Include or Exclude Statsig Events - check_gate() and get_config() can be included or excluded from the current active user definition.  By default, they are included.
-2. Log Events - You can specify the set of events which will qualify a user as a daily active user.  By default, all events are included.
+There are several options for defining an active user using log events:
+1. You can specify the set of events which will qualify a user as a daily active user.  By default, all events are included.
   i. Excluding specific events - Some companies may want to exclude specific events (eg. events that aren't considered significant user interactions, homepage_visit or notification_sent).  You can Expand and uncheck events you do not want to include.  You can also toggle whether future events (not shown on the list) should be included or excluded.
   ii. Include specific events - Some companies prefer to have a very narrow definition of an active user (eg. event = login).  This can be accomplished by selecting the set of events, and turning off "Include New Events by Default".
 

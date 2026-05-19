@@ -79,7 +79,7 @@ This will also be fully transparent from your own Warehouse's history and usage 
 
 
 ## Exposure Export Table
-Statsig dedupes and records each user's first exposure to an experiment into a table in your warehouse. This table name is configurable in the Data Connection setup and defaults to statsig_forwarded_exposures. This table contains each user's first exposure to an experiment. For feature gates, we dedupe and record exposures for partial rollouts (e.g. 5% or 50% rollouts - but not 0% or 100% rollouts).
+Statsig dedupes and records production exposures into the forwarded exposures table configured in your warehouse Data Connection. This table contains each user's first exposure to an experiment. For feature gates, we dedupe and record exposures for partial rollouts (e.g. 5% or 50% rollouts - but not 0% or 100% rollouts).
 
 | Column Name             | Data Type | Description                                                                                   |
 | ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
@@ -89,7 +89,98 @@ Statsig dedupes and records each user's first exposure to an experiment into a t
 | user_id                 | string    | The ID passed in as the Statsig userID                                                        |
 | stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
 | \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |
-| timestamp               | timestamp | Statsig Client SDK managed stable device identifier                                           |
+| timestamp               | timestamp | Timestamp of the first exposure                                                               |
 | user_dimensions         | object    | Warehouse specific object with all the user dimensions                                        |
-| ts                      | timestamp | Timestamp of the first exposure                                                               |
 
+`user_dimensions` is populated in the daily deduplicated export. Fast-forwarded exposure rows can omit some fields in this object until the next daily load.
+
+### Common Fields in user_dimensions
+
+`user_dimensions` contains user attributes captured alongside the first exposure. The exact shape can vary by SDK and project configuration, but these are some of the most common fields you may see:
+
+| Field                  | Description                                                      | Notes                                                                  |
+| ---------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `os`                   | Normalized operating system name                                 | Canonical OS field on the exposure side.                               |
+| `os_version`           | Operating system version                                         | Derived from SDK metadata or user agent parsing.                       |
+| `browser_name`         | Browser name                                                     | Derived from SDK metadata or user agent parsing.                       |
+| `browser_version`      | Browser version                                                  | Derived from SDK metadata or user agent parsing.                       |
+| `device_model`         | Device model                                                     | Forwarded or inferred when available.                                  |
+| `ip`                   | IP address                                                       | Present when available from the SDK or request context.                |
+| `country`              | Country                                                          | Derived from request context or IP lookup.                             |
+| `locale`               | Locale                                                           | Forwarded or inferred when available.                                  |
+| `language`             | Language                                                         | Forwarded or inferred when available.                                  |
+| `appVersion`           | Application version                                              | Forwarded when present on the SDK user object.                         |
+| `sessionID`            | Session identifier                                               | Forwarded when present on the SDK user object.                         |
+| `appIdentifier`        | Application identifier                                           | Forwarded when present on the SDK user object.                         |
+
+Additional non-null fields from the SDK user object may also appear in `user_dimensions`. Custom IDs are typically exported as dedicated top-level columns in the exposure table rather than being queried from this object.
+
+Input fields such as `deviceOS` and `systemName` are used to derive the exported `os` field. If you want to analyze operating system on forwarded exposures, query `user_dimensions.os`.
+
+## Event Export Table
+
+If you log custom events through a Statsig SDK, Statsig also forwards those events into a configurable table in your warehouse. This is the table used when Warehouse Native customers rely on Statsig SDK logging for outcome events.
+
+- Use `user_object` for user fields associated with the event.
+- Use `statsig_metadata` for SDK and exposure-processing metadata.
+- Use `company_metadata` for the event metadata payload you logged.
+
+| Column Name             | Data Type | Description                                                                                   |
+| ----------------------- | --------- | --------------------------------------------------------------------------------------------- |
+| user_id                 | string    | The ID passed in as the Statsig userID                                                        |
+| stable_id               | string    | Statsig Client SDK managed stable device identifier                                           |
+| \[your custom ids]       | string    | One column for every custom unitID you use on Statsig                                        |
+| timestamp               | timestamp | Event timestamp                                                                               |
+| event_name              | string    | Name of the logged custom event                                                               |
+| event_value             | string    | Optional event value                                                                          |
+| user_object             | object    | Warehouse specific object containing user fields associated with the event                    |
+| statsig_metadata        | object    | Warehouse specific object containing Statsig SDK and exposure metadata                        |
+| company_metadata        | object    | Event metadata payload logged with the event                                                  |
+
+### Common Fields in user_object
+
+`user_object` contains user fields associated with the event. It often includes the same common fields as `user_dimensions`, plus any additional non-null fields sent on the SDK user object.
+
+| Field                  | Description                                                      | Notes                                                                  |
+| ---------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `os`                   | Normalized operating system name                                 | Canonical OS field on the event-side user object.                      |
+| `os_version`           | Operating system version                                         | Derived from SDK metadata or user agent parsing.                       |
+| `browser_name`         | Browser name                                                     | Derived from SDK metadata or user agent parsing.                       |
+| `browser_version`      | Browser version                                                  | Derived from SDK metadata or user agent parsing.                       |
+| `device_model`         | Device model                                                     | Derived from `deviceModel` when provided.                              |
+| `ip`                   | IP address                                                       | Present when available from the SDK or request context.                |
+| `city`                 | City                                                             | Added when geographic inference is available.                          |
+| `state`                | State or region                                                  | Added when geographic inference is available.                          |
+| `country`              | Country                                                          | Derived from request context or IP lookup.                             |
+| `locale`               | Locale                                                           | Forwarded or inferred when available.                                  |
+| `language`             | Language                                                         | Forwarded or inferred when available.                                  |
+| `appVersion`           | Application version                                              | Forwarded when present on the SDK user object.                         |
+| `sessionID`            | Session identifier                                               | Forwarded when present on the SDK user object.                         |
+| `appIdentifier`        | Application identifier                                           | Forwarded when present on the SDK user object.                         |
+
+### Common Fields in statsig_metadata
+
+`statsig_metadata` contains SDK-level and exposure-processing metadata associated with the event. These are some of the most common customer-facing fields:
+
+| Field                  | Description                                                      | Notes                                                                  |
+| ---------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `deviceType`           | High-level device category                                       | Derived from the normalized OS, for example `Desktop` or `Mobile`.     |
+| `targetAppID`          | Target app identifier                                            | SDK target app metadata.                                               |
+| `statsigTier`          | Statsig environment tier                                         | For example `prod` or `staging`.                                       |
+| `keyEnvironment`       | SDK key environment                                              | Environment associated with the SDK key.                               |
+| `keyID`                | SDK key identifier                                               | Useful for debugging ingestion and environment issues.                 |
+| `samplingRate`         | Event sampling rate                                              | Present when the event is sampled.                                     |
+| `is_bot`               | Bot classification                                               | Set when Statsig classifies the event as bot traffic.                  |
+| `billing_type`         | Exposure billing classification                                  | Common on exposure-related events.                                     |
+| `groupID`              | Experiment group identifier                                      | Common on exposure-related events.                                     |
+| `ruleID`               | Rule identifier                                                  | Common on exposure-related events.                                     |
+| `continuous_rollout_id`| Continuous rollout identifier                                    | Present for continuous rollout exposures.                              |
+| `configExposureType`   | Exposure config type                                             | For example `dynamic_config` or `experiment`.                          |
+| `isSwitchback`         | Switchback flag                                                  | Present when the exposure is associated with a switchback experiment.  |
+| `is_autotune`          | Autotune flag                                                    | Present when the exposure is associated with an autotune experiment.   |
+
+Other SDK debugging and exposure-processing metadata may also appear in `statsig_metadata`.
+
+### What Goes in company_metadata
+
+`company_metadata` stores the metadata payload logged with the event. This object does not have a fixed schema and will vary based on the event and your SDK usage. Most event-specific business context, such as `price`, `currency`, `category`, `plan`, `screen`, `route`, or nested objects like `cart`, `items`, and `context`, will appear here.

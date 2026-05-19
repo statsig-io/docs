@@ -26,6 +26,10 @@ The service user needs the following permissions:
 - READ on any tables you are using for experimentation
 - USAGE/WRITE on a Statsig-specific Schema we'll use to materialize temp tables and results
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 ### Account Name
 
 For the Account Name field, please enter in the format of `<id>.<region>.<provider>`. So, your information may look something like this:

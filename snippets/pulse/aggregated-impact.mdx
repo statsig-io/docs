@@ -18,7 +18,7 @@ Insights presents a reverse perspective of the [Pulse](/pulse/read-pulse) view. 
 
 ## How the math works
 
-Check how the topline and projected launch impact are calculated in this [doc](https://docs.statsig.com/stats-engine/topline-impact/#computing-projected-launch-impact).
+Check how the topline and projected launch impact are calculated in this [doc](/stats-engine/topline-impact/#computing-projected-launch-impact).
 
 To estimate false positive risk and calculate Aggregated Impact, we use the methodology in this [paper](https://dl.acm.org/doi/10.1145/3534678.3539160) which is widely adopted across the industry. Specifically:
 
@@ -26,7 +26,7 @@ $$
 Aggregated Impact=\sum_{i}{(1 - FPR_i) \times Projected Launch Impact_i}
 $$
 
-Where the [projected launch impact](https://docs.statsig.com/stats-engine/topline-impact/) is an estimate of the topline impact assuming a decision is made and the test group is launched to all users; the false positive risk is calculated by the following formula:
+Where the [projected launch impact](/stats-engine/topline-impact/) is an estimate of the topline impact assuming a decision is made and the test group is launched to all users; the false positive risk is calculated by the following formula:
 
 $$
 

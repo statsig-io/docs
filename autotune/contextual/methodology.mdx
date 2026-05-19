@@ -13,7 +13,7 @@ This page covers the high level approach that Statsig takes to running contextua
 
 ## Core Approach
 
-What is implemented in Statsig is close to the the disjoint model methodology from [Li, Chu, Langford, Schapire](https://arxiv.org/pdf/1003.0146). In short, several models are trained - one per variant - and their estimate CIs modelled. When the contextual autotune is triggered, the latest version of the model is used to estimate the user's outcome, plus the upper end of the 95% CI for the estimate.
+What is implemented in Statsig is close to the disjoint model methodology from [Li, Chu, Langford, Schapire](https://arxiv.org/pdf/1003.0146). In short, several models are trained - one per variant - and their estimate CIs modelled. When the contextual autotune is triggered, the latest version of the model is used to estimate the user's outcome, plus the upper end of the 95% CI for the estimate.
 
 <Frame>
   <img src="/images/experiments/whn/linucb.png" alt="methodology workflow" />

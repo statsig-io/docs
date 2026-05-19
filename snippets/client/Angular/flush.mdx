@@ -1,0 +1,25 @@
+```ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StatsigService } from '@statsig/angular-bindings';
+
+@Component({
+  standalone: true,
+  selector: 'app-flush-events',
+  imports: [CommonModule],
+  template: `
+    <button (click)="flushEvents()">Flush Events</button>
+    <p *ngIf="message">{{ message }}</p>
+  `,
+})
+export class FlushEventsComponent {
+  message: string | null = null;
+
+  constructor(private statsigService: StatsigService) {}
+
+  async flushEvents(): Promise<void> {
+    await this.statsigService.getClient().flush();
+    this.message = 'Queued events flushed';
+  }
+}
+```

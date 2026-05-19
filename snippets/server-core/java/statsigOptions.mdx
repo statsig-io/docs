@@ -48,6 +48,21 @@ Maximum number of events to queue before forcing a flush.
 An adapter with custom storage behavior for config specs. Can also continuously fetch updates in place of the Statsig network.
 </ResponseField>
 
+<ResponseField name="proxyConfig" type="ProxyConfig">
+Configuration for connecting through an outbound HTTP proxy.
+</ResponseField>
+
+<ResponseField name="specAdapterConfigs" type="List&lt;SpecAdapterConfig&gt;">
+Advanced configuration for fetching specs from multiple sources or protocols, including [Statsig Forward Proxy](/infrastructure/forward-proxy) over gRPC websocket streaming.
+
+Each `SpecAdapterConfig` can set:
+- `adapterType`: one of `SpecAdapterType.DATA_STORE`, `SpecAdapterType.NETWORK_HTTP`, or `SpecAdapterType.NETWORK_GRPC_WEBSOCKET`
+- `specsUrl`: optional endpoint override for the adapter
+- `initTimeoutMs`: optional initialization timeout in milliseconds
+- `authenticationMode`: optional transport auth mode via `AuthenticationMode.NONE`, `AuthenticationMode.TLS`, or `AuthenticationMode.MTLS`
+- `caCertPath`, `clientCertPath`, `clientKeyPath`, `domainName`: optional TLS and mTLS fields for gRPC websocket connections
+</ResponseField>
+
 <ResponseField name="persistentStorage" type="PersistentStorage">
 Interface to use persistent storage within the SDK.
 </ResponseField>
@@ -92,3 +107,45 @@ statsig.initialize().get()
 
 </Accordion>
 
+### Proxy and Custom Network Routing
+
+Use `setProxyConfig(ProxyConfig)` if your service needs a standard outbound HTTP proxy for Statsig network calls. Use `setSpecAdapterConfigs(...)` if you are routing spec downloads through [Statsig Forward Proxy](/infrastructure/forward-proxy).
+
+```java
+ProxyConfig proxyConfig = new ProxyConfig();
+proxyConfig.setProxyHost("proxy.example.com");
+proxyConfig.setProxyPort(8080);
+proxyConfig.setProxyProtocol("https");
+proxyConfig.setCaCertPath("/etc/ssl/certs/corporate-ca.pem"); // Optional
+
+StatsigOptions options =
+    new StatsigOptions.Builder()
+        .setProxyConfig(proxyConfig)
+        .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```
+
+`ProxyConfig` supports `proxyHost`, `proxyPort`, `proxyAuth`, `proxyProtocol`, and `caCertPath`. Set `caCertPath` when your environment requires a custom PEM CA bundle for outbound TLS.
+
+### Statsig Forward Proxy Example
+
+```java
+import java.util.Collections;
+
+SpecAdapterConfig forwardProxyConfig =
+    new SpecAdapterConfig()
+        .setAdapterType(SpecAdapterType.NETWORK_GRPC_WEBSOCKET)
+        .setSpecsUrl("http://forward-proxy.internal:50051")
+        .setAuthenticationMode(AuthenticationMode.NONE);
+
+StatsigOptions options =
+    new StatsigOptions.Builder()
+        .setSpecAdapterConfigs(Collections.singletonList(forwardProxyConfig))
+        .setFallbackToStatsigApi(true)
+        .build();
+
+Statsig statsig = new Statsig("secret-key", options);
+statsig.initialize().get();
+```

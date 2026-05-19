@@ -4,13 +4,17 @@ title: Visual Editor Setup & Usage
 keywords:
   - owner:brock
 last_update:
-  date: 2025-09-18
+  date: 2026-04-01
 displayed_sidebar: cloud
 ---
 
 ## Summary
 
 Visual Editor v3 provides a simpler interface for point-and-shoot experiments. Different from previous versions, experiments are created in the Statsig Console, and edited directly on top of the page. Sidecar still relies on a javascript script tag, though the package name has changed. 
+
+<Info>
+Sidecar v3 is in an open Beta release. Feel free to try the product, and share any feedback you have in our [Slack Community](https://statsig.com/slack).
+</Info>
 
 ## Prerequisites:
 
@@ -45,7 +49,10 @@ You now create experiments in the console, on the Create Experiment dialogue, by
 
 ### Metrics
 
-When you add the Statsig Visual Editor script to your website, it will automatically begin tracking events like clicks, page views, Core Web Vitals, and more. We call these [autocapture](/webanalytics/autocapture/) metrics. You can add any of these metrics to your experiment, or customize them to be filtered to certain attributes (e.g. clicking a certain button, visiting a certain page) by creating a new metric in the Metrics Catalogue tab, see [Metrics](https://docs.statsig.com/metrics/101) for more info. Add at least one metric to your experiment before continuing.
+When you add the Statsig Visual Editor script to your website, it will automatically begin tracking events like clicks, page views, Core Web Vitals, and more. We call these [autocapture](/webanalytics/autocapture/) metrics. See [Metrics](/metrics/101) for more info.
+
+You can add any of these metrics to your experiment, or customize them to be filtered to certain attributes (e.g. clicking a certain button, visiting a certain page) by creating a new metric in the [Metrics Catalog](https://console.statsig.com/metrics/metrics_catalog) tab. 
+You must add at least one metric to your experiment before continuing.
 
 ### URL Filters
 
@@ -69,6 +76,19 @@ To setup an experiment - enter your metrics, any targeting (on URL, or other use
 
 ![Visual Editor Page](/images/sidecarv3openxp.gif)
 
+### Runtime settings
+
+For more advanced experiment flows, you can also configure runtime settings on the experiment setup page before opening the editor.
+
+- **Disable Auto Run** prevents the experiment from applying automatically on page load.
+- **Prerun Script** lets you run custom JavaScript before the experiment starts. This is useful for SPAs or other advanced flows where you need to bind listeners or evaluate custom logic before manually activating the experiment with `StatsigSidecar.activateExperiment("experiment_name")`.
+
+<Warning>
+Prerun Script is currently in beta. Please reach out to Statsig Support if you'd like access enabled for your account.
+</Warning>
+
+See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for more detail on runtime settings, manual activation, and prerun scripts.
+
 ## Making your edits
 
 By clicking the "Element selector" or pressing command + E, you enable the element editor, which provides a preset set of editable attributes depending on the element you select, for example:
@@ -84,12 +104,13 @@ Plus all elements offer the opportunity to rearrange or hide attributes.
 
 By clicking save in the bottom right hand side of the visual editor, your changes will be saved to the console. If you return to the page in console and refresh, your changes should be listed. You can preview your experiment by clicking the three dots in the variant table. When you're confident with your changes, you can go ahead and launch the experiment by clicking "Start" in the top right hand corner. After this, your experiment will begin appearing for end users and your metrics will be collected.
 
-
-## Beta Release Details
-
-As of September 2025, Sidecar v3 is in an open Beta release. Feel free to try the product, and share any feedback you have in our [Slack](https://statsig.com/slack)
-
 ### Advanced Script Setup
 Add these query string parameters to the Sidecar script URL for additional controls over Sidecar client behavior
 - `&reduceflicker=0` will disable the brief hiding of the `<body>` tag while the client initializes
-- `&autocapture=0` will disable event autocapture
+
+## Advanced topics
+
+If you need more advanced Sidecar controls after the basic setup is working:
+
+- See [Advanced Configurations](/guides/sidecar-experiments/advanced-configurations-v3) for runtime settings, manual activation, prerun scripts, script URL tuning, consent, and identity configuration.
+- See [Measuring Experiments](/guides/sidecar-experiments/measuring-experiments#per-assignment-callback-for-outbound-integrations) for outbound analytics callbacks and other measurement patterns.

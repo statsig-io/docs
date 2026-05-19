@@ -37,6 +37,15 @@ const layerSubId = statsig.subscribe('layer_evaluated', (event) => {
   });
 });
 
+// Subscribe to specs updated events
+const specsUpdatedSubId = statsig.subscribe('specs_updated', (event) => {
+  console.log('Specs updated:', {
+    source: event.data.source,
+    sourceApi: event.data.source_api,
+    projectLastUpdated: event.data.values.time,
+  });
+});
+
 // Subscribe to all events
 const allEventsSubId = statsig.subscribe('*', (event) => {
   console.log('Event received:', event.event_name, event);
@@ -44,6 +53,7 @@ const allEventsSubId = statsig.subscribe('*', (event) => {
 
 // Unsubscribe from specific event types
 statsig.unsubscribe('gate_evaluated');
+statsig.unsubscribe('specs_updated');
 
 // Unsubscribe using subscription ID
 statsig.unsubscribeById(configSubId);
@@ -51,4 +61,3 @@ statsig.unsubscribeById(configSubId);
 // Unsubscribe from all events
 statsig.unsubscribeAll();
 ```
-

@@ -206,6 +206,10 @@ With an IAM User, Statsig will use AWS Access Keys to gain access to this IAM Us
 3. Read data in Statsig when setting up Metric/Assignment Sources by selecting from these tables using `"database"."table"` format.
 4. Repeat for any additional tables, or whenever you need to read a new table from Statsig.
 
+<Info>
+If your data warehouse is IP protected, you must include allowlisting of Statsig IP ranges in your setup steps.
+</Info>
+
 ## Additional Athena Resources
 
 ### S3 Bucket Encryption Guide

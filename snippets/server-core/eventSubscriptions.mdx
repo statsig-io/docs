@@ -1,6 +1,6 @@
 ## SDK Event Subscriptions
 
-The Statsig SDK provides an event subscription system that allows you to listen for evaluation events in real-time. This feature is useful for debugging, analytics, custom logging, and integrating with external systems.
+The Statsig SDK provides an event subscription system that allows you to listen for evaluation events and lifecycle events in real-time. This feature is useful for debugging, analytics, custom logging, and integrating with external systems.
 
 ### Supported Events
 
@@ -10,6 +10,7 @@ The SDK supports subscribing to the following evaluation events:
 - **`dynamic_config_evaluated`** - Fired when a dynamic config is retrieved for a user
 - **`experiment_evaluated`** - Fired when an experiment is evaluated for a user
 - **`layer_evaluated`** - Fired when a layer is evaluated for a user
+- **`specs_updated`** - Fired when the SDK updates its cached specs, including where the specs were loaded from
 - **`"*"`** - Subscribe to all evaluation events
 
 ### SDK Event Data
@@ -20,6 +21,7 @@ Each event includes relevant context about the evaluation:
 - **Dynamic Config Events** include: the full `dynamic_config` object with values and metadata
 - **Experiment Events** include: the full `experiment` object with variant assignment and parameters
 - **Layer Events** include: the full `layer` object with allocated experiment and parameters
+- **Specs Updated Events** include `source`, `source_api`, and `values` metadata, where `values.time` is the timestamp of the last update to the project in the Statsig console
 
 ### Use Cases
 
@@ -37,4 +39,3 @@ Event subscriptions are particularly useful for:
 - **Handle event data carefully**: Event objects may contain sensitive user information depending on your configuration
 - **Use specific event types**: Subscribe to specific events rather than "*" when possible for better performance
 - **Avoid heavy processing**: Keep event handlers lightweight to avoid impacting SDK performance
-

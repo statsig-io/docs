@@ -1,0 +1,31 @@
+---
+description: Weekly docs gap report — applies when running coverage checks, drafting missing docs, or auditing feature releases against statsig-io/docs
+globs: ""
+alwaysApply: false
+---
+
+# Feature comparison skill
+
+When asked to run the weekly docs check, audit documentation coverage, find undocumented features, draft missing docs, or check what shipped vs. what's documented, follow the orchestrator instructions in `.cursor/skills/feature-comparison/SKILL.md`.
+
+The skill coordinates multiple specialized agents. Read the SKILL.md **agent map** to pick the right agent for the task:
+
+- **Weekly report** (most common): read `agents/report-agent.md`
+- **Set up weekly schedule**: read `agents/schedule-agent.md`
+- **Draft docs after approval**: read `agents/draft-agent.md` — one agent per feature, never combined
+- **Ad-hoc research**: read `agents/research-agent.md`
+
+## Key repo facts for this skill
+
+- **Docs content:** repo root section directories (`feature-flags/`, `sdks/`, `experiments/`, etc.)
+- **Navigation:** `docs.json` — `navigation.tabs[].groups[].pages` array — must be updated when adding new pages
+- **GitHub repo:** `statsig-io/docs`
+- **Callout syntax:** Mintlify MDX components — `<Note>`, `<Warning>`, `<Tip>`, `<Info>` — never markdown blockquotes
+- **Frontmatter:** `title`, `description` (optional) — no `id`, `blueprint`, `updated_at`, `landing`, or `nav_title`
+- **Internal links:** `/[section]/[slug]` — no `.mdx` extensions
+- **Style gate:** run the full edit-doc skill (`.cursor/skills/edit-doc/SKILL.md` or `.claude/skills/edit-doc/SKILL.md`) on every drafted MDX file before committing
+
+## Known channel configuration
+
+- **Feature releases channel:** `#feature-releases` — [CONFIGURE: set the channel ID in SKILL.md before first run]
+- **Report destination:** `#docs-private` — [CONFIGURE: set the channel ID in SKILL.md before first run; always use ID directly, never search by name]

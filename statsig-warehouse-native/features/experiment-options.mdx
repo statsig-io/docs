@@ -32,7 +32,7 @@ There is project-level configuration of the maximum number of primary/secondary 
 In experiment setup there are fields for _Experiment Measured In_ and _Target_. This allows configuration of how long your experiment should be run for, influencing sequential testing as well as notifications/timeline alerts.
 
 <Note>
-Statsig's [power analysis tools]() are the best way to determine what the target duration should be. A power analysis can be attached to an experiment to add context on the duration.
+Statsig's [power analysis tools](/statsig-warehouse-native/features/power-analysis) are the best way to determine what the target duration should be. A power analysis can be attached to an experiment to add context on the duration.
 </Note>
 
 ### Experiment Configuration
@@ -70,7 +70,7 @@ Secondary ID types are used to associate metrics on a different ID with the unit
 
 This mapping can come directly from the assignment source. If multiple exposures are logged for a given unit, and at least one has both ID types, Statsig will identify that these two IDs are mapped to each other. Alternately, mappings can be specified in an Entity Property Source - just provide a mapping table of `ID1` to `ID2` and Statsig will connect the data during analysis.
 
-Secondary ID mapping can be configured as an enforced 1:1 mapping, or as a first-touch attribution. Refer to the [full documentation]() for more details.
+Secondary ID mapping can be configured as an enforced 1:1 mapping, or as a first-touch attribution. Refer to the [full documentation](/statsig-warehouse-native/features/id-resolution) for more details.
 
 ### Allocation and Cohorting
 
@@ -106,7 +106,7 @@ Controls whether [sequential testing](/experiments-plus/sequential-testing) is a
 
 **Bonferroni/Benjamini-Hochberg [Frequentist Only]**
 
-Configures multiple-comparisons corrections - either controlling the false positive rate or false discovery rate. Refer to the more detailed documentation for [Bonferroni]() and [Benjamini-Hochberg](/statsig-warehouse-native/features/statistics/methodologies/benjamini-hochberg-procedure.mdx).
+Configures multiple-comparisons corrections - either controlling the false positive rate or false discovery rate. Refer to the more detailed documentation for [Bonferroni](/statsig-warehouse-native/features/statistics/methodologies/bonferroni-correction) and [Benjamini-Hochberg](/statsig-warehouse-native/features/statistics/methodologies/benjamini-hochberg-procedure).
 
 **Default Confidence Interval/Chance to Beat Threshold**
 
@@ -118,7 +118,7 @@ For bayesian experiments, whether to use informed priors in analysis, and the co
 
 **Turbo Mode**
 
-Whether to use [Turbo Mode]() to run experiment reloads more quickly.
+Whether to use [Turbo Mode](/statsig-warehouse-native/features/turbo) to run experiment reloads more quickly.
 
 **Filter Exposures by Qualifying Event**
 
@@ -135,13 +135,13 @@ This setting has a few inputs:
 
 This setting controls additional filters to be applied to the exposure data for this experiment. This can be useful to filter out bad dates with data that is known to be biased or non-representative, or to filter to a specific subset of interest for the scorecard results.
 
-**Default Rollup Window**
+**Default Date Filter**
 
-Statsig calculates results across multiple rollups. Cumulative is almost always the correct choice for this setting, as it maximizes statistical power and the other views can be easily switched to in the scorecard.
+Statsig calculates results across multiple rollups, including Cumulative, 7, and 1 day(s). Cumulative is almost always the correct choice for this setting, as it maximizes statistical power and the other views can be easily switched to in the scorecard.
 
 # Explore (Custom) Query Settings
 
-Explore queries enable drilldown, filtering, grouping, and more advanced ways to cut metric data by user and metric properties. These are a way to to deeply understand experiment results. On Statsig, explore queries run with the same statistics as the scorecard; with no filters or other settings, results should match the scorecard results.
+Explore queries enable drilldown, filtering, grouping, and more advanced ways to cut metric data by user and metric properties. These are a way to deeply understand experiment results. On Statsig, explore queries run with the same statistics as the scorecard; with no filters or other settings, results should match the scorecard results.
 
 ## Metrics
 

@@ -33,7 +33,7 @@ When running an experiment, it’s common to test a specific hypothesis using a 
 
 Configuring the Scorecard is a required step when creating an experiment. It provides your team with clear context on what is being tested and how success is measured. You must enter your hypothesis and select at least one primary metric. Metrics added to the Scorecard are computed daily and eligible for advanced treatments like [CUPED](/experiments/statistical-methods/methodologies/cuped) and [Sequential Testing](/experiments/advanced-setup/sequential-testing).
 
-For best practices on configuring your Scorecard, read more [here](/experiments/interpreting-results/read-pulse).
+For best practices on configuring your Scorecard, read more [here](/experiments/interpreting-results/read-results).
 
 <Frame>
   <img src="/images/experiments/scorecard.png" alt="Scorecard configuration modal" />
@@ -50,6 +50,8 @@ For **Allocation**, enter the percentage of users you want to assign to this exp
 <Frame>
   <img src="/images/experiments/allocation.png" alt="Experiment allocation configuration interface" />
 </Frame>
+
+You can increase the allocation of your experiment anywhere from 0% to 100% at any time after experiment start; however, you cannot decrease allocation without resetting your experiment, as this would cause biases in group allocation and pollute your metric results.
 
 ### Targeting
 

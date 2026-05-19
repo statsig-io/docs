@@ -58,7 +58,7 @@ Log metrics can be tricky to interpret and to extrapolate out to topline values.
 
 There's a few ways to handle 0s in a log metric; a transformation like [IHS](https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions) can approximate the behavior of log for large values while accepting 0s as inputs, or you can scope the analysis to non-zero units. We've chosen the second for ease of interpretation (log properties are broadly understood).
 
-This does mean there's potentially a confounding factor of participation rate; to mitigate this, results are presented the same as for [ratio]() metrics and present statistics for the overall result as well as the implicit numerators and denominators.
+This does mean there's potentially a confounding factor of participation rate; to mitigate this, results are presented the same as for [ratio](/statsig-warehouse-native/metrics/ratio) metrics and present statistics for the overall result as well as the implicit numerators and denominators.
 
 ## Options
 

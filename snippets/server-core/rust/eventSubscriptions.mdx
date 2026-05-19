@@ -34,6 +34,20 @@ let layer_sub_id = statsig.subscribe(SdkEvent::LAYER_EVALUATED, |event| {
     }
 });
 
+let specs_updated_sub_id = statsig.subscribe(SdkEvent::SPECS_UPDATED, |event| {
+    if let SdkEvent::SpecsUpdated {
+        source,
+        source_api,
+        values,
+    } = event
+    {
+        println!(
+            "Specs updated from {} via {} (project last edited at {})",
+            source, source_api, values.time
+        );
+    }
+});
+
 // Subscribe to all events
 let all_events_sub_id = statsig.subscribe(SdkEvent::ALL, |event| {
     println!("Event received: {}", event.get_name());
@@ -41,6 +55,7 @@ let all_events_sub_id = statsig.subscribe(SdkEvent::ALL, |event| {
 
 // Unsubscribe from specific event types
 statsig.unsubscribe(SdkEvent::GATE_EVALUATED);
+statsig.unsubscribe(SdkEvent::SPECS_UPDATED);
 
 // Unsubscribe using subscription ID
 statsig.unsubscribe_by_id(&config_sub_id);

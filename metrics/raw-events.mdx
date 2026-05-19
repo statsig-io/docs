@@ -14,6 +14,8 @@ Statsig records two types of raw events from your application:
 
 2. **Custom events** track user actions and as any events that get triggered in the course of using your application, including events that capture performance (e.g. latency) or capture data for analytics (e.g. session start). These events allow Statsig to assess overall user engagement in your application (e.g. daily active users, weekly stickiness) as well as changes in user behavior as you roll out new features and experiments.
 
+ > **Note:** When logging custom events, avoid using dot (.) notation in metadata keys. Keys containing dots are interpreted as nested paths during JSON parsing (e.g., by JSON_VALUE), which can cause the values to be parsed as NULL.
+
 ## Unit Identifiers
 You must include at least one unit identifier when you record any raw events with Statsig. This unit identifier is essential for two reasons:
 1. Ensure that your users receive a consistent application experience when they're allocated to control or test groups in an experiment 
@@ -53,7 +55,7 @@ Statsig provides two unit identifiers by default: **User ID** and **Stable ID**.
 </Frame>
 
 ## Billing
-Statsig bills you for the [two types of raw events](/metrics/raw-events#types-of-raw-events) outlined above. We only bill for production environment events, because analytics are only run on production environment events. 
+Statsig bills you for the [two types of raw events](/metrics/raw-events#types-of-raw-events) outlined above. We only bill for production environment events.
 
 1. An **Exposure Event** is recorded for billing when you check a user for assignment in a Feature Gate or Experiment, or check for a value using a Dynamic Config. 
    

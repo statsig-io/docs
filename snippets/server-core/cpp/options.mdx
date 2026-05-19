@@ -1,13 +1,6 @@
-
+### Available Options
 
 ```cpp
-statsig_cpp_core::StatsigOptionsBuilder optionsBuilder;
-ptionsBuilder.environment = "development";
-ptionsBuilder.specs_url = api_v2 + "/download_config_specs";
-optionsBuilder.log_event_url = api + "/log_event";
-optionsBuilder.id_lists_url = api + "/get_id_lists";
-statsig_cpp_core::StatsigOptions options = optionsBuilder.build();
-## Available Options
 std::optional<std::string> specs_url;
 std::optional<std::string> id_lists_url;
 std::optional<std::string> log_event_url;
@@ -19,3 +12,17 @@ bool disable_country_lookup = false;
 bool disable_network = false;
 ```
 
+### Proxy and Custom Network Routing
+
+The C++ Server Core SDK currently documents endpoint overrides rather than a dedicated outbound proxy config. Use `specs_url`, `log_event_url`, and `id_lists_url` to route Statsig network calls through your own endpoints or proxy layer.
+
+### Example Usage
+
+```cpp
+statsig_cpp_core::StatsigOptionsBuilder optionsBuilder;
+optionsBuilder.environment = "development";
+optionsBuilder.specs_url = api_v2 + "/download_config_specs";
+optionsBuilder.log_event_url = api + "/log_event";
+optionsBuilder.id_lists_url = api + "/get_id_lists";
+statsig_cpp_core::StatsigOptions options = optionsBuilder.build();
+```

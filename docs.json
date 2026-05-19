@@ -55,7 +55,11 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": ["welcome", "understanding-platform", "support-options"]
+            "pages": [
+              "welcome",
+              "understanding-platform",
+              "support-options"
+            ]
           },
           {
             "group": "Experiments",
@@ -108,7 +112,8 @@
                           "autotune/bandit-faq",
                           "autotune/using-bandits"
                         ]
-                      }
+                      },
+                      "experiments/types/switchback-v2"
                     ]
                   },
                   {
@@ -210,9 +215,14 @@
                   "feature-flags/pre-post-results",
                   "feature-flags/multiple-rollout-stages",
                   "feature-flags/scheduled-rollouts",
-                  "feature-flags/safeguards-overview",
-                  "feature-flags/safeguards-create",
-                  "feature-flags/safeguards-manage",
+                  {
+                    "group": "Safeguards",
+                    "pages": [
+                      "feature-flags/safeguards-overview",
+                      "feature-flags/safeguards-create",
+                      "feature-flags/safeguards-manage"
+                    ]
+                  },
                   "feature-flags/feature-flags-lifecycle",
                   "feature-flags/permanent-and-stale-gates",
                   "feature-flags/best-practices"
@@ -263,12 +273,12 @@
                   "product-analytics/retention",
                   "product-analytics/distribution",
                   "product-analytics/user-journeys",
+                  "product-analytics/lifecycle",
                   "product-analytics/dashboards",
                   {
                     "group": "Users",
                     "pages": [
-                      "product-analytics/users-tab",
-                      "product-analytics/user-profiles"
+                      "product-analytics/users-tab"                    
                     ]
                   }
                 ]
@@ -280,7 +290,9 @@
                   "infra-analytics/getting-started",
                   {
                     "group": "Traces Explorer",
-                    "pages": ["infra-analytics/send-traces"]
+                    "pages": [
+                      "infra-analytics/send-traces"
+                    ]
                   },
                   {
                     "group": "Logs Explorer",
@@ -303,7 +315,10 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
+                ]
               }
             ]
           },
@@ -367,13 +382,16 @@
                       "integrations/mcp/manual-setup"
                     ]
                   },
+                  "integrations/agent-skills",
                   "integrations/ai_development_with_statsig",
                   "integrations/github-ai-integration"
                 ]
               },
               {
                 "group": "Control Panel",
-                "pages": ["control-panel/overview"]
+                "pages": [
+                  "control-panel/overview"
+                ]
               },
               {
                 "group": "Data & Metrics",
@@ -508,9 +526,6 @@
               "statsig-warehouse-native/connecting-your-warehouse/bigquery",
               "statsig-warehouse-native/connecting-your-warehouse/databricks",
               "statsig-warehouse-native/connecting-your-warehouse/redshift",
-              "statsig-warehouse-native/connecting-your-warehouse/trino",
-              "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
-              "statsig-warehouse-native/connecting-your-warehouse/fabric",
               "statsig-warehouse-native/connecting-your-warehouse/other"
             ]
           },
@@ -549,7 +564,7 @@
                   "statsig-warehouse-native/metrics/latest-value",
                   "statsig-warehouse-native/metrics/retention",
                   "statsig-warehouse-native/metrics/max-min",
-                  "warehouse-native/data-and-semantic-layer/metrics/composite"
+                  "statsig-warehouse-native/metrics/composite"
                 ]
               },
               "statsig-warehouse-native/configuration/metric-examples",
@@ -758,17 +773,17 @@
           {
             "group": "Server SDKs",
             "pages": [
+              "server-core/index",
               "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
               "server-core/go-core",
               "server/ruby",
               "server-core/dotnet-core",
-              "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
-                  "server/cpp",
+                  "server-core/cpp-core",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
@@ -778,6 +793,7 @@
                 "group": "Legacy Server SDKs",
                 "pages": [
                   "server-core/legacy-sdks",
+                  "server/cpp",
                   "server/go",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
@@ -793,7 +809,10 @@
           {
             "group": "AI SDKs",
             "icon": "brain",
-            "pages": ["ai-evals/node", "ai-evals/python"]
+            "pages": [
+              "ai-evals/node",
+              "ai-evals/python"
+            ]
           },
           {
             "group": "More SDK Methods",
@@ -849,7 +868,7 @@
             "icon": "list-check",
             "pages": [
               "access-management/introduction",
-              "sdks/api-keys",
+              "access-management/api-keys",
               {
                 "group": "Workspace",
                 "pages": [
@@ -1011,11 +1030,10 @@
               {
                 "group": "Observability & Infra",
                 "pages": [
-                  "integrations/datadog",
                   {
-                    "group": "Datadog Triggers",
+                    "group": "Datadog",
                     "pages": [
-                      "integrations/triggers/introduction",
+                      "integrations/datadog",
                       "integrations/triggers/datadog"
                     ]
                   },
@@ -1496,6 +1514,10 @@
       "destination": "/client/React"
     },
     {
+      "source": "/client/reactSDK",
+      "destination": "/client/React"
+    },
+    {
       "source": "/dynamic-config",
       "destination": "/dynamic-config/overview"
     },
@@ -1838,6 +1860,74 @@
     {
       "source": "/experiments/interpreting-results/read-pulse",
       "destination": "/experiments/interpreting-results/read-results"
+    },
+    {
+      "source": "/sdks/api-keys",
+      "destination": "/access-management/api-keys"
+    },
+    {
+      "source": "/warehouse-native/data-and-semantic-layer/metrics/composite",
+      "destination": "/statsig-warehouse-native/metrics/composite"
+    },
+    {
+      "source": "/integrations/triggers/introduction",
+      "destination": "/integrations/triggers/datadog"
+    },
+    {
+      "source": "/client/react",
+      "destination": "/client/React"
+    },
+    {
+      "source": "/client/android",
+      "destination": "/client/Android"
+    },
+    {
+      "source": "/client/angular",
+      "destination": "/client/Angular"
+    },
+    {
+      "source": "/client/dart",
+      "destination": "/client/Dart"
+    },
+    {
+      "source": "/client/dotnet",
+      "destination": "/client/DotNet"
+    },
+    {
+      "source": "/client/expo",
+      "destination": "/client/Expo"
+    },
+    {
+      "source": "/client/next",
+      "destination": "/client/Next"
+    },
+    {
+      "source": "/client/reactnative",
+      "destination": "/client/ReactNative"
+    },
+    {
+      "source": "/client/reactnativeondeviceevaluation",
+      "destination": "/client/ReactNativeOnDeviceEvaluation"
+    },
+    {
+      "source": "/client/roku",
+      "destination": "/client/Roku"
+    },
+    {
+      "source": "/client/unity",
+      "destination": "/client/Unity"
+    },
+    {
+      "source": "/client/migration-guides/migrationfromoldjsclient",
+      "destination": "/client/migration-guides/MigrationFromOldJsClient"
+    },
+    {
+      "source": "/client/migration-guides/migrationfromoldreact",
+      "destination": "/client/migration-guides/MigrationFromOldReact"
+    },
+    {
+      "source": "/metrics/health-checks",
+      "destination": "/experiments/monitor#experiment-health-checks"
     }
   ],
   "logo": {

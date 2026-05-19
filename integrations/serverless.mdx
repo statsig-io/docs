@@ -23,7 +23,7 @@ npm install @statsig/serverless-client
   ```
   The client instantiation takes two arguments:
   - `sdkKey : string`  This is your Statsig client API key. It is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.
-  - `options : StatsigOptions` See [here for more options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
+  - `options : StatsigOptions` See [here for more options](/client/javascript-sdk#statsig-options).
   </Step>
 
   <Step title = "Client Initialization">
@@ -42,7 +42,7 @@ npm install @statsig/serverless-client
 
     The `checkGate` method takes two arguments:
     - `name : string` The name of the Statsig gate that you are checking. 
-    - `user : StatsigUser` The Statsig user object for whom the gate is being checked. For more information on the user object, see [here](https://docs.statsig.com/sdks/user#introduction-to-the-statsiguser-object).
+    - `user : StatsigUser` The Statsig user object for whom the gate is being checked. For more information on the user object, see [here](/sdks/user#introduction-to-the-statsiguser-object).
 
     Refer to the [Javascript on-device evaluation SDK documentation](/client/jsOnDeviceEvaluationSDK) for how to check other entities like experiments and dynamic configs.
 
@@ -58,7 +58,7 @@ npm install @statsig/serverless-client
     - `eventOrName : string | StatsigEvent` This is the name and details of the event you are logging.
     - `user : StatsigUser` The Statsig user object for whom the event is being logged.
 
-    For more information on event logging, see [here](https://docs.statsig.com/client/jsOnDeviceEvaluationSDK#logging-an-event).
+    For more information on event logging, see [here](/client/jsOnDeviceEvaluationSDK#logging-an-event).
   </Step>
 
   <Step>
@@ -105,7 +105,7 @@ const values = statsig.getClientInitializeResponse(user, options);
 // Pass values to a client SDK to initialize without a network request
 ```
 
-For more information on bootstrapping including options and full code example, see [here](https://docs.statsig.com/server-core/node-core#client-sdk-bootstrapping-|-ssr)
+For more information on bootstrapping including options and full code example, see [here](/server-core/node-core#client-sdk-bootstrapping-|-ssr)
 
 ### Bring your own CDN
 

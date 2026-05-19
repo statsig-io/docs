@@ -24,7 +24,7 @@ Next, in the Experiment Setup tab, we will fill out scorecards for the metrics y
 
 1. In the **Hypothesis** card, enter a hypothesis for what you are testing: "Showing a homepage banner will increase user engagement, measured by daily_stickiness."
 2. In the **Primary Metrics** card, add a new metric called `daily_stickiness`.
-3. We will leave the **Secondary Metrics** and **Duration** settings to their default values. For more details on experiment setup, see the product docs on [Creating an experiment](/experiments-plus/create-new).
+3. We will leave the **Secondary Metrics** and **Duration** settings to their default values. For more details on experiment setup, see the product docs on [Creating an experiment](/experiments/create-new).
 
 ### Configure groups and parameters
 Next, we're going to configure the experiment. By default, the experiment is set up to run on 100% of users; 50% of those users are assigned to a Control group and 50% are assigned to an Experiment group.
@@ -64,12 +64,12 @@ if (quickstartExperiment.get("enable_banner", false)) {
 
 In this snippet, if this user is assigned to the Experiment group, they will be shown the banner. If they are assigned to the Control group, the banner will not be shown.
 
-Notice that we never actually have to [hardcode the experiment group name](/experiments-plus/getting-group/) ("Control" or "Experiment") in the code. This is because the Statsig SDK will automatically fetch the experiment configuration from the Statsig server and return the correct value based on the user's variant.
+Notice that we never actually have to [hardcode the experiment group name](/experiments/implementation/getting-group) ("Control" or "Experiment") in the code. This is because the Statsig SDK will automatically fetch the experiment configuration from the Statsig server and return the correct value based on the user's variant.
 
 ## Step 3: Monitor experiment diagnostics
 Now, if you run your code, the `showBanner()` function is called for users in the Test group. If you navigate to your experiment in the Statsig console and select the **Diagnostics** tab, you can see a live log stream of checks and events related to this experiment from your application.
 
-You can read more about the Diagnostics tab [here](/experiments-plus/getting-group/#rules).
+You can read more about the Diagnostics tab [here](/experiments/implementation/getting-group#rules).
 
 <Frame>
   <img src="/images/guides/abn-tests/b0ab8c0e-4f13-4b2b-bf58-1f8a09d8d4a7.png" alt="Experiment Diagnostics" />

@@ -63,7 +63,7 @@ statsig.overrideGate("example_gate", true);
 
 Statsig enables you to assign environments to feature gates, experiments, and events. By default, checks without a defined environment are assigned to **Production**. You can customize environments (such as **Development**, **Staging**, or **Production**) and use them to target different versions of feature gates or segments.
 
-- Non-production events appear in diagnostics but are excluded from Pulse results to ensure production data is prioritized in final analyses.
+- Non-production events appear in diagnostics and can be used to track cumulative exposures and metric results when testing experiments in lower environments with **Enable for Environments**. Production data is prioritized for final Pulse result analyses.
 
 ### Customizing Environments
 You can map your internal environments to Statsig's built-in environments or create custom mappings. Common setups include:

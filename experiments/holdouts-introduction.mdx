@@ -1,13 +1,14 @@
 ---
 title: Holdouts
 sidebarTitle: Holdouts
+description: "Measure the cumulative impact of multiple features with holdouts, including how Holdout Pulse compares held-out users against a balanced non-holdout group."
 keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
 ---
 
-Holdouts measure the aggregate impact of multiple features. It involves a "holdout" group of users that are held back from a set of features for measurement. While each A/B test or experiment you run compares control and test groups for that feature, a holdout compares the "holdout" group (Control) against users who have been exposed to multiple features and experiments. 
+Holdouts measure the aggregate impact of multiple features. A holdout keeps a group of users back from a set of features for measurement. While each A/B test or experiment compares control and test groups for that feature, a holdout compares the holdout group (Control) against a balanced group of users who were not held out and continued through the normal rollout or experiment behavior for the included features.
 
 ## How to use Holdouts
 1.	To create a new holdout, navigate to the [Holdouts section on the Statsig console](https://console.statsig.com/holdouts) (it is a specialized kind of experiment).
@@ -25,19 +26,19 @@ Holdouts measure the aggregate impact of multiple features. It involves a "holdo
 
 
 ## How to read Holdouts
-Holdouts on Statsig use the [same "equal variant" methodology](https://docs.statsig.com/feature-flags/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in ["A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments”](https://drive.google.com/file/d/1oK2HpKKXeQLX6gQeQpfEaCGZtNr2kR76/view) by Ron Kohavi, Alex Deng, & Lukas Vermeer.
+Holdouts on Statsig use the [same "equal variant" methodology](/feature-flags/view-exposures#gate-exposures) as Feature Gate rollouts, whereby metric lifts are computed by equal sized groups to calculate holdout lift. You can read more about the advantages of this methodology in ["A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments”](https://drive.google.com/file/d/1oK2HpKKXeQLX6gQeQpfEaCGZtNr2kR76/view) by Ron Kohavi, Alex Deng, & Lukas Vermeer.
 
 Accordingly, the Cumulative Exposures panel for a given Holdout shows total exposures of the Holdout, broken down into three groups:
 
-1. Units that were included in the Holdout, and were used for analysis
-2. Units that were not included in the Holdout, and were used for analysis vs. the holdout group 
-3. Units that were not included in the Holdout, and were **not** used for analysis
+1. **In holdout (Control)**: Units that were included in the Holdout and used for analysis.
+2. **Not in holdout (Test); used for analysis**: Units that were not included in the Holdout and were selected for comparison against the holdout group.
+3. **Not in holdout (Test); not used for analysis**: Units that were not included in the Holdout and were not used in the lift calculation.
 
-For units not included in the Holdout, we generate two groups (used for analysis and not used for analysis).  This is a randomly chosen group that is meant to balance the comparison.
+For units not included in the Holdout, Statsig generates the two "Not in holdout" groups using random sampling. The group used for analysis is sized to balance the comparison against the holdout group.
 
-Holdout metric lifts represent the cumulative impact of launched and active experiments on the Holdout group vs. the same % of the rest of the population who were subject to the included rollouts and experiments.  
+Holdout metric lifts represent the cumulative impact of launched and active experiments on the Holdout group vs. the same percentage of the rest of the population continuing through the normal behavior for the included rollouts and experiments. The "Not in holdout (Test); used for analysis" group is not necessarily made up of users who saw every treatment. Those users follow the normal non-holdout behavior for each included gate or experiment.
 
-In the example below, the 1% Holdout is comparing the metric values of the users in Holdout vs. 1% from users not in Holdout. The launched features are having an overall negative effect on the "Add to Cart" metric. 
+In the example below, the 1% Holdout compares the metric values of users in Holdout vs. 1% of users not in Holdout. It does not compare the 1% Holdout against the full remaining 99% of users. The launched features are having an overall negative effect on the "Add to Cart" metric.
 
 <img width="1254" alt="Holdout pulse results showing metric lift comparison between holdout and exposed users" src="/images/experiments/holdouts-introduction/b6c3724d-784d-45e3-ad6e-230bd9d82214.png" />
 
@@ -46,6 +47,7 @@ In the example below, the 1% Holdout is comparing the metric values of the users
 1. **Size** - Statsig recommends a low single-digit holdout percentage, say 1% – 2%, to limit the number of customers who don’t see new features. 
 2. **Duration** - Statsig recommends operating holdouts for a period of three to six months, and then releasing the holdout. Prolonging the holdout period may increase the complexity of your software as you’d have to maintain a functioning product with no new features for a longer period.  
 3. **Back testing** - Occasionally you may want to turn off a set of features that you have already released to measure the effectiveness of those features. Statsig doesn’t recommend this as it turns off features that users are already using and relying on. However, when a "back measurement" is critical, you can use Holdouts to turn off a set of features and automatically compute the impact of this set of features.
+4. **Plan holdouts before launch** - Create holdouts before launching the features or experiments they are intended to measure. If you add a holdout to an already-running experiment, users who were previously assigned or exposed can still fall into the holdout on future evaluations, which may change their experience mid-experiment and contaminate measurement.
 
 ## Unit ID Types
 By default, holdouts are based on User ID.  To use a different ID type, select it from the drop down menu during the holdout creation.  
@@ -62,6 +64,8 @@ If a team plans to run experiments on both User ID and Stable ID, two separate h
 
 ## Holdout effects on Gates & Experiments SDK methods
 
+Holdout behavior applies on evaluation, including for users who may have previously seen a gate or experiment before it was added to the holdout.
+
 ### Feature Flags/Gates
 * For users in holdout, gates will always return `False`.
 
@@ -76,7 +80,7 @@ When you ship an experiment in a layer - this would normally update the layer de
   <img src="/images/experiments/layer_holout_params.png" alt="Layer Holdout Params" />
 </Frame>
 
-## Ending an Holdout
+## Ending a Holdout
 
 To end a holdout and allow users in the holdout group to see all held-out features, you can disable the holdout. Disabling it stops tracking the effects of those features, but the results will still be retained for future reference.
 

@@ -102,7 +102,7 @@ Evaluation reasons answer two questions: where the SDK sourced its definitions a
 | --- | --- | --- | --- |
 | `Network` | Configurations loaded from Statsig servers at initialization. | Normal | — |
 | `Bootstrap` | Server SDK bootstrapped with precomputed values. | Normal | — |
-| `DataAdapter` | Values retrieved from a data adapter or external store. | Normal | Review your [data adapter setup](https://docs.statsig.com/server/concepts/data_store/#dataadapter-or-datastore). |
+| `DataAdapter` | Values retrieved from a data adapter or external store. | Normal | Review your [data adapter setup](/server/concepts/data_store#dataadapter-or-datastore). |
 | `LocalOverride` (legacy) | Value supplied via server-side override APIs. | Normal | — |
 | `StatsigNetwork` | Proxy/streaming fell back to Statsig APIs directly. | Fallback | Revisit your [proxy configuration](/server/concepts/forward_proxy/). |
 | `Uninitialized` | SDK has not completed initialization. | Error | Ensure initialization succeeds before evaluations. |

@@ -1,0 +1,36 @@
+---
+description: Content refinement for translatability, LLM readability, and verbosity — applies when asked to "refine this doc", "make this translatable", "reduce verbosity", "make this LLM-friendly", or when running batch content quality passes on statsig-io/docs MDX files
+globs: ""
+alwaysApply: false
+---
+
+# Content refine skill
+
+When asked to refine, improve, or clean up documentation quality beyond basic style rules, follow the instructions in `.cursor/skills/content-refine/SKILL.md`.
+
+This skill runs **after** `/edit-doc` — apply edit-doc first for style rule violations, then use this skill for the deeper content quality pass.
+
+## What this skill does
+
+Four phases applied to each file:
+
+1. **Content reduction** — shorten long sentences (target under 25 words), remove verbosity patterns, eliminate within-file duplication, remove list restatements and transitional summaries.
+2. **Translatability** — replace idioms and colloquialisms with literal equivalents, resolve ambiguous pronouns, use gender-neutral language, fix concatenated string patterns.
+3. **LLM optimization** — replace backward references with explicit restatements, replace vague headings, convert prose parameter lists to tables, make logical relationships explicit.
+4. **Preferred wording** — apply the substitution table (`once` → `after`, `via` → `through`, `blacklist` → `block list`, etc.).
+
+## Multi-file mode
+
+When given 2 or more files, the skill dispatches one subagent per file in parallel. Pass all files in a single request.
+
+## Key constraints
+
+- Does not re-apply active voice, tense, or contraction rules — those belong to `/edit-doc`.
+- Never modifies code blocks, frontmatter, API names, or product names.
+- Flags ambiguous cases for human review rather than guessing.
+
+## Reference files
+
+Full pattern sets live next to the skill:
+- `.cursor/skills/content-refine/references/translatability.md`
+- `.cursor/skills/content-refine/references/llm-patterns.md`
