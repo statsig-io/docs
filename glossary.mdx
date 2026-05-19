@@ -1,0 +1,225 @@
+---
+title: Glossary
+description: Comprehensive glossary of Statsig terminology and concepts
+doc_type: reference
+keywords:
+  - glossary
+  - terminology
+  - definitions
+  - concepts
+  - reference
+---
+
+This glossary provides definitions for key terms and concepts used throughout Statsig documentation.
+
+## Core Concepts
+
+### A/B Test
+An experiment methodology where users are randomly assigned to different variants (typically Control and Test groups) to measure the impact of product changes on key metrics. Also referred to as an **Experiment**.
+
+**Aliases**: Experiment, A/B/n Test
+
+### Allocation
+The percentage of users eligible to be enrolled in an experiment or feature rollout.
+
+### Assignment
+The process of determining which variant or group a user receives in an experiment or feature flag.
+
+## Feature Management
+
+### Feature Flag
+A configuration that enables or disables functionality for specific users or groups without deploying new code. Used for gradual rollouts, kill switches, and targeted releases.
+
+**Aliases**: Feature Gate, Gate, Toggle
+
+### Feature Gate
+See **Feature Flag**.
+
+### Dynamic Config
+A configuration object that can return different values for different users based on targeting rules. Unlike feature flags (boolean), dynamic configs can return complex JSON objects.
+
+**Aliases**: Config, Remote Config
+
+### Kill Switch
+A feature flag used to quickly disable functionality in production without requiring a code deployment. Typically used for emergency rollbacks.
+
+## Experimentation
+
+### Control Group
+The baseline group in an experiment that does not receive the product change being tested. Used as a comparison point to measure the impact of changes.
+
+### Test Group
+The group in an experiment that receives the product change being tested. Also called **Experiment Group** or **Treatment Group**.
+
+**Aliases**: Experiment Group, Treatment Group, Variant
+
+### Exposure
+An event logged when a user is evaluated against a feature flag or experiment. Exposures are used to calculate experiment results and measure feature adoption.
+
+### Holdout
+A group of users excluded from receiving new features or changes, used to measure the cumulative impact of multiple experiments over time.
+
+### Layer
+A mechanism for running multiple mutually exclusive experiments on the same surface or feature. Ensures users are only exposed to one experiment within the layer.
+
+### Parameter
+A configurable value within an experiment or dynamic config that can vary between groups. Parameters can be strings, numbers, booleans, or JSON objects.
+
+### Randomization Unit
+The entity used to assign users to experiment groups. Common units include:
+- **User ID**: Individual user accounts
+- **Device ID**: Individual devices
+- **Session ID**: Individual sessions
+- **Custom ID**: Any custom identifier (company ID, team ID, etc.)
+
+**Aliases**: Unit ID, ID Type
+
+### Scorecard
+The collection of metrics tracked for an experiment, including primary metrics, secondary metrics, and guardrail metrics.
+
+### Statistical Significance
+A measure indicating whether observed metric changes are likely due to the product change rather than random variation. Typically measured using p-values and confidence intervals.
+
+### Variant
+A specific version or configuration in an experiment. Each variant represents a different user experience being tested.
+
+## Metrics
+
+### Event
+A user action or occurrence logged to Statsig for analysis. Events are used to calculate metrics and measure experiment impact.
+
+### Metric
+A quantitative measure used to evaluate experiment performance or product health. Types include:
+- **Count metrics**: Total occurrences of an event
+- **Sum metrics**: Sum of a numeric value
+- **Ratio metrics**: Ratio between two metrics
+- **Mean metrics**: Average value per user
+
+### Primary Metric
+The main metric used to evaluate experiment success. Experiments are typically designed to move primary metrics.
+
+**Aliases**: Primary KPI, North Star Metric
+
+### Secondary Metric
+Additional metrics tracked to understand broader experiment impact beyond the primary metric.
+
+### Guardrail Metric
+Metrics monitored to ensure experiments don't negatively impact critical business or user experience measures.
+
+## Targeting & Segmentation
+
+### Targeting Rule
+Conditions that determine which users are eligible for a feature flag or experiment. Rules can be based on user attributes, custom fields, or segments.
+
+**Aliases**: Rule, Condition
+
+### Segment
+A saved group of targeting rules that can be reused across multiple feature flags and experiments.
+
+**Aliases**: Audience, User Segment
+
+### Environment
+A deployment context (production, staging, development) with separate configurations for testing and releasing features.
+
+**Aliases**: Tier
+
+### User Attribute
+Properties associated with a user (email, country, app version, etc.) used for targeting and segmentation.
+
+**Aliases**: User Property, Custom Field
+
+## Data & Analytics
+
+### Pulse
+Statsig's experimentation results engine that calculates metric lifts, statistical significance, and confidence intervals.
+
+### Warehouse Native (WHN)
+Statsig's architecture that runs experiments and computes metrics directly on your data warehouse, keeping data in your infrastructure.
+
+**Aliases**: WHN, Warehouse-Native
+
+### Data Connector
+An integration that forwards Statsig events to external analytics or data platforms.
+
+**Aliases**: Integration, Event Forwarding
+
+### ID Resolution
+The process of linking multiple identifiers (user ID, device ID, anonymous ID) to the same user for consistent experiment assignment and metric calculation.
+
+**Aliases**: Identity Resolution, ID Stitching
+
+## SDK & Implementation
+
+### Client SDK
+A software development kit designed for client-side applications (web, mobile) that evaluates feature flags and logs events from the user's device.
+
+### Server SDK
+A software development kit designed for server-side applications that evaluates feature flags and logs events from your backend infrastructure.
+
+### Initialization
+The process of loading feature flag and experiment configurations from Statsig servers into an SDK instance.
+
+### Bootstrap
+Pre-loading SDK configuration values to reduce initialization time and improve performance.
+
+### Evaluation
+The process of determining a feature flag value or experiment variant for a specific user based on targeting rules.
+
+**Aliases**: Check, Get
+
+### Local Evaluation
+Evaluating feature flags and experiments within the SDK using cached configurations, without making network requests.
+
+### Exposure Logging
+Automatically logging when a user is evaluated against a feature flag or experiment. Used for experiment analysis and feature adoption tracking.
+
+## Platform Features
+
+### Console
+The Statsig web application where you create and manage feature flags, experiments, metrics, and view results.
+
+**Aliases**: Dashboard, UI, Web Console
+
+### API
+Programmatic interfaces for interacting with Statsig:
+- **Console API**: Manage Statsig configurations programmatically
+- **HTTP API**: Evaluate feature flags and log events via HTTP
+- **Stats API**: Query experiment results and metrics
+
+### Diagnostics
+Real-time monitoring tools showing live exposure logs, event streams, and SDK health for debugging.
+
+**Aliases**: Debug Stream, Live Logs
+
+### Autotune
+An automated experimentation feature that dynamically adjusts traffic allocation to winning variants during an experiment.
+
+## Statistical Terms
+
+### Confidence Interval
+A range of values that likely contains the true metric lift with a specified level of confidence (typically 95%).
+
+### P-value
+The probability that observed results occurred by chance. Lower p-values indicate stronger evidence of a real effect.
+
+### Statistical Power
+The probability of detecting a real effect if one exists. Higher power reduces false negatives.
+
+### Sample Size
+The number of users or events required to detect a meaningful effect with sufficient statistical power.
+
+### Lift
+The percentage change in a metric between the test group and control group.
+
+**Aliases**: Delta, Impact
+
+### Winsorization
+A statistical technique that caps extreme values to reduce the impact of outliers on metric calculations.
+
+## Related Resources
+
+- [Understanding the Platform](/understanding-platform)
+- [Experiments Overview](/experiments/overview)
+- [Feature Flags Overview](/feature-flags/overview)
+- [Metrics Introduction](/metrics/introduction)
+- [SDK Getting Started](/sdks/getting-started)
