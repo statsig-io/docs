@@ -1,0 +1,102 @@
+---
+description: Statsig docs repo — always-on project context for Cursor
+globs: ""
+alwaysApply: true
+---
+
+# Statsig Documentation repo
+
+This repo is the source for **https://docs.statsig.com**, powered by **Mintlify**. Full instructions are in `CLAUDE.md` — read it before making edits. Key facts are below.
+
+## Stack and local dev
+
+- **Framework:** Mintlify (no custom build system, no Next.js)
+- **Local dev:** `mintlify dev` (install once: `npm i -g mintlify`)
+- **Files:** always `.mdx` — never `.md`
+- **Navigation:** `docs.json` → `navigation.tabs[].groups[].pages[]`
+- **Snippets:** reusable content must live in `/snippets/` — import with `import X from '/snippets/...'`
+- **Links:** root-relative, no extension — `/feature-flags/overview` not `../feature-flags/overview.mdx`
+- **Redirects:** add to `docs.json` `redirects` array when moving or renaming a page
+- **Spellcheck vocab:** `styles/config/vocabularies/Mintlify/accept.txt`
+
+## Content directories
+
+| Directory | What it covers |
+|---|---|
+| `access-management/` | Orgs, projects, teams, API keys, SSO, SCIM, pricing |
+| `ai-evals/` | AI evaluation (prompts, offline/online evals, node/python SDKs) |
+| `autotune/` | Bandit experiments (MAB, CMAB/contextual) |
+| `client/` | Client SDK docs (JS, React, Next, iOS, Android, etc.) |
+| `compliance/` | Privacy, data deletion, AI governance |
+| `console-api/` | Console API reference |
+| `dynamic-config/` | Dynamic config feature |
+| `experiments/` | A/B experiments, stats engine, variance reduction |
+| `feature-flags/` | Feature gates/flags |
+| `guides/` | Tutorials, migration guides, how-tos |
+| `http-api/` | HTTP API reference |
+| `infra-analytics/` | Infrastructure analytics (traces, logs) |
+| `infrastructure/` | Networking, IP ranges, API proxies, reliability |
+| `integrations/` | Third-party integrations (Slack, Datadog, Vercel, etc.) |
+| `metrics/` | Metrics creation and management |
+| `product-analytics/` | Product analytics, funnels, dashboards |
+| `release-pipeline/` | Release pipeline feature |
+| `sdks/` | SDK overview, concepts, quickstarts |
+| `segments/` | Audience segments |
+| `server/` | Legacy server SDK docs |
+| `server-core/` | Current server SDK docs (Node, Python, Go, Java, etc.) |
+| `session-replay/` | Session replay feature |
+| `snippets/` | Reusable MDX partials — import only, no direct links |
+| `stats-engine/` | Stats engine methodology |
+| `statsig-warehouse-native/` | Warehouse Native product |
+| `statsigcli/` | Statsig CLI |
+| `webanalytics/` | Web analytics, autocapture |
+
+## Frontmatter
+
+```yaml
+---
+title: "Required"
+description: "Recommended for SEO"
+sidebarTitle: "Optional — shorter sidebar label"
+---
+```
+
+Do not add `id`, `blueprint`, `updated_at`, `landing`, or `nav_title`.
+
+## Mintlify MDX components (callout syntax)
+
+```mdx
+<Note>Informational.</Note>
+<Info>Supplementary context.</Info>
+<Tip>Best practice.</Tip>
+<Warning>Destructive action warning.</Warning>
+<Frame><img src="/images/..." alt="..." /></Frame>
+```
+
+Never use Markdoc (`{% callout %}`), old Docusaurus (`:::note`), or raw HTML divs for callouts.
+
+## Writing style (summary — see CLAUDE.md for full rules)
+
+- Active voice — "Statsig processes data" not "data is processed" (two passes required)
+- Present tense — remove `will`, `will be`, `going to`
+- Contractions always — `can't`, `doesn't`, `won't`
+- No "please" in instructions
+- Replace `in order to` → `to`, `prior to` → `before`, `utilize` → `use`, `via` → `through`
+- "See [doc]" → "Go to [doc]" (accessibility rule)
+- No `we`/`our`/`us` — use "Statsig" or "you"
+- **Bold** for interactive UI elements, *Italics* for nav paths
+- List items end with a period
+- Sentence-case headings, no end punctuation, body starts at `##`
+
+## Available skills
+
+| Skill | Rule file | Use when |
+|---|---|---|
+| `edit-doc` | `.cursor/rules/edit-doc.mdc` | Applying style rules to a doc |
+| `content-refine` | `.cursor/rules/content-refine.mdc` | Translatability, verbosity, LLM readability |
+| `feature-comparison` | `.cursor/rules/feature-comparison.mdc` | Weekly undocumented-feature audit |
+
+## Do NOT modify
+
+- `scripts/kapa.js` and `scripts/statsig.js` — analytics tracking
+- `docs.json` theme, colors, logo, font, or integration IDs
