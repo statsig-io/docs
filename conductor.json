@@ -1,7 +1,0 @@
-{
-    "scripts": {
-        "setup": "npm i -g mintlify",
-        "remoteSetup": "npm i -g mintlify",
-        "run": "mintlify dev"
-    }
-}
