@@ -79,7 +79,7 @@ If you have critical fields which define a user uniquely and are not in the `use
 
 -	The client SDK's `logEvent` call takes a custom event that you want to record to analyze the impact of the experiment on your end-user experience
 
-- The client SDK automatically flushes all accumulated logged custom events to the Statsig servers every 10 seconds
+- The client SDK automatically flushes all accumulated logged custom events to the Statsig servers every 60 seconds. [More Details] (https://docs.statsig.com/messages/clientEventLogger)
 
 -	Statsig uses these custom events to compute metrics as part of your experiment **Results**; Statsig automatically updates the **Metrics Lift** panel in the experiment **Results** tab daily around 9am PST
 
