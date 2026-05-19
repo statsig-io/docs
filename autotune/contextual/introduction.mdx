@@ -33,10 +33,10 @@ There is support for specifying features up front in Statsig's console. This can
 
 Algorithmically, we will choose the best model (e.g. Ridge, Logistic regressions) under the hood based on your data types and performance, and generate a model from your data. The estimated standard error of the model is used to generate a prediction confidence interval. During evaluation, user context is used to predict an outcome for each Variant, and the corresponding confidence interval is applied to that prediction. The best variant is chosen as the one with the highest upper end of a 95% confidence interval. This interval size can be tuned by modifying the exploration parameter in the Autotune setup page.
 
-For deeper discussion, please view the [Methodology](./methodology.md) page.
+For deeper discussion, refer to the [Methodology](/autotune/contextual/methodology) page.
 
 <Note>
-You can also fetch a ranked list from Statsig and then manually expose those you show to the user, for use cases where you have client-side filtering or want to show multiple options; see [Advanced Usage](../using-bandits.md)
+You can also fetch a ranked list from Statsig and then manually expose those you show to the user, for use cases where you have client-side filtering or want to show multiple options; refer to [Advanced Usage](/autotune/using-bandits).
 </Note>
 
 ## Drawbacks

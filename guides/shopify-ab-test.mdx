@@ -22,11 +22,11 @@ The traditional Shopify service is a fully-managed platform for businesses that 
 
 While Statsig does not have an integration in the Shopify App Store today, you can easily integrate Sidecar for running simple UX experiments on the storefront. The below steps will guide you through the process of setting up Sidecar within the traditional Shopify stack.  
 
-#### Install Sidecar chrome extension
-[Follow this guide](/guides/sidecar-experiments/setup) on installing the Sidecar Chrome extension.
+#### Install the Visual Editor Chrome extension
+[Follow the Visual Editor setup guide](/guides/sidecar-experiments/sidecar-v3#2-installing-the-chrome-extension-for-editing) to install the Statsig Visual Editor Chrome extension.
 This simple, lightweight Chrome extension will allow non-technical users to build experiments and their treatments. You can easily indicate where the test should run based on URL, and then configure treatments such as content changes, style changes, image swaps, as well as injecting arbitrary JavaScript for more sophisticated use-cases where the visual editor tools cannot accommodate. 
 
-#### Add Sidecar JS to your Storefront's page source
+#### Add the Visual Editor script to your Storefront's page source
 
 - Log in to your Shopify dashboard
 - click on **Online Store**, then Themes
@@ -36,9 +36,14 @@ This simple, lightweight Chrome extension will allow non-technical users to buil
   <img src="/images/shopify-customize-1.png" alt="statsig product overview" />
 </Frame>
 
-- [Locate your Sidecar script tag](/guides/sidecar-experiments/publishing-experiments#step-2-add-script-code) and copy the script tag to your clipboard
+- Copy the Visual Editor script tag below, replacing `client-xxx` with your Client SDK key from [Settings > Keys &amp; Environments](https://console.statsig.com/api_keys):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/statsig-sidecar-v2-beta/dist/index.min.js?apikey=client-xxx"></script>
+```
+
 - Navigate to the `theme.liquid` file in your Shopify theme editor
-- Paste the Sidecar script tag toward the top of the page `<head>` as shown below.
+- Paste the Visual Editor script tag toward the top of the page `<head>` as shown below.
 
 <Frame>
   <img src="/images/shopify-customize-2.png" alt="statsig product overview" />

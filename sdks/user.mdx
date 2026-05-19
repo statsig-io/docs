@@ -150,7 +150,7 @@ For example, if you have feature gates that should only pass for users with emai
 
 ### Time-based conditions
 
-All SDKs (both server and client-side) support unix timestamps in milliseconds to evaluate time based conditions (After time, before time). Without knowing all possible variations of DateTime formats, we have to normalize on something, so its best to convert your DateTime field into a standard format for evaluation.
+All SDKs (both server and client-side) support unix timestamps in milliseconds to evaluate time based conditions (After time, before time). Without knowing all possible variations of DateTime formats, we have to normalize on something, so it's best to convert your DateTime field into a standard format for evaluation.
 
 We have added support for ISO timestamps to some server SDKs.
 - The `java-server` sdk, as of `v1.6.0` supports [DateTime fields in the format of `ISO_INSTANT`](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#ISO_INSTANT)
@@ -163,7 +163,7 @@ We have added support for ISO timestamps to server SDKs supported by server core
 
 ### Why is an ID always required for server SDKs?
 
-In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. In short, its *always* better to pass the user ID if it's available: users will get a stable experience, and any events will be attributed to the correct users so you can accurately measure downstream metrics.
+In Server SDKs, a StatsigUser with a userID (or customID) is required for checkGate, getConfig, and getExperiment. In short, it's *always* better to pass the user ID if it's available: users will get a stable experience, and any events will be attributed to the correct users so you can accurately measure downstream metrics.
 
 Still don't want to pass an ID? Here are our suggestions for different use cases:
 
@@ -180,4 +180,4 @@ We hope this is helpful. If you have a use case that is not covered in these sce
 
 ### Pass all IDs when you have them
 
-A common mistake is to accidentally expose users without a userID to a user-ID based experiment. All of them will be bucketed into one group (whichever the "null" userID goes to), polluting your results. If you run experiments on multiple ID types (or you might one day), its best to pass every identifier available.
+A common mistake is to accidentally expose users without a userID to a user-ID based experiment. All of them will be bucketed into one group (whichever the "null" userID goes to), polluting your results. If you run experiments on multiple ID types (or you might one day), it's best to pass every identifier available.

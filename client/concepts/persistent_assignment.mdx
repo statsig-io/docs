@@ -193,7 +193,7 @@ console.log(experiment.getGroupName()) // 'Control'
 
 ## Support in iOS and Android SDKs
 
-Android and iOS SDKs offer a simplified version of Persistent Storage called `keepDeviceValues` that relies on on-device storage. While this is less flexible its simple to leverage - with a simple boolean flag. When enabled, the SDK (under the hood in the getExperiment/getLayer call) will check for previous stored value, and use those instead, even if allocation or targeting has changed. When the experiment ends - the SDK will stop persisting values.
+Android and iOS SDKs offer a simplified version of Persistent Storage called `keepDeviceValues` that relies on on-device storage. While this is less flexible it's simple to leverage - with a simple boolean flag. When enabled, the SDK (under the hood in the getExperiment/getLayer call) will check for previous stored value, and use those instead, even if allocation or targeting has changed. When the experiment ends - the SDK will stop persisting values.
 
 <Tabs>
   <Tab title="iOS">

@@ -1,0 +1,43 @@
+# Statsig Docs — Cursor Rules
+
+This is the Statsig documentation repo at https://docs.statsig.com, powered by Mintlify. Full AI instructions are in `CLAUDE.md` — read it before making any edits.
+
+## Quick reference
+
+- **Framework:** Mintlify (not Next.js, no build step)
+- **Files:** `.mdx` only — never `.md`
+- **Local dev:** `mintlify dev` (install once with `npm i -g mintlify`)
+- **Navigation:** `docs.json` → `navigation.tabs[].groups[].pages[]`
+- **Snippets:** must live in `/snippets/` — import with `import X from '/snippets/...'`
+- **Links:** root-relative, no extension: `/feature-flags/overview`
+- **Spellcheck:** add new terms to `styles/config/vocabularies/Mintlify/accept.txt`
+
+## Callout syntax (Mintlify MDX — NOT Markdoc)
+
+```mdx
+<Note>...</Note>
+<Info>...</Info>
+<Tip>...</Tip>
+<Warning>...</Warning>
+```
+
+## Frontmatter
+
+```yaml
+---
+title: "Required"
+description: "Recommended for SEO"
+sidebarTitle: "Optional shorter sidebar label"
+---
+```
+
+## When editing docs
+
+- Apply Statsig style rules: active voice, present tense, second person, contractions, sentence-case headings.
+- Use `.cursor/rules/edit-doc.mdc` for the full style checklist.
+- For feature coverage audits, use `.cursor/rules/feature-comparison.mdc`.
+
+## Do NOT modify
+
+- `scripts/kapa.js` and `scripts/statsig.js` — analytics tracking
+- `docs.json` theme, colors, logo, or font settings

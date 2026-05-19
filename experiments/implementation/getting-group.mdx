@@ -34,7 +34,7 @@ async function getSearchItems(user: StatsigUser, searchTerm: String): String[] {
 There are a few problems with this code:
 
 1. Its very fragile.  If the group name in code does not match the name in the Statsig console, you won't return the correct experience
-2. Its static.  I can't easily add another experiment group without changing the code.  I cant add an "Unsorted long list" without a code change.
+2. Its static.  I can't easily add another experiment group without changing the code.  I can't add an "Unsorted long list" without a code change.
 
 So instead, this is what the code would look like using experiment parameters directly:
 

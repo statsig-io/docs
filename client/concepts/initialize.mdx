@@ -19,7 +19,7 @@ Unlike Server SDK initialization, which happens at Server startup, Client SDK in
 4. Issue a network request to Statsig to get the latest values for all gates/experiments/configs/layers/autotunes for the given user. If the project definition does not change from the most recent cached values, this request may succeed without returning new data.
 5. Resolve the asynchronous `initialize` call. If the request to the server failed, the SDK will have the cached values or return defaults for this session.
 
-Depending on when you check a gate or experiment after initializing, its possible that you may not have retrieved fresh values yet. Awaiting initialization solves this, with some performance downsides (discussed below).
+Depending on when you check a gate or experiment after initializing, it's possible that you may not have retrieved fresh values yet. Awaiting initialization solves this, with some performance downsides (discussed below).
 
 ## Client Initialization Strategies
 
@@ -126,7 +126,7 @@ Server SDKs require only a secret key to initialize. As most servers are expecte
 3. The Server retrieves updated rules from the server, and is now ready for checks even if it didn't find values in step 1.
 4. Going forward, the server will retrieve new values every 10 seconds from the server, updating the locally cached values each time.
 
-DataAdapters provide a layer of resilience, and ensure your server is ready to server requests as soon as it startups rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
+DataAdapters provide a layer of resilience, and ensure your server is ready to serve requests as soon as it starts up rather than waiting for a network roundtrip, which can be especially valuable if you have short-lived or serverless instances. While only recommended for advanced setups, Statsig also offers a [Forward Proxy](/server/concepts/forward_proxy/) that can add an extra layer of resilience to your server setup.
 
 <CodeGroup>
 
