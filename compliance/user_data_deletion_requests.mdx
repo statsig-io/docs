@@ -63,3 +63,4 @@ Data deletion requests are not handled synchronously. We batch requests and do m
 ## Important Notes
 - Once a data deletion request has been submitted, it cannot be deleted
 - Once data has been deleted, we no longer store the set of IDs that we deleted data for (since this is considered personally identifiable information in some cases)
+- Please note that this User Data Deletion Requests API only deletes data from the Statsig platform. To delete data from the Amplitude platform, please use this [User Privacy API](https://amplitude.com/docs/apis/analytics/user-privacy).
