@@ -1,5 +1,6 @@
 ---
 title: "Initializing SDKs"
+description: "Initialize Statsig client SDKs correctly across web, mobile, and React Native applications to ensure feature gates and experiments evaluate as expected."
 ---
 
 The first step in using a Statsig SDK is calling `initialize()`, which retrieves the values you need to evaluate experiments & send events. Before initialization, Statsig SDKs won't have latest values in-memory, and therefore may return stale values or none at all.

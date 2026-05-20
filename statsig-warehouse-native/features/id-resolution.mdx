@@ -1,7 +1,7 @@
 ---
 title: ID Resolution (ID Stitching)
 sidebarTitle: ID Resolution
-description: Map cross-platform IDs in experiment analysis and analyze anonymous user experiments
+description: Map cross-platform IDs in Warehouse Native experiment analysis to stitch anonymous and logged-in user data into a single experimental unit for accurate results.
 keywords:
   - owner:vm
 last_update:
@@ -39,7 +39,7 @@ Statsig Warehouse Native eliminates this overhead with an automatic, no-code way
 When using ID resolution, you can choose from one of three modes:
 
 - Strict 1:1 mapping enforces that identities have a singular mapping.
-  If you have a mapping between two IDs that are always 1:1, this mode enforces that the mapping is singular and warns you if there's data where that's to the case.
+  If you have a mapping between two IDs that are always 1:1, this mode enforces that the mapping is singular and warns you if there's data where that's not the case.
   Users with a single identity can use downstream metrics from the secondary identity, and multi-mapped users are considered corrupted and discarded from the analysis.
 - First-touch mapping is a way to attribute activities of secondary ID(s) to one primary ID by recognizing the treatment effect comes from the first time the user is exposed to the experiment.
 - Last-touch mapping is a way to attribute activities of secondary ID(s) to one primary ID by recognizing the treatment effect comes from the most recent time the user is exposed to the experiment.
